@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: flagdown.pm /main/3 1996/12/18 02:35:45 cde-hit $ */
+/* $XConsortium: flagdown.pm /main/3 1995/07/18 17:37:06 drk $ */
 static char * flagdown_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "60 36 14 1 0 0",

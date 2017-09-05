@@ -1,4 +1,4 @@
-<!-- $XConsortium: TOC.sgm /main/3 1996/12/18 02:47:59 cde-hit $ -->
+<!-- $XConsortium: TOC.sgm /main/4 1996/06/19 16:18:30 drk $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -7,10 +7,10 @@
 <!-- (c) Copyright 1995 FUJITSU LIMITED. -->
 <!-- (c) Copyright 1995 Hitachi. -->
 <Chapter Id="TableOfContents">
-<Title>目次</Title>
+<Title>Table of Contents</Title>
 <ItemizedList>
 <ListItem Id="HTRM.TOC.item.1">
-<Para> <GlossTerm Role="nogloss">dtterm の使い方</GlossTerm>
+<Para><GlossTerm Role="nogloss">dtterm Tasks</GlossTerm>
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTRM.TOC.item.2">
@@ -48,7 +48,7 @@
 </ItemizedList>
 </ListItem>
 <ListItem Id="HTRM.TOC.item.12">
-<Para> <GlossTerm Role="nogloss">dtterm リファレンス</GlossTerm>
+<Para><GlossTerm Role="nogloss">dtterm Reference</GlossTerm>
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTRM.TOC.item.13">

@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: mminicon.pm /main/5 1996/12/18 02:18:29 cde-hit $ */
+/* $XConsortium: mminicon.pm /main/5 1996/10/29 15:55:23 drk $ */
 static char * mminicon_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "50 180 29 1 0 0",

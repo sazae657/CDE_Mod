@@ -1,4 +1,4 @@
-<!-- $XConsortium: TOC.sgm /main/3 1996/12/18 01:28:14 cde-hit $ -->
+<!-- $XConsortium: TOC.sgm /main/6 1996/09/08 22:20:58 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,195 +9,195 @@
 <!-- Help volume: Calendar -->
 <!-- File name: TOC -->
 <Chapter Id="TOC">
-<Title>目次</Title>
+<Title>Table of Contents</Title>
 <Procedure>
-<Title> カレンダの使い方</Title>
+<Title>Calendar Tasks</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCAL.TOC.item.1">
-<Para> <XRef Linkend="ToSpecifyACalendarViewTA"></Para>
+<Para><XRef Linkend="ToSpecifyACalendarViewTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.2">
-<Para> <XRef Linkend="ToDisplaySpecificDateTA"></Para>
+<Para><XRef Linkend="ToDisplaySpecificDateTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.3">
-<Para> <XRef Linkend="ToScheduleApptTA"></Para>
+<Para><XRef Linkend="ToScheduleApptTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.4">
-<Para> <XRef Linkend="ToSetOptionsTA"></Para>
+<Para><XRef Linkend="ToSetOptionsTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.5">
-<Para> <XRef Linkend="ToChangeApptTA"></Para>
+<Para><XRef Linkend="ToChangeApptTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.6">
-<Para> <XRef Linkend="ToSetUpToDoTA"></Para>
+<Para><XRef Linkend="ToSetUpToDoTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.7">
-<Para> <XRef Linkend="ToChangeToDoTA"></Para>
+<Para><XRef Linkend="ToChangeToDoTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.8">
-<Para> <XRef Linkend="ToDeleteApptTA"></Para>
+<Para><XRef Linkend="ToDeleteApptTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.9">
-<Para> <XRef Linkend="ToSelectApptListTA"></Para>
+<Para><XRef Linkend="ToSelectApptListTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.10">
-<Para> <XRef Linkend="ToSelectToDoListTA"></Para>
+<Para><XRef Linkend="ToSelectToDoListTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.11">
-<Para> <XRef Linkend="ToAddUsersCalendarTA"></Para>
+<Para><XRef Linkend="ToAddUsersCalendarTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.12">
-<Para> <XRef Linkend="ToDisplayAnotherUsersCalendarTA"></Para>
+<Para><XRef Linkend="ToDisplayAnotherUsersCalendarTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.13">
-<Para> <XRef Linkend="ToCompareMultipleUsersCalendarsTA"></Para>
+<Para><XRef Linkend="ToCompareMultipleUsersCalendarsTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.14">
-<Para> <XRef Linkend="ToSetUpGroupApptTA"></Para>
+<Para><XRef Linkend="ToSetUpGroupApptTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.15">
-<Para> <XRef Linkend="ToMailRemindersToGroupTA"></Para>
+<Para><XRef Linkend="ToMailRemindersToGroupTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.16">
-<Para> <XRef Linkend="ToDetermineAccessToOtherCalendarsTA"></Para>
+<Para><XRef Linkend="ToDetermineAccessToOtherCalendarsTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.17">
-<Para> <XRef Linkend="ToGrantAccessToOtherUsersTA"></Para>
+<Para><XRef Linkend="ToGrantAccessToOtherUsersTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.18">
-<Para> <XRef Linkend="ToDenyAccessToOtherUsersTA"></Para>
+<Para><XRef Linkend="ToDenyAccessToOtherUsersTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.19">
-<Para> <XRef Linkend="ToPrintCurrentViewTA"></Para>
+<Para><XRef Linkend="ToPrintCurrentViewTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.20">
-<Para> <XRef Linkend="ToPrintApptListTA"></Para>
+<Para><XRef Linkend="ToPrintApptListTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.22">
-<Para> <XRef Linkend="ToFindApptTA"></Para>
+<Para><XRef Linkend="ToFindApptTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.23">
-<Para> <XRef Linkend="ToSetApptEditorDefaultsTA"></Para>
+<Para><XRef Linkend="ToSetApptEditorDefaultsTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.24">
-<Para> <XRef Linkend="ToSetInitialCalendarTA"></Para>
+<Para><XRef Linkend="ToSetInitialCalendarTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.25">
-<Para> <XRef Linkend="ToSetTimesDayWeekViewsTA"></Para>
+<Para><XRef Linkend="ToSetTimesDayWeekViewsTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.26">
-<Para> <XRef Linkend="ToSetDefaultCalendarViewTA"></Para>
+<Para><XRef Linkend="ToSetDefaultCalendarViewTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.27">
-<Para> <XRef Linkend="ToCustomizePrinterSettingsTA"></Para>
+<Para><XRef Linkend="ToCustomizePrinterSettingsTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.28">
-<Para> <XRef Linkend="ToCustomizeDateFormatTA"></Para>
+<Para><XRef Linkend="ToCustomizeDateFormatTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.29">
-<Para> <XRef Linkend="ToChangeDefaultTimeZoneTA"></Para>
+<Para><XRef Linkend="ToChangeDefaultTimeZoneTA"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.30">
-<Para> <XRef Linkend="ToDragDropApptTA"></Para>
+<Para><XRef Linkend="ToDragDropApptTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title> カレンダ・リファレンス</Title>
+<Title>Calendar Reference</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCAL.TOC.item.31">
-<Para> <XRef Linkend="CalendarToolBar"></Para>
+<Para><XRef Linkend="CalendarToolBar"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.32">
-<Para> <XRef Linkend="CalendarMonthWindow"></Para>
+<Para><XRef Linkend="CalendarMonthWindow"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.33">
-<Para> <XRef Linkend="CalendarWeekWindow"></Para>
+<Para><XRef Linkend="CalendarWeekWindow"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.34">
-<Para> <XRef Linkend="CalendarDayWindow"></Para>
+<Para><XRef Linkend="CalendarDayWindow"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.35">
-<Para> <XRef Linkend="CalendarYearWindow"></Para>
+<Para><XRef Linkend="CalendarYearWindow"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.36">
-<Para> <XRef Linkend="CalendarFileMenu"></Para>
+<Para><XRef Linkend="CalendarFileMenu"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.37">
-<Para> <XRef Linkend="CalendarEditMenu"></Para>
+<Para><XRef Linkend="CalendarEditMenu"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.38">
-<Para> <XRef Linkend="CalendarViewMenu"></Para>
+<Para><XRef Linkend="CalendarViewMenu"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.39">
-<Para> <XRef Linkend="CalendarBrowseMenu"></Para>
+<Para><XRef Linkend="CalendarBrowseMenu"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.40">
-<Para> <XRef Linkend="CalendarHelpMenu"></Para>
+<Para><XRef Linkend="CalendarHelpMenu"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.41">
-<Para> <XRef Linkend="CalendarPrintDialog"></Para>
+<Para><XRef Linkend="CalendarPrintDialog"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.42">
-<Para> <XRef Linkend="CalendarOptionsCategoryDialog"></Para>
+<Para><XRef Linkend="CalendarOptionsCategoryDialog"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.43">
-<Para> <XRef Linkend="CalendarOptionsEditorDialog"></Para>
+<Para><XRef Linkend="CalendarOptionsEditorDialog"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.44">
-<Para> <XRef Linkend="CalendarOptionsDisplayDialog"></Para>
+<Para><XRef Linkend="CalendarOptionsDisplayDialog"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.45">
-<Para> <XRef Linkend="CalendarOptionsAccessDialog"></Para>
+<Para><XRef Linkend="CalendarOptionsAccessDialog"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.46">
-<Para> <XRef Linkend="CalendarOptionsPrinterDialog"></Para>
+<Para><XRef Linkend="CalendarOptionsPrinterDialog"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.47">
-<Para> <XRef Linkend="CalendarOptionsDateDialog"></Para>
+<Para><XRef Linkend="CalendarOptionsDateDialog"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.48">
-<Para> <XRef Linkend="CalendarApptEditorDialog"></Para>
+<Para><XRef Linkend="CalendarApptEditorDialog"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.49">
-<Para> <XRef Linkend="CalendarToDoEditorDialog"></Para>
+<Para><XRef Linkend="CalendarToDoEditorDialog"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.50">
-<Para> <XRef Linkend="CalendarApptListDialog"></Para>
+<Para><XRef Linkend="CalendarApptListDialog"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.51">
-<Para> <XRef Linkend="CalendarToDoListDialog"></Para>
+<Para><XRef Linkend="CalendarToDoListDialog"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.52">
-<Para> <XRef Linkend="CalendarFindDialog"></Para>
+<Para><XRef Linkend="CalendarFindDialog"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.53">
-<Para> <XRef Linkend="CalendarGotoDateDialog"></Para>
+<Para><XRef Linkend="CalendarGotoDateDialog"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.54">
-<Para> <XRef Linkend="CalendarTimeZoneDialog"></Para>
+<Para><XRef Linkend="CalendarTimeZoneDialog"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.55">
-<Para> <XRef Linkend="CalendarShowOtherCalendarDialog"></Para>
+<Para><XRef Linkend="CalendarShowOtherCalendarDialog"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.56">
-<Para> <XRef Linkend="CalendarCompareCalsDialog"></Para>
+<Para><XRef Linkend="CalendarCompareCalsDialog"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.57">
-<Para> <XRef Linkend="CalendarGroupApptEditorDialog"></Para>
+<Para><XRef Linkend="CalendarGroupApptEditorDialog"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.58">
-<Para> <XRef Linkend="CalendarMenuEditorDialog">
+<Para><XRef Linkend="CalendarMenuEditorDialog">
 <!-- <item> <xref CalendarResources> --></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.59">
-<Para> <XRef Linkend="CalendarStandaloneApptEditorWindow"></Para>
+<Para><XRef Linkend="CalendarStandaloneApptEditorWindow"></Para>
 </ListItem>
 <ListItem Id="HCAL.TOC.item.60">
-<Para> <XRef Linkend="CalendarCommandSyntax"></Para>
+<Para><XRef Linkend="CalendarCommandSyntax"></Para>
 </ListItem>
 </ItemizedList>
 <!-- <procedure> Calendar Concepts -->

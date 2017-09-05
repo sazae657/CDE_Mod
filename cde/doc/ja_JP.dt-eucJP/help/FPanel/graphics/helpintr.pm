@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: helpintr.pm /main/3 1996/12/18 01:41:24 cde-hit $ */
+/* $XConsortium: fphelpintro.pm /main/3 1995/07/18 17:33:18 drk $ */
 /* Designed by the User Interaction Design Group, Hewlett-Packard. */
 /* (c) Copyright 1993 Hewlett-Packard Company. */
 static char *helpoverview32[]={

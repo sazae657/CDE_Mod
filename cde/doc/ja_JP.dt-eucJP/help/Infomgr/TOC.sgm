@@ -1,4 +1,4 @@
-<!-- $XConsortium: TOC.sgm /main/1 1996/12/18 01:58:17 cde-hit $ -->
+<!-- $XConsortium: TOC.sgm /main/3 1996/10/28 10:43:00 cdedoc $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,9 +9,9 @@
 <!-- Help volume: Information Manager -->
 <!-- File name: TOC -->
 <Chapter Id="TOC">
-<title>目次</title>
+<title>Table of Contents</title>
 <procedure>
-<title>インフォメーション・マネージャの使い方</title>
+<title>Information Manager Tasks</title>
 <step>
 <itemizedlist>
 <listitem id="HINFO.TOC.item.1"><para><xref linkend="IMStartInfoManager"></para></listitem>
@@ -89,7 +89,7 @@
 </procedure>
 
 <procedure>
-<title>インフォメーション・マネージャのリファレンス</title>
+<title>Information Manager Reference</title>
 <step>
 <itemizedlist>
 <listitem id="HINFO.TOC.item.72"><para><xref linkend="IMBookListWindow"></para></listitem>

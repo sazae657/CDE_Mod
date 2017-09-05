@@ -1,4 +1,4 @@
-<!-- $XConsortium: Tasks.sgm /main/5 1996/12/18 01:35:57 cde-hit $ -->
+<!-- $XConsortium: Tasks.sgm /main/9 1996/09/08 22:49:58 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -7,139 +7,149 @@
 <!-- (c) Copyright 1995 FUJITSU LIMITED. -->
 <!-- (c) Copyright 1995 Hitachi. -->
 <Chapter Id="Tasks">
-<Title>[アクション作成] の使い方</Title>
+<Title>Create Action Tasks</Title>
 <Procedure>
-<Title>アクションの作成および編集</Title>
+<Title>Creating and Editing Actions</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCRA.TSKS.item.1">
-<Para> <XRef Linkend="ToCreateAction"></Para>
+<Para><XRef Linkend="ToCreateAction"></Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.2">
-<Para> <XRef Linkend="ToEditAction"></Para>
+<Para><XRef Linkend="ToEditAction"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>データ型の作成および編集</Title>
+<Title>Creating and Editing Data Types</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCRA.TSKS.item.3">
-<Para> <XRef Linkend="ToCreateAction"></Para>
+<Para><XRef Linkend="ToCreateAction"></Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.4">
-<Para> <XRef Linkend="ToEditDatatype"></Para>
+<Para><XRef Linkend="ToEditDatatype"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>アクションおよびデータ型のアイコン</Title>
+<Title>Icons for Actions and Data Types</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCRA.TSKS.item.5">
-<Para> <XRef Linkend="ToSpecifyIcon"></Para>
+<Para><XRef Linkend="ToSpecifyIcon"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Sect1 Id="ToCreateAction">
-<Title>[アクション作成] でアクションを作成するには</Title>
+<Title>To Create an Action With Create Action</Title>
 <IndexTerm>
-<Primary>アクション:作成</Primary>
+<Primary>action:creating</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HCRA.TSKS.item.6">
-<Para> アプリケーション・マネージャの [Desktop_Apps] アプリケーション・グループを開き、[アクション作成] をダブルクリックしてください。</Para>
-<Para> これで、[アクション作成] のメイン・ウィンドウが表示されます。</Para>
+<Para>Open the Desktop_Apps application group in Application Manager and
+double-click Create Action.</Para>
+<Para>This displays the Create Action main window.</Para>
 <Graphic Entityref="CAMainWindow" Id="HCRA.TSKS.fig.1"></Graphic>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.7">
-<Para> [アクション名] テキスト・フィールドに、アクションのアイコンに付けるラベルの名前を入力してください。</Para>
-<Para>アクション名には、スペース以外の任意の文字が使用できます。</Para>
+<Para>In the Action Name text field, type the name that will label the action's icon.</Para>
+<Para>The action name can include any characters except spaces.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.8">
-<Para> [アクション・アイコン] コントロールを使用して、アプリケーションのアイコンを指定してください。
-初めは、デフォルト・アイコンが表示されています。</Para>
+<Para>Use the Action Icons controls to specify the icon for the application. Initially,
+the default icon is shown.</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HCRA.TSKS.item.9">
-<Para> 別の既存アイコンを使用するには、[アイコンセット検索] をクリックして [アイコンセット検索] ダイアログ・ボックスを開いてください。
-    詳細は、<XRef Linkend="ToSpecifyIcon"> を参照してください。</Para>
+<Para>To use a different existing icon, click Find Set to open the Find Set
+dialog box. For more information, see <XRef Linkend="ToSpecifyIcon">.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.10">
-<Para> 新規アイコンを作成するには、[アイコン編集] をクリックしてアイコン・エディタを起動してください。
-    <XRef Linkend="CreatingNewIcon"> を参照してください。
-  </Para>
+<Para>To create new icons, click Edit Icon to run the Icon Editor.
+See <XRef Linkend="CreatingNewIcon">.
+</Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.11">
-<Para> [アクション・アイコンを開いた場合のコマンド] テキスト・フィールドに、アプリケーションを起動するコマンドを入力してください。</Para>
-<Para>  ファイル引き数には、書式 <ComputerOutput>$<Symbol Role="Variable">n</Symbol></ComputerOutput> を使用してください。
-  例:</Para>
+<Para>In the Command When Action Icon is Opened text field, type the
+command to start the application.</Para>
+<Para>Use the syntax <ComputerOutput>$<Symbol Role="Variable">n</Symbol></ComputerOutput> for a file
+argument. For example:</Para>
 <ProgramListing>emacs
 bitmap $1
 diff $1 $2
 lp -oraw $1
 </ProgramListing>
-<Para>コマンド行にファイル引き数(<ComputerOutput>$<Symbol Role="Variable">n</Symbol></ComputerOutput>)がある場合には、アクション・アイコンはファイルのドロップ領域になります。</Para>
-<Para>コマンド行は、ユーザがシェルの使用を明示的に指定しない限り、シェルに渡されません。
-たとえば、以下の行はシェル処理を使用します。</Para>
-<ProgramListing>/bin/sh -c 'ps | lp'
-/bin/sh -c 'spell $1 | more'
+<Para>If the command line includes a file argument (<ComputerOutput>$<Symbol Role="Variable">n</Symbol></ComputerOutput>), then the action
+icon will be a drop zone for files.</Para>
+<Para>The command lines are not passed to a shell unless you explicitly specify
+the use of a shell. For example, these lines use shell processing:</Para>
+<ProgramListing>/bin/sh -c `ps | lp'
+/bin/sh -c `spell $1 | more'
 </ProgramListing>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.12">
-<Para> [アクション・アイコンのヘルプ・テキスト] テキスト・フィールドには、ユーザが<GlossTerm>アクション・アイコン</GlossTerm>に関するアイテム・ヘルプを参照した場合に表示されるヘルプ情報を入力してください。</Para>
-<Para>テキスト・フィールドのテキストは、自動的に折り返されます。しかし、この行分割はオンラインでは保存されません。
-  "確実な"行分割を指定したい場合には、<ComputerOutput>&bsol;n</ComputerOutput>を使用してください。</Para>
+<Para>In the Help Text for Action Icon text field, type the help information to be
+displayed when the user gets on-item help on the <GlossTerm>action icon</GlossTerm>.</Para>
+<Para>The text will automatically wrap in the text field. However, these line
+breaks are not preserved online. If you want to specify a "hard" line break,
+use <ComputerOutput>&bsol;n</ComputerOutput>.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.13">
-<Para> 必要なウィンドウ・サポートを選択するには、[ウィンドウタイプ] ボタン・メニューを使用してください。</Para>
+<Para>Use the Window Type button menu to select the kind of windowing support
+required</Para>
 <VariableList>
 <VarListEntry>
-<Term>グラフィカル (Ｘウィンドウ)</Term>
+<Term>Graphical (X-Window)</Term>
 <ListItem>
-<Para>アプリケーションは、独自のウィンドウを作成します。</Para>
+<Para>The application creates its own window.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>端末エミュレータ (自動的に閉じる)</Term>
+<Term>Terminal (Auto-Close)</Term>
 <ListItem>
-<Para>アプリケーションは、端末エミュレータ・ウィンドウ内で実行され、そのウィンドウはユーザがアプリケーションを終了した時点で自動的に閉じられます。</Para>
+<Para>The application will be run in a terminal window that
+closes automatically when the user exits the
+application.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>端末エミュレータ (手動で閉じる)</Term>
+<Term>Terminal (Manual Close)</Term>
 <ListItem>
-<Para>アプリケーションは、端末エミュレータ・ウィンドウ内で実行され、そのウィンドウはユーザが明示的に閉じるまで開かれています。</Para>
+<Para>The application will be run in a terminal window that
+remains open until the user explicitly closes it.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>出力なし</Term>
+<Term>No Output</Term>
 <ListItem>
-<Para>アプリケーションは、表示するための出力を作成しません。</Para>
+<Para>The application does not produce output to the display.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.14">
-<Para> 以下の作業を進めてください。</Para>
+<Para>Proceed as follows:</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HCRA.TSKS.item.15">
-<Para> アプリケーションにデータ・ファイルがあり、1 種類以上のデータ型を作成する場合は、<XRef Linkend="ToCreateDatatype"> を参照してください。</Para>
+<Para>If your application has data files and you want to create one or more
+data types for them, see <XRef Linkend="ToCreateDatatype">.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.16">
-<Para> データ型を作成する必要がない場合:</Para>
+<Para>If you do not need to create a data type:</Para>
 <OrderedList>
 <ListItem Id="HCRA.TSKS.item.17">
-<Para> [ファイル] メニューから [保存] を選択して、アクションを保存してください。
-	</Para>
+<Para>Save the action by choosing Save from the File menu.
+</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.18">
-<Para> ホーム・ディレクトリで新規アクションのアイコンをダブルクリックして、テストしてください。
-	</Para>
+<Para>Test the new action by double-clicking its icon in your home directory.
+</Para>
 </ListItem>
 </OrderedList>
 </ListItem>
@@ -148,160 +158,184 @@ lp -oraw $1
 </OrderedList>
 </Sect1>
 <Sect1 Id="ToCreateDatatype">
-<Title>[アクション作成] でデータ型を作成するには</Title>
+<Title>To Create a Data Type with Create Action</Title>
 <IndexTerm>
-<Primary>データ型:作成</Primary>
+<Primary>data type:creating</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HCRA.TSKS.item.19">
-<Para> アプリケーションのアクションを定義してください。トピック <XRef Linkend="ToCreateAction"> の手順 1 から 6 までを参照してください。</Para>
+<Para>Define the action for the application. See steps 1 through 6 of the
+topic <XRef Linkend="ToCreateAction">.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.20">
-<Para> [拡張機能] ボタンをクリックして、[アクション作成] ウィンドウを拡張してください。</Para>
+<Para>Click the Advanced button to expand the Create Action window.</Para>
 <Graphic Entityref="CAAdvancedMainWIndow" Id="HCRA.TSKS.fig.2"></Graphic>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.21">
-<Para> <GlossTerm>アクション・アイコン</GlossTerm> がダブルクリックされた時に、アイコンがファイル引き数の入力を要求するようにするには、"アクションを開く時点でユーザに確認" テキスト・フィールドにプロンプト・テキストを入力してください。</Para>
+<Para>If you want the <GlossTerm>action icon</GlossTerm> to prompt for a file argument when the icon
+is double-clicked, type the text of the prompt into the "When Action Opens,
+Ask Users for" text field.</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HCRA.TSKS.item.22">
-<Para> アプリケーションのコマンド行に必要なファイル引き数がある場合には、このフィールドを必ず使用してください。</Para>
+<Para>You must use this field if the application's command line has a required file
+argument.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.23">
-<Para> アプリケーションのコマンド行にファイル引き数がない場合には、このフィールドはブランクでなければなりません。
-   </Para>
+<Para>You must leave this field blank if the application's command line does not have a
+file argument.
+</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.24">
-<Para> アプリケーションのコマンド行のファイル引き数がオプションの場合には、方法を選択できます。
-     プロンプト・テキストを表示する場合は、アクション・アイコンがダブルクリックされた時にファイルの入力を要求します。
-     プロンプト・テキストを表示しない場合は、空文字列をファイル引き数としてコマンドを実行します。
-  </Para>
+<Para>If the file argument in the application's command line is optional, you have
+a choice.
+If you supply the prompt text, the action icon will
+prompt for the file
+when double-clicked.
+If you do not supply the prompt text, the action will be executed with a
+null string as the file argument.
+</Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.25">
-<Para> アクションが引き数として受け入れるファイルのタイプを指定してください。
-	</Para>
+<Para>Specify the types of files that the action will accept as arguments:
+</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HCRA.TSKS.item.26">
-<Para> アクションが任意のデータ型を受け入れる場合は、[すべてのデータ型] をクリックしてください。
-	</Para>
+<Para>If the action can accept any data type, click All Datatypes.
+</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.27">
-<Para> アクションが、アプリケーションに対して作成したデータ型のみを受け入れる場合は、[上記のリストのみ] をクリックしてください。
-	</Para>
+<Para>If the action can accept only the data type(s) you create for the
+application, click Only Above List.
+</Para>
 </ListItem>
 </ItemizedList>
-<Para>初めは、[このアクションで使用するデータ型] リストは空です。アプリケーションのデータ型を作成すると、そのデータ型がリストに追加されます。</Para>
+<Para>Initially, the Datatypes That use This Action list is empty. As you create
+data types for the
+application, they are added to the list.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.28">
-<Para> [追加] をクリックして、[データ型の追加] ダイアログ・ボックスを表示してください。</Para>
+<Para>Click Add to display the Add Datatype dialog box.</Para>
 <Graphic Entityref="CAAddDataTypesWindow" Id="HCRA.TSKS.fig.3"></Graphic>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.29">
-<Para> オプション: デフォルトのデータ型名を使用しない場合は、新規データ型の新規名を[データ型の名前] テキスト・フィールドに入力してください。
-名前にはスペースは使用できません。</Para>
+<Para>Optional: If you don't want to use the default data type name, type a new
+name for the new data type into the Name of Datatype text field. The name
+cannot include spaces.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.30">
-<Para> [特性の識別] ボックスの側の [編集] ボタンをクリックして、[特性の識別] ダイアログ・ボックスを表示してください。</Para>
+<Para>Click the Edit button beside the Identifying Characteristics box to display
+the Identifying Characteristics dialog box.</Para>
 <Graphic Entityref="CAIdentifyingCharWindow" Id="HCRA.TSKS.fig.4"></Graphic>
-<Para>このダイアログ・ボックスを使用して、データ型を他のデータ型と区別する特性を設定してください。
-  1 つの規準(たとえば、ファイル名のパターン)、または規準の組み合わせ(たとえば、ファイル名のパターンとアクセス権のパターンの両方)を選択できます。</Para>
+<Para>Use this dialog box to set the
+characteristics used to differentiate the data type
+from others. You can choose one criterion (for example, Name Pattern) or
+combine criteria (for example, both Name and Permission Patterns).</Para>
 <OrderedList>
 <ListItem Id="HCRA.TSKS.item.31">
-<Para> [ファイル] または [フォルダ] トグル・ボタンのどちらかをクリックして、データ型がファイルを示すのかフォルダを示すのかを指定してください。</Para>
+<Para>Click either the File or Folder toggle button to specify whether the
+data type presents a file or a folder.</Para>
 <Graphic Entityref="CAIdenCharFileFolder" Id="HCRA.TSKS.fig.5"></Graphic>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.32">
-<Para> データ型が名前に依存する場合は、[ファイル名のパターン] チェック・ボックスをクリックして、ファイル名のパターンを入力してください。
-ワイルドカードとして、<ComputerOutput>*</ComputerOutput> と <ComputerOutput>?</ComputerOutput> が使用できます。</Para>
+<Para>If the data type depends on the name, click the Name Pattern check box
+and type the name pattern. You can use <ComputerOutput>*</ComputerOutput> and <ComputerOutput>?</ComputerOutput> as wildcards.</Para>
 <Graphic Entityref="CAIdenCharName" Id="HCRA.TSKS.fig.6"></Graphic>
 <VariableList>
 <VarListEntry>
 <Term>*</Term>
 <ListItem>
-<Para> は、任意の文字列と一致します。
+<Para>Matches any sequence of characters.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>?</Term>
 <ListItem>
-<Para> は、任意の一文字と一致します。
+<Para>Matches any single character.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.33">
-<Para> データ型がアクセス権に依存する場合は、[アクセス権のパターン] チェック・ボックスをクリックして、データ型に必要なアクセス権をクリックしてください。</Para>
+<Para>If the data type depends on the permissions, click the
+Permission Pattern check box and click the permissions required for
+the data type.</Para>
 <Graphic Entityref="CAIdenCharPermissionPattern" Id="HCRA.TSKS.fig.7"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term>オン</Term>
+<Term>On</Term>
 <ListItem>
-<Para> ファイルに、指定のアクセス権がなければなりません。
+<Para>The file must have the specified permission.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>オフ</Term>
+<Term>Off</Term>
 <ListItem>
-<Para> ファイルに、指定のアクセス権があってはなりません。
+<Para>The file must lack the specified permission.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>どちらでも可</Term>
+<Term>Either</Term>
 <ListItem>
-<Para> (デフォルト) アクセス権は問題ではありません。
+<Para>(Default) The permission does not matter.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.34">
-<Para> データ型が内容に依存する場合は、[内容] チェック・ボックスをクリックして、検索するパターンと内容のタイプを指定してください。
-  オプションで、検索を開始するバイトの位置を指定できます。</Para>
+<Para>If the data type depends on the contents, click the Contents check box
+and supply the requested information-Pattern to search
+for and Type of contents. Optionally, you can supply the byte location where
+the search should start.</Para>
 </ListItem>
 </OrderedList>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.35">
-<Para> [了解] をクリックして、[ファイル特性] ダイアログ・ボックスを閉じてください。</Para>
-<Para>特性は、[データ型の追加] ダイアログ・ボックスの [特性の識別] ボックスに表示されます。</Para>
-<Para>[特性の識別] ボックスのアクセス権情報は、以下のコーディングを使用します。</Para>
+<Para>Click OK to close the File Characteristics dialog box.</Para>
+<Para>The characteristics
+will be displayed in the Identifying Characteristics box in the
+Add Datatype dialog box.</Para>
+<Para>The Permissions information in the Identifying Characteristics box uses this
+coding:</Para>
 <VariableList>
 <VarListEntry>
 <Term>d</Term>
 <ListItem>
-<Para> ディレクトリ
+<Para>Directory
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>r</Term>
 <ListItem>
-<Para> 読み込み権
+<Para>Read permission
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>w</Term>
 <ListItem>
-<Para> 書き込み権
+<Para>Write permission
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>x</Term>
 <ListItem>
-<Para> 実行権
+<Para>Executable
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>!</Term>
 <ListItem>
-<Para> NOT
+<Para>NOT
 </Para>
 </ListItem>
 </VarListEntry>
@@ -315,256 +349,277 @@ lp -oraw $1
 </VariableList>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.36">
-<Para> データ型のヘルプ・テキストを [ヘルプ・テキスト] テキスト・フィールドに入力してください。</Para>
+<Para>Type the help text for the data type into the Help Text text field</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.37">
-<Para> [データ型アイコン] コントロールを使用して、アプリケーションのアイコンを指定してください。</Para>
-<Para>初めは、デフォルト・アイコンが表示されます。</Para>
+<Para>Use the Datatype Icons controls to specify the icon for the application.</Para>
+<Para>Initially, the default icons are shown.</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HCRA.TSKS.item.38">
-<Para> 別の既存のアイコンを選択するには、[アイコンセット検索] をクリックして、[アイコンセット検索] ダイアログ・ボックスを開いてください。
-    詳細は、<XRef Linkend="ToSpecifyIcon"> を参照してください。</Para>
+<Para>To use a different existing icon, click Find Set to open the Find Set
+dialog box. For more information, see <XRef Linkend="ToSpecifyIcon">.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.39">
-<Para> 新規アイコンを作成するには、[アイコン編集] をクリックしてアイコン・エディタ
-    を起動してください。<XRef Linkend="CreatingNewIcon"> を参照してください。
-  </Para>
+<Para>To create new icons, click Edit Icon to run the Icon Editor.
+See <XRef Linkend="CreatingNewIcon">.
+</Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.40">
-<Para> オプション: アプリケーションが、コマンド行でデータ・ファイルを印刷する印刷コマンドを提供する場合は、ファイル書式に <ComputerOutput>$<Symbol Role="Variable">n</Symbol></ComputerOutput> を使用して、[印刷コマンド] テキスト・フィールドにコマンドを入力してください。</Para>
+<Para>Optional: If the application supplies a print command for printing data
+files from the
+command line, type the command into the Print Command text field, using
+the syntax <ComputerOutput>$<Symbol Role="Variable">n</Symbol></ComputerOutput> for a file argument.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.41">
-<Para> [了解] をクリックして [データ型の追加] ダイアログ・ボックスを閉じ、データ型を[アクション作成] ウィンドウのデータ型リストに追加してください。</Para>
+<Para>Click OK to close the Add Datatype dialog box and add the data type
+to the data types list in the Create Action window.</Para>
 </ListItem>
 </OrderedList>
 </Sect1>
 <Sect1 Id="CreateActionIconImage">
-<Title>アクションおよびデータ型のアイコンを指定するには</Title>
-<Para>[アクション作成] メイン・ウィンドウおよび [データ型の追加] ダイアログ・ボックスには、アクションおよびデータ型が使用するアイコンを指定するボタンがあります。
+<Title>To Specify Icons for Actions and Data Types</Title>
+<Para>The Create Action Main window and Add Datatype dialog box contain buttons
+for specifying the icon to be used by actions and data types.
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HCRA.TSKS.item.42">
-<Para> 既存のアイコンを使用するには、[アイコンセット検索] をクリックしてください。
-  <XRef Linkend="ToSpecifyIcon"> を参照してください。</Para>
+<Para>To use an existing icon, click Find Set. See <XRef Linkend="ToSpecifyIcon">.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.43">
-<Para> アイコン・エディタを使用して新規アイコンを作成するには、[アイコン編集] をクリックしてください。
-  <XRef Linkend="CreatingNewIcon"> を参照してください。
+<Para>To create a new icon using Icon Editor, click Edit Icon. See
+<XRef Linkend="CreatingNewIcon">.
 </Para>
 </ListItem>
 </ItemizedList>
 <Sect2 Id="ToSpecifyIcon">
-<Title>[アイコンセット検索] ダイアログ・ボックスを使用するには</Title>
-<Para>[アイコンセット検索] ダイアログ・ボックスは、[アクション作成] メイン・ウィンドウ
-または [データ型の作成] ダイアログ・ボックスで [アイコンセット検索] をクリックすると表示されます。
+<Title>To Use the Find Set Dialog Box</Title>
+<Para>The Find Set dialog box is displayed when you click Find Set in the Create
+Action main window or in the Create Datatype dialog box.
 </Para>
 <Graphic Entityref="CAFindSetWindow" Id="HCRA.TSKS.fig.8"></Graphic>
-<Para>[アイコンセット検索] ダイアログ・ボックスでは、以下の指定ができます。</Para>
+<Para>The Find Set dialog box lets you specify:</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HCRA.TSKS.item.44">
-<Para> [アイコン・フォルダ] リストのフォルダ内にあるアイコン。
-  [アイコン・フォルダ] リストには、アイコン検索パス上のすべてのフォルダがあります。
+<Para>An icon located in a folder in the Icons Folders list.
+The Icon Folders list includes all the folders on the icon search path.
 </Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.45">
-<Para> 登録パッケージの一部となるアイコン。このパッケージは、<ComputerOutput>dtappintegrate</ComputerOutput>を使用してデスクトップに統合されます。</Para>
+<Para>An icon that is part of a registration package that will be integrated
+with the desktop using <ComputerOutput>dtappintegrate</ComputerOutput>.</Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>アイコン・フォルダのアイコンを指定するには</Title>
+<Title>To Specify an Icon in an Icon Folder</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HCRA.TSKS.item.46">
-<Para> [アイコン・フォルダ] リストで、アイコンを含むフォルダをダブルクリックしてください。</Para>
-<Para>  [アイコン・ファイル] リストには、そのフォルダ内のすべてのアイコン・ファイルが表示されます。</Para>
+<Para>In the Icon Folders list, double-click the folder path containing
+the icon.</Para>
+<Para>The Icon Files list will show all the icon files in that folder.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.47">
-<Para> [アイコン・ファイル] リストで、使用したいアイコンをクリックしてください。</Para>
+<Para>In the Icon Files list, click the icon you want to use.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.48">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 </ListItem>
 </OrderedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>登録パッケージのアイコンを指定するには</Title>
+<Title>To Specify an Icon in a Registration Package</Title>
 <Step>
-<Para>ユーザが、登録パッケージを作成するシステム管理者またはプログラマの場合、アイコン・イメージ・ファイルは初め、登録パッケージのディレクトリに置かれます。
+<Para>If you are a system administrator or programmer creating a registration
+package, the icon image files are initially located in a directory in the
+registration package:
 </Para>
 <ProgramListing><Symbol Role="Variable">app_root</Symbol>/dt/appconfig/icons/<Symbol Role="Variable">language</Symbol>
 </ProgramListing>
-<Para>登録後、アイコン・ファイルは <GlossTerm>アイコン・フォルダ</GlossTerm> 内に存在します。
-したがって、アクションおよびデータ型の定義には、ベース・ファイル名を使用してください。</Para>
-<Para>以下の手順に従って、現在アイコン・フォルダに存在しないアイコンのベース名を指定してください。</Para>
+<Para>After registration, the icon files will be in an <GlossTerm>icon folder</GlossTerm>.
+Therefore, the action and data type definitions
+should use the base file name.</Para>
+<Para>Use this procedure to specify a base name for an icon that is not currently
+in an icon folder:</Para>
 <OrderedList>
 <ListItem Id="HCRA.TSKS.item.49">
-<Para> [アイコン・ファイル名の入力] テキスト・ボックスに、アイコン・ファイルの<GlossTerm>ベース名</GlossTerm>を入力してください。</Para>
+<Para>In the Enter Icon Filename text box, type the <GlossTerm>base name</GlossTerm>
+of the icon file.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.50">
-<Para> [了解] をクリックしてください。</Para>
-<Para>  [エラー] ダイアログ・ボックスが表示され、アイコン・ファイルがアイコン・フォルダ内に見つからなかったことを知らせます。</Para>
+<Para>Click OK.</Para>
+<Para>An error dialog box is displayed, informing you that the icon file wasn't found
+in an icon folder.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.51">
-<Para> [エラー] ダイアログ・ボックスで、[名前を了解] をクリックしてください。
-  [エラー] ダイアログ・ボックスおよび [アイコンセット検索] ダイアログ・ボックスを閉じます。</Para>
+<Para>In the error dialog box, click Name OK. This closes the dialog box and
+the Find Set dialog box.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.52">
-<Para> [アクション・アイコン] または [データ型アイコン] フィールドにおけるアイコン・イメージの欠落は無視してください。
-  アイコン・イメージは、アプリケーションが登録されると見つかります。</Para>
+<Para>Ignore the absence of an icon image in the Action Icons or Datatype icons
+field. The icon image will be found when the application has been registered.</Para>
 </ListItem>
 </OrderedList>
 </Step>
 </Procedure>
 </Sect2>
 <Sect2 Id="CreatingNewIcon">
-<Title>新規アイコン・イメージの作成</Title>
+<Title>Creating a New Icon Image</Title>
 <OrderedList>
 <ListItem Id="HCRA.TSKS.item.53">
-<Para> [アイコン作成] または [データ型の編集] ウィンドウで、[アイコン編集] をクリックしてください。
-  これで、アイコン・エディタが起動します。</Para>
+<Para>Click Edit Icon in the Create Action or Edit Datatype window.
+This runs Icon Editor.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.54">
-<Para> アイコン・エディタを使用して、新規アイコンを描画してください。以下を参照してください。</Para>
+<Para>Use Icon Editor to draw a new icon. See:</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCRA.TSKS.item.55">
-<Para> <OLink Type="Jump" LocalInfo="Iconed Tasks">アイコン・エディタの使い方</OLink>
+<Para><OLink Type="Jump" LocalInfo="Iconed Tasks">Icon Editor Tasks</OLink>.
 </Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.56">
-<Para> <XRef Linkend="IconSizesandNames"></Para>
+<Para><XRef Linkend="IconSizesandNames"></Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.57">
-<Para> [ファイル] メニューから [保存] を選択して、アイコン・ファイルを保存してください。</Para>
-<Para>  アイコン・ファイルは、<ComputerOutput><Symbol Role="Variable">HomeFolder</Symbol>/.dt/icons</ComputerOutput> フォルダに保存してください。
-  <XRef Linkend="IconSizesandNames"> を参照してください。</Para>
+<Para>Choose Save from the File menu to save the icon file.</Para>
+<Para>Save the icon file into the <ComputerOutput><Symbol Role="Variable">HomeFolder</Symbol>/.dt/icons</ComputerOutput> folder.
+See <XRef Linkend="IconSizesandNames">.</Para>
 </ListItem>
 </OrderedList>
 <Note>
-<Para>ユーザが、登録パッケージを作成するシステム管理者またはアプリケーション・プログラマの場合は、<ComputerOutput><Symbol Role="Variable">approot</Symbol>/dt/appconfig/icons/<Symbol Role="Variable">language</Symbol></ComputerOutput> ディレクトリにアイコン・ファイルを保存してください。
+<Para>If you are a system administrator or applications programmer creating a
+registration package, the icon file should be saved to
+the <ComputerOutput><Symbol Role="Variable">approot</Symbol>/dt/appconfig/icons/<Symbol Role="Variable">language</Symbol></ComputerOutput> directory.
 </Para>
 </Note>
 </Sect2>
 <Sect2 Id="IconSizesandNames">
-<Title>アイコン・サイズと名前</Title>
-<Para>デスクトップのアイコンは、以下の命名規則が適用されます。
+<Title>Icon Sizes and Names</Title>
+<Para>Desktop icons use this naming convention:
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Emphasis Role="heading">サイズ (ピクセル単位)</Emphasis></Term>
+<Term><Emphasis Role="heading">Size (Pixels)</Emphasis></Term>
 <ListItem>
-<Para><Emphasis Role="heading">名前</Emphasis></Para>
+<Para><Emphasis Role="heading">Name</Emphasis></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>32 × 32</Term>
+<Term>32 by 32</Term>
 <ListItem>
-<Para><ComputerOutput><Symbol Role="Variable">ベース名</Symbol>.m.pm</ComputerOutput> または <ComputerOutput><Symbol Role="Variable">ベース名</Symbol>.m.bm</ComputerOutput>
+<Para><ComputerOutput><Symbol Role="Variable">basename</Symbol>.m.pm</ComputerOutput> or <ComputerOutput><Symbol Role="Variable">basename</Symbol>.m.bm</ComputerOutput>
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>16 × 16</Term>
+<Term>16 by 16</Term>
 <ListItem>
-<Para><ComputerOutput><Symbol Role="Variable">ベース名</Symbol>.s.pm</ComputerOutput> または <ComputerOutput><Symbol Role="Variable">ベース名</Symbol>.s.bm</ComputerOutput>
+<Para><ComputerOutput><Symbol Role="Variable">basename</Symbol>.s.pm</ComputerOutput> or <ComputerOutput><Symbol Role="Variable">basename</Symbol>.s.bm</ComputerOutput>
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HCRA.TSKS.item.58">
-<Para> アクション・アイコンの場合は、アクション名をベース名として使用してください。
+<Para>For action icons, use the action name as the basename.
 </Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.59">
-<Para> データ型アイコンの場合は、データ型名をベース名として使用してください。
+<Para>For data type icons, use the data type name as the base name.
 </Para>
 </ListItem>
 </ItemizedList>
 </Sect2>
 </Sect1>
 <Sect1 Id="ToEditAction">
-<Title>既存のアクションを編集するには</Title>
+<Title>To Edit an Existing Action</Title>
 <IndexTerm>
-<Primary>アクション:編集</Primary>
+<Primary>actions:editing</Primary>
 </IndexTerm>
-<Para>以下の場合は、[アクション作成] を使用して既存のアクションを編集できます。
+<Para>You can use Create Action to edit an existing action if:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HCRA.TSKS.item.60">
-<Para> アクションが [アクション作成] で作成された。
+<Para>The action was created with Create Action.
 </Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.61">
-<Para> <Emphasis>かつ</Emphasis>、アクション定義を格納しているファイルが手動で(テキスト・エディタを使用して)編集されていない。
+<Para><Emphasis>And</Emphasis>, the the file containing the action definition has not been
+edited manually (using a text editor).
 </Para>
 </ListItem>
 </ItemizedList>
 <OrderedList>
 <ListItem Id="HCRA.TSKS.item.62">
-<Para> アプリケーション・マネージャの [Desktop_Apps] アプリケーション・グループを開き、[アクション作成] をダブルクリックしてください。</Para>
-<Para> これで、[アクション作成] のメイン・ウィンドウが表示されます。</Para>
+<Para>Open the Desktop_Apps application group in Application Manager and
+double-click Create Action.</Para>
+<Para>This displays the main Create Action window.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.63">
-<Para> [ファイル] メニューから [開く] を選択してください。[開く] ダイアログ・ボックスが表示されます。</Para>
+<Para>Choose Open from the File menu. This displays the Open dialog box.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.64">
-<Para> [ファイル] リストで、アクション定義を格納しているファイルを選択してください。
-  <ComputerOutput><Symbol Role="Variable">action_name</Symbol>.dt</ComputerOutput> という名前が付いています。</Para>
+<Para>In the Files list, select the file containing the action definition.
+It has the name <ComputerOutput><Symbol Role="Variable">action_name</Symbol>.dt</ComputerOutput>.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.65">
-<Para> [了解] を選択してください。</Para>
+<Para>Choose OK.</Para>
 </ListItem>
 </OrderedList>
 </Sect1>
 <Sect1 Id="ToEditDatatype">
-<Title>既存のデータ型を編集するには</Title>
+<Title>To Edit an Existing Data Type</Title>
 <IndexTerm>
-<Primary>データ型:編集</Primary>
+<Primary>data type:editing</Primary>
 </IndexTerm>
-<Para>以下の場合は、[アクション作成] を使用して既存のデータ型を編集できます。
+<Para>You can use Create Action to edit an existing data type if:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HCRA.TSKS.item.66">
-<Para> データ型が [アクション作成] で作成された。
+<Para>The data type was created with Create Action.
 </Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.67">
-<Para> <Emphasis>かつ</Emphasis>、データ型を含むファイルが手動で(テキスト・エディタを使用して)編集されていない。
+<Para><Emphasis>And</Emphasis>, the file containin the data type
+has not been edited manually (using a text editor).
 </Para>
 </ListItem>
 </ItemizedList>
 <OrderedList>
 <ListItem Id="HCRA.TSKS.item.68">
-<Para> アプリケーション・マネージャの [Desktop_Apps] アプリケーション・グループを開き、[アクション作成] をダブルクリックしてください。</Para>
-<Para> これで、[アクション作成] のメイン・ウィンドウが表示されます。</Para>
+<Para>Open the Desktop_Apps application group in Application Manager and
+double-click Create Action.</Para>
+<Para>This displays the main Create Action window.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.69">
-<Para> [ファイル] メニューから [開く] を選択してください。[開く] ダイアログ・ボックスが表示されます。</Para>
+<Para>Choose Open from the File menu. This displays the Open dialog box.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.70">
-<Para> [ファイル] リストで、データ型の定義を格納しているファイルをダブルクリックしてください。</Para>
-<Para>  ファイル名は <ComputerOutput><Symbol Role="Variable">action_name</Symbol>.dt</ComputerOutput> で、この <Emphasis>action_name</Emphasis> は、データ型を作成した時に同時に作成されたアクションの名前です。</Para>
+<Para>In the Files list, double-click the file containing the data type definition.</Para>
+<Para>The name of the file is <ComputerOutput><Symbol Role="Variable">action_name</Symbol>.dt</ComputerOutput>, where <Emphasis>action_name</Emphasis> is
+the name of the action that was created at the same time you created
+the data type.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.71">
-<Para> [拡張機能] をクリックしてください。</Para>
+<Para>Click Advanced.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.72">
-<Para> [このアクションで使用するデータ型] リストで、編集するデータ型を選択してください。</Para>
+<Para>In the Data Types That Use This Action list, select the data type to be
+edited.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.73">
-<Para> [編集] をクリックして、[データ型の編集] ダイアログ・ボックスを開いてください。</Para>
+<Para>Click Edit to open the Edit Datatype dialog box.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.74">
-<Para> [データ型の編集] ダイアログ・ボックスで変更を行ってください。終了する場合、[了解] をクリックしてください。</Para>
+<Para>Make changes in the Edit Datatype dialog box. When you are done, click OK.</Para>
 </ListItem>
 <ListItem Id="HCRA.TSKS.item.75">
-<Para> 編集した定義を保存するには、[ファイル] メニューから [保存] を選択してください。</Para>
+<Para>To save the edited definition, choose Save from the File menu.</Para>
 </ListItem>
 </OrderedList>
 </Sect1>

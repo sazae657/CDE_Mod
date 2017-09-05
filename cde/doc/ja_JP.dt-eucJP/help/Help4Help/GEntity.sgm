@@ -1,4 +1,4 @@
-<!-- $XConsortium: GEntity.sgm /main/8 1996/12/18 01:50:12 cde-hit $ -->
+<!-- $XConsortium: GEntity.sgm /main/9 1996/11/16 13:42:33 cdedoc $ -->
 <!entity Help4HelpGeneralHelp SYSTEM "./Help4Help/graphics/genhlp.tif" NDATA TIFF>
 <!entity Help4HelpQuickHelp SYSTEM "./Help4Help/graphics/quickhlp.tif" NDATA TIFF>
 <!entity Help4HelpHyperlinksS SYSTEM "./Help4Help/graphics/hlinks.tif" NDATA TIFF>

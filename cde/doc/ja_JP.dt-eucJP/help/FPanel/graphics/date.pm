@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: date.pm /main/3 1996/12/18 01:40:10 cde-hit $ */
+/* $XConsortium: fpdate.pm /main/3 1995/07/18 17:32:47 drk $ */
 static char * fpdate [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "48 48 12 1 0 0",

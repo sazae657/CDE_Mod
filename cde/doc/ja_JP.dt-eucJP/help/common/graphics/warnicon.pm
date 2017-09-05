@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: warnicon.pm /main/4 1996/12/18 02:54:24 cde-hit $ */
+/* $XConsortium: warnicon.pm /main/4 1996/06/19 16:19:39 drk $ */
 static char * warnicon [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "31 31 4 1 0 0",

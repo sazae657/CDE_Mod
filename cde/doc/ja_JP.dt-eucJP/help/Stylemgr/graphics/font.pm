@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: font.pm /main/3 1996/12/18 02:44:57 cde-hit $ */
+/* $XConsortium: FontOL.pm /main/3 1995/07/18 17:23:44 drk $ */
 static char * FontOL [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "64 37 3 1 0 0",

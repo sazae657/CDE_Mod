@@ -1,4 +1,4 @@
-<!-- $XConsortium: GEntity.sgm /main/7 1996/12/18 02:47:21 cde-hit $ -->
+<!-- $XConsortium: GEntity.sgm /main/7 1996/06/19 16:18:16 drk $ -->
 <!entity XTcmdOL SYSTEM "./Terminal/graphics/prompt.tif" NDATA TIFF>
 <!entity fmgrtermOL SYSTEM "./Terminal/graphics/open.tif" NDATA TIFF>
 <!entity fptermOL SYSTEM "./Terminal/graphics/fpterm.tif" NDATA TIFF>

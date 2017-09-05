@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: appmgr.pm /main/5 1996/12/18 02:13:23 cde-hit $ */
+/* $XConsortium: appmgr.pm /main/5 1996/10/29 15:53:36 drk $ */
 static char * appmgr_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "48 48 13 1 0 0",

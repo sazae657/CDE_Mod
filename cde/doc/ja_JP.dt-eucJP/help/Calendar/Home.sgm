@@ -1,4 +1,4 @@
-<!-- $XConsortium: Home.sgm /main/3 1996/12/18 01:27:45 cde-hit $ -->
+<!-- $XConsortium: Home.sgm /main/5 1996/09/08 22:20:29 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,44 +9,44 @@
 <!-- Help volume: Calendar  -->
 <!-- File name:   HomeTopic -->
 <PartIntro Id="SDL-RESERVED-hometopic">
-<Title>カレンダのヘルプ</Title>
-<TitleAbbrev>カレンダのヘルプ</TitleAbbrev>
+<Title>Calendar Help</Title>
+<TitleAbbrev>Calendar Help</TitleAbbrev>
 <IndexTerm>
-<Primary>カレンダ, 使い方</Primary>
+<Primary>calendar, using</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>カレンダの起動</Primary>
+<Primary>starting calendar</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>紹介</Primary>
+<Primary>introduction</Primary>
 </IndexTerm>
-<Para>アポイントとグループ会議のスケジュール、予定表とアポイントリストの作成、およびアポイント通知の設定には、デスクトップ・カレンダを使用してください。
-
+<Para>Use the desktop Calendar to schedule appointments and group meetings,
+make To Do and appointment lists, and set appointment reminders.
 </Para>
 <Procedure>
-<Title>カレンダを開くには</Title>
+<Title>To Open Calendar</Title>
 <Step>
-<Para>フロントパネルの [カレンダ] コントロールをクリックしてください。</Para>
+<Para>Click the Calendar control in the Front Panel.</Para>
 <Para>&newline;&empty;&newline;</Para>
 <Graphic Entityref="Calendar-Icon" Id="HCAL.HTOP.fig.1"></Graphic>
 <Para>&newline;&empty;&newline;</Para>
-<Para>カレンダは、デフォルトでは月表示を表示します。
-<!-- The following illustration shows Calendar components. --><!--	<idx>Calendar, main window<sort>calendar, main window<\idx> --><!-- 	<idx>main window<\idx> -->カレンダ・ウィンドウの概要については、
-<Link Type="jump" Linkend="calendar-components">ここ</Link> をクリックしてください。</Para>
+<Para>Calendar displays Month view by default.
+<!-- The following illustration shows Calendar components. --><!-- 	<idx>Calendar, main window<sort>calendar, main window<\idx> --><!-- 	<idx>main window<\idx> -->For an overview of a Calendar window,
+click <Link Type="jump" Linkend="calendar-components">here</Link>.</Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCAL.HTOP.item.1">
-<Para> <XRef Linkend="TOC"></Para>
+<Para><XRef Linkend="TOC"></Para>
 </ListItem>
 <ListItem Id="HCAL.HTOP.item.2">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HCAL.HTOP.item.3">
-<Para> <XRef Linkend="Reference">
+<Para><XRef Linkend="Reference">
 <!-- <item> <xref Concepts> --></Para>
 </ListItem>
 </ItemizedList>

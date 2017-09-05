@@ -1,4 +1,4 @@
-<!-- $XConsortium: Concepts.sgm /main/5 1996/12/18 01:07:23 cde-hit $ -->
+<!-- $XConsortium: Concepts.sgm /main/7 1996/09/08 22:00:17 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,135 +9,149 @@
 <!--	Help volume: App Builder 
 	File name:   concepts  -->
 <Chapter Id="ABConcepts">
-<Title>アプリケーション・ビルダの概念</Title>
+<Title>App Builder Concepts</Title>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="H.CNCP.item.1">
-<Para> <XRef Linkend="ABProcess"> 
+<Para><XRef Linkend="ABProcess">
 </Para>
 </ListItem>
 <ListItem Id="H.CNCP.item.2">
-<Para> <XRef Linkend="ABProjectsModules"> 
+<Para><XRef Linkend="ABProjectsModules">
 </Para>
 </ListItem>
 <ListItem Id="H.CNCP.item.3">
-<Para> <XRef Linkend="ABMessageExample"> 
+<Para><XRef Linkend="ABMessageExample">
 </Para>
 </ListItem>
 <ListItem Id="H.CNCP.item.4">
-<Para> <XRef Linkend="ABAboutAttachments"> 
+<Para><XRef Linkend="ABAboutAttachments">
 </Para>
 </ListItem>
 </ItemizedList>
 <Sect1 Id="ABProcess">
-<Title> アプリケーション・ビルダのプロセスの概説</Title>
+<Title>Summary of the App Builder Process</Title>
 <IndexTerm>
-<Primary>アプリケーション・ビルダのプロセス</Primary>
+<Primary>app builder process</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>プロセス, インタフェースの作成</Primary>
+<Primary>process, creating an interface</Primary>
 </IndexTerm>
-<Para>アプリケーション・ビルダのユーザ・インタフェースを作成するプロセスを、以下に説明します。
+<Para>The process of creating an App Builder user interface can be summarized as follows.
 </Para>
 <OrderedList>
 <ListItem Id="H.CNCP.item.5">
-<Para> インタフェースの設計。ピクチャを描きます。
- </Para>
+<Para>Design the interface; draw a picture of it.
+</Para>
 </ListItem>
 <ListItem Id="H.CNCP.item.6">
-<Para> アプリケーション・ビルダのインタフェースの "スペック" を実行します。
-インタフェースの設計の各部品として、アプリケーション・ビルダのどのオブジェクトを使用するかを決定します。
- </Para>
+<Para>Perform an App Builder "spec" of the interface (determine what
+App Builder objects will be used for each of the parts of the
+interface design).
+</Para>
 </ListItem>
 <ListItem Id="H.CNCP.item.7">
-<Para> アプリケーション・ビルダを起動してください。
- </Para>
+<Para>Start App Builder.
+</Para>
 </ListItem>
 <ListItem Id="H.CNCP.item.8">
-<Para> メイン・ウィンドウを、デスクトップ上にドラッグ＆ドロップしてください。
-これは、仕上げるアプリケーションのすべての機能の開始点になります。
- </Para>
+<Para>Drag and drop a main window onto the desktop; this will be the
+starting point for all functions in the finished application.
+</Para>
 </ListItem>
 <ListItem Id="H.CNCP.item.9">
-<Para> コントロール区画を、メイン・ウィンドウ上にドラッグ＆ドロップしてください。
-コントロールは、コントロール区画上にドロップされます。
- </Para>
+<Para>Drag and drop a control pane onto the main window; controls
+will be dropped onto the control pane.
+</Para>
 </ListItem>
 <ListItem Id="H.CNCP.item.10">
-<Para> 適切なコントロールを、コントロール区画上にドラッグ＆ドロップしてください。
-アプリケーション・ビルダのグループ、配列、およびアタッチメント・ツールを使用して、コントロールを適切に配置してください。
- </Para>
+<Para>Drag and drop the appropriate controls onto the control pane;
+use the group, alignment, and attachment tools of App Builder to
+position the controls properly.
+</Para>
 </ListItem>
 <ListItem Id="H.CNCP.item.11">
-<Para> 他のメイン・ウィンドウおよびカスタム・ダイアログを、デスクトップ上にドラッグ＆ドロップして、インタフェースの他の部分を作成してください。
- </Para>
+<Para>Drag and drop other main windows and custom dialogs
+onto the desktop to create the other parts of the interface.
+</Para>
 </ListItem>
 <ListItem Id="H.CNCP.item.12">
-<Para> インタフェース内のオブジェクト間のプログラム接続を作成してください。
-テスト・モードで、接続をテストしてください。
- </Para>
+<Para>Make programmatic connections between objects in the
+interface; test the connections in test mode.
+</Para>
 </ListItem>
 <ListItem Id="H.CNCP.item.13">
-<Para> インタフェースを改善して、正常になるまでテストを継続してください。
- </Para>
+<Para>Refine the interface and continue testing until it is right.
+</Para>
 </ListItem>
 <ListItem Id="H.CNCP.item.14">
-<Para> アプリケーション・ビルダのコード・ジェネレータを実行して、コードを生成してください。
-ユーザ・コードを追加して、アプリケーションの機能を完成させてください。
- </Para>
+<Para>Generate code by running the App Builder code generator; add
+user code to complete the functionality of the application.
+</Para>
 </ListItem>
 <ListItem Id="H.CNCP.item.15">
-<Para> アプリケーションが完成するまで、コンパイル、実行、テストを反復してください。
+<Para>Compile, run, test, iteratively until the application is
+complete.
 </Para>
 </ListItem>
 </OrderedList>
 </Sect1>
 <Sect1 Id="ABProjectsModules">
-<Title> アプリケーション・ビルダのプロジェクトとモジュール</Title>
+<Title>App Builder Projects and Modules</Title>
 <IndexTerm>
-<Primary> プロジェクト </Primary>
+<Primary>projects</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> モジュール </Primary>
+<Primary>modules</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="H.CNCP.item.16">
-<Para> <XRef Linkend="ABProjectDef"> 
+<Para><XRef Linkend="ABProjectDef">
 </Para>
 </ListItem>
 <ListItem Id="H.CNCP.item.17">
-<Para> <XRef Linkend="ABModuleDef"> 
+<Para><XRef Linkend="ABModuleDef">
 </Para>
 </ListItem>
 </ItemizedList>
 <Sect2 Id="ABProjectDef">
-<Title> プロジェクトとは何か?</Title>
-<Para>アプリケーション・ビルダを使用して、グラフィカル・ユーザ・インタフェースを作成する場合は、1 個以上のモジュールで構成される<Emphasis>プロジェクト</Emphasis>上で作業します。
-それ自体によって構築されたアプリケーション・ビルダは、30 個以上のモジュールで構成される単一のプロジェクトです。</Para>
-<Para>プロジェクト・ファイルは、[ファイル] メニューで [新規プロジェクト] を選択した時に、あるいはアプリケーション・ビルダの新規セッションで、ウィンドウをデスクトップ上にドラッグ＆ドロップした時に、開始されます。</Para>
-<Para>プロジェクト・ファイルは、[ファイル] メニューで [プロジェクトを保存] を選択した時に、あるいは [プロジェクト・オーガナイザ] の [プロジェクト] メニューで [保存] を選択した時に、保存されます。
-プロジェクト・ファイルには、<ComputerOutput>.bip</ComputerOutput> (builder interface project の略) という接尾辞が付きます。</Para>
+<Title>What Is a Project?</Title>
+<Para>When you use App Builder to create a graphical user interface, you are
+working on a <Emphasis>project,</Emphasis> which is comprised of one or more
+modules. App Builder, which was built with itself, was a single project,
+comprised of over 30 modules.</Para>
+<Para>A project file is started when you select New Project in the File menu
+or when you drag and drop a window onto the desktop in a new session
+of App Builder.</Para>
+<Para>A project file is saved when you select Save Project in the File menu
+or when you select Save in the Project menu in the Project Organizer.
+A project file has a <ComputerOutput>.bip</ComputerOutput> (builder interface
+project) suffix.</Para>
 <Procedure>
-<Title> 関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="H.CNCP.item.18">
-<Para> <XRef Linkend="ABModuleDef"></Para>
+<Para><XRef Linkend="ABModuleDef"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect2>
 <Sect2 Id="ABModuleDef">
-<Title> モジュールとは何か?</Title>
-<Para>モジュールは、プロジェクトの論理ユニットです。アプリケーション・ビルダのそれぞれのウィンドウおよびダイアログは、アプリケーション・ビルダのプロジェクトのモジュールです。</Para>
-<Para>プロジェクト内のすべてのモジュール・ファイルは、プロジェクトを保存する時に保存されます。[プロジェクト・オーガナイザ] の [モジュール] メニューで、[保存] を選択すると、特定のモジュールを明示的に保存できます。</Para>
-<Para>保存したモジュール・ファイルには、<ComputerOutput>.bil</ComputerOutput> (builder interface language の略) という接尾辞が付きます。</Para>
+<Title>What Is a Module?</Title>
+<Para>A module is a logical unit of a project. Each window and dialog in
+App Builder is a module of the App Builder project, for instance.</Para>
+<Para>All module files in a project are saved when the project is saved. You
+can explicitly save a particular module by selecting Save in the
+Module menu in the Project Organizer.</Para>
+<Para>A saved module file has a <ComputerOutput>.bil</ComputerOutput> (builder interface
+language) suffix.</Para>
 <Procedure>
-<Title> 関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="H.CNCP.item.19">
-<Para> <XRef Linkend="ABProjectDef"></Para>
+<Para><XRef Linkend="ABProjectDef"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
@@ -145,48 +159,54 @@
 </Sect2>
 </Sect1>
 <Sect1 Id="ABMessageExample">
-<Title> 例: メッセージ・コードの書き方</Title>
-<Para><XRef Linkend="ABCreateMessage"> で説明したようにメッセージを作成したら、いつ、どのようにそれを表示するかを決めなければなりません。
-メッセージは通常、ロジックのある部分の実行後に表示されます。
-たとえば、名前を受け入れるように設計されたテキスト・フィールドにユーザが数字を入力した場合に、数字は有効ではないことをユーザに通知するエラー・メッセージを固定表示したいことがあります。</Para>
-<Para>Motif のメッセージ・ボックスは、モード付きかモードなし (ブロック化かブロック化なしに相当) の 2 通りの方法のどちらかで表示できます。
-アプリケーション・ビルダのコード・ジェネレータ (<ComputerOutput>dtcodegen</ComputerOutput>) には、表示の 2 つのモードに対応する 2 個のルーチンがあります。
-それらは、<ComputerOutput>dtb_utils.c </ComputerOutput> にあり、以下の名前です。</Para>
+<Title>Example: Writing Code for Messages</Title>
+<Para>Once you have created a message as described in <XRef Linkend="ABCreateMessage">, you must determine when and how it should be
+displayed. Usually messages are displayed after a certain piece of
+logic has been executed. For example, if a user types digits in a
+text field that is designed to accept a name, you will want to post an
+error message informing the user that digits are not valid.</Para>
+<Para>Message boxes in Motif can be displayed in one of two ways: modally or
+non-modally (equivalently, blocking or non-blocking). The App Builder
+code generator (<ComputerOutput>dtcodegen</ComputerOutput>) supplies two routines,
+corresponding to the two modes of display. They are found in
+<ComputerOutput>dtb_utils.c</ComputerOutput> and are named:</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="H.CNCP.item.20">
-<Para> <ComputerOutput>dtb_show_modal_message()</ComputerOutput>
+<Para><ComputerOutput>dtb_show_modal_message()</ComputerOutput>
 </Para>
 </ListItem>
 <ListItem Id="H.CNCP.item.21">
-<Para> <ComputerOutput>dtb_show_message()</ComputerOutput>
+<Para><ComputerOutput>dtb_show_message()</ComputerOutput>
 </Para>
 </ListItem>
 </ItemizedList>
-<Para>特定のメッセージをモード付きで表示する場合は、<ComputerOutput>dtb_show_ modal_message()</ComputerOutput> を使用してください。
-特定のメッセージをモードなしで表示する場合は、<ComputerOutput>dtb_show_message()</ComputerOutput> を使用してください。
+<Para>If you want to display a particular message modally, use
+<ComputerOutput>dtb_show_ modal_message()</ComputerOutput>.
+If you want to display a particular message non-modally,
+use <ComputerOutput>dtb_show_message()</ComputerOutput>.
 </Para>
 <Procedure>
-<Title> 関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="H.CNCP.item.22">
-<Para> <XRef Linkend="ABCodingModal"> 
+<Para><XRef Linkend="ABCodingModal">
 </Para>
 </ListItem>
 <ListItem Id="H.CNCP.item.23">
-<Para> <XRef Linkend="ABCodingNonModal"> 
+<Para><XRef Linkend="ABCodingNonModal">
 </Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Sect2 Id="ABCodingModal">
-<Title> モード付きメッセージのコーディング</Title>
-<Para>上記で説明したように、メッセージをモード付きで表示する場合は、
-<ComputerOutput>dtb_show_modal_message()</ComputerOutput> を使用してください。
-このルーチンは、ユーザがメッセージ・ボックス・ボタンを押したことを示す値を返しま
-す。
-値は、<ComputerOutput>enum</ComputerOutput> で、<ComputerOutput>dtb_utils.h</ComputerOutput>の中で定義されます。</Para>
+<Title>Coding for Modal Messages</Title>
+<Para>As explained above, if a message is to be displayed modally, use
+<ComputerOutput>dtb_show_modal_message()</ComputerOutput>. This routine returns
+a value which indicates which message box button the user has pressed.
+The value is an <ComputerOutput>enum</ComputerOutput> that is defined in
+<ComputerOutput>dtb_utils.h</ComputerOutput>:</Para>
 <LiteralLayout>/*
 	 * Returns answer value for modal MessageBox
 	 */
@@ -199,18 +219,24 @@
 	    DTB_ANSWER_HELP
 	} DTB_MODAL_ANSWER;
 </LiteralLayout>
-<Para>その後、たとえばスイッチ文を介して戻り値を試験し、コードの該当な部分を実行できます。</Para>
-<Para>ここでは、メッセージをモード付きで表示する例を示します。
-<ComputerOutput>foo</ComputerOutput> という簡単なアプリケーションを作成するとします。
-プロジェクト名は <ComputerOutput>foo.bip</ComputerOutput> で、1 個のモジュール<ComputerOutput>foo.bil</ComputerOutput> で構成されています。
-モジュール<ComputerOutput>foo.bil</ComputerOutput> には、メイン・ウィンドウと、コントロール区画と、 2 個のテキスト・フィールドがあります。
-1 個はユーザが人の名を入力するためのもので、もう 1 個は姓を入力するためのものです。
-ユーザが数字を入力した場合は、エラー・メッセージを固定表示して、数字は受け入れられないことをユーザに知らせ、1 組のオプションを表示します。
-ユーザは、最初に戻ること、つまり入力したテキストを消去することができます。
-あるいは、継続すること、つまり入力したテキストはそのまま残して、テキストの変更方法はユーザの裁量に任せることができます。</Para>
-<Para>呼び出し関数接続は、両方のテキスト・フィールドに対して実行され、ユーザが何かを入力するたびに呼び出されます。
-最初のテキスト・フィールドに対する関数は、入力された文字が数字であるかどうかをチェックします。
-数字の場合は、エラー・メッセージをモード付きで固定表示します。</Para>
+<Para>You can then examine the return value (for example via a switch
+statement) and execute the appropriate piece of code.</Para>
+<Para>Here's an example of displaying a message modally. Say that you have
+created a simple application, named <ComputerOutput>foo</ComputerOutput>. The
+project is named <ComputerOutput>foo.bip</ComputerOutput> and consists of one
+module, <ComputerOutput>foo.bil</ComputerOutput>. The module
+<ComputerOutput>foo.bil</ComputerOutput> consists of a main window, control pane,
+and two text fields, one for the user to enter a person's first name
+and the other to enter the last name. If the user types digits, an
+error message should be posted, informing the user that digits are not
+allowed, and giving the user a couple of options. The user can start
+over, which means the text entered will be erased, or the user can
+continue, which means that the text entered will be left intact,
+giving the user discretion as to how to modify the text.</Para>
+<Para>A call-function connection is made for both text fields, which will
+be called each time the user types something. The function for the
+first text field will check if the character typed is a digit. If so,
+it will post the error message modally:</Para>
 <LiteralLayout>void 
 verify_first_nameCB(
     Widget widget,
@@ -253,11 +279,11 @@ verify_first_nameCB(
 }
 </LiteralLayout>
 <Procedure>
-<Title> 関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="H.CNCP.item.24">
-<Para> <XRef Linkend="ABCodingNonModal"> 
+<Para><XRef Linkend="ABCodingNonModal">
 </Para>
 </ListItem>
 </ItemizedList>
@@ -265,15 +291,21 @@ verify_first_nameCB(
 </Procedure>
 </Sect2>
 <Sect2 Id="ABCodingNonModal">
-<Title> モードなしのメッセージのコーディング</Title>
-<Para>モードなしのメッセージを固定表示する場合は、
-<ComputerOutput>dtb_show_message()</ComputerOutput> を使用しなければなりません。
-メッセージ・ボックス・ボタンに対するコールバックは、<XRef Linkend="ABConnectMessage">で説明するように、必ず [接続エディタ] を介して指定してください。
-メッセージ・ボックス用に指定されるボタンは、[接続エディタ] のメッセージ・オブジェクトの [いつ] 項目として表示されます。</Para>
-<Para>上記と同じ例を使用して、ユーザが数字を入力した時に、姓のテキスト・フィールドが、エラー・メッセージをモードなしで表示するようにします。
-前述のように、まず、1 組の呼び出し関数接続を、メッセージ・ボックスの [やり直し] と [継続] というラベルが付いたボタンに対して実行する必要があります。
-コードを生成する時に、これらのルーチンが正しいことを実行するようにコードを追加してください。
-この場合、やり直しルーチンはテキスト・フィールドを消去し、継続ルーチンは何もしません。</Para>
+<Title>Coding for Non-Modal Messages</Title>
+<Para>If you want to post a non-modal message, you should use
+<ComputerOutput>dtb_show_message()</ComputerOutput>. The callbacks for the
+message box buttons should be specified via the Connections Editor, as
+described in <XRef Linkend="ABConnectMessage">. The buttons that are specified
+for the message box are displayed as When items for the message
+object in the Connections Editor.</Para>
+<Para>Using the same example as above, make the last name text field display
+the error message non-modally if the user types a digit. As
+previously mentioned, first you'll need to make a couple of
+call-function connections for the two buttons in the message box,
+labelled "Start Over" and "Continue." When code is generated,
+add code to those routines to do the right thing. The start
+over routine will clear out the text field and the continue routine
+will do nothing, in this case.</Para>
 <LiteralLayout>void 
 verify_last_nameCB(
     Widget widget,
@@ -341,8 +373,11 @@ continueCB(
     /*** DTB_USER_CODE_END   ^^^ Add C code above ^^^ ***/
 }
 </LiteralLayout>
-<Para>上記の 2 つのルーチン <ComputerOutput>start_overCB()</ComputerOutput> と <ComputerOutput>continueCB()</ComputerOutput> は、2 個のボタンに対するコールバックとして、<ComputerOutput>dtb_show_message()</ComputerOutput> に対する呼び出しを介して追加されます。
-ここに、<ComputerOutput>dtb_utils.c</ComputerOutput> からコールバックを追加するコードの部分を示します。</Para>
+<Para>The two routines above, <ComputerOutput>start_overCB()</ComputerOutput> and
+<ComputerOutput>continueCB()</ComputerOutput>, are added as callbacks for the two
+buttons via the call to <ComputerOutput>dtb_show_message()</ComputerOutput>. Here
+is the code fragment that adds the callback (from
+<ComputerOutput>dtb_utils.c</ComputerOutput>):</Para>
 <LiteralLayout>/* Add Callbacks if necessary */
     if (mbr->action1_callback != (XtCallbackProc) NULL)
         XtAddCallback(msg_dlg, XmNokCallback, mbr->action1_callback, NULL);
@@ -363,15 +398,19 @@ NULL);
                           mbr->action3_callback, NULL);
     }
 </LiteralLayout>
-<Para><ComputerOutput>mbr</ComputerOutput> ストラクチャは、メッセージに必要なすべての情報を含んでいます。
-メッセージ・オブジェクトが <ComputerOutput>dtb_&lt;modulename>_&lt;messagename>_initialize()</ComputerOutput> ルーチンを介して作成されると、[メッセージ・エディタ] で指定された値がストラクチャに入ります。
-この例では、<ComputerOutput>dtb_foo_message_initialize()</ComputerOutput>です。</Para>
+<Para>The structure <ComputerOutput>mbr</ComputerOutput> contains all the necessary
+information for the message. The structure is filled in with the
+values specified in the Message Editor when the message object was
+created via the
+<ComputerOutput>dtb_&lt;modulename>_&lt;messagename>_initialize()</ComputerOutput>
+routine -- in this example,
+<ComputerOutput>dtb_foo_message_initialize()</ComputerOutput>.</Para>
 <Procedure>
-<Title> 関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="H.CNCP.item.25">
-<Para> <XRef Linkend="ABCodingModal"> 
+<Para><XRef Linkend="ABCodingModal">
 </Para>
 </ListItem>
 </ItemizedList>
@@ -380,29 +419,44 @@ NULL);
 </Sect2>
 </Sect1>
 <Sect1 Id="ABAboutAttachments">
-<Title> アタッチメントについて</Title>
-<Para>アタッチメントおよびアタッチメントに基づくグループは、インタフェース内のオブジェクトの動的配置動作を確立します。
-動的配置動作は、サイズ変更動作中にオブジェクトが一貫した関係を維持することを保証します。
-アタッチメントは、国際化アプリケーションが、多くのロケールで良好に動作できるようにします。
-デフォルトでは、すべての子オブジェクトは、その上端と左端が、親オブジェクトの上端と左端に接続されます。
-したがって、メイン・ウィンドウ上にドロップされたコントロール区画は、その左端と上端がメイン・ウィンドウの左端と上端に接続されます。
-同様に、コントロール区画にドロップされたボタンは、コントロール区画に接続されます。</Para>
-<Para>親オブジェクトのサイズが、上方向または左方向に変更される場合、子オブジェクトは、上端と左端の距離を維持して親と共に移動します。</Para>
-<Para>区画オブジェクトが、親の上または左の端にドロップされる場合は、その端に、ゼロ (0) オフセットで接続されます。
-親の左と上の端から、右と下に一定の距離だけ離してドロップされた場合は、正のオフセットを持ちます。</Para>
-<Para>区画オブジェクトのサイズが、右端および下端から変更される場合、それに従って親オブジェクトも伸縮して、親の右端および下端に接続されます。</Para>
+<Title>About Attachments</Title>
+<Para>Attachments (and groups, which are based on attachments) establish
+dynamic layout behavior for objects in the interface. Dynamic layout
+behavior ensures that objects will maintain consistent relationships
+during resize activities. Attachments enable an internationalized
+application to work well in a number of locales.
+All child objects are attached by their top and left edges to the top
+and left edge of their parent object, by default. Thus a control pane
+dropped on a main window is attached by its left and top edges to the
+left and top edges of the main window. Similarly, a button dropped on
+the control pane is attached to the control pane.</Para>
+<Para>If the parent object is resized in an upward or leftward direction,
+the child object moves with the parent, maintaining the distance from
+the top and left edge of the parent.</Para>
+<Para>If a pane object is dropped on the top or left edge of its parent it
+will be attached to that edge with an offset of 0. If it is dropped
+some distance to the right and below the left and top edges of its
+parent, it will have positive offsets.</Para>
+<Para>If a pane object is resized from its right and bottom edges so that it
+spans its parent object, it will be attached to the right and bottom
+edges of its parent.</Para>
 <Procedure>
-<Title> アタッチメントの例: カスタム・ダイアログ</Title>
+<Title>Attachment Example: Custom Dialog</Title>
 <Step>
-<Para>アタッチメントの例として、アプリケーション・ビルダのカスタム・ダイアログ・オブジェクトを参照してください。
-カスタム・ダイアログの下部にあるボタンは、それぞれが格納するダイアログ・パネルの上端と左右の端に接続されています。
-これらは、パネルの上端から 5 ピクセルと、パネルの左端からのパーセントに応じて変わるように接続されています。
-(ボタン 1 の左端は 10% で右端は 30%、ボタン 2 は 40% と 60%、ボタン 3 は 70% と 90%)</Para>
-<Para>ボタン 1 の左端は常にパネルの端から 10% で、右端は常にパネルの端から 30% です。
-したがって、ボタン 1 は常にパネルの幅全体の 20% 分の幅です。
-ボタン 2 の端は、パネルの左端から 40% と 60% です。
-ボタン 3 の端は、パネルの左端から 70% と 90% です。
-この 3 個のボタンはパネルの伸縮に応じて伸縮し、相互の距離は常にパネルの幅全体の 10% です。</Para>
+<Para>See an App Builder custom dialog object for an example of attachments.
+Each of the buttons at the bottom of the custom dialog are attached to
+the top and sides of their enclosing dialog panel. They are attached
+five pixels from the top of the panel and varying percentages from the
+left edge of the panel (Button1 left edge 10%, right edge 30%; Button2
+40% and 60%; Button3 70% and 90%).</Para>
+<Para>The left edge of Button1 will always be 10% from the edge of the panel
+and the right edge of Button1 will always be 30% from the edge of the
+panel. Button1 will, therefore, always be as wide as 20% of the total
+width of the panel. Button2's edges are 40% and 60% from the left edge
+of the panel; Button3's edges are 70% and 90% from the left edge of
+the panel. The three buttons will grow and shrink as the panel grows
+and shrinks, and the distance between them will always be 10% of the
+total width of the panel.</Para>
 <!-- EOF: Concepts  -->
 </Step>
 </Procedure>

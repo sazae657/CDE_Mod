@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: startup.pm /main/3 1996/12/18 02:46:48 cde-hit $ */
+/* $XConsortium: StartuOL.pm /main/3 1995/07/18 17:24:18 drk $ */
 static char * StartuOL [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "64 37 9 1 0 0",

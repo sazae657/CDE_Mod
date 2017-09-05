@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: keyboard.pm /main/3 1996/12/18 02:45:43 cde-hit $ */
+/* $XConsortium: KeyboaOL.pm /main/3 1995/07/18 17:23:51 drk $ */
 static char * Keyboard [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "64 37 8 1 0 0",

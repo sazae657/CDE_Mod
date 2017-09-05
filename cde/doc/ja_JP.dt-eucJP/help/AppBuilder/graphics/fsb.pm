@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: fsb.pm /main/3 1996/12/18 01:14:42 cde-hit $ */
+/* $XConsortium: fsb.pm /main/1 1996/03/09 20:12:17 rws $ */
 static char * fsb_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "48 32 8 1 0 0",

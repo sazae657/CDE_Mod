@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: line.pm /main/3 1996/12/18 01:56:15 cde-hit $ */
+/* $XConsortium: IEtLine.pm /main/3 1995/07/18 17:22:23 drk $ */
 static char * IEtLine [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "36 36 4 1 0 0",

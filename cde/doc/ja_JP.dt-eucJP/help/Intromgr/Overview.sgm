@@ -1,4 +1,4 @@
-<!-- $XConsortium: Overview.sgm /main/5 1996/12/18 02:12:32 cde-hit $ -->
+<!-- $XConsortium: Overview.sgm /main/7 1996/10/30 18:01:09 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -7,138 +7,152 @@
 <!-- (c) Copyright 1995 FUJITSU LIMITED. -->
 <!-- (c) Copyright 1995 Hitachi. -->
 <Chapter Id="quick-start">
-<Title>デスクトップの概要</Title>
+<Title>The Desktop at a Glance</Title>
 <IndexTerm>
-<Primary>デスクトップの概要</Primary>
+<Primary>overview of desktop</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>デスクトップ概要</Primary>
+<Primary>desktop overview</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ファイル・マネージャ</Primary>
+<Primary>File Manager</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>スタイル・マネージャ</Primary>
+<Primary>Style Manager</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フロントパネル</Primary>
+<Primary>Front Panel</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>デスクトップ</Primary>
+<Primary>desktop</Primary>
 </IndexTerm>
-<Para>&newline;デスクトップには、作業を整理し、管理するためのウィンドウ、ワークスペース、コントロール、メニュー、およびフロントパネルがあります。</Para>
+<Para>&newline;To help you organize and manage your work, the desktop provides windows,
+workspaces, controls, menus, and the Front Panel.</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.QST.item.1">
-<Para> <GlossTerm Role="nogloss">ウィンドウ</GlossTerm>は、ソフトウェア・アプリケーションを格納し、コントロールで作成されています。従って、移動し、サイズ変更し、追加のワークスペースに配置することができます。
+<Para><GlossTerm Role="nogloss">Windows</GlossTerm> contain software applications and are
+framed with controls so you can move them, size them, or place them in
+additional workspaces.
 <!-- See <xref survival-skills> and <xref ManagingWindowsSI>. --></Para>
 </ListItem>
 <ListItem Id="HIMGR.QST.item.2">
-<Para> <GlossTerm Role="nogloss">ワークスペース</GlossTerm>は、作業に必要なウィンドウを配置し、アレンジし、作業の終了時に消去する画面領域です。
+<Para><GlossTerm Role="nogloss">Workspaces</GlossTerm> are the screen areas where you place the
+windows needed for your work, arrange them, and put them away when you're done.
 <!-- See <xref UsingWorkspacesSI>. --></Para>
 </ListItem>
 <ListItem Id="HIMGR.QST.item.3">
-<Para> <GlossTerm Role="nogloss">コントロール</GlossTerm>は、オブジェクトの操作、選択肢の選択、情報の入力を可能にします。
+<Para><GlossTerm Role="nogloss">Controls</GlossTerm> enable you to manipulate objects, select
+choices, or type information.
 <!-- See <xref SettingUpOrganizingWorkspacesSI>. --></Para>
 </ListItem>
 <ListItem Id="HIMGR.QST.item.4">
-<Para> <GlossTerm Role="nogloss">メニュー</GlossTerm>は、ウィンドウの管理およびアプリケーションの操作に使用するコマンドに対するアクセスを提供します。
+<Para><GlossTerm Role="nogloss">Menus</GlossTerm> provide access to commands you use to manage
+windows and operate applications.
 <!-- See <xref UsingMenusSI>. --></Para>
 </ListItem>
 <ListItem Id="HIMGR.QST.item.5">
-<Para> <GlossTerm Role="nogloss">フロントパネル</GlossTerm>は、頻繁に使用する、それぞれのワークスペースで適用可能なコントロールの集合です。
-<!-- See <link hyperlink="FPanel _hometopic" JumpNewView>the Front Panel help
+<Para>The <GlossTerm Role="nogloss">Front Panel</GlossTerm> is a collection of frequently used
+controls, available in every workspace.
+<!-- See <link hyperlink="FPanel _hometopic" JumpNewView>the Front Panel help 
 volume<\link>. --></Para>
 </ListItem>
 </ItemizedList>
-<Para>ここに示すのは、デスクトップを使用する際に表示されるウィンドウ、アイコン、およびオブジェクトです。</Para>
-<Para>
-<InlineGraphic Remap="graphic" Role="left" Entityref="q-mini-icons"></InlineGraphic>
-<GlossTerm Role="nogloss">ウィンドウ・アイコン</GlossTerm>
-&newline;&newline;ウィンドウを<Emphasis>アイコン化する</Emphasis>と、
-ウィンドウは、ワークスペース上のアイコンに変わります。ここに示すのは、
-ファイル・マネージャ、スタイル・マネージャ、テキスト・エディタの
-ウィンドウ・アイコンです。
-&newline;&newline;ウィンドウをアイコン化するには、ウィンドウ枠の右上隅の
-近くにある[アイコン化] ボタンをクリックしてください。
-&newline;&empty;<InlineGraphic Entityref="VI-ZoomedViewOfMinimizeButton" Id="HIMGR.QST.grph.1"></InlineGraphic>&sigspace; [アイコン化] ボタン
-&newline;ウィンドウを復元するには、アイコンの上でマウス・ボタン 1 を<GlossTerm>ダブルクリック</GlossTerm>してください。
-&newline;&newline;&empty;
-<GlossTerm Role="nogloss">スタイル・マネージャ</GlossTerm>
+<Para>Here are some of the windows, icons and objects you'll encounter as
+you use the desktop:</Para>
+<Para><InlineGraphic Remap="graphic" Role="left" Entityref="q-mini-icons"></InlineGraphic><GlossTerm Role="nogloss">Window icons</GlossTerm>&newline;&newline;When you <Symbol Role="Variable">minimize</Symbol> a window, it becomes an icon on the
+workspace. Shown here are the window icons for File Manager, Style Manager,
+and Text Editor.&newline;&newline;To minimize a window, click the minimize button near the upper right
+corner of the window frame.&newline;&empty;<InlineGraphic Entityref="VI-ZoomedViewOfMinimizeButton" Id="HIMGR.QST.grph.1"></InlineGraphic>&sigspace; Minimize button
+&newline;To restore the window, <GlossTerm>double-click</GlossTerm> mouse button 1 on
+the icon.&newline;&newline;&empty;
+<GlossTerm Role="nogloss">Style Manager</GlossTerm>
 </Para>
 <Para><InlineGraphic Remap="graphic" Role="left" Entityref="q-mini-stylemanager"></InlineGraphic>&newline;&empty;</Para>
-<Para>デスクトップの以下の要素を、容易にカスタマイズするには、スタイル・マネージャを使用してください。
+<Para>Use Style Manager to easily customize many elements of the desktop including:
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.QST.item.6">
-<Para> カラー
+<Para>Colors
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.QST.item.7">
-<Para> ワークスペースの背景
+<Para>Workspace backdrops
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.QST.item.8">
-<Para> フォント・サイズ
+<Para>Font size
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.QST.item.9">
-<Para> キーボード、マウス、ウィンドウの動作
+<Para>Keyboard, mouse, and window behavior
 </Para>
 </ListItem>
 </ItemizedList>
-<Para><InlineGraphic Remap="graphic" Role="left" Entityref="VI-StyleManagerFrontPanelControl"></InlineGraphic>スタイル・マネージャを起動するには、そのフロントパネル・コントロールをクリックしてください。</Para>
+<Para><InlineGraphic Remap="graphic" Role="left" Entityref="VI-StyleManagerFrontPanelControl"></InlineGraphic>To start Style
+Manager, click its Front Panel control.</Para>
 <Para>&empty;&newline;</Para>
-<Para><InlineGraphic Remap="graphic" Role="left" Entityref="q-mini-desktop-icons"></InlineGraphic><GlossTerm Role="nogloss">ワークスペース・オブジェクト</GlossTerm>&newline;&newline;頻繁に使用するファイル、フォルダ、および<GlossTerm Role="baseform=アクション">アクション</GlossTerm>を、ワークスペースの背景上にアイコンとして配置できます。&newline;&newline;オブジェクトをワークスペースに配置するには、ファイル・マネージャ、またはアプリケーション・マネージャのウィンドウから、そのアイコンを<GlossTerm>ドラッグ</GlossTerm>して、ワークスペースの背景上に直接ドロップしてください。
-&newline;&newline;ワークスペース・オブジェクトは、実際のオブジェクトに対する<Emphasis>リファレンス</Emphasis>であり、コピーではありません。&newline;&newline;&empty;
+<Para><InlineGraphic Remap="graphic" Role="left" Entityref="q-mini-desktop-icons"></InlineGraphic><GlossTerm Role="nogloss">Workspace objects</GlossTerm>&newline;&newline;You can place the files, folders, and <GlossTerm Role="baseform=action">actions</GlossTerm> you use
+frequently on the workspace backdrop as icons.&newline;&newline;To place an object on the workspace, <GlossTerm>drag</GlossTerm> its icon from a
+File Manager or Application Manager window and drop it directly on the
+workspace backdrop.&newline;&newline;A workspace object is a <Emphasis>reference</Emphasis> to the actual object,
+not a copy.&newline;&newline;&empty;
 </Para>
-<Para><InlineGraphic Remap="graphic" Role="left" Entityref="q-mini-filemanager"></InlineGraphic><GlossTerm Role="nogloss">ファイル・マネージャ</GlossTerm>&newline;&newline;ファイル・マネージャは、ご利用のシステム上のファイル、フォルダ、プログラムを、アイコンとして表示します。ファイル・マネージャのアイコンで作業すると、複雑なコマンドを理解しないで済みます。&newline;</Para>
-<Para><InlineGraphic Remap="graphic" Role="left" Entityref="VI-FileManagerFrontPanelControl"></InlineGraphic>&newline;ホーム・フォルダのファイル・マネージャ表示を開くには、フロントパネルの [ファイル・マネージャ] コントロールをクリックしてください。&newline;&empty;&newline;&newline;<GlossTerm Role="nogloss">アプリケーション・マネージャ</GlossTerm>
+<Para><InlineGraphic Remap="graphic" Role="left" Entityref="q-mini-filemanager"></InlineGraphic><GlossTerm Role="nogloss">File Manager</GlossTerm>&newline;&newline;File Manager displays the files, folders, and programs on your system as
+icons. Working with File Manager icons saves you from having to learn complex
+commands.&newline;</Para>
+<Para><InlineGraphic Remap="graphic" Role="left" Entityref="VI-FileManagerFrontPanelControl"></InlineGraphic>&newline;To open a
+File Manager view of your home folder, click the File Manager control
+in the Front Panel.&newline;&empty;&newline;&newline;<GlossTerm Role="nogloss">Application Manager</GlossTerm>
 </Para>
 <Para><InlineGraphic Remap="graphic" Role="left" Entityref="q-mini-AppMgr"></InlineGraphic>&newline;&empty;</Para>
-<Para>アプリケーション・マネージャは、毎日の作業で使用するアプリケーションとアクションに対する簡易アクセスを提供します。&newline;&newline;頻繁に使用するアプリケーションとアクションを、ワークスペースの背景上に配置できます。&newline;</Para>
-<Para><InlineGraphic Remap="graphic" Role="left" Entityref="VI-AppMgrIcon"></InlineGraphic>アプリケーション・マネージャを開くには、そのフロントパネル・コントロールをクリックしてください。&newline;&empty;&newline;&newline;<GlossTerm Role="nogloss">フロントパネル</GlossTerm>
+<Para>Application Manager provides easy access to the applications and
+actions you use in your everyday work.&newline;&newline;You can place the applications and actions you use frequently on
+the workspace backdrop.&newline;</Para>
+<Para><InlineGraphic Remap="graphic" Role="left" Entityref="VI-AppMgrIcon"></InlineGraphic>To open Application Manager,
+click its Front Panel control.&newline;&empty;&newline;&newline;<GlossTerm Role="nogloss">Front Panel</GlossTerm>
 </Para>
 <Para><InlineGraphic Remap="graphic" Role="left" Entityref="q-mini-frontpanel"></InlineGraphic>&newline;&empty;</Para>
-<Para>フロントパネルには、毎日の作業で使用するコントロール、アプリケーション、およびインジケータがあります。また、フロントパネルには、ワークスペースを選択する<Emphasis>ワークスペース・スイッチ</Emphasis>もあります。&newline;&empty;
-&newline;</Para>
+<Para>The Front Panel provides controls, applications, and indicators you use in
+your everyday work. The Front Panel also provides the <Emphasis>workspace
+switch</Emphasis> for selecting a workspace.&newline;&empty;&newline;</Para>
 <Procedure>
-<Title>デスクトップの詳細 ...</Title>
+<Title>More about the desktop ...</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.QST.item.10">
-<Para> <XRef Linkend="survival-skills"></Para>
+<Para><XRef Linkend="survival-skills"></Para>
 </ListItem>
 <ListItem Id="HIMGR.QST.item.11">
-<Para> <XRef Linkend="survival-skills-mouse"></Para>
+<Para><XRef Linkend="survival-skills-mouse"></Para>
 </ListItem>
 <ListItem Id="HIMGR.QST.item.12">
-<Para> <XRef Linkend="survival-skills-keyboard"></Para>
+<Para><XRef Linkend="survival-skills-keyboard"></Para>
 </ListItem>
 <ListItem Id="HIMGR.QST.item.13">
-<Para> <XRef Linkend="ManagingWindowsSI"></Para>
+<Para><XRef Linkend="ManagingWindowsSI"></Para>
 </ListItem>
 <ListItem Id="HIMGR.QST.item.14">
-<Para> <XRef Linkend="UsingWorkspacesSI"></Para>
+<Para><XRef Linkend="UsingWorkspacesSI"></Para>
 </ListItem>
 <ListItem Id="HIMGR.QST.item.15">
-<Para> <XRef Linkend="SettingUpOrganizingWorkspacesSI"></Para>
+<Para><XRef Linkend="SettingUpOrganizingWorkspacesSI"></Para>
 </ListItem>
 <ListItem Id="HIMGR.QST.item.16">
-<Para> <XRef Linkend="UsingMenusSI"></Para>
+<Para><XRef Linkend="UsingMenusSI"></Para>
 </ListItem>
 <ListItem Id="HIMGR.QST.item.17">
-<Para> <XRef Linkend="getting-help"></Para>
+<Para><XRef Linkend="getting-help"></Para>
 </ListItem>
 <ListItem Id="HIMGR.QST.item.18">
-<Para> <XRef Linkend="LogOutLockScreenTA"></Para>
+<Para><XRef Linkend="LogOutLockScreenTA"></Para>
 </ListItem>
 <ListItem Id="HIMGR.QST.item.19">
-<Para> <XRef Linkend="DesktopKeyboardNav"> 
+<Para><XRef Linkend="DesktopKeyboardNav">
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.QST.item.20">
-<Para> <OLink Type="JumpNewView" LocalInfo="Loginmgr SDL-RESERVED-hometopic">Login 
- Manager Help</OLink>
+<Para><OLink Type="JumpNewView" LocalInfo="Loginmgr SDL-RESERVED-hometopic">Login
+Manager Help</OLink>
 </Para>
 </ListItem>
 </ItemizedList>

@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: filemgr.pm /main/5 1996/12/18 02:14:16 cde-hit $ */
+/* $XConsortium: filemgr.pm /main/5 1996/10/29 15:53:52 drk $ */
 static char * filemgr_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "44 48 17 1 0 0",

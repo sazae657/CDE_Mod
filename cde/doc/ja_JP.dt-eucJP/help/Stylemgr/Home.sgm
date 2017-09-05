@@ -1,4 +1,4 @@
-<!-- $XConsortium: Home.sgm /main/3 1996/12/18 02:41:45 cde-hit $ -->
+<!-- $XConsortium: Home.sgm /main/5 1996/09/08 22:01:30 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,26 +9,28 @@
 <!-- Help volume: Stylemgr -->
 <!-- File name:   HomeTopic -->
 <PartIntro Id="SDL-RESERVED-hometopic">
-<Title>スタイル・マネージャのヘルプ</Title>
+<Title>Style Manager Help</Title>
 <!-- **** UNRESOLVED IDs **** -->
 <Para><Anchor Id="VUEUsingHelp">
-スタイル・マネージャでは、表示要素およびデスクトップのシステム動作を簡単にカスタマイズすることができます。
-カラー・パレットを選択または変更し、フォントを選択し、マウスの動作を変更し、あるいは、デスクトップ環境をユーザの好みに合わせる他のタスクを実行してください。</Para>
+With Style Manager, you can easily customize the visual elements and
+system behavior of the desktop. Choose or modify the color palette,
+select a font, change the behavior of your mouse, or perform other tasks
+that tailor the desktop environment to suit your preferences.</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HSTYM.HTOP.item.1">
-<Para> <XRef Linkend="tasks"></Para>
+<Para><XRef Linkend="tasks"></Para>
 </ListItem>
 <ListItem Id="HSTYM.HTOP.item.2">
-<Para> <XRef Linkend="concepts"></Para>
+<Para><XRef Linkend="concepts"></Para>
 </ListItem>
 <ListItem Id="HSTYM.HTOP.item.3">
-<Para> <XRef Linkend="reference"></Para>
+<Para><XRef Linkend="reference"></Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>スタイル・マネージャを開くには</Title>
+<Title>To Open Style Manager</Title>
 <Step>
-<Para>フロントパネルのスタイル・マネージャ・コントロールをクリックしてください。
+<Para>Click the Style Manager control in the Front Panel.
 </Para>
 <Graphic Entityref="StyleManager" Id="HSTYM.HTOP.fig.1"></Graphic>
 <!-- EOF: HomeTopic -->

@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: editor.pm /main/3 1996/12/18 01:40:18 cde-hit $ */
+/* $XConsortium: fpeditor.pm /main/3 1995/07/18 17:32:54 drk $ */
 static char * Fpenpad [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "32 32 15 1 0 0",

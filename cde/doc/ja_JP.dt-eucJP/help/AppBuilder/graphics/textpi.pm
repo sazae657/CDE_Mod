@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: textpi.pm /main/3 1996/12/18 01:20:18 cde-hit $ */
+/* $XConsortium: textpi.pm /main/1 1996/03/09 20:13:03 rws $ */
 static char * text_pane_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "48 32 11 1 0 0",

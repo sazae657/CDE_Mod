@@ -7,12 +7,12 @@
 <!-- (c) Copyright 1996 FUJITSU LIMITED. -->
 <!-- (c) Copyright 1996 Hitachi. -->
 <DocInfo>
-<Title>[印刷の設定] ウィンドウのヘルプ</Title>
+<Title>Print Setup Window Help</Title>
 <AuthorGroup>
 <CorpAuthor>X Consortium</CorpAuthor>
 </AuthorGroup>
 <Abstract Id="SDL-RESERVED-abstract">
-<Para>[印刷の設定] ウィンドウ</Para>
+<Para>Print Setup Window</Para>
 </Abstract>
 <LegalNotice Id="SDL-RESERVED-copyright">
 <BlockQuote>
@@ -20,4 +20,4 @@
 </BlockQuote>
 </LegalNotice>
 </DocInfo>
-<Title>[印刷の設定] ウィンドウのヘルプ</Title>
+<Title>Print Setup Window Help</Title>

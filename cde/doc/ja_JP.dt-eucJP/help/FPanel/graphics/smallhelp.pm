@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: smallhelp.pm /main/3 1996/12/18 01:44:01 cde-hit $ */
+/* $XConsortium: fpsmallhelp.pm /main/3 1995/07/18 17:34:52 drk $ */
 /* Designed by the User Interaction Design Group, Hewlett-Packard */
 /* Copyright (c) 1993 Hewlett-Packard */
 static char *help32[]={

@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: lock.pm /main/3 1996/12/18 01:42:08 cde-hit $ */
+/* $XConsortium: fplock.pm /main/3 1995/07/18 17:34:10 drk $ */
 static char * lock [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "40 24 6 1 0 0",

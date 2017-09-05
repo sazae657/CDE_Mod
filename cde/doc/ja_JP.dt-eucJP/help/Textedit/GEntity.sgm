@@ -1,4 +1,4 @@
-<!-- $XConsortium: GEntity.sgm /main/7 1996/12/18 02:50:01 cde-hit $ -->
+<!-- $XConsortium: GEntity.sgm /main/6 1996/06/19 16:18:47 drk $ -->
 <!entity TextEditorButton SYSTEM "./Textedit/graphics/button.tif" NDATA TIFF>
 <!entity TextEditorWindow SYSTEM "./Textedit/graphics/window.tif" NDATA TIFF>
 <!entity TextEditorSubpanel SYSTEM "./Textedit/graphics/subpanel.tif" NDATA TIFF>

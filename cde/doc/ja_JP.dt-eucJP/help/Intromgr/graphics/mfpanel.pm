@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: mfpanel.pm /main/5 1996/12/18 02:18:00 cde-hit $ */
+/* $XConsortium: mfpanel.pm /main/5 1996/10/29 15:54:55 drk $ */
 static char * mfpanel_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "455 38 41 1 0 0",

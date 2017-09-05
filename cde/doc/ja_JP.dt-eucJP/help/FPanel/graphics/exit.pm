@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: exit.pm /main/3 1996/12/18 01:40:27 cde-hit $ */
+/* $XConsortium: fpexit.pm /main/3 1995/07/18 17:33:01 drk $ */
 static char * Fpexit_s_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "24 24 6 1 0 0",

@@ -1,4 +1,4 @@
-<!-- $XConsortium: Tasks.sgm /main/5 1996/12/18 02:50:45 cde-hit $ -->
+<!-- $XConsortium: Tasks.sgm /main/12 1996/10/29 13:29:05 cdedoc $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,770 +9,809 @@
 <!-- Help volume: Textedit -->
 <!-- File name:   Tasks    -->
 <Chapter Id="Tasks">
-<Title>テキスト・エディタの使い方</Title>
+<Title>Text Editor Tasks</Title>
 <Procedure>
-<Title>ドキュメントを開く、およびドキュメントの保存</Title>
+<Title>Opening and Saving Documents</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.1">
-<Para> <XRef Linkend="ToCreateANewDocument"></Para>
+<Para><XRef Linkend="ToCreateANewDocument"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.2">
-<Para> <XRef Linkend="ToOpenAnExistingDocument"></Para>
+<Para><XRef Linkend="ToOpenAnExistingDocument"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.3">
-<Para> <XRef Linkend="ToSaveADocumentToTheCurrentFile"></Para>
+<Para><XRef Linkend="ToSaveADocumentToTheCurrentFile"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.4">
-<Para> <XRef Linkend="ToSaveADocumentToANewFile"></Para>
+<Para><XRef Linkend="ToSaveADocumentToANewFile"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.5">
-<Para> <XRef Linkend="ToRecoverAFile"></Para>
+<Para><XRef Linkend="ToRecoverAFile"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.6">
-<Para> <XRef Linkend="ToCloseTextEditor"></Para>
+<Para><XRef Linkend="ToCloseTextEditor"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>テキストの入力および編集</Title>
+<Title>Entering and Editing Text</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.7">
-<Para> <XRef Linkend="ToEnterText"></Para>
+<Para><XRef Linkend="ToEnterText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.8">
-<Para> <XRef Linkend="ToSetWrapToFit"></Para>
+<Para><XRef Linkend="ToSetWrapToFit"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.9">
-<Para> <XRef Linkend="ToDisplayTheStatusLine"></Para>
+<Para><XRef Linkend="ToDisplayTheStatusLine"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.10">
-<Para> <XRef Linkend="ToSetOverStrikeMode"></Para>
+<Para><XRef Linkend="ToSetOverStrikeMode"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.11">
-<Para> <XRef Linkend="ToScrollADocument"> 
+<Para><XRef Linkend="ToScrollADocument">
 </Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.12">
-<Para> <XRef Linkend="ToGoToASpecificLineNumber"></Para>
+<Para><XRef Linkend="ToGoToASpecificLineNumber"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.13">
-<Para> <XRef Linkend="ToInsertSpecialCharacters"></Para>
+<Para><XRef Linkend="ToInsertSpecialCharacters"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.14">
-<Para> <XRef Linkend="ToSelectText"></Para>
+<Para><XRef Linkend="ToSelectText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.15">
-<Para> <XRef Linkend="ToDeleteText"></Para>
+<Para><XRef Linkend="ToDeleteText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.16">
-<Para> <XRef Linkend="ToClearText"></Para>
+<Para><XRef Linkend="ToClearText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.17">
-<Para> <XRef Linkend="ToUndoAnEdit"></Para>
+<Para><XRef Linkend="ToUndoAnEdit"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.18">
-<Para> <XRef Linkend="ToCopyText"></Para>
+<Para><XRef Linkend="ToCopyText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.19">
-<Para> <XRef Linkend="ToMoveText"> 
+<Para><XRef Linkend="ToMoveText">
 </Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.20">
-<Para> <XRef Linkend="ToDragAndDropData"></Para>
+<Para><XRef Linkend="ToDragAndDropData"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.21">
-<Para> <XRef Linkend="ToFindOrChangeText"></Para>
+<Para><XRef Linkend="ToFindOrChangeText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.22">
-<Para> <XRef Linkend="ToCheckSpelling"></Para>
+<Para><XRef Linkend="ToCheckSpelling"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.23">
-<Para> <XRef Linkend="ToIncludeAFile"></Para>
+<Para><XRef Linkend="ToIncludeAFile"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>ドキュメントの書式設定および印刷</Title>
+<Title>Formatting and Printing Documents</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.24">
-<Para> <XRef Linkend="ToFormatADocument"></Para>
+<Para><XRef Linkend="ToFormatADocument"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.25">
-<Para> <XRef Linkend="ToPrintADocument"></Para>
+<Para><XRef Linkend="ToPrintADocument"></Para>
 </ListItem>
 </ItemizedList>
 <Note>
-<Para>これらの指示は、ユーザがマウスを使用していることを想定しています。
-たいていの操作はマウスなしでも行えます。
-詳細については、<OLink Type="Jump" LocalInfo="Intromgr DesktopKeyboardNav"> デスクトップのキーボード・ショートカット</OLink> を参照してください。
+<Para>These instructions assume that you are using a mouse. Most tasks
+can also be done without a mouse. See <OLink Type="Jump" LocalInfo="Intromgr DesktopKeyboardNav"> Keyboard Shortcuts for the Desktop</OLink>
+for more information.
 </Para>
 </Note>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.26">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Sect1 Id="ToCreateANewDocument">
-<Title>新規ドキュメントを作成するには</Title>
+<Title>To Create a New Document</Title>
 <IndexTerm>
-<Primary>作成: ドキュメント</Primary>
+<Primary>creating: document</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ドキュメント: 作成</Primary>
+<Primary>document: creating</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>作成: 改行</Primary>
+<Primary>creating: new lines</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>開く: 新規ドキュメント</Primary>
+<Primary>opening: new document</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.27">
-<Para> 新規ドキュメントを開くには、フロント・パネルの [テキスト・エディタ] コントロールをクリックしてください。</Para>
+<Para>Click the Text Editor control in the Front Panel
+to open a new document.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.28">
-<Para> テキストの入力を開始してください。改行する場合は、[Return] キーを押してください。</Para>
-<Para>改行を入力する代わりにウィンドウの画面端で行を自動的に折り返すには、
-<XRef Linkend="ToSetWrapToFit"> を参照してください。
+<Para>Start typing your text. To begin a new line, press Return.</Para>
+<Para>To automatically break lines at the edge of the window instead
+of typing line returns, see <XRef Linkend="ToSetWrapToFit">.
 </Para>
 <Para>&sigspace;</Para>
 <Graphic Entityref="TextEditorCreateFile" Id="HTXTE.TSKS.fig.1"></Graphic>
-<Para>新規ドキュメントには、自動的に「タイトルなし」という名前が付きます。ファイルの保存時に、名前を付け替えられます。
+<Para>A new document is automatically named UNTITLED. When you save your work, you can provide a new document name.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.29">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">テキスト・エディタを開始するには</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">To Start Text Editor</Link>
 </Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.30">
-<Para> <XRef Linkend="ToSetWrapToFit"></Para>
+<Para><XRef Linkend="ToSetWrapToFit"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.31">
-<Para> <XRef Linkend="ToEnterText"></Para>
+<Para><XRef Linkend="ToEnterText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.32">
-<Para> <XRef Linkend="ToSaveADocumentToANewFile"></Para>
+<Para><XRef Linkend="ToSaveADocumentToANewFile"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToOpenAnExistingDocument">
-<Title>既存のドキュメントを開くには</Title>
-<Para>テキスト・エディタまたはファイル・マネージャを使用して、作成済みのドキュメントを開くことができます。<IndexTerm>
-<Primary>ドキュメント: 開く</Primary>
+<Title>To Open an Existing Document</Title>
+<Para>You can use Text Editor or File Manager to open a document
+you have created.<IndexTerm>
+<Primary>document: opening</Primary>
 </IndexTerm><IndexTerm>
-<Primary>開く: 既存のドキュメント</Primary>
+<Primary>opening: existing document</Primary>
 </IndexTerm>
 </Para>
 <Para>&sigspace;
-テキスト・エディタから既存のドキュメントを開くには:</Para>
+To open an existing document from Text Editor:</Para>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.33">
-<Para> [ファイル] メニューから [開く] を選択してください。</Para>
-<Para>[ファイルを開く] ダイアログ・ボックスに、システム上のファイルおよびフォルダが表示されます。リストされたドキュメントのブラウズ、またはご利用のシステム上の他のファイルを格納する新しいフォルダへの変更が行えます。</Para>
+<Para>Choose Open from the File menu.</Para>
+<Para>The Open a File dialog box lists files and folders on your system.
+You can browse the documents listed, or change to a new folder
+to locate other files on your system.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.34">
-<Para> 開きたいドキュメントを [ファイル] リストから選択するか、ファイル名を[ファイル名を入力してください] フィールドに入力してください。</Para>
-<Para>ドキュメントが現在のフォルダにない場合は、まずドキュメントのあるフォルダに移動してください。
-それから、[フォルダ] リストから名前を選択するか、表示したいフォルダのパス名を [パス名またはフォルダ名を入力してください] フィールドに入力してください。</Para>
+<Para>Select the document you want to open in the Files list or type the
+file name in the Enter file name field.</Para>
+<Para>If the document is not in the current folder, first change
+to the folder that contains your document. Then choose a name in the Folders list or type the path
+name of the folder you wish to view in the Enter path or folder name field.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.35">
-<Para> [Return] キーを押すか、[了解] をクリックしてください。</Para>
+<Para>Press Return or click OK.</Para>
 </ListItem>
 </OrderedList>
 <Graphic Entityref="TextEditorOpenFile" Id="HTXTE.TSKS.fig.2"></Graphic>
 <Para>&sigspace;</Para>
-<Para>ファイル・マネージャから既存のドキュメントを開くには:</Para>
+<Para>To open an existing document from File Manager:</Para>
 <IndexTerm>
-<Primary>開く: ドキュメントをファイル・マネージャから</Primary>
+<Primary>opening: document from File Manager</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ドキュメント: ファイル・マネージャから開く</Primary>
+<Primary>document: opening from File Manager</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ファイル・マネージャ: テキスト・エディタのドキュメントを開く</Primary>
+<Primary>File Manager: opening Text Editor document</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.36">
-<Para> ファイル・マネージャ・ウィンドウにドキュメントのファイル・アイコンを表示してください。</Para>
+<Para>Display the document's file icon in a File Manager window.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.37">
-<Para> 以下の中の <Emphasis>どれか</Emphasis> を行ってください。:
+<Para>Do <Emphasis>one</Emphasis> of the following:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTXTE.TSKS.item.38">
-<Para> ドキュメントのファイル・アイコンをダブルクリックしてください。</Para>
+<Para>Double-click the document's file icon.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.39">
-<Para> ドキュメントを選択してから、[選択] メニューから [開く] を選択してください。</Para>
+<Para>Select the document, then choose Open from the Selected menu.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.40">
-<Para> ドキュメントをフロント・パネルの [テキスト・エディタ] コントロールにドラッグしてください。</Para>
+<Para>Drag the document to the Text Editor control in the Front Panel.</Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.41">
-<Para> <XRef Linkend="ToSaveADocumentToTheCurrentFile"></Para>
+<Para><XRef Linkend="ToSaveADocumentToTheCurrentFile"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.42">
-<Para> <XRef Linkend="openDialog"></Para>
+<Para><XRef Linkend="openDialog"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.43">
-<Para> <XRef Linkend="ToEnterText"></Para>
+<Para><XRef Linkend="ToEnterText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.44">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToSaveADocumentToANewFile">
-<Title>ドキュメントを新規ファイルに保存するには</Title>
+<Title>To Save a Document to a New File</Title>
 <OrderedList>
 <IndexTerm>
-<Primary>保存: ドキュメントを新規ファイルに</Primary>
+<Primary>saving: document to new file</Primary>
 </IndexTerm>
 <ListItem Id="HTXTE.TSKS.item.45">
-<Para> [ファイル] メニューから [別名保存] を選択してください。</Para>
-<Para>  [別名保存] ダイアログ・ボックスが表示されます。</Para>
+<Para>Choose Save As from the File menu.</Para>
+<Para>The Save As dialog box is displayed.</Para>
 <Graphic Entityref="TextEditorSaveAs" Id="HTXTE.TSKS.fig.3"></Graphic>
 <Para>&sigspace;</Para>
-<Para><GlossTerm>行折返し</GlossTerm> を使用した場合は、改行文字(ハード・キャリッジ・リターン)を折返し行の最後に追加するかどうかを選択してください。
-改行文字を追加しない場合、行末は固定されないままで、ドキュメントが再び開かれた時の行の長さはウィンドウの幅に調整されています。</Para>
+<Para>If you used <GlossTerm>Wrap To Fit</GlossTerm>, choose whether you
+want to add newline characters (hard carriage returns) to the end of
+wrapped lines. If you do not add newline characters, the
+line endings remain dynamic and will adjust to the width of the
+window when the document is reopened.</Para>
 <Graphic Entityref="TextEditorWordWrap" Id="HTXTE.TSKS.fig.4"></Graphic>
-<Para>[行折返し] を設定しない場合(デフォルト)、この選択項目はダイアログ・ボックスに表示されません。
+<Para>If Wrap To Fit is not set (the default), this choice does not appear in the dialog box.
 </Para>
 <Para>&sigspace;</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.46">
-<Para> 新規ファイル名を [ファイル名を入力してください] フィールドに入力し、現在のフォルダにドキュメントを保存してください。</Para>
-<Para>ドキュメントを別の場所に保存するには、以下の中の <Emphasis>どれか</Emphasis> を行ってください。
+<Para>Type a new file name in the Enter file name field to store
+the document in your current folder.</Para>
+<Para>To store your document in a different location, do <Emphasis>one</Emphasis> of the following:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTXTE.TSKS.item.47">
-<Para> ドキュメントをサブフォルダに保存するには、フォルダ・リストからフォルダを選択し、[Return] キーを押すか [更新] をクリックしてください。
-それから、[ファイル名を入力してください] フィールドにファイル名を入力してください。</Para>
+<Para>To save your document in a subfolder, select the folder from the
+Folders list, and press Return or click Update. Then type a file name in the
+Enter file name field.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.48">
-<Para> ドキュメントをホーム・フォルダ以外のフォルダに保存するには、[パス名またはフォルダ名を入力してください] フィールドにフォルダ名を入力してください。
-それから、[ファイル名を入力してください] フィールドにファイル名を指定してください。</Para>
-<Para><Emphasis>または、</Emphasis>[ファイル名を入力してください] フィールドにドキュメントの完全パス名を入力してください。
+<Para>To save your document in a different folder than your home folder,
+type the folder name in the Enter path or folder name field. Then provide a
+file name in the Enter file name field.</Para>
+<Para><Emphasis>Or</Emphasis>, type the complete path name of your document in the Enter
+file name field.
 </Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.49">
-<Para> <XRef Linkend="ToSetWrapToFit"></Para>
+<Para><XRef Linkend="ToSetWrapToFit"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.50">
-<Para> <XRef Linkend="ToSaveADocumentToTheCurrentFile"></Para>
+<Para><XRef Linkend="ToSaveADocumentToTheCurrentFile"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.51">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToSaveADocumentToTheCurrentFile">
-<Title>ドキュメントを現在のファイルに保存するには</Title>
+<Title>To Save a Document to the Current File</Title>
 <IndexTerm>
-<Primary>ドキュメント: 保存</Primary>
+<Primary>document: saving</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>保存: ドキュメントを現在のファイルに</Primary>
+<Primary>saving: document to current file</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTXTE.TSKS.item.52">
-<Para> [ファイル] メニューから [保存] を選択してファイルを保存し、ドキュメントの編集を継続してください。</Para>
-<Para><GlossTerm>行折返し</GlossTerm> を使用した場合は、改行文字(ハード・キャリッジ・リターン)を折返し行の最後に追加するかどうかを選択してください。
-改行文字を追加しない場合、行末は固定されないままで、ドキュメントが再び開かれたた時の行の長さはウィンドウの幅に調整されています。&newline;[はい] をクリックして変更を保存し、ダイアログ・ボックスを閉じてください。</Para>
+<Para>Choose Save from the File menu to save your work and continue editing
+your document.</Para>
+<Para>If you used <GlossTerm>Wrap To Fit</GlossTerm>, choose whether you
+want to add newline characters (hard carriage returns) to the end of
+wrapped lines. If you do not add newline characters, the
+line endings remain dynamic and will adjust to the width of the
+window when the document is reopened.&newline;Click Yes to save your changes and close the dialog box.</Para>
 <Graphic Entityref="TextEditorSave" Id="HTXTE.TSKS.fig.5"></Graphic>
-<Para>[行折返し] を設定しない場合(デフォルト)、[保存] ダイアログ・ボックスは表示されません。</Para>
+<Para>If Wrap To Fit is off (the default), the Save dialog box is not displayed.</Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.53">
-<Para> <XRef Linkend="ToSetWrapToFit"></Para>
+<Para><XRef Linkend="ToSetWrapToFit"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.54">
-<Para> <XRef Linkend="ToSaveADocumentToANewFile"></Para>
+<Para><XRef Linkend="ToSaveADocumentToANewFile"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.55">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToRecoverAFile">
-<Title>ファイルを復元するには</Title>
+<Title>To Recover a File</Title>
 <IndexTerm>
-<Primary>ファイル: 復元</Primary>
+<Primary>file: recovering</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>復元, ファイル</Primary>
+<Primary>recovering, a file</Primary>
 </IndexTerm>
-<Para>テキスト・エディタがシステム・エラーによって停止した場合、現在のフォルダ内のリカバリ・ファイルにドキュメントを保存しようとする機能が働きます。
-リカバリ・ファイルには <Symbol Role="Variable">#filename#</Symbol> という名前が付けられますが、ドキュメント名が <Symbol Role="Variable">filename</Symbol> になります。
-ファイルを一度も保存していない場合、リカバリ・ファイル名は <ComputerOutput>#タイトルなし#</ComputerOutput> となります。</Para>
+<Para>If Text Editor is interrupted due to a system error, it attempts
+to save your document in a recovery file in your current
+folder. The recovery file is named <Symbol Role="Variable">#filename#</Symbol>, where
+<Symbol Role="Variable">filename</Symbol> is the name of the document. If you had never
+saved your file, the recovery file name is <ComputerOutput>#UNTITLED#</ComputerOutput>.</Para>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.56">
-<Para> テキスト・エディタを起動してください。</Para>
+<Para>Start Text Editor.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.57">
-<Para> リカバリ・ファイルを開いてください。</Para>
+<Para>Open the recovery file.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.58">
-<Para> 元のファイル名を使用してドキュメントを保存するか、未保存のドキュメントであれば、新規に名前を付けてください。
+<Para>Save the document using your original file name or provide a
+new name for a previously unsaved document.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.59">
-<Para> <Link Type="jump" Linkend="ToOpenTextEditor">テキスト・エディタを開くには</Link>
+<Para><Link Type="jump" Linkend="ToOpenTextEditor">To Open Text Editor</Link>
 </Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.60">
-<Para> <XRef Linkend="ToSaveADocumentToANewFile"></Para>
+<Para><XRef Linkend="ToSaveADocumentToANewFile"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.61">
-<Para> <XRef Linkend="ToSaveADocumentToTheCurrentFile"></Para>
+<Para><XRef Linkend="ToSaveADocumentToTheCurrentFile"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.62">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToCloseTextEditor">
-<Title>テキスト・エディタを閉じるには</Title>
+<Title>To Close Text Editor</Title>
 <IndexTerm>
-<Primary>閉じる: テキスト・エディタ</Primary>
+<Primary>closing: Text Editor</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>テキスト・エディタ: 閉じる</Primary>
+<Primary>Text Editor: closing</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>終了: テキスト・エディタ</Primary>
+<Primary>exiting: Text Editor</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.63">
-<Para> 開いてるドキュメントを保存してください(必要な場合)。</Para>
+<Para>Save your open document (if necessary).</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.64">
-<Para> [ファイル] メニューから [閉じる] を選択するか、<Keycap>Alt] + [F4</Keycap> キーを押してください。
+<Para>Choose Close from the File menu or press Alt+F4.
 </Para>
 </ListItem>
 </OrderedList>
 <Note>
 <Para><Anchor Id="Metakey">
-キーボードに [Alt] キーがない場合は、システム管理者に問い合わせて、それに対応するキーを確認してください。
+If your keyboard does not have an Alt key, ask your system administrator
+to identify the corresponding key.
 </Para>
 </Note>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.65">
-<Para> <XRef Linkend="ToSaveADocumentToANewFile"></Para>
+<Para><XRef Linkend="ToSaveADocumentToANewFile"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.66">
-<Para> <XRef Linkend="ToSaveADocumentToTheCurrentFile"></Para>
+<Para><XRef Linkend="ToSaveADocumentToTheCurrentFile"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.67">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToEnterText">
-<Title>テキストを入力するには</Title>
+<Title>To Enter Text</Title>
 <IndexTerm>
-<Primary>テキストの入力</Primary>
+<Primary>entering text</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>テキスト: 入力</Primary>
+<Primary>text: entering</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>作成: パラグラフ</Primary>
+<Primary>creating: paragraph</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>パラグラフ・インデント</Primary>
+<Primary>paragraph indent</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.68">
-<Para> ドキュメント内をクリックし、入力を開始してください。</Para>
-<Para>カーソル(I の形)のある位置から、文字を入力(挿入)できます。</Para>
+<Para>Click in the document and start typing.</Para>
+<Para>The cursor, an I-bar, indicates where characters will be inserted as you
+type.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.69">
-<Para> 改行する場合は、[Return] キーを押してください。</Para>
-<Para><Emphasis>または</Emphasis>、<GlossTerm>行折返し</GlossTerm> を使用して、自動的にウィンドウの幅に合うように行を折り返すことができます。
-テキストをウィンドウの画面端まで入力したところで、行が折り返されます。
-[行折返し] の設定に関しては、<Link Type="jump" Linkend="ToSetWrapToFit">[行折返し] を設定するには</Link> を参照してください。</Para>
+<Para>To start a new line, press Return.</Para>
+<Para><Emphasis>Or</Emphasis>, you can use <GlossTerm>Wrap To Fit</GlossTerm> to automatically
+wrap lines to fit the width of the window. As you type, lines break
+once the text reaches the edge of the window. To turn Wrap To Fit on,
+see <Link Type="jump" Linkend="ToSetWrapToFit">To Set Wrap To Fit</Link>.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.70">
-<Para> 改段落する場合は、[Return] キーを 2 回押してください。</Para>
-<Para>パラグラフ・インデントを作成するには、[Tab] キーを押すか、またはスペースを入力して字下げしてください。後続の行はインデントされます。</Para>
-<Para>ドキュメントの入力および編集時に使用できるキーに関しては、<XRef Linkend="EditingAndCursorKeys"> を参照してください。</Para>
+<Para>To start a paragraph, press Return twice.</Para>
+<Para>To create a paragraph indent, press the Tab key or type
+spaces to indent your text. Subsequent lines will use the
+indented style.</Para>
+<Para>See <XRef Linkend="EditingAndCursorKeys"> for a description
+of the keys you can use while typing and editing
+your document.</Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.71">
-<Para> <XRef Linkend="EditingAndCursorKeys"></Para>
+<Para><XRef Linkend="EditingAndCursorKeys"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.72">
-<Para> <XRef Linkend="ToScrollADocument"></Para>
+<Para><XRef Linkend="ToScrollADocument"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.73">
-<Para> <XRef Linkend="ToSelectText"></Para>
+<Para><XRef Linkend="ToSelectText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.74">
-<Para> <XRef Linkend="ToDisplayTheStatusLine"></Para>
+<Para><XRef Linkend="ToDisplayTheStatusLine"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.75">
-<Para> <XRef Linkend="ToSetOverstrikeMode"></Para>
+<Para><XRef Linkend="ToSetOverstrikeMode"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.76">
-<Para> <XRef Linkend="ToInsertSpecialCharacters"></Para>
+<Para><XRef Linkend="ToInsertSpecialCharacters"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.77">
-<Para> <XRef Linkend="ToSetWrapToFit"></Para>
+<Para><XRef Linkend="ToSetWrapToFit"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.78">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Sect2 Id="ToSetWrapToFit">
-<Title>[行折返し] を設定するには</Title>
+<Title>To Set Wrap To Fit</Title>
 <IndexTerm>
-<Primary>行折返し, 設定および設定解除</Primary>
+<Primary>Wrap To Fit, setting on and off</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>行分割</Primary>
+<Primary>line breaks</Primary>
 </IndexTerm>
-<Para>ウィンドウの画面端で自動的に行を折り返すには、[行折返し] を使用してください。
-[行折返し] によって挿入される行の終わりは固定されません。
-テキスト・エディタ・ウィンドウのサイズを変更すると、テキストもその新しいサイズに対応します。</Para>
+<Para>Use Wrap To Fit to automatically
+wrap lines at the edge of the window. Line endings inserted
+by Wrap To Fit are dynamic. Resizing the Text Editor window
+will cause the text to conform to the new size.
+</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTXTE.TSKS.item.79">
-<Para> [行折返し] を設定するには、[オプション] メニューから [行折返し] を選択してください。&newline;設定を解除するには、再び [行折返し] を選択してください。
+<Para>To set Wrap To Fit on, choose Wrap To Fit from the Options menu.&newline;To set it off, choose Wrap To Fit again.
 </Para>
 </ListItem>
 </ItemizedList>
 <Para>&sigspace;</Para>
-<Para>[行折返し] を使用すると、ドキュメントの保存の仕方に影響を与えます(<XRef Linkend="ToSaveADocumentToANewFile">または<XRef Linkend="ToSaveADocumentToTheCurrentFile"> を参照)。</Para>
+<Para>If you use Wrap To Fit, it affects how you save your document
+(see <XRef Linkend="ToSaveADocumentToANewFile"> or
+<XRef Linkend="ToSaveADocumentToTheCurrentFile">).</Para>
 <Para>&sigspace;</Para>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.80">
-<Para> <XRef Linkend="ToSaveADocumentToANewFile"></Para>
+<Para><XRef Linkend="ToSaveADocumentToANewFile"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.81">
-<Para> <XRef Linkend="ToSaveADocumentToTheCurrentFile"></Para>
+<Para><XRef Linkend="ToSaveADocumentToTheCurrentFile"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.82">
-<Para> <XRef Linkend="ToEnterText"></Para>
+<Para><XRef Linkend="ToEnterText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.83">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect2>
 <Sect2 Id="ToDisplayTheStatusLine">
-<Title>ステータス行を表示するには</Title>
+<Title>To Display the Status Line</Title>
 <Para><Anchor Id="status-currentline">
 <Anchor Id="status-totallines">
 <Anchor Id="status-message"><IndexTerm>
-<Primary> ステータス行: 表示</Primary>
+<Primary>status line: displaying</Primary>
 </IndexTerm><IndexTerm>
-<Primary> 現在の行番号, 検索</Primary>
+<Primary>current line number, finding</Primary>
 </IndexTerm><IndexTerm>
-<Primary> 行カウント</Primary>
+<Primary>line count</Primary>
 </IndexTerm><IndexTerm>
-<Primary> アプリケーション・メッセージ</Primary>
+<Primary>application messages</Primary>
 </IndexTerm>
-ステータス行は、挿入カーソルのある行の番号、およびドキュメントの行の総数を表示します。
-また、テキスト・エディタのメッセージを表示し、上書きモードかどうかも示します。
+The status line reports the line number where the insertion cursor is
+located and the total number of lines in a document. It also displays
+Text Editor messages and indicates whether Overstrike mode is active.
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTXTE.TSKS.item.84">
-<Para> ステータス行を表示するには、[オプション] メニューから [ステータス行] を選択してください。
-ステータス行を削除するには、再びメニューから [ステータス行] を選択してください。
+<Para>To display the status line, choose Status Line from the Options menu. To
+remove the status line, choose Status Line again from the menu.
 </Para>
 </ListItem>
 </ItemizedList>
 <Graphic Entityref="TextEditorStatusLine" Id="HTXTE.TSKS.fig.6"></Graphic>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.85">
-<Para> <XRef Linkend="ToGoToASpecificLineNumber"></Para>
+<Para><XRef Linkend="ToGoToASpecificLineNumber"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.86">
-<Para> <XRef Linkend="ToSetOverstrikeMode"></Para>
+<Para><XRef Linkend="ToSetOverstrikeMode"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.87">
-<Para> <XRef Linkend="ToEnterText"></Para>
+<Para><XRef Linkend="ToEnterText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.88">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect2>
 <Sect2 Id="ToSetOverStrikeMode">
-<Title>上書きモードを設定するには</Title>
+<Title>To Set Overstrike Mode</Title>
 <Para><Anchor Id="status-overstrike">
-入力する時、文字は挿入されます。文字を上書きしたい場合は、上書きモードに変更してください。</Para>
+As you type, new characters are inserted. If you want to
+type over existing characters, change to Overstrike mode.</Para>
 <IndexTerm>
-<Primary> 上書きモード</Primary>
+<Primary>Overstrike mode</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> 挿入モード</Primary>
+<Primary>Insert mode</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTXTE.TSKS.item.89">
-<Para> 上書きモードを設定するには、[オプション] メニューから [上書き] を選択してください。
-挿入モードに戻すには、再びメニューから [上書き] を選択してください。</Para>
-<Para><Emphasis>または、</Emphasis> [Insert] キーを使用して挿入モードと上書きモードの変更を行ってください。
+<Para>To set Overstrike mode, choose Overstrike from the Options menu. To return to Insert mode, choose Overstrike again from the menu.</Para>
+<Para><Emphasis>Or,</Emphasis> use the Insert key to change between Insert and
+Overstrike mode.
 </Para>
 </ListItem>
 </ItemizedList>
 <Note>
-<Para>ステータス行は、上書きモードがアクティブの場合に表示します
-(<XRef Linkend="ToDisplayTheStatusLine"> 参照)。
+<Para>The status line reports when Overstrike mode is active (see
+<XRef Linkend="ToDisplayTheStatusLine">).
 </Para>
 </Note>
 <Para>&sigspace;</Para>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.90">
-<Para> <XRef Linkend="ToSelectText"></Para>
+<Para><XRef Linkend="ToSelectText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.91">
-<Para> <XRef Linkend="ToDisplayTheStatusLine"></Para>
+<Para><XRef Linkend="ToDisplayTheStatusLine"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.92">
-<Para> <XRef Linkend="ToEnterText"></Para>
+<Para><XRef Linkend="ToEnterText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.93">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect2>
 <Sect2 Id="ToScrollADocument">
-<Title>ドキュメントをスクロールするには</Title>
-<Para>長いドキュメントを表示するには、マウスまたはキーボードのスクロール・キーを使用してください。<IndexTerm>
-<Primary> スクロール・キー</Primary>
+<Title>To Scroll a Document</Title>
+<Para>Use the mouse or keyboard scrolling keys to display a
+long document.<IndexTerm>
+<Primary>scrolling keys</Primary>
 </IndexTerm><IndexTerm>
-<Primary> キー:スクロール</Primary>
+<Primary>keys:scrolling</Primary>
 </IndexTerm>
 </Para>
 <Procedure>
-<Title>マウス</Title>
+<Title>Mouse</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTXTE.TSKS.item.94">
-<Para> 追加テキストを表示するには、垂直スクロール・バーをドラッグしてください。
-テキストの長い行を表示するには、水平スクロール・バーを使用してください。
+<Para>Drag the vertical scroll bar to view additional text. Use the
+horizontal scroll bar to view long lines of text.
 </Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>キーボード</Title>
+<Title>Keyboard</Title>
 <Step>
 <VariableList>
 <VarListEntry>
-<Term><Emphasis Role="heading">キー 	   </Emphasis></Term>
+<Term><Emphasis Role="heading">Key</Emphasis></Term>
 <ListItem>
-<Para><Emphasis Role="heading"> スクロールの動き</Emphasis></Para>
+<Para><Emphasis Role="heading"> Scroll Movement</Emphasis></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [Page Up] 		   </Term>
+<Term>Page Up</Term>
 <ListItem>
-<Para> 1 ページ分上へ
+<Para>Up one page
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [Page Down] 		   </Term>
+<Term>Page Down</Term>
 <ListItem>
-<Para> 1 ページ分下へ
+<Para>Down one page
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [Page Up</Keycap>  </Term>
+<Term>Control+Page Up</Term>
 <ListItem>
-<Para> 1 ページ分左へ
+<Para>Left one page
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [Page Down</Keycap>&sigspace;  </Term>
+<Term>Control+Page Down&sigspace;</Term>
 <ListItem>
-<Para> 1 ページ分右へ
+<Para>Right one page
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [Home</Keycap> 	   </Term>
+<Term>Control+Home</Term>
 <ListItem>
-<Para> ドキュメントの先頭へ
+<Para>Beginning of the document
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [End] 		   </Term>
+<Term>End</Term>
 <ListItem>
-<Para> ドキュメントの末尾へ
+<Para>End of document
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [G</Keycap> 	   </Term>
+<Term>Control+G</Term>
 <ListItem>
-<Para> 指定した行番号へ
+<Para>Go to a specified line number
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Note>
-<Para>使用するシステムによってはキーの組み合わせが異なる場合があります。
-そうであれば、システム管理者に問い合わせて、それに対応するキーを確認してください。
+<Para>Some key combinations may be different for the system you
+are using. If so, ask your system administrator to identify the
+corresponding keys.
 </Para>
 </Note>
 <Para>&sigspace;</Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.95">
-<Para> <XRef Linkend="ToEnterText"></Para>
+<Para><XRef Linkend="ToEnterText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.96">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect2>
 <Sect2 Id="ToGoToASpecificLineNumber">
-<Title>指定した行番号へ移動するには</Title>
+<Title>To Go to a Specific Line Number</Title>
 <IndexTerm>
-<Primary> 行へ移動</Primary>
+<Primary>go to line</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.97">
-<Para> ステータス行を表示してください(<XRef Linkend="ToDisplayTheStatusLine"> 参照)。</Para>
+<Para>Display the status line (see <XRef Linkend="ToDisplayTheStatusLine">).</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.98">
-<Para> <Keycap>Control] + [G</Keycap> キーを押すか、ステータス行の [行(番号)] フィールドをクリックしてください。</Para>
+<Para>Press Control+G or click in the Line field of the status line.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.99">
-<Para> 移動先の行番号を入力し、[Return] キーを押してください。
+<Para>Type the line number you want to go to and press Return.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.100">
-<Para> <XRef Linkend="ToDisplayTheStatusLine"></Para>
+<Para><XRef Linkend="ToDisplayTheStatusLine"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.101">
-<Para> <XRef Linkend="ToEnterText"></Para>
+<Para><XRef Linkend="ToEnterText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.102">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect2>
 <Sect2 Id="ToInsertSpecialCharacters">
-<Title>特殊文字を挿入するには</Title>
+<Title>To Insert Special Characters</Title>
 <IndexTerm>
-<Primary> コントロール・キー, 特殊文字の挿入</Primary>
+<Primary>control key, inserting special characters</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> 特殊文字, 使用</Primary>
+<Primary>special characters, using</Primary>
 </IndexTerm>
-<Para>特殊文字の挿入に使用されるキーの組み合わせの中には、テキスト・エディタで保持されるものもあります。
-たとえば、メニューを表示するテキスト・エディタのニーモニックは、ご利用のシステム上で特殊文字の生成に使用されるキー・シーケンスと競合する場合があります。</Para>
-<Para>文字を挿入するには、先に <Keycap>Control] + [Q</Keycap> キーというキーの組み合わせを押すことによって、テキスト・エディタが保持する動作を無効にする必要があります。</Para>
+<Para>Some key combinations used to insert special characters may be
+reserved by Text Editor. For example, a Text Editor mnemonic for
+displaying a menu might conflict with a key sequence used on your
+system to produce a special character.</Para>
+<Para>To insert the character you may need to override the
+reserved behavior by preceding the key combination with
+Control+Q.</Para>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.103">
-<Para> <Link Type="jump" Linkend="Metakey">[Alt] キー</Link>
+<Para><Link Type="jump" Linkend="Metakey">Alt key</Link>
 </Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.104">
-<Para> <XRef Linkend="ToEnterText"></Para>
+<Para><XRef Linkend="ToEnterText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.105">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
@@ -780,56 +819,57 @@
 </Sect2>
 </Sect1>
 <Sect1 Id="ToSelectText">
-<Title>テキストを選択するには</Title>
+<Title>To Select Text</Title>
 <IndexTerm>
-<Primary> テキスト: 選択</Primary>
+<Primary>text: selecting</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキストの選択</Primary>
+<Primary>selecting text</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキストの強調表示</Primary>
+<Primary>highlighting text</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> 選択: キーボード</Primary>
+<Primary>selection: keyboard</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> 選択: マウス</Primary>
+<Primary>selection: mouse</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキスト: 選択解除</Primary>
+<Primary>text: deselecting</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキストの選択解除</Primary>
+<Primary>deselecting text</Primary>
 </IndexTerm>
-<Para>編集コマンド(たとえば [カット] や [コピー])を使用する前に、変更したいテキストをまず選択してください。
+<Para>Before using edit commands (such as cut and copy) first select the text
+you want to change.
 </Para>
 <Procedure>
-<Title>クリックで選択するには:</Title>
+<Title>To select by clicking:</Title>
 <Step>
 <VariableList>
 <VarListEntry>
-<Term>語</Term>
+<Term>Word</Term>
 <ListItem>
-<Para>  語をダブルクリックしてください。</Para>
+<Para>Double-click the word</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>行</Term>
+<Term>Line</Term>
 <ListItem>
-<Para>  行を続けて 3 回クリックしてください。</Para>
+<Para>Triple-click the line</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>すべてのテキスト</Term>
+<Term>All text</Term>
 <ListItem>
-<Para> ドキュメント内で続けて 4 回クリックしてください。</Para>
+<Para>Quadruple-click anywhere in the document</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>テキストの選択解除</Term>
+<Term>Deselect text</Term>
 <ListItem>
-<Para> ウィンドウ内の空領域をクリックしてください。
+<Para>Click any empty area in the window
 </Para>
 </ListItem>
 </VarListEntry>
@@ -837,149 +877,155 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>テキスト・ブロックを選択するには:</Title>
+<Title>To select a text block:</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.106">
-<Para> テキスト・ブロックの先頭をクリックしてください。</Para>
+<Para>Click at the beginning of the text block.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.107">
-<Para> マウス・ボタン 1 を押し、そのままテキスト・ブロックの終わりまでドラッグしてください。</Para>
-<Para>行った選択を変更するには、[Shift] キーとマウス・ボタン 1 を押しながら、選択したテキストを前方または後方へドラッグして、範囲を調整してください。
-または、[Shift] キーと矢印キーのどれかを押しながら、選択の変更を行ってください。</Para>
+<Para>Press and hold mouse button 1 and drag to the end of
+the text block.</Para>
+<Para>To modify a selection you have made, press and hold the Shift key
+and mouse button 1. Then drag forward or backward to adjust
+the amount of selected text. Or, press and hold Shift and
+one of the arrow keys to change the selection.</Para>
 </ListItem>
 </OrderedList>
 <IndexTerm>
-<Primary> テキスト:選択解除</Primary>
+<Primary>text:deselecting</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキストの選択解除</Primary>
+<Primary>deselecting text</Primary>
 </IndexTerm>
 </Step>
 </Procedure>
 <Procedure>
-<Title>二番目の選択を使用して、選択および置換を行うには:</Title>
+<Title>To select and replace text using secondary selection:</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.108">
-<Para> 置換したいテキストを選択してください。&newline;</Para>
+<Para>Select the text that you want to replace.&newline;</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.109">
-<Para> 二番目の選択を行おうとするテキストの先頭にポインタを移動してください。
-<Link Type="jump" Linkend="Metakey">[Alt] キー</Link> とマウス・ボタン 2 を押しながら、選択したいテキストの終わりまでドラッグしてください。</Para>
-<Para> テキストに下線が付きます。</Para>
+<Para>Move the pointer to the beginning of the text you want in your
+second selection. Hold down the <Link Type="jump" Linkend="Metakey">Alt key</Link> and mouse
+button 2, and drag to the end of the text you want to select.</Para>
+<Para>The text is underlined.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.110">
-<Para> [Alt] キーとマウス・ボタンを離してください。</Para>
-<Para>下線付きのテキストが、最初の選択を上書きします。
+<Para>Release the Alt key and mouse button.</Para>
+<Para>The underlined text overwrites your first selection.
 </Para>
 </ListItem>
 </OrderedList>
 <Note>
-<Para>キーボードを使用してテキストを選択する方法については、<XRef Linkend="KeyboardSelection"> を参照してください。
+<Para>See <XRef Linkend="KeyboardSelection"> for ways to select
+text using the keyboard.
 </Para>
 </Note>
 <Para>&sigspace;</Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.111">
-<Para> <XRef Linkend="KeyboardSelection"></Para>
+<Para><XRef Linkend="KeyboardSelection"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.112">
-<Para> <XRef Linkend="ToDeleteText"></Para>
+<Para><XRef Linkend="ToDeleteText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.113">
-<Para> <XRef Linkend="ToMoveText"></Para>
+<Para><XRef Linkend="ToMoveText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.114">
-<Para> <XRef Linkend="ToClearText"></Para>
+<Para><XRef Linkend="ToClearText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.115">
-<Para> <XRef Linkend="ToDragAndDropData"></Para>
+<Para><XRef Linkend="ToDragAndDropData"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.116">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Sect2 Id="KeyboardSelection">
-<Title>キーボードを使用してテキストを選択するには</Title>
+<Title>To Select Text Using the Keyboard</Title>
 <IndexTerm>
-<Primary> キーボード選択</Primary>
+<Primary>keyboard selection</Primary>
 </IndexTerm>
-<Para>キーボードを使用して、以下の方法でテキストを選択できます。
+<Para>You can use the keyboard to select text in these ways:
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>テキスト・ブロック </Term>
+<Term>Text block</Term>
 <ListItem>
-<Para> テキスト・ブロックの先頭にカーソルを移動してください。
-		      [Shift] キーと矢印キーのどれかを押しながら、選択したいテキストの終わりにカーソルを移動してください。</Para>
+<Para>Move the cursor to the beginning of the text
+block. Hold down Shift and one of the arrow keys to move the
+cursor to the end of the text you want to select.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>カーソルを行頭に&sigspace; </Term>
+<Term>Cursor to beginning of line&sigspace;</Term>
 <ListItem>
-<Para> <Keycap>Shift] + [Home</Keycap> キー</Para>
+<Para>Shift+Home</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>カーソルを行末に</Term>
+<Term>Cursor to end of line</Term>
 <ListItem>
-<Para>	      <Keycap>Shift] + [End</Keycap> キー</Para>
+<Para>Shift+End</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>カーソルをパラグラフの先頭に  </Term>
+<Term>Cursor to beginning of paragraph</Term>
 <ListItem>
-<Para> <Keycap>Shift] + [Control] + [↑</Keycap> キー</Para>
+<Para>Shift+Control+Up Arrow</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>カーソルをパラグラフの終わりに</Term>
+<Term>Cursor to end of paragraph</Term>
 <ListItem>
-<Para> <Keycap>Shift] + [Control] + [↓</Keycap> キー</Para>
+<Para>Shift+Control+Down Arrow</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>カーソルをドキュメントの先頭に</Term>
+<Term>Cursor to beginning of document</Term>
 <ListItem>
-<Para>   <Keycap>Shift] + [Control] + [Home</Keycap> キー</Para>
+<Para>Shift+Control+Home</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>カーソルをドキュメントの終わりに</Term>
+<Term>Cursor to end of document</Term>
 <ListItem>
-<Para> <Keycap>Shift] + [Control] + [End</Keycap> キー</Para>
+<Para>Shift+Control+End</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>すべてのテキスト</Term>
+<Term>All text</Term>
 <ListItem>
-<Para>   <Keycap>Shift] + [Control] + [/</Keycap> キー</Para>
+<Para>Shift+Control+/</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>テキストを選択解除</Term>
+<Term>Deselect text</Term>
 <ListItem>
-<Para> <Keycap>Shift] + [Control] + [&bsol;</Keycap> キー</Para>
+<Para>Shift+Control+&bsol;</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.117">
-<Para> <XRef Linkend="ToSelectText"></Para>
+<Para><XRef Linkend="ToSelectText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.118">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
@@ -987,338 +1033,347 @@
 </Sect2>
 </Sect1>
 <Sect1 Id="ToDeleteText">
-<Title>テキストを削除するには</Title>
+<Title>To Delete Text</Title>
 <IndexTerm>
-<Primary> テキストの削除</Primary>
+<Primary>deleting text</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキスト: 削除</Primary>
+<Primary>text: deleting</Primary>
 </IndexTerm>
-<Para>[削除] コマンドでテキストは消去されますが、そのデータはクリックボードに格納されません。
-[削除] は、テキストを削除したいが、[カット] または [コピー] コマンドを使用してクリップボードに格納しておいたデータを上書きしない場合に役立ちます。</Para>
+<Para>The Delete command erases text but does not store the data on the
+clipboard. Delete is useful if you want to remove text but not overwrite
+data previously stored on the clipboard using the cut or copy commands.
+</Para>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.119">
-<Para> テキストを選択してください。</Para>
+<Para>Select the text.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.120">
-<Para> [編集] メニューから [削除] を選択するか、[Delete] キーを押してください。
+<Para>Choose Delete from the Edit menu or press the Delete key.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.121">
-<Para> <XRef Linkend="ToSelectText"></Para>
+<Para><XRef Linkend="ToSelectText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.122">
-<Para> <XRef Linkend="ToUndoAnEdit"></Para>
+<Para><XRef Linkend="ToUndoAnEdit"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.123">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToClearText">
-<Title>テキストを消去するには</Title>
-<Para>[消去] コマンドで、テキスト・ブロックをスペースと置換します。<IndexTerm>
-<Primary> テキストの消去</Primary>
+<Title>To Clear Text</Title>
+<Para>The Clear command replaces a block of text with spaces.<IndexTerm>
+<Primary>clearing text</Primary>
 </IndexTerm><IndexTerm>
-<Primary> テキスト: 消去</Primary>
+<Primary>text: clearing</Primary>
 </IndexTerm>
 </Para>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.124">
-<Para> 消去するテキストを選択してください。</Para>
+<Para>Select the text to be cleared.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.125">
-<Para> [編集] メニューから [消去] を選択してください。
+<Para>Choose Clear from the Edit menu.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.126">
-<Para> <XRef Linkend="ToSelectText"></Para>
+<Para><XRef Linkend="ToSelectText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.127">
-<Para> <XRef Linkend="ToUndoAnEdit"></Para>
+<Para><XRef Linkend="ToUndoAnEdit"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.128">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToUndoAnEdit">
-<Title>編集を元に戻すには</Title>
+<Title>To Undo An Edit</Title>
 <IndexTerm>
-<Primary> [元に戻す] コマンド</Primary>
+<Primary>Undo command</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> 復元: テキスト</Primary>
+<Primary>restoring: text</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキスト: 復元</Primary>
+<Primary>text: restoring</Primary>
 </IndexTerm>
-<Para>[元に戻す] コマンドは、最後に行った [カット]、[コピー]、[ペースト]、[消去]、[削除]、[取込み]、または [書式設定] コマンドを取り消します。
+<Para>Undo reverses the last cut, copy, paste, clear, delete, include,
+or format command.
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTXTE.TSKS.item.129">
-<Para> [編集] メニューから [元に戻す] を選択するか、<Keycap>Control] + [Z</Keycap> キーを押してください。
+<Para>Choose Undo from the Edit menu or press Control+Z.
 </Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.130">
-<Para> <XRef Linkend="ToEnterText"></Para>
+<Para><XRef Linkend="ToEnterText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.131">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToCopyText">
-<Title>テキストをコピーするには</Title>
+<Title>To Copy Text</Title>
 <IndexTerm>
-<Primary> テキストのコピー</Primary>
+<Primary>copying text</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキスト: コピー</Primary>
+<Primary>text: copying</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.132">
-<Para> コピーするテキストを選択してください。</Para>
+<Para>Select the text to copy.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.133">
-<Para> [編集] メニューから [コピー] を選択するか、<Keycap>Control] + [C</Keycap> キーを押してください。</Para>
-<Para>テキストは、他のアプリケーションによってアクセスまたは置換できるクリックボードに格納されます。</Para>
+<Para>Choose Copy from the Edit menu or press Control+C.</Para>
+<Para>The text is stored on a clipboard where it can be accessed or
+replaced by other applications.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.134">
-<Para> テキストを挿入したい場所をクリックしてください。</Para>
+<Para>Click where you want to insert the text.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.135">
-<Para> [編集] メニューから [ペースト] を選択するか、<Keycap>Control] + [V</Keycap> キーを押してください。
+<Para>Choose Paste from the Edit menu or press Control+V.
 </Para>
 </ListItem>
 </OrderedList>
 <Note>
-<Para>以下のショートカットを使用して語句をコピーしてください。
-テキストを選択し、テキストを挿入したい位置へポインタを移動し、それからマウス・ボタン 2 をクリックしてください。
-これが、テキストをダイアログ・ボックスに迅速にコピーする方法です。
+<Para>Use this shortcut to copy a word or phrase: Select the text,
+move the pointer to where you want to insert the text, and click
+mouse button 2. This is a quick way to copy text into a dialog
+box.
 </Para>
 </Note>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.136">
-<Para> <XRef Linkend="ToSelectText"></Para>
+<Para><XRef Linkend="ToSelectText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.137">
-<Para> <XRef Linkend="ToMoveText"></Para>
+<Para><XRef Linkend="ToMoveText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.138">
-<Para> <XRef Linkend="ToDragandDropData"></Para>
+<Para><XRef Linkend="ToDragandDropData"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.139">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToMoveText">
-<Title>テキストを移動するには(カット＆ペースト)</Title>
+<Title>To Move Text (Cut and Paste)</Title>
 <IndexTerm>
-<Primary> テキストの移動</Primary>
+<Primary>moving text</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> カット＆ペースト</Primary>
+<Primary>cut and paste</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキストのカット</Primary>
+<Primary>cutting text</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキストのペースト</Primary>
+<Primary>pasting text</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキスト: カット</Primary>
+<Primary>text: cutting</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキスト: ペースト</Primary>
+<Primary>text: pasting</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.140">
-<Para> テキストを選択してください。</Para>
+<Para>Select the text.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.141">
-<Para> [編集] メニューから [カット] を選択するか、<Keycap>Control] + [X</Keycap> キーを押してください。</Para>
-<Para>テキストは消去され、同時に、他のアプリケーションによってアクセスまたは置換できるクリップボードに格納されます。</Para>
+<Para>Choose Cut from the Edit menu or press Control+X.</Para>
+<Para>The text is erased and stored on a clipboard where it can
+be accessed or replaced by other applications.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.142">
-<Para> テキストを挿入したい場所をクリックしてください。</Para>
+<Para>Click where you want to insert the text.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.143">
-<Para> [編集] メニューから [ペースト] を選択するか、<Keycap>Control] + [V</Keycap> キーを押してください。
+<Para>Choose Paste from the Edit menu or press Control+V.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.144">
-<Para> <XRef Linkend="ToSelectText"></Para>
+<Para><XRef Linkend="ToSelectText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.145">
-<Para> <XRef Linkend="ToCopyText"></Para>
+<Para><XRef Linkend="ToCopyText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.146">
-<Para> <XRef Linkend="ToDragAndDropData"></Para>
+<Para><XRef Linkend="ToDragAndDropData"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.147">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToDragAndDropData">
-<Title>データをドラッグ＆ドロップするには</Title>
+<Title>To Drag and Drop Data</Title>
 <IndexTerm>
-<Primary> ドラッグ＆ドロップ</Primary>
+<Primary>drag and drop</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> データのドラッグ＆ドロップ</Primary>
+<Primary>dragging and dropping data</Primary>
 </IndexTerm>
 <Para>
-ドラッグ＆ドロップを使用して、ドキュメント内のテキストのコピーや移動、
-またはデスクトップ・アプリケーション間でのテキストの転送が行えます。
+You can use drag and drop to copy or move text in a document or
+to transfer text between desktop applications.
 </Para>
 <Procedure>
-<Title>テキストをコピーするには:</Title>
+<Title>To Copy Text:</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.148">
-<Para> コピーしたいテキストを選択してください。</Para>
+<Para>Select the text that you want to copy.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.149">
 <Para>
-選択箇所にポインタを持って行き、[Control] キーおよびマウス・ボタン 1 を
-押しながら、テキストを挿入したい箇所までドラッグしてください。
+With the pointer over the selection, press and hold Control and mouse
+button 1 and drag to where you want to insert the text.
 </Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.150">
-<Para> マウス・ボタンを離してください。</Para>
+<Para>Release the mouse button.</Para>
 <Para>
-テキストは、ドラッグ・アイコンの位置に関連して挿入されます。
+The text is inserted relative to the position of the drag icon.
 </Para>
 </ListItem>
 </OrderedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>テキストを移動するには:</Title>
+<Title>To Move Text:</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.151">
-<Para> 移動したいテキストを選択してください。</Para>
+<Para>Select the text that you want to move.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.152">
-<Para> 選択箇所にポインタを持って行き、[Shift] キーおよびマウス・ボタン 1 を押しながら、テキストを挿入したい箇所までドラッグしてください。</Para>
+<Para>With the pointer over the selection, press and hold Shift and mouse button 1
+and drag to where you want to insert the text.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.153">
-<Para> マウス・ボタンを離してください。</Para>
-<Para>テキストは、ドラッグ・アイコンの位置に関連して挿入されます。</Para>
+<Para>Release the mouse button.</Para>
+<Para>The text is inserted relative to the position of the drag icon.</Para>
 </ListItem>
 </OrderedList>
-<Para>ファイル・アイコンのドラッグ＆ドロップ操作に関しては、<XRef Linkend="ToIncludeAFile"> を参照してください。</Para>
+<Para>For instructions to drag and drop a file icon, see <XRef Linkend="ToIncludeAFile">.</Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.154">
-<Para> <XRef Linkend="ToSelectText"></Para>
+<Para><XRef Linkend="ToSelectText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.155">
-<Para> <XRef Linkend="ToCopyText"></Para>
+<Para><XRef Linkend="ToCopyText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.156">
-<Para> <XRef Linkend="ToMoveText"></Para>
+<Para><XRef Linkend="ToMoveText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.157">
-<Para> <XRef Linkend="ToIncludeAFile"></Para>
+<Para><XRef Linkend="ToIncludeAFile"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.158">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToFindOrChangeText">
-<Title>テキストの検索または変更を行うには</Title>
+<Title>To Find or Change Text</Title>
 <IndexTerm>
-<Primary> テキストの検索</Primary>
+<Primary>finding text</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキストの変更</Primary>
+<Primary>changing text</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキストの置換</Primary>
+<Primary>replacing text</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> 検索および置換</Primary>
+<Primary>search and replace</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキスト検索</Primary>
+<Primary>text search</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> 検索</Primary>
+<Primary>searching</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキスト: 検索</Primary>
+<Primary>text: find</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキスト: 変更</Primary>
+<Primary>text: change</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキスト: 検索</Primary>
+<Primary>text: search</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキスト: 置換</Primary>
+<Primary>text: replace</Primary>
 </IndexTerm>
 <Procedure>
-<Title>テキストを検索するには:</Title>
+<Title>To Find Text:</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.159">
-<Para> [編集] メニューから [検索／変更] を選択してください。</Para>
+<Para>Choose Find/Change from the Edit menu.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.160">
-<Para> 検索したいテキストを [検索] フィールドに入力してください。</Para>
-<Para>検索は、大文字小文字を区別します。すべてを検索するには、大文字の場合と小文字の場合の両方を検索してください。</Para>
+<Para>Type the text you are looking for into the Find field.</Para>
+<Para>Searches are case sensitive. To
+find all occurrences, search for both lowercase and uppercase instances.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.161">
-<Para> [検索] をクリックするか、[Return] キーを押すと、次の検出テキストが表示されます。</Para>
-<Para>[検索] コマンドは、挿入カーソルの位置から開始し、ドキュメント全体に対して処理を行います。</Para>
+<Para>Click Find or press Return to locate the next occurrence of the text.</Para>
+<Para>The Find command starts from the position of the insertion cursor and
+proceeds through the entire document.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.162">
-<Para> 検索を続けるには, [検索] を選択するか、[Return] キーを押してください。
+<Para>To find additional occurrences, choose Find or press Return.
 </Para>
 </ListItem>
 </OrderedList>
@@ -1327,283 +1382,293 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>テキストの検索および変更を行うには:</Title>
+<Title>To Find and Change Text:</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.163">
-<Para> 検索したいテキストを [検索] フィールドに入力してください。</Para>
-<Para>検索は、大文字小文字を区別します。すべてを検索するには、大文字の場合と小文字の場合の両方を検索してください。</Para>
+<Para>Type the text to locate in the Find field.</Para>
+<Para>Searches are case sensitive. To
+find all occurrences, search for both lowercase and uppercase instances.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.164">
-<Para> [変更後文字列] フィールドに置換テキストを入力してください。</Para>
-<Para> 語句を削除するには、[変更後文字列] フィールドは空のままにしておいてください。</Para>
+<Para>Type the replacement text in the Change To field.</Para>
+<Para>To delete a word or phrase, leave the Change To field blank.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.165">
-<Para> [検索] をクリックするか、[Return] キーを押すと、最初の検出テキストが表示されます。</Para>
-<Para> [検索] コマンドは、挿入カーソルの位置から開始し、ドキュメント全体に対して処理を行います。</Para>
+<Para>Click Find or press Return to locate the first occurrence of the text.</Para>
+<Para>The Find command starts from the position of the insertion cursor and
+proceeds through the entire document.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.166">
-<Para> 検出テキストを置換するには、[変更] をクリックしてください。</Para>
+<Para>Click Change to replace a single occurrence.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.167">
-<Para> 手順 3 と 4 を繰り返して、その他の検出テキストを置換してください。</Para>
-<Para><Emphasis>または</Emphasis>、一括して変更するには、[すべてを変更] をクリックしてください。&newline;([すべてを変更] を選択した場合、[元に戻す] は効きません。)
+<Para>Repeat steps 3 and 4 to replace additional occurrences.</Para>
+<Para><Emphasis>Or</Emphasis>, click Change All to replace all occurrences.&newline;(Undo is not available for Change All.)
 </Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.168">
-<Para> 終了する場合は、[閉じる] をクリックしてください。
+<Para>Click Close when you are done.
 </Para>
 </ListItem>
 </OrderedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.169">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToCheckSpelling">
-<Title>スペルをチェックするには</Title>
+<Title>To Check Spelling</Title>
 <IndexTerm>
-<Primary> スペルチェック</Primary>
+<Primary>check spelling</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> スペル, 修正</Primary>
+<Primary>spelling, correcting</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> スペルチェッカ</Primary>
+<Primary>spell checker</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.170">
-<Para> [編集] メニューから [スペルチェック] を選択してください。</Para>
-<Para>[スペルチェック] ダイアログ・ボックスに、ミススペリングの語または未承認の語が表示されます。</Para>
+<Para>Choose Check Spelling from the Edit menu.</Para>
+<Para>The Spell dialog box lists misspelled or unrecognized words.</Para>
 <Graphic Entityref="TextEditorSpell" Id="HTXTE.TSKS.fig.8"></Graphic>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.171">
-<Para> [ミススペリングの単語] リストから、修正したい語を選択してください。</Para>
+<Para>Select the word you want to correct in the Misspelled Word list.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.172">
-<Para> [変更後文字列] フィールドに正しい語を入力してください。</Para>
+<Para>Type the correct word into the Change To field.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.173">
-<Para> [検索] クリックするか、[Return] キーを押すと、最初の検出語が表示されます。</Para>
+<Para>Click Find or press Return to locate the first occurrence.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.174">
-<Para> その語を置換するには、[変更] をクリックしてください。</Para>
+<Para>Click Change to replace a single occurrence.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.175">
-<Para> 手順 4 と 5 を繰り返して、スペルチェックを続けてください。</Para>
-<Para><Emphasis>または</Emphasis>、一括して置換するには、[すべてを変更] をクリックしてください。&newline;([すべてを変更] を選択した場合、[元に戻す] は効きません。)</Para>
+<Para>Repeat steps 4 and 5 to visit each occurrence.</Para>
+<Para><Emphasis>Or</Emphasis>, click Change All to replace all occurrences.&newline;(Undo is not available for Change All.)</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.176">
-<Para> 他の語を修正する場合は、手順 2 から 5 を繰り返してください。</Para>
+<Para>Repeat steps 2 - 5 to correct other words.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.177">
-<Para> 終了する場合は、[閉じる] をクリックしてください。
+<Para>Click Close when you are done.
 </Para>
 </ListItem>
 </OrderedList>
 <Note>
-<Para>[スペルチェック] ダイアログ・ボックスは、英語にのみ使用可能です。
+<Para>The Spell dialog box is only available for English.
 </Para>
 </Note>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.178">
-<Para> <XRef Linkend="ToEnterText"></Para>
+<Para><XRef Linkend="ToEnterText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.179">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToIncludeAFile">
-<Title>ファイルを取り込むには</Title>
+<Title>To Include a File</Title>
 <IndexTerm>
-<Primary> 取込み: ファイル</Primary>
+<Primary>including: file</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> 挿入: ファイル</Primary>
+<Primary>inserting: file</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> ファイル: 取込み</Primary>
+<Primary>file: including</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> ファイル: 挿入</Primary>
+<Primary>file: inserting</Primary>
 </IndexTerm>
-<Para>メニュー・コマンドの使用またはファイル・マネージャからのファイルのドラッグによって、テキスト・ファイルをドキュメントに挿入することができます。
+<Para>You can insert a text file into your document using a menu
+command or by dragging a file from File Manager.
 </Para>
 <Procedure>
-<Title>メニュー・コマンドを使用するには:</Title>
+<Title>To use a menu command:</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.180">
-<Para> ドキュメントを挿入したい箇所にカーソルを位置付けます。</Para>
+<Para>Position the cursor where you want to insert the document.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.181">
-<Para> [ファイル] メニューから [取込み] を選択してください。</Para>
-<Para>[ファイルを取り込む] ダイアログ・ボックスにシステム上のファイルおよびフォルダが表示されます。
-現在のフォルダ、サブフォルダ、または別のフォルダからファイルを挿入できます。</Para>
+<Para>Choose Include from the File menu.</Para>
+<Para>The Include a File dialog box lists files and folders on your system.
+You can insert a file from the current folder, a subfolder, or
+a different folder.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.182">
-<Para> 以下の <Emphasis>どれか</Emphasis> の方法で、取り込むドキュメントを選択してください。</Para>
+<Para>Select a document to include in <Emphasis>one</Emphasis> of these ways:</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTXTE.TSKS.item.183">
-<Para> 現在のフォルダからファイルを取り込むには、ファイル・リストからファイル名を選択し、[Return] キーを押してください。</Para>
+<Para>To include a file from the current folder, select the file name in the Files
+list and press Return.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.184">
-<Para> サブフォルダからファイルを取り込むには、フォルダ・リストのフォルダ名をダブルクリックし、それからファイル名を選択して [Return] キーを押してください。</Para>
+<Para>To include a file from a subfolder, double-click the folder name in the
+Folders list, then select the file name and press Return.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.185">
-<Para> 別のフォルダのファイルを指定するには、フォルダのパス名を [パス名またはフォルダ名を入力してください] フィールドに入力し、[Return] キーを押してください。
-それから、ファイル名を選択し、[Return] キーを押してください。</Para>
-<Para><Emphasis>または、</Emphasis> [ファイル名を入力してください] フィールドにドキュメントの完全パス名を入力できます。</Para>
+<Para>To locate a file in a different folder, type the path name of the folder
+in the Enter path or folder name field and press Return. Then select the
+file name and press Return.</Para>
+<Para><Emphasis>Or,</Emphasis> you can type the complete path name of the document in
+the Enter file name field.</Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 </OrderedList>
 <IndexTerm>
-<Primary> 取り込むファイルのブラウズ</Primary>
+<Primary>browsing file to include</Primary>
 </IndexTerm>
 <Graphic Entityref="TextEditorInclude" Id="HTXTE.TSKS.fig.9"></Graphic>
 </Step>
 </Procedure>
 <Procedure>
-<Title>ファイル・マネージャからファイルをドラッグするには:</Title>
+<Title>To drag a file from File Manager:</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.186">
-<Para> ファイルを挿入したい位置でクリックしてください。</Para>
+<Para>Click in the document where you want the file inserted.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.187">
-<Para> ファイル・マネージャ・ウィンドウを開き、取り込みたいファイルがあることを確認してください。</Para>
+<Para>Open a File Manager window and locate the file that you want
+to include.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.188">
-<Para> マウス・ボタン 1 を押しながら、ファイル・マネージャのファイル・アイコンをテキスト・エディタのドキュメントへドラッグしてください。</Para>
+<Para>Hold down mouse button 1 and drag the file's icon from
+File Manager to the Text Editor document.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.189">
-<Para> マウス・ボタンを離してください。
+<Para>Release the mouse button.
 </Para>
 </ListItem>
 </OrderedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.190">
-<Para> <XRef Linkend="ToEnterText"></Para>
+<Para><XRef Linkend="ToEnterText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.191">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToFormatADocument">
-<Title>ドキュメントを書式設定するには</Title>
+<Title>To Format a Document</Title>
 <IndexTerm>
-<Primary> ドキュメントの書式設定</Primary>
+<Primary>formatting document</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> マージン: 設定</Primary>
+<Primary>margins: setting</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> 揃え方: テキスト</Primary>
+<Primary>alignment: text</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> テキストの揃え方</Primary>
+<Primary>text alignment</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> ドキュメント: 書式設定</Primary>
+<Primary>document: formatting</Primary>
 </IndexTerm>
-<Para>ドキュメントの編集を終了する前に、マージンやパラグラフの揃え方などの書式を設定してください。
+<Para>When you finish editing your document, format
+it by setting margins and paragraph alignment.
 </Para>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.192">
-<Para> [書式] メニューから [設定] を選択してください。</Para>
+<Para>Choose Settings from the Format menu.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.193">
-<Para> 必要であれば、新しい左マージンおよび右マージンを入力してください。</Para>
-<Para>デフォルトの左マージンは 0 で、右マージンは動的にウィンドウ幅に設定されています。マージンは、文字カラム数として指定します。</Para>
+<Para>Enter new left and right margins, if desired.</Para>
+<Para>The default left margin is 0 and the right margin is dynamically
+set to the width of the window. Margins are specified as the number
+of character columns.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.194">
-<Para> 右、左、両端(ブロック・スタイル)、または中央といった揃え方を選択してください。</Para>
-<Para>デフォルトの設定は、左揃えのテキストです。</Para>
+<Para>Select right, left, justify (block style), or center alignment.</Para>
+<Para>Left-aligned text is the default setting.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.195">
-<Para> 以下の中の <Emphasis>どれか</Emphasis> を行ってください。</Para>
+<Para>Do <Emphasis>one</Emphasis> of the following:</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTXTE.TSKS.item.196">
-<Para> 1 つのパラグラフに対して書式設定するには、そのパラグラフにカーソルを持って行き、
-それから [パラグラフ] をクリックしてください。</Para>
+<Para>To format a single paragraph, place the cursor in the paragraph, then
+click Paragraph.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.197">
-<Para> ドキュメント全体に対して書式設定するには、[すべて] をクリックしてください。
+<Para>To format the entire document, click All.
 </Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.198">
-<Para> 終了する場合は、[閉じる] をクリックしてください。</Para>
+<Para>Click Close when you are done.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.199">
-<Para> ダイアログ・ボックスを閉じた後に書式設定を再適用するには、[書式] メニューから [パラグラフ] または [すべて] を選択してください。
+<Para>To reapply format settings after closing the dialog box, choose
+Paragraph or All from the Format menu.
 </Para>
 </ListItem>
 </OrderedList>
 <Graphic Entityref="TextEditorSettings" Id="HTXTE.TSKS.fig.10"></Graphic>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.200">
-<Para> <XRef Linkend="ToEnterText"></Para>
+<Para><XRef Linkend="ToEnterText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.201">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToPrintADocument">
-<Title>ドキュメントを印刷するには</Title>
+<Title>To Print a Document</Title>
 <IndexTerm>
-<Primary> 印刷: ドキュメント</Primary>
+<Primary>printing: document</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> ドキュメント: 印刷</Primary>
+<Primary>document: printing</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> 印刷</Primary>
+<Primary>print</Primary>
 </IndexTerm>
 <Procedure>
-<Title>デフォルトのオプションを用いて開いてるドキュメントを印刷するには:
-<indexterm><primary>テキスト・エディタ</primary><secondary>デフォルトのオプションを用いて印刷</secondary></indexterm>
-<indexterm><primary>印刷する</primary><secondary>ドキュメントをデフォルトのオプションで</secondary></indexterm>
-<indexterm><primary>ドキュメント</primary><secondary>デフォルトのオプションを用いて印刷</secondary></indexterm>
-</Title>
+<Title>To print an open document with default options:<indexterm><primary>Text Editor</primary><secondary>printing document with default options</secondary></indexterm><indexterm><primary>printing</primary><secondary>document with default options</secondary></indexterm><indexterm><primary>document</primary><secondary>printing with default options</secondary></indexterm></Title>
 <Step>
-<OrderedList>
+<orderedlist>
 <listitem>
-<para>テキスト・エディタで、ドキュメントを開いてください。
+<para>Open the document in Text Editor.
 </para>
 </listitem>
 <listitem>
-<para>[ファイル] メニューから、[印刷] を選択してください。
+<para>Choose Print from the File menu.
 </para>
 </listitem>
 </orderedlist>
@@ -1612,151 +1677,149 @@
 <Procedure>
 <Title>
 <Anchor Id="printSetupDialog">
-特定のオプションを用いて開いているドキュメントを印刷するには:
-<indexterm><primary>テキスト・エディタ</primary><secondary>特定のオプションを用いて印刷</secondary></indexterm>
-<indexterm><primary>印刷する</primary><secondary>ドキュメントを特定のオプションで</secondary></indexterm>
-<indexterm><primary>ドキュメント</primary><secondary>特定のオプションを用いて印刷</secondary></indexterm>
+To print an open document with specific options:
+<indexterm><primary>Text Editor</primary><secondary>printing document with specific options</secondary></indexterm>
+<indexterm><primary>printing</primary><secondary>document with specific options</secondary></indexterm>
+<indexterm><primary>document</primary><secondary>printing with specific options</secondary></indexterm>
 </Title>
 <Step>
 <orderedlist>
 <listitem>
-<para>ティスト・エディタで、ドキュメントを開いてください。
+<para>Open the document in Text Editor.
 </para>
 </listitem>
 <listitem>
-<para>[ファイル] メニューから [印刷...] を選択するか、
-<Keycap>Control</Keycap> + <Keycap>P</Keycap>を押してください。
+<para>Choose Print... from the File menu or press Control+P.
 </para>
-<para>[印刷] ダイアログ・ボックスが、あらわれます。
+<para>The Print dialog box appears.
 </para>
 <Graphic Entityref="TextEditorPrint" Id="HTXTE.TSKS.fig.11"></Graphic>
 <itemizedlist>
 <listitem>
-<para>異なるプリンタを選択するには、[プリンタ名] フィールドに、
-新たなプリンタ名を入力してください。
+<para>To select a different printer,
+type the new printer name in the Printer Name field.
 </para>
-</ListItem>
+</listitem>
 <listitem>
-<para>複数のコピーを出力するには、部数を [印刷部数] フィールドに入力して
-ください。
-</Para>
-</ListItem>
-<listitem>
-<para>ファイルに印刷するには、[ファイルに出力] チェック・ボックスを
-クリックして、ファイルのパスと名前を入力してください。
+<para>To output multiple copies, type
+the number of copies in the Copies field.
 </para>
-</ListItem>
+</listitem>
 <listitem>
-<para>長い行を折り返してページ・サイズに収めるには、
-[折返しを使用] チェック・ボックスをクリックしてください。
+<para>To print to a file, click the Print to File checkbox
+and type the path and filename for the file.
 </para>
-</ListItem>
+</listitem>
+<listitem>
+<para>To have long lines wrap to fit the page size,
+click the Use Word Wrap checkbox.
+</para>
+</listitem>
 <listitem>
 <para><Anchor Id="print-pageMargins">
-印刷される出力におけるマージンを設定するには、
-[上]、[左]、[右]、および [下] フィールドに、希望する値を入力してください。
-ユーザは、マージンの値を、インチ(in)、センチメートル(cm)、
-またはピクセル(pm)で、指定できます。単位が指定されなければ、ピクセル(pi)が
-使用されます。
+To set the margins
+for the printed output, type the desired values in the Top, Left,
+Right, and Bottom fields. You can specify margin values in
+inches (in), centimeters (cm), or pixels (pi).
+The default value for all margins is one inch.
+If no unit value is specified, pixels are used.
 </para>
-<para>マージン設定は、ユーザがそれを変更するまで、ずっと有効です。
-マージン設定は、ユーザがデフォルトのオプションを用いて印刷するとき、
-使用されます。
+<para>Your margin settings remain in effect until you change them. They are used when you
+print with default options.
 </para>
 </listitem>
 <listitem>
 <para><Anchor Id="print-pageHeadersFootersp">
-印刷される出力にヘッダやフッタを含めるには、[左上]、[左下]、[右上]、
-および [右下] に対して、印刷したい情報のタイプを選択してください。
-それぞれの位置に対して、ユーザは以下を選択できます。
+To include headers and/or footers on the printed output,
+choose the type of information you want for Top Left, Bottom Left,
+Top Right, and/or Bottom Right. For each position, you can select:
 </para>
 <itemizedlist>
 <listitem>
-<para><literal>日付</literal>は、現在の日付を表示します。
+<para><literal>Date</literal>, to display the current date.
 </para></listitem>
-<listitem><para><literal>ドキュメント名</literal>は、印刷されたドキュメントの
-名前を、表示します。
+<listitem><para><literal>Document Name</literal>, to display the name of the document being printed.
 </para></listitem>
-<listitem><para><literal>ページ番号</literal>は、ページ番号を表示します。
+<listitem><para><literal>Page Number</literal>, to display page numbers.
 </para></listitem>
-<listitem><para><literal>ユーザ名</literal>は、ユーザ名を表示します。
+<listitem><para><literal>User Name</literal>, to display your user name.
 </para></listitem>
-<listitem><para><literal>なし</literal>は、何も表示しません。
+<listitem><para><literal>None</literal>, to display nothing.
 </para></listitem>
 </itemizedlist>
-<para>以下のデフォルトが使用されます。
+<para>The following defaults are used:
 </para>
 <itemizedlist>
-<listitem><para><literal>左上</literal>&mdash;なし
+<listitem><para><literal>Top Left</literal>&mdash;None
 </para></listitem>
-<listitem><para><literal>右上</literal>&mdash;ドキュメント名
+<listitem><para><literal>Top Right</literal>&mdash;Document Name
 </para></listitem>
-<listitem><para><literal>左下</literal>&mdash;None
+<listitem><para><literal>Bottom Left</literal>&mdash;None
 </para></listitem>
-<listitem><para><literal>右下</literal>&mdash;ページ番号
+<listitem><para><literal>Bottom Right</literal>&mdash;Page Number
 </para></listitem>
 </itemizedlist>
-<para>ヘッダおよびフッタの設定は、ユーザがそれを変更するまで、
-ずっと有効です。ヘッダおよびフッタの設定は、ユーザがデフォルトの
-オプションを用いて印刷するとき、使用されます。
+<para>Your header and footer settings remain in effect until you change
+them. They are used when you print with default options.
 </para>
 </listitem>
 </itemizedlist>
 </listitem>
 <listitem>
 <para><Anchor Id="print-appSpecific">
-プリンタ固有のオプションを設定するには、[印刷] ダイアログ・ボックス
-上の [設定...] ボタンをクリックしてください。
-[印刷の設定] ウィンドウがあらわれます。このウィンドウから、ユーザは、
-プリンタ・オプションとジョブ・オプションの、両方を調べることができます。
-詳細は、<olink type="Jump" LocalInfo="PrnSetup PrintSetupRef">
-[印刷の設定] ウィンドウ</olink>を参照してください。
+To set printer-specific options, click the Setup... button on the Print dialog box.
+The Print Setup window appears. From this window, you can
+examine printer information and define both Printer and Job options.
+See
+<olink type="Jump" LocalInfo="PrnSetup PrintSetupRef">Print Setup
+Window</OLink> for more information.
 </para>
 </listitem>
 <listitem>
-<para>[印刷] ダイアログ・ボックスから、開いているドキュメントをプリンタへ
-送るには、[印刷] をクリックしてください。</para>
+<para>To send the open document to the printer from the
+Print dialog box, click Print.</para>
 </listitem>
-</OrderedList>
+</orderedlist>
 </Step>
 </Procedure>
 <Procedure>
-<Title>閉じているドキュメントを印刷するには:</Title>
+<Title>To print a closed document:</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HTXTE.TSKS.item.209">
-<Para> ファイル・マネージャでドキュメントのファイル・アイコンを表示してください。</Para>
+<Para>Display the document's file icon in File Manager.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.210">
-<Para> ファイル・アイコンをフロント・パネル・プリンタ・コントロールにドラッグしてください。</Para>
+<Para>Drag the file icon to the Front Panel Printer control.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.211">
-<Para> <Emphasis>オプション。</Emphasis>&newline;印刷オプションを入力してください。</Para>
+<Para><Emphasis>Optional.</Emphasis>&newline;Enter printing options.</Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.212">
-<Para> [印刷] ダイアログ・ボックスで [印刷] をクリックしてください。
+<Para>Click Print in the Print dialog box.
 </Para>
 </ListItem>
 </OrderedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.TSKS.item.213">
-<Para> <XRef Linkend="ToDragAndDropData"></Para>
+<Para><XRef Linkend="ToDragAndDropData"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.214">
-<Para> <XRef Linkend="ToFormatADocument"></Para>
+<Para><XRef Linkend="ToFormatADocument"></Para>
 </ListItem>
 <ListItem Id="HTXTE.TSKS.item.215">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
-<Para>これらの指示は、ユーザがマウスを使用していることを想定しています。
-たいていの操作はマウスなしでも行えます。
-詳細については、<OLink Type="Jump" LocalInfo="Intromgr DesktopKeyboardNav"> デスクトップのキーボード・ショートカット</OLink> を参照してください。</Para>
+<Para>These instructions assume that you are using a mouse. Most
+tasks can also be done without a mouse.
+See <OLink Type="Jump" LocalInfo="Intromgr DesktopKeyboardNav"> Keyboard
+Shortcuts for the Desktop</OLink> for more information.</Para>
 </Step>
 </Procedure>
 </Sect1>

@@ -1,4 +1,4 @@
-<!-- $XConsortium: GEntity.sgm /main/9 1996/12/18 02:11:46 cde-hit $ -->
+<!-- $XConsortium: GEntity.sgm /main/11 1996/09/02 21:59:55 cdedoc $ -->
 <!entity help-control-icon			SYSTEM "./Intromgr/graphics/helpmgr.pm" NDATA XPM>
 <!entity VI-FileManagerFrontPanelControl 	SYSTEM "./Intromgr/graphics/filemgr.pm" NDATA XPM>
 <!entity VI-StyleManagerFrontPanelControl 	SYSTEM "./Intromgr/graphics/stylemgr.pm" NDATA XPM>

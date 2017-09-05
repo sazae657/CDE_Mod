@@ -1,4 +1,4 @@
-<!-- $XConsortium: GEntity.sgm /main/7 1996/12/18 01:24:27 cde-hit $ -->
+<!-- $XConsortium: GEntity.sgm /main/7 1996/10/29 17:45:35 drk $ -->
 <!entity modeoptmenu SYSTEM "./Calculator/graphics/modeoptm.tif" NDATA TIFF>
 <!entity calcareas SYSTEM "./Calculator/graphics/calcarea.tif" NDATA TIFF>
 <!entity calcpopup SYSTEM "./Calculator/graphics/calcpop.tif" NDATA TIFF>

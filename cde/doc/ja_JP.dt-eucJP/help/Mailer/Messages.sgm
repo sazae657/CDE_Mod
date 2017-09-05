@@ -1,4 +1,4 @@
-<!-- $XConsortium: Messages.sgm /main/6 1996/12/18 02:25:49 cde-hit $ -->
+<!-- $XConsortium: Messages.sgm /main/5 1996/09/08 21:55:19 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,33 +9,35 @@
 <!-- Help volume: Mailer -->
 <!-- File name: Messages -->
 <Chapter Id="Messages">
-<Title>メール・プログラムのメッセージ</Title>
-<Para>ここでは、メール・プログラムのエラー・メッセージの原因と解決策について説明します。
+<Title>Mailer Messages</Title>
+<Para>This section describes possible causes and solutions for
+Mailer error messages.
 </Para>
 <IndexTerm>
-<Primary> エラー・メッセージ </Primary>
+<Primary>error messages</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> メッセージ, エラー </Primary>
+<Primary>messages, error</Primary>
 </IndexTerm>
 <Sect1 Id="DTMAILHELPUNKNOWNSTATE">
-<Title> このメールボックスの状態に関してメール・プログラムが混乱しています。</Title>
-<Para><GlossTerm Role="nogloss">[了解] を選択してメールボックスを閉じて、メール・プログラムを再起動してください。</GlossTerm></Para>
+<Title>Mailer is confused about the state of this mailbox.</Title>
+<Para><GlossTerm Role="nogloss">Close the mailbox by choosing OK and then restart Mailer.</GlossTerm></Para>
 <!--
 <location id=DTMAILHELPUNKNOWNSTATE>&empty;<\location>
 -->
-<Para>何らかの原因で、メールボックスが、システム内で未知の状態になっています。
-これは、メール・プログラムの実行中に、メール・プログラムの別のインスタンスに保存を実行した場合や、[メール] を実行した場合に発生します。</Para>
+<Para>Something has caused your mailbox to be in an unknown state in the
+system. This could occur if you did a save in another instance of
+Mailer or Mail while this Mailer was running.</Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.1">
-<Para> メール・プログラムを閉じてから、再起動してください。
+<Para>Try closing Mailer and restarting it.
 </Para>
 </ListItem>
 <ListItem Id="HMLR.MSG.item.2">
-<Para> これで、うまく機能しない場合は、システム管理者に相談してください。
+<Para>If that doesn't work, contact your system administrator.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -43,18 +45,20 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPRUNATTACH">
-<Title> <Emphasis>アタッチメント名</Emphasis>は、実行形式のアタッチメントです。</Title>
-<Para><GlossTerm Role="nogloss">このアタッチメントを実行しますか?</GlossTerm></Para>
+<Title><Emphasis>attachment name</Emphasis> is an executable attachment.</Title>
+<Para><GlossTerm Role="nogloss">Do you want to run it?</GlossTerm></Para>
 <!--
 <location id=DTMAILHELPRUNATTACH>&empty;<\location>
 -->
-<Para>選択したアタッチメントは実行形式ファイルです。実行形式を実行するか、操作を取り消すことができます。</Para>
+<Para>The selected attachment is an executable file. You can either run
+the executable or cancel the operation.</Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.3">
-<Para> 実行形式を実行したくない場合は、アタッチメントをファイルに保存しておき、後で実行することができます。
+<Para>If you weren't expecting to run the executable, you can
+save the attachment to a file and run it later.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -62,25 +66,31 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPOKSTARTVACATION">
-<Title> ユーザはすでに [不在返信] 以外の転送機能を使用しています。</Title>
-<Para><GlossTerm Role="nogloss">[不在返信] の実行中は、[不在返信] が他の転送動作に</GlossTerm>
-<GlossTerm Role="nogloss">付加されます。それでも、[不在返信] の開始を</GlossTerm>
-<GlossTerm Role="nogloss"> [了解] しますか?</GlossTerm></Para>
+<Title>You are already using the forwarding facility</Title>
+<Para><GlossTerm Role="nogloss">for something other than Vacation. While Vacation is running,</GlossTerm>
+<GlossTerm Role="nogloss">Vacation will be appended to this other forwarding activity.</GlossTerm>
+<GlossTerm Role="nogloss">Is it still OK to start Vacation?</GlossTerm></Para>
 <!--
 <location id=DTMAILHELPOKSTARTVACATION>&empty;<\location>
 -->
-<Para>メール・プログラムで [不在返信] オプションが起動されると、メッセージを保存して、メッセージをユーザ宛に送信した人々に返信します。
-この転送機能を、メールを別のユーザ・アカウントに転送するなど他のことに使用すると、[不在返信] オプションが .forward ファイルに追加され、両方の機能が有効になります。</Para>
+<Para>When the Vacation option is activated in Mailer, it uses a forwarding
+facility to save your messages and reply to people who send messages to you.
+If you use this forwarding facility for something else, like forwarding
+your mail to another user account,
+the Vacation option is appended to the .forward file and
+both features take effect.</Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.4">
-<Para> [不在返信] オプションのみを有効にする場合は、.forward ファイルの転送機能を削除してください。
+<Para>Remove the forwarding facility in the .forward file if you want
+only the Vacation option to take effect.
 </Para>
 </ListItem>
 <ListItem Id="HMLR.MSG.item.5">
-<Para> 転送機能のみを有効にする場合は、[不在返信] をオフにしてください。
+<Para>Turn Vacation off if you want only the forwarding facility
+to take effect.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -88,20 +98,20 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPREMOVEVACATION">
-<Title> すでに .forward ファイルで不在返信プログラムを実行しています。</Title>
-<Para><GlossTerm Role="nogloss">不在返信を中止する方法をマニュアルで調べて、</GlossTerm>
-<GlossTerm Role="nogloss">.forward ファイルから削除してください。</GlossTerm>
-<GlossTerm Role="nogloss">問題を解決した後で、このコマンドを実行してください。</GlossTerm>
+<Title>You are already running the vacation program</Title>
+<Para><GlossTerm Role="nogloss">in your .forward file. Consult documentation on how to stop it</GlossTerm>
+<GlossTerm Role="nogloss">and remove it from your .forward file. Try this command after</GlossTerm>
+<GlossTerm Role="nogloss">fixing that problem.</GlossTerm>
 <!--
 <location id=DTMAILHELPREMOVEVACATION>&empty;<\location>
 --></Para>
+<Para>You tried to start the Vacation facility when you already had it running.</Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
-<Para>すでに [不在返信] 機能を実行しているのに、開始しようとしました。</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.6">
-<Para> [不在返信] は、1 インスタンスだけ実行できます。
+<Para>Only run one instance of Vacation.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -109,18 +119,21 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPNOWRITEVACATION">
-<Title> .vacation.msg ファイルを開くことができません。file -- 書き込み権がありません。</Title>
+<Title>Cannot open .vacation.msg file -- No write permission.</Title>
 <!--
 <location id=DTMAILHELPNOWRITEVACATION>&empty;<\location>
 -->
-<Para>ユーザのホーム・ディレクトリに通常格納される不在返信の情報メッセージを格納したファイルは、現在読み込み専用ファイルです。
+<Para>The file that contains your vacation information message,
+usually located in your home directory,
+is currently a read-only file.
 </Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.7">
-<Para> ファイルのアクセス権を書き込み権があるように変更してから、不在返信メッセージを作成して保存してください。
+<Para>Change file permissions so you have write permission, then
+try to create and save a vacation message.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -128,19 +141,20 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPEXISTSVACATION">
-<Title> vacation.msg ファイルが存在します。新規テキストに置換しますか?</Title>
+<Title>vacation.msg file exists. Replace with new text?</Title>
 <!--
 <location id=DTMAILHELPEXISTSVACATION>&empty;<\location>
 -->
-<Para>.vacation.msg ファイルに不在返信メッセージのテキストが現在あります。
-上書きしてもいいですか?
+<Para>You currently have vacation message text in your .vacation.msg file.
+Do you want to overwrite it?
 </Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.8">
-<Para> 既存のテキストを新規メッセージで上書きするか、または既存の不在返信メッセージを保存するため操作の取消しを選択することができます。
+<Para>You can overwrite the existing text with the new message or you
+can choose to cancel, saving the existing vacation message.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -148,18 +162,19 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPNOCOMPOSE">
-<Title> [メール作成] ウィンドウを作成できません。</Title>
+<Title>Unable to create a Compose window.</Title>
 <!--
 <location id=DTMAILHELPNOCOMPOSE>&empty;<\location>
 -->
-<Para>[メール作成] メニューで [新規メッセージ] を選択した場合に、メール・プログラムが [メール作成] ウィンドウを作成できません。
+<Para>When you selected New Message from the Compose menu, Mailer
+was unable to create a Compose window.
 </Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.9">
-<Para> 再実行してください。それでもうまく機能しない場合は、メール・プログラムを再起動してください。
+<Para>Try again, and if it doesn't work, restart Mailer.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -167,18 +182,20 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPNOTEMPLATE">
-<Title> テンプレートが存在しません。</Title>
+<Title>The template does not exist.</Title>
 <!--
 <location id=DTMAILHELPNOTEMPLATE>&empty;<\location>
 -->
-<Para>使用するために選択したテンプレートが、メール・プログラムの [テンプレート・オプション] ダイアログ・ボックスで指定した場所にありません。
+<Para>The template you have selected for use is not in the
+location specified in the Mailer Templates Options dialog box.
 </Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.10">
-<Para> [テンプレート・オプション] ダイアログ・ボックスを確認して、テンプレートの正しい場所 (絶対パス名) を指定ください。
+<Para>Make sure the Template Options dialog box
+specifies the correct location (full path name) of the template.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -186,18 +203,20 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPCORRUPTTEMPLATE">
-<Title> テンプレートが正しくないようです。</Title>
+<Title>The template appears to be corrupt.</Title>
 <!--
 <location id=DTMAILHELPCORRUPTTEMPLATE>&empty;<\location>
 -->
-<Para>テンプレート・ファイルは正しい場所にありますが、何か問題があります。
+<Para>The template file is in the specified location but something is
+wrong with it.
 </Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.11">
-<Para> テンプレート・ファイルが正しいことを確認してください。可能ならば、バックアップ・ファイルと置換して、テンプレートの挿入を再び実行してください。
+<Para>Make sure the template file is not corrupt. Replace it with
+a backup file if possible and try again to insert the template.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -205,18 +224,20 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPNOMEMTEMPLATE">
-<Title> テンプレートを読み込むのに十分なメモリがありません。</Title>
+<Title>There is not enough memory to load the template.</Title>
 <!--
 <location id=DTMAILHELPNOMEMTEMPLATE>&empty;<\location>
 -->
-<Para>メール・プログラムで使用しようとしたテンプレートが、使用可能なメモリの量を越えています。
+<Para>The template you are attempting to use in Mailer exceeds the amount
+of memory you have available.
 </Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.12">
-<Para> デスクトップ上のアプリケーションをいくつか閉じてから、テンプレートの読み込みを再び実行してください。
+<Para>Close some applications on the desktop and try again to load
+the template.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -224,53 +245,56 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPCANTINITTOOLTALK">
-<Title> ToolTalk が初期化されていません。</Title>
-<Para><GlossTerm Role="nogloss">ToolTalk なしではメール・プログラムを実行できません。</GlossTerm>
-<GlossTerm Role="nogloss">/usr/dt/bin/dtsession を起動してください。あるいは、</GlossTerm>
-<GlossTerm Role="nogloss">システム管理者に連絡してください。</GlossTerm></Para>
+<Title>ToolTalk is not initialized.</Title>
+<Para><GlossTerm Role="nogloss">Mailer cannot run without ToolTalk. Try starting</GlossTerm>
+<GlossTerm Role="nogloss">/usr/dt/bin/dtsession, or contact your system administrator.</GlossTerm></Para>
 <!--
 <location id=DTMAILHELPCANTINITTOOLTALK>&empty;<\location>
 -->
-<Para>機能を実行しようとする間に、ToolTalk を初期化できませんでした。</Para>
+<Para>While attempting to perform a function, ToolTalk could not be
+initialized.</Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.13">
-<Para> ご利用のシステムで ToolTalk が正常に動作しているかどうかを、システム管理者に確認してください。
+<Para>Check with your system administrator about whether
+your system is working correctly with ToolTalk.
 </Para>
 </ListItem>
 </ItemizedList>
 <!--
-<s1 id=MAILHELPNOWINDOWS> ウィンドウを初期化できません。終了します。
+<s1 id=MAILHELPNOWINDOWS> Unable to initialize windows. Exiting.
 <location id=DTMAILHELPNOWINDOWS>&empty;<\location>
 
-ウィンドウ・システムに問題があります。
+There is a problem with your window system.     
 
-<procedure>可能な解決策:
+<procedure>Possible Solution:
 
 <list bullet>
-<item> ウィンドウ・システムが適切に実行していることを確認するか、システム管理者に相談してください。
+<item> Make sure your window system is running properly or contact
+your system administrator.
 <\list>
 -->
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPNOINSTALLMAIL">
-<Title> メール・プログラムが適切にインストールされていません。</Title>
-<Para><GlossTerm Role="nogloss">実行グループの設定が間違っているので、実行できません。</GlossTerm></Para>
+<Title>Mailer has not been properly installed and</Title>
+<Para><GlossTerm Role="nogloss">cannot run because the execution group is incorrectly set.</GlossTerm></Para>
 <!--
 <location id=DTMAILHELPNOINSTALLMAIL>&empty;<\location>
 -->
-<Para>ある種のシステム上では、メール・プログラムは、"mail" に設定した
-グループ ID (実行グループ) で実行しなければなりません。
-ユーザが属する実行グループは、メール・プログラムを実行できるように設定されていません。</Para>
+<Para>On some systems, Mailer must be run with the group id (execution group)
+set to "mail". Your execution group has not been set so that
+Mailer can run.</Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.14">
-<Para> グループのアクセス権が、メール・プログラムを実行できるように正しく設定されていることをシステム管理者に確認してください。
+<Para>Check with your system administrator to set the group permission
+correctly on the Mailer executable.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -278,23 +302,23 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPNOVIEW">
-<Title> ユーザには <Emphasis>ファイル名</Emphasis> を表示するアクセス権がありません。</Title>
+<Title>You do not have permission to view <Emphasis>file name</Emphasis>.</Title>
 <!--
 <location id=DTMAILHELPNOVIEW>&empty;<\location>
 -->
-<Para>ユーザには、指定のメールボックスを表示するアクセス権がありません。
-ファイルのアクセス権が、読み込み不可に設定されています。
-</Para>
+<Para>You do not have permission to view the specified mailbox.
+The file permissions may be set so you don't have read permission.</Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.15">
-<Para> ファイルの所有者である場合は、アクセス権を読み込み可能に変更してください。
+<Para>If you own the file, change the permissions so you can read it.
 </Para>
 </ListItem>
 <ListItem Id="HMLR.MSG.item.16">
-<Para> ファイルの所有者でない場合は、アクセス権を読み込み可能に変更してくれるように、ファイルの所有者に依頼してください。
+<Para>If you don't own the file, ask the file's owner to change the
+permissions so you can read it.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -302,18 +326,18 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPDIRECTORYONLY">
-<Title> メールボックスはディレクトリです。開くことができません。</Title>
+<Title>The mailbox is a directory and cannot be opened.</Title>
 <!--
 <location id=DTMAILHELPDIRECTORYONLY>&empty;<\location>
 -->
-<Para>選択したメールボックス名はディレクトリ(フォルダ)です。開くことができません。
+<Para>The selected mailbox name is a directory (folder) and cannot be opened.
 </Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.17">
-<Para> ファイルであるメールボックス名を指定してください。
+<Para>Indicate a mailbox name that is a file.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -321,18 +345,18 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPSELECTATTACH">
-<Title><GlossTerm Role="nogloss">[別名保存] コマンドを発行してファイルを保存する</GlossTerm></Title>
-<Para>前に、アタッチメントを選択する必要があります。</Para>
+<Title>An attachment needs to be selected before issuing</Title>
+<Para><GlossTerm Role="nogloss">the Save As command to save to a file.</GlossTerm></Para>
 <!--
 <location id=DTMAILHELPSELECTATTACH>&empty;<\location>
 -->
-<Para>ユーザが、最初にアタッチメントを選択しないで、[別名保存] を選択しました。</Para>
+<Para>You selected Save As without first selecting an attachment.</Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.18">
-<Para> アタッチメントを選択してから、[別名保存] を選択してください。
+<Para>Select an attachment, then select Save As.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -340,25 +364,25 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPTAKELOCK">
-<Title> メールボックスはロックされています。</Title>
-<Para><GlossTerm Role="nogloss">手動でメールボックスをロック解除し、再実行することができます。
-あるいは、システム管理者に連絡してください。</GlossTerm></Para>
+<Title>The mailbox is locked. You can manually unlock the</Title>
+<Para><GlossTerm Role="nogloss">mailbox and try again or contact your system administrator.</GlossTerm></Para>
 <!--
 <location id=DTMAILHELPTAKELOCK>&empty;<\location>
 -->
-<Para>誰かが現在このメールボックスにアクセスしているか、ユーザが別の場所でこのメールボックスを開いています。</Para>
+<Para>Someone else may currently be accessing this mailbox or you may have this
+mailbox open elsewhere.</Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.19">
-<Para> それでも、このメールボックスにアクセスしたい場合には、[了解] をクリックしてください。
-メール・プログラムがこのメールボックスのロック解除を要求します。
-要求が成功すれば、メールボックスにアクセスできます。
+<Para>If you would still like to access the mailbox, choose OK so that
+Mailer will request the lock on this mailbox to be released. If the
+request is successful, you will have access to the mailbox.
 </Para>
 </ListItem>
 <ListItem Id="HMLR.MSG.item.20">
-<Para> [取消し] を選択して、このメールボックスを開くのを終了してください。
+<Para>Choose Cancel to end the attempt to open this mailbox.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -366,20 +390,21 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPDESTROYMARKMSG">
-<Title> このメールボックスで削除マークを付けたメッセージを</Title>
-<Para><GlossTerm Role="nogloss">破棄していいですか? </GlossTerm></Para>
+<Title>Destroy the messages you have marked for</Title>
+<Para><GlossTerm Role="nogloss">deletion in this mailbox?</GlossTerm></Para>
 <!--
 <location id=DTMAILHELPDESTROYMARKMSG>&empty;<\location>
 -->
-<Para>メールボックスを閉じる時に、メッセージを削除した場合は、削除のマークが付いたメッセージを破棄するかどうかの確認が行われます。</Para>
+<Para>When you try to close a mailbox, if you have deleted messages,
+you are asked if you want to destroy the messages marked for deletion.</Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.21">
-<Para> メッセージを永久に削除しない場合は、[取消し] をクリックしてください。
+<Para>Click Cancel if you do not want to permanently delete the messages.
 </Para>
-<Para>メール・プログラムは、メールボックスの変更内容を保存してから閉じます。
+<Para>Mailer closes after saving changes to the mailbox.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -387,18 +412,19 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPNOOVERWRITE">
-<Title> <Emphasis>ファイル名</Emphasis> を上書きできません。</Title>
-<Para><GlossTerm Role="nogloss">ファイルのアクセス権をチェックして再実行してください。</GlossTerm></Para>
+<Title>Unable to overwrite <Emphasis>file name</Emphasis>. Check file permissions</Title>
+<Para><GlossTerm Role="nogloss">and retry.</GlossTerm></Para>
 <!--
 <location id=DTMAILHELPNOOVERWRITE>&empty;<\location>
 -->
-<Para>このファイルは書き込み可能なファイルではありません。</Para>
+<Para>The selected file is not writeable.</Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.22">
-<Para> ファイルのアクセス権をチェックして、この操作を再び実行する前に、必要に応じて変更してください。
+<Para>Check file permissions and change them if necessary
+before trying the operation again.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -406,19 +432,20 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPNOOPEN">
-<Title> <Emphasis>アタッチメント名</Emphasis> を開くことができません。</Title>
+<Title>Unable to open <Emphasis>attachment name</Emphasis>.</Title>
 <!--
 <location id=DTMAILHELPNOOPEN>&empty;<\location>
 -->
-<Para>指定のアッタッチメントを開くことができません。
-ファイルの読み込み権がない可能性があります。
+<Para>The specified attachment cannot be opened. You may not have read
+permission for the file.
 </Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.23">
-<Para> アッタッチメント・ファイルのアクセス権を確認して、この操作を再び試行する前に、必要に応じて変更してください。
+<Para>Check the attachment file permissions and change them if necessary
+before trying the operation again.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -426,18 +453,18 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPNOALLOCMEM">
-<Title> メモリを割り当てることができません。</Title>
+<Title>Unable to allocate memory.</Title>
 <!--
 <location id=DTMAILHELPNOALLOCMEM>&empty;<\location>
 -->
-<Para>選択した操作に十分なメモリがありません。
+<Para>There is not enough memory for the selected operation.
 </Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.24">
-<Para> アプリケーションをいくつか閉じてから、再び実行してください。
+<Para>Try closing some applications and trying again.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -445,18 +472,20 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPALREADYEXISTS">
-<Title> <Emphasis>ファイル名</Emphasis> は、すでに存在しています。置換しますか?</Title>
+<Title><Emphasis>file name</Emphasis> already exists. Replace?</Title>
 <!--
 <location id=DTMAILHELPALREADYEXISTS>&empty;<\location>
 -->
-<Para>ファイル・システムにすでに存在しているファイル名で、アタッチメントを保存しようとしました。
+<Para>You have tried to save an attachment to a file name that already
+exists in your file system.
 </Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.25">
-<Para> 既存ファイルを上書きしたくない場合は、取り消して、別の名前を入力してください。
+<Para>If you do not want to overwrite the existing file, cancel,
+and type a different file name.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -464,23 +493,25 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPNOREPLACE">
-<Title> <Emphasis>ファイル名</Emphasis> を置換できません。</Title>
+<Title>Unable to replace <Emphasis>file name</Emphasis>.</Title>
 <!--
 <location id=DTMAILHELPNOREPLACE>&empty;<\location>
 -->
-<Para>指定したファイル名は、書き込みができません。
-ディレクトリが書き込めないか、読み込み専用のファイル・システムに書き込もうとしている可能性があります。
+<Para>The file name you specified cannot be overwritten.
+This may be because the directory is not writeable or
+because you are trying to write to a read-only file system.
 </Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.26">
-<Para> ディレクトリのアクセス権をチェックして、可能ならば書き込み権を付与してください。
+<Para>Check the directory permissions and add write permission if
+possible.
 </Para>
 </ListItem>
 <ListItem Id="HMLR.MSG.item.27">
-<Para> 別の書き込み可能な場所を指定して、メッセージを保存してください。
+<Para>Specify another (writeable) location to save the message.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -488,23 +519,25 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPNOCREATE">
-<Title> <Emphasis>ファイル名</Emphasis> を作成できません。</Title>
+<Title>Unable to create <Emphasis>file name</Emphasis>.</Title>
 <!--
 <location id=DTMAILHELPNOCREATE>&empty;<\location>
 -->
-<Para>指定したメールボックス名を作成できません。
-ディレクトリが書き込めないか、読み込み専用のファイル・システムに書き込もうとしている可能性があります。
+<Para>The mailbox name you specified cannot be created.
+This may be because the directory is not writeable or
+because you are trying to write to a read-only file system.
 </Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.28">
-<Para> ディレクトリのアクセス権をチェックして、可能ならば書き込み権を付与してください。
+<Para>Check the directory permissions and add write
+permission if possible.
 </Para>
 </ListItem>
 <ListItem Id="HMLR.MSG.item.29">
-<Para> 別の書き込み可能な場所を指定して、メッセージを保存してください。
+<Para>Specify another (writeable) location to save the message.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -512,18 +545,19 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPEXISTSATTACH">
-<Title> 名前はすでに存在します。上書きしますか?</Title>
+<Title>The name already exists. Overwrite?</Title>
 <!--
 <location id=DTMAILHELPEXISTSATTACH>&empty;<\location>
 -->
-<Para>ユーザが指定したアタッチメントは、ファイル・システムにすでに存在しています。
+<Para>You have indicated an attachment that already exists in your file system.
 </Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.30">
-<Para> 既存のアッタッチメントを上書きしたくない場合は、取り消して、アタッチメントに別の名前を入力してください。
+<Para>If you do not want to overwrite the existing attachment, cancel,
+and type a different name for the attachment.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -531,18 +565,19 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPEXISTOVERWRITE">
-<Title> <Emphasis>ファイル名</Emphasis> はすでに存在します。上書きしますか?</Title>
+<Title><Emphasis>file name</Emphasis> already exists. Overwrite?</Title>
 <!--
 <location id=DTMAILHELPEXISTOVERWRITE>&empty;<\location>
 -->
-<Para>ユーザが指定したメールボックスは、ファイル・システムにすでに存在しています。
+<Para>You have indicated a mailbox that already exists in your file system.
 </Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.31">
-<Para> 既存のメールボックスを上書きしたくない場合は、取り消して、メールボックスに別の名前を入力してください。
+<Para>If you do not want to overwrite the existing mailbox, cancel,
+and type a different name for the mailbox.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -550,21 +585,23 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPNOWRITE">
-<Title> <Emphasis>ファイル名</Emphasis> に書き込めません。</Title>
+<Title>Unable to write to <Emphasis>file name</Emphasis>.</Title>
 <!--
 <location id=DTMAILHELPNOWRITE>&empty;<\location>
 -->
-<Para>[テキストに保存] 操作を実行しようとしましたが、ファイルの書き込み権がありません。</Para>
+<Para>You tried a Save As Text operation, but you don't have write permission
+for the file.</Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.32">
-<Para> ファイルのアクセス権をチェックして、可能ならば書き込み権を付与してください。
+<Para>Check the file permissions and add write
+permission if possible.
 </Para>
 </ListItem>
 <ListItem Id="HMLR.MSG.item.33">
-<Para> 別の書き込み可能なファイル名を指定して、メッセージを保存してください。
+<Para>Specify another (writeable) file name to save the message.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -572,23 +609,25 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPCLOSECOMPOSEWINDOW">
-<Title> [メール作成] ウィンドウには、</Title>
-<Para><GlossTerm Role="nogloss">ウィンドウを閉じるとなくなるテキスト、またはアタッチメントがあります。</GlossTerm>
-<GlossTerm Role="nogloss">[メール作成] ウィンドウを閉じますか?</GlossTerm></Para>
+<Title>The Compose window contains text or</Title>
+<Para><GlossTerm Role="nogloss">attachments that will be lost if the window is closed.</GlossTerm>
+<GlossTerm Role="nogloss">Close the Compose window?</GlossTerm></Para>
 <!--
 <location id=DTMAILHELPCLOSECOMPOSEWINDOW>&empty;<\location>
 -->
-<Para>テキストが入力されている状態で、[メール作成] ウィンドウを閉じようとしました。</Para>
+<Para>You tried to close the Compose window while there was text in it.
+</Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.34">
-<Para> 入力したテキストを保存しないで、[メール作成] ウィンドウを閉じるには、[了解] を選択してください。
+<Para>Choose OK to close the Compose window and any text you
+typed will not be saved.
 </Para>
 </ListItem>
 <ListItem Id="HMLR.MSG.item.35">
-<Para> [メール作成] ウィンドウに戻るには、[取消し] を選択してください。
+<Para>Choose Cancel to return to the Compose window.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -596,18 +635,18 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPNOLOADVACATION">
-<Title><GlossTerm Role="nogloss">既存の .vacation.msg ファイル</GlossTerm></Title>
-<Para>を読み込むのに十分なメモリがありません。</Para>
+<Title>There is not enough memory to load the</Title>
+<Para><GlossTerm Role="nogloss">existing .vacation.msg file.</GlossTerm></Para>
 <!--
 <location id=DTMAILHELPNOLOADVACATION>&empty;<\location>
 -->
-<Para>現在の .vacation.msg ファイルが大きすぎます。</Para>
+<Para>Your current .vacation.msg file is too large.</Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.36">
-<Para> アプリケーションをいくつか閉じてから、再び実行してください。
+<Para>Close some applications and try again.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -615,19 +654,19 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPCORRUPTVACATION">
-<Title> 既存の .vacation.msg ファイルは正しくないようです。</Title>
+<Title>The existing .vacation.msg file appears to be corrupt.</Title>
 <!--
 <location id=DTMAILHELPCORRUPTVACATION>&empty;<\location>
 -->
-<Para>ファイルは正しい場所にありますが、何か欠陥があります。
+<Para>The file is in the correct location but something is wrong with it.
 </Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.37">
-<Para> 通常はホーム・ディレクトリにあるファイルをチェックして、損傷していないことを確認してください。
-損傷している場合は、新しいファイルに置換してください。
+<Para>Check the file (usually in your home directory) to make sure
+it is not damaged. If it is, replace it with a new file.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -635,23 +674,23 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPSENDLOSEATTACH">
-<Title> 保存していない変更内容があるアタッチメントが開かれています。</Title>
-<Para><GlossTerm Role="nogloss">このメッセージをこのまま送信すると、開いているアタッチメ</GlossTerm>
-<GlossTerm Role="nogloss">ントへの接続を破壊します。保存していない変更内容は、メッ</GlossTerm>
-<GlossTerm Role="nogloss">セージの一部になりません。接続を破壊した後、[別名保存] </GlossTerm>
-<GlossTerm Role="nogloss">を使用して変更内容を保存できますが、変更内容はアタッチ</GlossTerm>
-<GlossTerm Role="nogloss">メントの一部になりません。</GlossTerm></Para>
+<Title>You have an attachment open that may have</Title>
+<Para><GlossTerm Role="nogloss">unsaved changes. Sending this message will break the</GlossTerm>
+<GlossTerm Role="nogloss">connection to the open attachment. Any unsaved changes</GlossTerm>
+<GlossTerm Role="nogloss">will not be part of the message. You can use Save As to</GlossTerm>
+<GlossTerm Role="nogloss">save changes after the connection is broken, but the changes</GlossTerm>
+<GlossTerm Role="nogloss">will not be part of the attachment.</GlossTerm></Para>
 <!--
 <location id=DTMAILHELPSENDLOSEATTACH>&empty;<\location>
 -->
-<Para>開いたアタッチメントの変更内容を保存しないで、メッセージを送信しようとしました。
-この警告は、ユーザの意図を確認するためのものです。</Para>
+<Para>You tried to send a message without saving changes in some open
+attachments. This warning makes sure that is what you intended.</Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.38">
-<Para> 送信前に、変更内容をアタッチメントに保存してください。
+<Para>Save the changes to the attachments before sending.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -659,18 +698,18 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPSELECTONEATTACH">
-<Title> アタッチメントを 1 つだけ選択し、名前の変更を選択してください。</Title>
+<Title>Select only one attachment and then choose rename.</Title>
 <!--
 <location id=DTMAILHELPSELECTONEATTACH>&empty;<\location>
 -->
-<Para>複数のアタッチメントを選択した状態で、[名前の変更] を選択しています。
+<Para>You chose Rename when you had more than one attachment selected.
 </Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.39">
-<Para> [名前の変更] を選択する前に、アタッチメントをひとつだけ選択してください。
+<Para>Select only one attachment before choosing rename.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -678,19 +717,21 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPUNKNOWNUSER">
-<Title> メッセージ内のアドレスが間違っています。</Title>
-<Para><GlossTerm Role="nogloss">システムの既知のユーザを参照できません。</GlossTerm>
-<GlossTerm Role="nogloss">すべてのアドレスが有効であることを確認してから、再実行してください。</GlossTerm></Para>
+<Title>Some of the addresses in the message are</Title>
+<Para><GlossTerm Role="nogloss">incorrect, and do not refer to any known users in the system.</GlossTerm>
+<GlossTerm Role="nogloss">Please make sure all of the addresses are valid and try again.</GlossTerm></Para>
 <!--
 <location id=DTMAILHELPUNKNOWNUSER>&empty;<\location>
 -->
-<Para>正しくないユーザ名か、システムが認識しない名前を入力した可能性があります。</Para>
+<Para>You may have typed an incorrect user name or a name that the system
+doesn't recognize.</Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.40">
-<Para> すべてのユーザ名が正しいかチェックしてください。必要ならば訂正して、メッセージを再送信してください。
+<Para>Check all of the user names for accuracy, make corrections if
+necessary, and resend the message.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -698,19 +739,18 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPNOMEMORY">
-<Title> メール・プログラムに、このメッセージを送信するのに使用できる十分なメモリがありません。</Title>
-<Para><GlossTerm Role="nogloss">他のアプリケーションを閉じてから、このメッセージを再送信してください。</GlossTerm></Para>
+<Title>Mailer does not have enough memory available to</Title>
+<Para><GlossTerm Role="nogloss">send this message. Try closing other applications and resend this message.</GlossTerm></Para>
 <!--
 <location id=DTMAILHELPNOMEMORY>&empty;<\location>
 -->
-<Para>メール・プログラムのメモリが足りません。</Para>
+<Para>Mailer ran out of memory.</Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.41">
-<Para> 他のアプリケーションをいくつか閉じてみてください。
-そうすれば、もっと多くのメモリを使用できます。
+<Para>Try closing some other applications to free up some memory.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -718,20 +758,21 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPNOSEND">
-<Title> メッセージの送信中にエラーが発生しました。</Title>
-<Para><GlossTerm Role="nogloss">メッセージが受信されていることを確認してください。</GlossTerm>
-<GlossTerm Role="nogloss">メッセージが受信されていない場合には、このメッセージを再送信してください。</GlossTerm></Para>
+<Title>An error occurred while trying to send your message.</Title>
+<Para><GlossTerm Role="nogloss">Check to make sure the message was received. If not, you may</GlossTerm>
+<GlossTerm Role="nogloss">have to resend this message.</GlossTerm></Para>
 <!--
 <location id=DTMAILHELPNOSEND>&empty;<\location>
 -->
-<Para>メール・トランスポート(sendmail)にエラーがありました。</Para>
+<Para>There was an error from the mail transport (sendmail).</Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.42">
-<Para> メール以外の何らかの方法で受信予定者に連絡して、メッセージを受信したかどうかを確認してください。
-受信していない場合は、再送信する必要があります。
+<Para>Contact the intended recipient by some means other than mail
+and ask them if they received your message. If not, you may have to
+resend.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -739,19 +780,21 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPBADGROUPID">
-<Title>メールを終了しますか?	</Title>
+<Title>Exit Mail?</Title>
 <!--
 <location id=DTMAILHELPBADGROUPID>&empty;<\location>
 -->
-<Para>メールが正しくインストールされていないようです。メールを終了して、変更しなければなりません。
+<Para>It appears that mail is installed incorrectly. You will have to
+exit mail and make some changes.
 </Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.43">
-<Para> 終了して、メール・プログラムのアクセス権を変更する必要があります。
-システム管理者が root になり、/usr/dt/bin/dtmail のアクセス権を変更してくれるはずです。
+<Para>You will need to exit and change your permissions for Mailer.
+Your system administrator should help you by becoming root
+and changing permissions in /usr/dt/bin/dtmail.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -759,17 +802,17 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPFATALERROR">
-<Title> 致命的エラーです。</Title>
-<Para>メール・プログラムが致命的(回復不能)エラーを発見しました。
+<Title>Fatal Error.</Title>
+<Para>Mailer has come across a fatal (unrecoverable) error.
 <!--
 <location id=DTMAILHELPFATALERROR>&empty;<\location>
 --></Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.44">
-<Para> システム管理者に確認してください。
+<Para>Check with your system administrator.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -777,104 +820,110 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="DTMAILHELPERROR">
-<Title> 回復可能なエラーです。</Title>
-<Para>メール・プログラムが、回復可能なエラーに遭遇しました。
+<Title>Recoverable error.</Title>
+<Para>Mailer has encountered a recoverable error.
 <!--
 <location id=DTMAILHELPERROR>&empty;<\location>
 --></Para>
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solution:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.45">
-<Para> エラー・ダイアログの説明にしたがってください。
+<Para>Follow the instructions in the error dialog.
 </Para>
-<Para><Emphasis>または</Emphasis>
+<Para><Emphasis>Or</Emphasis>
 </Para>
 </ListItem>
 <ListItem Id="HMLR.MSG.item.46">
-<Para> システム管理者に確認してください。
+<Para>Check with your system administrator.
 </Para>
 </ListItem>
 </ItemizedList>
 <!--
-<s1 id=MAILHELPUNRECOGFORMAT>このコンテナのフォーマットは、認識されません。
+<s1 id=MAILHELPUNRECOGFORMAT>The Format of This Container is Unrecognized
 <location id=DTMAILHELPUNRECOGFORMAT>&empty;<\location>
 
-<procedure>可能な解決策:
+<procedure>Possible Solution:
 
 <list bullet>
-<item>選択したメールボックスのフォーマットは、Internet または Sun Mail Tool のような認識されるものではありません。
-<item> 別のメール・コンテナ・オブジェクトを選択してください。
+<item>The  format of the selected mailbox is not one of
+the recognized formats such as Internet or Sun Mail Tool. 
+<item> Select another mail container object.
 <\list>
 
-<s1 ID=MAILHELPCANNOTINCLUDE> エラー: ファイルを取り込めません。
+<s1 ID=MAILHELPCANNOTINCLUDE> Error: Cannot include file.
 <location id=DTMAILHELPCANNOTINCLUDE>&empty;<\location>
 
-指定されたファイルをメール・メッセージに取り来むことができません。
+The file you have indicated cannot be included into the
+mail message.
 
-<procedure>可能な解決策:
+<procedure>Possible Solution:
 
 <list bullet>
-<item> 取り込もうとしたファイルが、システム・ファイルにあり、正しいことを確認してから、再び実行してください。
+<item> Make sure the file you are attempting to include is 
+in your file system and that it is not corrupt and try again. 
 <\list>
 
-<s1 id=UnableToSendTheMail>メールを送信できません。
+<s1 id=UnableToSendTheMail>Unable to Send Mail
 <location id=Err9UnableToSendTheMail>&empty;<\location>
 
-<procedure>可能な解決策:
+<procedure>Possible Solutions:
 
 <list bullet>
-<item>正しい電子メール・アドレスを入力したことを確認してください。
-<item>受信者の名前がカンマ(,)で区切られていることを確認してください。
-<item>この問題が残存する場合は、システム管理者に相談してください。
+<item>Verify that you have typed the correct email address.
+<item>Ensure that the names of the recipients are separated by a comma.
+<item>If this problem persists, contact your system administrator. 
 <\list>
 
-<s1 id=ThisIsNotAMailContainer>これはメール・コンテナではありません。
+<s1 id=ThisIsNotAMailContainer>This is Not a Mail Container
 <location id=Err12ThisIsNotAMailContainer>&empty;<\location>
 
-<procedure>可能な解決策:
+<procedure>Possible Solution:
 
 <list bullet>
-<item> 選択したメールボックスのフォーマットは、Internet-MIME または Sun Mail Tool のような認識されるものではありません。
-<item>別のメール・コンテナを選択してください。
+<item> The  format of the selected mailbox is not one of
+the recognized formats such as Internet-MIME or Sun Mail Tool. 
+<item>Select
+another mail container.
 <\list>
 -->
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="Err3InsufficientMemory">
-<Title>要求された操作に十分なメモリがありません。</Title>
+<Title>Insufficient Memory for Requested Operation</Title>
 <!-- <location id=Err3InsufficientMemory>&empty;<\location> -->
 <Procedure>
-<Title>可能な解決策:</Title>
+<Title>Possible Solutions:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HMLR.MSG.item.47">
-<Para> 実行中のアプリケーションが多すぎないことを確認してください。
+<Para>Be sure that you are not running too many applications.
 </Para>
-<Para> できれば、いくらかのシステム・メモリを開放するために、アプリケーションをいくつか閉じてください。
+<Para>Close some applications if possible in order to free up some system memory.
 </Para>
 </ListItem>
 <ListItem Id="HMLR.MSG.item.48">
-<Para> スワップ領域を増やしてください。
-スワップ領域の増加方法がわからない場合は、システム管理者に相談してください。
+<Para>Increase swap space. If you do not know how to increase swap
+space, contact your system administrator.
 </Para>
 </ListItem>
 </ItemizedList>
-<Para><OLink Type="Jump" LocalInfo="Intromgr OpenWindowTA">アプリケーション・ウィンドウを開く、および閉じるには</OLink>を参照してください。
+<Para>See <OLink Type="Jump" LocalInfo="Intromgr OpenWindowTA">To Open and Close an Application Window</OLink>
 <!--
-<s1 id=MAILHELPNOMAILRC> .mailrc を参照できません。
+<s1 id=MAILHELPNOMAILRC> Unable to Get .mailrc
 <location id=DTMAILHELPNOMAILRC>&empty;<\location>
 
-<procedure>可能な解決策:
+<procedure>Possible Solution:
 
 <list bullet>
-<item>ホーム・ディレクトリに .mailrc ファイルがあることを確認してください。
-<item>.mailrc ファイルに適切なエントリがあることを確認してください。
-<item>.mailrc ファイルに何を記述すべきかよくわからない場合は、システム管理者に相談してください。
+<item>Make sure the .mailrc file is in your home directory.
+<item>Ensure the .mailrc file has proper entries in it.
+<item>Contact your system administrator if you are not sure of what
+should be in the .mailrc file.
 <\list>
---><!-- EOF: メッセージ --></Para>
+--><!-- EOF: Messages --></Para>
 </Step>
 </Procedure>
 </Sect1>

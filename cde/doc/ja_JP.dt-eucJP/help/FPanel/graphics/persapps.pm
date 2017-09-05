@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: persapps.pm /main/3 1996/12/18 01:43:04 cde-hit $ */
+/* $XConsortium: fpapps.pm /main/3 1995/07/18 17:32:29 drk $ */
 /*********************************************************************
 *  (c) Copyright 1993, 1994 Hewlett-Packard Company	
 *  (c) Copyright 1993, 1994 International Business Machines Corp.

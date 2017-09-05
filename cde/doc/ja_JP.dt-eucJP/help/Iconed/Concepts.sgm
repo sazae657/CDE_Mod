@@ -1,4 +1,4 @@
-<!-- $XConsortium: Concepts.sgm /main/5 1996/12/18 01:54:18 cde-hit $ -->
+<!-- $XConsortium: Concepts.sgm /main/8 1996/09/08 22:26:48 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,132 +9,147 @@
 <!-- Help volume: Iconed   -->
 <!-- File name:   Concepts -->
 <Chapter Id="Concepts">
-<Title>アイコン・エディタの概念</Title>
+<Title>Icon Editor Concepts</Title>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HICND.CNCP.item.1">
-<Para> <XRef Linkend="UsingIconEditorSI"></Para>
+<Para><XRef Linkend="UsingIconEditorSI"></Para>
 </ListItem>
 <ListItem Id="HICND.CNCP.item.2">
-<Para> <XRef Linkend="IconDesignRecommendationsSI"></Para>
+<Para><XRef Linkend="IconDesignRecommendationsSI"></Para>
 </ListItem>
 <ListItem Id="HICND.CNCP.item.3">
-<Para> <XRef Linkend="IconFileNameConventionsSI"></Para>
+<Para><XRef Linkend="IconFileNameConventionsSI"></Para>
 </ListItem>
 </ItemizedList>
 <Sect1 Id="UsingIconEditorSI">
-<Title>アイコン・エディタを開始する</Title>
+<Title>Getting Started with Icon Editor</Title>
 <IndexTerm>
-<Primary>使い方: アイコン・エディタ</Primary>
+<Primary>using: Icon Editor</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>アイコン・エディタ: 使い方</Primary>
+<Primary>Icon Editor: using</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>編集: アイコン</Primary>
+<Primary>editing: icons</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>アイコン: 編集</Primary>
+<Primary>icons: editing</Primary>
 </IndexTerm>
-<Para>アイコン・エディタは、2 種類の形式のイメージを作成および編集できます。
+<Para>Icon Editor enables you to create and edit images in two formats:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HICND.CNCP.item.4">
-<Para> <Emphasis>Ｘピックスマップ (XPM 形式)</Emphasis> -- 静的および動的カラーを格納するマルチカラー・イメージです。
-   ピックスマップ・ファイルは通常<ComputerOutput>.pm</ComputerOutput>というファイル名拡張子で識別できます。</Para>
+<Para><Emphasis>X pixmap (XPM format)</Emphasis> -- Multicolor images that include static
+and dynamic colors. Pixmap files are normally identified by a <ComputerOutput>.pm</ComputerOutput>
+file-name extension.</Para>
 </ListItem>
 <ListItem Id="HICND.CNCP.item.5">
-<Para> <Emphasis>Ｘビットマップ (XBM 形式)</Emphasis> -- 白黒イメージです。ビットマップ・ファイルは通常<ComputerOutput>.bm</ComputerOutput>というファイル名拡張子で識別できます。</Para>
+<Para><Emphasis>X bitmap (XBM format)</Emphasis> -- Black-and-white images. Bitmap files
+are normally identified by a <ComputerOutput>.bm</ComputerOutput> file-name extension.</Para>
 </ListItem>
 </ItemizedList>
-<Para>ツールとカラーを選択してイメージを描画し、作業領域に描画します。
-描画するにつれて、アイコン・エディタは、アイコンの実際のサイズのコピーを両方の形
-式で表示します。
-カラー・システム上で使用するイメージを描画する場合でも、白黒バージョンが読み込めるようにしなければなりません。
-何故ならば、フルカラー・バージョンを表示するのに使用可能な色が十分にない場合に、アイコンはビットマップ形式に戻されるからです。</Para>
+<Para>You draw images by selecting a tool and a color, and then drawing in the work
+area. As you draw, Icon Editor displays an actual-size copy of your icon
+in both formats. Even if you are drawing an image for use on color
+systems, you should be sure the black and white version is legible because
+icons may revert to the bitmap format if there are not enough free colors
+to display the full color version.</Para>
 </Sect1>
 <Sect1 Id="IconDesignRecommendationsSI">
-<Title>アイコン設計の推奨事項</Title>
-<Para>関連するアイコン間で共通のテーマを使用するようにしてください。
-たとえば、アプリケーションのアイコンを設計する場合には、アプリケーションのアイコンと関連データ・ファイルに用途に適した同一性を持たせるようにしてください。</Para>
-<Para>設計するカラー・アイコンが白黒バージョンを必ず受け入れるようにしてください。
-アイコンをモノクロ・ディスプレイまたはグレースケール・ディスプレイで表示する場合に、アイコンは自動的に白黒形式で表示されます。</Para>
+<Title>Icon Design Recommendations</Title>
+<Para>Try to use a common theme among related icons. For example, if you are
+designing icons for an application, have purposeful similarities between
+the application's icon and icons for related data files.</Para>
+<Para>Be sure the black-and-white version of any color icon you design is acceptable.
+If the icon is displayed on a monochrome or grayscale display (or if there
+are not enough colors available), the icon is automatically displayed in
+its black-and-white form.</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HICND.CNCP.item.6">
-<Para> <XRef Linkend="ColorManagementAndUsageSI"></Para>
+<Para><XRef Linkend="ColorManagementAndUsageSI"></Para>
 </ListItem>
 <ListItem Id="HICND.CNCP.item.7">
-<Para> <XRef Linkend="IconSizeRecommendationsSI"></Para>
+<Para><XRef Linkend="IconSizeRecommendationsSI"></Para>
 </ListItem>
 </ItemizedList>
 <Sect2 Id="ColorManagementAndUsageSI">
-<Title>カラーの使い方</Title>
+<Title>Color Usage</Title>
 <IndexTerm>
-<Primary>カラー: アイコン内の使い方</Primary>
+<Primary>color: usage in icons</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>アイコン: カラーの使い方</Primary>
+<Primary>icons: color usage</Primary>
 </IndexTerm>
-<Para>デスクトップのアイコンは 22 色のパレットを使用します。
+<Para>Icons in the desktop use a palette of 22 colors:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HICND.CNCP.item.8">
-<Para> 8 色のグレー
- </Para>
+<Para>Eight static grays
+</Para>
 </ListItem>
 <ListItem Id="HICND.CNCP.item.9">
-<Para> 8 色のカラー:  赤、青、緑、シアン、マゼンダ、黄、黒、白
- </Para>
+<Para>Eight static colors: red, blue, green, cyan, magenta, yellow, black,
+and white
+</Para>
 </ListItem>
 <ListItem Id="HICND.CNCP.item.10">
-<Para> 6 色のダイナミックカラー: フォアグラウンド、バックグラウンド、トップ・シャドウ、ボトム・シャドウ、選択、透明
+<Para>Six dynamic colors: foreground, background, top shadow, bottom shadow,
+select, and transparent
 </Para>
 </ListItem>
 </ItemizedList>
-<Para>このパレットは、魅力的な読み易いアイコンを作成するには十分で、他のアプリケーションで必要なカラーのリソースを用いることはないはずです。
-デスクトップが提供するアイコンは、大部分のグレーをアクセント用カラーとして使用します。</Para>
-<Para>ダイナミックカラーは、スタイル・マネージャ内で別のカラー・パレットが選択された場合に、カラーが変わるアイコンを作成するのに便利です。</Para>
-<Para>透明カラーは、矩形なしの像のアイコンを作成するのに使用し、アイコンの後ろの色が透けて見えるようにします。</Para>
+<Para>This palette is rich enough to create attractive, easy-to-read icons
+without taking too many color resources that may be needed by other
+applications.
+Icons provided with the desktop use mostly grays with color for accent.</Para>
+<Para>The dynamic colors are useful for icons that change color as different
+color palettes are selected in Style Manager.</Para>
+<Para>The transparent color is useful for creating icons that have the
+illusion of being nonrectangular, since it allows the color behind
+the icon to show through.</Para>
 </Sect2>
 <Sect2 Id="IconSizeRecommendationsSI">
-<Title>アイコン・サイズの推奨事項</Title>
+<Title>Icon Size Recommendations</Title>
 <IndexTerm>
-<Primary>アイコン: サイズの推奨事項</Primary>
+<Primary>icons: size recommendations</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>サイズ: アイコン</Primary>
+<Primary>size: icons</Primary>
 </IndexTerm>
-<Para>以下は、新規アイコンを作成する際の推奨サイズ(ピクセル単位、幅&times;高さ)です。</Para>
-<Para>ファイル・マネージャ (大):
+<Para>Following are the recommended sizes -- in pixels, width&times;height -- for
+creating new icons.</Para>
+<Para>File Manager (Large):
 </Para>
-<Para Role="indent">	高解像度:32&times;32&newline;中解像度:32&times;32&newline;低解像度:32&times;32</Para>
-<Para>ファイル・マネージャ (小):
+<Para Role="indent">High resolution: 32&times;32&newline;Medium resolution:32&times;32&newline;Low resolution: 32&times;32</Para>
+<Para>File Manager (Small):
 </Para>
-<Para Role="indent">	高解像度:16&times;16&newline;中解像度:16&times;16&newline;低解像度:16&times;16</Para>
-<Para>アプリケーション・マネージャ (大):
+<Para Role="indent">High resolution: 16&times;16&newline;Medium resolution:16&times;16&newline;Low resolution: 16&times;16</Para>
+<Para>Application Manager (Large):
 </Para>
-<Para Role="indent">	高解像度:32&times;32&newline;中解像度:32&times;32&newline;低解像度:32&times;32</Para>
-<Para>アプリケーション・マネージャ (小):
+<Para Role="indent">High resolution: 32&times;32&newline;Medium resolution:32&times;32&newline;Low resolution: 32&times;32</Para>
+<Para>Application Manager (Small):
 </Para>
-<Para Role="indent">	高解像度:16&times;16&newline;中解像度:16&times;16&newline;低解像度:16&times;16</Para>
-<Para>フロントパネル:
+<Para Role="indent">High resolution: 16&times;16&newline;Medium resolution:16&times;16&newline;Low resolution: 16&times;16</Para>
+<Para>Front Panel:
 </Para>
-<Para Role="indent">	高解像度:48&times;48&newline;中解像度:48&times;48&newline;低解像度:32&times;32</Para>
-<Para>フロントパネルのサブパネル:
+<Para Role="indent">High resolution: 48&times;48&newline;Medium resolution:48&times;48&newline;Low resolution: 32&times;32</Para>
+<Para>Front Panel Subpanels:
 </Para>
-<Para Role="indent">	高解像度:32&times;32&newline;中解像度:32&times;32&newline;低解像度:16&times;16</Para>
-<Para>アイコン化ウィンドウ:
+<Para Role="indent">High resolution: 32&times;32&newline;Medium resolution:32&times;32&newline;Low resolution: 16&times;16</Para>
+<Para>Minimized Windows:
 </Para>
-<Para Role="indent">	高解像度:48&times;48&newline;中解像度:48&times;48&newline;低解像度:32&times;32</Para>
-<Para>デスクトップ:
+<Para Role="indent">High resolution: 48&times;48&newline;Medium resolution:48&times;48&newline;Low resolution: 32&times;32</Para>
+<Para>Desktop:
 </Para>
-<Para Role="indent">	高解像度:32&times;32&newline;中解像度:32&times;32&newline;低解像度:32&times;32</Para>
-<Para>背景イメージは任意のサイズにできます。パターンはワークスペース全体を埋めるまで繰り返されます。</Para>
+<Para Role="indent">High resolution: 32&times;32&newline;Medium resolution:32&times;32&newline;Low resolution: 32&times;32</Para>
+<Para>Backdrop images can be any size. The pattern is repeated to fill the
+entire workspace.</Para>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HICND.CNCP.item.11">
-<Para> <XRef Linkend="ToResizeTheCurrentIconTA"></Para>
+<Para><XRef Linkend="ToResizeTheCurrentIconTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
@@ -142,149 +157,161 @@
 </Sect2>
 </Sect1>
 <Sect1 Id="IconFileNameConventionsSI">
-<Title>アイコン・ファイル - 命名規則</Title>
+<Title>Icon File-Name Conventions</Title>
 <IndexTerm>
-<Primary>アイコン: ファイルの見つけ方</Primary>
+<Primary>icons: how files are found</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>イメージ・ファイル: アイコンを参照</Primary>
+<Primary>image files: see icons</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>アイコン: 命名規則</Primary>
+<Primary>icons: naming conventions</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary><ComputerOutput>.pm</ComputerOutput> ファイル名</Primary>
+<Primary><ComputerOutput>.pm</ComputerOutput> file-name</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary><ComputerOutput>.bm</ComputerOutput> ファイル名</Primary>
+<Primary><ComputerOutput>.bm</ComputerOutput> file-name</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ビットマップ: ファイルの見つけ方</Primary>
+<Primary>bitmaps: how files are found</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ピックスマップ: ファイルの見つけ方</Primary>
+<Primary>pixmaps: how files are found</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>規則, イメージ・ファイルの命名</Primary>
+<Primary>conventions, image file naming</Primary>
 </IndexTerm>
-<Para>各アイコンと背景イメージは、別のファイルに格納されます。
-一般にアイコンには、ファイル名の基本部分のみを指定します。
-たとえば、ファイルが実際には以下の例に格納されている場合でも、アイコンは<ComputerOutput>mail</ComputerOutput>という名前だけで参照されます。</Para>
+<Para>Each icon and backdrop image is stored as a separate file.
+Typically, an
+icon is specified with just the base part of its file name. For example,
+an icon might be referenced with just the name <ComputerOutput>mail</ComputerOutput> when the file is
+actually stored as:</Para>
 <ProgramListing>/usr/dt/appconfig/icons/<Symbol Role="Variable">language</Symbol>/mail.l.pm</ProgramListing>
-<Para>接尾辞を追加するファイル名の命名規則は、サイズと型によってアイコンをグループ化するのに役立ちます。
-デスクトップ・コンポーネントでは、大部分のアイコン名が以下の一般形式で命名されています。</Para>
+<Para>The file-naming convention of adding suffixes helps group icons by size and
+type. For desktop components, many icon names are in these general
+formats:</Para>
 <ProgramListing><Symbol Role="Variable">basename</Symbol>.<Symbol Role="Variable">size</Symbol>.<Symbol Role="Variable">format</Symbol>
 <Symbol Role="Variable">basename</Symbol>.<Symbol Role="Variable">format</Symbol>
 </ProgramListing>
-<Para>ここでは、<Symbol Role="Variable">basename</Symbol> は、イメージを参照するのに使用するイメージ名です。
-<Symbol Role="Variable">size</Symbol>は、アイコン・サイズを示す 1 文字です。
-<Symbol Role="Variable">format</Symbol>は、Ｘピックスマップのとき<ComputerOutput>pm</ComputerOutput>、Ｘビットマップのとき<ComputerOutput>bm</ComputerOutput>です。</Para>
-<Para>有効なアイコン・サイズを以下に示します。</Para>
+<Para>where <Symbol Role="Variable">basename</Symbol> is the image name used to reference the image, <Symbol Role="Variable">size</Symbol>
+is a single letter indicating the icon size, and
+<Symbol Role="Variable">format</Symbol> is <ComputerOutput>pm</ComputerOutput> for X pixmaps or <ComputerOutput>bm</ComputerOutput> for X bitmaps.</Para>
+<Para>The valid icon sizes are:</Para>
 <VariableList>
 <VarListEntry>
-<Term>名前	    </Term>
+<Term>Name</Term>
 <ListItem>
-<Para> サイズ	     接尾辞
+<Para>Size Suffix
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>極小(Tiny) </Term>
+<Term>Tiny</Term>
 <ListItem>
-<Para> 16&times;16    <Symbol Role="Variable">t</Symbol>
+<Para>16&times;16 <Symbol Role="Variable">t</Symbol>
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>小(Small)  </Term>
+<Term>Small</Term>
 <ListItem>
-<Para> 24&times;24    <Symbol Role="Variable">s</Symbol>
+<Para>24&times;24 <Symbol Role="Variable">s</Symbol>
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>中(Medium) </Term>
+<Term>Medium</Term>
 <ListItem>
-<Para> 32&times;32    <Symbol Role="Variable">m</Symbol>
+<Para>32&times;32 <Symbol Role="Variable">m</Symbol>
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>大(Large)  </Term>
+<Term>Large</Term>
 <ListItem>
-<Para> 48&times;48    <Symbol Role="Variable">l</Symbol>
+<Para>48&times;48 <Symbol Role="Variable">l</Symbol>
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
-<Para>たとえば、書き込んだファイルタイプの<ComputerOutput>mail</ComputerOutput>というアイコンを指定すると仮定します。
-カラー・ディスプレイを用いて、ファイル・マネージャの優先を小型アイコンを使用するように設定する場合、アイコン名は<ComputerOutput>mail.s.pm</ComputerOutput>になります。
-(<ComputerOutput>s</ComputerOutput>は小型アイコン、<ComputerOutput>pm</ComputerOutput>はカラー・アイコンの<Emphasis>ピックスマップ</Emphasis>形式を表します。)</Para>
+<Para>For example, suppose you specify an icon named <ComputerOutput>mail</ComputerOutput> for a file type
+you've written. If you have a color display and have set the File Manager
+preferences to use small icons, the assumed icon name is <ComputerOutput>mail.s.pm</ComputerOutput>
+(the <ComputerOutput>s</ComputerOutput> represents small, and <ComputerOutput>pm</ComputerOutput> is for <Symbol Role="Variable">pixmap</Symbol>, the color
+icon format).</Para>
 <Procedure>
-<Title>検索パス</Title>
+<Title>Search Paths</Title>
 <Step>
-<Para>イメージを格納しているディレクトリは、ディレクトリのリストにあるファイルを探して決定されます。このディレクトリのリストは、アイコンの"検索パス"で定義されます。</Para>
-<Para>カラー・ディスプレイーを使用する場合は、デスクトップは最初に、<ComputerOutput>.pm</ComputerOutput>で終わるファイル名を検索します。
-それ以外の場合は、<ComputerOutput>.bm</ComputerOutput>で終わるファイル名を探します。</Para>
-<Para>イメージを完全パス名で指定した場合は、検索パスは使用しません。</Para>
+<Para>The directory where an image is stored is determined by searching for the
+file in a list of directories. This list of directories is defined
+by a "search path" for icons.</Para>
+<Para>If you are using a color display, the desktop searches for files ending
+in <ComputerOutput>.pm</ComputerOutput> first. Otherwise, it looks for files ending in <ComputerOutput>.bm</ComputerOutput>.</Para>
+<Para>If an image is specified with a complete path name, the search
+path is not used.</Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HICND.CNCP.item.12">
-<Para> <XRef Linkend="IconSearchPathsSI"> は、検索パス指定をリストします。
+<Para><XRef Linkend="IconSearchPathsSI"> lists the search path specifications.
 </Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Sect2 Id="StoringIconFilesTO">
-<Title>アイコン・ファイルの格納</Title>
+<Title>Storing Icon Files</Title>
 <IndexTerm>
-<Primary>アイコン・ファイルの格納</Primary>
+<Primary>storing icon files</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>アイコン・ファイル: 格納</Primary>
+<Primary>icon file: storing</Primary>
 </IndexTerm>
-<Para>デフォルトでは、デスクトップ・コンポーネントは、アイコンを以下のディレクトリで探します。
-
+<Para>By default, the desktop components look in these directories for icon files:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HICND.CNCP.item.13">
-<Para> 個人用アイコン: <ComputerOutput>/<Symbol Role="Variable">HomeDirectory</Symbol>/.dt/icons</ComputerOutput></Para>
+<Para>Personal icons: <ComputerOutput>/<Symbol Role="Variable">HomeDirectory</Symbol>/.dt/icons</ComputerOutput></Para>
 </ListItem>
 <ListItem Id="HICND.CNCP.item.14">
-<Para> システム全体用アイコン: <ComputerOutput>/etc/dt/appconfig/icons/<Symbol Role="Variable">language</Symbol></ComputerOutput></Para>
+<Para>System-wide icons: <ComputerOutput>/etc/dt/appconfig/icons/<Symbol Role="Variable">language</Symbol></ComputerOutput></Para>
 </ListItem>
 <ListItem Id="HICND.CNCP.item.15">
-<Para> 組み込みアイコン: <ComputerOutput>/usr/dt/appconfig/icons/<Symbol Role="Variable">language</Symbol></ComputerOutput></Para>
+<Para>Built-in icons: <ComputerOutput>/usr/dt/appconfig/icons/<Symbol Role="Variable">language</Symbol></ComputerOutput></Para>
 </ListItem>
 </ItemizedList>
-<Para>英語アイコンには、<Symbol Role="Variable">言語</Symbol>は<ComputerOutput>C</ComputerOutput>を使用してください。</Para>
+<Para>For English icons, use <ComputerOutput>C</ComputerOutput> for <Symbol Role="Variable">language</Symbol>.</Para>
 </Sect2>
 <Sect2 Id="StoringBackdropImageFilesTO">
-<Title>背景イメージ・ファイルの格納</Title>
+<Title>Storing Backdrop Image Files</Title>
 <IndexTerm>
-<Primary>背景: 背景イメージ・ファイルの格納</Primary>
+<Primary>backdrop: storing backdrop image files</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>イメージ・ファイル: 背景の格納</Primary>
+<Primary>image file: storing backdrop</Primary>
 </IndexTerm>
-<Para>各背景は、イメージ・ファイルを表すスタイル・マネージャの [背景] ダイアログ・ボックスをリストしています。
-デフォルトでは、スタイル・マネージャは以下のディレクトリで背景を探します。
+<Para>Each backdrop listed in the Style Manager Backdrop dialog box represents
+an image file. By default, Style Manager looks for backdrops in these
+directories:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HICND.CNCP.item.16">
-<Para> システム全体用イメージ: <ComputerOutput>/etc/dt/appconfig/backdrops/<Symbol Role="Variable">language</Symbol></ComputerOutput></Para>
+<Para>System-wide images: <ComputerOutput>/etc/dt/appconfig/backdrops/<Symbol Role="Variable">language</Symbol></ComputerOutput></Para>
 </ListItem>
 <ListItem Id="HICND.CNCP.item.17">
-<Para> 組み込みイメージ: <ComputerOutput>/usr/dt/backdrops/<Symbol Role="Variable">language</Symbol></ComputerOutput></Para>
+<Para>Built-in images: <ComputerOutput>/usr/dt/backdrops/<Symbol Role="Variable">language</Symbol></ComputerOutput></Para>
 </ListItem>
 </ItemizedList>
-<Para>すべてのシステム・ユーザがアクセスできる新規背景イメージを作成する場合は、背景イメージを<ComputerOutput>/etc/dt/appconfig/backdrops/<Symbol Role="Variable">language</Symbol></ComputerOutput>ディレクトリに入れてください。
-特定のユーザに背景へのアクセスを制限するには、背景イメージを別のディレクトリに入れて、ユーザの<ComputerOutput>*backdropDirectories</ComputerOutput>リソースにそのディレクトリを追加してください。</Para>
+<Para>If you create a new backdrop image that you want all system users to
+be able to access,
+place the backdrop image in <ComputerOutput>/etc/dt/appconfig/backdrops/<Symbol Role="Variable">language</Symbol></ComputerOutput>.
+To restrict access to a backdrop image to particular users, put the
+backdrop image in a different directory and add that directory to
+the <ComputerOutput>*backdropDirectories</ComputerOutput> resource for those users.</Para>
 <!-- EOF: Concepts -->
 </Sect2>
 </Sect1>

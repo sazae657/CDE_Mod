@@ -1,4 +1,4 @@
-<!-- $XConsortium: Ref.sgm /main/1 1996/12/18 02:22:11 cde-hit $ -->
+<!-- $XConsortium: Ref.sgm /main/3 1996/10/30 19:04:05 rws $ -->
 <!-- (c) Copyright 1996 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1996 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1996 International Business Machines Corp. -->
@@ -9,74 +9,63 @@
 <!-- Help volume: PrnSetup -->
 <!-- File name:   Reference -->
 <Chapter Id="PrinterInfoBox">
-<Title><Anchor Id="PrinterInfo">[プリンタの情報] ダイアログ・ボックス</Title>
-<para>
-[プリンタの情報] ダイアログ・ボックスは、現在選択されているプリンタに関する
-詳細な説明を提供します。
-ユーザは [印刷] ダイアログ・ボックスと [他のプリンタ] ダイアログ・ボックスの
-どちらからでも、このダイアログ・ボックスにアクセスできます。
+<Title><Anchor Id="PrinterInfo">Printer Information Dialog Box</Title>
+<para>The Printer Information dialog box provides a detailed description
+of the currently selected printer. You can access it from either the print
+dialog box or the More Printers dialog box.
 </para>
 <Graphic Entityref="PrintInfo" Id="HLIBDTPRI.REF.fig.1"></Graphic>
-<para>
-プリンタの説明を表示し終わって、前のウィンドウに戻るには、[了解] をクリック
-してください。
+<para>After viewing the printer description, click Ok to return to your
+previous window.
 </para>
-<para>
-[ヘルプ] ボタンを押すと、[プリンタの情報] ダイアログ・ボックスの使い方に関する
-ヘルプが、表示されます。
+<para>The Help button displays help on how to use the
+Printer Information dialog box.
 </para>
 </Chapter>
 <Chapter Id="PrinterSelectBox">
-<Title><Anchor Id="SelectPrinter">[他のプリンタ] ダイアログ・ボックス</Title>
-<Para>
-[他のプリンタ] ダイアログ・ボックスは、選択可能なプリンタのリストを提供
-します。
+<Title><Anchor Id="SelectPrinter">More Printers Dialog Box</Title>
+<Para>The More Printers dialog box provides a list of the available printers.
 </Para>
 <Graphic Entityref="PrinterSelect" Id="HLIBDTPRI.REF.fig.2"></Graphic>
-<para>
-リストからプリンタを選択するには、その名前をクリックしてから、[了解] ボタン
-をクリックしてください。
-[他のプリンタ] ダイアログを閉じて、[印刷] ダイアログ・ボックスへ戻ります。
-前に選択されたプリンタ(あれば)が、ここで選択されたプリンタに置き換わります。
+<para>To select a printer from the list, click on its name and then
+click the Ok button. The More Printers dialog closes and you
+are returned to the print dialog box, with the selected printer
+replacing the previous selection (if any).
 </para>
-<para>
-[他のプリンタ] ダイアログ・ボックスには、以下のボタンがあります。
+<para>The More Printers dialog box contains the following buttons:
 </para>
 <VariableList>
 <VarListEntry>
-<Term>了解</Term>
+<Term>Ok</Term>
 <ListItem>
-<Para>
-選択されたプリンタを現在の選択として確立し、[印刷] ダイアログ・ボックスへ
-戻ります。
+<Para>Establishes the selected printer as the current selection and returns you
+to the print dialog box.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>情報...</Term>
+<Term>Info...</Term>
 <ListItem>
-<Para>
-[プリンタの情報] ダイアログ・ボックスを表示します。そこには、
-現在強調表示されているプリンタの、詳細な説明が表示されます。
-<XRef Linkend="PrinterInfoBox">を参照してください。
-説明を表示し終わったあと、[他のプリンタ] ダイアログ・ボックスへ戻るには、
-[了解] をクリックしてください。
+<Para>Displays the Printer Information dialog box, showing a detailed
+description of the currently highlighted printer. See
+<XRef Linkend="PrinterInfoBox">. After viewing the description, click
+Ok to return to the More Printers dialog box.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>取消し</Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para>
-プリンタの選択操作を取り消して、[印刷] ダイアログ・ボックスへ戻ります。
+<Para>Cancels the printer selection operation and returns you to the
+print dialog box.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ヘルプ</Term>
+<Term>Help</Term>
 <ListItem>
-<Para>
-[他のプリンタ] ダイアログ・ボックスに関する、ヘルプ情報を表示します。
+<Para>Displays help information about the
+More Printers dialog box.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -84,99 +73,83 @@
 </Chapter>
 <Chapter Id="FileSelectBox">
 <Title><Anchor Id="SelectFile">File Selection Dialog Box</Title>
-<Para>
-[ファイルの選択] ダイアログ・ボックスによって、ユーザは、印刷の出力を
-格納するファイルを、ディレクトリ構造をブラウズすることによって
-選択できます。ユーザは、新しいファイルと既存のファイルの両方を、
-選択できます。
+<Para>The File Selection dialog box allows you to select a
+print output file by browsing through the directory
+structure. You can select either a new or existing file.
 </para>
 <Graphic Entityref="FileSelect" Id="HLIBDTPRI.REF.fig.3"></Graphic>
-<para>
-ファイルを指定したら、[了解] ボタンをクリックしてください。
-[ファイルの選択] ダイアログが閉じて、[印刷] ダイアログ・ボックスへ
-戻ります。前に選択されたファイルが、ここで選択されたファイルに
-置き換わります。
+<para>After specifying the file, click the Ok button.
+The File Selection dialog closes and you
+are returned to the print dialog box, with the selected file
+replacing the previous selection.
 </para>
 <VariableList>
 <VarListEntry>
-<Term>パスまたはフォルダ名を入力</Term>
+<Term>Enter path or folder name</Term>
 <ListItem>
-<Para>
-現在のフォルダのパス名を、識別します。
+<Para>Identifies the path name of the current folder.</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Filter</Term>
+<ListItem>
+<Para>An asterisk (*) shows all files. You can enter
+wildcard characters to display only those files that
+match an extension. For example, *.ps lists
+only those files with a .ps extension.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>フィルタ</Term>
+<Term>Files</Term>
 <ListItem>
-<Para>
-アスタリスク(*)を指定すると、すべてのファイルを表示します。
-ユーザはまた、ある拡張子にマッチしたファイルだけを表示するように、
-ワイルドカード文字を入力できます。例えば、*.psを入力すると、
-.psという拡張子のついたファイルのみ、リストされます。
+<Para>Lists files located in the current folder.</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Folders</Term>
+<ListItem>
+<Para>Lists folders located in the current folder. You can select a file in the
+current folder, a subfolder, or a different folder.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ファイル</Term>
+<Term>Enter a file name</Term>
 <ListItem>
-<Para>
-現在のフォルダに配置されているファイルを、リストします。
+<Para>Displays the file name selected in the Files list.
+Press Return or click Ok to select the file. Or,
+you can type the name of the file you want to select.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>フォルダ</Term>
+<Term>OK</Term>
 <ListItem>
-<Para>
-現在のフォルダに配置されているフォルダを、リストします。
-ユーザは、現在のフォルダ、サブフォルダ、異なったフォルダの中のファイルを、
-選択できます。
-</Para>
-</ListItem>
-</VarListEntry>
-<VarListEntry>
-<Term>ファイル名を入力</Term>
-<ListItem>
-<Para>
-[ファイル] リストで選択されたファイル名を、表示します。
-ファイルを選択するには、<Keycap>リターン</Keycap>を押すか、[了解] を
-クリックしてください。または、選択したいファイルの名前を入力する
-こともできます。
-</Para>
-</ListItem>
-</VarListEntry>
-<VarListEntry>
-<Term>了解</Term>
-<ListItem>
-<Para>
-選択されたファイルを現在の選択として確立し、[印刷] ダイアログ・ボックス
-へ戻ります。
+<Para>Establishes the selected file as the current selection and returns you
+to the print dialog box.
 </para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>更新</Term>
+<Term>Update</Term>
 <ListItem>
-<Para>
-フィルタ・キーを変更したり新しいフォルダへ移動したあとに、
-新しいファイルのリストを表示します。
+<Para>Displays a new list of files after
+changing the filter key or changing to a new folder.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>取消し</Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para>
-ファイルの選択操作を、取り消します。
-</Para>
+<Para>Cancels the file selection operation.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ヘルプ</Term>
+<Term>Help</Term>
 <ListItem>
-<Para>
-[ファイルの選択] ダイアログ・ボックスに関するヘルプ情報を、表示します。
+<Para>Displays help information about the
+File Selection dialog box.
 </Para>
 </ListItem>
 </VarListEntry>

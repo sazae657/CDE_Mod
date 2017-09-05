@@ -1,4 +1,4 @@
-<!-- $XConsortium: Ref.sgm /main/1 1996/12/18 01:58:03 cde-hit $ -->
+<!-- $XConsortium: Ref.sgm /main/15 1996/12/06 16:33:51 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,9 +9,9 @@
 <!-- Help volume: Information Manager -->
 <!-- File name: Reference -->
 <Chapter Id="Reference">
-<Title>インフォメーション・マネージャのリファレンス</Title>
+<Title id="dtinfo.booklist.on-reference">Information Manager Reference</Title>
 <Procedure>
-<Title>インフォメーション・マネージャのウィンドウ</Title>
+<Title>Information Manager Windows</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.1">
@@ -48,7 +48,7 @@
 <Para><XRef Linkend="IMGraphicalMapWindow"></Para>
 </ListItem>
 <ListItem Id="HINFO.REF.item.12">
-<Para><Xref Linkend="IMUserMarksListWindow"></Para>
+<Para><XRef Linkend="IMUserMarksListWindow"></Para>
 </ListItem>
 <ListItem Id="HINFO.REF.item.13">
 <Para><XRef Linkend="IMPreferencesWindow"></Para>
@@ -58,7 +58,7 @@
 </Procedure>
 
 <Procedure>
-<Title>[ブックリスト] ウィンドウのメニュー</Title>
+<Title>Book List Window Menus</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.14">
@@ -82,7 +82,7 @@
 </Procedure>
 
 <Procedure>
-<Title>[閲覧] ウィンドウのメニュー</Title>
+<Title>Reading Window Menus</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.19">
@@ -111,7 +111,7 @@
 </Procedure>
 
 <Procedure>
-<Title>[分離グラフィック] ウィンドウのメニュー</Title>
+<Title>Detached Graphic Window Menus</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.26">
@@ -128,7 +128,7 @@
 </Procedure>
 
 <Procedure>
-<Title>インフォメーション・マネージャのダイアログ・ボックス</Title>
+<Title>Information Manager Dialog Boxes</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.29">
@@ -160,7 +160,7 @@
 </Procedure>
 
 <Procedure>
-<Title>概括的なリファレンス</Title>
+<Title>General Reference</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.37">
@@ -206,26 +206,26 @@
 <!--############################################-->
 
 <Sect1 Id="IMBookListWindow">
-<Title><anchor id="dtinfo.booklist.win">[ブックリスト] ウィンドウ</Title>
-<IndexTerm><Primary SortAs="ぶっくりすと・うぃんどう">[ブックリスト] ウィンドウ</Primary></IndexTerm>
-<para>インフォメーション・マネージャで参照可能な情報のリストを表示するには、
-[ブックリスト] ウィンドウを使用してください。
-[ブックリスト] ウィンドウを用いて、ユーザは以下のことができます。
+<Title><anchor id="dtinfo.booklist.win">Book List Window</Title>
+<IndexTerm><Primary SortAs="book list window">Book List Window</Primary></IndexTerm>
+<para>Use the Book List window to display a list of the information
+available in the Information Manager. With the Book List window, you
+can:
 </para>
 <itemizedlist>
 <listitem>
-<para>リストを展開および縮退します。</para>
+<para>Expand and contract the list.</para>
 </listitem>
 <listitem>
-<para>情報を表示します。</para>
+<para>Display information.</para>
 </listitem>
 <listitem>
-<para>情報を印刷します。</para>
+<para>Print information.</para>
 </listitem>
 </itemizedlist>
 <Graphic Entityref="BookListWindow" Id="HINFO.REF.fig.1"></Graphic>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <itemizedlist>
 <ListItem Id="HINFO.REF.item.49">
@@ -256,57 +256,56 @@
 <!--###############################################-->
 
 <Sect2 Id="IMBookListWindowToolBar">
-<Title>[ブックリスト] ウィンドウのツール・バー</Title>
-<IndexTerm><Primary SortAs="ぶっくりすと・うぃんどうのつーる・ばー">[ブックリスト] ウィンドウのツール・バー</Primary></IndexTerm>
+<Title>Book List Window Tool Bar</Title>
+<IndexTerm><Primary SortAs="book list window toolbar">Book List Window Tool Bar</Primary></IndexTerm>
 <variablelist>
-<varlistentry><term>表示</term>
+<varlistentry><term>View</term>
 <listitem>
 <graphic entityref="ViewTool" id="HINFO.REF.fig.2"></graphic>
-<para>現在選択された(強調表示された)セクションが、表示されます。
+<para>Displays the currently selected (highlighted) section.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>印刷</term>
+<varlistentry><term>Print</term>
 <listitem>
 <graphic entityref="PrinterTool" id="HINFO.REF.fig.3"></graphic>
-<para>ブックリスト上で強調表示されたセクションが、印刷されます。
+<para>Prints the sections highlighted in the Book List.
 </para>
-<para>印刷対象を選択するには、<Keycap>Control</Keycap>キーを押しながら
-印刷するセクションの名前をクリックしてから、[印刷] ボタンをクリックして
-ください。連続したセクションの範囲を指定するには、セクションの名前の
-上をドラッグしている間、<Keycap>Shift</Keycap>キーを押したままにして
-ください。セクションの選択を解除するには、<Keycap>Control</Keycap>キー
-を押しながら、セクションの名前をクリックしてください。
+<para>To select what to print, hold down the Control key and click the
+names of the sections to print, then click the Print button. To select a
+range of contiguous selections, hold down the Shift key while dragging
+the pointer over the section names. To deselect a section, hold down the
+Control key and click on the section's name.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>インフォメーション・ライブラリの追加</term>
+<varlistentry><term>Add Information Library</term>
 <listitem>
 <graphic entityref="AddInfolibTool" id="HINFO.REF.fig.4"></graphic>
-<para>ブックリストに、インフォメーション・ライブラリを追加します。
+<para>Adds an information library to the Book List.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>インフォメーション・ライブラリの削除</term>
+<varlistentry><term>Remove Information Library</term>
 <listitem>
 <graphic entityref="RemoveInfolibTool" id="HINFO.REF.fig.5"></graphic>
-<para>ブックリストから、インフォメーション・ライブラリを削除します。
+<para>Removes an information library from the Book List.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>クエリー・エディタ</term>
+<varlistentry><term>Query Editor</term>
 <listitem>
 <graphic entityref="QueryEditorTool" id="HINFO.REF.fig.6"></graphic>
-<para>[クエリー・エディタ] ウィンドウを、表示します。
-<XRef Linkend="IMQueryEditorWindow">を参照してください。
+<para>Displays the Query Editor window. See
+<XRef Linkend="IMQueryEditorWindow">.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>ブックマーク・エディタ</term>
+<varlistentry><term>Bookmark Editor</term>
 <listitem>
 <graphic entityref="BookmarkEditorTool" id="HINFO.REF.fig.7"></graphic>
-<para>[ブックマーク・エディタ] ウィンドウを、表示します。
-<XRef Linkend="IMBookmarkEditorWindow">を参照してください。
+<para>Displays the Bookmark Editor window. See
+<XRef Linkend="IMBookmarkEditorWindow">.
 </para>
 </listitem>
 </varlistentry>
@@ -317,109 +316,107 @@
 <!--##################################################-->
 
 <Sect1 Id="IMBookListViewTool">
-<Title><anchor id="dtinfo.booklist.browse.ctx">[表示] ツール</Title>
-<IndexTerm><Primary SortAs="ひょうじつーる">[表示] ツール</Primary></IndexTerm>
-<para>現在選択されている(強調表示されている)セクションを、表示します。
+<Title><anchor id="dtinfo.booklist.browse.ctx">View Tool</Title>
+<IndexTerm><Primary SortAs="view tool">View Tool</Primary></IndexTerm>
+<para>Click to display the currently selected (highlighted) section.
 </para>
 </sect1>
 
 <!--##################################################-->
 
 <Sect1 Id="IMBookListPrintTool">
-<Title><anchor id="dtinfo.booklist.print.ctx">[印刷] ツール</Title>
-<IndexTerm><Primary SortAs="いんさつつーる">[印刷] ツール</Primary></IndexTerm>
-<para>ブックリスト上で強調表示されているセクションを、印刷します。
+<Title><anchor id="dtinfo.booklist.print.ctx">Print Tool</Title>
+<IndexTerm><Primary SortAs="print tool">Print Tool</Primary></IndexTerm>
+<para>Click to print the sections highlighted in the Book List.
 </para>
 </sect1>
 
 <!--##################################################-->
 
 <Sect1 Id="IMBookListAddInfolibTool">
-<Title><anchor id="dtinfo.booklist.add.ctx">[インフォメーション・ライブラリの追加] ツール</Title>
-<IndexTerm><Primary SortAs="いんふぉめーしょん・らいぶらりのついかつーる">[インフォメーション・ライブラリの追加] ツール</Primary></IndexTerm>
-<para>ブックリストに、インフォメーション・ライブラリを追加します。
+<Title><anchor id="dtinfo.booklist.add.ctx">Add Information Library Tool</Title>
+<IndexTerm><Primary SortAs="add information library tool">Add Information Library Tool</Primary></IndexTerm>
+<para>Click to add an information library to the Book List.
 </para>
 </sect1>
 
 <!--##################################################-->
 
 <Sect1 Id="IMBookListRemoveInfolibTool">
-<Title><anchor id="dtinfo.booklist.remove.ctx">[インフォメーション・ライブラリの削除] ツール</Title>
-<IndexTerm><Primary SortAs="いんふぉめーしょん・らいぶらりのさくじょつーる">[インフォメーション・ライブラリの削除] ツール</Primary></IndexTerm>
-<para>ブックリストから、インフォメーション・ライブラリを削除します。
+<Title><anchor id="dtinfo.booklist.remove.ctx">Remove Information Library Tool</Title>
+<IndexTerm><Primary SortAs="remove information library tool">Remove Information Library Tool</Primary></IndexTerm>
+<para>Click to remove an information library from the Book List.
 </para>
 </sect1>
 
 <!--##################################################-->
 
 <Sect1 Id="IMBookListQueryEditorTool">
-<Title><anchor id="dtinfo.booklist.edit-query.ctx">[クエリー・エディタ] ツール</Title>
-<IndexTerm><Primary SortAs="くえりー・えでぃた・つーる">[クエリー・エディタ] ツール</Primary></IndexTerm>
-<para>[クエリー・エディタ] ウィンドウを開きます。
-<XRef Linkend="IMQueryEditorWindow">を参照してください。
+<Title><anchor id="dtinfo.booklist.edit-query.ctx">Query Editor Tool</Title>
+<IndexTerm><Primary SortAs="queryeditortool">Query Editor Tool</Primary></IndexTerm>
+<para>Click to display the Query Editor window. See
+<XRef Linkend="IMQueryEditorWindow">.
 </para>
 </sect1>
 
 <!--##################################################-->
 
 <Sect1 Id="IMBookListBookmarkEditorTool">
-<Title><anchor id="dtinfo.booklist.marks.ctx">[ブックマーク・エディタ] ツール</Title>
-<IndexTerm><Primary SortAs="ぶっくまーく・えでぃた・つーる">[ブックマーク・エディタ] ツール</Primary></IndexTerm>
-<para>[ブックマーク・エディタ] ウィンドウを開きます。
-<XRef Linkend="IMBookmarkEditorWindow">を参照してください。
+<Title><anchor id="dtinfo.booklist.marks.ctx">Bookmark Editor Tool</Title>
+<IndexTerm><Primary SortAs="bookmarkbditortool">Bookmark Editor Tool</Primary></IndexTerm>
+<para>Click to display the Bookmark Editor window. See
+<XRef Linkend="IMBookmarkEditorWindow">.
 </para>
 </sect1>
 
 <!--##################################################-->
 
 <Sect1 Id="IMSearchScopeButton">
-<Title><anchor id="dtinfo.booklist.scope.ctx">[検索範囲] ボタン</Title>
-<IndexTerm><Primary SortAs="けんさくはんいぼたん">[検索範囲] ボタン</Primary></IndexTerm>
-<para>検索に使用される範囲を、明らかにします。検索範囲に関する詳細は、
-<XRef Linkend="IMDefiningtheScopeofSearches">を参照してください。
+<Title><anchor id="dtinfo.booklist.scope.ctx">Search Scope Button</Title>
+<IndexTerm><Primary SortAs="searchscopebutton">Search Scope Button</Primary></IndexTerm>
+<para>Identifies the scope to be used for the
+search. For information on search scopes, see
+<XRef Linkend="IMDefiningtheScopeofSearches">.
 </para>
 </sect1>
 
 <!--##################################################-->
 
 <Sect1 Id="IMQuickSearchField">
-<Title><anchor id="dtinfo.booklist.search.ctx">[クイック検索] フィールド</Title>
-<IndexTerm><Primary SortAs="くいっくけんさくふぃーるど">[クイック検索] フィールド</Primary></IndexTerm>
-<para>検索文字列を入力またはペーストする領域です。
-<XRef Linkend="IMStartingaQuickSearch">を参照してください。
+<Title><anchor id="dtinfo.booklist.search.ctx">Quick Search Field</Title>
+<IndexTerm><Primary SortAs="quicksearchfield">Quick Search Field</Primary></IndexTerm>
+<para>The input field where search text is typed or pasted. See
+<XRef Linkend="IMStartingaQuickSearch">.
 </para>
 </sect1>
 
 <!--##################################################-->
 
 <Sect1 Id="IMScopeEditorButton">
-<Title><anchor id="dtinfo.booklist.scope-editor.ctx">[範囲エディタ] ボタン</Title>
-<IndexTerm><Primary SortAs="はんいえでぃたぼたん">[範囲エディタ] ボタン</Primary></IndexTerm>
-<para>[範囲エディタ] ウィンドウを表示します。
-<XRef Linkend="IMScopeEditorWindow">を参照してください。
+<Title><anchor id="dtinfo.booklist.scope-editor.ctx">Scope Editor Button</Title>
+<IndexTerm><Primary SortAs="scopeditorbutton">Scope Editor Button</Primary></IndexTerm>
+<para>Click to display the Scope Editor window. See
+<XRef Linkend="IMScopeEditorWindow">.
 </para>
 </sect1>
 
 <!--##################################################-->
 
 <Sect1 Id="IMReadingWindow">
-<Title><anchor id="dtinfo.nodeview.win">[閲覧] ウィンドウ</Title>
+<Title><anchor id="dtinfo.nodeview.win">Reading Window</Title>
 <IndexTerm>
-<Primary SortAs="えつらんうぃんどう">[閲覧] ウィンドウ</Primary>
+<Primary SortAs="reading window">Reading Window</Primary>
 </IndexTerm>
 <Graphic Entityref="ReadingWindow" Id="HINFO.REF.fig.8"></Graphic>
-<Para>
-テキストおよびグラフィックを表示し、印刷し、検索し、ブックマークと注記を
-使用し、設定を変更し、ヘルプを参照するには、[閲覧] ウィンドウを使用して
-ください。
+<Para>Use the Reading window to view text and graphics, print, search,
+use bookmarks and notes, set preferences, and get Help.
 </Para>
-<para>
-インフォメーション・マネージャでは、ユーザが [閲覧] ウィンドウの
-サイズを変更し、[閲覧] ウィンドウを二重化し、
-一度に複数の [閲覧] ウィンドウを使用することが、許されています。
+<para>The Information Manager allows you to resize Reading windows, to
+duplicate Reading windows, and to use more than one Reading window at a
+time.
 </para>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.56">
@@ -450,128 +447,114 @@
 <!--########################################-->
 
 <Sect2 Id="IMReadingWindowToolBar">
-<Title>[閲覧] ウィンドウのツール・バー</Title>
+<Title>Reading Window Tool Bar</Title>
 <IndexTerm>
-<Primary SortAs="えつらんうぃんどうのつーる・ばー">[閲覧] ウィンドウのツール・バー</Primary>
+<Primary SortAs="reading window tool bar">Reading Window Tool Bar</Primary>
 </IndexTerm>
 <VariableList>
 <VarListEntry>
-<Term>前のヒストリ・セクション</Term>
+<Term>Previous History Section</Term>
 <ListItem>
 <graphic entityref="PrevHistSectionTool" id="HINFO.REF.fig.9"></graphic>
-<Para>
-ユーザのブラウザ・セッションで読んだセクションを、読んだ順と逆の順に
-移動します。ユーザがセクション・リストの先頭に位置しているとき、
-この矢印は選択不可になり、ユーザがこれ以上戻れないことを示します。
+<Para>Move back through the sections you have read during your browser
+session in the order in which you read them. If you are positioned at
+the beginning of the section list, this arrow is dimmed, indicating you
+cannot move any further back.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>次のヒストリ・セクション</Term>
+<Term>Next History Section</Term>
 <ListItem>
 <graphic entityref="NextHistSectionTool" id="HINFO.REF.fig.10"></graphic>
-<Para>
-ユーザのブラウザ・セッションで読んだセクションを、読んだ順に
-移動します。ユーザがセクション・リストの末尾に位置しているとき、
-この矢印は選択不可になり、ユーザがこれ以上進めないことを示します。
+<Para>Move forward through the sections you have read during your
+browser session in the order in which you read them. If you are
+positioned at the end of the section list, this arrow is dimmed,
+indicating you cannot move any further forward.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>前のセクション</Term>
+<Term>Previous Section</Term>
 <ListItem>
 <graphic entityref="PrevSectionTool" id="HINFO.REF.fig.11"></graphic>
-<Para>
-前のセクションへ移動します。ユーザが先頭のセクションにいるとき、
-これは選択できません。
+<Para>Go to the previous section. If you are in the first section, this
+is dimmed.
 </Para>
-<para>
-前のセクションをプレビューするには、[前のセクション] の上にポインタを
-置いて、クリックし、ボタンを押したままにしてください。
-インフォメーション・マネージャは、メッセージ領域に、前のセクションの
-タイトルを表示します。セクションを表示するには、マウス・ボタンを放して
-ください。
+<para>To preview the previous section, place the pointer on Previous
+Session, click, and hold down. The Information Manager displays the
+title of the previous section in the message area. Release the mouse
+button to view the section.
 </para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>次のセクション</Term>
+<Term>Next Section</Term>
 <ListItem>
 <graphic entityref="NextSectionTool" id="HINFO.REF.fig.12"></graphic>
-<Para>
-次のセクションへ移動します。ユーザが末尾のセクションにいるとき、
-これは選択できません。
+<Para>Go to the next section. If you are in the last section, this is
+dimmed.
 </Para>
-<para>
-次のセクションをプレビューするには、[次のセクション] の上にポインタを
-置いて、クリックし、ボタンを押したままにしてください。
-インフォメーション・マネージャは、メッセージ領域に、次のセクションの
-タイトルを表示します。セクションを表示するには、マウス・ボタンを放して
-ください。
+<para>To preview the next section, place the pointer on Next Session,
+click, and hold down. The Information Manager displays the title of the
+next section in the message area. Release the mouse button to view the
+section.
 </para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>前の検索一致</Term>
+<Term>Previous Search Hit</Term>
 <ListItem>
 <graphic entityref="PrevSearchHitTool" id="HINFO.REF.fig.13"></graphic>
-<Para>
-前の検索一致を表示します。ユーザがそのセクションの最初の一致にいるとき、
-このボタンを押すことはできません。
+<Para>Display the previous search hit. If you are at the first hit of
+the section, this button is dimmed.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>次の検索一致</Term>
+<Term>Next Search Hit</Term>
 <ListItem>
 <graphic entityref="NextSearchHitTool" id="HINFO.REF.fig.14"></graphic>
-<Para>
-次の検索一致を表示します。ユーザがそのセクションの最後の一致にいるとき、
-このボタンを押すことはできません。
+<Para>Display the next search hit. If you are at the last hit of the
+section, this button is dimmed.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>印刷</Term>
+<Term>Print</Term>
 <ListItem>
 <graphic entityref="ReadingWindowPrintTool" id="HINFO.REF.fig.15"></graphic>
-<Para>ユーザが現在読んでいるセクションを、印刷します。
-</para>
-</ListItem>
-</VarListEntry>
-<VarListEntry>
-<Term>ブックリストの表示</Term>
-<ListItem><graphic entityref="DisplayBookListTool" id="HINFO.REF.fig.16"></graphic>
-<Para>
-[ブックリスト] ウィンドウを開き、参照可能なインフォメーション・ライブラリの
-リストを表示します。
+<Para>Print the section you are currently reading.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>グラフィカル・マップ</Term>
+<Term>Display Book List</Term>
+<ListItem><graphic entityref="DisplayBookListTool" id="HINFO.REF.fig.16"></graphic>
+<Para>Display the Book List window with its list of the available
+information libraries.
+</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Graphical Map</Term>
 <ListItem>
 <graphic entityref="GraphicalMapTool" id="HINFO.REF.fig.17"></graphic>
-<Para>
-現在のセクションのタイトルと、ユーザが読んでいるブックの中の他のセクションの
-タイトルが表示された、グラフィカル・マップを開きます。グラフィカル・マップに
-よって、ブックの全体的な編成を見ることが、容易になります。
+<Para>Opens the graphical map showing the title of the current section and the
+titles of the other sections of the book you are reading, making it easy
+to see the overall organization of the book.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>押しピン</Term>
+<Term>Pushpin</Term>
 <ListItem>
 <graphic entityref="PushpinTool" id="HINFO.REF.fig.18"></graphic>
-<Para>現在開かれているセクションを、開いたまま固定したり、解放したりします。
-[押しピン] スイッチをクリックすると、ピンを刺した状態とピンを抜いた
-状態が、切り替わります。
-</para>
-<para>
-[閲覧] ウィンドウを開いた状態でピンで固定すると、ユーザは、同時に
-他の [閲覧] ウィンドウを開くことができます。[閲覧] ウィンドウからピンが
-抜けていると、ユーザが別のセクションへ移動する度に、[閲覧] ウィンドウの
-内容は置き換えられます。
+<Para>Holds open or releases the currently displayed section. Clicking
+the Pushpin switches between the pinned and unpinned states.</para>
+<para>When you pin the Reading window open, you can open other Reading
+windows simultaneously. If a Reading window is unpinned, its contents
+are replaced whenever you go to another section.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -582,143 +565,136 @@
 <!--########################################-->
 
 <Sect1 Id="IMReadWinPrevHistTool">
-<Title><anchor id="dtinfo.nodeview.tool-bar.history-prev.ctx">[前のヒストリセクション] ツール</Title>
-<IndexTerm><Primary SortAs="まえのひすとり・せくしょん・つーる">[前のヒストリ・セクション] ツール</Primary></IndexTerm>
-<para>ヒストリ・リスト上の前のセクションを、表示します。
+<Title><anchor id="dtinfo.nodeview.tool-bar.history-prev.ctx">Previous History Section Tool</Title>
+<IndexTerm><Primary SortAs="previous history section tool">Previous History Section Tool</Primary></IndexTerm>
+<para>Click to display the previous section in the history list.
 </Para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMReadWinNextHistTool">
-<Title><anchor id="dtinfo.nodeview.tool-bar.history-next.ctx">[次のヒストリ・セクション] ツール</Title>
-<IndexTerm><Primary SortAs="つぎのひすとり・せくしょん・つーる">[次のヒストリ・セクション] ツール</Primary></IndexTerm>
-<para>ヒストリ・リスト上の次のセクションを、表示します。
+<Title><anchor id="dtinfo.nodeview.tool-bar.history-next.ctx">Next History Section Tool</Title>
+<IndexTerm><Primary SortAs="next history section tool">Next History Section Tool</Primary></IndexTerm>
+<para>Click to display the next section in the history list.
 </Para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMReadWinPrevSectTool">
-<Title><anchor id="dtinfo.nodeview.tool-bar.section-prev.ctx">[前のセクション] ツール</Title>
-<IndexTerm><Primary SortAs="まえのせくしょん・つーる">[前のセクション] ツール</Primary></IndexTerm>
-<para>ブック上の前のセクションを、表示します。前のセクションのタイトルを
-表示するには、クリックしたあとボタンを押したままにしてください。
-メッセージ領域に、タイトルが表示されます。
+<Title><anchor id="dtinfo.nodeview.tool-bar.section-prev.ctx">Previous Section Tool</Title>
+<IndexTerm><Primary SortAs="previous section tool">Previous Section Tool</Primary></IndexTerm>
+<para>Click to display the previous section in the book. To display the title of the
+previous section, click and hold down. The title appears in the message area.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMReadWinNextSectTool">
-<Title><anchor id="dtinfo.nodeview.tool-bar.section-next.ctx">[次のセクション] ツール</Title>
-<IndexTerm><Primary SortAs="つぎのせくしょん・つーる">[次のセクション] ツール</Primary></IndexTerm>
-<para>ブック上の次のセクションを、表示します。次のセクションのタイトルを
-表示するには、クリックしたあとボタンを押したままにしてください。
-メッセージ領域に、タイトルが表示されます。
+<Title><anchor id="dtinfo.nodeview.tool-bar.section-next.ctx">Next Section Tool</Title>
+<IndexTerm><Primary SortAs="next section tool">Next Section Tool</Primary></IndexTerm>
+<para>Click to display the next section in the book. To display the title of the
+next section, click and hold down. The title appears in the message area.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMReadWinPrevSearchTool">
-<Title><anchor id="dtinfo.nodeview.tool-bar.search-prev.ctx">[前の検索一致] ツール</Title>
-<IndexTerm><Primary SortAs="まえのけんさくいっちつーる">[前の検索一致] ツール</Primary></IndexTerm>
-<para>前の検索一致を表示します。
+<Title><anchor id="dtinfo.nodeview.tool-bar.search-prev.ctx">Previous Search Hit Tool</Title>
+<IndexTerm><Primary SortAs="previous search hit">Previous Search Hit</Primary></IndexTerm>
+<para>Click to display the previous search hit.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMReadWinNextSearchTool">
-<Title><anchor id="dtinfo.nodeview.tool-bar.search-next.ctx">[次の検索一致] ツール</Title>
-<IndexTerm><Primary SortAs="つぎのけんさくいっちつーる">[次の検索一致] ツール</Primary></IndexTerm>
-<para>次の検索一致を表示します。
+<Title><anchor id="dtinfo.nodeview.tool-bar.search-next.ctx">Next Search Hit Tool</Title>
+<IndexTerm><Primary SortAs="next search hit">Next Search Hit</Primary></IndexTerm>
+<para>Click to display the next search hit.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMReadWinPrintTool">
-<Title><anchor id="dtinfo.nodeview.tool-bar.print.ctx">[印刷] ツール</Title>
-<IndexTerm><Primary SortAs="いんさつつーる">[印刷] ツール</Primary></IndexTerm>
-<para>ユーザが現在読んでいるセクションを、印刷します。
+<Title><anchor id="dtinfo.nodeview.tool-bar.print.ctx">Print Tool</Title>
+<IndexTerm><Primary SortAs="print tool">Print Tool</Primary></IndexTerm>
+<para>Click to print the section you are currently reading.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMReadWinBookListTool">
-<Title><anchor id="dtinfo.nodeview.tool-bar.booklist.ctx">[ブックリストの表示] ツール</Title>
-<IndexTerm><Primary SortAs="ぶっくりすとのひょうじつーる">[ブックリストの表示] ツール</Primary></IndexTerm>
-<para>参照可能なインフォメーション・ライブラリのリストが表示された、
-[ブックリスト] ウィンドウを表示します。
+<Title>+<anchor id="dtinfo.nodeview.tool-bar.booklist.ctx">
+Display Book List Tool</Title>
+<IndexTerm><Primary SortAs="display book list tool">Display Book List Tool</Primary></IndexTerm>
+<para>Click to display the Book List window with its list of the available
+information libraries.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMReadWinGraphMapTool">
-<Title><anchor id="dtinfo.nodeview.tool-bar.graphical-map.ctx">[グラフィカル・マップ] ツール</Title>
-<IndexTerm><Primary SortAs="ぐらふぃかる・まっぷ・つーる">[グラフィカル・マップ] ツール</Primary></IndexTerm>
-<para>ユーザが読んでいるブックの、現在のセクションのタイトルと
-他のセクションのタイトルが表示された、グラフィカル・マップを開きます。
+<Title><anchor id="dtinfo.nodeview.tool-bar.graphical-map.ctx">Graphical Map Tool</Title>
+<IndexTerm><Primary SortAs="graphical map tool">Graphical Map Tool</Primary></IndexTerm>
+<para>Click to opens the graphical map showing the title of the current section and the
+titles of the other sections of the book you are reading.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMReadWinPushpinTool">
-<Title><anchor id="dtinfo.nodeview.tool-bar.lock.ctx">[押しピン] ツール</Title>
-<IndexTerm><Primary SortAs="おしぴん・つーる">[押しピン] ツール</Primary></IndexTerm>
-<para>現在開かれているセクションを開いたまま固定したり、解放したりします。
-押しピンをクリックすることによって、固定された状態と固定されていない状態が、
-切り替わります。
+<Title><anchor id="dtinfo.nodeview.tool-bar.lock.ctx">Pushpin Tool</Title>
+<IndexTerm><Primary SortAs="pushpin tool">Pushpin Tool</Primary></IndexTerm>
+<para>Click to hold open or release the currently displayed section. Clicking
+the Pushpin switches between the pinned and unpinned states.
 </para>
-<para>[閲覧] ウィンドウをピンで固定すると、他の [閲覧] ウィンドウを同時に
-開くことができます。[閲覧] ウィンドウがピンで固定されていないと、
-その内容は、ユーザが別のセクションに移動する度に、置き換えられます。
+<para>When you pin the Reading window open, you can open other Reading
+windows simultaneously. If a Reading window is unpinned, its contents
+are replaced whenever you go to another section.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMReadWinSectionTitleButton">
-<Title><anchor id="dtinfo.nodeview.title.ctx">[セクション・タイトル] ボタン</Title>
-<IndexTerm><Primary SortAs="せくしょん・たいとる・ぼたん">[セクション・タイトル] ボタン</Primary></IndexTerm>
-<para>起点となるセクションのリストを、表示します。
-インフォメーション・マネージャは、セクション・タイトルのリストを表示します。
-ユーザは、タイトルをクリックすることによって、リストされたどのセクションへも
-直接移動できます。
+<Title><anchor id="dtinfo.nodeview.title.ctx">Section Title Button</Title>
+<IndexTerm><Primary SortAs="section title button">Section Title Button</Primary></IndexTerm>
+<para>Click to view a list of the preceding sections.
+The Information Manager displays the list of section titles.
+You can go directly to any listed section by clicking on its title.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMSectionHistoryWindow">
-<Title><anchor id="dtinfo.history.win">[セクション・ヒストリ] ウィンドウ</Title>
-<IndexTerm><Primary SortAs="せくしょん・ひすとり・うぃんどう">[セクション・ヒストリ] ウィンドウ</Primary></IndexTerm>
-<Para>
-現在のブラウザ・セッションの間にユーザが読んだセクションを調べるには、
-[セクション・ヒストリ] ウィンドウを使用してください。
+<Title><anchor id="dtinfo.history.win">Section History Window</Title>
+<IndexTerm><Primary SortAs="section history window">Section History Window </Primary></IndexTerm>
+<para>Use the Section History window to check the sections you have read
+during the current browser session.
 </para>
 <Graphic Entityref="SectionHistoryWindow" Id="HINFO.REF.fig.19"></Graphic>
-<para>
-[セクション・ヒストリ] リストには、訪れたセクションそれぞれが、もっとも最近の
-ものから最も古いものまで、リストされます。たとえユーザが、特定のセッションの
-中で、一つのセクションを何度も訪れたとしても、インフォメーション・マネージャ
-は [セクション・ヒストリ] リスト上に、そのセクションを一度しかリストしません。
+<para>The Section History list displays each section visited from the
+most recent to the least recent. Although you may have visited a
+section more than once in a given session, the Information Manager lists
+it only once on the Section History list.
 </Para>
-<para>
-[セクション・ヒストリ] リストにたどり着くには、[閲覧] ウィンドウ
-の [移動] メニューから、[ヒストリ] を選択するか、[ブックリスト] ウィンドウ
-の [ウィンドウ] メニューから、[ヒストリ] を選択してください。
-リスト上のセクションへ移動するには、セクションのタイトルをダブル・クリック
-するか、セクションのタイトルを強調表示させてから、[表示] をクリックして
-ください。
+<para>To get to the Section History list, select History from the Go
+menu of the Reading window or Section History from
+the Windows menu of the Book List window. To move to a section on the list,
+double-click on the section title or highlight it and click
+Display.
 </para>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.63">
@@ -743,37 +719,34 @@
 <!--#########################################-->
 
 <Sect2 Id="IMSectionHistoryWindowButtons">
-<Title>[セクション・ヒストリ] ウィンドウのボタン</Title>
+<Title>Section History Window Buttons</Title>
 <IndexTerm>
-<Primary SortAs="せくしょん・ひすとり・うぃんどうのぼたん">[セクション・ヒストリ] ウィンドウのボタン</Primary>
+<Primary SortAs="section history window buttons">Section History window buttons</Primary>
 </IndexTerm>
 <VariableList>
 <VarListEntry>
-<Term>表示</Term>
+<Term>Display</Term>
 <ListItem>
-<Para>[セクション・ヒストリ] リスト上でタイトルが強調表示されているセクションを、
-表示します。[閲覧] ウィンドウがピンで固定されていないとき、
-インフォメーション・マネージャは、現在のセクションを新しいものに
-置き換えます。[閲覧] ウィンドウがピンで固定されていると、
-インフォメーション・マネージャは、新しいセクションを表示するために、
-別の [閲覧] ウィンドウを開きます。
+<Para>Display the section whose title is highlighted on the Section History
+list. If the Reading window is unpinned, the Information Manager
+replaces the current section with the new one. If the Reading window is
+pinned, the Information Manager opens another Reading window to display
+the new section.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>閉じる</Term>
+<Term>Close</Term>
 <ListItem>
-<Para>
-前に表示したセクションへ移動することなく、[セクション・ヒストリ] リストを
-閉じます。
+<Para>Close the Section History list without going to a previously
+viewed section.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ヘルプ</Term>
+<Term>Help</Term>
 <ListItem>
-<Para>
-[セクション・ヒストリ] リストの使い方に関するヘルプを、表示します。
+<Para>Display Help on how to use the Section History list.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -784,84 +757,85 @@
 <!--########################################-->
 
 <Sect1 Id="IMSectHistWinDisplayButton">
-<Title><anchor id="dtinfo.history.display.ctx">[セクション・ヒストリ] の [表示] ボタン</Title>
-<IndexTerm><Primary SortAs="せくしょん・ひすとりのひょうじぼたん">[セクション・ヒストリ] の [表示] ボタン</Primary></IndexTerm>
-<para>[セクション・ヒストリ] リスト上でタイトルの強調表示されている
-セクションを、表示します。[閲覧] ウィンドウがピンで固定されていないとき、
-インフォメーション・マネージャは、現在のセクションを新しいものに
-置き換えます。[閲覧] ウィンドウがピンで固定されているとき、
-インフォメーション・マネージャは新しいセクションを表示するために、
-もう一つの [閲覧] ウィンドウを開きます。
+<Title><anchor id="dtinfo.history.display.ctx">Section History Display Button</Title>
+<IndexTerm><Primary SortAs="section history display button">Section History Display Button</Primary></IndexTerm>
+<para>Click to display the section whose title is highlighted on the Section History
+list. If the Reading window is unpinned, the Information Manager
+replaces the current section with the new one. If the Reading window is
+pinned, the Information Manager opens another Reading window to display
+the new section.
 </Para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMSectHistWinList">
-<Title><anchor id="dtinfo.history.pane.listform.listSW.list.ctx">[セクション・ヒストリ] リスト</Title>
-<IndexTerm><Primary SortAs="せくしょん・ひすとり・りすと">[セクション・ヒストリ] リスト</Primary></IndexTerm>
-<para>[セクション・ヒストリ] リストには、訪れたセクションそれぞれが、
-もっとも最近のものからもっと最近でないものまで、リストされます。
-ユーザが特定のセッションで、一つのセクションを何度も訪れたとしても、
-インフォメーション・マネージャは、[セクション・ヒストリ] リスト上に、
-それを一回だけリストします。
+<Title><anchor id="dtinfo.history.pane.listform.listSW.list.ctx">Section History List</Title>
+<IndexTerm><Primary SortAs="section history list">Section History List</Primary></IndexTerm>
+<para>The Section History list displays each section visited from the
+most recent to the least recent. Although you may have visited a
+section more than once in a given session, the Information Manager lists
+it only once on the Section History list.
 </Para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMSearchHistoryWindow">
-<Title><anchor id="dtinfo.search-history.win">[検索ヒストリ] ウィンドウ</Title>
+<Title><anchor id="dtinfo.search-history.win">Search History Window</Title>
 <IndexTerm>
-<Primary SortAs="けんさくひすとり・うぃんどう">[検索ヒストリ] ウィンドウ</Primary>
+<Primary SortAs="search history window">Search History Window</Primary>
 </IndexTerm>
 <Graphic Entityref="SearchHistoryWindow" Id="HINFO.REF.fig.20"></graphic>
-<para>
-現在のブラウザ・セッションでユーザがおこなったクエリーのリストと、それぞれの
-クエリーについて何件の一致が見つかったかを見るには、[検索ヒストリ] ウィンドウ
-を使用してください。クエリーは、ユーザがそれをおこなった順にリストされます。
+<para>Use the Search History window to see a list of the queries
+you have made in the current browser session and the number of
+matches found for each one. The queries are listed in the order
+that you made them.
 </para>
 <note>
-<para>[検索ヒストリ] 上のクエリーをどれかダブル・クリックすると、
-そのクエリーにおける検索結果が、再表示されます。
+<para>Double-click any query in the Search History window
+to quickly redisplay the Search Results from that query.
 </para>
 </note>
-<para>
-詳細は、<XRef Linkend="IMViewingSearchResults">を参照してください。
-</para>
+<para>For more information, see
+<XRef Linkend="IMViewingSearchResults">.
+</Para>
 
 <!--################################################# -->
 
 <Sect2 Id="IMSearchHistoryWindowComps">
-<Title>[検索ヒストリ] ウィンドウのコンポーネント</Title>
-<IndexTerm><Primary SortAs="けんさくひすとり・うぃんどうのからむ">[検索ヒストリ] ウィンドウのカラム</Primary></IndexTerm>
-<IndexTerm><Primary SortAs="けんさくひすとり・うぃんどうのぼたん">[検索ヒストリ] ウィンドウのボタン</Primary></IndexTerm>
+<Title>Search History Window Components</Title>
+<IndexTerm><Primary SortAs="search history window columns">Search History Window Columns</Primary></IndexTerm>
+<IndexTerm><Primary SortAs="search history window buttons">Search History Window Buttons</Primary></IndexTerm>
 <VariableList>
 <VarListEntry>
-<term>[一致] カラム</term>
+<term>Matches Column</term>
 <listitem>
-<para>[一致] カラムには、対応するクエリーにおいて、何件の一致があったかが表示されます。
+<para>The Matches column displays the number
+of matches found for the corresponding query.
 </para>
 </listitem>
 </VarListEntry>
 <VarListEntry>
-<term>[クエリー] カラム</term>
+<term>Query Column</term>
 <listitem>
-<para>[クエリー] カラムには、前の検索のテキストが表示されます。
+<para>The Query column displays the text of previous searches.
 </para>
 </listitem>
 </VarListEntry>
 <VarListEntry>
-<term>[範囲] カラム</term>
+<term>Scope Column</term>
 <listitem>
-<para>[範囲] カラムには、対応するクエリーで使用される範囲が、表示されます。
+<para>The Scope column displays the scope used for the corresponding
+query.
 </para>
 </listitem>
 </VarListEntry>
 <VarListEntry>
-<term>[表示] ボタン</term>
+<term>Display Button</term>
 <listitem>
-<para>選択されたクエリーに対応する検索結果を、表示します。
+<para>Shows the search
+results for the selected query.
 </para>
 </listitem>
 </VarListEntry>
@@ -872,117 +846,105 @@
 <!--########################################-->
 
 <Sect1 Id="IMSearchHistWinList">
-<Title><anchor id="dtinfo.search-history.listSW.list.ctx">[セクション・ヒストリ] リスト</Title>
-<IndexTerm><Primary SortAs="せくしょん・ひすとり・りすと">[セクション・ヒストリ] リスト</Primary></IndexTerm>
-<para>[セクション・ヒストリ] リストには、現在のブラウザ・セッションでなされた
-クエリーと、それぞれについて見つかった一致の数が表示されます。クエリーは、
-なされた順番に表示されます。
+<Title><anchor id="dtinfo.search-history.listSW.list.ctx">Section History List</Title>
+<IndexTerm><Primary SortAs="search history list">Search History List</Primary></IndexTerm>
+<para>The Search History list displays the queries
+you have made in the current browser session and the number of
+matches found for each one. The queries are listed in the order
+that you made them.
 </para>
-<para>どれかのクエリーからの検索結果を素早く再表示するには、そのクエリーを
-ダブル・クリックしてください。
+<para>Double-click on any query to quickly redisplay the Search
+Results from that query.
 </para>
 </sect1>
-
 <!--########################################-->
 
 <Sect1 Id="IMSearchHistWinDisplayButton">
-<Title><anchor id="dtinfo.search-history.activate.ctx">[検索ヒストリ] の [表示] ボタン</Title>
-<IndexTerm><Primary SortAs="けんさくひすとりのひょうじぼたん">[検索ヒストリ] の [表示] ボタン</Primary></IndexTerm>
-<para>選択されたクエリーに対応する検索結果を、表示します。
+<Title><anchor id="dtinfo.search-history.activate.ctx">Search History Display Button</Title>
+<IndexTerm><Primary SortAs="search history display button">Search History Display Button</Primary></IndexTerm>
+<para>Click to display the search
+results for the selected query.
 </Para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMQueryEditorWindow">
-<Title><anchor id="dtinfo.query-editor.win">[クエリー・エディタ] ウィンドウ</Title>
+<Title><anchor id="dtinfo.query-editor.win">Query Editor Window</Title>
 <IndexTerm>
-<Primary SortAs="くえりー・えでぃた・うぃんどう">[クエリー・エディタ] ウィンドウ</Primary>
+<Primary SortAs="query editor window">Query Editor Window</Primary>
 </IndexTerm>
-<Para>
-複雑な検索を実行するには、[クエリー・エディタ] ウィンドウを使用してください。
-ユーザは、単一のセクションをまかなうための検索の範囲、または特定のブック
-および情報のタイプを定義できます。
+<Para>Use the Query Editor window to carry out complex searches. You can define
+the scope of the searches to cover a single section, or specific books
+and types of information.
 </Para>
 <Graphic Entityref="QueryEditorWindow" Id="HINFO.REF.fig.21"></Graphic>
-<para>
-クエリー・エディタでは、一回の検索に複数の語や句を含むこと、
-また [コネクタ] ボタンによって、クエリーを構成する部分同士の関係を指定する
-ことが、許されています。ユーザがクエリーを作成すると、クエリー・エディタは、
-[クエリー・エディタ] ウィンドウ最下部のクエリー表示領域に、それまでの
-ところ定義されているように、クエリーを表示します。
+<para>The Query Editor allows you to include more than one word or
+phrase in a search, and specify the relationships among the parts of the
+query by using the Connector button. As you create your query, the Query
+Editor shows the query as defined so far in the Query display area at
+the bottom of the Query Editor window.
 </para>
-<para>
-[クエリー・エディタ] を開くには、[閲覧] ウィンドウの [検索] メニューから、
-[クエリー・エディタ] を選択してください。
+<para>To open the Query Editor, choose Query Editor from the Search menu in a
+Reading window.
 </para>
-<note><para>検索データ・ベースのサイズを最小化するために、
-インフォメーション・マネージャは、
-<WordAsWord>and</WordAsWord>、
-<WordAsWord>but</WordAsWord>、
-<WordAsWord>or</WordAsWord>、
-<WordAsWord>the</WordAsWord>といった多くのありふれた語に対して、
-検索をおこないません。
+<note><para>To minimize the size of the search database, the Information Manager
+does not perform searches on many common words such as
+<WordAsWord>and</WordAsWord>,
+<WordAsWord>but</WordAsWord>,
+<WordAsWord>or</WordAsWord>, and
+<WordAsWord>the</WordAsWord>.
 </para></note>
-<para>
-[クエリー・エディタ] ウィンドウには、以下のコンポーネントが含まれます。
+<para>The Query Editor window contains the following components:
 </para>
 <variablelist>
 <VarListEntry>
-<Term>[範囲名] ボタン</Term>
+<Term>Scope Name Button</Term>
 <ListItem>
-<Para>
-使用可能な検索範囲のリストを表示します。これらの検索範囲は、あらかじめ定義
-されているもの、もしくはユーザによって定義されたものです。そこでユーザは、
-検索の範囲を選択できます。
+<Para>Displays a list of available search scopes, which may be predefined or
+created by you, so you can select the scope of your search.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>[接頭辞] ボタン</Term>
+<Term>Prefix Button</Term>
 <ListItem>
-<Para>
-接頭辞のリストを表示します。そこでユーザは、クエリーで使用するために、
-以下の接頭辞の中の一つを選択できます: 
-含む, 含まない, 始まる, 始まらない。
+<Para>Displays the Prefix list, so you can choose one of the following
+prefixes to use in the query: Contains, Doesn't Contain, Starts With, or
+Doesn't Start With.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>[テキスト入力] フィールド</Term>
+<Term>Text Input Field</Term>
 <ListItem>
-<Para>
-ユーザが、検索する用語を入力するフィールドです。
+<Para>The fields where you type the terms to search on.
 </Para>
-<para>
-複数の用語をともなうクエリーでは、複数の [テキスト入力] フィールドと、
-複数のコネクタを使用してください。
+<para>For a query with multiple terms, use multiple text input fields and
+multiple connectors.
 </para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>[コネクタ] ボタン</Term>
+<Term>Connector Button</Term>
 <ListItem>
-<Para>
-コネクタのリストを表示します。そこでユーザは、クエリーで使用するために、
-以下のコネクタの中の一つを選択できます。
+<Para>Displays the Connector list, so you can choose one of the following
+connectors to use for the query:
 </Para>
 <variablelist>
 <VarListEntry>
-<Term>または</Term>
+<Term>Or</Term>
 <ListItem>
-<Para>
-クエリーの現在の部分か次の部分、またはその両方に対する一致を含んだセクション
-を、見つけます。
+<Para>Finds sections that contain a match for the current part of the query
+or the next part, or both.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>かつ</Term>
+<Term>And</Term>
 <ListItem>
-<Para>
-クエリーの現在の部分とクエリーの次の部分に対する一致を含んだセクションを、
-見つけます。
+<Para>Finds sections that contain a match for the current part of the query
+and the next part of the query.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -990,16 +952,15 @@
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>定義領域</Term>
+<Term>Definition Area</Term>
 <ListItem>
-<Para>
-それまでに定義されているように、クエリーを表示します。
+<Para>Shows the query as defined so far.
 </Para>
 </ListItem>
 </VarListEntry>
 </variablelist>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.68">
@@ -1052,62 +1013,57 @@
 <!--########################################-->
 
 <Sect1 Id="IMQueryEditWinScopeNameB">
-<Title><anchor id="dtinfo.query-editor.scope-option.OptionButton.ctx">[範囲名] ボタン</Title>
-<IndexTerm><Primary SortAs="はんいめい・ぼたん">[範囲名] ボタン</Primary></IndexTerm>
-<para>選択可能な検索範囲のリストを表示します。これらの検索範囲は、あらかじめ
-定義されているか、ユーザによって作成されたものです。そこでユーザは、
-検索の範囲を選択できます。
+<Title><anchor id="dtinfo.query-editor.scope-option.OptionButton.ctx">Scope Name Button</Title>
+<IndexTerm><Primary SortAs="scope name button">Scope Name Button</Primary></IndexTerm>
+<para>Click to display a list of available search scopes, which may be predefined or
+created by you, so you can select the scope of your search.
 </Para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMQueryEditWinPrefixB">
-<Title><anchor id="dtinfo.query-editor.pane.popup-prefix-menu.ctx">[接頭辞] ボタン</Title>
-<IndexTerm><Primary SortAs="せっとうじぼたん">[接頭辞] ボタン</Primary></IndexTerm>
-<para>
-[接頭辞] リストを表示します。そこでユーザは、クエリーで使用するために、
-以下の接頭辞の中の一つを選択できます：含む、含まない、始まる、始まらない。
+<Title><anchor id="dtinfo.query-editor.pane.popup-prefix-menu.ctx">Prefix Button</Title>
+<IndexTerm><Primary SortAs="prefix button">Prefix Button</Primary></IndexTerm>
+<para>Click to display the Prefix list, so you can choose one of the following
+prefixes to use in the query: Contains, Doesn't Contain, Starts With, or
+Doesn't Start With.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMQueryEditWinTextInput">
-<Title><anchor id="dtinfo.query-editor.pane.term-text.ctx">[クエリー・エディタ] のテキスト入力フィールド</Title>
-<IndexTerm><Primary SortAs="くえりー・えでぃたのてきすとにゅうりょくふぃーるど">[クエリー・エディタ] のテキスト入力フィールド</Primary></IndexTerm>
-<para>
-[テキスト入力] フィールドは、ユーザが検索する用語を入力する場所です。
-複数の用語によるクエリーでは、
-複数のテキスト入力フィールドと複数のコネクタを使用してください。
+<Title><anchor id="dtinfo.query-editor.pane.term-text.ctx">Query Editor Text Input Field</Title>
+<IndexTerm><Primary SortAs="Query Editor Text Input Field">Query Editor Text Input Field</Primary></IndexTerm>
+<para>The text input field is where you type the terms to search on.
+For a query with multiple terms, use multiple text input fields and
+multiple connectors.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMQueryEditWinConnectorB">
-<Title><anchor id="dtinfo.query-editor.pane.connective.ctx">[コネクタ] ボタン</Title>
-<IndexTerm><Primary SortAs="こねくた・ぼたん">[コネクタ] ボタン</Primary></IndexTerm>
-<para>
-[コネクタ] リストを表示します。そこでユーザは、クエリーで使用するために、
-以下のコネクタの中の一つを選択できます。
+<Title><anchor id="dtinfo.query-editor.pane.connective.ctx">Connector Button</Title>
+<IndexTerm><Primary SortAs="connector button">Connector Button</Primary></IndexTerm>
+<para>Click to display the Connector list, so you can choose one of the following
+connectors to use for the query:
 </Para>
 <variablelist>
 <VarListEntry>
-<Term>または</Term>
+<Term>Or</Term>
 <ListItem>
-<Para>
-クエリーの現在の部分かその次の部分、または両方に対する一致を含むセクションを
-見つけます。
+<Para>Finds sections that contain a match for the current part of the query
+or the next part, or both.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>かつ</Term>
+<Term>And</Term>
 <ListItem>
-<Para>
-クエリーの現在の部分とその次の部分に対する一致を含むセクションを
-見つけます。
+<Para>Finds sections that contain a match for the current part of the query
+and the next part of the query.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -1117,59 +1073,56 @@
 <!--##################################################-->
 
 <Sect1 Id="IMQueryEditWinDefinitionArea">
-<Title><anchor id="dtinfo.query-editor.qform.ctx">[クエリー・エディタ] の定義領域</Title>
-<IndexTerm><Primary SortAs="くえりー・えでぃたのていぎりょういき">[クエリー・エディタ] の定義領域</Primary></IndexTerm>
-<para>
-定義領域には、クエリーがそれまで定義されたように、表示されます。
+<Title><anchor id="dtinfo.query-editor.qform.ctx">Query Editor Definition Area</Title>
+<IndexTerm><Primary SortAs="query editor definition area">Query Editor Definition Area</Primary></IndexTerm>
+<para>The definition area shows the query as defined so far.
 </Para>
 </sect1>
 
 <!--##################################################-->
 
 <Sect1 Id="IMQueryEditorWindowButtons">
-<Title>[クエリー・エディタ] ウィンドウのボタン</Title>
+<Title>Query Editor Window Buttons</Title>
 <IndexTerm>
-<Primary SortAs="くえりー・えでぃた・うぃんどうのぼたん">[クエリー・エディタ] ウィンドウのボタン</Primary>
+<Primary SortAs="query editor window buttons">Query Editor Window Buttons</Primary>
 </IndexTerm>
 <VariableList>
 <VarListEntry>
-<Term>検索</Term>
+<Term>Search</Term>
 <ListItem>
-<Para>クエリーを定義した後で、検索を開始します
-(インフォメーション・マネージャは、 [検索結果] ウィンドウに検索一致を
-表示します)。
+<Para>Start the search, after you have defined the query. (The Information
+Manager displays search matches in the Search Results
+window.)
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>すべて消去</Term>
+<Term>Clear All</Term>
 <ListItem>
-<Para>ユーザがそれまでに作成したクエリーを、消去します。そこでユーザは、
-クエリーを再定義できます。
+<Para>Clear the definition of the query you have created so far, so you can
+redefine the query.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>範囲エディタ</Term>
+<Term>Scope Editor</Term>
 <ListItem>
-<Para>[範囲エディタ] ウィンドウを表示します。そこでユーザは、
-カスタム検索範囲を作成し、保存できます。
+<Para>Display the Scope Editor window, so you can create and save a custom
+search scope.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>閉じる</Term>
+<Term>Close</Term>
 <ListItem>
-<Para>
-[クエリー・エディタ] ウィンドウを、閉じます。
+<Para>Close the Query Editor window.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ヘルプ</Term>
+<Term>Help</Term>
 <ListItem>
-<Para>
-[クエリー・エディタ] ウィンドウに関するヘルプ情報を、表示します。
+<Para>Display Help information on the Query Editor window.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -1179,62 +1132,57 @@
 <!--########################################-->
 
 <Sect1 Id="IMQueryEditSearchButton">
-<Title><anchor id="dtinfo.query-editor.XmPushButton.search.ctx">[クエリー・エディタ] の [検索] ボタン</Title>
-<IndexTerm><Primary SortAs="くえりー・えでぃたのけんさくぼたん">[クエリー・エディタ] の [検索] ボタン</Primary></IndexTerm>
-<para>
-クエリーを定義した後で、検索を開始します(インフォメーション・マネージャは、
-[検索結果] ウィンドウに、検索一致を表示します)。
+<Title><anchor id="dtinfo.query-editor.XmPushButton.search.ctx">Query Editor Search Button</Title>
+<IndexTerm><Primary SortAs="query editor search button">Query Editor Search Button</Primary></IndexTerm>
+<para>Click to start the search, after you have defined the query. (The
+Information Manager displays search matches in the Search Results
+window.)
 </Para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMQueryEditWinClearButton">
-<Title><anchor id="dtinfo.query-editor.XmPushButton.clear.ctx">[クエリー・エディタ] の [すべて消去] ボタン</Title>
-<IndexTerm><Primary SortAs="くえりー・えでぃたのすべてしょうきょぼたん">[クエリー・エディタ] の [すべて消去] ボタン</Primary></IndexTerm>
-<para>
-ユーザがこれまでに作成したクエリーの定義を、消去します。
-</Para>
+<Title><anchor id="dtinfo.query-editor.XmPushButton.clear.ctx">Query Editor Clear All Button</Title>
+<IndexTerm><Primary SortAs="query editor clear all button">Query Editor Clear All Button</Primary></IndexTerm>
+<para>Click to clear the definition of the query you have created so far, so
+you can redefine the query.
+</para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMQueryEditScopeEditButton">
-<Title><anchor id="dtinfo.query-editor.XmPushButton.scope.ctx">[クエリー・エディタ] の [範囲エディタ] ボタン</Title>
-<IndexTerm><Primary SortAs="くえりー・えでぃたのはんいえでぃた・ぼたん">[クエリー・エディタ] の [範囲エディタ] ボタン</Primary></IndexTerm>
-<para>
-[範囲エディタ] ウィンドウを開きます。そこでユーザは、カスタム範囲を
-作成・保存できます。
-</Para>
+<Title><anchor id="dtinfo.query-editor.XmPushButton.scope.ctx">Query Editor Scope Editor Button</Title>
+<IndexTerm><Primary SortAs="query editor scope editor button">Query Editor Scope Editor Button</Primary></IndexTerm>
+<para>Click to display the Scope Editor window, so you can create and save a
+custom search scope.
+</para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMScopeEditorWindow">
-<Title><anchor id="dtinfo.scope-editor.win">[範囲エディタ] ウィンドウ</Title>
+<Title><anchor id="dtinfo.scope-editor.win">Scope Editor Window</Title>
 <IndexTerm>
-<Primary SortAs="はんいえでぃた・うぃんどう">[範囲エディタ] ウィンドウ</Primary>
+<Primary SortAs="scope editor window">Scope Editor Window</Primary>
 </IndexTerm>
-<Para>
-複雑な検索の範囲をカスタマイズするには、[範囲エディタ] ウィンドウを使用して
-ください。ユーザは、範囲エディタを使用して、検索範囲を作成し、変更し、
-名付け、コピーできます。
+<Para>Use the Scope Editor window to customize the scope of a complex search.
+You create, change, name, and copy search scopes using the Scope
+Editor.
 </Para>
 <Graphic Entityref="ScopeEditorWindow" Id="HINFO.REF.fig.22"></Graphic>
-<para>
-クエリー・エディタから範囲エディタを開くには、[クエリー・エディタ] ウィンドウ
-の最下部の、[範囲エディタ] ボタンをクリックしてください。
+<para>To open the Scope Editor from the Query Editor, click the Scope Editor
+button at the bottom of the Query Editor Window.
 </para>
-<para>
-[閲覧] ウィンドウから範囲エディタを開くには、
-ウィンドウ右下隅の [範囲エディタ] ボタンを、クリックするか、
-[検索] ウィンドウから、[範囲エディタ] を選択してください。
+<para>To open the Scope Editor from the Reading window, click the Scope Editor
+button in the lower right corner of the window, or choose Scope Editor
+from the Search Window.
 </para>
-<para>既存の検索範囲のリストを表示するには、[範囲名] ボタンをクリックして
-ください。
+<para>Click the Scope Name button to display a list of the existing search scopes.
 </para>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.82">
@@ -1265,41 +1213,41 @@
 <!--##########################################-->
 
 <Sect2 Id="IMScopeEditorWindowButtons">
-<Title>[範囲エディタ] ウィンドウのボタン</Title>
+<Title>Scope Editor Window Buttons</Title>
 <IndexTerm>
-<Primary SortAs="はんいえでぃた・うぃんどうのぼたん">[範囲エディタ] ウィンドウのボタン</Primary>
+<Primary SortAs="scope editor window buttons">Scope Editor Window Buttons</Primary>
 </IndexTerm>
 <VariableList>
 <VarListEntry>
-<Term>新規</Term>
+<Term>New</Term>
 <ListItem>
-<Para>新しい検索範囲を作成します。</Para></ListItem>
+<Para>Create a new search scope.</Para></ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>保存</Term>
-<ListItem><Para>新しい検索範囲を保存して、既存の検索範囲とします。</Para></ListItem>
+<Term>Save</Term>
+<ListItem><Para>Save a new search scope or changes to an existing search scope.</Para></ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>名前の変更</Term>
-<ListItem><Para>選択された検索範囲の名前を、変更します。</Para></ListItem>
-</VarListEntry>
-<VarListEntry>
-<Term>削除</Term>
-<ListItem><Para>選択された検索範囲を、削除します。</Para></ListItem>
-</VarListEntry>
-<VarListEntry>
-<Term>リセット</Term>
-<ListItem><Para>変更内容を取り消し、検索範囲の初期の定義を復元します。</Para></ListItem>
-</VarListEntry>
-<VarListEntry>
-<Term>閉じる</Term>
-<ListItem><Para>[範囲エディタ] ウィンドウを、閉じます。</Para></ListItem>
-</VarListEntry>
-<VarListEntry>
-<Term>ヘルプ</Term>
-<ListItem><Para>
-[範囲エディタ] ウィンドウに関するヘルプを、表示します。
+<Term>Rename</Term>
+<ListItem><Para>Save the selected search scope under a new
+name.
 </Para></ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Delete</Term>
+<ListItem><Para>Delete the selected search scope.</Para></ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Reset</Term>
+<ListItem><Para>Restore the initial definition of a search scope, cancelling a change.</Para></ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Close</Term>
+<ListItem><Para>Close the Scope Editor Window.</Para></ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Help</Term>
+<ListItem><Para>Display Help information on the Scope Editor Window.</Para></ListItem>
 </VarListEntry>
 </VariableList>
 </sect2>
@@ -1308,114 +1256,112 @@
 <!--########################################-->
 
 <Sect1 Id="IMScopeEditScopeNameButton">
-<Title><anchor id="dtinfo.scope-editor.scope-option.ctx">[範囲エディタ] の [範囲名] ボタン</Title>
-<IndexTerm><Primary SortAs="はんいえでぃたのはんいめいぼたん">[範囲エディタ] の [範囲名] ボタン</Primary></IndexTerm>
-<para>既存の検索範囲のリストを、表示します。
+<Title><anchor id="dtinfo.scope-editor.scope-option.ctx">Scope Editor Scope Name Button</Title>
+<IndexTerm><Primary SortAs="scope editor scope name button">Scope Editor Scope Name Button</Primary></IndexTerm>
+<para>Click to display a list of the existing search scopes.
 </Para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMScopeEditBookList">
-<Title><anchor id="dtinfo.scope-editor.books.ctx">[範囲エディタ] のブックリスト</Title>
-<IndexTerm><Primary SortAs="[範囲エディタ] のブックリスト">[範囲エディタ] のブックリスト</Primary></IndexTerm>
-<para>
-インフォメーション・ライブラリ中のブックのリストを、表示します。
-ユーザは、それぞれのブックのタイトルの頭に付いている右または下矢印を
-クリックすることによって、このリストを展開・縮退できます。
+<Title><anchor id="dtinfo.scope-editor.books.ctx">Scope Editor Book List</Title>
+<IndexTerm><Primary SortAs="scope editor book list">Scope Editor Book List</Primary></IndexTerm>
+<para>Displays a list of the books in
+the information library. You can expand or contract this list by
+clicking the right or down arrows that precede each book title.
 </para>
-<para>ブックを定義中の範囲に含めるには、その名前をクリックしてください。
+<para>To include a book in the scope you are defining, click on its name.
 </Para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMScopeEditComponentsList">
-<Title><anchor id="dtinfo.scope-editor.components.ctx">[範囲エディタ] の [コンポーネント] リスト</Title>
-<IndexTerm><Primary SortAs="はんいえでぃたのこんぽーねんとりすと">[範囲エディタ] の [コンポーネント] リスト</Primary></IndexTerm>
-<para>
-ユーザが範囲に含めたブックのコンポーネントを、リストします。
-デフォルトでは、インフォメーション・マネージャは、すべてのコンポーネントを
-検索に含めます。
+<Title><anchor id="dtinfo.scope-editor.components.ctx">Scope Editor Components List</Title>
+<IndexTerm><Primary SortAs="scope editor components list">Scope Editor Components List</Primary></IndexTerm>
+<para>Displays a list of the book components that you can include in the
+scope. By default, the Information Manager includes all components in
+your search.
 </Para>
-<para>
-コンポーネントを定義中の範囲に含めるには、その名前をクリックしてください。
+<para>To include a component in the scope you are defining, click on its name.
 </Para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMScopeEditNewButton">
-<Title><anchor id="dtinfo.scope-editor.new.ctx">[範囲エディタ] の [新規] ボタン</Title>
-<IndexTerm><Primary SortAs="はんいえでぃたのしんきぼたん">[範囲エディタ] の [新規] ボタン</Primary></IndexTerm>
-<para>
-新しい検索範囲を作成します。
+<Title><anchor id="dtinfo.scope-editor.new.ctx">Scope Editor New Button</Title>
+<IndexTerm><Primary SortAs="scope editor new button">Scope Editor New Button</Primary></IndexTerm>
+<para>Click to create a new search scope.
 </Para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMScopeEditSaveButton">
-<Title><anchor id="dtinfo.scope-editor.save.ctx">[範囲エディタ] の [保存] ボタン</Title>
-<IndexTerm><Primary SortAs="はんいえでぃたのほぞんぼたん">[範囲エディタ] の [保存] ボタン</Primary></IndexTerm>
-<para>
-新しい検索範囲を保存したり、既存の検索範囲を変更したりします。
+<Title><anchor id="dtinfo.scope-editor.save.ctx">Scope Editor Save Button</Title>
+<IndexTerm><Primary SortAs="scope editor save button">Scope Editor Save Button</Primary></IndexTerm>
+<para>Click to save a new search scope or changes to an existing
+search scope.
 </Para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMScopeEditRenameCopyButton">
-<Title><anchor id="dtinfo.scope-editor.rename.ctx">[範囲エディタ] の [名前の変更] ボタン</Title>
-<IndexTerm><Primary SortAs="はんいえでぃたのなまえのへんこうぼたん">[範囲エディタ] の [名前の変更] ボタン</Primary></IndexTerm>
-<para>選択された検索範囲を、新しい名前で保存します。
+<Title><anchor id="dtinfo.scope-editor.rename.ctx">Scope Editor Rename Button</Title>
+<IndexTerm><Primary SortAs="scope editor rename button">Scope Editor Rename Button</Primary></IndexTerm>
+<para>Click to save the selected search scope under a new
+name.
 </Para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMScopeEditDeleteButton">
-<Title><anchor id="dtinfo.scope-editor.delete.ctx">[範囲エディタ] の [削除] ボタン</Title>
-<IndexTerm><Primary SortAs="はんいえでぃたのさくじょぼたん">[範囲エディタ] の [削除] ボタン</Primary></IndexTerm>
-<para>選択された検索範囲を削除します。
+<Title><anchor id="dtinfo.scope-editor.delete.ctx">Scope Editor Delete Button</Title>
+<IndexTerm><Primary SortAs="scope editor delete button">Scope Editor Delete Button</Primary></IndexTerm>
+<para>Click to delete the selected search scope.
 </Para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMScopeEditResetButton">
-<Title><anchor id="dtinfo.scope-editor.reset.ctx">[範囲エディタ] の [リセット] ボタン</Title>
-<IndexTerm><Primary SortAs="はんいえでぃたのりせっと・ぼたん">[範囲エディタ] の [リセット] ボタン</Primary></IndexTerm>
-<para>変更を取り消して、検索範囲の初期の定義を復元します。
+<Title><anchor id="dtinfo.scope-editor.reset.ctx">Scope Editor Reset Button</Title>
+<IndexTerm><Primary SortAs="scope editor reset button">Scope Editor Reset Button</Primary></IndexTerm>
+<para>Click to restore the initial definition of a search scope, cancelling a change.
 </Para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMSearchResultsWindow">
-<Title><anchor id="dtinfo.results.win">[検索結果] ウィンドウ</Title>
-<IndexTerm><Primary SortAs="けんさくけっかうぃんどう">[検索結果] ウィンドウ</Primary></IndexTerm>
-<Para>検索一致を表示するには、検索後に、[検索結果] ウィンドウを使用してください。
-</Para>
+<Title><anchor id="dtinfo.results.win">Search Results Window</Title>
+<IndexTerm><Primary SortAs="search results window">Search Results Window</Primary></IndexTerm>
+<Para>Use the Search Results window after a search to display the search
+matches.</Para>
 <Graphic Entityref="SearchResultsWindow" Id="HINFO.REF.fig.23"></Graphic>
-<Para>
-検索一致は、重要なものから順にリストされ、ブックのタイトルの左側のアイコンは、
-特定のセッションで、検索項目が何度登場したかを示します。
+<Para>Search matches are listed in order of descending importance, with
+the icon to the left of the book title indicating how often the search
+item appears in a given section.
 </Para>
-<Para>
-[検索結果] ウィンドウから、ユーザは、セクションのタイトルをクリックする
-ことによって、リストされたどのセクションへも移動できます。
+<Para>From the Search Results window, you can go to any of the listed sections
+by clicking its section title.
 </Para>
-<para>[検索結果] リストが不完全か、長過ぎるか、そうでなければエラーになっている
-と思われるときは、適切な検索範囲を使用したことを確認してください。また、
-検索一致の最大数のための検索の設定を、チェックしてください。
+<para>If the Search Results list seems incomplete, too long, or otherwise in
+error, check to see that you used the appropriate search scope, and
+check your search preferences setting for the maximum number of search
+hits.
 </para>
-<para>複数の検索をおこなうとき、最初の [検索結果] ウィンドウをピンで固定するのは
-良い考えです。そうすれは、ユーザが別の検索をおこなったとき、新しい検索結果は
-独立した [検索結果] ウィンドウに表示され、最初の検索の結果を置き換えません。
+<para>When performing multiple searches, it is a good idea to pin the first
+Search Results window. Then when you perform another search, the new
+results will be displayed in a separate Search Results window, and will
+not replace the results of the first search.
 </para>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.89">
@@ -1444,30 +1390,28 @@
 </Procedure>
 
 <Sect2 Id="IMSearchResultsWindowButtons ">
-<Title>[検索結果] ウィンドウのボタン</Title>
+<Title>Search Results Window Buttons</Title>
 <IndexTerm>
-<Primary SortAs="けんさくけっかうぃんどうのぼたん">[検索結果] ウィンドウのボタン</Primary>
+<Primary SortAs="search results window buttons">Search Results Window Buttons</Primary>
 </IndexTerm>
 <VariableList>
 <VarListEntry>
-<Term>表示</Term>
+<Term>Display</Term>
 <ListItem>
-<Para>[検索結果] リスト上で強調表示されているセクションを、表示します。
+<Para>Display the section highlighted on the Search Results list.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>閉じる</Term>
+<Term>Close</Term>
 <ListItem>
-<Para>[検索結果] ウィンドウを、閉じます。
+<Para>Close the Search Results window.
 </Para></ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ヘルプ</Term>
+<Term>Help</Term>
 <ListItem>
-<Para>
-[検索結果] ウィンドウに関するヘルプ情報を、表示します。
-</Para></ListItem>
+<Para>Display Help information on the Search Results Window.</Para></ListItem>
 </VarListEntry>
 </VariableList>
 </sect2>
@@ -1476,98 +1420,84 @@
 <!--########################################-->
 
 <Sect1 Id="IMSearchResultsWindowPushpin">
-<Title><anchor id="dtinfo.results.retain.ctx">[検索結果] ウィンドウの押しピン</Title>
-<IndexTerm><Primary SortAs="けんさくけっかうぃんどうのおしぴん">[検索結果] ウィンドウの押しピン</Primary></IndexTerm>
-<para>
-現在開かれている検索結果をピンで固定したり、解放したりします。
-押しピンをクリックすることによって、ピンで固定されている状態と固定されて
-いない状態が切り替わります。
+<Title><anchor id="dtinfo.results.retain.ctx">Search Results Window Pushpin</Title>
+<IndexTerm><Primary SortAs="search results window pushpin">Search Results Window Pushpin</Primary></IndexTerm>
+<para>Click to hold open or release the currently displayed search results.
+Clicking the Pushpin switches between the pinned and unpinned states.
 </para>
-<para>
-[検索結果] ウィンドウをピンで固定すると、他の [検索結果] ウィンドウを
-同時に開くことができます。[検索結果] ウィンドウがピンで固定されていないと、
-その内容はユーザが別のクエリーをおこなう度に置き換えられます。
+<para>When you pin the Search Results window open, you can open other Search Results
+windows simultaneously. If a Search Results window is unpinned, its contents
+are replaced whenever you perform another query.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMSearchResultsWindowQueryText">
-<Title><anchor id="dtinfo.results.query-text.ctx">[検索結果] のクエリー・テキスト</Title>
-<IndexTerm><Primary SortAs="けんさくけっかのくえりー・てきすと">[検索結果] のクエリー・テキスト</Primary></IndexTerm>
-<para>
-現在の [検索結果] リストを作成したクエリーの定義を、表示します。
+<Title><anchor id="dtinfo.results.query-text.ctx">Search Results Query Text</Title>
+<IndexTerm><Primary SortAs="search results query text">Search Results Query Text</Primary></IndexTerm>
+<para>Displays the definition of the query that produced the current search
+results list.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMSearchResultsWindowList">
-<Title><anchor id="dtinfo.results.listSW.list.ctx">[検索結果] リスト</Title>
-<IndexTerm><Primary SortAs="けんさくけっかりすと">[検索結果] リスト</Primary></IndexTerm>
-<para>
-示されたクエリーによって作成された検索結果を、表示します。
+<Title><anchor id="dtinfo.results.listSW.list.ctx">Search Results List</Title>
+<IndexTerm><Primary SortAs="search results list">Search Results List</Primary></IndexTerm>
+<para>Displays the search results produced by the indicated query.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMSearchResultsDisplayButton">
-<Title><anchor id="dtinfo.results.display.ctx">[検索結果] ウィンドウの [表示] ボタン</Title>
-<IndexTerm><Primary SortAs="けんさくけっかうぃんどうのひょうじぼたん">[検索結果] ウィンドウの [表示] ボタン</Primary></IndexTerm>
-<para>
-[検索結果] リスト上で強調表示されているセクションを、表示します。
+<Title><anchor id="dtinfo.results.display.ctx">Search Results Window Display Button</Title>
+<IndexTerm><Primary SortAs="search results window display button">Search Results Window Display Button</Primary></IndexTerm>
+<para>Click to display the section highlighted on the Search Results list.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMSearchResultsCloseButton">
-<Title><anchor id="dtinfo.results.close.ctx">[検索結果] ウィンドウの [閉じる] ボタン</Title>
-<IndexTerm><Primary SortAs="けんさくけっかうぃんどうのとじるぼたん">[検索結果] ウィンドウの [閉じる] ボタン</Primary></IndexTerm>
-<para>
-[検索結果] ウィンドウを閉じます。
+<Title><anchor id="dtinfo.results.close.ctx">Search Results Window Close Button</Title>
+<IndexTerm><Primary SortAs="search results window close button">Search Results Window Close Button</Primary></IndexTerm>
+<para>Click to close the Search Results window.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMBookmarkEditorWindow">
-<Title><anchor id="dtinfo.bookmark-edit.win">[ブックマーク・エディタ] ウィンドウ</Title>
+<Title><anchor id="dtinfo.bookmark-edit.win">Bookmark Editor Window</Title>
 <IndexTerm>
-<Primary SortAs="ぶっくまーく・えでぃた・うぃんどう">[ブックマーク・エディタ] ウィンドウ</Primary>
+<Primary SortAs="bookmark editor window">Bookmark Editor Window</Primary>
 </IndexTerm>
-<para>以下をおこなうには、ブックマーク・エディタを使用してください。
-</para>
+<para>Use the Bookmark Editor to:</para>
 <itemizedlist>
 <listitem>
-<para>
-ブックマークの名前を、変更する。
-</para>
+<para>Rename bookmarks.</para>
 </listitem>
 <listitem>
-<para>
-ブックマークの注記を、編集する。
-</para>
+<para>Edit bookmark notes.</para>
 </listitem>
 <listitem>
-<para>
-ブックマークへ直接、移動する。
-</para>
+<para>Go directly to a bookmark.</para>
 </listitem>
 </itemizedlist>
-<note><para>
-[マーク] メニューを使用せずに [ブックマーク・エディタ] を起動するには、
-ブックマーク・アイコンをダブル・クリックしてください。
+<note><para>To start the Bookmark Editor without using the Marks menu, double-click
+a bookmark icon.
 </para>
 </note>
 <Graphic Entityref="BookmarkEditorWindow" Id="HINFO.REF.fig.24"></Graphic>
-<para>[名前] フィールドには、ブックマークの名前が表示されます。
+<para>The Name field displays the name of the bookmark.
 </Para>
-<para>[注記] フィールドには、現在のブックマークに接続された注記が、表示されます。
+<para>The Notes field displays notes you have attached to the current bookmark.
 </Para>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.96">
@@ -1598,34 +1528,32 @@
 <!--#################################################-->
 
 <Sect2 Id="IMBookmarkEditorWindowButtons">
-<Title>[ブックマーク・エディタ] ウィンドウのボタン</Title>
+<Title>Bookmark Editor Window Buttons</Title>
 <IndexTerm>
-<Primary SortAs="ぶっくまーく・えでぃた・うぃんどうのぼたん">[ブックマーク・エディタ] ウィンドウのボタン</Primary>
+<Primary SortAs="bookmark editor window buttons">Bookmark Editor Window Buttons</Primary>
 </IndexTerm>
 <variablelist>
-<varlistentry><term>了解</term>
+<varlistentry><term>Ok</term>
 <listitem>
-<para>ブックマーク名とブックマークの注記を保存して、[閲覧] ウィンドウへ戻ります。
+<para>Saves the bookmark name and bookmark notes and returns to the reading window.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>表示</term>
+<varlistentry><term>Display</term>
 <listitem>
-<para>ユーザがブックマークを配置したセクションを、表示します。
+<para>Displays the section where you placed the bookmark.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>取消し</term>
+<varlistentry><term>Cancel</term>
 <listitem>
-<para>ブックマークを変更することなく、[閲覧] ウィンドウへ戻ります。
+<para>Returns to the Reading window without changing the bookmark.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>ヘルプ</term>
+<varlistentry><term>Help</term>
 <listitem>
-<para>
-[ブックマーク・エディタ] ウィンドウに関するヘルプ情報を、表示します。
-</para>
+<para>Displays help information on the Bookmark Editor window.</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -1635,78 +1563,72 @@
 <!--########################################-->
 
 <Sect1 Id="IMBookMarkEditNameField">
-<Title><anchor id="dtinfo.bookmark-edit.name.ctx">[ブックマーク・エディタ] の [名前] フィールド</Title>
-<IndexTerm><Primary SortAs="ぶっくまーく・えでぃたのなまえふぃーるど">[ブックマーク・エディタ] の [名前] フィールド</Primary></IndexTerm>
-<para>
-選択されたブックマークの名前を、表示します。
+<Title><anchor id="dtinfo.bookmark-edit.name.ctx">Bookmark Editor Name Field</Title>
+<IndexTerm><Primary SortAs="bookmark editor name field">Bookmark Editor Name Field</Primary></IndexTerm>
+<para>Displays the name of the selected bookmark.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMBookMarkEditNotesField">
-<Title><anchor id="dtinfo.bookmark-edit.notes.ctx">[ブックマーク・エディタ] の [注記] フィールド</Title>
-<IndexTerm><Primary SortAs="ぶっくまーく・えでぃたのちゅうきふぃーるど">[ブックマーク] エディタの [注記] フィールド</Primary></IndexTerm>
-<para>
-ユーザが現在のブックマーク接続した注記を、表示します。
+<Title><anchor id="dtinfo.bookmark-edit.notes.ctx">Bookmark Editor Notes Field</Title>
+<IndexTerm><Primary SortAs="bookmark editor notes field">Bookmark Editor Notes Field</Primary></IndexTerm>
+<para>Displays any notes you have attached to the current bookmark.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMBookMarkEditOKButton">
-<Title><anchor id="dtinfo.bookmark-edit.ok.ctx">[ブックマーク・エディタ] の [了解] ボタン</Title>
-<IndexTerm><Primary SortAs="ぶっくまーく・えでぃたのりょうかいぼたん">[ブックマーク・エディタ] の [了解] ボタン</Primary></IndexTerm>
-<para>
-ブックマーク名とブックマークの注記を保存して、[閲覧] ウィンドウへ戻ります。
+<Title><anchor id="dtinfo.bookmark-edit.ok.ctx">Bookmark Editor Ok Button</Title>
+<IndexTerm><Primary SortAs="bookmark editor ok button">Bookmark Editor Ok Button</Primary></IndexTerm>
+<para>Click to save the bookmark name and bookmark notes
+and return to the Reading window.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMBookMarkEditDisplayButton">
-<Title><anchor id="dtinfo.bookmark-edit.view.ctx">[ブックマーク・エディタ] の [表示] ボタン</Title>
-<IndexTerm><Primary SortAs="ぶっくまーく・えでぃたのひょうじぼたん">[ブックマーク・エディタ] の [表示] ボタン</Primary></IndexTerm>
-<para>
-ユーザが現在のブックマークを配置したセクションを、表示します。
+<Title><anchor id="dtinfo.bookmark-edit.view.ctx">Bookmark Editor Display Button</Title>
+<IndexTerm><Primary SortAs="bookmark editor display button">Bookmark Editor Display Button</Primary></IndexTerm>
+<para>Click to display the section where you placed the current bookmark.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMBookMarkEditCancelButton">
-<Title><anchor id="dtinfo.bookmark-edit.cancel.ctx">[ブックマーク・エディタ] の [取消し] ボタン</Title>
-<IndexTerm><Primary SortAs="ぶっくまーく・えでぃたのとりけしぼたん">[ブックマーク・エディタ] の [取消し] ボタン</Primary></IndexTerm>
-<para>
-ブックマークを変更せずに、[閲覧] ウィンドウへ戻ります。
+<Title><anchor id="dtinfo.bookmark-edit.cancel.ctx">Bookmark Editor Cancel Button</Title>
+<IndexTerm><Primary SortAs="bookmark editor cancel button">Bookmark Editor Cancel Button</Primary></IndexTerm>
+<para>Click to return to the Reading window without changing the bookmark.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMDetachedGraphicWindow">
-<Title><anchor id="dtinfo.graphic.win">[分離グラフィック] ウィンドウ</Title>
+<Title><anchor id="dtinfo.graphic.win">Detached Graphic Window</Title>
 <IndexTerm>
-<Primary SortAs="ぶんりぐらふぃっく・うぃんどう">[分離グラフィック] ウィンドウ</Primary>
+<Primary SortAs="detached graphic window">Detached Graphic Window</Primary>
 </IndexTerm>
-<Para>[閲覧] ウィンドウでテキストを読んでいる間に、たとえ表や図が登場したテキスト
-の部分を通り過ぎた後でも表や図を表示するには、[分離グラフィック] ウィンドウ
-を使用してください。
+<Para>Use the Detached Graphic window to display a table or figure while
+reading text in a Reading window, even after you have passed the point
+in the text where the table or figure appeared.
 </Para>
 <Graphic Entityref="DetachedGraphicWindow" Id="HINFO.REF.fig.25"></Graphic>
-<Para>
-ユーザは、グラフィック・ウィンドウのサイズを変更してパナー・ボタンを置き、
-表示されたグラフィックのサイズを変更し、グラフィックを分離したセクションを
-見つけ、分離グラフィックの位置を突き止め、分離グラフィックを再接続できます。
+<Para>You can resize the graphic window and position the panner button, resize
+the displayed graphic, find the graphic's original section, locate a
+detached graphic, and reattach a detached graphic.
 </Para>
-<Para>
-分離グラフィックは、ユーザがそれを再接続するか、[分離グラフィック] ウィンドウ
-を閉じるか、ブラウザ・セッションを終了するまで、独立したウィンドウに残ります。
-セッションの間、ユーザはグラフィックを独立したウィンドウに表示したまま、
-そのグラフィックが登場したセクションを閉じることができます。
+<Para>A detached graphic remains in a separate window until you reattach it,
+close the detached graphic window, or end the browser session.
+During a session, you can close the section in which the graphic appeared while
+continuing to display the graphic in a separate window.
 </Para>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.103">
@@ -1738,87 +1660,75 @@
 <!--########################################-->
 
 <Sect1 Id="IMPrintDialog">
-<Title><anchor id="dtinfo.print.win">[印刷] ダイアログ・ボックス</Title>
-<IndexTerm><Primary SortAs="いんさつだいあろぐ・ぼっくす">[印刷] ダイアログ・ボックス</Primary></IndexTerm>
-<Para>
-[印刷] ダイアログ・ボックスにアクセスするには、
-[ブックリスト] ウィンドウの [ファイル]] メニューまたは
-[閲覧] ウィンドウの [ブラウザ] メニューから [印刷...] を選択してください。
-<Keycap>Control</Keycap>+<Keycap>P</Keycap>を押しても印刷できます。
+<Title><anchor id="dtinfo.print.win">Print Dialog Box</Title>
+<IndexTerm><Primary SortAs="print dialog box">Print Dialog Box</Primary></IndexTerm>
+<Para>To access the Print dialog box, choose Print... from the File menu of the
+Book List window or from the Browser Menu of a Reading Window.
+You can also press Control+P.
 </para>
 <Graphic Entityref="PrintDialog" Id="HINFO.REF.fig.26"></Graphic>
-<para>
-プリンタへ直接印刷するには、[プリンタに出力] ラジオ・ボタンをクリック
-してください。ユーザは以下のようにして、異なったプリンタを選択できます。
+<para>To print directly to a printer, click the Print to Printer radio button.
+You can select a different printer by:
 </para>
 <itemizedlist>
 <listitem>
-<para>
-[プリンタ名] フィールドに、新しいプリンタ名を入力してください。
+<para>Typing the new printer name in the Printer Name field.
 </para>
 </listitem>
 <listitem>
-<para>
-[他のプリンタ] ボタンをクリックして、表示されたリストからプリンタを選択
-します。
+<para>Clicking the More Printers... button and selecting the printer
+from the displayed list.
 </para>
 </listitem>
 </itemizedlist>
-<para>
-現在選択されているプリンタの詳細な説明を表示するには、[情報...] ボタンを
-クリックしてください。
+<para>To display a detailed description of the currently selected printer,
+click the Info... button.
 </para>
-<para>ファイルに印刷するには、[ファイルに出力] ラジオボタンをクリックして
-ください。ユーザは以下のようにして、Postscript出力を受けるためのファイルを
-選択できます。
+<para>To print to a file, click the Print to File
+radio button.
+You can select the file to receive the PostScript output
+by:
 </para>
 <itemizedlist>
 <listitem>
-<para>
-[ファイル名] フィールドに、ファイルの名前とパスを入力します。
+<para>Typing the path and filename for the file in the File Name field.
 </para>
 </listitem>
 <listitem>
-<para>
-[ファイルの選択...] ボタンをクリックして、ファイル名をブラウズします。
+<para>Clicking the Select File... button and browsing for the file name.
 </para>
 </listitem>
 </itemizedlist>
-<para>
-複数のコピーを印刷するには、[印刷部数] フィールドに、部数を入力して
-ください。ファイルへの出力では、一部だけが作成されます。
+<para>To print multiple copies, type
+the number of copies in the Copies field.
+For file output, only one copy is created.
 </para>
-<Para>
-ユーザの選択した個々のセクションを印刷するか、選択されたセクションに従属する
-すべてのセクションを印刷するかを指定するには、
-以下([印刷対象] の下)をクリックしてください。
+<Para>To specify whether to print the individual sections you selected or
+all sections subordinate to the selected sections, click
+(under What to Print):
 </Para>
 <variablelist>
 <VarListEntry>
-<Term>セクション</Term>
+<Term>Sections</Term>
 <ListItem>
-<Para>
-選択されたセクションのみ、印刷します。
+<Para>To print only the selected sections.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>階層</Term>
+<Term>Hierarchy</Term>
 <ListItem>
-<Para>
-選択されたセクションと、それに従属するすべてのセクションを印刷します。
+<Para>To print the selected sections and all the sections subordinate to them.
 </Para>
-<para>
-ユーザが [階層] を選択すると、
-インフォメーション・マネージャは [印刷されるセクション数] フィールドを
-更新して、選択されたセクションとそれに従属するすべてのセクションの数を
-明らかにします。
+<para>When you select Hierarchy, the Information Manager updates the Number of
+Sections to Be Printed field to indicate the number of selected sections
+and all the sections subordinate to them.
 </para>
 </ListItem>
 </VarListEntry>
 </variablelist>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.110">
@@ -1846,44 +1756,41 @@
 <!--##############################################-->
 
 <Sect2 Id="IMPrintDialogButtons">
-<Title>[印刷] ダイアログのボタン</Title>
+<Title>Print Dialog Buttons</Title>
 <IndexTerm>
-<Primary SortAs="いんさつだいあろぐのぼたん">[印刷] ダイアログのボタン</Primary>
+<Primary SortAs="print dialog buttons">Print Dialog Buttons</Primary>
 </IndexTerm>
 <VariableList>
 <VarListEntry>
-<Term>印刷</Term>
+<Term>Print</Term>
 <ListItem>
-<Para>
-選択されたセクションを、指示されたプリンタまたはファイルに送信します。
+<Para>Send the selected section(s) to the designated printer or file.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>設定...</Term>
+<Term>Setup...</Term>
 <ListItem>
-<Para>
-[印刷の設定] ウィンドウを表示します。このウィンドウからユーザは、
-プリンタの情報を調査し、プリンタ・オプションとジョブ・オプションの両方を
-定義できます。
-詳細は、<olink type="Jump" LocalInfo="PrnSetup PrintSetupRef">
-[印刷の設定] ウィンドウ</OLink>を参照してください。
+<Para>Display the Print Setup window. From this window, you can
+examine printer information and define both Printer and Job options.
+See
+<olink type="Jump" LocalInfo="PrnSetup PrintSetupRef">Print Setup
+Window</OLink> for more information.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>取消し</Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para>
-印刷の操作を取り消して、[印刷] ダイアログ・ボックスを閉じます。
+<Para>Cancel the print operation and close the Print dialog box.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ヘルプ</Term>
+<Term>Help</Term>
 <ListItem>
-<Para>
-[印刷] ダイアログ・ボックスに関するヘルプ情報を、表示します。
+<Para>Display help information about the
+Print dialog box.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -1894,173 +1801,155 @@
 <!--########################################-->
 
 <Sect1 Id="IMPrintDialogInfoButton">
-<Title><anchor id="dtinfo.PrintSetup.Info.ctx">[印刷] ダイアログの [情報] ボタン</Title>
-<indexTerm><Primary SortAs="いんさつだいあろぐのじょうほうぼたん">[印刷] ダイアログの [情報] ボタン</Primary></IndexTerm>
-<para>
-現在選択されているプリンタの詳細な説明を、表示します。
+<Title><anchor id="dtinfo.PrintSetup.Info.ctx">Print Dialog Info Button</Title>
+<indexTerm><Primary SortAs="print dialog info button">Print Dialog Info Button</Primary></IndexTerm>
+<para>Click to display a detailed description of the currently selected printer.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrintDialogPrinterName">
-<Title><anchor id="dtinfo.PrintSetup.Name.Text.ctx">[印刷] ダイアログの [プリンタ名] フィールド</Title>
-<indexTerm><Primary SortAs="いんさつだいあろぐのぷりんためいふぃーるど">[印刷] ダイアログの [プリンタ名] フィールド</Primary></IndexTerm>
-<para>
-このフィールドには、現在選択されているプリンタの名前が表示されます。
-異なったプリンタを選択するには、プリンタ名を入力するか、[他のプリンタ] ボタン
-をクリックしてプリンタ選択ダイアログを使用してください。
+<Title><anchor id="dtinfo.PrintSetup.Name.Text.ctx">Print Dialog Printer Name Field</Title>
+<indexTerm><Primary SortAs="print dialog printer name field">Print Dialog Printer Name Field</Primary></IndexTerm>
+<para>This field displays the name of the currently selected printer.
+To select a different printer, type the printer name or click on the
+More Printers button and use the printer selection dialog.
 </para>
-<para>
-[プリンタに出力] ラジオボタンがセットされていなければならないことに
-注意してください。
+<para>Note that the Print to Printer radio button must be set.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrintDialogMorePrinters">
-<Title><anchor id="dtinfo.PrintSetup.SelectPrinter.ctx">[印刷] ダイアログの [他のプリンタ] ボタン</Title>
-<indexTerm><Primary SortAs="いんさつだいあろぐのたのぷりんた・ぼたん">[印刷] ダイアログの [他のプリンタ] ボタン</Primary></IndexTerm>
-<para>
-選択可能なプリンタのリストを表示します。プリンタを選択するには、
-その名前をクリックしてください。
+<Title><anchor id="dtinfo.PrintSetup.SelectPrinter.ctx">Print Dialog More Printers Button</Title>
+<indexTerm><Primary SortAs="print dialog more printers button">Print Dialog More Printers Button</Primary></IndexTerm>
+<para>Click to display the list of available printers. To
+select a printer, click on its name.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrintDialogFileName">
-<Title><anchor id="dtinfo.PrintSetup.FileName.ctx">[印刷] ダイアログの [ファイル名] フィールド</Title>
-<indexTerm><Primary SortAs="いんさつだいあろぐのふぁいるめいふぃーるど">[印刷] ダイアログの [ファイル名] フィールド</Primary></IndexTerm>
-<para>
-このフィールドには、PostScrip出力を受けるファイルの名前が表示されます。
-異なったファイルを選択するには、パスとファイル名を入力するか、
-[ファイルの選択] ボタンをクリックして、ファイル選択ダイアログを使用して
-ください。
+<Title><anchor id="dtinfo.PrintSetup.FileName.ctx">Print Dialog File Name Field</Title>
+<indexTerm><Primary SortAs="print dialog file name field">Print Dialog File Name Field</Primary></IndexTerm>
+<para>This field displays the name of the file to receive the
+PostScript output. To select a different file, type the path
+and file name or click on the
+Select File button and use the file selection dialog.
 </para>
-<para>[ファイルに出力] ラジオ・ボタンがセットされていなければならないことに、
-注意してください。
+<para>Note that the Print to File radio button must be set.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrintDialogSelectFile">
-<Title><anchor id="dtinfo.PrintSetup.SelectFile.ctx">[印刷] ダイアログの [ファイルの選択] ボタン</Title>
-<indexTerm><Primary SortAs="いんさつだいあろぐのふぁいるのせんたくぼたん">[印刷] ダイアログの [ファイルの選択] ボタン</Primary></IndexTerm>
-<para>
-望みのファイルを求めてディレクトリ構造をブラウズできます。
-ファイルを選択するには、その名前をクリックしてください。
+<Title><anchor id="dtinfo.PrintSetup.SelectFile.ctx">Print Dialog Select File Button</Title>
+<indexTerm><Primary SortAs="print dialog select file button">Print Dialog Select File Button</Primary></IndexTerm>
+<para>Click to browse through the directory structure for the desired file. To
+select a file, click on its name.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrintDialogPrintToPrinter">
-<Title><anchor id="dtinfo.PrintSetup.DestRadioBox.button.0.ctx">[印刷] ダイアログの [プリンタに出力] ラジオボタン</Title>
-<indexTerm><Primary SortAs="いんさつだいあろぐ・ぼっくすのぷりんたにしゅつりょくらじおぼたん">[印刷] ダイアログの [プリンタに出力] ラジオボタン</Primary></IndexTerm>
-<para>
-選択されたプリンタへの印刷を、有効にします。
+<Title><anchor id="dtinfo.PrintSetup.DestRadioBox.button.0.ctx">Print Dialog Print to Printer Radio Button</Title>
+<indexTerm><Primary SortAs="print dialog print to printer radio button">Print Dialog Print to Printer Radio Button</Primary></IndexTerm>
+<para>Click to enable printing to a selected printer.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrintDialogPrintToFile">
-<Title><anchor id="dtinfo.PrintSetup.DestRadioBox.button.1.ctx">[印刷] ダイアログの [ファイルに出力] ラジオボタン</Title>
-<indexTerm><Primary SortAs="いんさつだいあろぐ・ぼっくすのふぁいるにしゅつりょくらじおぼたん">[印刷] ダイアログの [ファイルに出力] ラジオボタン</Primary></IndexTerm>
-<para>
-選択されたファイルへの出力を、有効にします。
+<Title><anchor id="dtinfo.PrintSetup.DestRadioBox.button.1.ctx">Print Dialog Print to File Radio Button</Title>
+<indexTerm><Primary SortAs="print dialog print to file radio button">Print Dialog Print to File Radio Button</Primary></IndexTerm>
+<para>Click to enable printing to a selected file.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrintDialogCopies">
-<Title><anchor id="dtinfo.doc-tree.PrintSetup.Copies.Copies-TF.ctx">[印刷] ダイアログの [印刷部数] フィールド</Title>
-<indexTerm><Primary SortAs="いんさつだいあろぐのいんさつぶすうふぃーるど">[印刷] ダイアログの [印刷部数] フィールド</Primary></IndexTerm>
-<para>
-このフィールドには、印刷される部数が表示されます。
-印刷部数を入力してください。上矢印をクリックして部数を増やしたり、
-下矢印をクリックして部数を減らすこともできます。
-ファイルへの出力では、一部のみが作成されることに注意してください。
+<Title><anchor id="dtinfo.doc-tree.PrintSetup.Copies.Copies-TF.ctx">Print Dialog Copies Field</Title>
+<indexTerm><Primary SortAs="print dialog copies field">Print Dialog Copies Field</Primary></IndexTerm>
+<para>This field displays the number of copies to be printed.
+Type the number of copies. You can also click on the up arrow to
+increase the number or the down arrow to reduce it.
+Note that for file output, only one copy is created.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrintDialogSections">
-<Title><anchor id="dtinfo.PrintSetup.what-form.print-nodes.ctx">[印刷] ダイアログの [セクション] ラジオボタン</Title>
-<indexTerm><Primary SortAs="いんさつだいあろぐのせくしょん・らじおぼたん">[印刷] ダイアログの [セクション] ラジオボタン</Primary></IndexTerm>
-<para>
-選択されたセクションのみ(従属するセクションを伴わない)の印刷を、有効にします。
+<Title><anchor id="dtinfo.PrintSetup.what-form.print-nodes.ctx">Print Dialog Sections Radio Button</Title>
+<indexTerm><Primary SortAs="print dialog sections radio button">Print Dialog Sections Radio Button</Primary></IndexTerm>
+<para>Click to enable printing of selected sections only (with no subordinate sections).
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrintDialogHierarchy">
-<Title><anchor id="dtinfo.PrintSetup.what-form.print-hierarchy.ctx">[印刷] ダイアログの [階層] ラジオボタン</Title>
-<indexTerm><Primary SortAs="いんさつだいあろぐのかいそうらじおぼたん">[印刷] ダイアログの [階層] ラジオボタン</Primary></IndexTerm>
-<para>
-選択されたセクションと従属するセクションの印刷を、有効にします。
-ユーザが [階層] を選択すると、
-インフォメーション・マネージャは [印刷されるセクション数] を更新し、
-選択されたセクションとそれに従属するすべてのセクションの数を、
-明らかにします。
+<Title><anchor id="dtinfo.PrintSetup.what-form.print-hierarchy.ctx">Print Dialog Hierarchy Radio Button</Title>
+<indexTerm><Primary SortAs="print dialog hierarchy radio button">Print Dialog Hierarchy Radio Button</Primary></IndexTerm>
+<para>Click to enable printing of selected sections and subordinate sections.
+When you select Hierarchy, the Information Manager updates the Number of
+Sections to Be Printed field to indicate the number of selected sections
+and all the sections subordinate to them.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrintDialogPrintButton">
-<Title><anchor id="dtinfo.PrintSetup.Print.ctx">[印刷] ダイアログの [印刷] ボタン</Title>
-<indexTerm><Primary SortAs="いんさつだいあろぐのいんさつぼたん">[印刷] ダイアログの [印刷] ボタン</Primary></IndexTerm>
-<para>
-選択されたセクションを、指定されたプリンタまたはファイルに送信します。
+<Title><anchor id="dtinfo.PrintSetup.Print.ctx">Print Dialog Print Button</Title>
+<indexTerm><Primary SortAs="print dialog print button">Print Dialog Print Button</Primary></IndexTerm>
+<para>Click to send the selected section(s) to the designated printer or file.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrintDialogSetupButton">
-<Title><anchor id="dtinfo.PrintSetup.Setup.ctx">[印刷] ダイアログの [設定] ボタン</Title>
-<indexTerm><Primary SortAs="いんさつだいあろぐのせっていぼたん">[印刷] ダイアログの [設定] ボタン</Primary></IndexTerm>
-<para>
-[印刷の設定] ウィンドウを表示します。このウィンドウからユーザは、
-プリンタの情報を調査し、プリンタ・オプションとジョブ・オプションの両方を
-定義できます。
-詳細は、<olink type="Jump" LocalInfo="PrnSetup PrintSetupRef">
-[印刷の設定] ウィンドウ</OLink>を参照してください。
+<Title><anchor id="dtinfo.PrintSetup.Setup.ctx">Print Dialog Setup Button</Title>
+<indexTerm><Primary SortAs="print dialog setup button">Print Dialog Setup Button</Primary></IndexTerm>
+<para>Click to display the Print Setup window. From this window, you can
+examine printer information and define both Printer and Job options.
+See
+<olink type="Jump" LocalInfo="PrnSetup PrintSetupRef">Print Setup
+Window</OLink> for more information.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrintDialogCancelButton">
-<Title><anchor id="dtinfo.PrintSetup.Cancel.ctx">[印刷] ダイアログの [取消し] ボタン</Title>
-<indexTerm><Primary SortAs="いんさつだいあろぐのとりけしぼたん">[印刷] ダイアログの [取消し] ボタン</Primary></IndexTerm>
-<para>
-印刷の操作を取り消して、[印刷] ダイアログ・ボックスを閉じます。
+<Title><anchor id="dtinfo.PrintSetup.Cancel.ctx">Print Dialog Cancel Button</Title>
+<indexTerm><Primary SortAs="print dialog cancel button">Print Dialog Cancel Button</Primary></IndexTerm>
+<para>Click to cancel the print operation and close the Print dialog box.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMGraphicalMapWindow">
-<Title><anchor id="dtinfo.map.win">[グラフィカル・マップ] ウィンドウ</Title>
-<IndexTerm><Primary SortAs="ぐらふぃかる・まっぷ・うぃんどう">[グラフィカル・マップ] ウィンドウ</Primary></IndexTerm>
-<para>
-ブックの編成にそって自分自身の位置を確かめるために、ユーザは、
-そのセクションのグラフィカル・マップを表示することができます。
-グラフィカル・マップは、そのブックのタイトルの表示された、グラフィカルな
-ツリーです。グラフィカル・マップによって、ブックの全体的な編成を理解する
-ことが容易になります。
+<Title><anchor id="dtinfo.map.win">Graphical Map Window</Title>
+<IndexTerm><Primary SortAs="graphical map window">Graphical Map Window</Primary></IndexTerm>
+<para>Use the Graphical Map window to orient yourself to a book&rsquo;s
+organization, you can display a graphical map of its sections. The map
+is a graphical tree that displays the titles of the book&rsquo;s
+sections. The map makes it easier to see the overall organization of the
+book.
 </Para>
 <Graphic Entityref="GraphicalMap" Id="HINFO.REF.fig.27"></Graphic>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.116">
@@ -2086,22 +1975,20 @@
 <!--################################################-->
 
 <Sect2 Id="IMGraphicalMapWindowButtons">
-<title>[グラフィカル・マップ] ウィンドウのボタン</title>
+<title>Graphical Map Window Buttons</title>
 <IndexTerm>
-<Primary SortAs="ぐらふぃかる・まっぷ・うぃんどうのぼたん">[グラフィカル・マップ] ウィンドウのボタン</Primary>
+<Primary SortAs="graphical map window buttons ">Graphical Map Window Buttons</Primary>
 </IndexTerm>
 <variablelist>
-<varlistentry><term>閉じる</term>
+<varlistentry><term>Close</term>
 <listitem>
-<para>
-[グラフィカル・マップ] を閉じて、[閲覧] ウィンドウへ戻ります。
+<para>Close the Graphical Map and return to the Reading window
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>ヘルプ</term>
+<varlistentry><term>Help</term>
 <listitem>
-<para>
-[グラフィカル・マップ] ウィンドウに関するヘルプ情報を、表示します。
+<para>Display Help information about the Graphical Map window
 </para>
 </listitem>
 </varlistentry>
@@ -2112,45 +1999,43 @@
 <!--########################################-->
 
 <Sect1 Id="IMGraphicalMapPannerBox">
-<Title><anchor id="dtinfo.map.pane.topform.panner.ctx">[グラフィカル・マップ] のパナー・ボックス</Title>
-<IndexTerm><Primary SortAs="ぐらふぃかる・まっぷのぱなー・ぼっくす">[グラフィカル・マップ] のパナー・ボックス</Primary></IndexTerm>
-<para>
-どの部分のグラフィカル・マップを表示するかを選択するのに使用してください。
+<Title><anchor id="dtinfo.map.pane.topform.panner.ctx">Graphical Map Panner Box</Title>
+<IndexTerm><Primary SortAs="graphical map panner box">Graphical Map Panner Box</Primary></IndexTerm>
+<para>Use to select which part of the Graphical Map to
+display.
 </Para>
-<Para>
-ポインタをパナー・ボックスの上に置いてください。
-左マウス・ボタンを押したままにして、見たいマップの部分が表示されるように、
-マウスをドラッグしてください。例えば、マップの右の境界に隠れたタイトルを
-表示するには、パナー・ボックスを右側へ移動してください。
+<Para>Position the pointer on the Panner Box.
+Press and hold the left mouse button and then
+drag the mouse to display the part of the map you want
+to see. For example, move the panner box to the right to
+view titles that are hidden by the map's right boundary.
 </Para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMGraphicalMapAutoUpdate">
-<Title><anchor id="dtinfo.map.autoUpB.ctx">[グラフィカル・マップ] の [自動更新] チェック・ボックス</Title>
-<IndexTerm><Primary SortAs="ぐらふぃかる・まっぷのじどうこうしんちぇっく・ぼっくす">[グラフィカル・マップ] の [自動更新] チェック・ボックス</Primary></IndexTerm>
-<para>
-グラフィカル・マップを更新し、ブック上のユーザの現在の位置を表示します。
+<Title><anchor id="dtinfo.map.autoUpB.ctx">Graphical Map Auto Update Check Box</Title>
+<IndexTerm><Primary SortAs="graphical map auto update check box">Graphical Map Auto Update Check Box</Primary></IndexTerm>
+<para>Click to update the graphical map to show your current location in
+a book.
 </para>
-<para>
-ユーザがブックの中を移動する度に自動的にユーザの位置をグラフィカル・マップに
-反映させたければ、[オプション] メニューから [マップの設定] を選択して、
-[自動更新] をオンに設定してください。
+<para>If you want the graphical map to automatically reflect your
+location as you move through a book, choose Preferences for Map
+from the Options menu and set Auto Update to on.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMUserMarksListWindow">
-<Title><anchor id="dtinfo.mark-list.win">[ユーザのマーク・リスト] ウィンドウ</Title>
-<IndexTerm><Primary SortAs="ゆーざのまーく・りすと・うぃんどう">[ユーザのマーク・リスト] ウィンドウ</Primary></IndexTerm>
-<para>
-すべてのユーザによるブックマークのリストを表示するには、
-[ユーザのマーク・リスト] を使用してください。
+<Title><anchor id="dtinfo.mark-list.win">User Marks List Window</Title>
+<IndexTerm><Primary SortAs="">User Marks List Window">User Marks List Window</Primary></IndexTerm>
+<para>Use the User Marks List window to view a list of all of your bookmarks,
+both blank and annotated.
 </Para>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.121">
@@ -2168,41 +2053,36 @@
 <!--################################################-->
 
 <Sect2 Id="IMUserMarksListWindowButtons">
-<title>[ユーザのマーク・リスト] のボタン</title>
-<IndexTerm><Primary SortAs="ゆーざのまーく・りすとのぼたん">[ユーザのマーク・リスト] のボタン</Primary></IndexTerm>
+<title>User Marks List Window Buttons</title>
+<IndexTerm><Primary SortAs="user marks list window buttons ">User Marks List Window Buttons</Primary></IndexTerm>
 <variablelist>
-<varlistentry><term>表示</term>
+<varlistentry><term>View</term>
 <listitem>
-<para>
-選択されたブックマークの登場するセクションを、表示します。
+<para>Display the section that the selected bookmark appears in.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>終了</term>
+<varlistentry><term>Edit</term>
 <listitem>
-<para>
-選択されたブックマークのためのブックマーク・エディタを開きます。
+<para>Open the Bookmark Editor for the selected bookmark.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>削除</term>
+<varlistentry><term>Delete</term>
 <listitem>
-<para>
-選択されたブックマークを削除します。
+<para>Delete the selected bookmark.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>閉じる</term>
+<varlistentry><term>Close</term>
 <listitem>
-<para>
-[ユーザのマーク・リスト] ウィンドウを閉じます。
+<para>Close the User Marks List window.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>ヘルプ</term>
+<varlistentry><term>Help</term>
 <listitem>
-<para>
-[ユーザのマーク・リスト] に関するヘルプ情報を、表示します。
+<para>Display Help information about the User Marks List window
 </para>
 </listitem>
 </varlistentry>
@@ -2212,51 +2092,46 @@
 <!--########################################-->
 
 <Sect1 Id="IMUserMarksViewButton">
-<Title><anchor id="dtinfo.mark-list.view.ctx">[ユーザのマーク・リスト] の [表示] ボタン</Title>
-<IndexTerm><Primary SortAs="ゆーざのまーく・りすとのひょうじぼたん">[ユーザのマーク・リスト] の [表示] ボタン</Primary></IndexTerm>
-<para>
-選択されたブックマークの登場するセクションを、表示します。
+<Title><anchor id="dtinfo.mark-list.view.ctx">User Marks List View Button</Title>
+<IndexTerm><Primary SortAs="user marks list view button">User Marks List View Button</Primary></IndexTerm>
+<para>Click to display the section that the selected bookmark appears in.
 </Para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMUserMarksEditButton">
-<Title><anchor id="dtinfo.mark-list.edit.ctx">[ユーザのマーク・リスト] の [編集] ボタン</Title>
-<IndexTerm><Primary SortAs="ゆーざのまーく・りすとのへんしゅうぼたん">[ユーザのマーク・リスト] の [編集] ボタン</Primary></IndexTerm>
-<para>
-選択されたブックマークのためのブックマーク・エディタを開きます。
+<Title><anchor id="dtinfo.mark-list.edit.ctx">User Marks List Edit Button</Title>
+<IndexTerm><Primary SortAs="user marks list edit button">User Marks List Edit Button</Primary></IndexTerm>
+<para>Click to open the Bookmark Editor for the selected bookmark.
 </Para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMUserMarksDeleteButton">
-<Title><anchor id="dtinfo.mark-list.delete.ctx">[ユーザのマーク・リスト] の [削除] ボタン</Title>
-<IndexTerm><Primary SortAs="ゆーざのまーく・りすとのさくじょぼたん">[ユーザのマーク・リスト] の [削除] ボタン</Primary></IndexTerm>
-<para>
-選択されたブックマークを削除します。
+<Title><anchor id="dtinfo.mark-list.delete.ctx">User Marks List Delete Button</Title>
+<IndexTerm><Primary SortAs="user marks list delete button">User Marks List Delete Button</Primary></IndexTerm>
+<para>Click to delete the selected bookmark.
 </Para>
 </sect1>
 
 <!-- ########################################-->
 
 <Sect1 Id="IMPreferencesWindow">
-<Title><anchor id="BASE.win">[設定の変更] ウィンドウ</Title>
-<IndexTerm><Primary SortAs="せっていうぃんどう">[設定の変更] ウィンドウ</Primary></IndexTerm>
-<para>
-インフォメーション・マネージャのブラウズ、マップ、ヒストリ、検索機能を
-カスタマイズするには、[設定の変更] ウィンドウを使用してください。
+<Title><anchor id="BASE.win">Preferences Window</Title>
+<IndexTerm><Primary SortAs="preferences window">Preferences Window</Primary></IndexTerm>
+<para>Use the Preferences window to customize Browsing, Map, History, and
+Searching features of the Information Manager.
 </Para>
 <graphic entityref="PreferencesWindow" id="HINFO.REF.fig.28"></graphic>
-<para>
-変更したい設定のタイプを選択するには、[設定の変更...] ボタンをクリックして
-ください。ポップアップ・リストに、設定のタイプが表示されます。設定のタイプの
-名前を、クリックしてください。インフォメーション・マネージャは、選択された
-設定のタイプに応じたダイアログ・ボックスを、表示します。
+<para>Click the Preferences for button to select the type of preferences you
+want to set. A pop-up list displays the types of preferences. Click the
+name of the preferences type. The Information Manager displays a dialog
+box for the selected preferences type.
 </Para>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.123">
@@ -2286,40 +2161,39 @@
 <!--################################################-->
 
 <Sect2 Id="IMPreferencesWindowButtons">
-<title>[設定の変更] ウィンドウのボタン</title>
+<title>Preferences Window Buttons</title>
 <IndexTerm>
-<Primary SortAs="せっていうぃんどうのぼたん">[設定の変更] ウィンドウのボタン</Primary>
+<Primary SortAs="preferences window buttons ">Preferences Window Buttons</Primary>
 </IndexTerm>
 <variablelist>
-<varlistentry><term>了解</term>
+<varlistentry><term>Ok</term>
 <listitem>
-<para>設定を、指定された値に変更して、[閲覧] ウィンドウに戻ります。
+<para>Set the preferences to the specified values and return to the Reading window
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>適用</term>
+<varlistentry><term>Apply</term>
 <listitem>
-<para>設定を、指定された値に変更して、[設定の変更] ウィンドウに戻ります。
+<para>Set the preferences to the specified values and remain in the Preferences window
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>リセット</term>
+<varlistentry><term>Reset</term>
 <listitem>
-<para>設定を、最後に [適用] した時点の値に変更し、[設定の変更] ウィンドウに
-とどまります。
+<para>Set the preferences to the values they had before the last
+Apply and remain in the Preferences window
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>取消し</term>
+<varlistentry><term>Cancel</term>
 <listitem>
-<para>何の変更もせずに、[設定の変更] ウィンドウを閉じます。
+<para>Close the Preferences window without making any changes
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>ヘルプ</term>
+<varlistentry><term>Help</term>
 <listitem>
-<para>
-[設定の変更] ウィンドウに関するヘルプ情報を、表示します。
+<para>Display Help information about the Preferences window
 </para>
 </listitem>
 </varlistentry>
@@ -2330,63 +2204,58 @@
 <!--########################################-->
 
 <Sect1 Id="IMPreferencesWinOkButton">
-<Title><anchor id="BASE.ok.ctx">[設定の変更] ウィンドウの [了解] ボタン</Title>
-<IndexTerm><Primary SortAs="せっていのへんこううぃんどうのりょうかいぼたん">[設定の変更] ウィンドウの [了解] ボタン</Primary></IndexTerm>
-<para>
-設定を指定された値に変更して、[閲覧] ウィンドウに戻ります。
+<Title><anchor id="BASE.ok.ctx">Preferences Window Ok Button</Title>
+<IndexTerm><Primary SortAs="preferences window ok button">Preferences Window Ok Button</Primary></IndexTerm>
+<para>Click to set the preferences to the specified values and return to the Reading window.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPreferencesWinApplyButton">
-<Title><anchor id="BASE.Apply.ctx">[設定の変更] ウィンドウの [適用] ボタン</Title>
-<IndexTerm><Primary SortAs="せっていのへんこううぃんどうのてきようぼたん">[設定の変更] ウィンドウの [適用] ボタン</Primary></IndexTerm>
-<para>
-設定を指定された値に変更して、[設定の変更] ウィンドウに留まります。
+<Title><anchor id="BASE.Apply.ctx">Preferences Window Apply Button</Title>
+<IndexTerm><Primary SortAs="preferences window apply button">Preferences Window Apply Button</Primary></IndexTerm>
+<para>Click to set the preferences to the specified values and remain in the Preferences window.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPreferencesWinResetButton">
-<Title><anchor id="BASE.reset.ctx">[設定の変更] ウィンドウの [リセット] ボタン</Title>
-<IndexTerm><Primary SortAs="せっていのへんこううぃんどうのりせっと・ぼたん">[設定の変更] ウィンドウの [リセット] ボタン</Primary></IndexTerm>
-<para>
-設定を最後の適用の前の値に設定して、[設定の変更] ウィンドウに留まります。
+<Title><anchor id="BASE.reset.ctx">Preferences Window Reset Button</Title>
+<IndexTerm><Primary SortAs="preferences window reset button">Preferences Window Reset Button</Primary></IndexTerm>
+<para>Click to set the preferences to the values they had before the last
+Apply and remain in the Preferences window.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPreferencesWinCancelButton">
-<Title><anchor id="BASE.cancel.ctx">[設定の変更] ウィンドウの [取消し] ボタン</Title>
-<IndexTerm><Primary SortAs="せっていのへんこううぃんどうのとりけしぼたん">[設定の変更] ウィンドウの [取消し] ボタン</Primary></IndexTerm>
-<para>
-何の変更もおこなわずに、[設定の変更] ウィンドウを閉じます。
+<Title><anchor id="BASE.cancel.ctx">Preferences Window Cancel Button</Title>
+<IndexTerm><Primary SortAs="preferences window cancel button">Preferences Window Cancel Button</Primary></IndexTerm>
+<para>Click to close the Preferences window without making any changes.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPreferencesWinPrefforButton">
-<Title><anchor id="BASE.options.OptionButton.ctx">[設定の変更] ウィンドウの [設定の変更] ボタン</Title>
-<IndexTerm><Primary SortAs="せっていのへんこううぃんどうのせっていのへんこうぼたん">[設定の変更] ウィンドウの [設定の変更] ボタン</Primary></IndexTerm>
-<para>
-
-変更したい設定のタイプを選択します。ポップアップ・リストに、設定のタイプが
-表示されます。設定のタイプの名前をクリックしてください。
-インフォメーション・マネージャは、選択されたタイプの設定を変更するための
-ダイアログ・ボックスを、表示します。
+<Title><anchor id="BASE.options.OptionButton.ctx">Preferences Window Preferences for Button</Title>
+<IndexTerm><Primary SortAs="preferences window preferences for button">Preferences Window Preferences for Button</Primary></IndexTerm>
+<para>Click to select the type of preferences you
+want to set. A pop-up list displays the types of preferences. Click the
+name of the preferences type. The Information Manager displays a dialog
+box for the selected preferences type.
 </para>
 </sect1>
 
 <!-- ########################################-->
 
 <Sect1 Id="IMBookListWindowMenus">
-<Title>[ブックリスト] ウィンドウのメニュー</Title>
+<Title>Book List Window Menus</Title>
 <IndexTerm>
-<Primary SortAs="ぶっくりすと・うぃんどうのめにゅー">[ブックリスト] ウィンドウのメニュー</Primary>
+<Primary SortAs="book list window menus">Book List Window Menus</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.128">
@@ -2421,55 +2290,50 @@
 <!--###########################################-->
 
 <Sect2 Id="IMBookListFileMenu">
-<Title><anchor id="dtinfo.booklist.file-menu.ctx">[ファイル] メニュー</Title>
+<Title><anchor id="dtinfo.booklist.file-menu.ctx">File Menu</Title>
 <IndexTerm>
-<Primary SortAs="ふぁいる・めにゅー">[ファイル] メニュー</Primary>
+<Primary SortAs="file menu">File Menu</Primary>
 </IndexTerm>
 <Graphic Entityref="BookListFileMenu" Id="HINFO.REF.fig.29"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term>表示</Term>
+<Term>View</Term>
 <ListItem>
-<Para>
-[閲覧] ウィンドウを開き、選択されたセクションを表示します。
+<Para>Opens a Reading window for the selected section.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>印刷</Term>
+<Term>Print</Term>
 <ListItem>
-<Para>
-選択されたセクションを、印刷します。
+<Para>Prints the selected section(s).
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>印刷...</Term>
+<Term>Print...</Term>
 <ListItem>
-<Para>
-[印刷] ダイアログ・ボックスを、表示します。
+<Para>Displays the Print dialog box.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>閉じる</Term>
+<Term>Close</Term>
 <ListItem>
-<Para>
-[ブックリスト] ウィンドウを、閉じます。
+<Para>Closes the Book List window.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>終了</Term>
+<Term>Exit</Term>
 <ListItem>
-<Para>
-インフォメーション・マネージャを、終了します。
+<Para>Exits the Information Manager.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.137">
@@ -2488,39 +2352,34 @@
 
 <!--###########################################-->
 <Sect2 Id="IMBookListEditMenu">
-<Title><anchor id="dtinfo.booklist.edit-menu.ctx">[編集] メニュー</Title>
-<IndexTerm><Primary SortAs="へんしゅうめにゅー">[編集] メニュー</Primary></IndexTerm>
+<Title><anchor id="dtinfo.booklist.edit-menu.ctx">Edit Menu</Title>
+<IndexTerm><Primary SortAs="edit menu">Edit Menu</Primary></IndexTerm>
 <Graphic Entityref="BookListEditMenu" Id="HINFO.REF.fig.30"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term>コピー</Term>
+<Term>Copy</Term>
 <ListItem>
-<Para>
-選択されたセクション名を、一次セレクションにコピーします。
+<Para>Copies the selected section name into the primary selection.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>追加</Term>
+<Term>Add</Term>
 <ListItem>
-<Para>
-既存のインフォメーション・ライブラリのセットに、
-インフォメーション・ライブラリを追加します。
+<Para>Adds an information library to the existing set.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>削除</Term>
+<Term>Remove</Term>
 <ListItem>
-<Para>
-既存のインフォメーション・ライブラリのセットから、
-インフォメーション・ライブラリを削除します。
+<Para>Removes an information library from the existing set.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.140">
@@ -2534,49 +2393,43 @@
 <!--###########################################-->
 
 <Sect2 Id="IMBookListOptionsMenu">
-<Title><anchor id="dtinfo.booklist.options-menu.ctx">[オプション] メニュー</Title>
+<Title><anchor id="dtinfo.booklist.options-menu.ctx">Options Menu</Title>
 <IndexTerm>
-<Primary SortAs="おぷしょん・めにゅー">[オプション] メニュー</Primary>
+<Primary SortAs="options menu">Options Menu</Primary>
 </IndexTerm>
 <Graphic Entityref="BookListOptionsMenu" Id="HINFO.REF.fig.31"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term>設定の変更</Term>
+<Term>Preferences</Term>
 <ListItem>
-<Para>
-[設定の変更] ウィンドウを表示します。そこでユーザは、様々な
-インフォメーション・マネージャのデフォルトを、カスタマイズできます。
+<Para>Displays the Preferences window so you can customize various
+Information Manager defaults.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>自動トラック</Term>
+<Term>Auto Track</Term>
 <ListItem>
-<Para>
-インフォメーション・ライブラリの階層上のユーザの位置を、自動的に追跡します。
-自動トラックは、[自動トラック] のとなりにチェック・マークがあるとき、
-有効です。
+<Para>Automatically tracks your location in the hierarchy of the information library.
+Automatic tracking is on when Auto Track has a check mark next to it.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ツール・バーを表示</Term>
+<Term>Show Tool Bar</Term>
 <ListItem>
-<Para>
-ツール・バーを、表示したり削除したりします。これはトグルです。
-
+<Para>Displays or removes the tool bar. This is a toggle.
 </Para></ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>検索領域の表示</Term>
+<Term>Show Search Area</Term>
 <ListItem>
-<Para>
-[クイック検索] 領域を、表示したり削除したりします。これはトグルです。
+<Para>Displays or removes the Quick Search area. This is a toggle.
 </Para></ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.141">
@@ -2596,76 +2449,68 @@
 <!--###########################################-->
 
 <Sect2 Id="IMBookListWindowsMenu">
-<Title><anchor id="dtinfo.booklist.window-menu.ctx">[ウィンドウ] メニュー</Title>
-<IndexTerm><Primary SortAs="うぃんどう・めにゅー">[ウィンドウ] メニュー</Primary></IndexTerm>
+<Title><anchor id="dtinfo.booklist.windows-menu.ctx">Windows Menu</Title>
+<IndexTerm><Primary SortAs="windows menu">Book List Windows menu</Primary></IndexTerm>
 <Graphic Entityref="BookListWindowsMenu" Id="HINFO.REF.fig.32"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term>グラフィカル・マップ</Term>
+<Term>Graphical Map</Term>
 <ListItem>
-<Para>
-現在のセクションのタイトルと、ブックの中の他のセクションのタイトルの表示
-された、グラフィカル・マップを開きます。グラフィカル・マップによって、
-ブックの全体的な編成を見ることが、容易になります。
+<Para>Opens the graphical map showing the title of the current section and the
+titles of the other sections of the book you are reading, making it easy
+to see the overall organization of the book.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>マーク・リスト</Term>
+<Term>Marks List</Term>
 <ListItem>
-<Para>
-[ユーザ・マーク・リスト] ウィンドウを表示します。
-[ユーザ・マーク・リスト] ウィンドウには、
-ユーザの、空白のブックマークと注記の付いたブックマークの両方が、リスト
-されます。
+<Para>Displays the User Marks List window, which lists both your blank and
+annotated bookmarks.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>セクション・ヒストリ</Term>
+<Term>Section History</Term>
 <ListItem>
-<Para>
-[セクション・ヒストリ] ウィンドウを表示します。
-[セクション・ヒストリ] ウィンドウには、ユーザの訪れたセクションが、
-もっとも最近のものからもっとも古いものまで、リストされます。
-ユーザは、セクションのタイトルをダブル・クリックすることによって、
-そこに戻ることができます。
+<Para>Displays the Section History window, which lists the sections you have
+visited, from the most recent to the least recent. You can return to a
+section by double-clicking on its title.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>検索ヒストリ</Term>
+<Term>Search History</Term>
 <ListItem>
-<Para>[検索ヒストリ] ウィンドウを表示します。
-[検索ヒストリ] ウィンドウには、現在のインフォメーション・マネージャの
-セッションでおこなわれたクエリーがリストされ、それぞれクエリーについて、
-一致の件数が表示されます。クエリーは、ユーザがそれをおこなった順に、
-リストされます。ユーザは、[検索ヒストリ] リスト上のクエリーを
-ダブル・クリックすることによって、前の検索の結果を再表示できます。
+<Para>Displays the Search History window, which lists the queries made during
+the current Information Manager session and specifies the number of
+matches found for each one. The queries appear in the order you made
+them. You can redisplay the results of a previous search by
+double-clicking on the query in the Search History list.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>クエリー・エディタ</Term>
+<Term>Query Editor</Term>
 <ListItem>
-<Para>[クエリー・エディタ] ウィンドウを表示します。
-クエリー・エディタは、単純または複雑な検索要求を構成し、編集し、実行する
-手段を提供します。
+<Para>Displays the Query Editor window. The Query Editor provides a way to
+construct, edit, and launch simple or complex search requests.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>範囲エディタ</Term>
+<Term>Scope Editor</Term>
 <ListItem>
-<Para>[範囲エディタ] ウィンドウを表示します。[範囲エディタ] では、ユーザの検索に
-含めるブックと情報のタイプを指定する、カスタム範囲を定義できます。
-ユーザは、個々の検索範囲を作成し、名付け、保存し、編集できます。
+<Para>Displays the Scope Editor window. The Scope Editor allows you to define
+custom scopes that specify the books and types of information to include
+in your searches. You can create, name, save, and edit individual search
+scopes.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.144">
@@ -2695,9 +2540,9 @@
 <!--###########################################-->
 
 <Sect1 Id="IMReadingWindowMenus">
-<Title>[閲覧] ウィンドウのメニュー</Title>
+<Title>Reading Window Menus</Title>
 <IndexTerm>
-<Primary SortAs="えつらんうぃんどうのめにゅー">[閲覧] ウィンドウのメニュー</Primary>
+<Primary SortAs="reading window menus">Reading Window Menus</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.150">
@@ -2726,69 +2571,63 @@
 <!--###########################################-->
 
 <Sect2 Id="IMReadingWindowBrowserMenu">
-<Title><anchor id="dtinfo.nodeview.menu-bar.file.ctx">[ブラウザ] メニュー</Title>
-<IndexTerm><Primary SortAs="ぶらうざ・めにゅー">[ブラウザ] メニュー</Primary></IndexTerm>
+<Title><anchor id="dtinfo.nodeview.menu-bar.file.ctx">Browser Menu</Title>
+<IndexTerm><Primary SortAs="browser menu">Browser Menu</Primary></IndexTerm>
 <Graphic Entityref="ReadingWindowBrowserMenu" Id="HINFO.REF.fig.33"></Graphic>
 <variablelist>
 <varlistentry>
-<term>新規ウィンドウ</term>
+<term>New Window</term>
 <listitem>
-<para>現在のセクションの正確なコピーを含んだ、新規ウィンドウを開きます。
-この機能は、長いセクションの異なった部分を、同時にレビューするために
-使用してください。
+<para>Opens a new window containing an exact copy of the current section.
+Use this feature to review different parts of a long section simultaneously.
 </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>ロケータを開く</term>
+<term>Open Locator</term>
 <listitem>
-<para>
-[ロケータを開く] ダイアログ・ボックスを表示します。そこでユーザは、
-[閲覧] ウィンドウにどのロケーションを表示するかを、指定できます。
+<para>Displays the Open Locator dialog box so you can specify which
+location to display in the Reading window.
 </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>ロケータの表示</term>
+<term>Show Locator</term>
 <listitem>
-<para>
-メッセージ領域に、現在のセクションへのロケータを表示します。
+<para>Displays the locator for the current section in the message area.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>印刷</term>
+<varlistentry><term>Print</term>
 <listitem>
-<para>現在のセクションと、任意で、それに従属するすべてのセクションを、印刷します。
-プリンタを選択したり、セクションを特定のファイルへ保存することもできます。
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>印刷...</term>
-<listitem>
-<para>[印刷] ダイアログ・ボックスを、表示します。
-</para>
-</listitem>
-</varlistentry>
-<varlistentry><term>閉じる</term>
-<listitem>
-<para>
-インフォメーション・マネージャを終了することなく、[閲覧] ウィンドウを
-閉じます。
+<para>Prints the current section and, optionally, all its subordinate sections.
+Includes the ability to specify a printer or save the section to a specific file.
 </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>終了</term>
+<term>Print...</term>
 <listitem>
-<para>
-インフォメーション・マネージャを、終了します。
+<para>Displays the Print dialog box.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>Close</term>
+<listitem>
+<para>Closes the Reading window without exiting the Information Manager.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Exit</term>
+<listitem>
+<para>Exits the Information Manager.
 </para>
 </listitem>
 </varlistentry>
 </variablelist>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.157">
@@ -2811,57 +2650,57 @@
 <!--###########################################-->
 
 <Sect2 Id="IMReadingWindowSearchMenu">
-<Title><anchor id="dtinfo.nodeview.menu-bar.search.ctx">[検索] メニュー</Title>
+<Title><anchor id="dtinfo.nodeview.menu-bar.search.ctx">Search Menu</Title>
 <IndexTerm>
-<Primary SortAs="けんさくめにゅー">[検索] メニュー</Primary>
+<Primary SortAs="search menu">Search Menu</Primary>
 </IndexTerm>
 <Graphic Entityref="ReadingWindowSearchMenu" Id="HINFO.REF.fig.34"></Graphic>
 <variablelist>
-<varlistentry><term>選択テキスト</term>
+<varlistentry><term>On Selection</term>
 <listitem>
-<para>現在の範囲で、現在強調表示されているテキストを、検索します。
-テキストは、[閲覧] ウィンドウ上か、デスクトップ上のどれか他のウィンドウ上で、
-強調表示されているとします。
+<para>Searches the current scope for the currently highlighted text.
+The text can be highlighted in the Reading window
+or any other displayed window on your desktop.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>クエリー・エディタ</term>
+<varlistentry><term>Query Editor</term>
 <listitem>
-<para>[クエリー・エディタ] ウィンドウを表示します。
-クエリー・エディタは、単純または複雑な検索要求を構成し、編集し、実行する
-手段を提供します。
+<para>Displays the Query Editor window. The Query Editor provides a way to
+construct, edit, and launch simple or complex search requests.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>範囲エディタ</term>
+<varlistentry><term>Scope Editor</term>
 <listitem>
-<para>[範囲エディタ] ウィンドウを表示します。[範囲エディタ] では、ユーザの検索に
-含めるブックと情報のタイプを指定する、カスタム範囲を定義できます。
-ユーザは、個々の検索範囲を作成し、名付け、保存し、編集できます。
+<para>Displays the Scope Editor window. The Scope Editor allows you to define
+custom scopes that specify the books and types of information to include
+in your searches. You can create, name, save, and edit individual search
+scopes.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>検索ヒストリ</term>
+<varlistentry><term>Search History</term>
 <listitem>
-<para>[検索ヒストリ] ウィンドウを表示します。
-[検索ヒストリ] ウィンドウには、現在のインフォメーション・マネージャの
-セッションでおこなわれたクエリーがリストされ、それぞれクエリーについて、
-一致の件数が表示されます。クエリーは、ユーザがそれをおこなった順に、
-リストされます。ユーザは、[検索ヒストリ] リスト上のクエリーを
-ダブル・クリックすることによって、前の検索の結果を再表示できます。
+<para>Displays the Search History window, which lists the queries made during
+the current Information Manager session and specifies the number of
+matches found for each one. The queries appear in the order you made
+them. You can redisplay the results of a previous search by
+double-clicking on the query in the Search History list.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>検索一致の消去</term>
+<varlistentry><term>Clear Search Hits</term>
 <listitem>
-<para>現在の [閲覧] ウィンドウで見つかった検索一致から、強調表示を取り除きます。
-ユーザが [検索結果] リストからセクションを再選択すると、強調表示は再び現れます。
+<para>Removes the highlighting from search matches found in the current
+Reading window. If you reselect the section from the Search Results
+list, the highlighting reappears.
 </para>
 </listitem>
 </varlistentry>
 </variablelist>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.161">
@@ -2887,71 +2726,63 @@
 <!--###########################################-->
 
 <Sect2 Id="IMReadingWindowGoMenu">
-<Title><anchor id="dtinfo.nodeview.menu-bar.go.ctx">[移動] メニュー</Title>
+<Title><anchor id="dtinfo.nodeview.menu-bar.go.ctx">Go Menu</Title>
 <IndexTerm>
-<Primary SortAs="いどうめにゅー">[移動] メニュー</Primary>
+<Primary SortAs="go menu">Go Menu</Primary>
 </IndexTerm>
 <Graphic Entityref="ReadingWindowGoMenu" Id="HINFO.REF.fig.35"></Graphic>
 <variablelist>
 <varlistentry>
-<term>後退</term>
+<term>Back</term>
 <listitem>
-<para>
-現在のセクションの前に表示されたセクションを、表示します。
+<para>Displays the section viewed before the current section.
 </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>前進</term>
+<term>Forward</term>
 <listitem>
-<para>
-前に表示したセクションのリストされた [セクション・ヒストリ] リスト上の
-次のセクションを、もっとも最近表示したセクションに至るまで、表示します。
+<para>Displays the next section in the history list of previously viewed sections,
+up to the most recently viewed section.
 </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>ヒストリ</term>
+<term>History</term>
 <listitem>
-<para>[セクション・ヒストリ] ウィンドウを表示します。
-[セクション・ヒストリ] ウィンドウには、ユーザの訪れたセクションが、
-もっとも最近のものからもっとも古いものまで、リストされます。
-ユーザは、セクションのタイトルをダブル・クリックすることによって、
-そこに戻ることができます。
+<para>Displays the Section History window, which lists the sections you have visited,
+from the most recent to the least recent. You can return to a section by
+double-clicking on its title.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>前のセクション</term>
+<varlistentry><term>Previous Section</term>
 <listitem>
-<para>
-ブックの中の、前のセクションを表示します。
+<para>Displays the preceding section in the book.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>次のセクション</term>
+<varlistentry><term>Next Section</term>
 <listitem>
-<para>
-ブックの中の、次のセクションを表示します。
+<para>Displays the next section in the book.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>前の検索</term>
+<varlistentry><term>Previous Search</term>
 <listitem>
-<para>
-現在のセクションでの、前の検索一致を表示します。
+<para>Displays the previous search match in the current section.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>次の検索</term>
+<varlistentry><term>Next Search</term>
 <listitem>
-<para>
-現在のセクションでの、次の検索一致を表示します。
+<para>Displays the next search match in the current section.
 </para>
 </listitem>
 </varlistentry>
 </variablelist>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.166">
@@ -2974,53 +2805,52 @@
 <!--###########################################-->
 
 <Sect2 Id="IMReadingWindowMarksMenu">
-<Title><anchor id="dtinfo.nodeview.menu-bar.marks.ctx">[マーク] メニュー</Title>
+<Title><anchor id="dtinfo.nodeview.menu-bar.marks.ctx">Marks Menu</Title>
 <IndexTerm>
-<Primary SortAs="まーく・めにゅー">[マーク] メニュー</Primary>
+<Primary SortAs="marks menu">Marks Menu</Primary>
 </IndexTerm>
 <Graphic Entityref="ReadingWindowMarksMenu" Id="HINFO.REF.fig.36"></Graphic>
 <variablelist>
 <varlistentry>
-<term>ブックマークの作成</term>
+<term>Create Bookmark</term>
 <listitem>
-<para>ユーザが強調表示させたテキストのとなりに、空白のブックマークを挿入します。
+<para>Inserts a blank bookmark next to the text you have highlighted.
 </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>注記の作成</term>
+<term>Create Note</term>
 <listitem>
-<para>ユーザが強調表示させたテキストのとなりに、注記の付いたブックマークを
-挿入します。
+<para>Creates a bookmark with notes next to the text you have highlighted.
 </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>選択マークの編集</term>
+<term>Edit Selection</term>
 <listitem>
-<para>ブックマーク・エディタを開きます。そこでユーザは、選択した
-ブックマークの注記を編集できます。
+<para>Opens the Bookmark Editor so you can edit the notes for the
+bookmark you have selected.
 </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>選択マークの移動</term>
+<term>Move Selection</term>
 <listitem>
-<para>選択されたブックマークを、新しい位置へ移動します。ブックマークの移動先を
-示すには、ブックマークを表示させるテキストを、強調表示させてください。
+<para>Moves a selected bookmark to a new location. To indicate where to
+move the bookmark, highlight the text where the bookmark is to appear.
 </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>選択マークの削除</term>
+<term>Delete Selection</term>
 <listitem>
-<para>現在選択されているブックマークを、ブックから削除します。
+<para>Deletes the currently selected bookmark from the book.
 </para>
 </listitem>
 </varlistentry>
 </variablelist>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.170">
@@ -3050,52 +2880,47 @@
 <!--###########################################-->
 
 <Sect2 Id="IMReadingWindowOptionsMenu">
-<Title><anchor id="dtinfo.nodeview.menu-bar.options.ctx">[オプション] メニュー</Title>
+<Title><anchor id="dtinfo.nodeview.menu-bar.options.ctx">Options Menu</Title>
 <IndexTerm>
-<Primary SortAs="おぷしょん・めにゅー">[オプション] メニュー</Primary>
+<Primary SortAs="options menu">Options Menu</Primary>
 </IndexTerm>
 <Graphic Entityref="ReadingWindowOptionsMenu" Id="HINFO.REF.fig.37"></Graphic>
 <variablelist>
-<varlistentry><term>設定の変更</term>
+<varlistentry><term>Preferences</term>
 <listitem>
-<para>ブラウズ、グラフィカル・マップ、ヒストリ、検索をカスタマイズする手段を
-提供します。
+<para>Provides a way to customize browsing, graphical map, history, and searching
+features.
 </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>グラフィックの表示・分離</term>
+<term>Show/Detach Graphic</term>
 <listitem>
-<para>選択されたグラフィックを、現在の状態によって、表示したり分離したりします。
-選択されたグラフィックが分離されているとき、
-メニューの項目は [グラフィックの表示] になります。
-[グラフィックの表示] を選択すると、分離されたグラフィックを含んだ
-ウィンドウが表示されます。
-選択されたグラフィックが接続されているとき、
-メニュー項目は [グラフィックの分離] になります。
-[グラフィックの分離] を選択すると、グラフィックは分離され、
-[分離グラフィック] ウィンドウに表示されます。
+<para>Show or detach the selected graphic, depending on the current state.
+When the selected graphic is detached,
+the menu item is Show Graphic, which displays the window containing the
+detached graphic. When the selected graphic is attached, the menu item is
+Detach Graphic, which detaches the graphic and displays it in
+a Detached Graphic window.
 </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>ツール・バーの表示</term>
+<term>Show Tool Bar</term>
 <listitem>
-<para>
-[閲覧] ウィンドウのツール・バーの表示を、オン・オフします。
+<para>Turns display of the Reading window Tool Bar on or off.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>検索領域の表示</term>
+<varlistentry><term>Show Search Area</term>
 <listitem>
-<para>
-[閲覧] ウィンドウの検索領域の表示を、オン・オフします。
+<para>Turns display of the Reading window Search Area on or off.
 </para>
 </listitem>
 </varlistentry>
 </variablelist>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.176">
@@ -3118,30 +2943,30 @@
 <!--###########################################-->
 
 <Sect2 Id="IMReadingWindowWindowsMenu">
-<Title><anchor id="dtinfo.nodeview.menu-bar.window.ctx">[ウィンドウ] メニュー</Title>
+<Title><anchor id="dtinfo.nodeview.menu-bar.windows.ctx">Windows Menu</Title>
 <IndexTerm>
-<Primary SortAs="うぃんどう・めにゅー">[ウィンドウ] メニュー</Primary>
+<Primary SortAs="windows menu">Reading window Windows menu</Primary>
 </IndexTerm>
 <Graphic Entityref="ReadingWindowWindowsMenu" Id="HINFO.REF.fig.38"></Graphic>
 <variablelist>
 <varlistentry>
-<term>ブックリスト</term>
+<term>Book List</term>
 <listitem>
-<para>[ブックリスト] ウィンドウを、表示します。
+<para>Displays the Book List window.
 </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>グラフィカル・マップ</term>
+<term>Graphical Map</term>
 <listitem>
-<para>ユーザが今読んでいるブックのグラフィカルな表現を、現在のセクションを
-強調表示して、表示します。
+<para>Displays a graphical representation of the book you are reading,
+with the current section highlighted.
 </para>
 </listitem>
 </varlistentry>
 </variablelist>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.180">
@@ -3159,9 +2984,9 @@
 <!--###########################################-->
 
 <Sect1 Id="IMDetachedGraphicWindowMenus">
-<Title>[分離グラフィック] ウィンドウのメニュー</Title>
+<Title>Detached Graphic Window Menus</Title>
 <IndexTerm>
-<Primary SortAs="ぶんりぐらふぃっく・うぃんどうのめにゅー">[分離グラフィック] ウィンドウのメニュー</Primary>
+<Primary SortAs="detached graphic window menus">Detached Graphic Window Menus</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.182">
@@ -3178,43 +3003,42 @@
 <!--###########################################-->
 
 <Sect2 Id="IMDetachedGraphicWinFileMenu">
-<Title><anchor id="dtinfo.graphic.menu-bar.file.ctx">[ファイル] メニュー</Title>
+<Title><anchor id="dtinfo.graphic.menu-bar.file.ctx">Detached Graphic Window File Menu</Title>
 <IndexTerm>
-<Primary SortAs="ふぁいる・めにゅー">[ファイル] メニュー</Primary>
+<Primary SortAs="detached graphic window file menu">Detached Graphic Window File Menu</Primary>
 </IndexTerm>
 <Graphic Entityref="DetachedGraphicWinFileMenu" Id="HINFO.REF.fig.40"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term>接続</Term>
+<Term>Attach</Term>
 <ListItem>
-<Para>グラフィックを、本来それがあったセクションへ、再接続します。
+<Para>Reattaches the graphic to the section from which it originated.
 </para>
-<para>
-インフォメーション・マネージャは、本来グラフィックがあったブックが、
-現在、開かれているいないにかかわらず、[分離グラフィック] ウィンドウを閉じ、
-そのブックの中のグラフィックを置き換えます。
+<para>The Information Manager closes the Detached Graphic window and replaces
+the graphic in the book from which it originated, whether the book is
+currently open or not.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>セクションの表示</Term>
+<Term>Display Section</Term>
 <ListItem>
-<Para>グラフィックが分離されたセクションを [閲覧] ウィンドウに表示し、
-[閲覧] ウィンドウを、他のウィンドウの前面に表示します。
+<Para>Displays in a Reading window the section from which the graphic was
+detached, and brings it to the top of your other windows.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>閉じる</Term>
+<Term>Close</Term>
 <ListItem>
-<Para>[分離グラフィック] ウィンドウを閉じますが、グラフィックを、
-本来それがあったセクションへ再接続しません。
+<Para>Closes the Detached Graphic window but does not
+reattach the graphic to the section from which it originated.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.185">
@@ -3231,50 +3055,51 @@
 <!--###########################################-->
 
 <Sect2 Id="IMDetachedGraphicWinPanMenu">
-<Title><anchor id="dtinfo.graphic.menu-bar.panner.ctx">[パナー] メニュー</Title>
+<Title><anchor id="dtinfo.graphic.menu-bar.panner.ctx">Detached Graphic Window Panner Menu</Title>
 <IndexTerm>
-<Primary SortAs="ぱなー・めにゅー">[パナー] メニュー</Primary>
+<Primary SortAs="detached graphic window panner menu">Detached Window Panner Menu</Primary>
 </IndexTerm>
 <Graphic Entityref="DetachedGraphicWinPanMenu" Id="HINFO.REF.fig.41"></Graphic>
 <note>
-<para>
-パナー・ボックスは、グラフィックがウィンドウよりも大きいときのみ、
-表示されます。
+<para>A panner box is displayed only when the graphic is larger than the window.
 </para>
 </note>
 <VariableList>
 <VarListEntry>
-<Term>表示しない</Term>
+<Term>None</Term>
 <ListItem>
-<Para>パナー・ボックスの表示をオフにします。
+<Para>Turns off display of the panner box.</Para></ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Upper Left</Term>
+<ListItem>
+<Para>Displays the panner box in the upper left corner of the Detached Graphic
+window.
 </Para></ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>左上に表示</Term>
+<Term>Upper Right</Term>
 <ListItem>
-<Para>パナー・ボックスを、[分離グラフィック] ウィンドウの左上隅に、表示します。
+<Para>Displays the panner box in the upper right corner of the Detached
+Graphic window.
 </Para></ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>右上に表示</Term>
+<Term>Lower Left</Term>
 <ListItem>
-<Para>パナー・ボックスを、[分離グラフィック] ウィンドウの右上隅に、表示します。
-</Para></ListItem>
-</VarListEntry>
-<VarListEntry>
-<Term>左下に表示</Term>
-<ListItem>
-<Para>パナー・ボックスを、[分離グラフィック] ウィンドウの左下隅に、表示します。
+<Para>Displays the panner box in the lower left corner of the Detached Graphic
+window.
 </Para></ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>Lower Right</Term>
 <ListItem>
-<Para>パナー・ボックスを、[分離グラフィック] ウィンドウの右下隅に、表示します。
+<Para>Displays the panner box in the lower right corner of the Detached
+Graphic window.
 </Para></ListItem></VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.187">
@@ -3288,60 +3113,50 @@
 <!--###########################################-->
 
 <Sect2 Id="IMDetachedGraphicWinViewMenu">
-<Title><anchor id="dtinfo.graphic.menu-bar.view.ctx">[表示] メニュー</Title>
+<Title><anchor id="dtinfo.graphic.menu-bar.view.ctx">Detached Graphic Window View Menu</Title>
 <IndexTerm>
-<Primary SortAs="ひょうじめにゅー">[表示] メニュー</Primary>
+<Primary SortAs="detached graphic window view menu">Detached Graphic Window View Menu</Primary>
 </IndexTerm>
 <Graphic Entityref="DetachedGraphicWinViewMenu" Id="HINFO.REF.fig.42"></Graphic>
-<para>
-[分離グラフィック] ウィンドウの [表示] メニューは、
-[分離グラフィック] ウィンドウ上に、スケーラブルなグラフィックがどのように
-表示されるかを指定するための、以下のようなオプションを提供します。
+<para>The Detached Graphic window View menu provides the following options
+for specifying how a scaleable graphic looks in the Detached Graphic window:
 </Para>
 <note>
-<para>
-[分離グラフィック] ウィンドウの [表示] メニューは、スケーラブルでない
-グラフィックのとき、アクティブではありません。
+<para>The Detached Graphic window View menu is inactive for non-scaleable graphics.
 </para>
 </note>
 <VariableList>
 <VarListEntry>
-<Term>ウィンドウに合わせる</Term>
+<Term>Fit to Window</Term>
 <ListItem>
-<Para>グラフィックを、[分離グラフィック] ウィンドウの境界内に収まるように、
-サイズ変更します。
+<Para>Size the graphic to fit within the borders of the Detached Graphic window.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>グラフィックに合わせる</Term>
+<Term>Fit to Graphic</Term>
 <ListItem>
-<Para>
-[分離グラフィック] ウィンドウを、グラフィックの現在のサイズと一致するように、
-サイズ変更します。
+<Para>Size the Detached Graphic window to match the current size of the graphic.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>スケーリングの比率</Term>
+<Term>Scaling Percentages</Term>
 <ListItem>
-<Para>
-グラフィックのサイズを、初期のサイズから何パーセントか、増やしたり減らしたり
-します。
+<Para>Increase or decrease the size of the graphic by some percentage relative to its initial size.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>カスタム</Term>
+<Term>Custom</Term>
 <ListItem>
-<Para>
-現在のグラフィックの、スケーリングの比率を指定します。
+<Para>Specify a scaling percentage for the current graphic.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.188">
@@ -3355,19 +3170,18 @@
 <!--########################################-->
 
 <Sect2 Id="IMDetachedGraphicWinPanner">
-<Title><anchor id="dtinfo.graphic.panner.ctx">[分離グラフィック] ウィンドウのパナー</Title>
+<Title><anchor id="dtinfo.graphic.panner.ctx">Detached Graphic Window Panner</Title>
 <IndexTerm>
-<Primary SortAs="ぶんりぐらふぃっく・うぃんどうのぱなー">[分離グラフィック] ウィンドウのパナー</Primary>
+<Primary SortAs="detached graphic window panner">Detached Graphic Window Panner</Primary>
 </IndexTerm>
-<Para>
-ユーザが [分離グラフィック] ウィンドウのサイズを小さくすると、
-インフォメーション・マネージャは、ウィンドウの一つの隅にパナーを表示
-します。ウィンドウのサイズを小さくした後に、グラフィックの隠れた部分を
-表示するには、見たいセクションが表面にでるように、パナーを移動してください。
+<Para>When you reduce the size of a detached graphic window, the
+Information Manager displays a panner in one corner of the window. To
+see hidden parts of the graphic after reducing the window size, move the
+panner to uncover the sections you want to see.
 </Para>
-<Para>
-パナーをウィンドウの別の隅に再配置したり、完全に取り除くには、
-[パナー] メニューから、好みのオプションを選択してください。
+<Para>To relocate the panner to another corner of the window or to
+remove it entirely, select the option you prefer from the Panner
+menu.
 </para>
 </sect2>
 </sect1>
@@ -3375,133 +3189,115 @@
 <!--########################################-->
 
 <Sect1 Id="IMAddLibraryDialogBox">
-<Title><anchor id="dtinfo.add-infolib.win">[ドキュメント・ライブラリの追加] ダイアログ・ボックス</Title>
+<Title><anchor id="dtinfo.add-infolib.win">Add Document Library Dialog Box</Title>
 <IndexTerm>
-<Primary SortAs="らいぶらりのついかだいあろぐ・ぼっくす">[ドキュメント・ライブラリの追加] ダイアログ・ボックス</Primary>
+<Primary SortAs="add library dialog box">Add Document Library Dialog Box</Primary>
 </IndexTerm>
-<para>
-新しいインフォメーション・ライブラリを追加するには、[閲覧] ウィンドウの
-ツール・バー上の、[ライブラリの追加] ボタンをクリックしてください。
+<para>Click the Add Information Library button on the Book List window's
+Tool Bar to add a new information library.
 </para>
 <Graphic Entityref="AddLibraryDialogBox" Id="HINFO.REF.fig.43"></Graphic>
-<para>インフォメーション・マネージャに追加する新しい
-インフォメーション・ライブラリを指定する方法は、三つあります。
+<para>There are three ways to specify a new information library to be
+added to the Information Manager:
 </para>
 <ItemizedList Mark="&bull;" Role="tight">
 <listitem>
-<para>[インフォメーション・ライブラリのパス] フィールドに、新しいライブラリ
-のフル・パスと名前を入力します。
+<para>Type the full path and name of the new library in the Infolib
+Path field.
 </para>
 </listitem>
 <listitem>
-<para>インフォメーション・ライブラリの名前のみを、入力します。
-これをおこなうためには、インフォメーション・ライブラリが、
-環境変数DTINFOLIBSEARCHPATHで指定されるパス上に、
-存在していなければなりません。
+<para>Type just the name of the information library. For this to work,
+the information library must exist in the path(s)
+specified by the DTINFOLIBSEARCHPATH environment variable.
 </para>
 </listitem>
 <listitem>
-<para>[...](ファイルの選択)ボタンをクリックして、追加すべき
-インフォメーション・ライブラリを求めて、ディレクトリ構造をブラウズして
-ください。
+<para>Click on the ... (File Selection) button to browse through the directory
+structure for the information library to be added.
 </para>
 </listitem>
 </itemizedlist>
-<para>新しいインフォメーション・ライブラリを指定したら、[了解] を
-クリックしてください。
+<para>After specifying the new information library, click on the
+Ok button to add the library.
 </para>
-<para>[消去] をクリックすると、
-[インフォメーション・ライブラリのパス] フィールドの内容が消去されます。
+<para>Clicking Clear clears the contents of the Infolib Path field.
 </para>
-<para>[取消し] をクリックすると、ライブラリの追加操作を取り消します。
+<para>Clicking Cancel cancels the add library operation.
 </para>
-<para>[ヘルプ] をクリックすると、このダイアログ・ボックスに関するヘルプ情報を
-表示します。
+<para>Clicking Help displays help information about this dialog box.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMConfirmExitDialogBox">
-<Title>[終了の確認] ダイアログ・ボックス</Title>
+<Title>Confirm Exit Dialog Box</Title>
 <IndexTerm>
-<Primary SortAs="しゅうりょうのかくにんだいあろぐ・ぼっくす">[終了の確認] ダイアログ・ボックス</Primary>
+<Primary SortAs="confirm exit dialog box">Confirm Exit Dialog Box</Primary>
 </IndexTerm>
-<para>
-インフォメーション・マネージャを終了するには、
-[ブックリスト] ウィンドウの [ファイル] メニュー、または [閲覧] ウィンドウ
-の [ブラウザ] メニューから、[終了] を選択してください。
+<para>Choose Exit from the Book List window's File menu or the Reading window's
+Browser menu to exit the Information Manager.
 </para>
 <Graphic Entityref="ConfirmExitDialogBox" Id="HINFO.REF.fig.44"></Graphic>
-<para>
-インフォメーション・マネージャを終了するには [はい] を、
-インフォメーション・マネージャのセッションを継続するには [いいえ] を、
-クリックしてください。
+<para>Click Yes to exit the Information Manager or No to continue with the
+Information Manager session.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMOpenLocatorDialogBox">
-<Title><anchor id="dtinfo.open-url.win">[ロケータを開く] ダイアログ・ボックス</Title>
+<Title><anchor id="dtinfo.open-url.win">Open Locator Dialog Box</Title>
 <IndexTerm>
-<Primary SortAs="ろけーたをひらくだいあろぐ・ぼっくす">[ロケータを開く] ダイアログ・ボックス</Primary>
+<Primary SortAs="open locator dialog box">Open Locator Dialog Box</Primary>
 </IndexTerm>
-<para>
-指定されたロケータで特定されるセクションへ移動するには、
-[閲覧] ウィンドウの [ブラウザ] メニューから、[ロケータを開く] を選択して
-ください。
+<para>Choose Open Locator from the Reading window's Browser menu to go to the
+section identified by the specified locator.
 </para>
 <Graphic Entityref="OpenLocatorDialogBox" Id="HINFO.REF.fig.45"></Graphic>
 <orderedlist>
 <listitem>
-<para>
-[一意的なロケータ] フィールドに、ロケータを入力してください。
+<para>Type the locator in the Enter a Unique Locator field.
 </para>
 </listitem>
 <listitem>
-<para>
-以下をクリックしてください。
+<para>Click:
 </para>
 <variablelist>
 <varlistentry>
-<term>了解</term>
+<term>Ok</term>
 <listitem>
-<para>
-ダイアログ・ボックスを閉じて、ロケータで特定されるセクションへ移動します。
+<para>To close the dialog box and go to the section identified by the locator.
 </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>適用</term>
+<term>Apply</term>
 <listitem>
-<para>
-指定されたロケータを、その後の [ロケータを開く] 要求のデフォルトとして、
-確立します。
+<para>To establish the specified locator as the default for subsequent Open
+Locator requests.
 </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>消去</term>
+<term>Clear</term>
 <listitem>
-<para>
-入力フィールドの内容を、消去します。
+<para>To clear the contents of the input field.
 </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>閉じる</term>
+<term>Close</term>
 <listitem>
-<para>
-ダイアログ・ボックスを、閉じます。
+<para>To close the dialog box.
 </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>ヘルプ</term>
+<term>Help</term>
 <listitem>
-<para>
-このヘルプ情報を、表示します。
+<para>To display this Help information.
 </para>
 </listitem>
 </varlistentry>
@@ -3513,34 +3309,33 @@
 <!--########################################-->
 
 <Sect1 Id="IMSaveScopeDialogBox">
-<Title>[範囲の保存] ダイアログ・ボックス</Title>
+<Title>Save Scope Dialog Box</Title>
 <IndexTerm>
-<Primary SortAs="はんいのほぞんだいあろぐ・ぼっくす">[範囲の保存] ダイアログ・ボックス</Primary>
+<Primary SortAs="save scope dialog box">Save Scope Dialog Box</Primary>
 </IndexTerm>
-<para>
-[範囲エディタ] ウィンドウから、[保存] ボタンをクリックしてください。
-インフォメーション・マネージャは、[範囲の保存] ウィンドウを開きます。
+<para>From the Scope Editor window,
+click the Save button. The Information Manager opens the Save Scope
+window.
 </para>
 <Graphic Entityref="SaveScopeDialogBox" Id="HINFO.REF.fig.46"></Graphic>
-<Para>
-入力フィールドに新しい範囲の名前を入力して、[了解] をクリックしてください。
-インフォメーション・マネージャは、[範囲エディタ] ウィンドウに、
-新しい範囲名を表示します。
+<Para>Type the name of the new scope in the input field and click OK. The
+Information Manager displays the new scope name in the Scope Editor
+window.
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>了解</Term>
+<Term>OK</Term>
 <ListItem>
-<Para>
-範囲を与えられた名前で保存して、[範囲エディタ] ウィンドウへ戻ります。
+<Para>Save the scope under the supplied name
+and return to the Scope Editor window.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>取消し</Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para>
-保存操作を取り消して、[範囲エディタ] ウィンドウへ戻ります。
+<Para>Cancel the save operation and
+and return to the Scope Editor window.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -3550,18 +3345,18 @@
 <!--########################################-->
 
 <Sect1 Id="IMPreferencesForBrowsing">
-<Title>[ブラウズの設定] ダイアログ・ボックス</Title>
+<Title>Preferences For Browsing Dialog Box</Title>
 <IndexTerm>
-<Primary SortAs="ぶらうずのせっていだいあろぐ・ぼっくす">[ブラウズの設定] ダイアログ・ボックス</Primary>
+<Primary SortAs="preferences for browsing dialog box">Preferences For Browsing Dialog Box</Primary>
 </IndexTerm>
-<para>
-[閲覧] ウィンドウのサイズ、フォントのサイズ、[閲覧] ウィンドウが自動的に
-ピンで固定されるかどうかを定義するには、
-[設定の変更] ウィンドウから [ブラウズの設定] を選択してください。
+<para>From the Preferences window,
+select Preferences for Browsing to define
+the Reading window size, font size, and whether Reading windows
+are automatically pinned.
 </para>
 <Graphic Entityref="PreferencesForBrowsing" Id="HINFO.REF.fig.47"></Graphic>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.189">
@@ -3575,71 +3370,65 @@
 <!--########################################-->
 
 <Sect1 Id="IMPrefBrowseGeoField">
-<Title><anchor id="BASE.browse-prefs.browse-geo.ctx">[ブラウザ・ジオメトリ] フィールド</Title>
-<IndexTerm><Primary SortAs="ぶらうざ・じおめとりふぃーるど">[ブラウザ・ジオメトリ] フィールド</Primary></IndexTerm>
-<para>
-このフィールドには、デフォルトの [閲覧] ウィンドウのサイズの座標が
-表示されます。サイズを変更するには、[ブラウザ・ジオメトリの獲得] ボックス
-(このフィールドの右側にあります)を、クリックしてください。
+<Title><anchor id="BASE.browse-prefs.browse-geo.ctx">Browser Geometry Field</Title>
+<IndexTerm><Primary SortAs="browser geometry field">Browser Geometry Field</Primary></IndexTerm>
+<para>This field displays the coordinates for
+the default Reading window size. To change the size, click
+on the Get Browser Geometry box (to the right of the field).
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrefBrowseGetGeoBox">
-<Title><anchor id="BASE.browse-prefs.get-browse-geo.ctx">[ブラウザ・ジオメトリの獲得] ボックス</Title>
-<IndexTerm><Primary SortAs="ぶらうざ・じおめとりのかくとくぼっくす">[ブラウザ・ジオメトリの獲得] ボックス</Primary></IndexTerm>
-<para>
-新しいデフォルトの [閲覧] ウィンドウのサイズを設定します。
-インフォメーション・マネージャは、デフォルトのサイズの設定の仕方に関する
-メッセージを表示します。新しいデフォルトとして設定したいサイズになった
-ウィンドウの内側を、クリックしてください。インフォメーション・マネージャは、
-[ブラウザ・ジオメトリ] フィールドに、ウィンドウの座標を挿入します。
+<Title><anchor id="BASE.browse-prefs.get-browse-geo.ctx">Get Browser Geometry Box</Title>
+<IndexTerm><Primary SortAs="get browser geometry box">Get Browser Geometry Box</Primary></IndexTerm>
+<para>Click to set a new default Reading window size. The
+Information Manager displays a message about how to set the default
+size. Click inside the window that is the size you want as the new
+default. The Information Manager inserts the window coordinates
+in the Browser Geometry field.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrefBrowseFontScale">
-<Title><anchor id="BASE.browse-prefs.fs-form.scale-field.ctx">[フォント・スケール] フィールド</Title>
-<IndexTerm><Primary SortAs="ふぉんと・すけーる・ふぃーるど">[フォント・スケール] フィールド</Primary></IndexTerm>
-<para>
-このフィールドには、[閲覧] ウィンドウに表示されるテキストのための
-フォント・サイズが表示されます。フォント・サイズを大きくするには、
-フォント・スケールのとなりの上矢印を、クリックしてください。
-フォント・サイズを小さくするには、下矢印をクリックしてください。
+<Title><anchor id="BASE.browse-prefs.fs-form.scale-field.ctx">Font Scale Field</Title>
+<IndexTerm><Primary SortAs="font scale field">Font Scale Field</Primary></IndexTerm>
+<para>This field displays the font size for text displayed in the Reading
+window. To increase the font size, click on the up arrow next to Font
+Scale. To decrease the font size, click on the down arrow.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrefBrowsePinWindow">
-<Title><anchor id="BASE.browse-prefs.lock-toggle.ctx">[ウィンドウの固定] チェック・ボックス</Title>
-<IndexTerm><Primary SortAs="うぃんどうのこていちぇっく・ぼっくす">[ウィンドウの固定] チェック・ボックス</Primary></IndexTerm>
-<para>
-このチェック・ボックスは、[閲覧] ウィンドウが自動的にピンで固定された状態で
-開くか、解放された状態で開くかを制御します。デフォルトでは、
-インフォメーション・マネージャは、[閲覧] ウィンドウを自動的にピンで固定
-しません。[ウィンドウの固定] 状態を変更するには、
-[ウィンドウの固定] チェック・ボックスをクリックしてください。
+<Title><anchor id="BASE.browse-prefs.lock-toggle.ctx">Pin Window Check Box</Title>
+<IndexTerm><Primary SortAs="pin window check box">Pin Window Check Box</Primary></IndexTerm>
+<para>This check box controls whether Reading windows automatically open pinned or
+unpinned. By default, the Information Manager does not automatically
+pin Reading windows. To change the Pin Window state, click on the
+Pin Window check box.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPreferencesForMap">
-<Title>[マップの設定] ダイアログ・ボックス</Title>
+<Title>Preferences For Map Dialog Box</Title>
 <IndexTerm>
-<Primary SortAs="まっぷのせっていだいあろぐ・ぼっくす">[マップの設定] ダイアログ・ボックス</Primary>
+<Primary SortAs="preferences for map dialog box">Preferences For Map Dialog Box</Primary>
 </IndexTerm>
-<para>
-[グラフィカル・マップ] ウィンドウのデフォルトのサイズと、ユーザがセクション間
-を移動する度に、グラフィカル・マップを自動的に更新するかどうかを定義するには、
-[設定の変更] ウィンドウから [マップの設定] を選択してください。
+<para>From the Preferences window, select Preferences for Map to
+define the default size for the graphical map window and whether
+the graphical map is automatically updated
+as you move between sections.
 </para>
 <Graphic Entityref="PreferencesForMap" Id="HINFO.REF.fig.48"></Graphic>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.190">
@@ -3653,59 +3442,54 @@
 <!--########################################-->
 
 <Sect1 Id="IMPrefMapGeoField">
-<Title><anchor id="BASE.map-prefs.map-geo.ctx">[マップ・ジオメトリ] フィールド</Title>
-<IndexTerm><Primary SortAs="まっぷ・じおめとり・ふぃーるど">[マップ・ジオメトリ] フィールド</Primary></IndexTerm>
-<para>
-このフィールドには、デフォルトの [グラフィカル・マップ] ウィンドウ・サイズの
-座標が表示されます。サイズを変更するには、[マップ・ジオメトリの獲得] ボックス
-(このフィールドの右側にあります)を、クリックしてください。
+<Title><anchor id="BASE.map-prefs.map-geo.ctx">Map Geometry Field</Title>
+<IndexTerm><Primary SortAs="map geometry field">Map Geometry Field</Primary></IndexTerm>
+<para>This field displays the coordinates for
+the default Graphical Map window size. To change the size, click
+on the Get Map Geometry box (to the right of the field).
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrefMapGetGeoBox">
-<Title><anchor id="BASE.map-prefs.get-map-geo.ctx">[マップ・ジオメトリの獲得] ボックス</Title>
-<IndexTerm><Primary SortAs="まっぷ・じおめとりのかくとくぼっくす">[マップ・ジオメトリの獲得] ボックス</Primary></IndexTerm>
-<para>
-新しいデフォルトの [グラフィカル・マップ] ウィンドウのサイズを設定します。
-インフォメーション・マネージャは、デフォルトのサイズの設定の仕方に関する
-メッセージを表示します。新しいデフォルトとして設定したいサイズになった
-ウィンドウの内側を、クリックしてください。インフォメーション・マネージャは、
-[マップ・ジオメトリ] フィールドに、ウィンドウの座標を挿入します。
+<Title><anchor id="BASE.map-prefs.get-map-geo.ctx">Get Map Geometry Box</Title>
+<IndexTerm><Primary SortAs="get map geometry box">Get Map Geometry Box</Primary></IndexTerm>
+<para>Click to set a new default Graphical Map window size. The
+Information Manager displays a message about how to set the default
+size. Click inside the window that is the size you want as the new
+default. The Information Manager inserts the window coordinates
+in the Map Geometry field.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrefMapAutoUpdate">
-<Title><anchor id="BASE.prefs.update-toggle.ctx">[自動更新] チェック・ボックス</Title>
-<IndexTerm><Primary SortAs="じどうこうしんちぇっく・ぼっくす">[自動更新] チェック・ボックス</Primary></IndexTerm>
-<para>
-このチェック・ボックスは、インフォメーション・マネージャが
-アクティブな [閲覧] ウィンドウでユーザが読んでいるセクションを反映して、
-グラフィカル・マップを自動的に更新するかどうかを制御します。
-[自動更新] の設定を変更するには、[自動更新] チェック・ボックスを
-クリックしてください。
+<Title><anchor id="BASE.prefs.update-toggle.ctx">Auto Update Check Box</Title>
+<IndexTerm><Primary SortAs="auto update check box">Auto Update Check Box</Primary></IndexTerm>
+<para>This check box controls whether the Information Manager automatically
+updates the graphical map to reflect the section you are reading in the
+active reading window. To change the Auto Update setting, click on the
+Auto Update check box.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPreferencesForHistory">
-<Title>[ヒストリの設定] ダイアログ・ボックス</Title>
+<Title>Preferences For History Dialog Box</Title>
 <IndexTerm>
-<Primary SortAs="ひすとりのせっていだいあろぐ・ぼっくす">[ヒストリの設定] ダイアログ・ボックス</Primary>
+<Primary SortAs="preferences for history dialog box">Preferences For History Dialog Box</Primary>
 </IndexTerm>
-<para>
-[セクション・ヒストリ] リストおよび [検索ヒストリ] リストで、
-インフォメーション・マネージャが保持する最大セクション数を
-定義するには、[設定の変更] ウィンドウから [ヒストリの設定] を
-選択してください。
+<para>From the Preferences window,
+select Preferences for History to
+define the maximum number of sections the Information Manager
+maintains in the Section History and Search History lists.
 </para>
 <Graphic Entityref="PreferencesForHistory" Id="HINFO.REF.fig.49"></Graphic>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.191">
@@ -3719,24 +3503,22 @@
 <!--########################################-->
 
 <Sect1 Id="IMPrefHistSectionSize">
-<Title><anchor id="BASE.history-prefs.nh-field.ctx">[セクション・ヒストリ・サイズ] フィールド</Title>
-<indexTerm><Primary SortAs="せくしょん・ひすとり・さいず・ふぃーるど">[セクション・ヒストリ・サイズ] フィールド</Primary></IndexTerm>
-<para>
-このフィールドには、
-インフォメーション・マネージャが [セクション・ヒストリ] リストで保持する
-セクションの最大数が、表示されます。デフォルトは100です。最大数を変更するには、
-上矢印をクリックして数を増やしたり、下矢印で減らしたりしてください。
+<Title><anchor id="BASE.history-prefs.nh-field.ctx">Section History Size Field</Title>
+<indexTerm><Primary SortAs="section history size field">Section History Size Field</Primary></IndexTerm>
+<para>This field displays the maximum number of section titles that the
+Information Manager maintains in the Section History list. The default
+is 100 sections. To change the maximum, click on the up arrow to
+increase the number or the down arrow to reduce it.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrefHistSectionSizeUp">
-<Title><anchor id="BASE.history-prefs.nh-up.ctx">[セクション・ヒストリ・サイズ] の上矢印</Title>
-<indexTerm><Primary SortAs="せくしょん・ひすとり・さいずのうえやじるし">[セクション・ヒストリ・サイズ] の上矢印</Primary></IndexTerm>
-<para>
-インフォメーション・マネージャが [セクション・ヒストリ] リストで保持する
-セクションの最大数を、増やします。
+<Title><anchor id="BASE.history-prefs.nh-up.ctx">Section History Size Up Arrow</Title>
+<indexTerm><Primary SortAs="section history size up arrow">Section History Size Up Arrow</Primary></IndexTerm>
+<para>Click to increase the maximum number of section titles that the
+Information Manager maintains in the Section History list.
 </para>
 </sect1>
 
@@ -3744,35 +3526,32 @@
 <!--########################################-->
 
 <Sect1 Id="IMPrefHistSectionSizeDown">
-<Title><anchor id="BASE.history-prefs.nh-down.ctx">[セクション・ヒストリ・サイズ] の下矢印</Title>
-<indexTerm><Primary SortAs="せくしょん・ひすとり・さいずのしたやじるし">[セクション・ヒストリ・サイズ] の下矢印</Primary></IndexTerm>
-<para>
-インフォメーション・マネージャが [セクション・ヒストリ] リストで保持する
-セクションの最大数を、減らします。
+<Title><anchor id="BASE.history-prefs.nh-down.ctx">Section History Size Down Arrow</Title>
+<indexTerm><Primary SortAs="section history size down arrow">Section History Size Down Arrow</Primary></IndexTerm>
+<para>Click to decrease the maximum number of section titles that the
+Information Manager maintains in the Section History list.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrefHistSearchSize">
-<Title><anchor id="BASE.history-prefs.sh-field.ctx">[検索ヒストリ・サイズ] フィールド</Title>
-<indexTerm><Primary SortAs="けんさくひすとり・さいず・ふぃーるど">[検索ヒストリ・サイズ] フィールド</Primary></IndexTerm>
-<para>
-このフィールドには、
-インフォメーション・マネージャが [検索ヒストリ] リストで保持する
-セクションの最大数が、表示されます。デフォルトは50です。最大数を変更するには、
-上矢印をクリックして数を増やしたり、下矢印で減らしたりしてください。
+<Title><anchor id="BASE.history-prefs.sh-field.ctx">Search History Size Field</Title>
+<indexTerm><Primary SortAs="search history size field">Search History Size Field</Primary></IndexTerm>
+<para>This field displays the maximum number of section titles that the
+Information Manager maintains in the Search History list. The default is
+50 sections. To change the maximum, click on the up arrow to
+increase the number or the down arrow to reduce it.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrefHistSearchSizeUp">
-<Title><anchor id="BASE.history-prefs.sh-up.ctx">[検索ヒストリ・サイズ] の上矢印</Title>
-<indexTerm><Primary SortAs="けんさくひすとり・さいずのうえやじるし">[検索ヒストリ・サイズ] の上矢印</Primary></IndexTerm>
-<para>
-インフォメーション・マネージャが [検索ヒストリ] リストで保持する
-セクションの最大数を、増やします。
+<Title><anchor id="BASE.history-prefs.sh-up.ctx">Search History Size Up Arrow</Title>
+<indexTerm><Primary SortAs="search history size up arrow">Search History Size Up Arrow</Primary></IndexTerm>
+<para>Click to increase the maximum number of section titles that the
+Information Manager maintains in the Search History list.
 </para>
 </sect1>
 
@@ -3780,29 +3559,28 @@
 <!--########################################-->
 
 <Sect1 Id="IMPrefHistSearchSizeDown">
-<Title><anchor id="BASE.history-prefs.sh-down.ctx">[検索ヒストリ・サイズ] の下矢印</Title>
-<indexTerm><Primary SortAs="けんさくひすとり・さいずのしたやじるし">[検索ヒストリ・サイズ] の下矢印</Primary></IndexTerm>
-<para>
-インフォメーション・マネージャが [検索ヒストリ] リストで保持する
-セクションの最大数を、減らします。
+<Title><anchor id="BASE.history-prefs.sh-down.ctx">Search History Size Down Arrow</Title>
+<indexTerm><Primary SortAs="search history size down arrow">Search History Size Down Arrow</Primary></IndexTerm>
+<para>Click to decrease the maximum number of section titles that the
+Information Manager maintains in the Search History list.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPreferencesForSearch">
-<Title>[検索の設定] ダイアログ・ボックス</Title>
+<Title>Preferences For Search Dialog Box</Title>
 <IndexTerm>
-<Primary SortAs="けんさくのせっていだいあろぐ・ぼっくす">[検索の設定] ダイアログ・ボックス</Primary>
+<Primary SortAs="preferences for search dialog box">Preferences For Search Dialog Box</Primary>
 </IndexTerm>
-<para>
-[検索結果] リスト上のセクションのタイトルの最大数と、リストの先頭のセクション
-を自動的に表示するかどうかを定義するには、
-[設定の変更] ウィンドウから [検索の設定] を選択してください。
-</para>
+<para>From the Preferences window,
+select Preferences for History to
+define the maximum number of section titles in the Search Results list
+and whether to automatically display the first section in the
+list.</para>
 <Graphic Entityref="PreferencesForSearch" Id="HINFO.REF.fig.50"></Graphic>
 <Procedure>
-<Title>関連事項</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HINFO.REF.item.192">
@@ -3816,45 +3594,43 @@
 <!--########################################-->
 
 <Sect1 Id="IMPrefSearchMaxHits">
-<Title><anchor id="BASE.search-prefs.hits-field.ctx">[最大検索一致] フィールド</Title>
-<indexTerm><Primary SortAs="さいだいけんさくいっちふぃーるど">[最大検索一致] フィールド</Primary></IndexTerm>
-<para>
-このフィールドには、[検索結果] リストに表示されるセクション・タイトルの
-最大数が、表示されます。デフォルトは50です。最大数を変更するには、
-上矢印をクリックして数を増やしたり、下矢印で減らしたりしてください。
+<Title><anchor id="BASE.search-prefs.hits-field.ctx">Maximum Search Hits Field</Title>
+<indexTerm><Primary SortAs="Maximum Search Hits Field">Maximum Search Hits Field</Primary></IndexTerm>
+<para>This field displays the maximum number of section titles displayed in
+the Search Results list. The default is 50 sections. To change the
+maximum, click on the up arrow to increase the number or the down arrow
+to reduce it.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrefSearchMaxHitsUp">
-<Title><anchor id="BASE.search-prefs.hits-form.hits-up.ctx">[最大検索一致] の上矢印</Title>
-<indexTerm><Primary SortAs="さいだいけんさくいっちのうえやじるし">[最大検索一致] の上矢印</Primary></IndexTerm>
-<para>
-[検索結果] リストに表示されるセクション・タイトルの最大数を、増やします。
+<Title><anchor id="BASE.search-prefs.hits-form.hits-up.ctx">Maximum Search Hits Up Arrow</Title>
+<indexTerm><Primary SortAs="maximum search hits up arrow">Maximum Search Hits Up Arrow</Primary></IndexTerm>
+<para>Click to increase the maximum number of section titles displayed in
+the Search Results list.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrefSearchMaxHitsDown">
-<Title><anchor id="BASE.search-prefs.hits-form.hits-down.ctx">[最大検索一致] の下矢印</Title>
-<indexTerm><Primary SortAs="さいだいけんさくいっちのしたやじるし">[最大検索一致] の下矢印</Primary></IndexTerm>
-<para>
-[検索結果] リストに表示されるセクション・タイトルの最大数を、減らします。
+<Title><anchor id="BASE.search-prefs.hits-form.hits-down.ctx">Maximum Search Hits Down Arrow</Title>
+<indexTerm><Primary SortAs="maximum search hits down arrow">Maximum Search Hits Down Arrow</Primary></IndexTerm>
+<para>Click to decrease the maximum number of section titles displayed in
+the Search Results list.
 </para>
 </sect1>
 
 <!--########################################-->
 
 <Sect1 Id="IMPrefSearchAutoDisplay">
-<Title><anchor id="BASE.search-prefs.adisplay.toggle.ctx">[最初の一致の自動表示] チェック・ボックス</Title>
-<IndexTerm><Primary SortAs="さいしょのいっちのじどうひょうじちぇっく・ぼっくす">[最初の一致の自動表示] チェック・ボックス</Primary></IndexTerm>
-<para>
-このチェック・ボックスは、インフォメーション・マネージャが、重要な
-検索一致を含んだ最初のセクションを自動的に表示するかどうかを制御します。
-[最初の一致の自動表示] の設定を変更するには、そのチェック・ボックスを
-クリックしてください。
+<Title><anchor id="BASE.search-prefs.adisplay.toggle.ctx">Auto Display First Hit Check Box</Title>
+<IndexTerm><Primary SortAs="auto display first hit check box">Auto Display First Hit Check Box</Primary></IndexTerm>
+<para>This check box controls whether the Information Manager automatically
+displays the first section containing significant search hits. To change
+the Auto Display setting, click on the check box.
 </para>
 </sect1>
 
@@ -3863,32 +3639,30 @@
 <!-- General Reference topics follow -->
 
 <Sect1 Id="IMHowInformationIsOrganized">
-<Title>情報はどのように編成されるか</Title>
-<IndexTerm><Primary SortAs="information">情報, 編成</Primary></IndexTerm>
-<IndexTerm><Primary SortAs="information library">インフォメーション・ライブラリ, 編成</Primary></IndexTerm>
+<Title>How Information Is Organized</Title>
+<IndexTerm><Primary SortAs="information">information, organization of</Primary></IndexTerm>
+<IndexTerm><Primary SortAs="information library">information library, organization of</Primary></IndexTerm>
 <IndexTerm><Primary SortAs="infolib">infolib</Primary></IndexTerm>
-<IndexTerm><Primary SortAs="bookcase">ブックケース</Primary></IndexTerm>
-<Para>
-インフォメーション・マネージャを用いて情報を表示しているとき、
-ユーザは、インフォメーション・ライブラリ(infolibとも呼ばれます)
-を見ています。インフォメーション・ライブラリは、一つまたはそれ以上の
-ブックケースに分割されます。それぞれのブックケースの中に、
-一つまたはそれ以上のブックがあるのが分かると思います。
-ブックには、紙でできた本にあると思われる、ほとんどの要素があります。
+<IndexTerm><Primary SortAs="bookcase">bookcase</Primary></IndexTerm>
+<Para>When you view information with the Information Manager, you are
+looking at an information library (also called
+an infolib). An information library is divided into one or more
+bookcases. Within each bookcase, you will find
+one or more books that contain most of the
+elements you would expect to find in a hardcopy book.
 </Para>
-<Para>
-紙でできた本のように、オンラインのブックにはセクションがあります。
-セクションは、大部分がテキストですが、図と表を含むことができます。
-ブックのブックリストには、そのブックのすべてのセクションが表示されます。
+<Para>Like a hardcopy book, an online book contains
+sections that contain mostly text but can include
+graphics and tables. The book list for a book shows all the sections in
+that book.
 </Para>
 <Note>
-<Para>
-ユーザは、そのシステムで取得可能な、多様なインフォメーション・ライブラリを
-得ることができます。
+<Para>You can have multiple information libraries available
+on your system.
 </Para>
 </Note>
-<Para>
-以下の図に、インフォメーション・ライブラリの構造を、示します。
+<Para>The following figure illustrates the structure of an
+information library.
 </Para>
 <Graphic Entityref="InformationLibraryOrg" Id="HINFO.REF.fig.51">
 </Graphic>
@@ -3897,33 +3671,32 @@
 <!-- ############################################# -->
 
 <sect1 id="IMQuickInfoMessages">
-<title><anchor id="common.QuickHelp.ctx">QuickInfo メッセージ</title>
-<para>
-QuickInfo メッセージは、ウィンドウ・コンポーネントに関する、簡潔な記述です。
-ユーザが、ポインタをウィンドウ・コンポーネントの上に移動する度に、メッセージ
-領域に、QuickInfo メッセージが表示されます。
+<title><anchor id="common.QuickHelp.ctx">QuickInfo Messages</title>
+<para>QuickInfo messages are brief descriptions of window components. As you
+move the pointer over a window component, its QuickInfo message appears
+in the message area. The message describes the component and how to use
+it. For example, if you place the pointer on the Previous Section
+(Up-Arrow) button on the Reading window's tool bar, the message area
+displays:
 </para>
-<para><computeroutput>このドキュメントの前のセクションへ移動します</computeroutput></para>
+<para><computeroutput>Go to the previous section in document</computeroutput></para>
 </sect1>
 
 
 <Sect1 Id="IMUsingKeyboardShortcuts">
-<Title><anchor id="common.keys">キーボード・ショートカットを使用する</Title>
+<Title><anchor id="common.keys">Using Keyboard Shortcuts</Title>
 <IndexTerm><Primary SortAs="keyboard">keyboard shortcuts</Primary></IndexTerm>
-<para>
-キーボード・フォーカスでは、ウィンドウ、メニュー、コントロールの、どの要素が
-ユーザの入力に応答するかを示すために、強調表示が使用されます。
+<para>Keyboard focus uses the highlight to show you which element of a window,
+menu, or control will respond to your input. To activate a selected menu
+item or control (such as a button), press the Spacebar.
 </para>
-<para>
-<Keycap>F10</Keycap>を押すとメニューにフォーカスが移るのは、便利であると
-気付くでしょう。このやり方でユーザは、矢印キーを使用するか、メニュー名の
-頭文字を入力することによって、メニューをナビゲートできます。
+<para>You may find it helpful to press F10 to put the focus in the menu bar.
+This way you can navigate through menus either by using the arrow keys
+or by pressing the first letter in the menu name.
 </para>
-<Para>
-キーボード・ショートカットに関する一般的な情報については、
-<OLink Type="JumpNewView" LocalInfo="Intromgr DesktopKeyboardNav">
-デスクトップのキーボード・ショートカット
-</OLink>を参照してください。
+<Para>For general information on keyboard shortcuts, see <OLink
+Type="JumpNewView" LocalInfo="IntromgrDesktopKeyboardNav">Keyboard
+Shortcuts for the Desktop</OLink>.
 </Para>
 </sect1>
 
@@ -3931,387 +3704,290 @@ QuickInfo メッセージは、ウィンドウ・コンポーネントに関する、簡潔な記述です。
 <!-- common topics -->
 
 <sect1 id="IMOnlineHelp">
-<title>オンライン・ヘルプ・システム</title>
-<para>
-オンライン・ヘルプ・システムには、以下が含まれています。
-</para>
+<title id="common.hlp">On-line Help System</title>
+<para>The on-line Help system includes:</para>
 <itemizedlist>
 <listitem>
-<para>
-ウィンドウのメッセージ領域の、QuickInfo メッセージ。
-QuickInfo メッセージは、ウィンドウ・コンポーネントに関する、簡潔な記述です。
-ユーザが、ポインタをウィンドウ・コンポーネントの上に移動する度に、メッセージ
-領域に、QuickInfo メッセージが表示されます。
+<para>QuickInfo messages in the message area of the window.
+QuickInfo messages are brief descriptions of window components. As you
+move the pointer over a window component, its QuickInfo message appears
+in the message area. The message describes the component and how to use
+it.
 </para>
 </listitem>
 <listitem>
-<para>
-ウィンドウの機能の使い方に関する情報にアクセスするための、
-[ヘルプ] ボタン。
+<para>Help buttons for access to information on how to use window features.
 </para>
 </listitem>
 <listitem>
-<para>
-インフォメーション・マネージャの機能に関する、異なったタイプの情報に
-アクセスするための、[ヘルプ] メニュー。
+<para>A Help menu for access to different types of information on
+Information Manager features.
 </para>
 </listitem>
 </itemizedlist>
-<para>
-表示するヘルプ情報のタイプを決定するには、[ヘルプ] メニューを使用して
-ください。
+<para>Use the Help menu to determine the type of Help information to display:
 </para>
 <variablelist>
-<varlistentry><term>概要</term>
+<varlistentry><term>Overview</term>
 <listitem>
-<para>
-インフォメーション・マネージャの機能に関する、導入的な情報を表示します。
+<para>Displays introductory information about Information Manager features.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>使い方</term>
+<varlistentry><term>Tasks</term>
 <listitem>
-<para>
-インフォメーション・マネージャを使用するための、着実な指導を表示します。
+<para>Displays step-by-step instructions for using Information Manager.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>リファレンス</term>
+<varlistentry><term>Reference</term>
 <listitem>
-<para>
-インフォメーション・マネージャのコンポーネントに関する、概略的な情報を
-表示します。
+<para>Displays summary information about Information Manager components.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>アイテムヘルプ...</term>
+<varlistentry><term>On Item...</term>
 <listitem>
-<para>
-メニューやボタンといった、ウィンドウ・コンポーネントについて、解説します。
-ユーザが [アイテムヘルプ...] を選択すると、ポインタが疑問符に変わります。
-特定の項目に関するヘルプ・メッセージを表示するには、
-疑問符をそのコンポーネントの上に置いて、クリックしてください。
+<para>Explains window components such as menus and buttons.
+When you select On Item, the pointer turns into a question mark.
+To display the Help message for a specific component, place the
+question mark on the component and click.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>ヘルプの参照</term>
+<varlistentry><term>Using Help</term>
 <listitem>
-<para>
-ヘルプの参照に関する情報を、表示します。
+<para>Displays information about using Help.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>インフォメーション・マネージャについて</term>
+<varlistentry><term>About Information Manager</term>
 <listitem>
-<para>
-インフォメーション・マネージャに関する、バージョンおよびコピーライト情報を、
-表示します。
+<para>Displays version and copyright information about Information Manager.
 </para>
 </listitem>
 </varlistentry>
 </variablelist>
 <sect2 id="IMHelpMenu">
-<title><anchor id="common.HelpMenu.ctx">[ヘルプ] メニュー</title>
+<title><anchor id="common.HelpMenu.ctx">Help Menu</title>
 <Graphic Entityref="HelpMenu" Id="HINFO.REF.fig.52"></Graphic>
-<para>
-表示するヘルプ情報のタイプを決定するには、[ヘルプ] メニューを使用して
-ください。
+<para>Use the Help menu to determine the type of Help information to display:
 </para>
 <variablelist>
-<varlistentry><term>概要</term>
+<varlistentry><term>Overview</term>
 <listitem>
-<para>
-インフォメーション・マネージャの機能に関する、導入的な情報を表示します。
+<para>Displays introductory information about Information Manager features.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>使い方</term>
+<varlistentry><term>Tasks</term>
 <listitem>
-<para>
-インフォメーション・マネージャを使用するための、着実な情報を表示します。
+<para>Displays step-by-step instructions for using Information Manager.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>リファレンス</term>
+<varlistentry><term>Reference</term>
 <listitem>
-<para>
-インフォメーション・マネージャのコンポーネントに関する、概略的な情報を
-表示します。
+<para>Displays summary information about Information Manager components.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>アイテムヘルプ...</term>
+<varlistentry><term>On Item...</term>
 <listitem>
-<para>
-メニューやボタンといった、ウィンドウ・コンポーネントについて、解説します。
-ユーザが [アイテムヘルプ...] を選択すると、ポインタが疑問符に変わります。
-特定の項目に関するヘルプ・メッセージを表示するには、
-疑問符をそのコンポーネントの上に置いて、クリックしてください。
+<para>Explains window components such as menus and buttons.
+When you select On Item, the pointer turns into a question mark.
+To display the Help message for a specific component, place the
+question mark on the component and click.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>ヘルプの参照</term>
+<varlistentry><term>Using Help</term>
 <listitem>
-<para>
-ヘルプの参照に関する情報を、表示します。
+<para>Displays information about using Help.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>インフォメーション・マネージャについて</term>
+<varlistentry><term>About Information Manager</term>
 <listitem>
-<para>
-インフォメーション・マネージャに関する、バージョンおよびコピーライト情報を、
-表示します。
+<para>Displays version and copyright information about Information Manager.
 </para>
 </listitem>
 </varlistentry>
 </variablelist>
 </sect2>
 
-<sect2 id="IMHelpOverview">
-<title>概要
-<anchor id="dtinfo.booklist.on-overview"></title>
-<para>
-インフォメーション・マネージャの機能に関する、導入的な情報を表示します。
-</para>
-</sect2>
-
-<sect2 id="IMHelpTasks">
-<title><anchor id="dtinfo.booklist.on-tasks">使い方</title>
-<para>
-インフォメーション・マネージャを使用するための、着実な指導を表示します。
-</para>
-</sect2>
-
-<sect2 id="IMHelpReference">
-<title><anchor id="dtinfo.booklist.on-reference">リファレンス</title>
-<para>
-インフォメーション・マネージャのコンポーネントに関する、概略的な情報を
-表示します。
-</para>
-</sect2>
-
-<sect2 id="IMUsingHelp">
-<title><anchor id="common.hlp">ヘルプの参照</title>
-<para>
-ヘルプの参照に関する情報を、表示します。
-</para>
-</sect2>
-
-<sect2 id="IMHelpAbout">
-<title><anchor id="dtinfo.booklist.on-about">インフォメーション・マネージャについて</title>
-<para>
-インフォメーション・マネージャに関する、バージョンおよびコピーライト情報
-を表示します。
-</para>
-</sect2>
-
 <sect2 id="IMCommonHelpWin">
 <title><anchor id="common.HelpWin.win">Help Window</title>
-<para>
-ヘルプ・メッセージは、インフォメーション・マネージャの使い方に関する
-ヒントを、提供します。
+<para>Help messages provide hints on how to use the Information Manager.
 </para>
 <itemizedlist>
 <listitem>
-<para>
-インフォメーション・マネージャへ戻るには、[了解] をクリックしてください。
+<para>Click OK to return to the Information Manager.
 </para>
 </listitem>
 <listitem>
-<para>
-より詳細な情報を得るには、[詳細] をクリックしてください。
+<para>Click More for more detailed information.
 </para>
 </listitem>
 <listitem>
-<para>
-このウィンドウの使い方を学ぶには、[ヘルプ] をクリックしてください。
+<para>Click Help to learn how to use this window.
 </para>
 </listitem>
 </itemizedlist>
-<para>
-詳細は、<XRef Linkend="IMOnlineHelp">を参照してください。
+<para>For more information,
+see <XRef Linkend="IMOnlineHelp">.
 </Para>
 </sect2>
 <sect2 id="IMCommonCloseButton">
-<title><anchor id="common.Close.ctx">[閉じる] ボタン</title>
-<para>このウィンドウを閉じます。
-ウィンドウを閉じることによって、ウィンドウは、
-デスクトップから削除されます。
+<title><anchor id="common.Close.ctx">Close Button</title>
+<para>Click to close this window.
+Closing a window removes it from the desktop.
 </para>
-<para>
-詳細は、<XRef Linkend="IMUsingInfoMgrWindows">を参照してください。
+<para>For more information, see
+see <XRef Linkend="IMUsingInfoMgrWindows">.
 </para>
 </sect2>
 <sect2 id="IMCommonHelpButton">
-<title><anchor id="common.HelpWin.HelpButton.ctx">[ヘルプ] ボタン</title>
-<para>このウィンドウの使い方を学ぶには、[ヘルプ] をクリックしてください。
-</para>
-<para>
-詳細は、<XRef Linkend="IMOnlineHelp">を参照してください。
+<title><anchor id="common.HelpWin.HelpButton.ctx">Help Button</title>
+<para>Click Help to learn how to use this window.</para>
+<para>For more information,
+see <XRef Linkend="IMOnlineHelp">.
 </Para>
 </sect2>
 <sect2 id="IMCommonHelpWinOKButton">
-<title><anchor id="common.HelpWin.OKButton.ctx">[ヘルプ] ウィンドウの [了解] ボタン</title>
-<para>
-ヘルプ・メッセージを読み終わって、インフォメーション・マネージャに
-戻る準備ができたならば、[了解] をクリックしてください。
-</para>
-<para>
-詳細は、<XRef Linkend="IMOnlineHelp">を参照してください。
+<title><anchor id="common.HelpWin.OKButton.ctx">Help Window OK Button</title>
+<para>Click OK if you have finished reading the help message
+and are ready to return to the Information Manager.</para>
+<para>For more information,
+see <XRef Linkend="IMOnlineHelp">.
 </Para>
 </sect2>
 <sect2 id="IMCommonHelpWinMoreButton">
-<title><anchor id="common.HelpWin.MoreButton.ctx">[ヘルプ] ウィンドウの [詳細] ボタン</title>
-<para>アプリケーションに関する、より詳細な情報を表示するブラウザへ移行するには、
-[詳細] をクリックしてください。
+<title><anchor id="common.HelpWin.MoreButton.ctx">Help Window More Button</title>
+<para>Click More to go to the browser for
+more detailed information about the application.
 </para>
-<para>
-詳細は、<XRef Linkend="IMOnlineHelp">を参照してください。
+<para>For more information,
+see <XRef Linkend="IMOnlineHelp">.
 </Para>
 </sect2>
 <sect2 id="IMCommonHelpMenuIndexWin">
-<title><anchor id="common.HelpMenu.IndexWin.win">ヘルプの索引</title>
-<para>インフォメーション・マネージャの、あらゆる項目に関するヘルプ情報を
-見るには、[ヘルプの索引] を使用してください。
-ヘルプ・カードを読むには、以下のように操作してください。
-</para>
+<title><anchor id="common.HelpMenu.IndexWin.win">Help Index</title>
+<para>Use the Help Index to look at help information
+for any item in the Information Manager. To read a help card:</para>
 <itemizedlist>
 <listitem>
-<para>
-読むヘルプ・カードの名前を、ダブル・クリックしてください。または、
-ヘルプ・カードの名前を強調表示させて、[表示] をクリックしてください。
+<para>Double-click the name of the help card to read, or highlight
+the help card name, and click View.
 </para>
 </listitem>
 <listitem>
-<para>
-次のヘルプ・カードを表示するには、[次を表示] をクリックしてください。
+<para>Click Next to read the next help card.
 </para>
 </listitem>
 <listitem>
-<para>
-前のヘルプ・カードを表示するには、[前を表示] をクリックしてください。
+<para>Click Prev to read the previous help card.
 </para>
 </listitem>
 <listitem>
-<para>
-[ヘルプの索引] を閉じて、アプリケーションへ戻るには、[了解] を
-クリックしてください。
+<para>Click OK to close the Help Index and return to the application.
 </para>
 </listitem>
 </itemizedlist>
-<para>
-詳細は、<XRef Linkend="IMOnlineHelp">を参照してください。
+<para>For more information,
+see <XRef Linkend="IMOnlineHelp">.
 </Para>
 </sect2>
 <sect2 id="IMCommonHelpMenuIndexWinVBu">
-<title><anchor id="common.HelpMenu.IndexWin.ViewButton.ctx">[ヘルプの索引] の [表示] ボタン</title>
-<para>ヘルプ・カード・リスト上で強調表示されている項目に関するヘルプ・カードを
-表示するには、[表示] をクリックしてください。
+<title><anchor id="common.HelpMenu.IndexWin.ViewButton.ctx">Help Index View Button</title>
+<para>Click View to read the help card for the item highlighted in the help card list.
 </para>
-<para>
-詳細は、<XRef Linkend="IMOnlineHelp">を参照してください。
+<para>For more information,
+see <XRef Linkend="IMOnlineHelp">.
 </Para>
 </sect2>
 <sect2 id="IMCommonHelpMenuIndexWinNxtB">
-<title><anchor id="common.HelpMenu.IndexWin.NextButton.ctx">[ヘルプの索引] の [次を表示] ボタン</title>
-<para>ヘルプ・カード・リスト上の、次の項目に関するヘルプ・カードを読むには、
-[次を表示] をクリックしてください。
+<title><anchor id="common.HelpMenu.IndexWin.NextButton.ctx">Help Index Next Button</title>
+<para>Click Next to read the help card for the next item in the help card list.
 </para>
-<para>
-詳細は、<XRef Linkend="IMOnlineHelp">を参照してください。
+<para>For more information,
+see <XRef Linkend="IMOnlineHelp">.
 </Para>
 </sect2>
 <sect2 id="IMCommonHelpMenuIndexWinPrvB">
-<title><anchor id="common.HelpMenu.IndexWin.PrevButton.ctx">[ヘルプの索引] の [前を表示] ボタン</title>
-<para>ヘルプ・カード・リスト上の、前の項目に関するヘルプ・カードを読むには、
-[前を表示] をクリックしてください。
+<title><anchor id="common.HelpMenu.IndexWin.PrevButton.ctx">Help Index Prev Button</title>
+<para>Click Prev to read the help card for the previous item in the help card list.
 </para>
-<para>
-詳細は、<XRef Linkend="IMOnlineHelp">を参照してください。
+<para>For more information,
+see <XRef Linkend="IMOnlineHelp">.
 </Para>
 </sect2>
 <sect2 id="IMCommonHelpMenuIndexWinOKB">
-<title><anchor id="common.HelpMenu.IndexWin.OKButton.ctx">[ヘルプの索引] の [了解] ボタン</title>
-<para>
-[ヘルプの索引] ウィンドウを閉じて、アプリケーションへ戻るには、
-[了解] をクリックしてください。
+<title><anchor id="common.HelpMenu.IndexWin.OKButton.ctx">Help Index OK Button</title>
+<para>Click OK to close the Help Index window and return to the application.
 </para>
-<para>
-詳細は、<XRef Linkend="IMOnlineHelp">を参照してください。
+<para>For more information,
+see <XRef Linkend="IMOnlineHelp">.
 </Para>
 </sect2>
 <sect2 id="IMCommonScrollBar">
-<title><anchor id="common.ScrollBar.ctx">スクロール・バー</title>
-<para>情報がウィンドウの枠内に収まりきらないとき、ユーザは、表示しきれなかった
-情報を表示するために、スクロール・バーを使用することができます。
-これをおこなうには、以下のように操作してください。
+<title><anchor id="common.ScrollBar.ctx">Scroll Bar</title>
+<para>When information does not fit within the
+framed area of a window, you can use the scroll bar to display
+the hidden information. To do this:
 </para>
 <orderedlist>
 <listitem>
-<para>
-ポインタをスクロール・バーの上に置いて、マウス・ボタンを押したままに
-してください。
+<para>Position the pointer on the scroll bar, and press
+and hold the mouse button.
 </para>
 </listitem>
 <listitem>
-<para>
-ポインタをドラッグすることによって、バーをスライドさせてください。
-バーが移動する度に、ウィンドウに表示されている情報が変化します。
+<para>Slide the bar by dragging the pointer. As the bar moves, the information
+displayed in the window changes.
 </para>
 </listitem>
 <listitem>
-<para>
-求めている情報がウィンドウに表示されたら、マウス・ボタンを放して
-ください。
+<para>When the window contains the information you want, release the mouse
+button.
 </para>
 </listitem>
 </orderedlist>
-<para>
-バーをスライドさせる以外に、ユーザは、以下の操作が可能です。
+<para>In addition to sliding the bar, you can:
 </para>
 <itemizedlist>
 <listitem>
-<para>
-スクロール・アローをクリックして、一行づつ移動します。
+<para>Click the scroll arrows to move a line at a time.
 </para>
 </listitem>
 <listitem>
-<para>
-バーの上下の溝をクリックして、一ページづつ移動します。
+<para>Click the trough above or beneath the bar to move to a page at a time.
 </para>
 </listitem>
 <listitem>
-<para>
-<Keycap>Control</Keycap>を押しながらクリックして、そのセクションの
-最初または最後の、一画面分の情報へ移動します。
+<para>Press Control and click to move to the first or last screen of information in the section.
 </para>
-<para>
-溝の長さとバーの長さの関係は、取得可能な全体の情報の量に対する、
-表示されている情報の量の比率を表しています。
+<para>The length of the bar relative to the trough represents the
+amount of visible information compared to the total information available.
 </para>
 </listitem>
 </itemizedlist>
 </sect2>
 <sect2 id="IMCommonSash">
-<title><anchor id="common.Sash.ctx">サッシ</title>
-<para>隣接した区画のサイズを調節するには、サッシを使用してください。
+<title><anchor id="common.Sash.ctx">Sash</title>
+<para>Use the sash to adjust the relative size of adjacent panes:
 </para>
 <orderedlist>
 <listitem>
-<para>
-ポインタをサッシ・ボタンの上に置いて、マウス・ボタンを押したままに
-してください。
+<para>Position the pointer on the sash button, and press and hold the mouse button.
 </para>
 </listitem>
 <listitem>
-<para>
-ポインタをドラッグすることによって、区画のサイズを変更してください。
+<para>Resize the pane by dragging the pointer.
 </para>
 </listitem>
 <listitem>
-<para>
-区画が希望のサイズになったら、マウス・ボタンを放してください。
+<para>When the pane is the size you want, release the mouse button.
 </para>
 </listitem>
 </orderedlist>

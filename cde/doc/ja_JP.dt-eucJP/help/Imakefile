@@ -1,4 +1,4 @@
-XCOMM $XConsortium: Imakefile /main/6 1996/12/18 01:57:15 cde-hit $
+XCOMM $XConsortium: Imakefile /main/9 1996/10/30 18:56:34 rws $
 
 #define HasAppmanager
 #define HasAppBuilder
@@ -20,5 +20,5 @@ XCOMM $XConsortium: Imakefile /main/6 1996/12/18 01:57:15 cde-hit $
 #define HasTerminal
 #define HasTextedit
 
-#include "../../../programs/localized/templates/Japanese.tmpl"
+#include "../../../programs/localized/templates/C.tmpl"
 #include "../../common/help/Imakefile.tmpl"

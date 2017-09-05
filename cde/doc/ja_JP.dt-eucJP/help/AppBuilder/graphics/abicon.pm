@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: abicon.pm /main/3 1996/12/18 01:09:01 cde-hit $ */
+/* $XConsortium: abicon.pm /main/1 1996/03/09 20:09:12 rws $ */
 /*********************************************************************
 *  (c) Copyright 1993, 1994 Hewlett-Packard Company	
 *  (c) Copyright 1993, 1994 International Business Machines Corp.

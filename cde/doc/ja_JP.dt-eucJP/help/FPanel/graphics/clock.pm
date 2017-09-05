@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: clock.pm /main/3 1996/12/18 01:39:53 cde-hit $ */
+/* $XConsortium: fpclock.pm /main/3 1995/07/18 17:32:37 drk $ */
 static char * clock [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "48 48 5 1 0 0",

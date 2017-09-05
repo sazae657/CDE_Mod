@@ -1,4 +1,4 @@
-<!-- $XConsortium: Concepts.sgm /main/3 1996/12/18 02:41:20 cde-hit $ -->
+<!-- $XConsortium: Concepts.sgm /main/5 1996/09/08 22:01:21 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -7,22 +7,34 @@
 <!-- (c) Copyright 1995 FUJITSU LIMITED. -->
 <!-- (c) Copyright 1995 Hitachi. -->
 <Chapter Id="Concepts">
-<Title>スタイル・マネージャの概念</Title>
-<Para>次のトピックを読んでください。
+<Title>Style Manager Concepts</Title>
+<Para>You may want to read the following topic.
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HSTYM.CNCP.item.1">
-<Para> <XRef Linkend="SMColorConcepts"></Para>
+<Para><XRef Linkend="SMColorConcepts"></Para>
 </ListItem>
 </ItemizedList>
 <Sect1 Id="SMColorConcepts">
-<Title>ワークスペースのカラー</Title>
-<Para>ディスプレイのタイプと [使用する色の数] 選択は、パレットを構成するカラー・ボタンの数を決定します。
-色数が多いディスプレイで使用する色数を最小値にするため、デフォルトでは、 [使用する色の数] を [アプリケーション用にもっと多くの色数を割り当てる] に設定してあります。
-色数が多いディスプレイで、カラー・ボタンの数を増やすには、[使用する色の数] ダイアログ・ボックスで、[デスクトップ用にもっと多くの色数を割り当てる] を選択して、現在のセッションを再起動してください。</para>
-<para>ディスプレイで使用可能な色数の制限よりも多くのカラーを使用することはできないため、使用する色数の値を少なく指定することによって、デスクトップが使用する色数を減らすことができます。</para>
-<para>たとえば、色数が多いディスプレイを使用し、[使用する色の数] ダイアログ・ボックスで [デスクトップ用にもっと多くの色数を割り当てる] を指定したけれども、CAD プログラムのような色数豊富なアプリケーションを起動したいという場合は、[アプリケーション用にもっと多くの色数を割り当てる] または [アプリケーション用に最大限度の色数を割り当てる] を選択して、デスクトップが使用する色数を減らさなければなりません。
-残りの色を CAD プログラムで使用できます。
+<Title>Workspace Colors</Title>
+<Para>Your display type and the Number of Colors selection determine the number of
+colors buttons that make up a palette. To keep the number of colors
+used on a high-color display to a minimum, Number of Colors is set to
+More Colors for Applications
+by default. To increase the number of color buttons on a
+high-color display, select More Colors for Desktop
+in the Number of Colors To Use dialog box and
+restart the current session.</Para>
+<Para>While you can't use more colors than your display allows, you
+can reduce the amount of colors used by the Desktop by specifying a
+lower-value color usage.</Para>
+<Para>For example, if you have a high-color display and have selected
+More Colors for Desktop
+in the Number of Colors To Use dialog box, but you want to run a color-rich
+application such as a CAD program, you should choose
+More Colors for Applications or Most Colors for Applications
+to decrease the number of colors the desktop uses. The remaining
+colors are available for the CAD program.
 </Para>
 </Sect1>
 </Chapter>

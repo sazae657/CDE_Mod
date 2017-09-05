@@ -1,4 +1,4 @@
-<!-- $XConsortium: TOC.sgm /main/3 1996/12/18 01:51:00 cde-hit $ -->
+<!-- $XConsortium: TOC.sgm /main/4 1996/06/19 16:14:16 drk $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,24 +9,25 @@
 <!-- Help volume: Help4Help -->
 <!-- File name:   Toc       -->
 <Chapter Id="Table-Of-Contents">
-<Title>目次</Title>
+<Title>Table of Contents</Title>
 <IndexTerm>
-<Primary>目次</Primary>
+<Primary>table of contents</Primary>
 </IndexTerm>
 <VariableList>
 <VarListEntry>
 <Term><XRef Linkend="Concepts"></Term>
 <ListItem>
-<Para> ハイパーリンクを紹介し、ヘルプ・ウィンドウについて説明し、ヘルプ・ボリュームが何であるか、そしてそれがどのように構成されているかを説明します。</Para>
+<Para>Introduces hyperlinks, describes a help window,
+and explains what a help volume is and how it is organized.</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.TOC.item.1">
-<Para> <XRef Linkend="Hyperlinks"></Para>
+<Para><XRef Linkend="Hyperlinks"></Para>
 </ListItem>
 <ListItem Id="HH4H.TOC.item.2">
-<Para> <XRef Linkend="AHelpWindowAtAGlance"></Para>
+<Para><XRef Linkend="AHelpWindowAtAGlance"></Para>
 </ListItem>
 <ListItem Id="HH4H.TOC.item.3">
-<Para> <XRef Linkend="HelpTopicOrganization"></Para>
+<Para><XRef Linkend="HelpTopicOrganization"></Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
@@ -34,10 +35,12 @@
 <VarListEntry>
 <Term><XRef Linkend="GettingHelp"></Term>
 <ListItem>
-<Para> [ヘルプ] キー([F1] キー)、[ヘルプ] メニュー、およびアイテム・ヘルプの使い方について記述します。システム上でヘルプをブラウズするために、フロント・パネルからヘルプ・マネージャへのアクセス方法を説明します。</Para>
+<Para>Describes the Help key (F1), Help menu, and
+how to use On Item Help. Explains how to access Help Manager from the
+Front Panel to browse help on your system.</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.TOC.item.4">
-<Para> <XRef Linkend="ToBrowseDesktopHelp"></Para>
+<Para><XRef Linkend="ToBrowseDesktopHelp"></Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
@@ -45,25 +48,25 @@
 <VarListEntry>
 <Term><XRef Linkend="DisplayingHelpTopics"></Term>
 <ListItem>
-<Para> ヘルプ・トピックの選択および表示方法を説明します。</Para>
+<Para>Explains how to select and display help topics.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term><XRef Linkend="MovingBetweenTopics"></Term>
 <ListItem>
-<Para> ヘルプ・トピック間のナビゲート方法を説明します。</Para>
+<Para>Explains how to navigate between help topics.</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.TOC.item.5">
-<Para> <XRef Linkend="ToReturnToAPreviousTopic"></Para>
+<Para><XRef Linkend="ToReturnToAPreviousTopic"></Para>
 </ListItem>
 <ListItem Id="HH4H.TOC.item.6">
-<Para> <XRef Linkend="History"></Para>
+<Para><XRef Linkend="History"></Para>
 </ListItem>
 <ListItem Id="HH4H.TOC.item.7">
-<Para> <XRef Linkend="ToReturnToTheHomeTopic"></Para>
+<Para><XRef Linkend="ToReturnToTheHomeTopic"></Para>
 </ListItem>
 <ListItem Id="HH4H.TOC.item.8">
-<Para> <XRef Linkend="ToLocateWhereYouAre"></Para>
+<Para><XRef Linkend="ToLocateWhereYouAre"></Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
@@ -71,64 +74,65 @@
 <VarListEntry>
 <Term><XRef Linkend="CopyingTextFromHelp"></Term>
 <ListItem>
-<Para> ヘルプ・ウィンドウからのコピー＆ペーストの使い方を説明します。</Para>
+<Para>Describes how to copy and paste from a Help
+window.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Link Type="jump" Linkend="ToDuplicateAHelpWindow">ヘルプ・ウィンドウの複製</Link>&sigspace;</Term>
+<Term><Link Type="jump" Linkend="ToDuplicateAHelpWindow">Duplicating a Help Window</Link>&sigspace;</Term>
 <ListItem>
-<Para> ヘルプ・ウィンドウを複製する方法を説明します。</Para>
+<Para>Explains how to duplicate a help window.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term><XRef Linkend="Index-Search"></Term>
 <ListItem>
-<Para> ヘルプ索引の使い方を説明します。</Para>
+<Para>Explains how to use the Help index.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term><XRef Linkend="Printing"></Term>
 <ListItem>
-<Para> ヘルプ・トピックを印刷する方法を説明します。</Para>
+<Para>Describes how to print help topics.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term><XRef Linkend="Reference"></Term>
 <ListItem>
-<Para> マウスとキーボードの操作コマンドについて概略し、ヘルプ・ウィン
-ドウ・ダイアログ・ボックスについて説明し、さらにヘルプ・ウィンドウのデフォルトの構成の変更方法を説明します。</Para>
+<Para>Summarizes mouse and keyboard commands, describes help window
+dialog boxes, and explains how to change the default help window configuration.</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.TOC.item.9">
-<Para> <XRef Linkend="HelpMenuCommands"></Para>
+<Para><XRef Linkend="HelpMenuCommands"></Para>
 </ListItem>
 <ListItem Id="HH4H.TOC.item.10">
-<Para> <XRef Linkend="HelpMenuShortcutKeys"></Para>
+<Para><XRef Linkend="HelpMenuShortcutKeys"></Para>
 </ListItem>
 <ListItem Id="HH4H.TOC.item.11">
-<Para> <XRef Linkend="Mouse-And-Keyboard"></Para>
+<Para><XRef Linkend="Mouse-And-Keyboard"></Para>
 </ListItem>
 <ListItem Id="HH4H.TOC.item.12">
-<Para> <XRef Linkend="HelpWindowsAndDialogBoxes"></Para>
+<Para><XRef Linkend="HelpWindowsAndDialogBoxes"></Para>
 </ListItem>
 <ListItem Id="HH4H.TOC.item.13">
-<Para> <XRef Linkend="HelpWindowConfiguration"></Para>
+<Para><XRef Linkend="HelpWindowConfiguration"></Para>
 </ListItem>
 <ListItem Id="HH4H.TOC.item.14">
-<Para> <XRef Linkend="ErrorMessages"></Para>
+<Para><XRef Linkend="ErrorMessages"></Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.TOC.item.15">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.TOC.item.16">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>

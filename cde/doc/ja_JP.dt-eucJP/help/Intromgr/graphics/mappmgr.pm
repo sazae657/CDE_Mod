@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: mappmgr.pm /main/5 1996/12/18 02:16:55 cde-hit $ */
+/* $XConsortium: mappmgr.pm /main/5 1996/10/29 15:54:13 drk $ */
 static char * mappmgr_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "399 113 21 1 0 0",

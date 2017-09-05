@@ -1,4 +1,4 @@
-<!-- $XConsortium: Tasks.sgm /main/6 1996/12/18 02:48:07 cde-hit $ -->
+<!-- $XConsortium: Tasks.sgm /main/11 1996/10/30 21:22:15 cdedoc $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -7,7 +7,7 @@
 <!-- (c) Copyright 1995 FUJITSU LIMITED. -->
 <!-- (c) Copyright 1995 Hitachi. -->
 <Chapter Id="Tasks">
-<Title>dtterm の使い方</Title>
+<Title>dtterm Tasks</Title>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTRM.TSKS.item.1">
 <Para><XRef Linkend="StartStopTerminalEmulatorSI"></Para>
@@ -35,57 +35,59 @@
 </ListItem>
 </ItemizedList>
 <Sect1 Id="StartStopTerminalEmulatorSI">
-<Title>dtterm を起動するには</Title>
-<Para>&ProductName; <ComputerOutput>dtterm</ComputerOutput>端末エミュレータを起動するには以下の方法があります。
+<Title>To Start dtterm</Title>
+<Para>There are several ways you can start a &ProductName; <ComputerOutput>dtterm</ComputerOutput> terminal
+emulator:
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTRM.TSKS.item.9">
-<Para> フロント・パネルから
+<Para>From the Front Panel
 </Para>
 </ListItem>
 <ListItem Id="HTRM.TSKS.item.10">
-<Para> ファイル・マネージャから
+<Para>From File Manager
 </Para>
 </ListItem>
 <ListItem Id="HTRM.TSKS.item.11">
-<Para> 既存の端末エミュレータ・ウィンドウからコマンドで
+<Para>From a command in an existing terminal window
 </Para>
 </ListItem>
 <ListItem Id="HTRM.TSKS.item.12">
-<Para> アプリケーション・マネージャから
+<Para>From Application Manager
 </Para>
 </ListItem>
 <ListItem Id="HTRM.TSKS.item.13">
-<Para> <ComputerOutput>dtterm</ComputerOutput>ウィンドウのプルダウン・メニューの新規から
+<Para>From New in the <ComputerOutput>dtterm</ComputerOutput> Window pulldown menu
 </Para>
 </ListItem>
 </ItemizedList>
 <!--s1 id=XTUsingTerminalControlTA-->
 <Procedure>
-<Title>フロント・パネルから dtterm を起動するには</Title>
+<Title>To Start dtterm from the Front Panel</Title>
 <IndexTerm>
-<Primary>起動: 端末エミュレータ</Primary>
+<Primary>starting: terminal emulator</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>閉じる: 端末エミュレータ</Primary>
+<Primary>closing: terminal emulator</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>端末エミュレータ: ボタン</Primary>
+<Primary>Terminal: button</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ボタン: 端末エミュレータ</Primary>
+<Primary>button: Terminal</Primary>
 </IndexTerm>
 <Step>
-<Para>端末エミュレータ・コントロールは、[個人アプリケーション] サブパネルにあります。
+<Para>The terminal control is located in the Personal Applications subpanel.
 </Para>
 <Graphic Entityref="fptermOL" Id="HTRM.TSKS.fig.1"></Graphic>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTRM.TSKS.item.14">
-<Para> 端末エミュレータ・コントロールをクリックしてください。ビジー・ライトが点滅して、端末エミュレータを起動中であることを示します。
+<Para>Click the terminal control. The busy light blinks indicating that
+the terminal is being activated.
 </Para>
 </ListItem>
 <ListItem Id="HTRM.TSKS.item.15">
-<Para> しばらくすると、<ComputerOutput>dtterm</ComputerOutput>ウィンドウが表示されます。
+<Para>The <ComputerOutput>dtterm</ComputerOutput> window appears after a short time.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -93,83 +95,91 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>ファイル・マネージャから dtterm を起動するには</Title>
+<Title>To Start dtterm from File Manager</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTRM.TSKS.item.16">
-<Para> [ファイル] メニューで [端末エミュレータを開く] を選択してください。
+<Para>Choose Open Terminal from the File menu.
 </Para>
 </ListItem>
 </ItemizedList>
 <Graphic Entityref="fmgrtermOL" Id="HTRM.TSKS.fig.2"></Graphic>
-<Para>これにより、ファイル・マネージャ表示の現在のディレクトリと同じディレクトリで、<ComputerOutput>dtterm</ComputerOutput>を開きます。</Para>
+<Para>This opens <ComputerOutput>dtterm</ComputerOutput> with the same current directory
+as the File Manager view.</Para>
 <!-- s1 id=XTStartingTermFromCommandLineTA -->
 </Step>
 </Procedure>
 <Procedure>
-<Title>dtterm 以外の端末エミュレータを起動するには<ComputerOutput>dtterm</ComputerOutput>以外の端末エミュレータを使用するには、既存の端末エミュレータ・ウィンドウのコマンド行で起動してください。</Title>
+<Title>To Start a Terminal Emulator Other Than dtterm</Title>
 <Step>
-<Para><ComputerOutput>dtterm</ComputerOutput>以外の端末エミュレータを起動するには、
-既存の端末エミュレータのウィンドウから、起動してください。</Para>
+<Para>To use a terminal emulator other than
+<ComputerOutput>dtterm</ComputerOutput>,
+start it from a command line in an
+existing terminal emulator window.</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTRM.TSKS.item.17">
-<Para> コマンド行プロンプトで使用する端末エミュレータおよびオプションを入力してください。たとえば、<ComputerOutput>xterm</ComputerOutput>を起動するには、以下のように入力してください。</Para>
+<Para>At the command line prompt, type the name of the terminal emulator and
+any options you want. For example, to start <ComputerOutput>xterm</ComputerOutput>, enter:</Para>
 <ProgramListing>xterm  [<Symbol Role="Variable">options</Symbol>] &amp;
 </ProgramListing>
 <VariableList>
 <VarListEntry>
 <Term><Symbol Role="Variable">options</Symbol></Term>
 <ListItem>
-<Para>	端末エミュレータをカスタマイズするオプション項目を表します。
+<Para>represents optional items to customize the terminal emulator.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term><ComputerOutput>&</ComputerOutput></Term>
 <ListItem>
-<Para> 	端末エミュレータをバックグラウンド・モードで実行することを指定するので、端末エミュレータの実行中に元のウィンドウで作業を続けることができます。
+<Para>specifies that the terminal emulator runs in the background
+so you can continue working in your
+original window while the terminal emulator is
+running.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
-<Para>オプションで指定しない限り現在のワークスペースで端末エミュレータを起動します。
+<Para>The terminal emulator starts in the current workspace
+unless directed otherwise by options.
 </Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>[ウィンドウ] メニューから dtterm を起動するには</Title>
+<Title>To Start dtterm from the Window Menu</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTRM.TSKS.item.18">
-<Para> 既存の<ComputerOutput>dtterm</ComputerOutput>の [ウィンドウ] メニューで [新規] を選択してください。
-複製の<ComputerOutput>dtterm</ComputerOutput>ウィンドウが表示されます。
+<Para>Choose New from the Window menu in an existing <ComputerOutput>dtterm</ComputerOutput> window.
+A duplicate <ComputerOutput>dtterm</ComputerOutput> window appears.
 </Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>例</Title>
+<Title>Examples</Title>
 <Step>
-<Para>次のコマンドは、ワークスペース<ComputerOutput>Project Notes</ComputerOutput>で<ComputerOutput>dtterm</ComputerOutput>
-ウィンドウを起動します。</Para>
+<Para>The following command starts a <ComputerOutput>dtterm</ComputerOutput> window in the workspace <ComputerOutput>Project
+Notes</ComputerOutput>:</Para>
 <ProgramListing>dtterm -xrm '*workspaceList: "Project Notes"' &amp;
 </ProgramListing>
-<Para>次のコマンドは、"lgmcd"というマシン上で<ComputerOutput>dtterm</ComputerOutput>ウィンドウを
-起動します。</Para>
+<Para>The following command starts a <ComputerOutput>dtterm</ComputerOutput> window on a screen on the system
+named "lgmcd":</Para>
 <ProgramListing>dtterm -display lgmcd:0.1 &amp;
 </ProgramListing>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTRM.TSKS.item.19">
-<Para> <ComputerOutput>dtterm</ComputerOutput>で使用可能なオプションの詳細は、
-<Link Type="jump" Linkend="manpage1x"><ComputerOutput>dtterm (1X)</ComputerOutput></Link>のマニュアル・ページを参照してください。
+<Para>Refer to the <Link Type="jump" Linkend="manpage1x"><ComputerOutput>dtterm (1X)</ComputerOutput></Link> man page for details
+about the options available for <ComputerOutput>dtterm</ComputerOutput>.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -177,195 +187,207 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="XTClosingTerminalTA">
-<Title>dtterm を閉じるには</Title>
+<Title>To Close dtterm</Title>
 <IndexTerm>
-<Primary>閉じる: <ComputerOutput>dtterm</ComputerOutput></Primary>
+<Primary>closing: <ComputerOutput>dtterm</ComputerOutput></Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ウィンドウ・メニュー: ボタン</Primary>
+<Primary>window menu: button</Primary>
 </IndexTerm>
 <OrderedList Role="tight">
 <ListItem Id="HTRM.TSKS.item.20">
-<Para> コマンド行で<ComputerOutput>exit</ComputerOutput>と入力しリターン・キーを押してください。
+<Para>Type <ComputerOutput>exit</ComputerOutput> at the command line and press Return.
 </Para>
 </ListItem>
 <ListItem Id="HTRM.TSKS.item.21">
-<Para> <Emphasis>または</Emphasis>、[ウィンドウ] メニューで [終了] を選択してください。
+<Para><Emphasis>Or</Emphasis>, Choose Exit from the Window menu.
 </Para>
 </ListItem>
 <ListItem Id="HTRM.TSKS.item.22">
-<Para> <Emphasis>または</Emphasis>、[ウィンドウ] メニューのプルダウン・メニューで [閉じる] を選択してください。
-(プルダウン・メニューはウィンドウ・マネージャ枠の左上隅をクリックすると表示されます。)
+<Para><Emphasis>Or</Emphasis>, choose Close from the window
+menu pulldown menu (accessed from the button at the upper left corner of
+the window manager frame).
 </Para>
 </ListItem>
 </OrderedList>
 <Note>
-<Para>コマンド行で<ComputerOutput>exit</ComputerOutput>と入力するのは、<ComputerOutput>dtterm</ComputerOutput>を閉じるのに適した方法です。
-<ComputerOutput>dtterm</ComputerOutput>をメニューで閉じても、その<ComputerOutput>dtterm</ComputerOutput>で起動したバックグラウンド・プロセスは終了しません。
-これは障害の原因になることがあります。
+<Para>Typing <ComputerOutput>exit</ComputerOutput> at the command line is the preferred method of
+closing <ComputerOutput>dtterm</ComputerOutput>. Closing it through the menus doesn't terminate
+any background
+processes you started from <ComputerOutput>dtterm</ComputerOutput>, which can sometimes cause
+problems.
 </Para>
 </Note>
 </Sect1>
 <Sect1 Id="CutPasteTextTA">
-<Title>テキストをコピー＆ペーストするには</Title>
+<Title>To Copy and Paste Text</Title>
 <IndexTerm>
-<Primary>カット: テキスト</Primary>
+<Primary>cutting: text</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ペースト: テキスト</Primary>
+<Primary>pasting: text</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>テキスト: カット＆ペースト</Primary>
+<Primary>text: cutting and pasting</Primary>
 </IndexTerm>
 <Procedure>
-<Title>テキストをコピーするには</Title>
+<Title>To Copy Text</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HTRM.TSKS.item.23">
-<Para> マウス・ボタン 1 を用いて、コピーしたいテキスト上をポインタでドラッグしてください。
-テキストが強調表示されます。
+<Para>Using mouse button 1,
+drag the pointer over the text you want to copy. The text appears
+highlighted.
 </Para>
 </ListItem>
 <ListItem Id="HTRM.TSKS.item.24">
-<Para> コピーしたいテキストをすべて強調表示したら、マウス・ボタン 1 を離してください。
+<Para>Release mouse button 1 after all the text you want
+to copy is highlighted.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>テキストは元の位置から削除されません。</Para>
+<Para>The text is not
+removed from its original position.</Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>テキストをペーストするには</Title>
+<Title>To Paste Text</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HTRM.TSKS.item.25">
-<Para> カーソルをテキストを挿入したい位置に置いてください。
+<Para>Position the cursor where you want to insert the text.
 </Para>
 </ListItem>
 <ListItem Id="HTRM.TSKS.item.26">
-<Para> マウス・ボタン 2 をクリックしてください。
+<Para>Click mouse button 2.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>現在の選択のコピーが指定した場所にペーストされます。
-上記のステップを繰り返すことによって、追加コピーをペーストできます。</Para>
+<Para>A copy of the current selection is pasted at the location you
+indicated. You can paste additional copies by repeating the above steps.</Para>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="windowresize">
-<Title> dtterm ウィンドウをサイズ変更するには</Title>
+<Title>To Resize the dtterm Window</Title>
 <IndexTerm>
-<Primary>ウィンドウのサイズ変更</Primary>
+<Primary>resize window</Primary>
 </IndexTerm>
 <OrderedList Role="tight">
 <ListItem Id="HTRM.TSKS.item.27">
-<Para> [オプション] で [ウィンドウサイズ] を選択してください。
+<Para>Choose Window Size from Options.
 </Para>
 </ListItem>
 <ListItem Id="HTRM.TSKS.item.28">
-<Para> 3 種類のサイズから 1 種類を選択してください。
+<Para>Choose one of the three sizes:
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTRM.TSKS.item.29">
-<Para> 80x24
+<Para>80x24
 </Para>
 </ListItem>
 <ListItem Id="HTRM.TSKS.item.30">
-<Para> 132x24
+<Para>132x24
 </Para>
 </ListItem>
 <ListItem Id="HTRM.TSKS.item.31">
-<Para> 通常
+<Para>normal
 </Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 </OrderedList>
 <Note>
-<Para>使用する画面サイズとフォント・サイズによっては、<ComputerOutput>dtterm</ComputerOutput> ウィンドウを 132 桁にサイズ変更できない場合があります。
-この場合、<ComputerOutput>dtterm</ComputerOutput> は、その環境で可能な最大桁数にサイズ変更されます。
+<Para>In some cases, depending on the screen size and font size you are using,
+you may not be able
+to resize the <ComputerOutput>dtterm</ComputerOutput> window to 132 columns. If this occurs, <ComputerOutput>dtterm</ComputerOutput>
+resizes to
+the maximum number of columns allowable under the circumstances.
 </Para>
 </Note>
-<Para>また、[ウィンドウ・マネージャ] メニューを使用して、<ComputerOutput>dtterm</ComputerOutput> ウィンドウをサイズ変更することもできます。
+<Para>You can also resize <ComputerOutput>dtterm</ComputerOutput> using the Window Manager menu.
 </Para>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <Para><XRef Linkend="ResizeTerminalWindowTA"></Para>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ResizeTerminalWindowTA">
-<Title>ウィンドウ内容をサイズ変更するには</Title>
+<Title>To Resize the Window Contents</Title>
 <IndexTerm>
-<Primary><ComputerOutput>サイズ変更</ComputerOutput>機能</Primary>
+<Primary><ComputerOutput>resize</ComputerOutput> function</Primary>
 </IndexTerm>
-<Para>端末エミュレータ・ウィンドウのサイズを変更しても、そのウィンドウで実行中のアプリケーションはサイズ変更について知りません。
-この手順を使用して、アプリケーションの出力をサイズ変更してください。
-
-</Para>
+<Para>When you change the size of a terminal emulator window, applications running in the
+window may not know about the resizing. Use this procedure to resize the
+application's output.</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTRM.TSKS.item.32">
-<Para> コマンド行プロンプトで以下のように入力してください。
+<Para>At the command-line prompt type:
 </Para>
 <ProgramListing>eval `resize`
 </ProgramListing>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <Para><XRef Linkend="windowresize"></Para>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="XTRunningClientsTA">
-<Title>dtterm ウィンドウでアプリケーションを起動するには</Title>
+<Title>To Start Applications in a dtterm Window</Title>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTRM.TSKS.item.33">
-<Para> コマンド行プロンプトでアプリケーションを起動するコマンドを入力してください。
+<Para>Enter the command to start the application at the command line prompt.
 </Para>
 </ListItem>
 </ItemizedList>
-<Para>アプリケーションを起動する一般的なシンタクスを、以下に示します。</Para>
+<Para>The general syntax for starting an application is:</Para>
 <ProgramListing><Symbol Role="Variable">application</Symbol> [<Symbol Role="Variable">options</Symbol>] &amp;
 </ProgramListing>
 <VariableList>
 <VarListEntry>
 <Term><Symbol Role="Variable">application</Symbol></Term>
 <ListItem>
-<Para>  アプリケーション名です。</Para>
+<Para>The application name.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term><Symbol Role="Variable">options</Symbol></Term>
 <ListItem>
-<Para>	   アプリケーションに指定するオプション情報のリストです。</Para>
+<Para>a list of optional information to be passed to the
+application.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term><ComputerOutput>&</ComputerOutput></Term>
 <ListItem>
-<Para> 	   アプリケーションをバックグラウンド・モードで実行することを指定するので、アプリケーションの実行中に端末エミュレータ・ウィンドウを使用し続けることができます。
+<Para>specifies that the application runs in the background so
+you can continue to use the terminal emulator window
+while the application is running.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>例</Title>
+<Title>Example</Title>
 <Step>
-<Para>コマンド行でデジタル時計を起動するには:
+<Para>To start a digital clock from the command line:
 </Para>
 <ProgramListing>xclock -digital &amp;
 </ProgramListing>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTRM.TSKS.item.34">
-<Para> アプリケーションを使用するためにコマンドおよびオプションを調べるには、各アプリケーションのマニュアル・ページまたは他のマニュアルを参照してください。
+<Para>Refer to the man page or other documentation for each application to
+find the command and options to use for that application.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -373,25 +395,23 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="rlogin">
-<Title>リモート・システムにログインするには</Title>
+<Title>To Log On to a Remote System</Title>
 <Procedure>
-<Title>rlogin の使い方</Title>
+<Title>Using rlogin</Title>
 <Step>
-<Para>リモート・ホストにログインするには、既存の端末エミュレータ・ウィンドウ
-で<ComputerOutput>rlogin</ComputerOutput>コマンドを使用してください。
-一旦、ウィンドウがリモート・ホストへの端末として動作すれば、
-ユーザは、そこでアプリケーションを実行でき、望むならば、その表示の出力を
-ユーザのシステムに戻すことができます。</Para>
+<Para>Use the <ComputerOutput>rlogin</ComputerOutput> command in an existing terminal emulator window to log
+in to a remote host.
+Once the window is acting as a terminal to the remote host, you can run
+applications there, redirecting the display back to your system if you
+desire.</Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>例</Title>
+<Title>Example</Title>
 <Step>
-<Para>次のコマンドは、<ComputerOutput>there</ComputerOutput>というシステム
-にログインして、クライアント<ComputerOutput>xload</ComputerOutput>を起動し、
-その表示の出力を、コマンドを実行したシステムに戻します。
-ユーザのシステムの名前が、<ComputerOutput>here</ComputerOutput>であると
-仮定してください。
+<Para>The following command logs onto a system named <ComputerOutput>there</ComputerOutput>, runs
+the client <ComputerOutput>xload</ComputerOutput>, and redirects the display back to your original
+system. Assume your system is named <ComputerOutput>here</ComputerOutput>.
 </Para>
 <ProgramListing>rlogin there
 xload -display here:0
@@ -399,105 +419,108 @@ xload -display here:0
 </Step>
 </Procedure>
 <Procedure>
-<Title>remsh の使い方</Title>
+<Title>Using remsh</Title>
 <Step>
-<Para><command>remsh</command>コマンドはリモート・ホスト上でシェルを起動し、
-何らかのクライアントを実行し(そのホスト上で端末エミュレータを起動することが
-多いです)、望むならば、その表示の出力をコマンドを実行したシステムに戻します
-(<command>remsh</command>コマンドをサポートしていないシステムは通常、
-それと同等の<command>rsh</command>コマンドをサポートしています)。
-<command>remsh</command>コマンドのシンタクスは、以下のようです。
+<Para>The <command>remsh</command> command starts a shell on a remote host, performs some
+client (often starting a terminal emulator on that host), and redirects the
+display back to your original system if desired. (Systems that don't support
+<command>remsh</command> usually sypport the equivalent <command>rsh</command> command.)
+The syntax for the <command>remsh</command> command is:
 </Para>
 <ProgramListing>remsh <Symbol Role="Variable">remote</Symbol> -n <Symbol Role="Variable">client</Symbol> -display <Symbol Role="Variable">system:display[.screen]</Symbol>
 </ProgramListing>
-<Para>ここでは:
+<Para>where:
 </Para>
 <VariableList>
 <VarListEntry>
 <Term><Symbol Role="Variable">remote</Symbol></Term>
 <ListItem>
-<Para>   リモート・ホスト名
+<Para>The remote host name
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term><Symbol Role="Variable">client</Symbol></Term>
 <ListItem>
-<Para>   リモート・ホスト上で実行するプログラム
+<Para>The program you want to run on the remote host
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term><Symbol Role="Variable">system:display[.screen]</Symbol></Term>
 <ListItem>
-<Para>  結果を表示するホストおよびディスプレイ</Para>
+<Para>The host and display on which the results
+are to be displayed.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>例</Title>
+<Title>Example</Title>
 <Step>
-<Para>次のコマンドは、<ComputerOutput>there</ComputerOutput>という
-リモート・ホスト上で<ComputerOutput>xload</ComputerOutput>を起動し、
-コマンドを実行したマシン<ComputerOutput>here</ComputerOutput>に、
-出力を戻します。
+<Para>The following command runs <ComputerOutput>xload</ComputerOutput> on the remote host named
+<ComputerOutput>there</ComputerOutput>, and directs output back to your system, <ComputerOutput>here</ComputerOutput>.
 </Para>
 <ProgramListing>remsh there -n /usr/bin/X11/xload -display here:0.0 &
 </ProgramListing>
-<Para><ComputerOutput>remsh</ComputerOutput>コマンドは、他のホストにアクセスするメニューをカスタマイズする場合によく使用されます。</Para>
+<Para>The <ComputerOutput>remsh</ComputerOutput> command is often used when customizing a menu to access other
+hosts.</Para>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="config">
-<Title>dtterm を設定するには</Title>
+<Title>To Configure dtterm</Title>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTRM.TSKS.item.35">
-<Para> <XRef Linkend="setresources"></Para>
+<Para><XRef Linkend="setresources"></Para>
 </ListItem>
 <ListItem Id="HTRM.TSKS.item.36">
-<Para> <XRef Linkend="XTUsingScrollbarsTA"></Para>
+<Para><XRef Linkend="XTUsingScrollbarsTA"></Para>
 </ListItem>
 <ListItem Id="HTRM.TSKS.item.37">
-<Para> <XRef Linkend="XTSettingTTYResourceTA"></Para>
+<Para><XRef Linkend="XTSettingTTYResourceTA"></Para>
 </ListItem>
 </ItemizedList>
 <Sect2 Id="setresources">
-<Title>dtterm リソースを設定するには</Title>
-<Para>リソースは、その値が<ComputerOutput>dtterm</ComputerOutput>の属性に影響を及ぼす変数です。
-リソースの例にはフォアグラウンド・カラー、バックグラウンド・カラー、高さ、幅などがあります。
-リソースはリソース・データベースにあります。
-<ComputerOutput>dtterm</ComputerOutput>リソースの例を以下に示します。</Para>
+<Title>To Set dtterm Resources</Title>
+<Para>A resource is a variable whose value affects some attribute of
+<ComputerOutput>dtterm</ComputerOutput>. Examples of resources are foreground color, background
+color, height, and width. Resources are found in a resource database.
+Examples of <ComputerOutput>dtterm</ComputerOutput> resources are:</Para>
 <ProgramListing>Dtterm*saveLines:  4s
 Dtterm*scrollBar: True
 </ProgramListing>
-<Para>デスクトップ・アプリケーションの app-default ファイルは、<ComputerOutput>/usr/dt/app-defaults/language</ComputerOutput> ディレクトリにあります。</Para>
-<Para>リソースは、セッションの起動時にセッション・マネージャによって読み込まれます。
-セッション・マネージャが RESOURCE_MANAGER にリソースを読み込む方法については、<Emphasis>『上級ユーザ及びシステム管理者ガイド』</Emphasis>の「セッション・リソースの読み込み」を参照してください。</Para>
+<Para>App-default files for the desktop applications are located in the
+<ComputerOutput>/usr/dt/app-defaults/language</ComputerOutput> directory.</Para>
+<Para>Resources are loaded at session start-up by Session Manager. For information
+on how Session Manager loads the resources into the RESOURCE_MANAGER,
+see "Loading the Session Resources" in the <Emphasis>CDE Advanced User's & System
+Administrator's Guide</Emphasis>.</Para>
 <Sect3 Id="HTRM.TSKS.div.1">
-<Title>システム全体のリソースを設定するには</Title>
+<Title>To Set System-Wide Resources</Title>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTRM.TSKS.item.38">
-<Para> リソースを <ComputerOutput>/etc/dt/config/language/sys.resources</ComputerOutput> ファイルに追加してください。
-(ファイルを作成する必要がある場合があります。)
+<Para>Add the resources to the file <ComputerOutput>/etc/dt/config/language/sys.resources</ComputerOutput>.
+(You may have to create the file.)
 </Para>
 </ListItem>
 </ItemizedList>
-<Para>例えば、<ComputerOutput>/etc/dt/config/C/sys.resources</ComputerOutput> に、以下のように指定してください。</Para>
+<Para>For example, if in <ComputerOutput>/etc/dt/config/C/sys.resources</ComputerOutput> you specify:</Para>
 <ProgramListing>AnApplication*resource: value
 </ProgramListing>
-<Para>これにより、次のログイン時から、<ComputerOutput>AnApplication*resource</ComputerOutput> リソースがユーザの各 RESOURCE_MANAGER 属性に設定されます。</Para>
+<Para>then the resource <ComputerOutput>AnApplication*resource</ComputerOutput> is set in each user's
+RESOURCE_MANAGER property at the next login.</Para>
 </Sect3>
 <Sect3 Id="HTRM.TSKS.div.2">
-<Title>個人用のリソースを設定するには</Title>
+<Title>To Set Personal Resources</Title>
 <OrderedList Role="tight">
 <ListItem Id="HTRM.TSKS.item.39">
-<Para> リソースを、<Emphasis>HomeDirectory</Emphasis><ComputerOutput>/.Xdefaults</ComputerOutput> ファイルに追加してください。
+<Para>Add the resources to the file <Emphasis>HomeDirectory</Emphasis><ComputerOutput>/.Xdefaults</ComputerOutput>.
 </Para>
 </ListItem>
 <ListItem Id="HTRM.TSKS.item.40">
-<Para> [デスクトップツール] アプリケーション・グループの [リソースの再読込み] をダブルクリックしてください。
+<Para>Double-click Reload Resources in the Desktop_Tools application group.
 </Para>
 </ListItem>
 </OrderedList>
@@ -505,27 +528,29 @@ Dtterm*scrollBar: True
 </Sect3>
 </Sect2>
 <Sect2 Id="XTUsingScrollbarsTA">
-<Title>スクロールバーを指定するには</Title>
+<Title>To Specify Scrollbars</Title>
 <OrderedList>
 <ListItem Id="HTRM.TSKS.item.41">
-<Para> 端末エミュレータに <ComputerOutput>scrollBar</ComputerOutput>リソースを指定してください。
-<ComputerOutput>scrollBar</ComputerOutput>の値が True の場合は、<ComputerOutput>dtterm</ComputerOutput>にスクロールバーが付きます。
-値が False の場合は、<ComputerOutput>dtterm</ComputerOutput>にスクロールバーが付きません。</Para>
+<Para>Specify a <ComputerOutput>scrollBar</ComputerOutput> resource for
+the terminal emulator.
+If the value of <ComputerOutput>scrollBar</ComputerOutput> is True, <ComputerOutput>dtterm</ComputerOutput> will
+have scrollbars. If the value is False, it will not have scrollbars.</Para>
 </ListItem>
 <ListItem Id="HTRM.TSKS.item.42">
-<Para> ログアウトした後、現在のセッションに再度ログインしてください。
-(ホーム・セッションの場合は、ホーム・セッションを設定して、ログアウトした後、再度ログインしてください。)
+<Para>Log out, then log back in for the current session. (For home session,
+set home session, log out, then log back in.)
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>例</Title>
+<Title>Examples</Title>
 <Step>
-<Para>すべての<ComputerOutput>dtterm</ComputerOutput>ウィンドウにスクロールバーを設定するには:
+<Para>To set scrollbars in all <ComputerOutput>dtterm</ComputerOutput> windows:
 </Para>
 <ProgramListing>Dtterm*scrollBar:     True
 </ProgramListing>
-<Para>"localTerminal"という名前の<ComputerOutput>dtterm</ComputerOutput>ウィンドウのみにスクロールバーを設定するには:
+<Para>To set scrollbars only for <ComputerOutput>dtterm</ComputerOutput> windows named
+"localTerminal":
 </Para>
 <ProgramListing>localTerminal*scrollBar:   True
 </ProgramListing>
@@ -533,72 +558,78 @@ Dtterm*scrollBar: True
 </Procedure>
 </Sect2>
 <Sect2 Id="XTSettingTTYResourceTA">
-<Title>端末の制御文字を設定するには</Title>
+<Title>To Set Terminal Control Characters</Title>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTRM.TSKS.item.43">
-<Para> <Link Type="jump" Linkend="setresources">dtterm リソースの設定</Link>で説明した方法の 1 つを使用して<ComputerOutput>ttyModes</ComputerOutput>リソースを編集してください。
+<Para>Edit the <ComputerOutput>ttyModes</ComputerOutput> resource using one of the methods described in
+<Link Type="jump" Linkend="setresources">Setting dtterm Resources</Link>.
 </Para>
 </ListItem>
 </ItemizedList>
-<Para>このリソースの書式は以下の通りです:
+<Para>The syntax for this resource is:
 </Para>
 <ProgramListing>ttyModes:  <Symbol Role="Variable">^C</Symbol>  <Symbol Role="Variable">name</Symbol>
 </ProgramListing>
-<Para>ここでは、<Symbol Role="Variable">name</Symbol> はコントロール、<Symbol Role="Variable">C</Symbol> は文字です。
-たとえば、<ComputerOutput>ttyModes</ComputerOutput>のデフォルト値は、次のようになります。
+<Para>where <Symbol Role="Variable">name</Symbol> is the control, and <Symbol Role="Variable">C</Symbol> is the character. For example,
+the default value of <ComputerOutput>ttyModes</ComputerOutput> is:
 </Para>
 <ProgramListing>ttyModes:	erase ^H intr ^C kill ^U start ^Q stop ^S swtch ^@
 </ProgramListing>
-<Para><ComputerOutput>dtterm</ComputerOutput>は端末を<Emphasis>エミュレートする</Emphasis>だけなので、制御文字は、物理端末上で使用するものではありません。
-<ComputerOutput>ttyModes</ComputerOutput>リソースは、ユーザが制御文字をユーザの端末エミュレータ・ウィンドウに設定できるようにします。</Para>
-<Para>デフォルトでは、ログイン・マネージャは次の制御文字を設定します。
+<Para>Because <ComputerOutput>dtterm</ComputerOutput> only <Emphasis>emulates</Emphasis> a terminal, your
+control characters might not be what you are used to on a physical
+terminal. The <ComputerOutput>ttyModes</ComputerOutput> resource enables you to set control characters
+for your terminal emulator.</Para>
+<Para>By default, Login Manager sets the following control characters.
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Emphasis Role="heading">制御名</Emphasis></Term>
+<Term><Emphasis Role="heading">Control name</Emphasis></Term>
 <ListItem>
-<Para><Emphasis Role="heading">   文字(効果)</Emphasis></Para>
+<Para><Emphasis Role="heading"> Character (Effect)</Emphasis></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>erase</Term>
 <ListItem>
-<Para> 	^H (一文字前を消去します。)
+<Para>^H (Backspace erases characters)
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>intr</Term>
 <ListItem>
-<Para>		^C (中断 - 現在の操作を取り消して、コマンド行プロンプトをを再表示します。)
+<Para>^C (Interrupt - cancel the current operation and redisplay the
+command line prompt)
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>kill</Term>
 <ListItem>
-<Para>		^U (入力行を消去します。)
+<Para>^U (Clear the input line)
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>start</Term>
 <ListItem>
-<Para> 	^Q (サブプロセス出力を開始します。)
+<Para>^Q (Start subprocess output)
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>swtch</Term>
 <ListItem>
-<Para> 	^@ (シェル内部の階層を切り替えます。)
+<Para>^@ (Switch between layers in a shell)
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Note>
-<Para>"<ComputerOutput>^</ComputerOutput>"文字は、<Keycap>CTRL</Keycap> キーを表しています。したがって、進行中の操作を中断するには、<Keycap>CTRL</Keycap> キーを押しながら <Keycap>C</Keycap> キーを押してください。
-<ComputerOutput>ttyModes</ComputerOutput>を設定する場合には、<Keycap>CTRL</Keycap> キーの代わりに、<Keycap>^</Keycap> キーを使用してください。
+<Para>The "<ComputerOutput>^</ComputerOutput>" character stands for the <Keycap>CTRL</Keycap> key, so to interrupt an
+operation in progress you press <Keycap>CTRL</Keycap> <Keycap>C</Keycap>. When setting
+<ComputerOutput>ttyModes</ComputerOutput>, use the <Keycap>^</Keycap>
+key instead of the <Keycap>CTRL</Keycap> key.
 </Para>
 </Note>
 </Sect2>

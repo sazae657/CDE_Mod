@@ -1,4 +1,4 @@
-<!-- $XConsortium: MetaInfo.sgm /main/3 1996/12/18 01:24:45 cde-hit $ -->
+<!-- $XConsortium: MetaInfo.sgm /main/3 1996/09/08 22:51:22 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -7,15 +7,15 @@
 <!-- (c) Copyright 1995 FUJITSU LIMITED. -->
 <!-- (c) Copyright 1995 Hitachi. -->
 <DocInfo>
-<Title>&calcname; ヘルプ</Title>
+<Title>&calcname; Help</Title>
 <AuthorGroup>
 <CorpAuthor>X Consortium</CorpAuthor>
 </AuthorGroup>
 <Abstract Id="SDL-RESERVED-abstract">
-<Para>&calcname; ヘルプ
- &AbstractBullet; 概要
- &AbstractBullet; 基本操作
- &AbstractBullet; 選択した&calcname;の使い方
+<Para>&calcname; Help
+&AbstractBullet; Overview
+&AbstractBullet; Basic Operation
+&AbstractBullet; Selected &calcname; Tasks
 </Para>
 </Abstract>
 <LegalNotice Id="SDL-RESERVED-copyright">
@@ -24,5 +24,5 @@
 </BlockQuote>
 </LegalNotice>
 </DocInfo>
-<Title>&calcname; ヘルプ</Title>
+<Title>&calcname; Help</Title>
 <!--fickle 1.15 help-to-docbook 1.4 01/17/96 16:25:08-->

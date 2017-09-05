@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: smallprt.pm /main/3 1996/12/18 01:44:21 cde-hit $ */
+/* $XConsortium: smallprnt.pm /main/3 1995/07/18 17:36:05 drk $ */
 /*********************************************************************
 *  (c) Copyright 1993, 1994 Hewlett-Packard Company	
 *  (c) Copyright 1993, 1994 International Business Machines Corp.

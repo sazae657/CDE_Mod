@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: stylemgr.pm /main/5 1996/12/18 02:20:12 cde-hit $ */
+/* $XConsortium: stylemgr.pm /main/5 1996/10/29 15:55:56 drk $ */
 static char * stylemgr_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "48 48 22 1 0 0",

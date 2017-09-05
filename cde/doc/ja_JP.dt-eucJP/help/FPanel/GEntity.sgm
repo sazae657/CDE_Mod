@@ -1,4 +1,5 @@
-<!-- $XConsortium: GEntity.sgm /main/8 1996/12/18 01:37:42 cde-hit $ -->
+<!-- $XConsortium: GEntity.sgm /main/11 1996/09/14 19:08:30 cdedoc $ -->
+
 <!entity FPPrintMgrIcon         SYSTEM "./FPanel/graphics/printmgr.pm" NDATA XPM>
 <!entity FPClockIcon 		SYSTEM "./FPanel/graphics/clock.pm" NDATA XPM>
 <!entity FPSysdateIcon 		SYSTEM "./FPanel/graphics/date.pm" NDATA XPM>
@@ -36,4 +37,4 @@
 <!entity FPOnItemControl       SYSTEM "./FPanel/graphics/onitemcn.tif" NDATA TIFF>
 <!entity FPSmallPrinterIcon	SYSTEM "./FPanel/graphics/smallprt.pm" NDATA XPM>
 <!entity FPAppManagerIcon       SYSTEM "./FPanel/graphics/fpappmgr.pm" NDATA XPM>
-<!entity FPSmallInfo            SYSTEM "./FPanel/graphics/smallinf.tif" NDATA TIFF>
+<!entity FPSmallInfo            SYSTEM "./FPanel/graphics/smallinf.tif" NDATA XPM>

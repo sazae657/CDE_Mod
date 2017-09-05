@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: dragicon.pm /main/3 1996/12/18 01:48:08 cde-hit $ */
+/* $XConsortium: FMdragOL.pm /main/3 1995/07/18 17:24:33 drk $ */
 static char * FMdragOL2_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "169 91 7 1 0 0",

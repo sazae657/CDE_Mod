@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: termpi.pm /main/3 1996/12/18 01:19:55 cde-hit $ */
+/* $XConsortium: termpi.pm /main/1 1996/03/09 20:12:49 rws $ */
 static char * term_pane_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "48 32 9 1 0 0",

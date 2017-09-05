@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: helpmgr.pm /main/3 1996/12/18 01:41:33 cde-hit $ */
+/* $XConsortium: fphelptop.pm /main/3 1995/07/18 17:33:26 drk $ */
 /* Designed by the User Interaction Design Group, Hewlett-Packard */
 /* Copyright (c) 1993 Hewlett-Packard */
 static char *help48[]={

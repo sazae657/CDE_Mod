@@ -1,4 +1,4 @@
-<!-- $XConsortium: Help4Help.sgm /main/1 1996/12/18 01:50:24 cde-hit $ -->
+<!-- $XConsortium: Help4Help.sgm /main/2 1996/09/08 22:14:19 rws $ -->
 <!DOCTYPE Part PUBLIC "-//HaL and O'Reilly//DTD DocBook//EN" [
 
 <!ENTITY % ISOpublishing PUBLIC "ISO 8879-1986//ENTITIES Publishing//EN">
@@ -26,7 +26,7 @@
 %ISOboxandline;
 
 <!ENTITY ProductName "CDE Desktop">
-<!ENTITY CDEcopyright "<GlossTerm Role=nogloss>共通デスクトップ環境 2.1</GlossTerm>,
+<!ENTITY CDEcopyright "<GlossTerm Role=nogloss>Common Desktop Environment 2.1 Snapshot Release</GlossTerm>,
 &copy; Copyright 1996 Digital Equipment Corp.
 &copy; Copyright 1996 Fujitsu Limited
 &copy; Copyright 1996 Hewlett-Packard Company

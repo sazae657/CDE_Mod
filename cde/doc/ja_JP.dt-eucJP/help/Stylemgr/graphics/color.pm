@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: color.pm /main/3 1996/12/18 02:44:17 cde-hit $ */
+/* $XConsortium: ColorOL.pm /main/3 1995/07/18 17:23:36 drk $ */
 static char * ColorOL [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "64 37 13 1 0 0",

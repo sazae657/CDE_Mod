@@ -1,4 +1,4 @@
-<!-- $XConsortium: Ref.sgm /main/4 1996/12/18 02:34:07 cde-hit $ -->
+<!-- $XConsortium: Ref.sgm /main/7 1996/09/08 21:51:27 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,121 +9,124 @@
 <!-- Help volume: Printmgr  -->
 <!-- File name:   Reference -->
 <Chapter Id="Reference">
-<Title>印刷のリファレンス</Title>
+<Title>Printing Reference</Title>
 <Procedure>
-<Title>ウィンドウ</Title>
+<Title>Windows</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HPRNTM.REF.item.1">
-<Para> <XRef Linkend="MainWindowDE"></Para>
+<Para><XRef Linkend="MainWindowDE"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.2">
-<Para> <XRef Linkend="PJMainWindowDE"></Para>
+<Para><XRef Linkend="PJMainWindowDE"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.3">
-<Para> <XRef Linkend="PrinterDE"></Para>
+<Para><XRef Linkend="PrinterDE"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.4">
-<Para> <XRef Linkend="PrintJobDE"></Para>
+<Para><XRef Linkend="PrintJobDE"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>メニュー</Title>
+<Title>Menus</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HPRNTM.REF.item.5">
-<Para> <XRef Linkend="PrinterMenuDE"></Para>
+<Para><XRef Linkend="PrinterMenuDE"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.6">
-<Para> <XRef Linkend="SelectedPrinterMenuDE"></Para>
+<Para><XRef Linkend="SelectedPrinterMenuDE"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.7">
-<Para> <XRef Linkend="SelectedPrintJobMenuDE"></Para>
+<Para><XRef Linkend="SelectedPrintJobMenuDE"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.8">
-<Para> <XRef Linkend="ViewMenuDE"></Para>
+<Para><XRef Linkend="ViewMenuDE"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.9">
-<Para> <XRef Linkend="HelpMenuDE"></Para>
+<Para><XRef Linkend="HelpMenuDE"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>ダイアログ・ボックス</Title>
+<Title>Dialog Boxes</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HPRNTM.REF.item.10">
-<Para> <XRef Linkend="SetOptionsDE"></Para>
+<Para><XRef Linkend="SetOptionsDE"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.11">
-<Para> <XRef Linkend="FindDialogDE"> (印刷マネージャのみ)
+<Para><XRef Linkend="FindDialogDE"> (Print Manager only)
 </Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.12">
-<Para> <XRef Linkend="ShowPrintersDE"> (印刷マネージャのみ)
+<Para><XRef Linkend="ShowPrintersDE"> (Print Manager only)
 </Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.13">
-<Para> <XRef Linkend="PrinterPropsDE"></Para>
+<Para><XRef Linkend="PrinterPropsDE"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.14">
-<Para> <XRef Linkend="PrintJobPropsDE"></Para>
+<Para><XRef Linkend="PrintJobPropsDE"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.15">
-<Para> <XRef Linkend="FindSetDE"></Para>
+<Para><XRef Linkend="FindSetDE"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.16">
-<Para> <XRef Linkend="ConfirmCancelJobDE"></Para>
+<Para><XRef Linkend="ConfirmCancelJobDE"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.17">
-<Para> <XRef Linkend="dtlpPrintDialog"></Para>
+<Para><XRef Linkend="dtlpPrintDialog"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Sect1 Id="MainWindowDE">
-<Title>印刷マネージャ・ウィンドウ</Title>
+<Title>Print Manager Window</Title>
 <Graphic Entityref="MainWindow" Id="HPRNTM.REF.fig.1"></Graphic>
-<Para>メイン・ウィンドウには、以下の 3 つの領域があります。</Para>
+<Para>There are three areas on the main window:</Para>
 <VariableList>
 <VarListEntry>
-<Term> メニュー・バー </Term>
+<Term>Menu bar</Term>
 <ListItem>
-<Para>   一番上の領域で、印刷マネージャのメニューがあります。
-		     [選択] メニューは、アイコンの 1 つが選択された場合にのみアクティブになるので注意してください。
+<Para>This is the top area where the Print Manager
+menus are located. Note that the Selected menu
+is only active when one icon is selected.
 <Anchor Id="SelectedMenuDE">
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 作業領域 </Term>
+<Term>Work area</Term>
 <ListItem>
-<Para>	    この領域("表示" としても知られる)は、プリンタや印刷ジョブが表示される場所です。
+<Para>This area, also known as the "view" is where printers and print jobs
+are shown.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> メッセージ行 </Term>
+<Term>Message line</Term>
 <ListItem>
-<Para> メッセージ行は、作業領域の下にあります。以下の 3 種類の情報を提供します。</Para>
+<Para>The message line is below the work area. It provides
+three types of information:</Para>
 <OrderedList Role="tight">
 <ListItem Id="HPRNTM.REF.item.18">
-<Para> 印刷ジョブを送信できるプリンタの数
+<Para>How many printers you can send print jobs to
 </Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.19">
-<Para> 表示から隠れているプリンタの数
+<Para>How many printers are hidden from your view
 </Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.20">
-<Para> 自分の印刷ジョブだけが表示されているのかどうか
+<Para>Whether only your print jobs are displayed in the view
 </Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.21">
-<Para> プリンタ情報の更新時にもメッセージが表示されることがあります。
+<Para>The message may also display when the printer information is being updated.
 </Para>
 </ListItem>
 </OrderedList>
@@ -132,37 +135,40 @@
 </VariableList>
 </Sect1>
 <Sect1 Id="PJMainWindowDE">
-<Title>プリンタ・ジョブ・ウィンドウ</Title>
+<Title>Printer Jobs Window</Title>
 <Graphic Entityref="PJMainWindow" Id="HPRNTM.REF.fig.2"></Graphic>
-<Para>メイン・ウィンドウには、以下の 3 つの領域があります。</Para>
+<Para>There are three areas on the main window:</Para>
 <VariableList>
 <VarListEntry>
-<Term> メニュー・バー </Term>
+<Term>Menu bar</Term>
 <ListItem>
-<Para>   一番上の領域で、プリンタ・ジョブのプルダウン・メニューがあります。
-		     [選択] メニューは、1 つのアイコンが選択された場合にのみアクティブになるので注意してください。
+<Para>This is the top area where the Printer Jobs pulldown
+menus are located. Note that the selected menu
+is only active when one icon is selected.
 <Anchor Id="PJSelectedMenuDE">
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 作業領域 </Term>
+<Term>Work area</Term>
 <ListItem>
-<Para>	    この領域("表示" としても知られる)は、プリンタや印刷ジョブが表示される場所です。</Para>
+<Para>This area, also known as the "view", is where printers and print jobs
+are shown.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> メッセージ行 </Term>
+<Term>Message line</Term>
 <ListItem>
-<Para> メッセージ行は、作業領域の下にあります。以下の 2 種類の情報を提供します。
+<Para>The information line is below the work area. It gives
+you two types of information:
 </Para>
 <OrderedList Role="tight">
 <ListItem Id="HPRNTM.REF.item.22">
-<Para> プリンタ・ステータス				
+<Para>The printer status
 </Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.23">
-<Para> メッセージ行は、プリンタ情報の更新中にも表示されることがあります。
+<Para>The message line may also display when the printer information is being updated.
 </Para>
 </ListItem>
 </OrderedList>
@@ -171,332 +177,343 @@
 </VariableList>
 </Sect1>
 <Sect1 Id="PrinterDE">
-<Title>プリンタ・オブジェクト</Title>
-<Para><InlineGraphic Remap="graphic" Entityref="PrinterIcon"></InlineGraphic>このアイコンは、システムが知っているプリンタを表します。</Para>
-<Para><InlineGraphic Remap="graphic" Entityref="FlagIcon"></InlineGraphic>障害フラグは、プリンタに問題が生じた場合(たとえば、紙詰まり)に表示されます。
-フラグは、システムがリモート・プリンタと通信できなくなった場合にも表示されます。
-詳細については、このアイコンをダブルクリックしてください。</Para>
-<Para><InlineGraphic Remap="graphic" Entityref="PlusIcon"></InlineGraphic>プラス (+) ボタンは、閉じているプリンタ・アイコンを開く際に使用します。
-プリンタのジョブを表示する場合にクリックしてください。
-印刷マネージャのみで使用可能です。</Para>
-<Para><InlineGraphic Remap="graphic" Entityref="MinusIcon"></InlineGraphic>マイナス (-) ボタンは、開いているプリンタ・アイコンを閉じる際に使用します。
-プリンタのジョブを隠す場合にクリックしてください。
-印刷マネージャのみで使用可能です。</Para>
+<Title>Printer Object</Title>
+<Para><InlineGraphic Remap="graphic" Entityref="PrinterIcon"></InlineGraphic>This icon represents a printer that your system knows about.</Para>
+<Para><InlineGraphic Remap="graphic" Entityref="FlagIcon"></InlineGraphic>The problem flag is displayed when the printer has a problem,
+such as a paper jam. The flag is also displayed when your system
+can not communicate with a remote printer. Double-click
+on this icon for more information.</Para>
+<Para><InlineGraphic Remap="graphic" Entityref="PlusIcon"></InlineGraphic>The plus (+) button is used to open a closed printer icon. Click to
+show this printer's jobs. Only available in Print Manager.</Para>
+<Para><InlineGraphic Remap="graphic" Entityref="MinusIcon"></InlineGraphic>The minus (-) button is used to close an opened printer icon. Click to
+hide this printer's jobs. Only available in Print Manager.</Para>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HPRNTM.REF.item.24">
-<Para> <XRef Linkend="OpenPrinterTA"> (印刷マネージャのみ)
+<Para><XRef Linkend="OpenPrinterTA"> (Print Manager only)
 </Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.25">
-<Para> <XRef Linkend="ClosePrinterTA"> (印刷マネージャのみ)
+<Para><XRef Linkend="ClosePrinterTA"> (Print Manager only)
 </Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.26">
-<Para> <XRef Linkend="HidePrinterTA"> (印刷マネージャのみ)
+<Para><XRef Linkend="HidePrinterTA"> (Print Manager only)
 </Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.27">
-<Para> <XRef Linkend="PrinterPropsDE"> (印刷マネージャのみ)
+<Para><XRef Linkend="PrinterPropsDE"> (Print Manager only)
 </Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.28">
-<Para> <XRef Linkend="ShowPropsPrinterLabelTA"></Para>
+<Para><XRef Linkend="ShowPropsPrinterLabelTA"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.29">
-<Para> <XRef Linkend="CopyPrinterTA"></Para>
+<Para><XRef Linkend="CopyPrinterTA"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.30">
-<Para> <XRef Linkend="ShowPropsPrinterTA"></Para>
+<Para><XRef Linkend="ShowPropsPrinterTA"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.31">
-<Para> <XRef Linkend="ShowPropsPrinterQDTA"></Para>
+<Para><XRef Linkend="ShowPropsPrinterQDTA"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.32">
-<Para> <XRef Linkend="ShowPropsPrinterDesTA"></Para>
+<Para><XRef Linkend="ShowPropsPrinterDesTA"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.33">
-<Para> <XRef Linkend="ChangePrinterIconTA"></Para>
+<Para><XRef Linkend="ChangePrinterIconTA"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.34">
-<Para> <XRef Linkend="FindProblemTA"></Para>
+<Para><XRef Linkend="FindProblemTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="PrintJobDE">
-<Title>印刷ジョブ・オブジェクト</Title>
-<Para><InlineGraphic Remap="graphic" Entityref="PrintJobIcon"></InlineGraphic>このアイコンは、プリンタへ送信された印刷ジョブやファイルを表します。
-印刷ジョブは、開いたりドラッグしたりできません。</Para>
+<Title>Print Job Object</Title>
+<Para><InlineGraphic Remap="graphic" Entityref="PrintJobIcon"></InlineGraphic>This icon represents a print job, a file that was sent to a printer.
+Print Jobs cannot be opened or dragged.</Para>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HPRNTM.REF.item.35">
-<Para> <XRef Linkend="StartJobTA"></Para>
+<Para><XRef Linkend="StartJobTA"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.36">
-<Para> <XRef Linkend="CancelJobTA"></Para>
+<Para><XRef Linkend="CancelJobTA"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.37">
-<Para> <XRef Linkend="FindJobTA"> (印刷マネージャのみ)
+<Para><XRef Linkend="FindJobTA"> (Print Manager Only)
 </Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.38">
-<Para> <XRef Linkend="ShowPropsJobTA"></Para>
+<Para><XRef Linkend="ShowPropsJobTA"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.39">
-<Para> <XRef Linkend="ShowPropsJobNoTA"></Para>
+<Para><XRef Linkend="ShowPropsJobNoTA"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.40">
-<Para> <XRef Linkend="ShowPropsJobTimeTA"></Para>
+<Para><XRef Linkend="ShowPropsJobTimeTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="PrinterMenuDE">
-<Title>[プリンタ] メニュー</Title>
+<Title>Printers Menu</Title>
 <Graphic Entityref="PrinterMenu" Id="HPRNTM.REF.fig.3"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term>検索</Term>
+<Term>Find</Term>
 <ListItem>
-<Para>印刷ジョブの検索に使用できるダイアログ・ボックスを表示します。
-	 これは、印刷マネージャのみで使用可能です。</Para>
+<Para>Displays a dialog box that you can use to find print jobs. This is
+only available in Print Manager.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>終了</Term>
+<Term>Exit</Term>
 <ListItem>
-<Para>オプション設定を保存し、アプリケーションを中止したり、閉じたりします。
+<Para>Saves the option settings, stops and closes the application.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </Sect1>
 <Sect1 Id="SelectedPrinterMenuDE">
-<Title>[選択] メニュー &newline; (プリンタが選択された場合に使用可能)</Title>
+<Title>Selected Menu &newline; (Available When a Printer Is Selected)</Title>
 <Graphic Entityref="SelectedPrinterMenu" Id="HPRNTM.REF.fig.4"></Graphic>
-<Para>[選択] メニューの内容は、プリンタが選択されるか、印刷ジョブが選択されるかによって変わります。</Para>
+<Para>The contents of the Selected menu change depending on whether
+a printer or a print job is selected.</Para>
 <VariableList>
 <VarListEntry>
-<Term> 開く </Term>
+<Term>Open</Term>
 <ListItem>
-<Para>       プリンタを開きます。プリンタの印刷ジョブを表示します。
-	       これは、印刷マネージャのみで使用可能です。
+<Para>Opens a printer. This shows the printer's print jobs.
+This is only available in Print Manager.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 閉じる </Term>
+<Term>Close</Term>
 <ListItem>
-<Para>     プリンタを閉じます。プリンタの印刷ジョブを隠します。
-	       これは、印刷マネージャのみで使用可能です。
+<Para>Closes a printer. This hides the printer's print jobs.
+This is only available in Print Manager.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 隠す </Term>
+<Term>Hide</Term>
 <ListItem>
-<Para>       表示からプリンタを隠します。隠れたプリンタを表示するには、[表示] メニューの [オプションの設定] を選択してください。
-	       これは、印刷マネージャのみで使用可能です。
+<Para>Hides the printer from the view. Choose Set Options
+from the View menu to show hidden printers.
+This is only available in Print Manager.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 属性 </Term>
+<Term>Properties</Term>
 <ListItem>
-<Para>       プリンタの属性を表示します。
+<Para>Shows the printer's properties.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ヘルプ </Term>
+<Term>Help</Term>
 <ListItem>
-<Para>     プリンタ・オブジェクトのヘルプを表示します。</Para>
+<Para>Displays help for printer objects.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HPRNTM.REF.item.41">
-<Para> <XRef Linkend="OpenPrinterTA"></Para>
+<Para><XRef Linkend="OpenPrinterTA"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.42">
-<Para> <XRef Linkend="ClosePrinterTA"></Para>
+<Para><XRef Linkend="ClosePrinterTA"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.43">
-<Para> <XRef Linkend="HidePrinterTA"></Para>
+<Para><XRef Linkend="HidePrinterTA"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.44">
-<Para> <XRef Linkend="ShowPropsPrinterTA"></Para>
+<Para><XRef Linkend="ShowPropsPrinterTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="SelectedPrintJobMenuDE">
-<Title>[選択] メニュー &newline; (印刷ジョブが選択された場合に使用可能)</Title>
+<Title>Selected Menu &newline; (Available When a Print Job Is Selected)</Title>
 <Graphic Entityref="SelectedPrintJobMenu" Id="HPRNTM.REF.fig.5"></Graphic>
-<Para>[選択] メニューの内容は、プリンタが選択されるか、印刷ジョブが選択されるかによって変わります。</Para>
+<Para>The contents of the Selected menu change depending on whether a
+printer or a print job is selected.</Para>
 <VariableList>
 <VarListEntry>
-<Term> 取消し </Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para>     印刷ジョブを取り消します。
+<Para>Cancels a print job
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 属性 </Term>
+<Term>Properties</Term>
 <ListItem>
-<Para>       印刷ジョブの属性を表示します。
+<Para>Shows the print job's properties
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ヘルプ </Term>
+<Term>Help</Term>
 <ListItem>
-<Para>     印刷ジョブ・オブジェクトのヘルプを表示します。</Para>
+<Para>Displays help for print job objects</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HPRNTM.REF.item.45">
-<Para> <XRef Linkend="CancelJobTA"></Para>
+<Para><XRef Linkend="CancelJobTA"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.46">
-<Para> <XRef Linkend="ShowPropsJobTA"> </Para>
+<Para><XRef Linkend="ShowPropsJobTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ViewMenuDE">
-<Title>[表示] メニュー</Title>
+<Title>View Menu</Title>
 <Graphic Entityref="ViewMenu" Id="HPRNTM.REF.fig.6"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term> オプションの設定 </Term>
+<Term>Set Options</Term>
 <ListItem>
-<Para> 表示を変更するダイアログ・ボックスを表示します。
-		     変更できるのは、アイコン・サイズ、その印刷ジョブを表示するか、などです。
-		     詳細については、<XRef Linkend="SetOptionsDE"> を参照してください。
+<Para>Displays a dialog box that you can use to change your view.
+Some of the things you can change are icon sizes, which
+print jobs are shown, and others.
+See <XRef Linkend="SetOptionsDE"> for more information.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 表示リストの変更 </Term>
+<Term>Modify the Show List</Term>
 <ListItem>
-<Para> プリンタを表示したり、隠したりするのに使用するダイアログ・ボックスを表示します。
-		     詳細については、<XRef Linkend="ShowPrintersDE"> を参照してください。
-		     これは、印刷マネージャのみで使用可能です。</Para>
+<Para>Displays a dialog box that you can use to show or hide
+printers. See <XRef Linkend="ShowPrintersDE"> for more information.
+This is only available in Print Manager.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HPRNTM.REF.item.47">
-<Para> <XRef Linkend="SetOptionsTA"></Para>
+<Para><XRef Linkend="SetOptionsTA"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.48">
-<Para> <XRef Linkend="ShowPrintersTA"></Para>
+<Para><XRef Linkend="ShowPrintersTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="HelpMenuDE">
-<Title>[ヘルプ] メニュー</Title>
+<Title>Help Menu</Title>
 <Graphic Entityref="HelpMenu" Id="HPRNTM.REF.fig.7"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term> 概要 </Term>
+<Term>Overview</Term>
 <ListItem>
-<Para>	      印刷の概要ヘルプ・トピックを表示します。</Para>
+<Para>Displays the overview help topic for printing.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 使い方 </Term>
+<Term>Tasks</Term>
 <ListItem>
-<Para>	      印刷に関するほとんどの操作の "方法" について、その指示を段階的に表示します。</Para>
+<Para>Displays step-by-step "how to" instructions for most print
+operations.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> リファレンス </Term>
+<Term>Reference</Term>
 <ListItem>
-<Para>      印刷マネージャおよびプリンタ・ジョブの様々な特徴(ウィンドウ、ダイアログ・ボックス、メニューなど)の図や説明を表示します。</Para>
+<Para>Displays pictures and descriptions of
+various Print Manager and Print Job
+features, such as windows, dialog boxes, and menus.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> アイテムヘルプ </Term>
+<Term>On Item</Term>
 <ListItem>
-<Para>    [アイテムヘルプ] を選択した後で、印刷マネージャまたはプリンタ・ジョブのウィンドウの項目をクリックし、その項目に関するヘルプ情報を見ることができます。</Para>
+<Para>After selecting On Item, you can
+click on an item in a Print Manager or Printer
+Jobs window and see
+help information about that item.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ヘルプの使い方 </Term>
+<Term>Using Help</Term>
 <ListItem>
-<Para>    ヘルプ・ウィンドウの使い方に関するヘルプを提供します。</Para>
+<Para>Provides help on using the help windows.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 印刷マネージャについて </Term>
+<Term>About</Term>
 <ListItem>
-<Para>   バージョンおよび著作権情報を表示します。</Para>
+<Para>Displays the version and copyright information.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </Sect1>
 <Sect1 Id="SetOptionsDE">
-<Title>[オプションの設定] ダイアログ・ボックス</Title>
+<Title>Set Options Dialog Box</Title>
 <Graphic Entityref="SetOptions" Id="HPRNTM.REF.fig.8"></Graphic>
 <Procedure>
-<Title>表示方法</Title>
+<Title>Representation</Title>
 <Step>
 <VariableList>
 <VarListEntry>
-<Term> 大型アイコン </Term>
+<Term>Large Icon</Term>
 <ListItem>
-<Para> プリンタおよび印刷ジョブを大きいアイコンで表示します。
+<Para>Displays printers and print jobs as large icons
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 小型アイコン </Term>
+<Term>Small Icon</Term>
 <ListItem>
-<Para> プリンタおよび印刷ジョブを小さいアイコンで表示します。
+<Para>Displays printers and print jobs as small icons
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 名前のみ </Term>
+<Term>Name Only</Term>
 <ListItem>
-<Para>  プリンタおよび印刷ジョブをテキストのみで表示します。
+<Para>Displays printers and print jobs as only text
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 詳細 </Term>
+<Term>Details</Term>
 <ListItem>
-<Para> ジョブ所有者、サイズ、ジョブ番号、および各ジョブが送信された日付と時間を表示します。
+<Para>Displays job owner, size, job number, and date and time each job
+was submitted
 </Para>
 <VariableList>
 <VarListEntry>
-<Term> ラベルを表示 </Term>
+<Term>Show Labels</Term>
 <ListItem>
-<Para> 各詳細行の説明をジョブ・リスト領域の左側に表示します。</Para>
+<Para>Displays a description of each details row to the left of the
+job list area</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
@@ -506,53 +523,59 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>表示するジョブ</Title>
+<Title>Jobs to Show</Title>
 <Step>
 <VariableList>
 <VarListEntry>
-<Term> ユーザのジョブのみ </Term>
+<Term>Only Mine</Term>
 <ListItem>
-<Para>	 自分の印刷ジョブだけを表示します。
+<Para>Displays just your print jobs
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 全員のジョブ </Term>
+<Term>Everyone's</Term>
 <ListItem>
-<Para>  すべての印刷ジョブを表示します。</Para>
+<Para>Displays all print jobs</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>ステータス</Title>
+<Title>Status</Title>
 <Step>
 <VariableList>
 <VarListEntry>
-<Term> 障害フラグ </Term>
+<Term>Problem Flag</Term>
 <ListItem>
-<Para>	  プリンタに障害が検出された場合に、印刷マネージャまたはプリンタ・ジョブのウィンドウに障害フラグ・アイコンを表示します。
+<Para>Displays the problem flag icon
+in the Print Manager
+or Printer Jobs window when a problem with
+a printer is detected.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> メッセージ行 </Term>
+<Term>Message Line</Term>
 <ListItem>
-<Para>  印刷マネージャまたはプリンタ・ジョブのメイン・ウィンドウ下部にメッセージ行を表示します。</Para>
+<Para>Displays the message line at the bottom of the
+Print Manager or Printer Jobs main window.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>更新</Title>
+<Title>Updates</Title>
 <Step>
 <VariableList>
 <VarListEntry>
-<Term> 間隔 </Term>
+<Term>Interval</Term>
 <ListItem>
-<Para>  印刷マネージャまたはプリンタ・ジョブが、印刷ジョブに関する情報をどのくらいの頻度でプリンタに問い合わせるかを指定します。
+<Para>Specifies how frequently Print Manager or Printer Jobs
+queries printers for information about their
+print jobs.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -560,508 +583,531 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>ボタン</Title>
+<Title>Buttons</Title>
 <Step>
 <VariableList>
 <VarListEntry>
-<Term> 了解 </Term>
+<Term>OK</Term>
 <ListItem>
-<Para>     ユーザによる変更を適用し、ダイアログ・ボックスを閉じます。</Para>
+<Para>Applies your changes and closes the dialog box</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 適用 </Term>
+<Term>Apply</Term>
 <ListItem>
-<Para>     ユーザによる変更を適用し、ダイアログ・ボックスは表示したままにします。</Para>
+<Para>Applies your changes and leaves the dialog box displayed</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 取消し </Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para>   印刷ジョブを取り消します。</Para>
+<Para>Cancels a print job</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ヘルプ </Term>
+<Term>Help</Term>
 <ListItem>
-<Para>   このダイアログ・ボックスのヘルプを表示します。</Para>
+<Para>Displays help for this dialog box</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HPRNTM.REF.item.49">
-<Para> <XRef Linkend="SetOptionsTA"></Para>
+<Para><XRef Linkend="SetOptionsTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="FindDialogDE">
-<Title>[印刷ジョブ検索] ダイアログ・ボックス</Title>
-<Para>これは、印刷マネージャのみで使用可能です。
+<Title>Find Print Jobs Dialog Box</Title>
+<Para>This is only available in Print Manager.
 </Para>
 <Graphic Entityref="FindDialog" Id="HPRNTM.REF.fig.9"></Graphic>
 <Procedure>
-<Title>検索基準</Title>
+<Title>Search Criteria</Title>
 <Step>
 <VariableList>
 <VarListEntry>
-<Term> ジョブ名 </Term>
+<Term>Job Name</Term>
 <ListItem>
-<Para>	 検索したいジョブ名を入力してください。
-		 たとえば、<ComputerOutput>cat</ComputerOutput> と入力すると、"cat" や "catalog" のように名前の一部に <ComputerOutput>cat</ComputerOutput> という文字列を含むジョブすべてを検索します。
+<Para>Enter the name of the job you want to find.
+For example, <ComputerOutput>cat</ComputerOutput> will find all jobs that
+include the fragment <ComputerOutput>cat</ComputerOutput> in their name,
+such as "cat" and "catalog".
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 大文字小文字の区別をしない </Term>
+<Term>Ignore case</Term>
 <ListItem>
-<Para>	大文字小文字が全く同じジョブを見つけるには、このオプションの選択を解除してください。
+<Para>To only find jobs with the
+same capitalization, deselect Ignore Case.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 区別あり </Term>
+<Term>Exact match</Term>
 <ListItem>
-<Para>	 入力した名前と正確に一致するジョブだけを検索する場合、これを選択してください。これを選択しないと、入力した文字列を含むジョブのすべてが表示されます。</Para>
+<Para>Select this to only find jobs that exactly match
+the name you enter. Otherwise, all jobs that
+contain the string you entered will be displayed.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
-<Para>これを root ユーザで実行する場合は、全印刷ジョブの検索がデフォルトであることに注意してください。
-検索を自分自身のジョブだけに絞るには、"root のジョブのみ" を選択してください。</Para>
+<Para>Note that if you run this as the root user, the default is
+to search all print jobs. To narrow the search to just your
+jobs, select "Only Root Jobs."</Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>検索結果領域</Title>
+<Title>Search Results Area</Title>
 <Step>
 <VariableList>
 <VarListEntry>
-<Term> 検出した印刷ジョブ </Term>
+<Term>Print Jobs Found</Term>
 <ListItem>
-<Para> 入力した名前と一致して見つかったジョブを表示します。</Para>
+<Para>Displays the jobs found that match the name you entered.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 行先 </Term>
+<Term>Goto</Term>
 <ListItem>
-<Para>     印刷マネージャ・メイン・ウィンドウの [検出した印刷ジョブ] 領域で選択されたジョブを検索および表示します。
-	     これは、印刷ジョブが選択されない場合、アクティブになりません。
+<Para>Locates and displays the job
+that is selected in the Print Jobs Found area
+of the Print Manager main window. This is not
+active unless a print job is selected.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 印刷ジョブの取消し </Term>
+<Term>Cancel Print Jobs</Term>
 <ListItem>
-<Para> [検出した印刷ジョブ] 領域で選択した 1 つ以上の印刷ジョブを取り消します。</Para>
-</ListItem>
-</VarListEntry>
-</VariableList>
-</Step>
-</Procedure>
-<Procedure>
-<Title>ボタン</Title>
-<Step>
-<VariableList>
-<VarListEntry>
-<Term> 検索開始 </Term>
-<ListItem>
-<Para>  検索を開始します。</Para>
-</ListItem>
-</VarListEntry>
-<VarListEntry>
-<Term> 検索中止 </Term>
-<ListItem>
-<Para>  検索を取り消します。しばらく時間がかかる場合があります。
-</Para>
-</ListItem>
-</VarListEntry>
-<VarListEntry>
-<Term> 閉じる </Term>
-<ListItem>
-<Para>    ダイアログ・ボックスを閉じます。</Para>
-</ListItem>
-</VarListEntry>
-<VarListEntry>
-<Term> ヘルプ </Term>
-<ListItem>
-<Para>    このダイアログ・ボックスのヘルプを表示します。</Para>
+<Para>Cancels
+one or more print jobs selected in the Print Jobs Found area.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>Buttons</Title>
+<Step>
+<VariableList>
+<VarListEntry>
+<Term>Start Find</Term>
+<ListItem>
+<Para>Starts the search</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Stop Find</Term>
+<ListItem>
+<Para>Cancels the search. This may take a few moments.
+</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Close</Term>
+<ListItem>
+<Para>Closes the dialog box</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Help</Term>
+<ListItem>
+<Para>Displays help for this dialog box</Para>
+</ListItem>
+</VarListEntry>
+</VariableList>
+</Step>
+</Procedure>
+<Procedure>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HPRNTM.REF.item.50">
-<Para> <XRef Linkend="FindJobTA"></Para>
+<Para><XRef Linkend="FindJobTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ShowPrintersDE">
-<Title>[表示リストの変更] ダイアログ・ボックス</Title>
+<Title>Modify the Show List Dialog Box</Title>
 <Graphic Entityref="ShowPrinters" Id="HPRNTM.REF.fig.10"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term> プリンタ・リスト </Term>
+<Term>Printer List</Term>
 <ListItem>
-<Para> システム上で見つかったプリンタのリストを表示します。</Para>
+<Para>Displays the list of printers found on your system</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> すべてを選択 </Term>
+<Term>Select All</Term>
 <ListItem>
-<Para>    プリンタ・リストに表示されたすべてのプリンタを選択します。</Para>
+<Para>Selects all the printers displayed in the printer list</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 選択をすべて解除 </Term>
+<Term>Deselect All</Term>
 <ListItem>
-<Para> プリンタ・リストに表示されたすべてのプリンタを選択解除します。</Para>
+<Para>Deselects all the printers displayed in the printer list</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 了解 </Term>
+<Term>OK</Term>
 <ListItem>
-<Para>      ユーザが行った変更を保存し、ダイアログ・ボックスを閉じます。</Para>
+<Para>Saves the changes you made and closes the dialog box</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 適用 </Term>
+<Term>Apply</Term>
 <ListItem>
-<Para>   ユーザが行った変更を保存し、ダイアログ・ボックスは表示したままにします。</Para>
+<Para>Saves the changes you made and leaves the dialog box displayed</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 取消し </Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para>  ユーザが行った変更を取り消し、ダイアログ・ボックスを閉じます。</Para>
+<Para>Cancels any changes you may have made and closes the dialog box</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ヘルプ </Term>
+<Term>Help</Term>
 <ListItem>
-<Para>    このダイアログ・ボックスのヘルプを表示します。</Para>
+<Para>Displays help for this dialog box</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HPRNTM.REF.item.51">
-<Para> <XRef Linkend="SetOptionsTA"></Para>
+<Para><XRef Linkend="SetOptionsTA"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.REF.item.52">
-<Para> <XRef Linkend="ShowPrintersTA"></Para>
+<Para><XRef Linkend="ShowPrintersTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="PrinterPropsDE">
-<Title>[プリンタ属性] ダイアログ・ボックス</Title>
+<Title>Printer Properties Dialog Box</Title>
 <Graphic Entityref="PrinterProps" Id="HPRNTM.REF.fig.11"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term> アイコン・ラベル </Term>
+<Term>Icon Label</Term>
 <ListItem>
-<Para>	メイン・ウィンドウのアイコンの下に表示されるプリンタの名前を表示します。
-			この名前は変更できます。
+<Para>Displays the name of the printer
+that will be displayed beneath the icon in the
+main window. You can change this name.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> アイコン </Term>
+<Term>Icons</Term>
 <ListItem>
-<Para>		ご利用のプリンタを表すのに使用するアイコンのセット。
+<Para>The set of icons that will be used to represent
+your printer.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> アイコンセット検索 </Term>
+<Term>Find Set</Term>
 <ListItem>
-<Para>	プリンタを表すのに使用するアイコンを変更できる [アイコンセット検索] ダイアログ・ボックスを表示します。
+<Para>Displays the Find Set dialog box to enable you to change the
+icons used to represent your printers.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 説明 </Term>
+<Term>Description</Term>
 <ListItem>
-<Para>    プリンタに関する説明を表示します。プリンタの位置、接続、型を記録します。
+<Para>Displays a description of the printer. Useful for storing the
+printer's location, contact, and type of printer.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> プリンタ・キュー </Term>
+<Term>Printer Queue</Term>
 <ListItem>
-<Para> プリンタのキュー名とそのステータスを表示します。</Para>
+<Para>Displays the name of your printer queue and its status.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> デバイス名 </Term>
+<Term>Device Name</Term>
 <ListItem>
-<Para>	 プリンタのデバイス名とそのステータスを表示します。</Para>
+<Para>Displays the device name of your printer and its status.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 了解 </Term>
+<Term>OK</Term>
 <ListItem>
-<Para>   行った変更を保存し、ダイアログ・ボックスを閉じます。</Para>
+<Para>Saves the changes you made and closes the dialog box.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 取消し </Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para> 行った変更を無視し、ダイアログ・ボックスを閉じます。</Para>
+<Para>Ignores any changes you may have made and closes the dialog box.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ヘルプ </Term>
+<Term>Help</Term>
 <ListItem>
-<Para> このダイアログ・ボックスのヘルプを表示します。
+<Para>Displays help for this dialog box.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HPRNTM.REF.item.53">
-<Para> <XRef Linkend="ShowPrintersTA"></Para>
+<Para><XRef Linkend="ShowPrintersTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="PrintJobPropsDE">
-<Title>[印刷ジョブ属性] ダイアログ・ボックス</Title>
+<Title>Print Job Properties Dialog Box</Title>
 <Graphic Entityref="PrintJobProps" Id="HPRNTM.REF.fig.12"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term> 名前 </Term>
+<Term>Name</Term>
 <ListItem>
-<Para>   印刷ジョブ名を表示します。これは識別フィールドで、必ずしもドキュメント名を含むとは限りません。
-	   使用する印刷サーバの種類、およびドキュメントをプリンタへ送信するのに使用するプログラムによっては、このフィールドに別の種類の情報が表示されることがあります。
-	   以下の値が表示されます。
-	   STDIN.XXXXX(X には番号が入ります)、バナー、キュー名 + ジョブ番号、ファイル名、またはドキュメントの完全パス名。</Para>
+<Para>Displays the name of the print job. This is an identification field
+and won't necessarily contain the
+document name. Different kinds of information may appear in this field
+depending on the kind of print server you use and the program you
+use to send the document to the printer. Some values that may appear are:
+STDIN.XXXXX(where the X's are numbers), the banner,
+Quename+job number, the file name, or the full pathname of the document.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 番号 </Term>
+<Term>Number</Term>
 <ListItem>
-<Para>  印刷ジョブがプリンタへ送信される時にキュー・プログラムが割り当てるジョブ番号を表示します。
-	  ジョブ番号の値は、そのジョブが印刷されるまで変更されることはありません。
-	  ジョブの位置番号は、印刷行におけるジョブの位置を示します。
-	  この番号は、ジョブが行を上に移動するにつれて変わります。</Para>
+<Para>Displays the job number assigned by the queue program when a
+print job is sent to a printer. The job number stays the same
+until the job is printed. A job's position
+number shows the job's position in line for printing. This number changes as
+the job moves up the line.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 所有者 </Term>
+<Term>Owner</Term>
 <ListItem>
-<Para>   印刷ジョブの所有者を表示します。</Para>
+<Para>Displays the owner of the print job.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> サイズ </Term>
+<Term>Size</Term>
 <ListItem>
-<Para>   印刷ジョブのサイズを表示します。</Para>
+<Para>Displays the size of the print job.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 時間 </Term>
+<Term>Time</Term>
 <ListItem>
-<Para>    ファイルがプリンタへ送信された時間を表示します。</Para>
+<Para>Displays the time the file was sent to the printer.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 日付 </Term>
+<Term>Date</Term>
 <ListItem>
-<Para>    ファイルがプリンタへ送信された日付を表示します。</Para>
+<Para>Displays the date the file was sent to the printer.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
-<Para>印刷サーバがその情報を提供していないことを示すために、いくつかのフィールドでは、"使用できません。" というメッセージを表示することがあります。</Para>
+<Para>The term "not available" may appear in some fields to indicate
+that the print server is not supplying that information.</Para>
 <Procedure>
-<Title>関連トピック:</Title>
+<Title>Related Topics:</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HPRNTM.REF.item.54">
-<Para> <XRef Linkend="FindJobTA"></Para>
+<Para><XRef Linkend="FindJobTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="FindSetDE">
-<Title>[アイコンセット検索] ダイアログ・ボックス</Title>
+<Title>Find Set Dialog Box</Title>
 <Graphic Entityref="FindSetDialog" Id="HPRNTM.REF.fig.13"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term> アイコン・フォルダ </Term>
+<Term>Icon Folders</Term>
 <ListItem>
-<Para>	アイコンを含むフォルダをリストします。</Para>
+<Para>List of folders containing icons.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> アイコン </Term>
+<Term>Icons</Term>
 <ListItem>
-<Para>   プリンタを表すために選択できるアイコン・フォルダの中のアイコンを表示します。
-	       注: このダイアログ・ボックスは、3 つのサイズがあるアイコンだけを表示します。
+<Para>Displays the icons found in the icon folder
+that you can choose to represent your printers.
+Note: This dialog box will only display icons
+that have a complete set of all three sizes.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 了解 </Term>
+<Term>OK</Term>
 <ListItem>
-<Para>       選択したアイコン・セットを使用し、ダイアログ・ボックスを閉じます。</Para>
+<Para>Uses the icon set you choose and closes the dialog box.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 取消し </Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para>     プリンタを表すのに使用するアイコン・セットを変更しないでダイアログ・ボックスを閉じます。
+<Para>Closes the dialog box without making any changes to the
+set of icons you will use to represent your printers.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ヘルプ </Term>
+<Term>Help</Term>
 <ListItem>
-<Para>     このダイアログ・ボックスのヘルプを表示します。</Para>
+<Para>Displays help for this dialog box.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </Sect1>
 <Sect1 Id="ConfirmCancelJobDE">
-<Title>[印刷ジョブの取消し] ダイアログ・ボックス</Title>
-<Para>このダイアログ・ボックスは、[選択] メニューまたは印刷ジョブのポップアップ・メニューから [取消し] を選択した場合に表示されます。</Para>
+<Title>Cancel Print Job Dialog Box</Title>
+<Para>This dialog box is displayed when you have selected Cancel from the
+Selected menu or from a print job's pop-up menu.</Para>
 <Graphic Entityref="ConfirmCancelJob" Id="HPRNTM.REF.fig.14"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term> はい </Term>
+<Term>Yes</Term>
 <ListItem>
-<Para>    印刷ジョブの取消しを確認します。</Para>
+<Para>Confirms the cancellation of the print job</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> いいえ </Term>
+<Term>No</Term>
 <ListItem>
-<Para>  印刷ジョブの取消しを中止します。</Para>
+<Para>Stops the cancellation of the print job</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HPRNTM.REF.item.55">
-<Para> <XRef Linkend="CancelJobTA"></Para>
+<Para><XRef Linkend="CancelJobTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="dtlpPrintDialog">
-<Title>[印刷] ダイアログ・ボックス</Title>
-<Para>このダイアログ・ボックスは、ドキュメントをプリンタに送信している間表示されています。
+<Title>Print Dialog Box</Title>
+<Para>This dialog box is displayed while you are submitting
+a document to a printer.
 </Para>
-<para>[ファイル名] フィールドには、印刷するファイルの名前が表示されます。
-[プリンタの説明] フィールドには、現在のプリンタの選択に関する情報が、
-表示されます。
+<para>The File Name field displays the name(s) of the file(s) to be printed.
+The Printer Description field provides information about
+the current printer selection.
 </para>
-<para>これらのオプションを設定するには、[印刷] ダイアログ・ボックスを
-使用してください。
-<indexterm><primary>印刷オプション, 設定</primary></indexterm>
-<indexterm><primary>印刷する</primary><secondary>オプションの設定</secondary></indexterm>
+<para>Use the Print dialog box to set these print options:<indexterm><primary>print options, setting</primary></indexterm><indexterm>
+<primary>printing</primary><secondary>setting options for</secondary></indexterm>
 </para>
 <VariableList>
 <VarListEntry>
-<Term>プリンタ名</Term>
+<Term>Printer Name</Term>
 <ListItem>
-<Para>プリンタ・ジョブの出力先です。テキスト・フィールドには、ユーザが
-データ・ファイルをドロップするプリンタが、初めに表示されています。
+<Para>The destination for the print job.
+The text field initially displays the printer on which you dropped the data
+file.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>印刷部数</Term>
+<Term>Copies</Term>
 <ListItem>
-<Para>印刷部数です。デフォルトは 1 です。
+<Para>The number of copies to print. The
+default is 1.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>完了時にメールを送信</Term>
+<Term>Send Mail When Done</Term>
 <ListItem>
-<Para>完了時の、電子メールによる通知の要求です。
+<Para>Requests that an email notification be sent when your print job
+completes.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>バナー・ページのタイトル</Term>
+<Term>Banner Page Title</Term>
 <ListItem>
-<Para>バナー・ページに表示するタイトルです。バナー・ページは、ドキュメントの
-1ページ目を印刷する前に印刷される、一枚の紙です。
+<Para>A title to appear on the banner page. The banner page is a sheet of
+paper that the printer prints before it prints the first page of your
+document.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 印刷コマンドのオプション </Term>
+<Term>Print Command Options</Term>
 <ListItem>
-<Para>印刷を実行する方法を変更するための、別のオプションです。
-テキスト・フィールドに、使用したい印刷オプションとして、
-<command>lp</command>コマンドのフラグを入力してください。
-<command>lp</command>コマンドのフラグのリスト見るには、
-端末エミュレータ・ウィンドウで、<command>man</command> <command>lp</command>
-と入力してください。
+<Para>Other options that change the way printing is done. Type the proper
+<command>lp</command> command flag in the text field for the print
+option you want to use. To see a list of the <command>lp</command>
+command flags, type <command>man</command> <command>lp</command> in a
+Terminal window.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
-<para>異なるプリンタを使用するには、[他のプリンタ] ボタンをクリックして
-ください。[プリンタの選択] ダイアログ・ボックスに、現在選択可能なプリンタが、
-リストされます。使用したいプリンタを、選択してください。
-選択されたプリンタの名前が、[プリンタ名] フィールドに表示されます。
+<para>To use a different printer, click the More Printers... button. The Select Printer
+dialog box lists the currently available printers. Select the printer you want.
+The name of the selected printer appears in the Printer Name field.
 </para>
-<para>[印刷] ダイアログ・ボックスには、以下のボタンがあります。
+<para>The Print Dialog Box buttons are:
 </para>
 <VariableList>
 <VarListEntry>
-<Term> 印刷 </Term>
+<Term>Print</Term>
 <ListItem>
-<Para>  ファイルをプリンタへ送信します。
+<Para>Sends the file to the printer.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 取消し </Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para> ファイルの印刷を行わずにダイアログ・ボックスを閉じます。
+<Para>Closes the dialog box without printing the file.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ヘルプ </Term>
+<Term>Help</Term>
 <ListItem>
-<Para> このダイアログ・ボックスのヘルプを表示します。</Para>
+<Para>Displays help for this dialog box.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HPRNTM.REF.item.56">
-<Para> <XRef Linkend="StartJobTA"></Para>
+<Para><XRef Linkend="StartJobTA"></Para>
 </ListItem>
 </ItemizedList>
 <!-- EOF: Reference -->

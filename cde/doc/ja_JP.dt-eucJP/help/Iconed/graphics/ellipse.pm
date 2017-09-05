@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: ellipse.pm /main/3 1996/12/18 01:55:49 cde-hit $ */
+/* $XConsortium: IEtEllip.pm /main/3 1995/07/18 17:21:57 drk $ */
 static char * IEtEllip [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "36 36 4 1 0 0",

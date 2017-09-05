@@ -1,4 +1,4 @@
-<!-- $XConsortium: GEntity.sgm /main/8 1996/12/18 01:45:28 cde-hit $ -->
+<!-- $XConsortium: GEntity.sgm /main/8 1996/06/19 16:13:22 drk $ -->
 <!entity FM-ChangeDirectoryDialog SYSTEM "./Filemgr/graphics/chdir.tif" NDATA TIFF>
 <!entity FM-CopyDialog SYSTEM "./Filemgr/graphics/copy.tif" NDATA TIFF>
 <!entity FM-CreateDialog SYSTEM "./Filemgr/graphics/create.tif" NDATA TIFF>

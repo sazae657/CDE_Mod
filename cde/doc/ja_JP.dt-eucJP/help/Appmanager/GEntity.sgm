@@ -1,4 +1,4 @@
-<!-- $XConsortium: GEntity.sgm /main/7 1996/12/18 01:21:27 cde-hit $ -->
+<!-- $XConsortium: GEntity.sgm /main/7 1996/06/19 16:10:52 drk $ -->
 <!entity AppManagerWindow 		        SYSTEM "./Appmanager/graphics/appman.tif" NDATA TIFF>
 <!entity AppManagerControl 		        SYSTEM "./Appmanager/graphics/control.tif" NDATA TIFF>
 <!entity AppManagerOpenFile			SYSTEM "./Appmanager/graphics/openfile.tif" NDATA TIFF>

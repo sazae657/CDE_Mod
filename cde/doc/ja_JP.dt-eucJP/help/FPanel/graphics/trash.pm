@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: trash.pm /main/3 1996/12/18 01:44:54 cde-hit $ */
+/* $XConsortium: fptrash.pm /main/3 1995/07/18 17:35:57 drk $ */
 /* Designed by the User Interaction Design Group, Hewlett-Packard. */
 /* (c) Copyright 1993 Hewlett-Packard Company. */
 static char *trash48[]={

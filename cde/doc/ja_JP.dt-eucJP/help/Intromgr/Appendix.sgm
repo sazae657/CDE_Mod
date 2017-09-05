@@ -1,4 +1,4 @@
-<!-- $XConsortium: Appendix.sgm /main/3 1996/12/18 02:11:38 cde-hit $ -->
+<!-- $XConsortium: Appendix.sgm /main/5 1996/09/08 22:27:47 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -7,34 +7,36 @@
 <!-- (c) Copyright 1995 FUJITSU LIMITED. -->
 <!-- (c) Copyright 1995 Hitachi. -->
 <Appendix Role="notoc" Id="jump-link-example">
-<Title>...関連トピックが表示されます。</Title>
-<Para>&newline;&empty;&newline; 
-多くの場合、新規トピックは同じウィンドウに表示されます。しかし、他のアプリケーションのオンライン・ヘルプにジャンプするために、新規ウィンドウを開くハイパーリンクがあります。
+<Title>A related topic is displayed.</Title>
+<Para>&newline;&empty;&newline;
+Most of the time, the new topic is displayed in the same window. However,
+there are some hyperlinks that open a new window because they jump to the
+online help for another application.
 </Para>
 <Procedure>
-<Title>前のトピックに戻るには</Title>
+<Title>To Go Back to the Previous Topic</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HIMGR.MIT.item.1">
-<Para> ヘルプ・ビューアの [前のトピックへ] ボタンの上で、マウス・ボタン 1 をクリックしてください。
+<Para>Click mouse button 1 on the Help Viewer's Backtrack button.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.MIT.item.2">
-<Para> <Emphasis>または、</Emphasis> [ナビゲート] メニューで、[前のトピックへ] を選択してください。:
- </Para>
+<Para><Emphasis>Or,</Emphasis> Choose Backtrack from the Navigate menu:
+</Para>
 <OrderedList>
 <ListItem Id="HIMGR.MIT.item.3">
-<Para> メニュー・バーの [ナビゲート] の上でマウス・ボタン 1 をクリックしてください。
- </Para>
+<Para>Click mouse button 1 on Navigate in the menu bar.
+</Para>
 </ListItem>
 <ListItem Id="HIMGR.MIT.item.4">
-<Para> メニュー内で、[前のトピックへ] をクリックしてください。
- </Para>
+<Para>Within the menu, click on Backtrack.
+</Para>
 </ListItem>
 </OrderedList>
 </ListItem>
 <ListItem Id="HIMGR.MIT.item.5">
-<Para> <Emphasis>または、</Emphasis><Keycap>Ctrl] + [B</Keycap> キーを押してください。
+<Para><Emphasis>Or,</Emphasis> Press Control+B.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -42,15 +44,16 @@
 </Procedure>
 </Appendix>
 <Appendix Role="notoc" Id="definition-link-example">
-<Title>...定義ウィンドウが表示されます。</Title>
-<Para>&newline;&empty;&newline;&newline;&empty;&newline;このウィンドウを閉じて、ワークスペースから削除するには:
+<Title>A definition window is displayed.</Title>
+<Para>&newline;&empty;&newline;&newline;&empty;&newline;To close this window and remove it from the workspace:
 </Para>
 <OrderedList>
 <ListItem Id="HIMGR.MIT.item.6">
-<Para>マウスを、ポインタがウィンドウの [閉じる] ボタンの上に来るまで移動してください。</Para>
+<Para>Move your mouse to place the pointer over the
+window's Close button.</Para>
 </ListItem>
 <ListItem Id="HIMGR.MIT.item.7">
-<Para>マウス・ボタン 1 を押して離してください(クリックしてください)。
+<Para>Press and release (click) mouse button 1.
 </Para>
 </ListItem>
 </OrderedList>

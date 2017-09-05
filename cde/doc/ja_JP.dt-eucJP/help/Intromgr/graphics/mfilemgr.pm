@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: mfilemgr.pm /main/5 1996/12/18 02:17:50 cde-hit $ */
+/* $XConsortium: mfilemgr.pm /main/5 1996/10/29 15:54:43 drk $ */
 static char * mfilemgr_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "298 258 23 1 0 0",

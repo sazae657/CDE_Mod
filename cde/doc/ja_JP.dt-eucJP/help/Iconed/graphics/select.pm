@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: select.pm /main/3 1996/12/18 01:57:07 cde-hit $ */
+/* $XConsortium: IEtSelec.pm /main/3 1995/07/18 17:23:02 drk $ */
 static char * IEtSelec [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "36 36 5 1 0 0",

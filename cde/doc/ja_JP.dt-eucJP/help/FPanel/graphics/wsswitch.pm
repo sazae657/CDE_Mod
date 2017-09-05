@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: wsswitch.pm /main/3 1996/12/18 01:45:11 cde-hit $ */
+/* $XConsortium: fpswitch.pm /main/3 1995/07/18 17:35:40 drk $ */
 static char * fpswitch_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "105 44 6 1 0 0",

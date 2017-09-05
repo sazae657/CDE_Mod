@@ -1,4 +1,4 @@
-<!-- $XConsortium: Ref.sgm /main/3 1996/12/18 01:50:50 cde-hit $ -->
+<!-- $XConsortium: Ref.sgm /main/7 1996/09/08 22:14:42 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,159 +9,162 @@
 <!-- Help volume: Help4Help -->
 <!-- File name:   Reference -->
 <Chapter Id="Reference">
-<Title>ヘルプのリファレンス</Title>
+<Title>Help Reference</Title>
 <IndexTerm>
-<Primary>リファレンス</Primary>
+<Primary>reference</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.1">
-<Para> <XRef Linkend="HelpMenuCommands"></Para>
+<Para><XRef Linkend="HelpMenuCommands"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.2">
-<Para> <XRef Linkend="HelpMenuShortcutKeys"></Para>
+<Para><XRef Linkend="HelpMenuShortcutKeys"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.3">
-<Para> <XRef Linkend="Mouse-And-Keyboard"></Para>
+<Para><XRef Linkend="Mouse-And-Keyboard"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.4">
-<Para> <XRef Linkend="HelpWindowsAndDialogBoxes"></Para>
+<Para><XRef Linkend="HelpWindowsAndDialogBoxes"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.5">
-<Para> <XRef Linkend="HelpWindowConfiguration"></Para>
+<Para><XRef Linkend="HelpWindowConfiguration"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.6">
-<Para> <XRef Linkend="ErrorMessages"></Para>
+<Para><XRef Linkend="ErrorMessages"></Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.7">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.8">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.9">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Sect1 Id="HelpMenuCommands">
-<Title>ヘルプ・メニュー</Title>
+<Title>Help Menus</Title>
 <IndexTerm>
-<Primary>ヘルプ・ウィンドウ・メニュー</Primary>
+<Primary>help window menus</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>メニュー, ヘルプ・ウィンドウの</Primary>
+<Primary>menus, in help window</Primary>
 </IndexTerm>
-<Para>ヘルプ・ウィンドウのヘルプ・メニューは以下のとおりです。
+<Para>The Help menus in the help window are:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HH4H.REF.item.10">
-<Para> <XRef Linkend="Help-File-Menu"></Para>
+<Para><XRef Linkend="Help-File-Menu"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.11">
-<Para> <XRef Linkend="Help-Edit-Menu"></Para>
+<Para><XRef Linkend="Help-Edit-Menu"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.12">
-<Para> <XRef Linkend="Help-Search-Menu"></Para>
+<Para><XRef Linkend="Help-Search-Menu"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.13">
-<Para> <XRef Linkend="Help-Navigate-Menu"></Para>
+<Para><XRef Linkend="Help-Navigate-Menu"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.14">
-<Para> <XRef Linkend="Help-Help-Menu"></Para>
+<Para><XRef Linkend="Help-Help-Menu"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.15">
-<Para> <XRef Linkend="Help-Popup-Menu"></Para>
+<Para><XRef Linkend="Help-Popup-Menu"></Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.16">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.17">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.18">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.19">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
 <IndexTerm>
-<Primary>ヘルプ・ウィンドウ・メニュー</Primary>
+<Primary>help window menus</Primary>
 </IndexTerm>
 <Para>&sigspace;</Para>
 </Step>
 </Procedure>
 <Sect2 Id="Help-File-Menu">
-<Title>ヘルプの [ファイル] メニュー</Title>
+<Title>Help File Menu</Title>
 <IndexTerm>
-<Primary>ヘルプ, [ファイル] メニュー</Primary>
+<Primary>help, File menu</Primary>
 </IndexTerm>
 <VariableList>
 <VarListEntry>
-<Term>印刷	   </Term>
+<Term>Print</Term>
 <ListItem>
-<Para>[印刷] ダイアログを開きます。
+<Para>Opens the Print dialog
 <Anchor Id="HelpMenuPrint">
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>閉じる    </Term>
+<Term>Close</Term>
 <ListItem>
-<Para>ヘルプ・ウィンドウを閉じます。
+<Para>Closes the help window
 <Anchor Id="HelpMenuClose">
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Note>
-<Para><Link Type="jump" Linkend="ToBrowseDesktopHelp">ヘルプ・マネージャ</Link> を使用してヘルプ情報を表示する場合、ヘルプ・ファイル・メニューには、[新規ウィンドウ] コマンドがあります。
+<Para>When using <Link Type="jump" Linkend="ToBrowseDesktopHelp">Help Manager</Link> to view help information, the
+Help File menu includes a New Window command.
 </Para>
 </Note>
 <Para><Anchor Id="HelpMenuNewWindow">
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>新規ウィンドウ </Term>
+<Term>New Window</Term>
 <ListItem>
-<Para>現在の一般ヘルプ・ウィンドウのコピーを作成します。</Para>
+<Para>Creates a copy of the current general help
+window
+</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.20">
-<Para> <XRef Linkend="Printing"></Para>
+<Para><XRef Linkend="Printing"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.21">
-<Para> <XRef Linkend="ToBrowseDesktopHelp"></Para>
+<Para><XRef Linkend="ToBrowseDesktopHelp"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.22">
-<Para> <XRef Linkend="HelpMenuCommands"></Para>
+<Para><XRef Linkend="HelpMenuCommands"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.23">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.24">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.25">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -169,37 +172,37 @@
 </Procedure>
 </Sect2>
 <Sect2 Id="Help-Edit-Menu">
-<Title>ヘルプの [編集] メニュー</Title>
+<Title>Help Edit Menu</Title>
 <IndexTerm>
-<Primary>ヘルプ, [編集] メニュー</Primary>
+<Primary>help, Edit menu</Primary>
 </IndexTerm>
 <VariableList>
 <VarListEntry>
-<Term>コピー  </Term>
+<Term>Copy</Term>
 <ListItem>
-<Para>選択したテキストをクリップボードにコピーします。
+<Para>Copies selected text to the clipboard
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.26">
-<Para> <XRef Linkend="CopyingTextFromHelp"></Para>
+<Para><XRef Linkend="CopyingTextFromHelp"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.27">
-<Para> <XRef Linkend="HelpMenuCommands"></Para>
+<Para><XRef Linkend="HelpMenuCommands"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.28">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.29">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.30">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -207,36 +210,37 @@
 </Procedure>
 </Sect2>
 <Sect2 Id="Help-Search-Menu">
-<Title>ヘルプの [検索] メニュー</Title>
+<Title>Help Search Menu</Title>
 <IndexTerm>
-<Primary>ヘルプ, [検索] メニュー</Primary>
+<Primary>help, Search menu</Primary>
 </IndexTerm>
 <VariableList>
 <VarListEntry>
-<Term>索引 </Term>
+<Term>Index</Term>
 <ListItem>
-<Para> [索引検索] ダイアログ・ボックスを開き、ヘルプ・ボリュームの重要語句をリストします。</Para>
+<Para>Opens the Index Search dialog box, which lists
+the help volume's key words and phrases</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.31">
-<Para> <XRef Linkend="Index-Search"></Para>
+<Para><XRef Linkend="Index-Search"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.32">
-<Para> <XRef Linkend="HelpMenuCommands"></Para>
+<Para><XRef Linkend="HelpMenuCommands"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.33">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.34">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.35">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -244,62 +248,65 @@
 </Procedure>
 </Sect2>
 <Sect2 Id="Help-Navigate-Menu">
-<Title>ヘルプの [ナビゲート] メニュー</Title>
+<Title>Help Navigate Menu</Title>
 <IndexTerm>
-<Primary>ヘルプ, [ナビゲート] メニュー</Primary>
+<Primary>help, Navigate menu</Primary>
 </IndexTerm>
 <VariableList>
 <VarListEntry>
-<Term>前のトピックへ </Term>
+<Term>Backtrack</Term>
 <ListItem>
-<Para> 前のトピックへ戻ります。</Para>
+<Para>Returns to the previous topic.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ホーム・トピック  </Term>
+<Term>Home Topic</Term>
 <ListItem>
-<Para> "ホーム・トピック"か、ヘルプ・ボリュームの最初のトピックへ戻ります。</Para>
+<Para>Takes you to the "home topic," or the first
+topic of a help volume.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ヒストリ  </Term>
+<Term>History</Term>
 <ListItem>
-<Para> [ヒストリ] ダイアログ・ボックスを開き、見てきたヘルプ・ボリュームおよびトピックをリストします。</Para>
+<Para>Opens the History dialog box, which lists help volumes and
+topics you've visited.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Note>
-<Para>[前のトピックへ] コマンドおよび [ホーム・トピック] コマンドは、トピック表示領域のポップアップ・メニューで使用可能です。
+<Para>The Backtrack and Home Topic commands are available in a pop-up menu
+in the topic display area.
 </Para>
 </Note>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.36">
-<Para> <XRef Linkend="ToReturnToAPreviousTopic"> 
- </Para>
+<Para><XRef Linkend="ToReturnToAPreviousTopic">
+</Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.37">
-<Para> <XRef Linkend="ToReturnToTheHomeTopic"></Para>
+<Para><XRef Linkend="ToReturnToTheHomeTopic"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.38">
-<Para> <XRef Linkend="History"></Para>
+<Para><XRef Linkend="History"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.39">
-<Para> <XRef Linkend="Help-Popup-Menu"></Para>
+<Para><XRef Linkend="Help-Popup-Menu"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.40">
-<Para> <XRef Linkend="HelpMenuCommands"></Para>
+<Para><XRef Linkend="HelpMenuCommands"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.41">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.42">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.43">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -307,64 +314,66 @@
 </Procedure>
 </Sect2>
 <Sect2 Id="Help-Help-Menu">
-<Title>[ヘルプ] メニュー</Title>
+<Title>Help Menu</Title>
 <IndexTerm>
-<Primary>ヘルプ, [ヘルプ] メニュー</Primary>
+<Primary>help, Help menu</Primary>
 </IndexTerm>
 <VariableList>
 <VarListEntry>
-<Term>概要 - ヘルプの使い方&sigspace;</Term>
+<Term>Overview - Using Help&sigspace;</Term>
 <ListItem>
-<Para>  ヘルプ・ウィンドウの使い方に関するヘルプを表示します。</Para>
+<Para>Provides help on using help windows</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>目次 </Term>
+<Term>Table Of Contents</Term>
 <ListItem>
-<Para> ヘルプ・ボリュームのトピックのアウトラインを表示します。</Para>
+<Para>Displays an outline of the topics in a help volume</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>使い方 </Term>
+<Term>Tasks</Term>
 <ListItem>
-<Para> ヘルプ・システムの使用に関して、その使い方の指示を表示します。</Para>
+<Para>Displays task instructions for using the Help System</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>リファレンス</Term>
+<Term>Reference</Term>
 <ListItem>
-<Para> ウィンドウおよびダイアログ・ボックス、メニュー、そしてリソースといった様々なヘルプの特徴のリファレンス概要を表示します。</Para>
+<Para>Displays reference summaries for various Help features, such
+as windows and dialog boxes, menus, and resources</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>マウスとキーボード </Term>
+<Term>Mouse And Keyboard</Term>
 <ListItem>
-<Para> ヘルプ・ウィンドウでの [マウスとキーボードの操作] コマンドの使い方に関する情報を表示します。</Para>
+<Para>Provides information on using the mouse and keyboard
+commands in help windows</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ヘルプについて</Term>
+<Term>About Help</Term>
 <ListItem>
-<Para> ヘルプ・システムのバージョンおよび著作権の情報を表示します。
+<Para>Displays the version and copyright information for the Help System
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.44">
-<Para> <XRef Linkend="HelpMenuCommands"></Para>
+<Para><XRef Linkend="HelpMenuCommands"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.45">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.46">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.47">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -372,47 +381,47 @@
 </Procedure>
 </Sect2>
 <Sect2 Id="Help-Popup-Menu">
-<Title>ヘルプのポップアップ・メニュー</Title>
-<Para>ヘルプのポップアップ・メニューは、<Link Type="jump" Linkend="GeneralHelpWindow">一般ヘルプ・ウィンドウ</Link> で使用可能です。
-ポップアップ・メニューを表示するには、トピック表示領域を指し、マウス・ボタン 3 を
-押してください。 &newline;(2 ボタン・マウスの場合は、同時に両方のボタンを押してください。)</Para>
+<Title>Help Pop-up Menu</Title>
+<Para>A Help pop-up menu is available in a <Link Type="jump" Linkend="GeneralHelpWindow">general help window</Link>. To display
+the pop-up menu, point to the topic display area and
+press mouse button 3. &newline;(On a two-button mouse, press both buttons simultaneously.)</Para>
 <VariableList>
 <VarListEntry>
-<Term>前のトピックへ   </Term>
+<Term>Bactrack</Term>
 <ListItem>
-<Para> 前のトピックへ戻ります。
+<Para>Returns to the previous topic.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ホーム・トピック </Term>
+<Term>Home Topic</Term>
 <ListItem>
-<Para> ヘルプ・ボリュームの最初のトピックへ戻ります。
+<Para>Returns to the first topic of a help volume.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.48">
-<Para> <XRef Linkend="ToReturnToAPreviousTopic"></Para>
+<Para><XRef Linkend="ToReturnToAPreviousTopic"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.49">
-<Para> <XRef Linkend="ToReturnToTheHomeTopic"></Para>
+<Para><XRef Linkend="ToReturnToTheHomeTopic"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.50">
-<Para> <XRef Linkend="HelpMenuCommands"></Para>
+<Para><XRef Linkend="HelpMenuCommands"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.51">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.52">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.53">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -421,88 +430,90 @@
 </Sect2>
 </Sect1>
 <Sect1 Id="HelpMenuShortcutKeys">
-<Title>[ヘルプ] メニューのショートカット・キー</Title>
+<Title>Help Menu Shortcut Keys</Title>
 <IndexTerm>
-<Primary>ヘルプ, ショートカット・キー</Primary>
+<Primary>help, shortcut keys</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ショートカット・キー</Primary>
+<Primary>shortcut keys</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>アクセラレータ・キー</Primary>
+<Primary>accelerator keys</Primary>
 </IndexTerm>
-<Para>以下のショートカット・キーを使用して、[ヘルプ] メニュー・コマンドを起動してください。
+<Para>Use these shortcut keys to activate Help menu commands:
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Emphasis Role="heading"> コマンド </Emphasis></Term>
+<Term><Emphasis Role="heading">Command</Emphasis></Term>
 <ListItem>
-<Para><Emphasis Role="heading"> ショートカット・キー</Emphasis></Para>
+<Para><Emphasis Role="heading">Shortcut Key</Emphasis></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>印刷</Term>
+<Term>Print</Term>
 <ListItem>
-<Para>		   <Keycap>Control] + [P</Keycap> キー
+<Para>Control+P
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>閉じる</Term>
+<Term>Close</Term>
 <ListItem>
-<Para>	   <Keycap>Alt] + [F4</Keycap> キー
+<Para>Alt+F4
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>コピー</Term>
+<Term>Copy</Term>
 <ListItem>
-<Para>	   <Keycap>Control] + [C</Keycap> キー
+<Para>Control+C
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>索引</Term>
+<Term>Index</Term>
 <ListItem>
-<Para>		   <Keycap>Control] + [I</Keycap> キー
+<Para>Control+I
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>前のトピックへ</Term>
+<Term>Backtrack</Term>
 <ListItem>
-<Para>   <Keycap>Control] + [B</Keycap> キー
+<Para>Control+B
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ホーム・トピック</Term>
+<Term>HomeTopic</Term>
 <ListItem>
-<Para> <Keycap>Control] + [H</Keycap> キー
+<Para>Control+H
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Note>
-<Para>キーボードに [Alt] キーがない場合は、システム管理者に問い合わせてそれに相当するキーを確認するか、システムのマニュアルを参照してください。
+<Para>If your keyboard does not have an Alt key,
+ask your system administrator to identify the corresponding key or
+refer to your system documentation.
 </Para>
 </Note>
 <Para>&sigspace;</Para>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.54">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.55">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.56">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.57">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -510,338 +521,352 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="Mouse-And-Keyboard">
-<Title>マウスのアクションとキーボード・コマンド</Title>
+<Title>Mouse Actions and Keyboard Commands</Title>
 <IndexTerm>
-<Primary>キーボード選択</Primary>
+<Primary>keyboard selection</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>テキスト, キーボードによる選択</Primary>
+<Primary>text, selecting with keyboard</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>選択, キーボードによる</Primary>
+<Primary>selection, with keyboard</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>キーボード・コマンド</Primary>
+<Primary>keyboard commands</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>マウス, ヘルプ・ウィンドウのアクション</Primary>
+<Primary>mouse, actions in help windows</Primary>
 </IndexTerm>
 <Procedure>
-<Title>マウスのアクション</Title>
+<Title>Mouse Actions</Title>
 <Step>
 <VariableList>
 <VarListEntry>
-<Term><Emphasis Role="heading">アクション&sigspace;</Emphasis></Term>
+<Term><Emphasis Role="heading">Action&sigspace;</Emphasis></Term>
 <ListItem>
-<Para><Emphasis Role="heading">		 動作</Emphasis></Para>
+<Para><Emphasis Role="heading">Behavior</Emphasis></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>マウス・ボタン 1 をクリック </Term>
+<Term>Click mouse button 1</Term>
 <ListItem>
-<Para> トピック・ツリー内のトピックまたはハイパーリンクを選択し、現在のヘルプ・ウィンドウの内容を表示します。
+<Para>Selects a topic in the topic tree or a
+hyperlink and displays the content in the current help window.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>マウス・ボタン 1 を押しながらドラッグ	</Term>
+<Term>Hold mouse button 1 and drag</Term>
 <ListItem>
-<Para> 選択したテキストをクリップボードにコピーします。</Para>
+<Para>Copies selected text to the clipboard.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>[Control] キーを押したまま、マウス・ボタン&sigspace;1 を押す  </Term>
+<Term>Control+button&sigspace;1</Term>
 <ListItem>
-<Para> トピック・ツリー内のトピックまたはハイパーリンクを選択し、新規ウィンドウの内容を表示します。</Para>
+<Para>Selects a topic in the topic tree or
+hyperlink and displays the content in a new window.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>[Shift] キーを押したまま、マウス・ボタン&sigspace;1 を押す    </Term>
+<Term>Shift+button&sigspace;1</Term>
 <ListItem>
-<Para>同上。
+<Para>Same as above.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>[Alt] キーを押したまま、マウス・ボタン&sigspace;1 を押す      </Term>
+<Term>Alt+button&sigspace;1</Term>
 <ListItem>
-<Para>同上。
+<Para>Same as above.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Note>
-<Para>キーボードに [Alt] キーがない場合は、システム管理者に問い合わせてそれに相当するキーを確認するか、システムのマニュアルを参照してください。
+<Para>If your keyboard does not have an Alt key ask your system administrator to
+identify the corresponding key or refer to your system documentation.
 </Para>
 </Note>
 <Para>&sigspace;</Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>キーボード・コマンド</Title>
+<Title>Keyboard Commands</Title>
 <IndexTerm>
-<Primary>キーボード, トピックの選択</Primary>
+<Primary>keyboard, selecting topics</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>トピック, キーボードによる選択</Primary>
+<Primary>topics, selecting with keyboard</Primary>
 </IndexTerm>
 <Step>
-<Para>キーボードを使用してトピックを表示したり、またはデータをスクロールするには、まずウィンドウ選択の強調表示をトピック・ツリーまたはトピック表示領域といったヘルプ・ウィンドウの適切な領域に移動させてください。
-選択の強調表示を前方へ移動させるには、[Tab] キーを押し、後方へ移動させるには、<Keycap>Shift] + [Tab</Keycap> キーを押してください。</Para>
-<Para>これらのキーボード・コマンドを以下のヘルプ・ウィンドウ領域で使用できます。</Para>
+<Para>To use your keyboard to display topics or to scroll data, first
+move the window selection highlight to the appropriate area of
+the help window, such as the topic tree or topic display area.
+Press the Tab key to move the selection highlight forward. To move
+the highlight backward, press Shift+Tab.</Para>
+<Para>You can use these keyboard commands in the following help window
+areas:</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HH4H.REF.item.58">
-<Para> <GlossTerm Role="nogloss">トピック・ツリー</GlossTerm>
+<Para><GlossTerm Role="nogloss">Topic Tree</GlossTerm>
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Emphasis Role="heading">キー      </Emphasis></Term>
+<Term><Emphasis Role="heading">Key</Emphasis></Term>
 <ListItem>
-<Para><Emphasis Role="heading"> カーソル・アクション</Emphasis></Para>
+<Para><Emphasis Role="heading">Cursor Action</Emphasis></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [↑] 		     </Term>
+<Term>Up Arrow</Term>
 <ListItem>
-<Para> 1 行上へ
+<Para>Up one line
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [↓] 		     </Term>
+<Term>Down Arrow</Term>
 <ListItem>
-<Para> 1 行下へ
+<Para>Down one line
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [Return] 	     </Term>
+<Term>Return</Term>
 <ListItem>
-<Para> 選択したタイトルのヘルプ・トピックを表示します。
+<Para>Display help topic for selected title
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [Return</Keycap>&sigspace;  </Term>
+<Term>Control+Return&sigspace;</Term>
 <ListItem>
-<Para> 選択したタイトルのヘルプ・トピックを新規ウィンドウに表示します。
+<Para>Display help topic for selected
+title in a new window
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [/</Keycap>  </Term>
+<Term>Control+/</Term>
 <ListItem>
-<Para> トピック・ツリー・リストを選択します。
+<Para>Select topic tree list
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [&bsol;</Keycap> </Term>
+<Term>Control+&bsol;</Term>
 <ListItem>
-<Para> トピック・ツリー・リストを選択解除します。
+<Para>Deselect topic tree list
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </ListItem>
 <ListItem Id="HH4H.REF.item.59">
-<Para> <GlossTerm Role="nogloss">トピック表示領域</GlossTerm>
+<Para><GlossTerm Role="nogloss">Topic Display Area</GlossTerm>
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Emphasis Role="heading">キー       </Emphasis></Term>
+<Term><Emphasis Role="heading">Key</Emphasis></Term>
 <ListItem>
-<Para><Emphasis Role="heading"> 動作</Emphasis></Para>
+<Para><Emphasis Role="heading">Behavior</Emphasis></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [↑] または [←]    </Term>
+<Term>Up Arrow or Left Arrow</Term>
 <ListItem>
-<Para> 強調表示を前のハイパーリンクへ移動させます。
+<Para>Move highlight to previous hyperlink
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [↓] または [→]    </Term>
+<Term>Down Arrow or Right Arrow</Term>
 <ListItem>
-<Para> 強調表示を次のハイパーリンクへ移動させます。</Para>
+<Para>Move highlight to next hyperlink</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [/</Keycap>   </Term>
+<Term>Control+/</Term>
 <ListItem>
-<Para> 全トピックを選択します。
+<Para>Select entire topic
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [&bsol;</Keycap>  </Term>
+<Term>Control+&bsol;</Term>
 <ListItem>
-<Para> 全トピックを選択解除します。
+<Para>Deselect entire topic
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [C</Keycap>   </Term>
+<Term>Control+C</Term>
 <ListItem>
-<Para> 選択項目をクリップボードにコピーします。
+<Para>Copy selection to clipboard
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [V</Keycap>   </Term>
+<Term>Control+V</Term>
 <ListItem>
-<Para> 選択項目をクリップボードにペーストします。
+<Para>Paste selection to clipboard
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [Return] 	      </Term>
+<Term>Return</Term>
 <ListItem>
-<Para> 選択したハイパーリンクのヘルプ・トピックを表示します。</Para>
-</ListItem>
-</VarListEntry>
-<VarListEntry>
-<Term> <Keycap>Control] + [Return</Keycap>&sigspace;  </Term>
-<ListItem>
-<Para> 選択したハイパーリンクのヘルプ・トピックを新規ウィンドウに表示します。
+<Para>Display help topic for the
+selected hyperlink
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Shift] + [F10</Keycap>   </Term>
+<Term>Control+Return&sigspace;</Term>
 <ListItem>
-<Para> ポップアップ・メニューを表示します。</Para>
+<Para>Display help topic for the
+selected hyperlink in a new window
+</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Shift+F10</Term>
+<ListItem>
+<Para>Displays the pop-up menu</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </ListItem>
 <ListItem Id="HH4H.REF.item.60">
-<Para> <GlossTerm Role="nogloss"> ヘルプ・ウィンドウ</GlossTerm>
+<Para><GlossTerm Role="nogloss"> Help Window</GlossTerm>
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Emphasis Role="heading">キー 	  </Emphasis></Term>
+<Term><Emphasis Role="heading">Key</Emphasis></Term>
 <ListItem>
-<Para><Emphasis Role="heading"> 動作</Emphasis></Para>
+<Para><Emphasis Role="heading">Behavior</Emphasis></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>[Escape] 		  </Term>
+<Term>Escape</Term>
 <ListItem>
-<Para> スクロールやサイズ変更といった操作を取り消します。
-もしくは、現在の操作がなければ、ヘルプ・ウィンドウを閉じます。
+<Para>Cancels an operation such as
+scrolling or resizing. Otherwise, if there is no current operation, closes the help window.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Keycap>Alt] + [↑</Keycap> 	  </Term>
+<Term>Alt key+Up Arrow</Term>
 <ListItem>
-<Para> ウィンドウを重なりの一番上に移動させます。
+<Para>Moves window to top of window stack.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Keycap>Alt] + [↓</Keycap>&sigspace; </Term>
+<Term>Alt key+Down Arrow&sigspace;</Term>
 <ListItem>
-<Para> ウィンドウを重なりの一番下に移動させます。</Para>
+<Para>Moves window to bottom of window
+stack.
+</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </ListItem>
 <ListItem Id="HH4H.REF.item.61">
-<Para> <GlossTerm Role="nogloss"> ボタン</GlossTerm>
-[Tab] キーで強調表示を希望のボタンに移動させて、[Return] キーを押してください。</Para>
+<Para><GlossTerm Role="nogloss"> Buttons</GlossTerm>
+Press Tab to move the selection highlight to the desired button and
+press Return.</Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.62">
-<Para> <GlossTerm Role="nogloss"> 垂直スクロール・バー</GlossTerm>
+<Para><GlossTerm Role="nogloss"> Vertical Scroll Bars</GlossTerm>
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Emphasis Role="heading">キー        </Emphasis></Term>
+<Term><Emphasis Role="heading">Key</Emphasis></Term>
 <ListItem>
-<Para><Emphasis Role="heading"> カーソルの移動</Emphasis></Para>
+<Para><Emphasis Role="heading">Cursor Movement</Emphasis></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [↑] 		       </Term>
+<Term>Up Arrow</Term>
 <ListItem>
-<Para> スクロール・アップします。
+<Para>Scroll up
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [↓] 		       </Term>
+<Term>Down Arrow</Term>
 <ListItem>
-<Para> スクロール・ダウンします。
+<Para>Scroll down
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [↑</Keycap>   </Term>
+<Term>Control+Up Arrow</Term>
 <ListItem>
-<Para> リストまたはトピックの先頭へスクロールします。
+<Para>Scroll to top of list or topic
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [↓</Keycap>&sigspace;	</Term>
+<Term>Control+Down Arrow&sigspace;</Term>
 <ListItem>
-<Para> リストまたはトピックの末尾へスクロールします。
+<Para>Scroll to end of list or topic
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [PageUp] または [Previous] 	</Term>
+<Term>PageUp or Previous</Term>
 <ListItem>
-<Para> 一画面スクロール・アップします。
+<Para>Scroll one screen up
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [PageDown] または [Next] 	</Term>
+<Term>PageDown or Next</Term>
 <ListItem>
-<Para> 一画面スクロール・ダウンします。
+<Para>Scroll one screen down
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </ListItem>
 <ListItem Id="HH4H.REF.item.63">
-<Para> <GlossTerm Role="nogloss"> 水平スクロール・バー</GlossTerm>
+<Para><GlossTerm Role="nogloss"> Horizontal Scroll Bars</GlossTerm>
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Emphasis Role="heading">キー       </Emphasis></Term>
+<Term><Emphasis Role="heading">Key</Emphasis></Term>
 <ListItem>
-<Para><Emphasis Role="heading"> カーソルの移動</Emphasis></Para>
+<Para><Emphasis Role="heading">Cursor Movement</Emphasis></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [←] 		      </Term>
+<Term>Left Arrow</Term>
 <ListItem>
-<Para> 左へ移動します。
+<Para>Scroll left
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [←</Keycap>  </Term>
+<Term>Control+Left Arrow</Term>
 <ListItem>
-<Para> データの最左端へ移動します。
+<Para>Scroll to leftmost edge of data
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [→] 		      </Term>
+<Term>Right Arrow</Term>
 <ListItem>
-<Para> 右へ移動します。
+<Para>Scroll right
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [→</Keycap>&sigspace; </Term>
+<Term>Control+Right Arrow&sigspace;</Term>
 <ListItem>
-<Para> データの最右端へ移動します。</Para>
+<Para>Scroll to rightmost edge of data</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
@@ -850,20 +875,20 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.64">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.65">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.66">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.67">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -871,116 +896,120 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="HelpWindowsAndDialogBoxes">
-<Title>ヘルプ・ウィンドウとダイアログ・ボックス</Title>
+<Title>Help Windows And Dialog Boxes</Title>
 <IndexTerm>
-<Primary>ヘルプ・ウィンドウ, 種類</Primary>
+<Primary>help window, types of</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HH4H.REF.item.68">
-<Para> <XRef Linkend="GeneralHelpWindow"></Para>
+<Para><XRef Linkend="GeneralHelpWindow"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.69">
-<Para> <XRef Linkend="Quick-Help"></Para>
+<Para><XRef Linkend="Quick-Help"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.70">
-<Para> <XRef Linkend="HistoryDlg"></Para>
+<Para><XRef Linkend="HistoryDlg"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.71">
-<Para> <XRef Linkend="PrintDlg"></Para>
+<Para><XRef Linkend="PrintDlg"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.72">
-<Para> <XRef Linkend="IndexSearchDlg"></Para>
+<Para><XRef Linkend="IndexSearchDlg"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.73">
-<Para> <XRef Linkend="Volume-Select"></Para>
+<Para><XRef Linkend="Volume-Select"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.74">
-<Para> <XRef Linkend="Execution-Policy"></Para>
+<Para><XRef Linkend="Execution-Policy"></Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.75">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.76">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.77">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.78">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Sect2 Id="GeneralHelpWindow">
-<Title>一般ヘルプ・ウィンドウ</Title>
+<Title>General Help Window</Title>
 <IndexTerm>
-<Primary>一般ヘルプ・ウィンドウ</Primary>
+<Primary>general help window</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ウィンドウ, 一般ヘルプ</Primary>
+<Primary>window, general help</Primary>
 </IndexTerm>
-<Para>一般ヘルプ・ウィンドウには、メニュー・バー、トピック・ツリー、およびトピック表示領域があります。
-トピック・ツリーには、選択できるヘルプ・トピックがリストされます。
-ウィンドウ中の下部&emdash;(トピック表示領域)&emdash;には、選択されたトピックが表示されます。
+<Para>A general help window has a menu bar, topic tree, and a topic display area.
+The topic tree lists help topics that you can choose. The lower portion of
+the window&emdash;the topic display area&emdash;displays the selected
+topic.
 </Para>
 <Graphic Entityref="Help4HelpGeneralHelp" Id="HH4H.REF.fig.1"></Graphic>
-<Para>下線付きのテキストは、ハイパーリンクです。
-ハイパーリンクを使用して、他のトピックへ &dquote;ジャンプ&dquote; します。
-ハイパーリンクの説明に関しては、<Link Type="jump" Linkend="ToSelectAHelpTopicHyperlink">ハイパーリンクを選択するには</Link> を参照してください。</Para>
+<Para>Any underlined text is a hyperlink.
+You use hyperlinks to &dquote;jump&dquote; to other topics.
+See <Link Type="jump" Linkend="ToSelectAHelpTopicHyperlink">To Select a Hyperlink</Link> for a description of hyperlinks.</Para>
 <Para>&sigspace;</Para>
-<Para>一般ヘルプ・ウィンドウには、以下のヘルプ・ボタンがあります。</Para>
+<Para>A general help window has these Help Buttons:</Para>
 <VariableList>
 <VarListEntry>
-<Term>前のトピックへ</Term>
+<Term>Backtrack</Term>
 <ListItem>
-<Para> 前のトピックへ戻ります。</Para>
+<Para>Returns to a previous topic.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ヒストリ</Term>
+<Term>History</Term>
 <ListItem>
-<Para>	 見てきたトピックおよびヘルプ・ボリュームをリストし、トピックの再表示を可能にします。</Para>
+<Para>Lists topics and help volumes that you visited and
+enables you to redisplay a topic.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>索引</Term>
+<Term>Index</Term>
 <ListItem>
-<Para> 主題に関するヘルプが検索可能なヘルプ索引を開きます</Para>
+<Para>Opens a help index that you can search to find help
+on a subject.
+</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Para>&sigspace;</Para>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.79">
-<Para> <XRef Linkend="ToReturnToAPreviousTopic"></Para>
+<Para><XRef Linkend="ToReturnToAPreviousTopic"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.80">
-<Para> <XRef Linkend="History"></Para>
+<Para><XRef Linkend="History"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.81">
-<Para> <XRef Linkend="Quick-Help"></Para>
+<Para><XRef Linkend="Quick-Help"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.82">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.83">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.84">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.85">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -988,75 +1017,75 @@
 </Procedure>
 </Sect2>
 <Sect2 Id="Quick-Help">
-<Title>簡易ヘルプ・ウィンドウ</Title>
+<Title>Quick Help Window</Title>
 <IndexTerm>
-<Primary>簡易ヘルプ・ウィンドウ</Primary>
+<Primary>quick help window</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ウィンドウ, 簡易ヘルプ</Primary>
+<Primary>window, quick help</Primary>
 </IndexTerm>
-<Para>簡易ヘルプ・ウィンドウは、簡素化されたヘルプ・ウィンドウです。
-このウィンドウには、トピック表示領域および 1 つ以上のダイアログ・ボタンがあります。
+<Para>A quick help window is a streamlined help window. It has a topic display
+area and one or more dialog buttons.
 </Para>
 <Graphic Entityref="Help4HelpQuickHelp" Id="HH4H.REF.fig.2"></Graphic>
 <Para>&sigspace;</Para>
 <VariableList>
 <VarListEntry>
-<Term><Emphasis Role="heading"> ボタン </Emphasis></Term>
+<Term><Emphasis Role="heading">Button</Emphasis></Term>
 <ListItem>
-<Para><Emphasis Role="heading"> アクション</Emphasis></Para>
+<Para><Emphasis Role="heading">Action</Emphasis></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 閉じる </Term>
+<Term>Close</Term>
 <ListItem>
-<Para>	簡易ヘルプ・ウィンドウを閉じます。
+<Para>Closes the quick help window
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 前のトピックへ </Term>
+<Term>Backtrack</Term>
 <ListItem>
-<Para>  前のトピックへ戻ります。
+<Para>Goes to the previous topic
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 印刷 </Term>
+<Term>Print</Term>
 <ListItem>
-<Para>	[印刷] ダイアログ・ボックスを表示します。
+<Para>Displays a Print dialog box
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ヘルプ </Term>
+<Term>Help</Term>
 <ListItem>
-<Para>	簡易ヘルプ・ウィンドウに関するヘルプを表示します。
+<Para>Displays Help on the quick help window
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.86">
-<Para> <XRef Linkend="Printing"></Para>
+<Para><XRef Linkend="Printing"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.87">
-<Para> <XRef Linkend="GeneralHelpWindow"></Para>
+<Para><XRef Linkend="GeneralHelpWindow"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.88">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.89">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.90">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.91">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -1064,50 +1093,50 @@
 </Procedure>
 </Sect2>
 <Sect2 Id="HistoryDlg">
-<Title>[ヒストリ] ダイアログ・ボックス</Title>
+<Title>History Dialog Box</Title>
 <IndexTerm>
-<Primary>ヘルプ, [ヒストリ] ダイアログ・ボックス</Primary>
+<Primary>Help, History dialog box</Primary>
 </IndexTerm>
 <Graphic Entityref="Help4HelpHistory" Id="HH4H.REF.fig.3"></Graphic>
 <Para>&sigspace;</Para>
 <VariableList>
 <VarListEntry>
-<Term>表示したヘルプ・ボリューム&sigspace;</Term>
+<Term>Help Volumes Visited&sigspace;</Term>
 <ListItem>
-<Para>	表示したヘルプ・ボリュームをリストします。</Para>
+<Para>Lists help volumes you have visited</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>表示したヘルプ・トピック</Term>
+<Term>Help Topics Visited</Term>
 <ListItem>
-<Para>  表示したトピックをリストします。
+<Para>List topics you have visited
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
-<Para>ボリュームまたはヘルプ・トピックへ戻るには、ヒストリ・リスト内のそのタイトルをクリックしてください。</Para>
+<Para>To return to a volume or help topic, click its title in the History list.</Para>
 <Para>&sigspace;</Para>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.92">
-<Para> <XRef Linkend="History"></Para>
+<Para><XRef Linkend="History"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.93">
-<Para> <XRef Linkend="HelpWindowsAndDialogBoxes"></Para>
+<Para><XRef Linkend="HelpWindowsAndDialogBoxes"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.94">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.95">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.96">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.97">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -1115,62 +1144,62 @@
 </Procedure>
 </Sect2>
 <Sect2 Id="PrintDlg">
-<Title>[印刷] ダイアログ・ボックス</Title>
+<Title>Print Dialog Box</Title>
 <IndexTerm>
-<Primary>ヘルプ, [印刷] ダイアログ・ボックス</Primary>
+<Primary>Help, Print dialog box</Primary>
 </IndexTerm>
 <Graphic Entityref="Help4HelpPrintDialog" Id="HH4H.REF.fig.4"></Graphic>
 <Para>&sigspace;</Para>
 <VariableList>
 <VarListEntry>
-<Term> プリンタ </Term>
+<Term>Printer</Term>
 <ListItem>
-<Para> ヘルプ・システムは、デフォルトのプリンタ(環境変数 LPDEST によって設定)を使用します。</Para>
+<Para>The Help System uses your default printer (set by the LPDEST environment variable).</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>コピー部数</Term>
+<Term>Copies</Term>
 <ListItem>
-<Para> 印刷したい部数を入力してください。</Para>
+<Para>Type the number of copies you want to print.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>用紙サイズ</Term>
+<Term>Paper Size</Term>
 <ListItem>
-<Para> [用紙サイズ] ボタンをクリックして、以下の選択項目を表示してください。</Para>
+<Para>Click the paper size button to display the following choices:</Para>
 <VariableList>
 <VarListEntry>
-<Term>レター</Term>
+<Term>Letter</Term>
 <ListItem>
-<Para> 8.5 x 11 in
+<Para>8.5 x 11 in
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>リーガル</Term>
+<Term>Legal</Term>
 <ListItem>
-<Para> 8.5 x 14 in
+<Para>8.5 x 14 in
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>エグゼクティブ</Term>
+<Term>Executive</Term>
 <ListItem>
-<Para> 7.25 x 10.5 in
+<Para>7.25 x 10.5 in
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>A4</Term>
 <ListItem>
-<Para> 210 x 297 mm
+<Para>210 x 297 mm
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>B5</Term>
 <ListItem>
-<Para> 182 x 257 mm
+<Para>182 x 257 mm
 </Para>
 </ListItem>
 </VarListEntry>
@@ -1180,32 +1209,34 @@
 </VariableList>
 <VariableList>
 <VarListEntry>
-<Term>印刷するトピック&sigspace;&sigspace;</Term>
+<Term>Topics To Print&sigspace;&sigspace;</Term>
 <ListItem>
-<Para> 印刷したいトピック(複数可)を選択してください。</Para>
+<Para>Select the topic or topics to print:</Para>
 <VariableList>
 <VarListEntry>
-<Term>現在のトピック</Term>
+<Term>Current Topic</Term>
 <ListItem>
-<Para> 表示されているトピックだけを印刷します(デフォルト)。</Para>
+<Para>Print only the displayed topic (the default)</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>現在のトピックとサブトピック</Term>
+<Term>Current and Subtopics</Term>
 <ListItem>
-<Para> 現在のトピックとそのサブトピックを印刷します。</Para>
+<Para>Print the current topic
+and any subtopics it contains</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>目次と索引&sigspace;</Term>
+<Term>Table of Contents and Index&sigspace;</Term>
 <ListItem>
-<Para> ヘルプ・ボリュームの目次と索引を印刷します。</Para>
+<Para>Print the Table of
+Contents and Index of the help volume</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ボリューム全体</Term>
+<Term>Entire Volume</Term>
 <ListItem>
-<Para> ヘルプ・ボリュームの目次、索引、およびすべてのトピックを印刷します。
+<Para>Print Table of Contents, Index, and all topics in the help volume
 </Para>
 </ListItem>
 </VarListEntry>
@@ -1213,43 +1244,43 @@
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>印刷</Term>
+<Term>Print</Term>
 <ListItem>
-<Para> 選択したトピック(複数可)を印刷します。</Para>
+<Para>Prints the topic or topics you have chosen</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>取消し</Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para> 印刷ダイアログ・ボックスを閉じます。</Para>
+<Para>Closes the Print dialog box</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ヘルプ</Term>
+<Term>Help</Term>
 <ListItem>
-<Para> 印刷ダイアログ・ボックスに関する説明を表示します。
+<Para>Provides a description of the Print dialog box
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.98">
-<Para> <XRef Linkend="Printing"></Para>
+<Para><XRef Linkend="Printing"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.99">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.100">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.101">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.102">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -1257,33 +1288,36 @@
 </Procedure>
 </Sect2>
 <Sect2 Id="IndexSearchDlg">
-<Title>[索引検索] ダイアログ・ボックス</Title>
+<Title>Index Search Dialog Box</Title>
 <IndexTerm>
-<Primary>ヘルプ, [索引検索] ダイアログ・ボックス</Primary>
+<Primary>Help, Index Search dialog box</Primary>
 </IndexTerm>
 <Graphic Entityref="Help4HelpIndexDialog" Id="HH4H.REF.fig.5"></Graphic>
 <Procedure>
-<Title>検索</Title>
+<Title>Search</Title>
 <Step>
 <VariableList>
 <VarListEntry>
-<Term>現在</Term>
+<Term>Current</Term>
 <ListItem>
-<Para> 見ているボリュームのヘルプ索引を表示します。デフォルトは、現在のボリュームです。</Para>
+<Para>Displays a Help index for the volume that you are viewing. The
+current volume is the default.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>すべてのボリューム</Term>
+<Term>All Volumes</Term>
 <ListItem>
-<Para> システムに登録されている全ヘルプ・ボリュームから抽出したヘルプ索引を表示します。</Para>
+<Para>Displays a combined Help index for all help volumes
+registered on your system.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>選択</Term>
+<Term>Selected</Term>
 <ListItem>
-<Para> ダイアログ・ボックスで使用可能なヘルプ・ボリュームをリストします(<XRef Linkend="Volume-Select"> を参照してください)。
-表示または検索したい索引エントリを持つボリュームを選択してください。
-ボリュームを選択してダイアログ・ボックスを閉じる場合は、[選択されたボリューム] ボタンを使用して、選択したもののリストを再表示することができます。
+<Para>Lists available help volumes in a dialog box (see <XRef Linkend="Volume-Select">).
+Choose the volumes whose index entries you want to view or search. If you
+select volumes and close the dialog box, the Volumes Selected button can
+be used to reopen the list of your choices.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -1291,51 +1325,52 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>表示</Title>
+<Title>Show</Title>
 <Step>
 <VariableList>
 <VarListEntry>
-<Term>全索引&sigspace;</Term>
+<Term>Complete Index&sigspace;</Term>
 <ListItem>
-<Para> 選択されたボリューム(複数可)に対して見つかった索引エントリ
-のすべてをリストします。</Para>
+<Para>Lists all the index entries found for the volume or
+volumes you have chosen.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>エントリ指定:</Term>
+<Term>Entries with:</Term>
 <ListItem>
-<Para> 選択したボリューム(複数可)の索引エントリで、検索したい語句を
-入力してください。</Para>
+<Para>Type a word or phrase to search for in the index entries
+of the volume or volumes you chose.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>ステータス行</Title>
+<Title>Status Line</Title>
 <Step>
-<Para>[全索引] オプションを選択した場合に表示されます。
-索引を検索する場合、ステータス行は、検索文字列を表示するか、"索引エントリはありません。" というメッセージを表示します。
+<Para>Indicates if you chose the Complete Index option. If
+you search the index, the status line displays the search string or reports "No index entries found".
 </Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>索引表示領域</Title>
+<Title>Index Display Area</Title>
 <Step>
-<Para>選択されたボリューム(複数可)に対して見つかった索引エントリ、または入力した検索ストリングに一致するエントリをリストします。
+<Para>Lists index entries found for the volume or volumes you chose, or
+entries that match the search string you entered.
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>検索開始</Term>
+<Term>Start Search</Term>
 <ListItem>
-<Para> [エントリ指定] フィールドに指定された語句に対して索引を検索します。
-[Return] キーを押しても、検索を開始します。</Para>
+<Para>Searches the index for the word or phrase supplied in the
+Entries with field. Pressing Return also activates the search.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>閉じる</Term>
+<Term>Close</Term>
 <ListItem>
-<Para> [索引検索] ダイアログ・ボックスを閉じます。
+<Para>Closes the Index Search dialog box.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -1343,23 +1378,23 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.103">
-<Para> <XRef Linkend="Index-Search"></Para>
+<Para><XRef Linkend="Index-Search"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.104">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.105">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.106">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.107">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -1367,37 +1402,39 @@
 </Procedure>
 </Sect2>
 <Sect2 Id="Volume-Select">
-<Title>[検索ボリューム選択] ダイアログ・ボックス</Title>
+<Title>Search Volume Selection Dialog Box</Title>
 <IndexTerm>
-<Primary>ヘルプ, [検索ボリューム選択] ダイアログ・ボックス</Primary>
+<Primary>Help, Index Search Volume Selection dialog box</Primary>
 </IndexTerm>
 <Graphic Entityref="Help4HelpSearchVolume" Id="HH4H.REF.fig.6"></Graphic>
 <Para>&sigspace;</Para>
-<Para>[検索ボリューム] ダイアログ・ボックスには、現在のシステムで使用可能なヘルプ・ボリュームがリストされます。
-[索引検索] ダイアログ・ボックスにその索引エントリが表示されているボリュームを 1 つ以上選択できます。
-ボリュームを選択解除するには、再度ボリューム名をクリックしてください。</Para>
-<Para>[検索ボリューム] ダイアログ・ボックスを閉じる場合は、[索引検索] ダイアログ・ボックスの [ボリュームを選択] ボタンを使用して、選択したもののリストを再表示することができます。</Para>
+<Para>The Search Volume dialog box lists help volumes available on your system.
+You can select one or more volumes, whose index entries are then displayed
+in the Index Search dialog box. To deselect a volume, click the
+volume name again.</Para>
+<Para>When you close the Search Volume dialog box, the Select Volumes button in
+the Index Search dialog box can be used to reopen the list of choices.</Para>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.108">
-<Para> <XRef Linkend="Index-Search"></Para>
+<Para><XRef Linkend="Index-Search"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.109">
-<Para> <XRef Linkend="HelpWindowsAndDialogBoxes"></Para>
+<Para><XRef Linkend="HelpWindowsAndDialogBoxes"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.110">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.111">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.112">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.113">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -1405,104 +1442,122 @@
 </Procedure>
 </Sect2>
 <Sect2 Id="Execution-Policy">
-<Title>[実行リンク確認] ダイアログ・ボックス</Title>
+<Title>Execution Link Confirmation Dialog Box</Title>
 <IndexTerm>
-<Primary>ヘルプ, [実行リンク確認] ダイアログ・ボックス</Primary>
+<Primary>Help, Execution Link Confirmation dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ハーパーリンク, 実行リンク・ポリシー</Primary>
+<Primary>hyperlinks, execution link policy</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>実行リンク, ポリシー</Primary>
+<Primary>execution link, policy</Primary>
 </IndexTerm>
-<Para>実行ハイパーリンクは、ヘルプ・トピックを表示する代わりにコマンドを実行します。
-実行リンクはシステムと対話するので、実行リンクが選択された場合のヘルプ・システムの対応の仕方を選択することができます。
-</Para>
-<Para>ヘルプ・システムは、デフォルトの動作として確認ダイアログ・ボックスを表示します。</Para>
+<Para>An execution hyperlink executes a command instead of displaying
+a help topic. Because execution links interact with your
+system, you can choose how you want the Help System to respond
+when an execution link is selected.</Para>
+<Para>The Help System default behavior is to display a confirmation
+dialog box.</Para>
 <Graphic Entityref="Help4HelpExecutionDlg" Id="HH4H.REF.fig.7"></Graphic>
-<Para>実行ポリシーは、ヘルプ・ダイアログ・ウィジェット・リソース <ComputerOutput>DtNexecutionPolicy</ComputerOutput>
-によって制御されます。デフォルト値は、<ComputerOutput>help_execute_query_unaliased</ComputerOutput> です。</Para>
-<Para>デフォルトの動作を変更するには、変更したいアプリケーションに合わせて、実行ポリシー・リソースを <ComputerOutput>.Xdefaults</ComputerOutput> ファイルにに追加します。</Para>
-<Para>リソース値のセットは、以下のとおりです。</Para>
+<Para>Execution policy is controlled by the Help dialog widget resource
+<ComputerOutput>DtNexecutionPolicy</ComputerOutput>. The default value is
+<ComputerOutput>help_execute_query_unaliased</ComputerOutput>.</Para>
+<Para>To change the default behavior, you add the
+execution policy resource to your <ComputerOutput>.Xdefaults</ComputerOutput>
+file for the application you want to change.</Para>
+<Para>The set of resource values is:</Para>
 <VariableList>
 <VarListEntry>
 <Term><ComputerOutput>help_execute_all</ComputerOutput></Term>
 <ListItem>
-<Para>確認ダイアログ・ボックスを表示せずにすべての実行リンクを実行します。</Para>
+<Para>Executes all execution links without
+displaying a confirmation dialog box.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term><ComputerOutput>help_execute_query_unaliased</ComputerOutput></Term>
 <ListItem>
-<Para> 実行別名が定義されていない実行リンクに対してだけダイアログ・ボックスを表示します。
-実行別名は、実行リンクによって実行されるコマンドに名前を割り当てるリソースです。</Para>
+<Para>Displays a dialog box
+only for those links which do not have execution aliases defined. An
+execution alias is a resource that assigns a name to the command executed
+by an execution link.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term><ComputerOutput>help_execute_query_all</ComputerOutput></Term>
 <ListItem>
-<Para>すべての実行リンクに対してダイアログ・ボックスを表示します。</Para>
+<Para>Displays a dialog box for all
+execution links</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term><ComputerOutput>help_execute_none</ComputerOutput></Term>
 <ListItem>
-<Para>すべての実行リンクを使用不可にしますが、実行コマンドをダイアログ・ボックスに表示します。</Para>
+<Para>Disables all execution links, but
+displays the execution command in a dialog box</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>例</Title>
+<Title>Example</Title>
 <Step>
-<Para>アプリケーション内ですべての実行リンクを使用不可にするには、以下の手順を実行してください。
+<Para>To disable all execution links within your application, perform
+these steps:
 </Para>
 <OrderedList>
 <ListItem Id="HH4H.REF.item.114">
-<Para> ホーム・ディレクトリに <ComputerOutput>.Xdefaults</ComputerOutput> ファイルを作成するか、または現在の <ComputerOutput>.Xdefaults</ComputerOutput> ファイルを編集して、以下のリソースを追加してください。</Para>
+<Para>Create an <ComputerOutput>.Xdefaults</ComputerOutput> file in your home directory or
+edit the current <ComputerOutput>.Xdefaults</ComputerOutput> file to include this
+resource:</Para>
 <ProgramListing><Symbol Role="Variable">application_name</Symbol>*executionPolicy:help_execute_none
 </ProgramListing>
 </ListItem>
 <ListItem Id="HH4H.REF.item.115">
-<Para> <Emphasis>application_name</Emphasis> を変更したいアプリケーション名に置換してください。
-アプリケーション名が不確かな場合は、そのアプリケーションのマニュアルで確認してください。</Para>
+<Para>Replace <Emphasis>application_name</Emphasis> with the name of the application
+you want to change. If you are unsure of the name of the application,
+consult your application documentation.</Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.116">
-<Para> アプリケーションを開始してください。</Para>
+<Para>Start the application.</Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.117">
-<Para> 変更をテストするには、アプリケーションのヘルプ・メニューを選択し、実行リンクのあるトピックを表示してください。
+<Para>To test your change, choose the application Help menu and display a topic
+that contains an execution link.
 </Para>
 </ListItem>
 </OrderedList>
 <Note>
-<Para>アプリケーションのヘルプ・ボリュームの実行ポリシーを変更する前に、すべての実行リンク・コマンドと、システムとのそれらの対話を再表示してください。 </Para>
+<Para>Before modifying the execution policy for an application's help
+volume, carefully review all execution link commands and their interaction
+with your system.</Para>
 </Note>
 <Para>&sigspace;
-ヘルプ・システムの実行ポリシーの詳細に関しては、<Emphasis>プログラマーズ・ガイド（ヘルプ・システム編）</Emphasis> を参照してください。
- </Para>
+For more information about the Help System execution policy
+refer to the <Emphasis>Help System Author's and Programmer's Guide</Emphasis>.
+</Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.118">
-<Para> <XRef Linkend="Hyperlinks"></Para>
+<Para><XRef Linkend="Hyperlinks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.119">
-<Para> <XRef Linkend="HelpWindowsAndDialogBoxes"></Para>
+<Para><XRef Linkend="HelpWindowsAndDialogBoxes"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.120">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.121">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.122">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.123">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -1511,69 +1566,79 @@
 </Sect2>
 </Sect1>
 <Sect1 Id="HelpWindowConfiguration">
-<Title>ヘルプ・ウィンドウの構成</Title>
+<Title>Help Window Configuration</Title>
 <IndexTerm>
-<Primary>ヘルプ・ウィンドウ, カラー・リソース</Primary>
+<Primary>help window, color resources</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>カラー, ヘルプ・ウィンドウの</Primary>
+<Primary>color, in help windows</Primary>
 </IndexTerm>
-<Para>ヘルプ・ウィンドウのトピック・ツリーおよびトピック表示領域のカラーを変更できます。ヘルプ・ウィンドウのデフォルトのサイズも変更できます。
+<Para>You can change the colors of the topic tree and topic display
+area in a help window. You can also modify the default size of
+help windows.
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HH4H.REF.item.124">
-<Para> <XRef Linkend="ToChangeHelpWindowColorsForAnApplication"></Para>
+<Para><XRef Linkend="ToChangeHelpWindowColorsForAnApplication"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.125">
-<Para> <XRef Linkend="ToChangeHelpWindowDefaultSize"></Para>
+<Para><XRef Linkend="ToChangeHelpWindowDefaultSize"></Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.126">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.127">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.128">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.129">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Sect2 Id="ToChangeHelpWindowColorsForAnApplication">
-<Title>アプリケーションのヘルプ・ウィンドウ・カラーを変更するには</Title>
+<Title>To Change Help Window Colors for an Application</Title>
 <OrderedList>
 <ListItem Id="HH4H.REF.item.130">
-<Para> ホーム・ディレクトリに <ComputerOutput>.Xdefaults</ComputerOutput> ファイルを作成するか、または現在の <ComputerOutput>.Xdefaults</ComputerOutput> ファイルを編集して、以下の例に示すリソースを追加してください。
-選択したカラーの名前は、リソースの記述仕様の : (コロン) の後に指定します。</Para>
+<Para>Create an <ComputerOutput>.Xdefaults</ComputerOutput> file in your home directory or
+edit your current <ComputerOutput>.Xdefaults</ComputerOutput> file to include the
+resources shown in the following example. The name of the color you
+have chosen follows the : (colon) in the resource specification.</Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.131">
-<Para> <Symbol Role="Variable">application_name</Symbol> を変更したいアプリケーション名に置換してください。
-アプリケーション名が分からない場合は、そのアプリケーションのマニュアルを調べてください。</Para>
-<Para>使用可能なカラーのリストに関しては、システム管理者に問い合わせるか、またはシステムのマニュアルを参照してください。</Para>
+<Para>Replace <Symbol Role="Variable">application_name</Symbol> with the name of the application
+you want to change. If you do not know the name of the application,
+consult your application documentation.</Para>
+<Para>For a list of available colors, check with
+your system administrator or refer to your system documentation.</Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.132">
-<Para> アプリケーションを開始してください。</Para>
+<Para>Start the application.</Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.133">
-<Para> 新しいカラーを確認するには、アプリケーションの [ヘルプ] メニューを選択してください。
+<Para>To check the new colors, choose the application Help menu.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>例</Title>
+<Title>Example</Title>
 <Step>
-<Para>このエントリで、一般ヘルプ(DtHelpDialog)ウィンドウおよび簡易ヘルプ(DtHelpQuickDialog)ウィンドウのトピック・ツリー(TocArea)およびトピック表示領域(DisplayArea)のバックグラウンド・カラーとフォアグラウンド・カラーが変更されます。
-</Para>
-<Para>簡易ヘルプ・ウィンドウにはトピック・ツリーがないので、簡易ヘルプ・ウィンドウのリソースでは、<ComputerOutput>TocArea</ComputerOutput> は省略されます。</Para>
+<Para>This entry changes the background and foreground colors of
+the topic tree (TocArea) and topic display area (DisplayArea)
+for general help (DtHelpDialog) and quick help (DtHelpQuickDialog)
+windows.</Para>
+<Para>Because quick help windows do not have a topic tree, the
+<ComputerOutput>TocArea</ComputerOutput> is omitted in the quick help
+window resources.</Para>
 <ProgramListing><Symbol Role="Variable">application_name</Symbol>*XmDialogShell.DtHelpDialog*DisplayArea.background: blue 
 <Symbol Role="Variable">application_name</Symbol>*XmDialogShell.XmDialogShell.DtHelpDialog*DisplayArea.background: blue
 <Symbol Role="Variable">application_name</Symbol>*XmDialogShell.DtHelpDialog*DisplayArea.foreground: goldenrod
@@ -1592,23 +1657,23 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.134">
-<Para> <XRef Linkend="HelpWindowConfiguration"></Para>
+<Para><XRef Linkend="HelpWindowConfiguration"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.135">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.136">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.137">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.138">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -1616,58 +1681,65 @@
 </Procedure>
 </Sect2>
 <Sect2 Id="ToChangeHelpWindowDefaultSize">
-<Title>ヘルプ・ウィンドウのデフォルト・サイズを変更するには</Title>
+<Title>To Change Help Window Default Size</Title>
 <IndexTerm>
 <Primary>help windows, changing default size</Primary>
 </IndexTerm>
-<Para>リソースを変更することによって、一般ヘルプ・ウィンドウまたは簡易ヘルプ・ウィンドウのデフォルトのウィンドウ・サイズを変更できます。
-&dquote;行&dquote; リソースはウィンドウの高さを決定し、&dquote;列&dquote; リソースはウィンドウの幅を決定します。
-ディスプレイ・フォントは、ウィンドウの大きさに影響します。
+<Para>You can change the default window size for general help or quick help
+windows by modifying resources. The &dquote;rows&dquote; resource
+determines window height and the &dquote;columns&dquote; resource sets
+the window width. The display font affects window dimensions.
 </Para>
 <OrderedList>
 <ListItem Id="HH4H.REF.item.139">
-<Para> ホーム・ディレクトリに <ComputerOutput>.Xdefaults</ComputerOutput> ファイルを作成するか、または現在の <ComputerOutput>.Xdefaults</ComputerOutput> ファイルを編集してください。</Para>
+<Para>Create an <ComputerOutput>.Xdefaults</ComputerOutput> file in your home directory or
+edit your current <ComputerOutput>.Xdefaults</ComputerOutput> file.</Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.140">
-<Para> 以下の例から追加したいリソースを選択してください。</Para>
+<Para>Choose which resources you want to add from the examples which follow.</Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.141">
-<Para> <Symbol Role="Variable">application_name</Symbol> を変更したいアプリケーション名に置換し、新しい行の値、列の値を指定してください。
-アプリケーション名が分からない場合は、そのアプリケーションのマニュアルを調べてください。</Para>
+<Para>Replace <Symbol Role="Variable">application_name</Symbol> with the name of the application you
+want to change and supply new rows and columns values. If you do not know
+the name of the application, consult your application documentation.</Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.142">
-<Para> アプリケーションを開始してください。</Para>
+<Para>Start the application.</Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.143">
-<Para> 新しいウィンドウ・サイズを確認するには、アプリケーションの [ヘルプ] メニューを選択してください。
-簡易ヘルプ・ウィンドウ・タイプの 1 つを変更した場合は、必ず変更したウィンドウ・タイプで表示されているトピックを選択してください。
+<Para>To check the new window size, choose the application's Help menu. If
+you have modified one of the quick help window types, be sure to
+choose a topic that is displayed in the type of window you have changed.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>例</Title>
+<Title>Examples</Title>
 <Step>
-<Para>一般ヘルプ・ウィンドウの場合:
+<Para>For all general help windows:
 </Para>
 <ProgramListing><Symbol Role="Variable">application_name</Symbol>*DtHelpDialog.rows: 65
 <Symbol Role="Variable">application_name</Symbol>*DtHelpDialog.columns: 45
 
 </ProgramListing>
-<Para>簡易ヘルプ・ウィンドウの場合:</Para>
+<Para>For all quick help windows:</Para>
 <Note>
-<Para>ヘルプ・システムは、簡易ヘルプ・ウィンドウを使用して著作権情報、用語、定義リンク、およびヘルプの使い方の情報を表示します。
-この例では、簡易ヘルプ・ウィンドウのインスタンスがすべて変更されます。
+<Para>The Help System uses a quick help window to display
+copyright information, glossary terms, definition links, and
+Using Help information. This example changes all instances
+of quick help windows.
 </Para>
 </Note>
 <ProgramListing><Symbol Role="Variable">application_name</Symbol>*DtHelpQuickDialog.rows: 25
 <Symbol Role="Variable">application_name</Symbol>*DtHelpQuickDialog.rows: 25
 
 </ProgramListing>
-<Para>ヘルプの使い方および著作権情報を表示するために使用する簡易ヘルプ・ウィンドウの場合:</Para>
+<Para>For quick help windows used to display Using Help and copyright
+information:</Para>
 <ProgramListing><Symbol Role="Variable">application_name</Symbol>*onHelpDialog.rows: 25
 <Symbol Role="Variable">application_name</Symbol>*onHelpDialog.columns: 25
 </ProgramListing>
-<Para>定義リンク用簡易ヘルプ・ウィンドウの場合:</Para>
+<Para>For definition link quick help windows:</Para>
 <ProgramListing><Symbol Role="Variable">application_name</Symbol>*definitionBox.rows: 10
 <Symbol Role="Variable">application_name</Symbol>*definitionBox.columns: 20
 
@@ -1675,23 +1747,23 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.144">
-<Para> <XRef Linkend="HelpWindowConfiguration"></Para>
+<Para><XRef Linkend="HelpWindowConfiguration"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.145">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.146">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.147">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.148">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -1700,70 +1772,80 @@
 </Sect2>
 </Sect1>
 <Sect1 Id="ErrorMessages">
-<Title>ヘルプ・エラー・メッセージ</Title>
+<Title>Help Error Messages</Title>
 <IndexTerm>
-<Primary>エラー・メッセージ</Primary>
+<Primary>error messages</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HH4H.REF.item.149">
-<Para> ヘルプ・システムがヘルプ・ボリュームを見つけられない場合、以下のメッセージを表示します。</Para>
+<Para>If the Help System cannot find a help volume, it displays
+this message:</Para>
 <Graphic Entityref="Help4HelpVolErrMsg" Id="HH4H.REF.fig.8"></Graphic>
-<Para>考えられる原因は以下のとおりです。
+<Para>Possible causes are:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HH4H.REF.item.150">
-<Para> アプリケーションのヘルプ・ボリュームがインストールされていない。</Para>
+<Para>The application's help volume is not installed</Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.151">
-<Para> デスクトップのヘルプ検索パスに、ヘルプ・ボリュームがインストールされているディレクトリが記述されていない。</Para>
-<Para>システム管理者に問い合わせて、アプリケーションのヘルプ・ボリュームが適切にインストールされているか、およびヘルプ検索パスが正しく設定されているかを確認してください。</Para>
+<Para>Your desktop help search path does not include the directory
+where the help volume has been installed.</Para>
+<Para>Ask your system administrator to verify that the
+application's help volume is properly installed and
+that your help search paths are set correctly.</Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 <ListItem Id="HH4H.REF.item.152">
-<Para> ヘルプ・ビューアがヘルプ・ボリュームのヘルプ・トピックの ID を見つけられない場合、以下のようなメッセージを表示します。</Para>
+<Para>If the Help Viewer cannot find the ID of a help topic in a help
+volume, it displays a message like this:</Para>
 <Graphic Entityref="Help4HelpIdErrMsg" Id="HH4H.REF.fig.9"></Graphic>
-<Para>考えられる原因は以下のとおりです。
+<Para>Possible causes are:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HH4H.REF.item.153">
-<Para> ハイパーリンクが、存在しないトピックを指しているか、トピックの ID が変更されている。</Para>
+<Para>A hyperlink points to a topic that does not exist or
+whose ID has been changed</Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.154">
-<Para> ハイパーリンクが、インストールされていない別のヘルプ・ボリュームの有効 ID を指している。</Para>
-<Para>システム管理者に問い合わせて、アプリケーションのヘルプ・ボリュームが適切にインストールされているか、およびヘルプ検索パスが正しく設定されているかを確認してください。
+<Para>A hyperlink points to a valid ID in another help volume
+that is not installed</Para>
+<Para>Ask your system administrator to verify that the
+application's help volume is properly installed and
+that your help search paths are set correctly.
 </Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 <ListItem Id="HH4H.REF.item.155">
-<Para> 実行時のヘルプ・ボリューム(<ComputerOutput>.sdl</ComputerOutput> ファイル)にエラーがある場合、ヘルプ・ビューアは以下のメッセージを表示します。</Para>
+<Para>If the run-time help volume (<ComputerOutput>.sdl</ComputerOutput> file) has an
+error, the Help Viewer displays this message:</Para>
 <Graphic Entityref="Help4HelpTopicErrMsg" Id="HH4H.REF.fig.10"></Graphic>
-<Para>考えられる原因は以下のとおりです。
+<Para>Possible causes:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HH4H.REF.item.156">
-<Para> 実行時のヘルプ・ボリュームに不備があるか、エラーがある可能性がある。</Para>
-<Para>システム管理者にヘルプ・ボリュームのチェックを依頼してください。</Para>
+<Para>The run-time help volume may be incomplete or contain an error.</Para>
+<Para>Ask your system administrator to check the help volume.</Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HH4H.REF.item.157">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.158">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.159">
-<Para> <XRef Linkend="Table-Of-Contents"></Para>
+<Para><XRef Linkend="Table-Of-Contents"></Para>
 </ListItem>
 <ListItem Id="HH4H.REF.item.160">
-<Para> <Link Type="jump" Linkend="SDL-RESERVED-hometopic">ホーム・トピック</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Home Topic</Link>
 </Para>
 </ListItem>
 </ItemizedList>

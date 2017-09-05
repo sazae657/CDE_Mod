@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: terminal.pm /main/3 1996/12/18 01:44:46 cde-hit $ */
+/* $XConsortium: fpterm.pm /main/3 1995/07/18 17:35:49 drk $ */
 /* Designed by the User Interaction Design Group, Hewlett-Packard */
 /* Copyright (c) 1993 Hewlett-Packard */
 static char *newterminal32[]={

@@ -1,4 +1,4 @@
-<!-- $XConsortium: prnset.sgm /main/1 1996/12/18 02:41:09 cde-hit $ -->
+<!-- $XConsortium: prnset.sgm /main/4 1996/10/30 10:27:08 rws $ -->
 <!-- (c) Copyright 1996 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1996 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1996 International Business Machines Corp. -->
@@ -9,103 +9,90 @@
 <!-- Help volume: PrnSetup -->
 <!-- File name:   Reference -->
 <Chapter Id="PrinterOptions">
-<Title><Anchor Id="PrinterSetup">[プリンタのオプション] ダイアログ・ボックス</Title>
-<Para>
-[プリンタのオプション] ダイアログ・ボックスには、現在選択されているプリンタの
-モデルと、プリンタへ送るドキュメントを生成するためのドキュメント書式が、
-リストされます。
-また、ユーザがプリンタに設定できるオプションも、表示されます。
+<Title><Anchor Id="PrinterSetup">Printer Options Dialog</Title>
+<Para>The Printer options dialog lists the model of the currently
+selected printer and the document
+format used to generate documents sent to the printer.
+It also presents the options that you can set for the printer.
 </Para>
-<para>
-[プリンタのオプション] ダイアログへアクセスするには、
-[印刷の設定] ウィンドウ上の [プリンタ] タブをクリックしてください。
+<para>To access the Printer options dialog, click the Printer tab on
+the Print Setup window.
 </para>
 <Graphic Entityref="PrinterOpts" Id="HPRNSET.REF.fig.2"></Graphic>
-<para>
-設定可能なオプションは、プリンタのモデルによって様々であることに注意して
-ください。いくつかのプリンタは、他のプリンタでサポートされていない
-オプションをサポートしています。もっとも共通にインプリメントされている
-プリンタのオプションには、以下のものがあります。
+<para>Note that the available options may vary according to the printer model.
+Some printer models support options that other printers do not. The most
+commonly implemented printer options include:
 </para>
 <variablelist>
-<varlistentry><term>ページ・オリエンテーション</term>
+<varlistentry><term>Page Orientation</term>
 <listitem>
-<para>
-出力が、ページ上にどのような方向で置かれるかを指定します。
-選択可能なオリエンテーションには、縦長、横長、逆縦長、逆横長があります。
-オリエンテーションのリストに隣接したアイコンは、現在の選択のグラフィカルな
-表現です。
+<para>Specifies how the output will be oriented on the page. Possible orientations
+include: portrait, landscape, reverse portrait, and reverse landscape.
+An icon adjacent to the orientations list presents a graphical
+illustration of the current selection.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>印刷面</term>
+<varlistentry><term>Printed Sides</term>
 <listitem>
-<para>
-片面または両面印刷を指定します。片面、両面、混合の、三つまで選択できます。
-選択リストに隣接するアイコンは、現在の選択のグラフィカルな表現です。
+<para>Specifies single or double-sided printing. Up to three choices are possible:
+simplex, duplex, and
+tumble. An icon adjacent to the choices list presents
+a graphical illustration of the current selection.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>トレイ</term>
+<varlistentry><term>Tray</term>
 <listitem>
-<para>
-メディアを引き出す、プリンタのトレイを指定します。
-<literal>自動選択</literal>トレイ・オプションが、すべてのプリンタで
-選択可能です。このオプションを選択することは、どのトレイを使うかということ
-に対して、なにも指定しないということです。残りのトレイの選択肢は、
-プリンタに依存しています。
+<para>Specifies the printer tray from which the media will be drawn. The
+<literal>Auto-select</literal> tray option is available
+for all printers. Selecting this
+option indicates no preference as to which tray to use. Remaining Tray selections
+are dependent on the printer.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>ページ・サイズ</term>
+<varlistentry><term>Page Size</term>
 <listitem>
-<para>
-印刷に使用するメディアのサイズを指定します。このリストのエントリは、
-<literal>プリンタに積まれている用紙</literal>ラジオボタンが選択されているか、
-<literal>すべてのサイズの用紙</literal>ラジオボタンが選択されているかどうかに
-依存します。
+<para>Specifies the media size for printing. The entries in this list depend on
+whether the <literal>Loaded in Printer</literal> or <literal>All Sizes</literal>
+radio button is selected.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>プリンタに積まれている用紙</term>
+<varlistentry><term>Loaded in Printer</term>
 <listitem>
-<para>
-そのプリンタで現在選択可能な、メディア・サイズのリストを提供します。
-現在の<literal>トレイ</literal>オプションが<literal>自動選択</literal>の
-とき、すべてのプリンタ・トレイで選択可能なメディア・サイズを、見ることが
-できます。特定のトレイが選択されているとき、そのトレイに積まれている
-メディアのサイズのみが、表示されます。どのトレイでどのメディア・サイズが
-選択可能かに関する情報は、システム管理者から提供されるべきです。
-システム管理者がこの情報を提供していないとき、
-<literal>プリンタに積まれている用紙</literal>ラジオボタンは、
-アクティブでなくなります。
+<para>Provides a list of the media sizes currently available on the printer. If the
+current <literal>Tray</literal> option is <literal>Auto-select</literal>,
+you will see all media sizes available in all of the printer&rsquo;s
+trays. If a specific tray is selected, only the media size loaded in that
+tray is shown. Information on which media size is available in which
+tray must be provided by the system administrator.
+If the system administrator does not provide this information,
+the <literal>Loaded in Printer</literal> radio button will be inactive.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>すべてのサイズ</term>
+<varlistentry><term>All Sizes</term>
 <listitem>
-<para>
-そのプリンタで選択可能な、すべてのサポートされるメディア・サイズの
-リストを表示します。このボタンを選択すると、<literal>トレイ</literal>
-オプションは<literal>自動選択</literal>に設定されます。このボタンは、
-以下の状況で提供されます。
+<para>Provides a list of all supported media sizes available for the printer. If the
+you select this button, the <literal>Tray</literal> option is set to
+<literal>Auto-select</literal>. This button is provided for the following situations:
 </para>
 <itemizedlist>
 <listitem>
-<para>
-システム管理者が、どのサイズがプリンタに積まれているかを指定しなかった
-とき。
+<para>If the system administrator has not specified
+which sizes are loaded in the printer
 </para>
 </listitem>
 <listitem>
-<para>
-希望するメディア・サイズが積まれておらず、プリンタが希望するサイズの用紙を
-積むことを促しているとき。
+<para>If a desired media size is not loaded and the printer
+prompts for the requested size
 </para>
 </listitem>
 <listitem>
-<para>
-出力が、実際のプリンタに届かないとき(例えば、ファイルに出力するとき)。
+<para>If the output never reaches an actual printer (for
+example, when printing to a file)
 </para>
 </listitem></itemizedlist>
 </listitem>
@@ -113,74 +100,66 @@
 </variablelist>
 </Chapter>
 <Chapter Id="JobOptions">
-<Title><Anchor Id="JobSetup">[ジョブ・オプション] ダイアログ</Title>
-<Para>
-[ジョブ・オプション] ダイアログは、ユーザが現在の印刷ジョブに設定する
-ことのできるオプションを、表示します。
+<Title><Anchor Id="JobSetup">Job Options Dialog</Title>
+<Para>The Job options dialog presents the options that you
+can set for the current print job.
 </Para>
-<para>
-[ジョブ・オプション] ダイアログにアクセスするには、[印刷の設定] ウィンドウ
-の [ジョブ] タブをクリックしてください。
+<para>To access the Job options dialog, click the Job tab on
+the Print Setup window.
 </para>
 <Graphic Entityref="JobOpts" Id="HPRNSET.REF.fig.3"></Graphic>
-<para>
-[ジョブ・オプション] はプリンタ制御するスプーラに固有で、スプーラによって
-様々であることに注意してください。もっとも共通のジョブ・オプションには、
-以下のものがあります。
+<para>Note that the Job options are specific to the spooler controlling
+the printer and may vary depending on the spooler.
+The most commonly implemented job options include:
 </para>
 <variablelist>
-<varlistentry><term>完了時にメールを送信</term>
+<varlistentry><term>Send Mail When Done</term>
 <listitem>
-<para>
-印刷ダイアログ・マネージャに、ジョブが完了したときにユーザに電子メールを
-送るように指示します。
+<para>Instructs the Print Dialog Manager to send an email message to your
+when the job is completed.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>バナー・ページのタイトル</term>
+<varlistentry><term>Banner Page Title</term>
 <listitem>
-<para>
-出力のバナー・ページに表示したいテキストを、指定します。
+<para>Specifies the text you want to appear on the banner page of the
+output.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>印刷コマンドのオプション</term>
+<varlistentry><term>Print Command Options</term>
 <listitem>
-<para>
-スプーラに渡したいコマンド行のオプションと引数を、指定します。
-印刷ダイアログ・マネージャは、このフィールドに対して何の解析もおこなわない
-ことに注意してください。すべての解析と引数の検証は、その下のスプーラに
-よっておこなわれます。
+<para>Specifies command line options and arguments that you want to
+pass to the spooler. Note that the Print Dialog Manager performs no parsing of this
+field. All parsing and argument validation is performed by the underlying
+spooler.
 </para>
 </listitem>
 </varlistentry>
 </variablelist>
 </Chapter>
 <Chapter Id="PrintSetupButtons">
-<Title>[印刷の設定] ウィンドウのボタン</Title>
+<Title>Print Setup Window Buttons</Title>
 <VariableList>
 <VarListEntry>
-<Term>了解</Term>
+<Term>OK</Term>
 <ListItem>
-<Para>
-ユーザが変更したあらゆるオプションを記録して、[印刷の設定] ウィンドウを
-閉じます。
+<Para>Record any options you have changed and close the Print Setup window.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>取消し</Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para>
-ユーザがおこなった変更を記録せずに、[印刷の設定] ウィンドウを閉じます。
+<Para>Close the Print Setup window without recording any changes
+you have made.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ヘルプ</Term>
+<Term>Help</Term>
 <ListItem>
-<Para>
-[印刷の設定] ウィンドウの使い方に関するヘルプを、表示します。
+<Para>Display Help on how to use the Print Setup window.
 </Para>
 </ListItem>
 </VarListEntry>

@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: minimize.pm /main/5 1996/12/18 02:18:20 cde-hit $ */
+/* $XConsortium: minimize.pm /main/5 1996/10/29 15:55:04 drk $ */
 static char * minimize_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "78 43 5 1 0 0",

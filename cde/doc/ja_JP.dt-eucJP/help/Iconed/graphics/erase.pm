@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: erase.pm /main/3 1996/12/18 01:55:57 cde-hit $ */
+/* $XConsortium: IEtErase.pm /main/3 1995/07/18 17:22:06 drk $ */
 static char * IEtErase [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "36 36 8 1 0 0",

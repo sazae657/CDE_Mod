@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: cdelogo.pm /main/3 1996/12/18 02:54:07 cde-hit $ */
+/* $XConsortium: cdelogo.pm /main/4 1996/06/19 16:19:32 drk $ */
 static char * cdelogo [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "64 56 15 1 0 0",

@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: contain.pm /main/3 1996/12/18 01:11:31 cde-hit $ */
+/* $XConsortium: contain.pm /main/1 1996/03/09 20:11:49 rws $ */
 static char * container_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "48 32 9 1 0 0",

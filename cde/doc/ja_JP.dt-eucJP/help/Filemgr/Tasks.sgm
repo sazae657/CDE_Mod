@@ -1,4 +1,4 @@
-<!-- $XConsortium: Tasks.sgm /main/5 1996/12/18 01:46:23 cde-hit $ -->
+<!-- $XConsortium: Tasks.sgm /main/10 1996/10/29 21:34:44 cdedoc $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,109 +9,109 @@
 <!-- Help volume: Filemgr -->
 <!-- File name:   Tasks   -->
 <Chapter Id="Tasks">
-<Title>ファイル・マネージャの使い方</Title>
+<Title>File Manager Tasks</Title>
 <Procedure>
-<Title>ファイル管理の基本スキル</Title>
+<Title>Basic File Management Skills</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.1">
-<Para> <XRef Linkend="ToSelectASingleObjectTA"></Para>
+<Para><XRef Linkend="ToSelectASingleObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.2">
-<Para> <XRef Linkend="ToSelectMultipleObjectsTA"></Para>
+<Para><XRef Linkend="ToSelectMultipleObjectsTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.3">
-<Para> <XRef Linkend="ToGetHelpOnAnObjectTA"></Para>
+<Para><XRef Linkend="ToGetHelpOnAnObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.4">
-<Para> <XRef Linkend="ToDropAnObjectTA"></Para>
+<Para><XRef Linkend="ToDropAnObjectTA"></Para>
 </ListItem>
 </ItemizedList>
-<Para>必要に応じて、<OLink Type="Jump" LocalInfo="Intromgr UsingWindowsCI">デスクトップの基本スキル</OLink>
-も参照してください。
+<Para>If necessary, you can also read
+<OLink Type="Jump" LocalInfo="Intromgr UsingWindowsCI">Basic Desktop Skills</OLink>.
 </Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>ファイルおよびフォルダの作業</Title>
+<Title>Working with Files and Folders</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.5">
-<Para> <XRef Linkend="ToCreateANewObjectTA"></Para>
+<Para><XRef Linkend="ToCreateANewObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.6">
-<Para> <XRef Linkend="ToRenameAnObjectTA"></Para>
+<Para><XRef Linkend="ToRenameAnObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.7">
-<Para> <XRef Linkend="ToOpenAnObjectTA"></Para>
+<Para><XRef Linkend="ToOpenAnObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.8">
-<Para> <XRef Linkend="ToMoveAnObjectTA"></Para>
+<Para><XRef Linkend="ToMoveAnObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.9">
-<Para> <XRef Linkend="ToCopyAnObjectTA"></Para>
+<Para><XRef Linkend="ToCopyAnObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.10">
-<Para> <XRef Linkend="ToCreateASymbolicLinkTA"></Para>
+<Para><XRef Linkend="ToCreateASymbolicLinkTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.11">
-<Para> <XRef Linkend="ToExecuteAnObjectsActionsTA"></Para>
+<Para><XRef Linkend="ToExecuteAnObjectsActionsTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>他のフォルダのナビゲート</Title>
+<Title>Navigating to other Folders</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.12">
-<Para> <XRef Linkend="ToChangeToAnotherDirectoryTA"></Para>
+<Para><XRef Linkend="ToChangeToAnotherDirectoryTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.13">
-<Para> <XRef Linkend="ToGoHomeDirTA"></Para>
+<Para><XRef Linkend="ToGoHomeDirTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.14">
-<Para> <XRef Linkend="ToGoParentDirTA"></Para>
+<Para><XRef Linkend="ToGoParentDirTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.15">
-<Para> <XRef Linkend="ToOpenATerminalWindowTA"></Para>
+<Para><XRef Linkend="ToOpenATerminalWindowTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>ファイルおよびフォルダの削除</Title>
+<Title>Deleting Files and Folders</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.16">
-<Para> <XRef Linkend="ToDeleteAnObjectTA"></Para>
+<Para><XRef Linkend="ToDeleteAnObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.17">
-<Para> <XRef Linkend="ToOpenTheTrashCanTA"></Para>
+<Para><XRef Linkend="ToOpenTheTrashCanTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.18">
-<Para> <XRef Linkend="ToRestoreAnObjectFromTheTrashTA"></Para>
+<Para><XRef Linkend="ToRestoreAnObjectFromTheTrashTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.19">
-<Para> <XRef Linkend="ToEmptyTheTrashTA"></Para>
+<Para><XRef Linkend="ToEmptyTheTrashTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>ファイルの配置</Title>
+<Title>Locating Files</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.20">
-<Para> <XRef Linkend="ToFindAFileByNameTA"></Para>
+<Para><XRef Linkend="ToFindAFileByNameTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.21">
-<Para> <XRef Linkend="ToFindAFileByContentsTA"></Para>
+<Para><XRef Linkend="ToFindAFileByContentsTA"></Para>
 </ListItem>
 </ItemizedList>
 <!-- Remote Systems are currently not supported:
 ************************************************************
-<procedure>リモート・マシン上のファイルへのアクセス
+<procedure>Accessing Files on Remote Systems
  
 <list bullet tight>
  
@@ -129,339 +129,360 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>デスクトップ・アイコンの使い方</Title>
+<Title>Using Desktop Icons</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.22">
-<Para> <XRef Linkend="ToPutAnObjectOnTheDesktopTA"></Para>
+<Para><XRef Linkend="ToPutAnObjectOnTheDesktopTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.23">
-<Para> <XRef Linkend="ToRemoveAnObjectFromTheDesktopTA"></Para>
+<Para><XRef Linkend="ToRemoveAnObjectFromTheDesktopTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>アクセス権の変更</Title>
+<Title>Changing Permissions</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.24">
-<Para> <XRef Linkend="ToChangeAnObjectsOwnerTA"></Para>
+<Para><XRef Linkend="ToChangeAnObjectsOwnerTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.25">
-<Para> <XRef Linkend="ToChangeAnObjectsPermissionsTA"></Para>
+<Para><XRef Linkend="ToChangeAnObjectsPermissionsTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>別のファイル・マネージャ表示の使い方</Title>
+<Title>Using Different File Manager Views</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.26">
-<Para> <XRef Linkend="BasicViewingPreferences"></Para>
+<Para><XRef Linkend="BasicViewingPreferences"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.27">
-<Para> <XRef Linkend="ToUseDirectoryTree"></Para>
+<Para><XRef Linkend="ToUseDirectoryTree"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.28">
-<Para> <XRef Linkend="ToChangeTheSortOrderTA"></Para>
+<Para><XRef Linkend="ToChangeTheSortOrderTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.29">
-<Para> <XRef Linkend="ToSavePreferencesAsTheDefaultTA"></Para>
+<Para><XRef Linkend="ToSavePreferencesAsTheDefaultTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.30">
-<Para> <XRef Linkend="ToShowHiddenObjectsTA"></Para>
+<Para><XRef Linkend="ToShowHiddenObjectsTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.31">
-<Para> <XRef Linkend="ModifyFilterList"></Para>
+<Para><XRef Linkend="ModifyFilterList"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.32">
-<Para> <XRef Linkend="ToEnableIconBrowsingTA"></Para>
+<Para><XRef Linkend="ToEnableIconBrowsingTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.33">
-<Para> <XRef Linkend="ToDisableIconBrowsingTA"></Para>
+<Para><XRef Linkend="ToDisableIconBrowsingTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.34">
-<Para> <XRef Linkend="ToChangeIconBrowsingTA"></Para>
+<Para><XRef Linkend="ToChangeIconBrowsingTA"></Para>
 </ListItem>
 </ItemizedList>
-<Para>以下の説明は、マウスの使用を前提としています。大部分の作業はマウスなしでも行えます。
-詳細は、<OLink Type="Jump" LocalInfo="Intromgr DesktopKeyboardNav">デスクトップのキーボード・ショートカット</OLink>を参照してください。
+<Para>These instructions assume that you are using a mouse. Most tasks
+can also be done without a mouse. See <OLink Type="Jump" LocalInfo="Intromgr DesktopKeyboardNav"> Keyboard Shortcuts for the Desktop</OLink>
+for more information.
 </Para>
 </Step>
 </Procedure>
 <Sect1 Id="ToSelectASingleObjectTA">
-<Title>ファイルまたはフォルダをひとつ選択するには</Title>
+<Title>To Select a Single File or Folder</Title>
 <IndexTerm>
-<Primary>選択: ファイル</Primary>
+<Primary>selecting: file</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>選択: フォルダ</Primary>
+<Primary>selecting: folder</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>選択: アイコン</Primary>
+<Primary>selecting: icon</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ファイル: ひとつ選択</Primary>
+<Primary>file: selecting single</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フォルダ: ひとつ選択</Primary>
+<Primary>folder: selecting single</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>アイコン: ひとつ選択</Primary>
+<Primary>icon: selecting single</Primary>
 </IndexTerm>
-<Para>ファイルまたはフォルダのアイコンを選択すると、その名前が強調表示されます。
-ファイル・マネージャのメニューにある選択肢の多くは、現在の<Emphasis>選択</Emphasis>ファイルまたはフォルダに適用されます。
-オブジェクトを選択すると、そのオブジェクトに関する [選択] メニューの選択肢のひとつを使用できます。
-[選択] メニューには、現在選択されているオブジェクトにのみ有効な選択肢があります。
-このメニューの内容は、表示領域の別の種類のオブジェクトを選択すると変わります。
-ユーザが選択肢を選択するまでは、これらの選択肢は選択できません。
+<Para>When you select the icon of a file or folder, its name is highlighted.
+Many choices in File Manager's menus apply to the currently <Emphasis>selected</Emphasis>
+file or folder. You select an object so that you can use one of the
+Selected menu choices on that object. The Selected menu contains
+choices that only affect the currently selected objects. The contents
+of this menu will change as you select different kinds of objects
+in the view area. These choices will appear dimmed until you
+select an icon.
 </Para>
 <Procedure>
-<Title>マウス</Title>
+<Title>Mouse</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.35">
-<Para> アイコンの上を 1 回クリックしてください。
+<Para>Click once on the icon.
 </Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>キーボード</Title>
+<Title>Keyboard</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.36">
-<Para> [Tab] キーと矢印キーを使用して、選択するアイコンに強調表示を移動してください。
+<Para>Use the Tab and arrow keys to move the highlight
+to the icon you want to select.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.37">
-<Para> スペースバーを押してください。
+<Para>Press Spacebar.
 </Para>
 </ListItem>
 </OrderedList>
 <Figure Id="HFMGR.TSKS.fig.1">
-<Title>ファイルまたはフォルダを選択すると、その名前が強調表示されます。</Title>
+<Title>When a file or folder is selected, its name is highlighted.</Title>
 <Graphic Entityref="FM-SelectedIcons" Id="HFMGR.TSKS.grph.1"></Graphic>
 </Figure>
-<Para>ファイルまたはフォルダの選択を解除するには、別のアイコンを選択するか、ファイル・マネージャ・ウィンドウの空の領域をクリックしてください。
+<Para>To deselect a file or folder, select another icon or click on an empty
+area in the File Manager window.
 </Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.38">
-<Para> <XRef Linkend="ToSelectMultipleObjectsTA"></Para>
+<Para><XRef Linkend="ToSelectMultipleObjectsTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToSelectMultipleObjectsTA">
-<Title>ファイルまたはフォルダを複数選択するには</Title>
+<Title>To Select Multiple Files or Folders</Title>
 <IndexTerm>
-<Primary>選択: 複数のファイル</Primary>
+<Primary>selecting: multiple files</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>選択: 複数のフォルダ</Primary>
+<Primary>selecting: multiple folders</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>選択: 複数のアイコン</Primary>
+<Primary>selecting: multiple icons</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ファイル: 複数のファイルの選択</Primary>
+<Primary>file: selecting multiple files</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フォルダ: 複数のフォルダの選択</Primary>
+<Primary>folder: selecting multiple folders</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>アイコン: 複数のアイコンの選択</Primary>
+<Primary>icon: selecting multiple icons</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>複数のファイル: 選択</Primary>
+<Primary>multiple files: selecting</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>複数のフォルダ: 選択</Primary>
+<Primary>multiple folders, selecting</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>複数のアイコン: 選択</Primary>
+<Primary>multiple icons: selecting</Primary>
 </IndexTerm>
-<Para>複数のオブジェクトを選択することで、[選択] メニューの選択肢の一つを、これらのオブジェクトに対して使用できます。
-複数のファイルの選択は、いくつかのファイルを一回で削除する場合や、ファイルのグループを新規フォルダに移動する場合に役立ちます。
+<Para>You select multiple objects so that you can use one of the Selected
+menu choices on these objects.
+Selecting multiple files is useful if you want to delete several files at
+once, or move a group of files to a new folder.
 </Para>
 <Procedure>
-<Title>マウス</Title>
+<Title>Mouse</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.39">
-<Para> 表示のブランク領域でマウス・ボタン 1 を押して、選択するアイコンの周囲にボックスを描画するようにマウスをドラッグし、マウス・ボタンを離してください。</Para>
-<Para><Emphasis>または、</Emphasis> 最初のアイコンをクリックして選択し、[Control] キーを押しながら、各追加アイコンをクリックして選択してください。
+<Para>Press mouse button 1 in a blank area of the view, drag the mouse
+to draw a box around the icons you want to select, then release
+the mouse button.</Para>
+<Para><Emphasis>Or,</Emphasis> click to select the first icon, then hold down the Control key
+and click to select each additional icon.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.40">
-<Para> 選択グループからアイコンをひとつ削除するには、[Control] キーを押しながら、選択を解除するアイコンをクリックしてください。
+<Para>To remove a single icon from a selected group, hold the Control key
+and click on the icon you want to deselect.
 </Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>キーボード</Title>
+<Title>Keyboard</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.41">
-<Para> 最初のファイルまたはフォルダ・アイコンを、スペースバーを押して選択してください。
+<Para>Select the first file or folder icon by pressing Spacebar.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.42">
-<Para> 選択する各追加アイコンに強調表示を移動して、[Control] キーを押しながらスペースバーを押してください。
+<Para>For each additional icon you want to select, move the highlight
+to it, then press Control+Spacebar.
 </Para>
 </ListItem>
 </OrderedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.43">
-<Para> <XRef Linkend="ToSelectASingleObjectTA"></Para>
+<Para><XRef Linkend="ToSelectASingleObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.44">
-<Para> <XRef Linkend="ToRenameAnObjectTA"></Para>
+<Para><XRef Linkend="ToRenameAnObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.45">
-<Para> <XRef Linkend="ToDropAnObjectTA"></Para>
+<Para><XRef Linkend="ToDropAnObjectTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToRenameAnObjectTA">
-<Title>ファイルまたはフォルダの名前を変更するには</Title>
-<IndexTerm><Primary>名前の変更: ファイル</Primary></IndexTerm>
-<IndexTerm><Primary>名前の変更: フォルダ</Primary></IndexTerm>
-<IndexTerm><Primary>ファイル:名前の変更</Primary></IndexTerm>
-<IndexTerm><Primary>フォルダ:名前の変更</Primary></IndexTerm>
-<para>ユーザは、オブジェクトに対して適切な権限をもっている時のみ、その名前を変更できることに、注意してください。また、アクションの名前を変更できないことに、注意してください。
+<Title>To Rename a File or Folder</Title>
+<IndexTerm><Primary>renaming: file</Primary></IndexTerm>
+<IndexTerm><Primary>renaming: folder</Primary></IndexTerm>
+<IndexTerm><Primary>file: renaming</Primary></IndexTerm>
+<IndexTerm><Primary>folder: renaming</Primary></IndexTerm>
+<para>Note that you can rename only objects for which you have appropriate permissions.
+Also, note that you cannot rename actions.
 </para>
 <Procedure>
-<Title>マウス</Title>
+<Title>Mouse</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.46">
-<Para> ファイルまたはフォルダ名を、アイコンの下の名前をクリックして選択してください。
-  名前がテキスト・フィールドに入ります。
+<Para>Select the file or folder name by clicking on the name beneath
+its icon.
+The name will be put in a text field.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.47">
-<Para> 新規の名前を入力してください。
+<Para>Type the new name.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.48">
-<Para> [Return] キーを押してください。
-  入力した名前の外側をクリックすると、変更内容が失われます。
+<Para>Press Return. If you just click outside the name when you are done, your
+changes will be lost.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>名前の変更操作を取り消すには、[Escape] キーを押してください。
+<Para>To cancel a rename operation, press Escape.
 </Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>キーボード</Title>
+<Title>Keyboard</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.49">
-<Para> [Tab] キーと矢印キーを使用して、選択するファイルまたはフォルダに強調表示を移動してください。
+<Para>Use the Tab and Arrow keys to move to the icon
+for the file or folder
+you want to rename.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.50">
-<Para> アイコン名を強調表示するには、スペースバーを押してください。
+<Para>Press Spacebar to highlight the
+icon name.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.51">
-<Para> [選択] メニューで [名前の変更] を選択してください。
+<Para>Choose Rename from the Selected menu.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.52">
-<Para> 新規の名前を入力してください。
+<Para>Type the new name.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.53">
-<Para> [Return] キーを押してください。
+<Para>Press Return.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>名前の変更操作を取り消すには、[Escape] キーを押してください。
+<Para>To cancel a rename operation, press Escape.
 </Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.54">
-<Para> <XRef Linkend="ToMoveAnObjectTA"></Para>
+<Para><XRef Linkend="ToMoveAnObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.55">
-<Para> <XRef Linkend="ToCopyAnObjectTA"></Para>
+<Para><XRef Linkend="ToCopyAnObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.56">
-<Para> <XRef Linkend="ToSelectASingleObjectTA"></Para>
+<Para><XRef Linkend="ToSelectASingleObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.57">
-<Para> <XRef Linkend="ToSelectMultipleObjectsTA"></Para>
+<Para><XRef Linkend="ToSelectMultipleObjectsTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToGetHelpOnAnObjectTA">
-<Title>ファイルまたはフォルダに関するヘルプを参照するには</Title>
+<Title>To Get Help on a File or Folder</Title>
 <IndexTerm>
-<Primary>ヘルプ: ファイルに関するヘルプの参照</Primary>
+<Primary>help: getting help on file</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ヘルプ: フォルダに関するヘルプの参照</Primary>
+<Primary>help: getting help on folder</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ファイル: ヘルプの参照</Primary>
+<Primary>file: getting help on</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フォルダ: ヘルプの参照</Primary>
+<Primary>folder: getting help on</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>アイテムヘルプ</Primary>
+<Primary>item help</Primary>
 </IndexTerm>
 <Procedure>
-<Title>マウス</Title>
+<Title>Mouse</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.58">
-<Para> ファイルまたはフォルダのアイコンを選択して、[F1] キーを押してください。</Para>
+<Para>Select the file or folder's icon, then press F1.</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.59">
-<Para> <Emphasis>または、</Emphasis>マウス・ポインタをオブジェクトの上に置いて、マウス・ボタン 3 を押すと表示されるオブジェクトのポップアップ・メニューで、ヘルプを選択してください。
+<Para><Emphasis>Or,</Emphasis> Put the mouse pointer on the object and select help from
+the object's pop-up menu (displayed by pressing mouse button 3.)
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.60">
-<Para> <Emphasis>または、</Emphasis> [ヘルプ] メニューで [アイテムヘルプ] を選択して、ファイルまたはフォルダのアイコンをクリックしてください。
+<Para><Emphasis>Or,</Emphasis> choose
+On Item from the Help menu, then
+click the file or folder's icon.
 </Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>キーボード</Title>
+<Title>Keyboard</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.61">
-<Para> [Tab] キーと矢印キーを使用して、アイコンに移動し、[F1] キーを押してください。
+<Para>Use the Tab and direction keys to move to the icon,
+then press F1.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -469,186 +490,202 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="ToOpenAnObjectTA">
-<Title>ファイルまたはフォルダを開くには</Title>
+<Title>To Open a File or Folder</Title>
 <IndexTerm>
-<Primary>開く: ファイル</Primary>
+<Primary>opening: file</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>開く: フォルダ</Primary>
+<Primary>opening: folder</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ファイル: 開く</Primary>
+<Primary>file: opening</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フォルダ: 開く</Primary>
+<Primary>folder: opening</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>選択メニュー</Primary>
+<Primary>Selected menu</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダブルクリック: 実行アクション</Primary>
+<Primary>double-clicking: action performed</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>アクション: ダブルクリック</Primary>
+<Primary>action: double-clicking</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>メニュー: アクション</Primary>
+<Primary>menu: Actions</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.62">
-<Para> アイコンをダブルクリックしてください。
+<Para>Double-click the icon.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.63">
-<Para> <Emphasis>また、</Emphasis>アイコンを選択して、メニュー・バーに移動し、選択メニューで [開く] (あるいは [現在のウィンドウに表示] か [新規ウィンドウに表示])を選択してください。
+<Para><Emphasis>Or,</Emphasis> select the icon, then go to the menu bar and
+choose Open (or OpenInPlace or
+OpenNewView) from the Selected menu.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.64">
-<Para> <Emphasis>または、</Emphasis> <Keycap>Shift] + [F10</Keycap> キーかマウス・ボタン 3 を押すと表示される、アイコンのポップアップ・メニューで [開く] を選択してください。</Para>
+<Para><Emphasis>Or,</Emphasis> choose an Open choice from the icon's pop-up menu
+(displayed by pressing Shift+F10 or mouse button 3).</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.65">
-<Para> <Emphasis>または、</Emphasis>マウス・ポインタをフォルダの上に置いてください。
-  ダブルクリックの 2 回目にボタンを押し続けてください。
-  フォルダを画面上の位置にドラッグ して、アイコンをドロップしてください。
-  ドロップ位置にフォルダの表示が開かれます。
+<Para><Emphasis>Or,</Emphasis> place the mouse pointer over a folder. Double-click
+and hold down the button on the second click. Drag the folder
+to a location on the screen and drop the icon. A view of that
+folder will open at the drop location.
 </Para>
 </ListItem>
 </ItemizedList>
 <Note>
-<Para>アイコンを開いた時に実行されるアクションは、アイコンのタイプによって変わります。
-たとえば、フォルダ・アイコンを開くと、ファイル・マネージャ表示がそのフォルダの内容の表示に変わります。
-通常データ・ファイルを開くと、ファイルを作成したアプリケーションを起動して、そのファイルを読み込みます。
+<Para>The action taken when you open an icon depends on the type of icon.
+For example, opening a folder icon changes the File Manager view to
+show the contents of
+that folder. Opening a data file usually starts the application
+that created the file and loads the file.
 </Para>
 </Note>
 </Sect1>
 <Sect1 Id="ToDropAnObjectTA">
-<Title>ファイルまたはフォルダをドラッグ＆ドロップするには</Title>
+<Title>To Drag and Drop a File or Folder</Title>
 <IndexTerm>
-<Primary>ドロップ: ファイル</Primary>
+<Primary>dropping: file</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ドロップ: フォルダ</Primary>
+<Primary>dropping: folder</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ファイル: ドロップ</Primary>
+<Primary>file: dropping</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フォルダ: ドロップ</Primary>
+<Primary>folder: dropping</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>取消し: ドラッグ</Primary>
+<Primary>canceling: dragging</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ドラッグ: 取消し</Primary>
+<Primary>dragging: canceling</Primary>
 </IndexTerm>
 <Note>
-<Para>ファイルまたは他のポインティング・デバイスがなければ、ファイルおよびフォルダをドラッグ＆ドロップすることはできません。
+<Para>You cannot drag and drop a file or folder without a mouse or other
+pointing device.
 </Para>
 </Note>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.66">
-<Para> マウス・ポインタをオブジェクトの上に置いてください。
+<Para>Put the mouse pointer over the object.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.67">
-<Para> "ドラッグ" ボタンであるマウス・ボタン 1 を押し続けてください。(2 つボタンのマウスの場合には、両方のボタンを同時に押してください。)
+<Para>Press <Emphasis>and hold</Emphasis> mouse button 1, known as the "drag" button. (On a
+two-button mouse, press and hold both buttons simultaneously.)
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.68">
-<Para> アイコンをドロップする場所までドラッグしてください。</Para>
+<Para>Drag the icon to where you want to drop it.
+</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.69">
-<Para> マウス・ボタンを離してください。
+<Para>Release the mouse button.
 </Para>
 </ListItem>
 </OrderedList>
 <Graphic Entityref="FM-DraggingAnIcon" Id="HFMGR.TSKS.fig.2"></Graphic>
-<Para>実行中のドラッグを取り消すには、マウス・ボタンを離す前に [Escape] キーを押してください。</Para>
-<Para>複数のアイコンを選択した場合は、選択アイコンのどれかをドラッグすると、グループ全体をドラッグすることになります。
+<Para>To cancel a drag in progress, press Escape before releasing the mouse button.</Para>
+<Para>If more than one icon is selected, you drag the entire group by dragging any
+of the selected icons.
 </Para>
 <Procedure>
-<Title>ドラッグ＆ドロップの基本的使い方</Title>
+<Title>Basic Drag-and-Drop Tasks</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.70">
-<Para> ファイルを別のフォルダに移動するには、アイコンを出力先フォルダのアイコンの上にドラッグしてください。
-  あるいは、出力先フォルダが開かれている場合には、アイコンをそのフォルダの表示ウィンドウの背景の上にドロップしてください。
-  (<XRef Linkend="ToMoveAnObjectTA">を参照してください。)
+<Para>To move a file to another folder, drop
+the icon on the destination folder's icon. Or, if
+the destination folder is open, drop the icon onto the
+background of the folder's view window.
+(See <XRef Linkend="ToMoveAnObjectTA">).
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.71">
-<Para> ファイルまたはフォルダのアイコンを現在のワークスペースの背景に置くには、そのファイルまたはフォルダのアイコンをウィンドウの外側にドロップしてください。
+<Para>To place an icon for a file or folder on the backdrop of your current
+workspace, drop
+the file or folder icon outside of any window.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.72">
-<Para> ファイルを印刷するには、フロントパネルの [印刷] コントロールの上にファイルをドロップしてください。
-  あるいは、[個人プリンタ] サブパネルのプリンンタのどれか上にドロップしてください。
+<Para>To print a file, drop the file
+onto the Printer control in the Front Panel (or
+one of the printers in the Personal Printers subpanel).
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.73">
-<Para> ファイルまたはフォルダをごみ箱に移動するには、そのファイルまたはフォルダを フロントパネルの [ごみ箱] コントロールの上にドロップしてください。
-(<XRef Linkend="ToDeleteAnObjectTA">を参照してください。)
+<Para>To move a file or folder to the trash, drop the file or folder
+icon onto the Trash can control in the Front Panel.
+See <XRef Linkend="ToDeleteAnObjectTA">).
 </Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.74">
-<Para> <XRef Linkend="ToCopyAnObjectTA"></Para>
+<Para><XRef Linkend="ToCopyAnObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.75">
-<Para> <XRef Linkend="ToCreateASymbolicLinkTA"></Para>
+<Para><XRef Linkend="ToCreateASymbolicLinkTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToCreateANewObjectTA">
-<Title>新規ファイルまたはフォルダを作成するには</Title>
+<Title>To Create a New File or Folder</Title>
 <IndexTerm>
-<Primary>作成: ファイル</Primary>
+<Primary>creating: file</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>作成: フォルダ</Primary>
+<Primary>creating: folder</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ファイル: 作成</Primary>
+<Primary>file: creating</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フォルダ: 作成</Primary>
+<Primary>folder: creating</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.76">
-<Para> [ファイル] メニューで、[新規ファイル] または [新規フォルダ] を選択してください。
+<Para>Choose New File or New Folder from the File menu.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.77">
-<Para> [新規ファイル名] または [新規フォルダ名] フィールドに、名前を入力してください。
+<Para>Type a name into the New File Name or New Folder Name field.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.78">
-<Para> [了解] をクリックするか、[Return] キーを押してください。
+<Para>Click OK or press Return.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>新規ファイルまたはフォルダを作成しないで、[新規ファイル] または [新規フォルダ] ダイアログ・ボックスを閉じるには、[取消し] をクリックするか、[Escape] キーを押してください。
+<Para>To close the New File or New Folder dialog box without creating a new
+file or folder, click Cancel or press Escape.
 </Para>
 <Procedure>
-<Title>ファイルを作成する別の方法</Title>
+<Title>Other Ways to Create a File</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.79">
-<Para> 既存ファイルをコピーして、コピーの名前を変更してください。
-  <XRef Linkend="ToCopyAnObjectTA">および<XRef Linkend="ToRenameAnObjectTA">を参照してください。
+<Para>Copy an existing file, then rename the copy. See
+<XRef Linkend="ToCopyAnObjectTA"> and <XRef Linkend="ToRenameAnObjectTA">.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.80">
-<Para> アプリケーション内で新規ファイルを作成してください。
-  たとえば、テキスト・エディタは、新規ドキュメントを保存する際に、新規ファイルを作成します。
+<Para>Create a new file within an application. For example, Text Editor
+creates a new file when you save a new document.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -656,77 +693,88 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="ToMoveAnObjectTA">
-<Title>ファイルまたはフォルダを移動するには</Title>
+<Title>To Move a File or Folder</Title>
 <IndexTerm>
-<Primary>移動: ファイル</Primary>
+<Primary>moving: file</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>移動: フォルダ</Primary>
+<Primary>moving: folder</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ファイル: 移動</Primary>
+<Primary>file: moving</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フォルダ: 移動</Primary>
+<Primary>folder: moving</Primary>
 </IndexTerm>
 <Procedure>
-<Title>マウス</Title>
+<Title>Mouse</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.81">
-<Para> 出力先フォルダを表示してください。
-   </Para>
+<Para>Make the destination folder visible:
+</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.82">
-<Para> 出力先フォルダの内容のファイル・マネージャ表示を開いてください。
-   </Para>
+<Para>Open a File Manager view of the contents of the destination
+folder.
+</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.83">
-<Para> <Emphasis>または</Emphasis>、閉じている出力先フォルダのアイコンを表すファイル・マネージャ表示を開いてください。
-   </Para>
+<Para><Emphasis>Or</Emphasis>, open a File Manager view that shows the icon of
+the closed destination folder.
+</Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.84">
-<Para> 移動するファイルまたはフォルダを選択してください。
+<Para>Select the file or folder to be moved.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.85">
-<Para> ファイルまたはフォルダをドラッグして、出力先フォルダの上にドロップしてください。
+<Para>Drag the file or folder and drop it onto the destination
+folder.
 </Para>
 </ListItem>
 </OrderedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>キーボード</Title>
+<Title>Keyboard</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.86">
-<Para> [Tab] キーと矢印キーを使用して、移動するファイルまたはフォルダに強調表示を移動してください。</Para>
+<Para>Use the Tab and direction keys to move the highlight to the file
+or folder to be moved.</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.87">
-<Para> オブジェクトを選択するには、スペースバーを押してください。
+<Para>Press the Spacebar to select the object
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.88">
-<Para> [選択] メニューで [移動] を選択してください。
+<Para>Choose Move to from the Selected menu.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.89">
-<Para> [出力先フォルダ:] テキスト・ボックスに、名前を入力してください。
-  たとえば、ファイル <ComputerOutput>report</ComputerOutput> をフォルダ <ComputerOutput>/u/john</ComputerOutput> に移動する場合は、<ComputerOutput>/u/john</ComputerOutput> と入力してください。
+<Para>Type a name into the Destination Folder: text box.
+For example, if you want to
+move the file <ComputerOutput>report</ComputerOutput> into the
+folder <ComputerOutput>/u/john</ComputerOutput>, you would
+type <ComputerOutput>/u/john</ComputerOutput>.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.90">
-<Para> [了解] をクリックするか、[Return] キーを押してください。
+<Para>Click OK or press Return.
 </Para>
 </ListItem>
 </OrderedList>
 <Note>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.91">
-<Para> 変更するアクセス権がないフォルダから、ファイルまたはサブフォルダを移動しようとした場合には、ファイル・マネージャがそのファイルまたはフォルダのコピーを出力先フォルダに作成して、オリジナルを削除できないことを示すエラー・メッセージを表示します。
+<Para>If you attempt to move a file or subfolder from a folder
+where you do not
+have permission to make changes, File Manager may create a copy of
+the file or folder in the destination folder and display an
+error message indicating that you cannot delete the original.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -734,441 +782,486 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.92">
-<Para> <XRef Linkend="ToCopyAnObjectTA"></Para>
+<Para><XRef Linkend="ToCopyAnObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.93">
-<Para> <XRef Linkend="ToCreateASymbolicLinkTA"></Para>
+<Para><XRef Linkend="ToCreateASymbolicLinkTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.94">
-<Para> <XRef Linkend="ToDropAnObjectTA"></Para>
+<Para><XRef Linkend="ToDropAnObjectTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToCopyAnObjectTA">
-<Title>ファイルまたはフォルダをコピーするには</Title>
+<Title>To Copy a File or Folder</Title>
 <IndexTerm>
-<Primary>コピー: ファイル</Primary>
+<Primary>copying: file</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>コピー: フォルダ</Primary>
+<Primary>copying: folder</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ファイル: コピー</Primary>
+<Primary>file: copying</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フォルダ: コピー</Primary>
+<Primary>folder: copying</Primary>
 </IndexTerm>
 <Procedure>
-<Title>マウス</Title>
+<Title>Mouse</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.95">
-<Para> 出力先フォルダを表示してください。
-   </Para>
+<Para>Make the destination folder visible:
+</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.96">
-<Para> 出力先フォルダの内容のファイル・マネージャ表示を開いてください。
-   </Para>
+<Para>Open a File Manager view of the contents of the destination
+folder.
+</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.97">
-<Para> <Emphasis>または</Emphasis>、閉じている出力先フォルダのアイコンを表すファイル・マネージャ表示を開いてください。
-   </Para>
+<Para><Emphasis>Or</Emphasis>, open a File Manager view that shows the icon of the closed
+destination folder.
+</Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.98">
-<Para> コピーするファイルまたはフォルダを選択してください。
+<Para>Select the file or folder to be copied.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.99">
-<Para> [Control] キーを押し続けてください。</Para>
+<Para>Press and hold the Control key.</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.100">
-<Para> ファイルまたはフォルダをドラッグして、出力先フォルダの上にドロップしてください。</Para>
-<Para>[Control] キーを離す前に、マウス・ボタンを必ず離してください。
-  そうしなければ、ファイルまたはフォルダをコピーする代わりに移動します。
+<Para>Drag the file or folder and drop it
+onto the destination folder.</Para>
+<Para>Make sure that you release
+the mouse button before you release the Control key. Otherwise,
+you will move instead of copy the file or folder.
 </Para>
 </ListItem>
 </OrderedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>キーボード</Title>
+<Title>Keyboard</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.101">
-<Para> アイコンを選択してください。
+<Para>Select the icon.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.102">
-<Para> [選択] メニューで、[コピー] を選択してください。
+<Para>Choose Copy to from the Selected menu.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.103">
-<Para> [出力先フォルダ:] テキスト・ボックスに名前を入力してください。
-  たとえば、ファイル <ComputerOutput>report</ComputerOutput> を
-  フォルダ <ComputerOutput>/u/john</ComputerOutput> にコピーする場合には、<ComputerOutput>/u/john</ComputerOutput> と入力してください。
+<Para>Type a name into the Destination Folder: text box.
+For example, if you want to
+copy the file <ComputerOutput>report</ComputerOutput>
+into the folder <ComputerOutput>/u/john</ComputerOutput>, you would
+type <ComputerOutput>/u/john</ComputerOutput>.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.104">
-<Para> [了解] をクリックするか、[Return] キーを押してください。
+<Para>Click OK or press Return.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>ファイルをコピーしないで、[ファイルのコピー] ダイアログ・ボックスを閉じるには、[取消し] をクリックするか、[Escape] キーを押してください。
+<Para>To close the Copy File dialog box without copying a file,
+click Cancel or press Escape.
 </Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.105">
-<Para> <XRef Linkend="ToMoveAnObjectTA"></Para>
+<Para><XRef Linkend="ToMoveAnObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.106">
-<Para> <XRef Linkend="ToCreateASymbolicLinkTA"></Para>
+<Para><XRef Linkend="ToCreateASymbolicLinkTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.107">
-<Para> <XRef Linkend="ToDropAnObjectTA"></Para>
+<Para><XRef Linkend="ToDropAnObjectTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToCreateASymbolicLinkTA">
-<Title>シンボリック・リンクを作成するには</Title>
+<Title>To Create a Symbolic Link</Title>
 <IndexTerm>
-<Primary>作成: シンボリック・リンク</Primary>
+<Primary>creating: symbolic link</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>シンボリック・リンク, 作成</Primary>
+<Primary>symbolic link, creating</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>リンク, シンボリックの作成</Primary>
+<Primary>link, creating symbolic</Primary>
 </IndexTerm>
-<Para>リンク・アイコンは、オリジナル・アイコンと同じファイルまたはフォルダを指すアイコンのコピーです。
-リンク・アイコンを開いた後に行った変更内容は、オリジナル・アイコンを使用してファイルまたはフォルダにアクセスした場合でも表示されます。
+<Para>A link icon is a copy of an icon that points to the same
+file or folder as the original icon. Any changes you
+make after opening the link icon will also appear when you
+access the file or folder using the original icon.
 </Para>
 <Procedure>
-<Title>マウス</Title>
+<Title>Mouse</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.108">
-<Para> ファイルまたはフォルダをドラッグし、新規フォルダのアイコンの上にドロップするまでの間、[Shift] キーと [Control] キーを押し続けてください。</Para>
-<Para>アイコンをドロップする場合には、ファイル・マネージャはシンボリック・リンクをオリジナルのファイルまたはフォルダを指す新規フォルダに作成します。
-  [Shift] キーと [Control] キーを離す前に、マウス・ボタンを必ず離してください。
-  そうしなければ、ファイルまたはフォルダをリンクする代わりに移動します。
+<Para>Press and hold down the Shift key and the Control key while dragging and
+dropping the icon of
+a file or folder onto the icon of a new folder.</Para>
+<Para>When
+you drop the icon, File Manager creates
+symbolic link in the new folder
+that points to the original
+file or folder. Make sure that you release the mouse
+button before you release the Shift key and the Control key.
+Otherwise, you will move instead of link the file or
+folder.
 </Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>キーボード</Title>
+<Title>Keyboard</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.109">
-<Para> [Tab] キーと矢印キーを使用して、リンクしたいファイルまたはフォルダに強調表示を移動してください。</Para>
+<Para>Use the Tab and direction keys to move the highlight to the icon
+of the file or folder to which you want to link.</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.110">
-<Para> アイコンを選択するには、スペースバーを押してください。
+<Para>Press Spacebar to select the icon.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.111">
-<Para> [選択] メニューで、[リンクでコピー] を選択してください。
+<Para>Choose Copy as Link from the Selected menu.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.112">
-<Para> このリンク・アイコンを表示するフォルダの名前のパスを格納する [出力先フォルダ] テキスト・ボックスに、名前を入力してください。
-  このリンク・アイコンにオリジナル・アイコンとは違う名前を付ける場合は、[コピーの名前] テキスト・ボックスに新規の名前を入力してください。
+<Para>Type a name into the Destination Folder text box including
+the path for the name of the folder where you want this link icon to appear.
+If you want this link icon to have a different name that the original
+icon, type a new name in the Name for copy text box.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.113">
-<Para> [了解] をクリックするか、[Return] キーを押してください。
+<Para>Click OK or press Return.
 </Para>
 </ListItem>
 </OrderedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.114">
-<Para> <XRef Linkend="ToMoveAnObjectTA"></Para>
+<Para><XRef Linkend="ToMoveAnObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.115">
-<Para> <XRef Linkend="ToCopyAnObjectTA"></Para>
+<Para><XRef Linkend="ToCopyAnObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.116">
-<Para> <XRef Linkend="ToDropAnObjectTA"></Para>
+<Para><XRef Linkend="ToDropAnObjectTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToChangeAnObjectsOwnerTA">
-<Title>ファイルまたはフォルダの所有者を変更するには</Title>
-<Para>管理者(root ユーザ)だけが、ファイルの所有権を変更できます。
-root ユーザでログインする権限を持つ場合は、以下の手順を開始する前に、root ユーザでログインしてください。
-<ComputerOutput>su</ComputerOutput> コマンドを参照してください。<IndexTerm>
-<Primary>変更: ファイルの属性</Primary>
+<Title>To Change the Owner of a File or Folder</Title>
+<Para>Only an administrator (root user) can change the ownership
+of a file. If you have the authority to log in as the root user, you must
+do so before beginning the following procedure. See
+<ComputerOutput>su</ComputerOutput> command.<IndexTerm>
+<Primary>changing: properties of file</Primary>
 </IndexTerm><IndexTerm>
-<Primary>変更: フォルダの属性</Primary>
+<Primary>changing: properties of folder</Primary>
 </IndexTerm><IndexTerm>
-<Primary>ファイル: 属性の変更</Primary>
+<Primary>file: changing properties</Primary>
 </IndexTerm><IndexTerm>
-<Primary>フォルダ: 属性の変更</Primary>
+<Primary>folder: changing properties</Primary>
 </IndexTerm><IndexTerm>
-<Primary>属性, 変更: ファイル</Primary>
+<Primary>properties, changing: file</Primary>
 </IndexTerm><IndexTerm>
-<Primary>属性, 変更: フォルダ</Primary>
+<Primary>properties, changing: folder</Primary>
 </IndexTerm>
 </Para>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.117">
-<Para> ファイルまたはフォルダのアイコンを選択してください。
+<Para>Select the icon of the file or folder.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.118">
-<Para> [選択] メニュー、あるいは、<Keycap>Shift] + [F10</Keycap> キーかマウス・ボタン 3 を押すと表示されるアイコンのポップアップ・メニューで、[アクセス権の変更] を選択してください。</Para>
+<Para>Choose Change Permissions from the Selected menu
+or from the icon's pop-up menu (displayed by
+pressing Shift+F10 or mouse button 3).
+</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.119">
-<Para> 新規所有者の名前を [所有者名] テキスト・ボックスに入力してください。
+<Para>Type the new owner's name into the Owner Name text box.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.120">
-<Para> [了解] をクリックするか、[Return] キーを押してください。
+<Para>Click OK or press Return.
 </Para>
 </ListItem>
 </OrderedList>
 <Note>
-<Para>ファイルまたはフォルダの所有権を他のユーザに与えた場合は、そのユーザが所有権を返さない限り、再度アクセス権を変更することはできません。
+<Para>If you give ownership of a file or folder to another user,
+you will not be able
+to change its
+permissions again unless that user returns ownership to
+you.
 </Para>
 </Note>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.121">
-<Para> <XRef Linkend="ToChangeAnObjectsPermissionsTA"></Para>
+<Para><XRef Linkend="ToChangeAnObjectsPermissionsTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.122">
-<Para> <XRef Linkend="ToCopyAnObjectTA"></Para>
+<Para><XRef Linkend="ToCopyAnObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.123">
-<Para> <XRef Linkend="ToMoveAnObjectTA"></Para>
+<Para><XRef Linkend="ToMoveAnObjectTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToChangeAnObjectsPermissionsTA">
-<Title>ファイルまたはフォルダのアクセス権を変更するには</Title>
-<Para>ファイルまたはフォルダのアクセス権を変更するには、所有者かシステム管理者 (root ユーザ)でなければなりません。<IndexTerm>
-<Primary>変更: ファイルのアクセス権</Primary>
+<Title>To Change the Permissions on a File or Folder</Title>
+<Para>You must be the owner or the system administrator (root user) in order to
+change the permissions of a file or folder.<IndexTerm>
+<Primary>changing: permissions of file</Primary>
 </IndexTerm><IndexTerm>
-<Primary>変更: フォルダのアクセス権</Primary>
+<Primary>changing: permissions of folder</Primary>
 </IndexTerm><IndexTerm>
-<Primary>ファイル: アクセス権の変更</Primary>
+<Primary>file: changing permissions</Primary>
 </IndexTerm><IndexTerm>
-<Primary>フォルダ: アクセス権の変更</Primary>
+<Primary>folder: changing permissions</Primary>
 </IndexTerm><IndexTerm>
-<Primary>アクセス権, 変更: ファイル</Primary>
+<Primary>permissions, changing: file</Primary>
 </IndexTerm><IndexTerm>
-<Primary>アクセス権, 変更: フォルダ</Primary>
+<Primary>permissions, changing: folder</Primary>
 </IndexTerm>
 </Para>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.124">
-<Para> ファイルまたはフォルダのアイコンを選択してください。
+<Para>Select the icon for the file or folder.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.125">
-<Para> [選択] メニュー、あるいは、<Keycap>Shift] + [F10</Keycap> キーかマウス・ボタン 3 を押すと表示されるアイコンのポップアップ・メニューで、[アクセス権の変更] を選択してください。</Para>
+<Para>Choose the Change Permissions command from the
+Selected menu or from the
+icon's pop-up menu (displayed by pressing Shift+F10 or mouse button 3).
+</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.126">
-<Para> ファイルまたはフォルダに対するアクセス権を選択してください。</Para>
+<Para>Select the permissions for the file or folder.
+</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.127">
-<Para> [了解] をクリックするか、[Return] キーを押してください。
+<Para>Click OK or press Return.
 </Para>
 </ListItem>
 </OrderedList>
 <Note>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.128">
-<Para> アクセス権のグループの行は、[グループ名] テキスト・ボックスに表示されたグループのメンバであるユーザのアクセス権を表示します。
-  このボックスに新しい名前を入力して、別のグループを指定できます。
+<Para>The Group row of permissions shows the permissions for users who
+are members of the group listed in the Group Name text box. You
+can specify a different group by typing a new name in this box.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.129">
-<Para> ファイルの属性を変更するアクセス権がない場合には、[ファイル属性] ダイアログ・ボックスのいくつかのコントロールがアクティブでなくなっています。
+<Para>If you do not have permission to change the properties
+of a file, some of the
+controls in the File Properties dialog box are inactive.
 </Para>
 </ListItem>
 </ItemizedList>
 </Note>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.130">
-<Para> <XRef Linkend="FileOwnershipAndSecuritySI"></Para>
+<Para><XRef Linkend="FileOwnershipAndSecuritySI"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.131">
-<Para> <XRef Linkend="ToCopyAnObjectTA"></Para>
+<Para><XRef Linkend="ToCopyAnObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.132">
-<Para> <XRef Linkend="ToMoveAnObjectTA"></Para>
+<Para><XRef Linkend="ToMoveAnObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.133">
-<Para> <XRef Linkend="ToChangeAnObjectsOwnerTA"></Para>
+<Para><XRef Linkend="ToChangeAnObjectsOwnerTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToChangeToAnotherDirectoryTA">
-<Title>フォルダを表示するには</Title>
+<Title>To View A Folder</Title>
 <IndexTerm>
-<Primary>変更: フォルダ</Primary>
+<Primary>changing: folder</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フォルダ: 変更</Primary>
+<Primary>folder: changing</Primary>
 </IndexTerm>
-<Para>以下の方法のどれかで、別のフォルダに変更できます。
+<Para>You can change to another folder in any of the following ways:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.134">
-<Para> フォルダ・アイコンをダブルクリックしてください。
+<Para>Double-click a folder icon.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.135">
-<Para> フォルダ・アイコンを選択し、現在のウィンドウにフォルダを開く場合は [選択] メニューで [現在のウィンドウに表示] を、新しいウィンドウに開く場合は [選択] メニューで [新しいウィンドウに表示] を選択してください。
+<Para>Select a folder icon and choose OpenInPlace
+from the Selected menu to open the folder in the
+current window or OpenNewView from the Selected menu to open it
+in a new window.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.136">
-<Para> <Keycap>Shift] + [F10</Keycap> キーか、マウス・ボタン 3 を押すと表示されるフォルダのポップアップ・メニューで、[現在のウィンドウに表示] または [新しいウィンドウに表示] を選択してください。			
+<Para>Choose the OpenInPlace or OpenNewView command from the
+folder's pop-up menu (displayed by pressing Shift+F10 or mouse button 3).
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.137">
-<Para> パスのアイコン表示内のフォルダをダブルクリックして、表示をそのフォルダに変更してください。
+<Para>Double-click on a folder in the iconic path to change
+the view to that folder.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.138">
-<Para> テキスト・パス行をテキスト・フィールドに変更するには、テキスト・パス行を選択(クリック)してください。
-  パスの名前を入力して、[Return] キーを押してください。
+<Para>Select (click) the text path line to change it into a text field.
+Type the name of the path you want and then press Return.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.139">
-<Para> テキスト・パス行で、現在のパスのセグメントをダブルクリックしてください。
-  たとえば、現在のフォルダが<ComputerOutput>/users/tom/.dt/types</ComputerOutput>の場合に、<ComputerOutput>tom</ComputerOutput>をダブルクリックすると、<ComputerOutput>/users/tom/</ComputerOutput>に変更できます。
+<Para>In the text path line, double-click a segment of
+the current path. For example, if the current folder is
+<ComputerOutput>/users/tom/.dt/types</ComputerOutput>, you can change to the <ComputerOutput>/users/tom/</ComputerOutput>
+folder by double-clicking the word <ComputerOutput>tom</ComputerOutput>.
 </Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.140">
-<Para> <XRef Linkend="ToOpenATerminalWindowTA"></Para>
+<Para><XRef Linkend="ToOpenATerminalWindowTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToGoHomeDirTA">
-<Title>ホーム・フォルダに移動するには</Title>
+<Title>To Go to Your Home Folder</Title>
 <IndexTerm>
-<Primary>変更: フォルダ</Primary>
+<Primary>changing: folder</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フォルダ: 変更</Primary>
+<Primary>folder: changing</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.141">
-<Para> [ファイル] メニューで [ホームへ] を選択してください。
+<Para>Choose Go Home from the File menu.
 </Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.142">
-<Para> <XRef Linkend="ToChangeToAnotherDirectoryTA"></Para>
+<Para><XRef Linkend="ToChangeToAnotherDirectoryTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.143">
-<Para> <XRef Linkend="ToGoParentDirTA"></Para>
+<Para><XRef Linkend="ToGoParentDirTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToGoParentDirTA">
-<Title>親フォルダに移動するには</Title>
+<Title>To Change to Parent Folder</Title>
 <IndexTerm>
-<Primary>変更: フォルダ</Primary>
+<Primary>changing: folder</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フォルダ: 変更</Primary>
+<Primary>folder: changing</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.144">
-<Para> [ファイル] メニューで [上位へ] を選択してください。</Para>
+<Para>Choose Go Up from the File menu.</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.145">
-<Para> または、[..] (上位へ)アイコンをダブルクリックしてください。
+<Para>Or, double-click the ..(go-up) icon
 </Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.146">
-<Para> <XRef Linkend="ToChangeToAnotherDirectoryTA"></Para>
+<Para><XRef Linkend="ToChangeToAnotherDirectoryTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.147">
-<Para> <XRef Linkend="ToGoHomeDirTA"></Para>
+<Para><XRef Linkend="ToGoHomeDirTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToOpenATerminalWindowTA">
-<Title>端末エミュレータ・ウィンドウを開くには</Title>
+<Title>To Open a Terminal Window</Title>
 <IndexTerm>
-<Primary>開く: 現在のフォルダに端末エミュレータ・ウィンドウ</Primary>
+<Primary>opening: terminal window in current folder</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>端末エミュレータ・ウィンドウ: 現在のフォルダに開く</Primary>
+<Primary>terminal window: opening in current folder</Primary>
 </IndexTerm>
-<Para>以下の手順は、ファイル・マネージャ・ウィンドウと同じフォルダ上で、現在のフォルダと同じ端末エミュレータ・ウィンドウを開きます。
-これは、現在表示中のフォルダの内容に影響するコマンドを入力する簡単な方法です。
+<Para>This procedure opens a terminal emulator window with the same current
+folder as the File Manager window. This is a quick way to type
+a command to affect the contents of the folder you are currently
+viewing.
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.148">
-<Para> [ファイル] メニューで [端末エミュレータを開く] を選択してください。
+<Para>Choose Open Terminal from the File menu.
 </Para>
 </ListItem>
 </ItemizedList>
 <Note>
-<Para>端末エミュレータ・ウィンドウを開く前に、フォルダに対する実行権がなければなりません。
+<Para>You must have execute permission for a folder before you can open
+a Terminal window from it.
 </Para>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.149">
-<Para> <XRef Linkend="ToChangeAnObjectsPermissionsTA"></Para>
+<Para><XRef Linkend="ToChangeAnObjectsPermissionsTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
@@ -1176,298 +1269,319 @@ root ユーザでログインする権限を持つ場合は、以下の手順を開始する前に、root ユーザ
 </Note>
 </Sect1>
 <Sect1 Id="ToExecuteAnObjectsActionsTA">
-<Title>ファイルまたはフォルダに対するアクションを実行するには</Title>
+<Title>To Execute an Action for a File or Folder</Title>
 <IndexTerm>
-<Primary>実行: ファイルのアクション</Primary>
+<Primary>executing: action of file</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>実行: フォルダのアクション</Primary>
+<Primary>executing: action of folder</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>アクション: ファイルのアクションの実行</Primary>
+<Primary>action: executing action of file</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>アクション: フォルダのアクションの実行</Primary>
+<Primary>action: executing action of folder</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.150">
-<Para> [選択] メニューを使用してください。
-   </Para>
+<Para>Use the Selected menu:
+</Para>
 <OrderedList Role="tight">
 <ListItem Id="HFMGR.TSKS.item.151">
-<Para> アイコンを選択してください。
-   </Para>
+<Para>Select the icon.
+</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.152">
-<Para> [選択] メニューで、アクションを選択してください。
-   </Para>
+<Para>Choose an action from the Selected menu.
+</Para>
 </ListItem>
 </OrderedList>
-<Para>[選択] メニューのアクション部分の内容は、現在選択されているアイコンのタイプによって変わります。
+<Para>The contents of the actions portion of
+the Selected menu changes depending on the type of
+icon that is currently selected.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.153">
-<Para> <Emphasis>または、</Emphasis>アイコンのポップアップ・メニューで、アクションを選択してください。
+<Para><Emphasis>Or,</Emphasis> choose the action you want from the icon's pop-up menu.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.154">
-<Para> <Emphasis>または、</Emphasis>アイコンのデフォルトのアクションを実行するには、アイコンをダブルクリックしてください。
-  (デフォルトのアクションは、[選択] メニューに表示される最初のアクションです。)
+<Para><Emphasis>Or,</Emphasis> double-click the icon to execute its default action
+(which is the first action listed in the Selected menu).
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.155">
-<Para> <Emphasis>または、</Emphasis>ドラッグ＆ドロップを使用して、アクションを起動してください。
-  (<XRef Linkend="ToDropAnObjectTA">を参照してください。)
+<Para><Emphasis>Or,</Emphasis> use drag and drop to invoke an action.
+(See <XRef Linkend="ToDropAnObjectTA">).
 </Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.156">
-<Para> <XRef Linkend="FMActionsMenuDE"></Para>
+<Para><XRef Linkend="FMActionsMenuDE"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToOpenTheTrashCanTA">
-<Title>ごみ箱の内容を表示するには</Title>
+<Title>To View the Trash Can Contents</Title>
 <IndexTerm>
-<Primary>開く: ごみ箱</Primary>
+<Primary>opening: Trash Can</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ごみ箱: 開く</Primary>
+<Primary>Trash Can: opening</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.157">
-<Para> フロントパネルで、[ごみ箱] コントロールをクリックしてください。
+<Para>Click the Trash Can control in the Front Panel.
 </Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.158">
-<Para> <XRef Linkend="ToDeleteAnObjectTA"></Para>
+<Para><XRef Linkend="ToDeleteAnObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.159">
-<Para> <XRef Linkend="ToRestoreAnObjectFromTheTrashTA"></Para>
+<Para><XRef Linkend="ToRestoreAnObjectFromTheTrashTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.160">
-<Para> <XRef Linkend="ToEmptyTheTrashTA"></Para>
+<Para><XRef Linkend="ToEmptyTheTrashTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToDeleteAnObjectTA">
-<Title>ファイルまたはフォルダをごみ箱へ捨てるには</Title>
+<Title>To Delete a File or Folder (to the Trash Can)</Title>
 <IndexTerm>
-<Primary>ファイル: 削除</Primary>
+<Primary>file:removing</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ファイルの削除</Primary>
+<Primary>removing a file</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>削除: ファイル</Primary>
+<Primary>deleting: file</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>削除: フォルダ</Primary>
+<Primary>deleting: folder</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ごみ箱: ファイルを捨てる</Primary>
+<Primary>Trash Can: putting file in</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ごみ箱: フォルダを捨てる</Primary>
+<Primary>Trash Can: putting folder in</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.161">
-<Para> <Keycap>Shift] + [F10</Keycap> キーかマウス・ボタン 3 を押すと表示されるアイコンのポップアップ・メニューで、[ごみ箱に捨てる] コマンドを選択してください。			
+<Para>Choose the Put in Trash command from the icon's pop-up menu
+(displayed by pressing Shift+F10 or mouse button 3).
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.162">
-<Para> <Emphasis>または</Emphasis>、ファイルまたはフォルダのアイコンを選択した後、[ファイル] メニューで、[ごみ箱に捨てる] を選択してください。
+<Para><Emphasis>Or,</Emphasis> select the file or folder's icon, then choose Put
+in Trash from the File menu.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.163">
-<Para> <Emphasis>または</Emphasis>、ファイルまたはフォルダのアイコンを、フロントパネルの [ごみ箱] コントロールの上ににドラッグ＆ドロップしてください。
+<Para><Emphasis>Or,</Emphasis>, drag and drop the file or folder's
+icon onto the Trash Can control in the Front Panel.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.164">
-<Para> <Emphasis>または</Emphasis>、ファイルまたはフォルダのアイコンを、開いている [ごみ箱] ウィンドウにドラッグ＆ドロップしてください。
+<Para><Emphasis>Or</Emphasis>, drag and drop a file or folder's icon to the open Trash Can window.
 </Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.165">
-<Para> <XRef Linkend="ToOpenTheTrashCanTA"></Para>
+<Para><XRef Linkend="ToOpenTheTrashCanTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.166">
-<Para> <XRef Linkend="ToRestoreAnObjectFromTheTrashTA"></Para>
+<Para><XRef Linkend="ToRestoreAnObjectFromTheTrashTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.167">
-<Para> <XRef Linkend="ToEmptyTheTrashTA"></Para>
+<Para><XRef Linkend="ToEmptyTheTrashTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToRestoreAnObjectFromTheTrashTA">
-<Title>ごみ箱からファイルまたはフォルダをファイル・マネージャに戻すには</Title>
-<Para>ファイルを"元に戻す"というのは、ごみ箱から出してファイル・マネージャ内に戻すという意味です。<IndexTerm>
-<Primary>復元: ごみ箱内の項目</Primary>
+<Title>To Move a File or Folder from the Trash Can &newline; Back into File Manager</Title>
+<Para>To "put back" a file means to take it out of the trash and put it back
+into File Manager.<IndexTerm>
+<Primary>restoring: items in Trash Can</Primary>
 </IndexTerm><IndexTerm>
-<Primary>ファイル: ごみ箱から復元</Primary>
+<Primary>file: restoring from Trash Can</Primary>
 </IndexTerm><IndexTerm>
-<Primary>フォルダ: ごみ箱から復元</Primary>
+<Primary>folder: restoring from Trash Can</Primary>
 </IndexTerm>
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.168">
-<Para> <Keycap>Shift] + [F10</Keycap> キーかマウス・ボタン 3 を押すと表示されるアイコンのポップアップ・メニューで、[元のところに戻す] コマンドを選択してください。			</Para>
+<Para>Choose the Put Back command from the icon's pop-up menu (displayed
+by pressing Shift+F10 or mouse button 3)</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.169">
-<Para> <Emphasis>または</Emphasis>、[ごみ箱] ウィンドウで復旧したいファイルまたはフォルダを選択して、[ファイル] メニューで [元のところに戻す] を選択してください。</Para>
+<Para><Emphasis>Or</Emphasis>, in the Trash Can window, select the file
+or folder you want to retrieve, then choose Put Back from the File menu.</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.170">
-<Para> <Emphasis>または</Emphasis>、[ごみ箱] ウィンドウからファイル・マネージャ・ウィンドウに、ファイルまたはフォルダのアイコンをドラッグしてください。
+<Para><Emphasis>Or</Emphasis>, drag the file or folder's icon from the Trash Can window to the File Manager window.
 </Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.171">
-<Para> <XRef Linkend="ToDeleteAnObjectTA"></Para>
+<Para><XRef Linkend="ToDeleteAnObjectTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.172">
-<Para> <XRef Linkend="ToOpenTheTrashCanTA"></Para>
+<Para><XRef Linkend="ToOpenTheTrashCanTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.173">
-<Para> <XRef Linkend="ToEmptyTheTrashTA"></Para>
+<Para><XRef Linkend="ToEmptyTheTrashTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToEmptyTheTrashTA">
-<Title>ファイルまたはフォルダを永久に廃棄するには</Title>
+<Title>To Shred a File or Folder Permanently</Title>
 <IndexTerm>
-<Primary>ごみ箱を空にする</Primary>
+<Primary>emptying Trash Can</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ごみ箱: 空にする</Primary>
+<Primary>Trash Can: emptying</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ファイル: 削除</Primary>
+<Primary>file: deleting</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フォルダ: 削除</Primary>
+<Primary>folder: deleting</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>削除: ファイル</Primary>
+<Primary>deleting: file</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>削除: フォルダ</Primary>
+<Primary>deleting: folder</Primary>
 </IndexTerm>
 <Note>
-<Para>ファイルを廃棄すると、永久に消えます。廃棄したファイルは、バックアップ媒体に保存しておいたコピーがない限り、回復できません。
+<Para>When you shred a file it is permanently erased. It cannot be
+recovered unless you have a copy you have stored on backup media.
 </Para>
 </Note>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.174">
-<Para> [ごみ箱] ウィンドウで、ごみ箱から永久に削除するファイルまたはフォルダを選択してください。
+<Para>In the Trash Can window, select the file or folder
+you want to permanently delete from the
+Trash Can.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.175">
-<Para> [ファイル] メニューで、[廃棄] を選択してください。</Para>
-<Para><Emphasis>または</Emphasis>、<Keycap>Shift] + [F10</Keycap> キーかマウス・ボタン 3 を押すと表示されるアイコンのポップアップ・メニューで、[廃棄] を選択してください。
+<Para>Choose Shred from the File menu.</Para>
+<Para><Emphasis>Or</Emphasis>, choose Shred from the pop-up menu for the icon
+(displayed by pressing Shift+F10 or mouse button 3).
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.176">
-<Para> <XRef Linkend="ToOpenTheTrashCanTA"></Para>
+<Para><XRef Linkend="ToOpenTheTrashCanTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.177">
-<Para> <XRef Linkend="ToRestoreAnObjectFromTheTrashTA"></Para>
+<Para><XRef Linkend="ToRestoreAnObjectFromTheTrashTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.178">
-<Para> <XRef Linkend="ToDeleteAnObjectTA"></Para>
+<Para><XRef Linkend="ToDeleteAnObjectTA"></Para>
 </ListItem>
 </ItemizedList>
 <!-- Remote Systems are currently not supported:
 ************************************************************
-<s1 id=ToOpenADirectoryOnARemoteSystemTA>リモート・システム上のフォルダを開くには
+<s1 id=ToOpenADirectoryOnARemoteSystemTA>To Open a Folder on a Remote System
  
-	<idx|リモート・システムにアクセス|
-	<idx|開く: リモート・システム上のフォルダ|
-	<idx|フォルダ: リモート・システム上で開く|
-	<idx|リモート・システム: フォルダを開く|
-	<idx|システム: リモートでフォルダを開く|
+        <idx|accessing a remote system|
+        <idx|opening: folder on remote system|
+        <idx|folder: opening on remote system|
+        <idx|remote system: opening folder|
+        <idx|system: opening folder in remote|
  
-システム管理者が、ネットワーク上の他のシステムにアクセスできるように、使用中のシステムを構成していなければなりません。
+Your system administrator must configure your system to provide access to
+other systems on your network.
  
 <list bullet>
  
-* [リモート・システム] コマンドを使用してください。
+* Use the Remote Systems command:
  
    <list order tight>
  
-   * [ファイル] メニューで、[リモート・システム] を選択してください。
-     ファイル・マネージャが新しいウィンドウを表示します。
-     新しいウィンドウの各フォルダは、アクセスできるリモート・システムを表しています。
+   * Choose Remote Systems from the File menu.
+     File
+     Manager displays a new window.  Each folder in the new window
+     represents a remote system you can access.
  
-   * アクセスするシステムを表すフォルダを開いてください。
-     &emdash;これで、リモート・コンピュータのファイル・システムで作業しています。
+   * Open the folder representing the system you want&emdash;you are now
+     working on the remote computer's file system.
  
    <\list>
  
-* !!または!!、新規パスを入力してください。
+* !!Or,!! by typing a new path:
  
    <list order tight>
  
-   * メニュー・バーのすぐ下にあるパスを選択して、編集のためにアクティブにしてください。
-     (マウスを使用しない場合には、[選択] メニューで [移動] コマンドを選択してください。)
+   * Select the path (just below the menu bar) to make it active for
+     editing.  (If you are not using a mouse, choose the
+     Move to command from the Selected menu.)
  
-   * 現在のパスをリモート・システムへのパスに置換してください。
-     リモート・システムのパスは、ホスト名とパスをコロン(:)で区切ってください。
+   * Replace the current path with the path to the remote system, using a
+     colon to separate the host name from the path.
  
-     <ex>%%ホスト名%%:/%%パス名%%<\ex>
+     <ex>%%hostname%%:/%%path%%<\ex>
  
-   * [Enter] キーを押してください。
+   * Press Enter.
  
    <\list>
  
 <\list>
  
-<procedure>例
+<procedure>Example
  
-マシン``host28''上のフォルダ``/users/sonja/''に変更するには、パス領域をクリックするか、[ファイル] メニューで [直接移動] を選択してください。
+To change to the folder ``/users/sonja/'' on the machine ``host28'',
+click the path area or choose Fast Change To
+from the File menu.
  
 <figure nonumber entity=FM-QuickCD>
 <\figure>
  
-現在のパスを選択するには、ダブルクリックしてください。(選択テキストは、入力を開始するとすぐに上書きされます。)
-また、現在のパスを消すには、[Backspace] キーを使用できます。
+Double-click the current path to select it (the selected text is
+overwritten as soon as you begin to type).  You can also use Backspace to
+erase the current path.
  
-新規パス ``host28:/users/sonja'' を入力してください。[Return] キーを押すと新規フォルダが表示されます。
-
-	<idx|無効フォルダエラー|
+Now, type the new path:  ``host28:/users/sonja''.  When you press Return,
+the new folder is displayed.
  
-``host28''というマシンが、ネットワーク・アクセスできるように構成されていない場合に、ファイル・マネージャはエラーを表示して、フォルダが無効であることを通知します。
+        <idx|invalid folder error|
  
-<procedure>関連項目
+If the machine ``host28'' has not been configured to provide network
+access, File Manager displays an error, telling you that the folder is
+invalid.
+ 
+<procedure>See Also
  
 <list bullet tight>
  
@@ -1486,57 +1600,58 @@ root ユーザでログインする権限を持つ場合は、以下の手順を開始する前に、root ユーザ
 -->
 <!-- Remote Systems are currently not supported:
 ************************************************************
-<s1 id=ToMoveOrCopyAnObjectToARemoteSystemTA>ファイルまたはフォルダをリモート・システムに転送するには
+<s1 id=ToMoveOrCopyAnObjectToARemoteSystemTA>To Transfer a File or Folder to a Remote System
  
-	<idx|移動: オブジェクトをリモート・システムに|
-	<idx|移動: ファイルをリモート・システムに|
-	<idx|移動: フォルダをリモート・システムに|
-	<idx|コピー: オブジェクトをリモート・システムに|
-	<idx|コピー: ファイルをリモート・システムに|
-	<idx|コピー: フォルダをリモート・システムに|
-	<idx|オブジェクト: リモート・システムに移動またはコピー|
-	<idx|ファイル: リモート・システムに移動またはコピー|
-	<idx|フォルダ: リモート・システムに移動またはコピー|
-	<idx|リモート・システム: ファイルを移動またはコピー|
-	<idx|リモート・システム: フォルダを移動またはコピー|
-	<idx|システム: ファイルをリモートに移動またはコピー|
-	<idx|システム: フォルダをリモートに移動またはコピー|
+        <idx|moving: object to remote system|
+        <idx|moving: file to remote system|
+        <idx|moving: folder to remote system|
+        <idx|copying: object to remote system|
+        <idx|copying: file to remote system|
+        <idx|copying: folder to remote system|
+        <idx|object: moving or copying to remote system|
+        <idx|file: moving or copying to remote system|
+        <idx|folder: moving or copying to remote system|
+        <idx|remote system: moving or copying file to|
+        <idx|remote system: moving or copying folder to|
+        <idx|system: moving or copying file to remote|
+        <idx|system: moving or copying folder to remote|
  
-ファイル・マネージャでは、オブジェクトを 1 台のシステムから別のシステムに使用中のシステム内部と同じ方法で、移動またはコピーできます。
+In File Manager, you can move and copy objects from one system to another
+the same way as within your own system.
  
-<procedure>ドラッグ＆ドロップの使い方
+<procedure>Using Drag and Drop
  
 <list order tight>
  
-* ファイル・マネージャ表示を 2 つ開いてください。
-  ひとつは転送するオブジェクトを表示するもので、もうひとつはリモート・システム上の転送先を表示するものです。
+* Open two File Manager views: one showing the object you want
+  to transfer, the other showing the destination on the remote system.
  
-
-* 新しい場所にオブジェクトをドラッグしてください。
-  コピーを作成する場合は、ドラッグ中に [Ctrl] キーを押し続けてください。
-  シンボリック・リンクを作成する場合は、ドラッグ中に [Shift] キー を押し続けてください。
+* Drag the object to the new location.  If you are making a copy,
+  hold down Ctrl while dragging.  If you are making a symbolic
+  link, hold down Shift while dragging.
  
 <\list>
  
-<procedure>コピー・コマンドの使い方
+<procedure>Using the Copy Command
  
 <list order tight>
  
-* オブジェクトを選択してください。
+* Select the object.
  
-* [選択] メニューで [コピー] を選択してください。ファイル・マネージャが、[ファイルのコピー] ダイアログを表示し、新規名の入力を要求します。
+* Choose Copy to from the Selected menu.  File Manager
+  displays the Copy File dialog, prompting you for the new name.
  
-* ホスト、パス、およびファイル名を以下の形式で入力してください。
+* Type the host, path, and file name, using the following format:
  
-  <ex>%%ホスト名%%:/%%パス%%/%%ファイル名%%<\ex>
+  <ex>%%hostname%%:/%%path%%/%%filename%%<\ex>
  
-  例: ``host5:/users/tom/myfile''
+  For example: ``host5:/users/tom/myfile''
  
-* [了解] をクリックしてください。
+* Click OK.
  
 <\list>
   
-<procedure>関連項目
+<procedure>See Also
  
 <list bullet tight>
  
@@ -1557,35 +1672,43 @@ root ユーザでログインする権限を持つ場合は、以下の手順を開始する前に、root ユーザ
 -->
 <!-- Remote Systems are currently not supported:
 ************************************************************
-<s1 id=ToAddAccessToARemoteSystemTA>リモート・システムへのアクセスを追加するには
+<s1 id=ToAddAccessToARemoteSystemTA>To Add Access to a Remote System
  
-	<idx|追加: リモート・システムへのアクセス|
-	<idx|アクセス, リモート: 追加|
-	<idx|リモート・システム: アクセスを追加|
-	<idx|システム: リモートへのアクセスを追加|
+        <idx|adding: access to remote system|
+        <idx|access, remote: adding|
+        <idx|remote system: adding access to|
+        <idx|system: adding access to remote|
  
 <note>
-これは、ローカル・システムおよびリモート・システムのスーパーユーザが行う作業です。
-ネットワーク・ファイル・システムのエクスポートおよびマウントを良く知っていない場合は、<newline>システム管理ドキュメント、および、ご利用のコンピュータのオンライン・ヘルプを参照してください。
+This task requires you to have superuser permission on the local and
+remote systems.  If you are not familiar with the procedures to export
+and mount network file systems, refer <newline> to the system
+administration documentation or online help for your computer.
 <
 ote>
  
 <list order>
  
-* リモート・システム上で、``/etc/exports''ファイルを編集して、使用可能にするディスク・ボリュームをエクスポートしてください。
+* On the remote system, export the disk volumes that you want
+  available by editing the ``/etc/exports'' file.
  
-* ローカル・システム上で、``/etc/checklist''ファイルを編集し、マウント・ポイントとして使用するフォルダを作成し、``mount''コマンドを実行して、リモート・ディスク・ボリュームを!!マウント!!してください。
+* On the local system, !!mount!! the remote disk volumes by editing
+  the ``/etc/checklist'' file, creating folders as mount points, and
+  then executing the ``mount'' command.
  
-  リモート・システム・フォルダにシステムを表示する場合は、マウント・ポイントは、``/%%マウント・ポイント%%/%%ホスト名%%''でなければなりません。
-  %%マウント・ポイント%%は、環境変数 DTMOUNTPOINT で指定します。
-  たとえば、環境変数 DTMOUNTPOINT を ``/nfs'' に設定した場合は、リモート・システムのマウント・ポイントは、``/nfs/%%ホスト名%%''です。
+  If you want the system listed in the Remote Systems folder, the mount
+  point must be ``/%%mount_point%%/%%hostname%%'', where %%mount_point%%
+  is the  mount point specified by the DTMOUNTPOINT environment
+  variable.  For example, if DTMOUNTPOINT is set to ``/nfs'', then the
+  mount point for remote systems must be ``/nfs/%%hostname%%''.
  
-  他の場所にマウントされたファイル・システムは、リモート・システムとして認識されません。
-  しかし、他のフォルダと同様にナビゲートできます。
+  File systems mounted in other locations are not recognized as remote
+  systems.  However, the user can navigate to them just as you can any
+  other folder.
  
 <\list>
  
-<procedure>関連項目
+<procedure>See Also
  
 <list bullet tight>
  
@@ -1600,31 +1723,31 @@ ote>
 -->
 <!-- Remote Systems are currently not supported:
 ************************************************************
-<s1 id=ToSpecifyRemotePath>リモート・ファイル・パスを入力するには
+<s1 id=ToSpecifyRemotePath>To Type a Remote File Path
  
-	<idx|指定: リモート・フォルダまたはファイル|
-	<idx|リモート・フォルダまたはファイル, 指定|
-	<idx|フォルダ: リモートの指定|
-	<idx|ファイル: リモートの指定|
-	<idx|オブジェクト: リモートの指定|
+        <idx|specifying: remote folder or file|
+        <idx|remote folder or file, specifying|
+        <idx|folder: specifying remote|
+        <idx|file: specifying remote|
+        <idx|object: specifying remote|
  
 <list bullet>
  
-* 次の構文を使用してください。
+* Use the syntax:
  
-  <ex> %%ホスト名%%:/%%パス%%/%%ファイル名%% <\ex>
+  <ex> %%hostname%%:/%%path%%/%%filename%% <\ex>
  
 <\list>
   
-<procedure>例
+<procedure>Example
  
-リモート・ホスト``scribe''上のファイル``/tmp/data1''にアクセスするには、以下の名前を使用してください。
+To access the file ``/tmp/data1'' on remote host ``scribe'', use this name:
  
 <ex smaller>
 scribe:/tmp/data1
 <\ex>
   
-<procedure>関連項目
+<procedure>See Also
  
 <list bullet tight>
  
@@ -1641,247 +1764,281 @@ scribe:/tmp/data1
 </Procedure>
 </Sect1>
 <Sect1 Id="ToPutAnObjectOnTheDesktopTA">
-<Title>ファイルまたはフォルダをワークスペースの背景に置くには</Title>
+<Title>To Put a File or Folder on the Workspace Backdrop</Title>
 <IndexTerm>
-<Primary>ファイル: デスクトップに置く</Primary>
+<Primary>file:putting on desktop</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フォルダ: デスクトップに置く</Primary>
+<Primary>folder: putting on desktop</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>デスクトップ: ファイルまたはフォルダを置く</Primary>
+<Primary>desktop: putting file or folder on</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>背景: ファイルまたはフォルダを置く</Primary>
+<Primary>backdrop: putting file or folder on</Primary>
 </IndexTerm>
-<Para>以下の手順は、アイコンのコピーをワークスペースの背景に作成します。
-ファイル・マネージャのオブジェクトのみを背景に格納することができます。
-他のデスクトップ・アプリケーションのオブジェクトを背景にドラッグすることはできません。
-このコピーに対して行った変更内容は、ファイル・マネージャに残っているオリジナルにも反映されます。
+<Para>This procedure creates a copy
+of the icon on the workspace backdrop.
+Only File Manager objects can be placed on the backdrop. Objects
+inside other desktop applications cannot be dragged onto the backdrop.
+Any changes you
+make to this copy will also be made to the
+original that is still in File Manager.
 </Para>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.179">
-<Para> オブジェクトを表示するワークスペースに切り替えてください。
+<Para>Switch to the workspace where you want to display the object.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.180">
-<Para> 続いて、
-   </Para>
+<Para>Then:
+</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.181">
-<Para> オブジェクトのアイコンを、デスクトップ(またはワークスペースの背景)にドラッグ＆ドロップしてください。
-   </Para>
+<Para>Drag and drop the object's
+icon onto the desktop (or workspace backdrop).
+</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.182">
-<Para> <Emphasis>または、</Emphasis> アイコンを選択し、[選択] メニュー、あるいは、<Keycap>Shift] + [F10</Keycap> キーかマウス・ボタン 3 を押すと表示されるアイコンのポップアップ・メニューで、[ワークスペースに置く] コマンドを選択してください。			
-   </Para>
+<Para><Emphasis>Or,</Emphasis> select the icon, then choose the Put in Workspace command
+from the Selected menu or from the icon's pop-up menu
+(displayed by pressing Shift+F10 or mouse button 3).
+</Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.183">
-<Para> オプション: これらの手順を繰り返せば、必要なワークスペースの数だけアイコンをデスクトップに置くことができます。
+<Para>Optional: You can repeat these steps to put an icon on the desktop
+in as many workspaces as you want.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.184">
-<Para> <XRef Linkend="ToRemoveAnObjectFromTheDesktopTA"></Para>
+<Para><XRef Linkend="ToRemoveAnObjectFromTheDesktopTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.185">
-<Para> <XRef Linkend="FMDesktopMenuDE"></Para>
+<Para><XRef Linkend="FMDesktopMenuDE"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToRemoveAnObjectFromTheDesktopTA">
-<Title>デスクトップからファイルまたはフォルダを削除するには</Title>
+<Title>To Remove a File or Folder from the Desktop</Title>
 <IndexTerm>
-<Primary>削除: デスクトップからファイルまたはフォルダを</Primary>
+<Primary>removing: file or folder from Desktop</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ファイル: デスクトップから削除</Primary>
+<Primary>file: removing from Desktop</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フォルダ: デスクトップから削除</Primary>
+<Primary>folder: removing from Desktop</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>デスクトップ: ファイルまたはフォルダを削除</Primary>
+<Primary>Desktop: removing file or folder from</Primary>
 </IndexTerm>
-<Para>ワークスペースのデスクトップからファイルまたはフォルダのアイコンを削除しても、オリジナルのファイルまたはフォルダ(ファイル・マネージャ・ウィンドウ内のアイコン)は削除しません。
+<Para>Removing a file or folder's
+icon from the workspace desktop does not delete the
+original file or folder (the icon that is in the File Manager window).
 </Para>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.186">
-<Para> デスクトップ・アイコンがあるワークスペースに移動してください。
+<Para>Change to the workspace where the desktop icon resides.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.187">
-<Para> <Keycap>Shift] + [F10</Keycap> キーかマウス・ボタン 3 を押すと表示されるアイコンのポップアップ・メニューで、[デスクトップから削除] を選択してください。 			
+<Para>Choose Remove From Desktop from the icon's pop-up menu (displayed
+by pressing Shift+F10 or mouse button 3).
 </Para>
 </ListItem>
 </OrderedList>
 <Note>
-<Para>背景アイコンとオリジナルを両方とも削除する場合以外は、ワークスペースの背景アイコンをごみ箱にドラッグしてはいけません。
+<Para>Do not drag a workspace backdrop icon to the Trash Can unless you want to
+delete both the backdrop icon and the original.
 </Para>
 </Note>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.188">
-<Para> <XRef Linkend="DesktopIntro"></Para>
+<Para><XRef Linkend="DesktopIntro"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.189">
-<Para> <XRef Linkend="ToPutAnObjectOnTheDesktopTA"></Para>
+<Para><XRef Linkend="ToPutAnObjectOnTheDesktopTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.190">
-<Para> <XRef Linkend="ToSelectMultipleObjectsTA"></Para>
+<Para><XRef Linkend="ToSelectMultipleObjectsTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToFindAFileByNameTA">
-<Title>ファイルを名前で検索するには</Title>
+<Title>To Find a File by Name</Title>
 <IndexTerm>
-<Primary>検索: 名前でファイルを</Primary>
+<Primary>finding: file by name</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ファイル: 名前で検索</Primary>
+<Primary>file: finding by name</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>名前: ファイルを検索</Primary>
+<Primary>name: finding file by</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.191">
-<Para> [ファイル] メニューで [検索] を選択してください。
+<Para>Choose Find from the File menu.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.192">
-<Para> 検索するファイルまたはフォルダの名前を、[ファイル名] フィールドに入力してください。
-  ファイルまたはフォルダの名前を入力を容易にするのに、<Link Type="jump" Linkend="MatchingPatterns">ワイルドカード文字</Link>を使用できます。
-  たとえば、<ComputerOutput>fe*</ComputerOutput> は、<ComputerOutput>fe</ComputerOutput> で始まるすべてのファイルを検索します。
-  検索は、大文字と小文字を区別します。
-  大文字を入力した場合は、同じ大文字のファイル名だけを検索します。</Para>
+<Para>Type the name of the file or folder you want to find into the File
+Name field.
+You can use <Link Type="jump" Linkend="MatchingPatterns">wildcard characters</Link>
+to help locate a file or folder name. For example,
+<ComputerOutput>fe*</ComputerOutput> will find all files that begin with <ComputerOutput>fe</ComputerOutput>.
+The searches are case sensitive. If you type capital lettesr, it will
+only find names with the same capitalization.</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.193">
-<Para> 検索を開始するフォルダの名前を [検索するフォルダ] フィールドに入力してください。
-  (デフォルトでは、このフィールドに現在のフォルダの名前が入っています。)</Para>
-<Para>[検索] は、このフォルダおよびすべてのサブフォルダを検索します。
+<Para>Type the name of the
+folder where you want to start the search into the Search
+Folder field. (By default, this field contains the name of the current
+folder.)</Para>
+<Para>Find will search this folder and all it's
+sub-folders.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.194">
-<Para> [開始] をクリックするか、[Return] キーを押してください。</Para>
-<Para>ファイル・マネージャが、指定した名前と一致するファイルの検索を、[検索するフォルダ] およびそれが格納しているフォルダに対して開始します。
-  一致するものが見つかると、[見つかったファイル] リストに表示します。
-  オブジェクトが見つかれば、それがあるフォルダを [フォルダを開く] を押して開くことができます。
-  あるいは、[ワークスペースに置く] をクリックして、現在の背景の上にそのアイコンを置くことができます。</Para>
-<Para>検索を中止するには、[中止] ボタンをクリックするか、[Return] キーを押してください。
+<Para>Click Start or press Return.</Para>
+<Para>File Manager begins searching the Search Folder and the folders
+it contains
+for files that match the name you provided.
+Matches that are found are
+listed in the Files Found list. Once you have found an object,
+you can press Open Folder to open the folder it is in, or click
+in Workspace to place its icon on the current backdrop.</Para>
+<Para>To stop the search, click
+the Stop button or press Return.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連トピック</Title>
+<Title>Related Topics</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.195">
-<Para> <XRef Linkend="MatchingPatterns"></Para>
+<Para><XRef Linkend="MatchingPatterns"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToFindAFileByContentsTA">
-<Title>ファイルを内容で検索するには</Title>
+<Title>To Find a File by Contents</Title>
 <IndexTerm>
-<Primary>検索: 内容でファイルを</Primary>
+<Primary>finding: file by contents</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ファイル: 内容で検索</Primary>
+<Primary>file: finding by contents</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>内容, ファイルを検索</Primary>
+<Primary>contents, finding file by</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.196">
-<Para> [ファイル] メニューで [検索] を選択してください。
+<Para>Choose Find from the File menu.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.197">
-<Para> 検索するテキスト文字列を、[ファイルの内容] フィールドに入力してください。</Para>
-<Para>この文字列には、大文字と小文字の区別はありません。
-  (大文字と小文字は等しいものと見なされます。)
-  完全な単語またはワイルドカードを使用する必要はありません。
-  たとえば、fi と入力した場合は、fish と File の両方を検索します。
+<Para>Type the text
+string you want to search for into the File Contents field.</Para>
+<Para>Case is ignored for this string (upper- and lowercase
+letters are equivalent). You do not have to use complete
+words or wildcards. For example, if you type fi it will find both fish
+and File.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.198">
-<Para> オプション: [ファイル名] または [フォルダ名] フィールドを使用して、検索対象を制限し、検索速度を上げることができます。
-  (<XRef Linkend="ToFindAFileByNameTA">を参照してください。)
+<Para>Optional: You can use the File or Folder Name field to restrict and
+speed up the search. (See <XRef Linkend="ToFindAFileByNameTA">.)
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.199">
-<Para> 検索を開始するフォルダの名前を [検索するフォルダ] フィールドに入力してください。
-  (デフォルトでは、このフィールドに現在のフォルダの名前が入っています。)
+<Para>Type the name of the
+folder where you want the search to begin into the Search
+Folder field. (By default, this field contains the name of the current
+folder.)
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.200">
-<Para> [開始] ボタンをクリックするか、[Return] キーを押してください。</Para>
-<Para>ファイル・マネージャが、指定したテキストと一致するファイルの検索を、検索するフォルダ] およびそれが格納しているフォルダに対して開始します。
-  一致するものが見つかると、[見つかったファイル] リストに表示します。
-  オブジェクトが見つかれば、それがあるフォルダを [フォルダを開く] を押して開くことができます。
-  あるいは、[ワークスペースに置く] を押して、現在の背景の上にそのアイコンを置くことができます。</Para>
-<Para>検索を中止するには、[中止] ボタンをクリックするか、[Return] キーを押してください。
+<Para>Click the Start button or press Return.</Para>
+<Para>File Manager begins searching the search folder and the folders
+it contains
+for files that match the text you provided. Matches that are found,
+are listed in the Files Found list. Once you have found an object,
+you can select it in the list and then press Open Folder to open
+the folder it is in or press Put In Workspace to place its icon
+on the current backdrop.</Para>
+<Para>To stop the search, click the Stop button or press Return.
 </Para>
 </ListItem>
 </OrderedList>
 <Note>
-<Para>ファイル名および内容は、<ComputerOutput>find</ComputerOutput> コマンドと同じ<Emphasis>正規表現</Emphasis>構文を使用して、指定できます。
-(詳細は、<ComputerOutput>find(1)</ComputerOutput>のマニュアル・ページを参照してください。)
+<Para>The file name and contents can be specified using the same <Emphasis>regular
+expression</Emphasis> syntax allowed by the <ComputerOutput>find</ComputerOutput> command. (Refer to the
+<ComputerOutput>find(1)</ComputerOutput> man page for more information.)
 </Para>
 </Note>
 </Sect1>
 <Sect1 Id="BasicViewingPreferences">
-<Title>基本表示設定を変更するには</Title>
-<Para>ファイル・マネージャ内で、ファイル、フォルダ、およびアプリケーションを構成する方法を指定するには、[表示] メニューで [表示オプションの設定] を選択してください。
+<Title>To Change Basic Viewing Preferences</Title>
+<Para>Choose Set View Options from the View menu to determine how files,
+folders, and applications are organized in File Manager.
 </Para>
 <Procedure>
-<Title>ヘッダを構成するには</Title>
+<Title>To Configure the Headers</Title>
 <Step>
-<Para>選択したオプションを反映して、[表示オプションの設定] ダイアログ・ボックスを閉じるには、[了解] をクリックしてください。
-  選択したオプションを反映して、[表示オプションの設定] ダイアログ・ボックスを開いたままにするには、[適用] をクリックしてください。
+<Para>To implement a chosen option and close the Set View Options
+dialog box, click OK.
+To implement the chosen option and leave the Set View Options
+dialog box open, click Apply.
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.201">
-<Para> 現在のフォルダ・パスを、ウィンドウの一番上にあるフォルダ・アイコンの文字列として表示するには、 [パスのアイコン表示] を選択してください。
+<Para>Select Iconic Path to show the current folder path as a
+string of folder icons at the top of the window.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.202">
-<Para> 現在のフォルダの絶対パス名を、表示区画の右上にあるテキスト・フィールドに表示するには、[テキスト・パス] を選択してください。
+<Para>Select Text Path to show the current folder's
+full path name in a text field right above the view pane.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.203">
-<Para> ウィンドウの一番下に、メッセージを表示するには、[メッセージ行] を選択してください。
-  選択すると、フォルダ内のファイルの数を表示し、さらに、アクティビティティ・メッセージも表示します。
+<Para>Select Message Line to show a messate at the bottom
+of the window. This shows the number of
+files in the folder and displays activity messages.
 </Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>アイコンの配置方法を構成するには</Title>
+<Title>To Configure How Icons are Placed</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.204">
-<Para> アイコンをドロップした場所にそのまま配置するには、[自由] を選択してください。
-  ファイル・マネージャは、アイコンをドロップした後に、自動的に移動しません。
+<Para>Select As Placed to leave icons where they are dropped. File Manager
+will not automatically move an icon after you drop it.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.205">
-<Para> ドロップしたアイコンを自動的に行と列に配置するには、[行と列に整列] を選択してください。
+<Para>Select Rows and Columns to automatically align the icons you
+drop into rows and columns.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -1889,104 +2046,118 @@ scribe:/tmp/data1
 </Procedure>
 </Sect1>
 <Sect1 Id="ToUseDirectoryTree">
-<Title>ツリー表示を使用するには</Title>
+<Title>To Use the Tree View</Title>
 <Procedure>
-<Title>ツリー表示を表示するには</Title>
+<Title>To Display the Tree View</Title>
 <Step>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.206">
-<Para> 表示を開始するフォルダに移動してください。</Para>
-<Para>  ツリー表示は、そのフォルダ、およびその下にあるすべてのファイルとフォルダをツリー形式の図で表示します。
+<Para>Change to the folder where you want the tree view to start.</Para>
+<Para>The tree view shows that folder and all the files and
+folders beneath it in the form of a tree chart.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.207">
-<Para> [表示] メニューで、[表示オプションの設定] を選択してください。
+<Para>Choose Set View Options from the View menu.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.208">
-<Para> [表示] ボックスで [ツリー形式] を選択してください。
+<Para>Select By Tree in the Show box.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.209">
-<Para> ツリー表示オプションを 1 つ選択してください。
-   </Para>
+<Para>Select one of the tree view options:
+</Para>
 <VariableList>
 <VarListEntry>
-<Term>フォルダのみ</Term>
+<Term>Folders only</Term>
 <ListItem>
-<Para>     フォルダだけのツリーを表示します。
-		      ファイルを表示するには、フォルダ名の上をダブルクリックしてください。
-		      そのフォルダの内容の個別表示が開かれます。
-		      デフォルト表示です。
-   </Para>
+<Para>The tree shows folders only. To view
+files, double click on a folder name
+and a separate view of that folder's contents will open.
+This is the default view.
+</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>フォルダの後にファイル</Term>
+<Term>Folders, then Files</Term>
 <ListItem>
-<Para>		      最初はフォルダだけが表示されます。
-		      各フォルダの内容を表示するには、続いて [+] ボタンをクリックしてください。
-		      1 回目のクリックで、サブフォルダが表示されます。
-		      2 回目のクリックで、サブフォルダ内のファイルが表示されます。
-		      3 回目のクリックで、フォルダは再び閉じられます。
-   </Para>
+<Para>Only folders appear at first.
+Click on the [+] button next to each folder to view its contents.
+The first click shows subfolders.
+A second click shows files that are inside.
+If you click the button a
+third time, the folder contracts again.
+</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>フォルダとファイル</Term>
+<Term>Folders and Files</Term>
 <ListItem>
-<Para>		      [+] ボタンを 1 回クリックすると、すべてのフォルダとファイルを表示します。
-   </Para>
+<Para>The tree shows both folders and files the first
+time you click on the [+] button.
+</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.210">
-<Para> 選択したオプションを反映させて、[表示オプションの設定] ダイアログ・ボックスを閉じるには、[了解] をクリックしてください。
-  選択したオプションを反映させて、[表示オプションの設定] ダイアログ・ボックスを開いたままにするには、[適用] をクリックしてください。
+<Para>To implement the chosen options and close the Set View Options
+dialog box, click OK.
+To implement the chosen options and leave the Set View Options
+dialog box open, click Apply.
 </Para>
 </ListItem>
 </OrderedList>
 <Note>
-<Para>ツリー表示内のファイルとフォルダの外観を、[表示オプションの設定] ダイアログ・ボックスの [表示方法] ボックスの設定を変更することで、変えることができます。
-設定の変更は、一時的です。
-永久に変更するには、<XRef Linkend="ToSavePreferencesAsTheDefaultTA">を参照してください。
+<Para>You can alter the appearance of files and folders
+in the tree view
+by changing the settings in the Representation box in the Set View Options
+dialog box.
+Changes to the preferences are only temporary.
+To make them permanent, see <XRef Linkend="ToSavePreferencesAsTheDefaultTA">.
 </Para>
 </Note>
 </Step>
 </Procedure>
 <Procedure>
-<Title>ツリー表示を使用するには</Title>
+<Title>To Use the Tree View</Title>
 <Step>
-<Para>ツリー表示は、アウトライン表示に似ています。
-フォルダに格納されたファイルとフォルダは、インデントされたリストの下に表示されます。</Para>
-<Para>ツリー表示では、フォルダに 3 種類の状態があります。
-状態は、フォルダの左にあるボタンで表示および変更されます。
+<Para>The tree view resembles an outline. Files and folders
+contained in a folder
+are listed beneath that folder in an indented list.</Para>
+<Para>In the tree view, a folder can have three states. The states
+are shown and changed using the buttons to the left of the folder:
 </Para>
 <VariableList>
 <VarListEntry>
 <Term><Keycap>+</Keycap></Term>
 <ListItem>
-<Para>   フォルダは、閉じた状態です。フォルダの内容は表示されません。
-	  このボタンをクリックすると、現在有効なツリー表示オプションに基づいてフォルダを部分的または完全に展開します。
+<Para>The folder is in its closed state. None of the
+folder's contents are shown. Clicking the button expands the
+folder partially or fully, depending on the tree view option
+currently in effect.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term><Keycap>-</Keycap></Term>
 <ListItem>
-<Para>   フォルダは、現在のツリー表示モードで、完全に展開された状態です。
-	  このボタンをクリックすると、フォルダを完全に閉じます。
+<Para>The folder is in its fully expanded state
+for the current tree view mode.
+Clicking the button fully closes the folder.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term><Keycap>+/-</Keycap></Term>
 <ListItem>
-<Para> フォルダは、部分的に展開された状態です。
-	  表示される内容は、格納しているフォルダのみです。
-	  (この表示は、[フォルダ、次にファイル] ツリー表示オプションを使用している場合にのみ有効です。)
-	  このボタンをクリックすると、フォルダを展開して、格納ファイルを表示します。
+<Para>The folder is in its partially expanded state. The only
+contents shown are the folders it contains.
+(This view is possible
+only when using the Folders, then Files tree view option.)
+Clicking the button expands the folder to show the
+files it contains.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -1995,286 +2166,325 @@ scribe:/tmp/data1
 </Procedure>
 </Sect1>
 <Sect1 Id="ToChangeTheSortOrderTA">
-<Title>アイコンのソート順序を変更するには</Title>
+<Title>To Change the Sort Order of Icons</Title>
 <IndexTerm>
-<Primary>変更: ファイル・マネージャのソート順序</Primary>
+<Primary>changing: File Manager sort order</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ソート順序, ファイル・マネージャの変更</Primary>
+<Primary>sort order, changing File Manager</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>順序, ファイル・マネージャのソートの変更</Primary>
+<Primary>order, changing File Manager sort</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ファイル・マネージャ: ソート順序の変更</Primary>
+<Primary>File Manager: changing sort order</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.211">
-<Para> [表示] メニューで、[表示オプションの設定] を選択してください。
+<Para>Choose Set View Options from the View menu.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.212">
-<Para> [表示順序の基準] ボックスで、好みのソート順序を選択して、[順序の方向] ボックスで、向きを選択してください。
-   </Para>
+<Para>Select the sort order you prefer from the Order box,
+and the direction from the Direction box.
+</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.213">
-<Para> アルファベット順:
-     A to Z (昇順)、および、Z to A (降順) があります。まずフォルダがアルファベット順で表示され、次にその他のファイルが表示されます。
-   </Para>
+<Para>Alphabetically: A to Z (Ascending)
+or Z to A (Descending). Folders appear first in alphabetical order,
+then all other files.
+</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.214">
-<Para> ファイル・タイプ:
-     オブジェクト型によります。オブジェクトは、そのファイルタイプに従ってソートされ、グループ化されます。
-     たとえば、ファイル、フォルダ、およびアクションは、別の型のオブジェクトです。
-     同じ型の各グループの中で、アイコンはアルファベット順にソートされます。
-   </Para>
+<Para>By File Type: by object type. Objects are sorted into
+groups according to their filetype.
+For example, files, folders
+and actions are different types of objects. Within each group
+of the same type, the icons are sorted alphabetically.
+</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.215">
-<Para> 日時順:
-     ファイルが最後に変更された日時によります。
-     古いものから新しいものへ(昇順)、および、新しいものから古いものへ(降順)があります。
-   </Para>
+<Para>By Date: by date the files were last modified, oldest to youngest
+(Ascending) or youngest to oldest (Descending).
+</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.216">
-<Para> サイズ順:
-     ファイルのサイズによります。
-     小さいものから大きいものへ(昇順)、および、大きいものから小さいものへ(降順)があります。
-   </Para>
+<Para>By Size: by file size, smallest to largest (Ascending) or
+largest to smallest (Descending).
+</Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.217">
-<Para> [了解] または [適用] をクリックしてください。</Para>
-<Para>  設定の変更は、一時的です。永久に変更するには、<XRef Linkend="ToSavePreferencesAsTheDefaultTA">を参照してください。
+<Para>Click OK or Apply.</Para>
+<Para>Changes to preferences are only for the current session. To make them
+permanent, see <XRef Linkend="ToSavePreferencesAsTheDefaultTA">.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>[配置方法] を [自由] に設定している場合には、アイコンは [表示] メニューで [整列] を選択した時、または [設定の変更] ダイアログ・ボックスで [適用] をクリックした時にのみソートされます。
-[配置方法] を [行と列に整列] に設定している場合には、アイコンは、フォルダの内容を変更するたびに、あるいは、[表示] メニューで [更新] を選択した時にソートされます。
+<Para>If you have Placement set to As Placed, icons are
+sorted only when you choose Clean Up from the View menu
+or when you click Apply in the Preferences dialog box. If
+Placement is set to Rows and Columns, the icons are sorted
+each time there is a change to the folder's contents or
+when you choose Update from the View menu.
 </Para>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.218">
-<Para> <XRef Linkend="ToSavePreferencesAsTheDefaultTA"></Para>
+<Para><XRef Linkend="ToSavePreferencesAsTheDefaultTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.219">
-<Para> <XRef Linkend="ToShowHiddenObjectsTA"></Para>
+<Para><XRef Linkend="ToShowHiddenObjectsTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToSavePreferencesAsTheDefaultTA">
-<Title>現在の設定をデフォルトとして保存するには</Title>
-<Para>[設定の変更] ダイアログ・ボックスを使用して変更を適用する場合に、変更内容は現在のセッションにのみ反映されます。
-設定の変更を保存した場合は、次回にファイル・マネージャを開く際にも使用されます。 <IndexTerm>
-<Primary>保存: ファイル・マネージャの現在の設定をデフォルトとして</Primary>
+<Title>To Save the Current Preferences as Your Default</Title>
+<Para>When you apply changes using the Set Preference dialog box, the
+changes are only for the current session.
+If you want to save the preferences
+so they will be used the next time you open the File Manager:<IndexTerm>
+<Primary>saving: File Manager current preferences as default</Primary>
 </IndexTerm><IndexTerm>
-<Primary>ファイル・マネージャ: 現在の設定をデフォルトとして保存</Primary>
+<Primary>File Manager: saving current preferences as default</Primary>
 </IndexTerm><IndexTerm>
-<Primary>デフォルト: ファイル・マネージャの現在の設定を保存</Primary>
+<Primary>default: saving File Manager current preferences as</Primary>
 </IndexTerm><IndexTerm>
-<Primary>変更: ファイル・マネージャのデフォルトの設定</Primary>
+<Primary>changing: File Manager default preferences</Primary>
 </IndexTerm>
 </Para>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.220">
-<Para> [表示] メニューの [表示オプションの設定] および [フィルタオプションの設定] を使用して、設定を適用してください。
+<Para>Set the preferences that you want and apply them
+(using Set View Options and Set Filter Options
+in the View menu).
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.221">
-<Para> [表示] メニューで、[デフォルト・オプションとして保存] を選択してください。
+<Para>Choose Save As Default Options from the View menu.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.222">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>デフォルト表示に対する変更内容は、フロントパネルの [ファイル・マネージャ] コントロールを次回クリックするまで、効果を生じません。
-その後は、ファイル・マネージャ内で開かれるすべての表示のデフォルトの設定になります。
+<Para>These changes to
+the default view will not take effect until the next time
+you click on the File Manager control in the Front Panel.
+Then they will become the default settings for all views that
+are opened in the File Manager.
 </Para>
 <Note>
-<Para>選択した設定だけでなく、現在のウィンドウのサイズもデフォルトのウィンドウ・サイズとして保存されます。
+<Para>In addition to the preferences you selected, the current
+size of the window will also be saved as the default for window size.
 </Para>
 </Note>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.223">
-<Para> <XRef Linkend="ToChangeTheSortOrderTA"></Para>
+<Para><XRef Linkend="ToChangeTheSortOrderTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.224">
-<Para> <XRef Linkend="ToShowHiddenObjectsTA"></Para>
+<Para><XRef Linkend="ToShowHiddenObjectsTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToShowHiddenObjectsTA">
-<Title>隠しオブジェクトも表示するには</Title>
+<Title>To Show Hidden Objects</Title>
 <IndexTerm>
-<Primary>隠しファイル</Primary>
+<Primary>hidden files</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>隠しフォルダ</Primary>
+<Primary>hidden folder</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ファイル: 隠す</Primary>
+<Primary>file: hidden</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フォルダ: 隠す</Primary>
+<Primary>folder: hidden</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ドット・ファイル</Primary>
+<Primary>dot files</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>.. (親フォルダ)</Primary>
+<Primary>.. (parent folder)</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.225">
-<Para> [表示] メニューで、[隠しオブジェクトも表示] を選択してください。</Para>
-<Para>このコマンドを 2 回目に選択すると、トグル設定を逆(表示するから隠すに、隠すから表示するに)にします。
+<Para>Choose Show Hidden Objects from the View menu.</Para>
+<Para>Choosing the command a second time reverses the
+toggle setting (from shown to hidden and back again).
 </Para>
 </ListItem>
 </ItemizedList>
-<Para>ファイルおよびフォルダを隠すか表示するかという基準は、データ型に基づいています。
-[フィルタ・オプションの設定] コマンドを使用すると、表示するデータ型と隠すデータ型を変更できます。
-<XRef Linkend="ModifyFilterList">を参照してください。
-デフォルトでは、隠すデータ型は、DOT_FILE と DOT_FOLDER と CURRENT_FOLDER です。
+<Para>The criteria for hiding or showing a file or
+folder is based on its data type. You can use the
+Set Filter Options command to change which data types
+are shown and hidden. See <XRef Linkend="ModifyFilterList">. By
+default, the hidden data types are DOT_FILE, DOT_FOLDER,
+and CURRENT_FOLDER.
 </Para>
 </Sect1>
 <Sect1 Id="ModifyFilterList">
-<Title>隠すデータ型を指定するには</Title>
+<Title>To Specify Which Data Types Are Hidden</Title>
 <IndexTerm>
-<Primary>ファイルを隠す</Primary>
+<Primary>hiding file</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フォルダを隠す</Primary>
+<Primary>hiding folder</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ファイル: 隠す</Primary>
+<Primary>file: hiding</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フォルダ: 隠す</Primary>
+<Primary>folder: hiding</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.226">
-<Para> [表示] メニューで、[フィルタ・オプションの設定] を選択してください。
+<Para>Choose Set Filter Options from the View menu.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.227">
-<Para> [隠すデータ型の選択] ボックスで、隠すデータ型を選択してください。
-  すでに隠すように選択されているデータ型は、強調表示されています。</Para>
-<Para><Emphasis>または、</Emphasis>デフォルトのフィルタ・リスト(DOT_FILE、DOT_FOLDER、および CURRENT_FOLDER)をリセットするには、[デフォルト] をクリックしてください。
+<Para>In the Select Data Types to be Hidden box, select the data types you
+want to be hidden. Data Types that have already been
+chosen to be hidden are highlighted.</Para>
+<Para><Emphasis>Or,</Emphasis> to reset to the default filter list (DOT_FILE, DOT_FOLDER, and
+CURRENT_FOLDER), click Defaults.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.228">
-<Para> オプション: [隠す条件の追加(オプション)] フィールドに名前のパターンを入力して、追加で隠すファイル名およびフォルダ名を指定してください。</Para>
-<Para>たとえば、<ComputerOutput>*.txt</ComputerOutput> と入力すると、名前が <ComputerOutput>.txt</ComputerOutput> で終わるファイルは隠され、ファイル・マネージャに表示されません。</Para>
-<Para>上級ユーザ向け: [フィルタ文字列] は任意の<Emphasis>正規表現</Emphasis>で、記述できます。
-  詳細は<ComputerOutput>regexp(5)</ComputerOutput>のマニュアル・ページを参照してください。
+<Para>Optional: Type a name pattern into the Also Hide (Optional) field specifying
+additional file and folder names to be hidden.</Para>
+<Para>For example, if you enter
+<ComputerOutput>*.txt</ComputerOutput>, then any
+file whose name ends in
+<ComputerOutput>.txt</ComputerOutput> will be hidden and will not be
+displayed in File Manager.</Para>
+ 
+ 
+<Para>Advanced users: The Filter String may be any <Emphasis>regular expression</Emphasis>. Refer
+to the <ComputerOutput>regexp(5)</ComputerOutput> man page for more information.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.229">
-<Para> [適用] または [了解] をクリックしてください。
+<Para>Click Apply or OK.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.TSKS.item.230">
-<Para> <XRef Linkend="ToChangeTheSortOrderTA"></Para>
+<Para><XRef Linkend="ToChangeTheSortOrderTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.231">
-<Para> <XRef Linkend="ToSavePreferencesAsTheDefaultTA"></Para>
+<Para><XRef Linkend="ToSavePreferencesAsTheDefaultTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ToEnableIconBrowsingTA">
-<Title>アイコンのブラウズを使用可能にするには</Title>
-<Para>名前が <ComputerOutput>.pm</ComputerOutput> または <ComputerOutput>.bm</ComputerOutput> で終わるファイルは、アイコンの図を格納しています。
-これらは、ファイル・マネージャがアイコンを構築するのに使用するアイコンです。
-デフォルトでは、これらが格納している図を参照するには、ファイルを開かなければなりません。
-アイコンのブラウズを使用可能にした場合は、ファイル・マネージャが、図がファイルの中に格納されていてもいなくても、各ファイルがどのように見えるかを示すアイコンを作成します。
+<Title>To Enable Icon Browsing</Title>
+<Para>Files with names that end in <ComputerOutput>.pm</ComputerOutput> or
+<ComputerOutput>.bm</ComputerOutput> contain icon drawings. These are
+the icons that File Manager uses when it builds icons. By default, you
+must open these files to see the drawings they contain. If you enable
+icon browsing, File Manager will make the icon for each file look like
+whatever drawing is stored inside the file.
 </Para>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.232">
-<Para> ファイル <ComputerOutput>/usr/dt/examples/types/C/IconBrowse.dt</ComputerOutput> を、<ComputerOutput>/<Symbol Role="Variable">ホーム・ディレクトリ</Symbol>/.dt/types</ComputerOutput> フォルダにコピーしてください。
+<Para>Copy the file
+<ComputerOutput>/usr/dt/examples/types/C/IconBrowse.dt</ComputerOutput>
+into your <ComputerOutput>/<Symbol Role="Variable">HomeDirectory</Symbol>/.dt/types</ComputerOutput>
+folder.
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.233">
-<Para>アプリケーション・マネージャを開いて、デスクトップツールのアプリケーション・グループの、[アクションの再読込み] を、ダブル・クリックしてください。
-</Para>
+<para>Open Application Manager and double-click Reload
+Actions in the Desktop_Tools application group.
+</para>
 </ListItem>
 </OrderedList>
 <Note>
-<Para>アイコンのデフォルト表示領域の最大値は、32x32 ピクセルです。
-したがって、ピクチャ・ファイルが 32x32 よりも大きい場合には、ピクチャは切り取られて、左上の 32x32 ピクセルのみが表示されます。
-大きなイメージ全体が見えるようにしたい場合には、アイコンの表示領域のサイズを増やすことができます。
-しかし、表示領域のサイズを大きくすると、フォルダを開く速度が遅くなり、フォルダ表示内でアイコンが遠く離れて拡がります。
+<Para>The maximum default display area for icons is 32x32 pixels. So, if
+a picture file is larger thatn 32x32, the picture will be clipped and
+only the top left 32x32 pixels will be shown. You can increase
+the size of the display area for icons if you want larger images
+to be fully visible. However, a larger display size area will
+slow down the opening of folders and icons will be spread
+further apart in folder views.
 </Para>
 </Note>
 </Sect1>
 <Sect1 Id="ToDisableIconBrowsingTA">
-<Title>アイコンのブラウズを使用不能にするには</Title>
+<Title>To Disable Icon Browsing</Title>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.234">
-<Para> 個人用の <ComputerOutput>IconBrowse.dt</ComputerOutput> ファイルのコピーを削除後、[アプリケーション情報の再読込み] をダブルクリックして、再度アクション・データベースを読み込んでください。
+<Para>Remove your personal copy of the <ComputerOutput>IconBrowse.dt</ComputerOutput> file, then load
+the action database again by double-clicking on ReloadApplications.
 </Para>
 </ListItem>
 </ItemizedList>
 </Sect1>
 <Sect1 Id="ToChangeIconBrowsingTA">
-<Title>アイコン表示領域のサイズを変更するには</Title>
+<Title>To Change Icon Display Area Size</Title>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.TSKS.item.235">
-<Para> 端末エミュレータ・ウィンドウを開いて、<ComputerOutput>dtpad ~/.Xdefaults </ComputerOutput>
-と入力してください。</Para>
+<Para>Open a Terminal window and type <ComputerOutput>dtpad ~/.Xdefaults</ComputerOutput>
+</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.236">
-<Para> ファイルを表示した時に、ファイルが空である場合も、テキストがすでに入力されている場合もあります。
-  どちらの場合でも、以下の 4 行のテキストをファイルに追加してください。
+<Para>When the file is displayed, it may be empty or there may be text
+already in the file. In either case, add the following four lines
+of text to the file:
 </Para>
 <OrderedList>
 <ListItem Id="HFMGR.TSKS.item.237">
-<Para> <ComputerOutput>Dtfile*smallIconWidth:24 </ComputerOutput>
+<Para><ComputerOutput>Dtfile*smallIconWidth:24</ComputerOutput>
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.238">
-<Para> <ComputerOutput>Dtfile*smallIconHeight:24 </ComputerOutput>
+<Para><ComputerOutput>Dtfile*smallIconHeight:24</ComputerOutput>
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.239">
-<Para> <ComputerOutput>Dtfile*largeIconWidth:38 </ComputerOutput>
+<Para><ComputerOutput>Dtfile*largeIconWidth:38</ComputerOutput>
 </Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.240">
-<Para> <ComputerOutput>Dtfile*largeIconHeight:38 </ComputerOutput>
+<Para><ComputerOutput>Dtfile*largeIconHeight:38</ComputerOutput>
 </Para>
 </ListItem>
 </OrderedList>
-<Para>上記の行を入力する場合は、各行の最後にあるデフォルトの数値を、新しい表示領域サイズに置換してください。</Para>
+<Para>When you type in these lines, replace the default numbers at the end of each
+line with the new display area size you want.</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.241">
-<Para> [ファイル] メニューで [保存] を選択してください。</Para>
+<Para>Select Save from the File menu</Para>
 </ListItem>
 <ListItem Id="HFMGR.TSKS.item.242">
-<Para> [ファイル] メニューで [閉じる] を選択してください。
+<Para>Select Close from the File menu
 </Para>
 </ListItem>
 </ItemizedList>
 <Note>
-<Para>変更は、デスクトップを終了して、再度ログインするまでは、効力を生じません。</Para>
-<Para>デフォルトの表示領域サイズに戻したい場合には、デフォルト・サイズに戻すか、追加した 4 行を削除してください。
-その後で、デスクトップを終了して、再起動してください。
+<Para>The change will not take effect until to exit the desktop and log back in.</Para>
+<Para>If you should want to return to the default display area size, type
+back in the default sizes or just remove the four lines you added, and
+then exit and restart the desktop.
 </Para>
 </Note>
 <!-- EOF: Tasks -->

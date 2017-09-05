@@ -1,4 +1,4 @@
-<!-- $XConsortium: GEntity.sgm /main/7 1996/12/18 01:35:13 cde-hit $ -->
+<!-- $XConsortium: GEntity.sgm /main/6 1996/06/19 16:12:17 drk $ -->
 <!entity CAMainWindow 			SYSTEM "./CreatAct/graphics/mainwin.tif" NDATA TIFF>
 <!entity CAAddDataTypesWindow		SYSTEM "./CreatAct/graphics/addtypes.tif" NDATA TIFF>
 <!entity CAAdvancedMainWIndow		SYSTEM "./CreatAct/graphics/advance.tif" NDATA TIFF>

@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: light.pm /main/3 1996/12/18 01:41:59 cde-hit $ */
+/* $XConsortium: fplight.pm /main/3 1995/07/18 17:34:00 drk $ */
 static char * fplight [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "36 22 6 1 0 0",

@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: circle.pm /main/3 1996/12/18 01:55:40 cde-hit $ */
+/* $XConsortium: IEtCircl.pm /main/3 1995/07/18 17:21:49 drk $ */
 static char * IEtCircl [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "36 36 4 1 0 0",

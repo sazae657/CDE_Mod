@@ -1,4 +1,4 @@
-<!-- $XConsortium: Tasks.sgm /main/3 1996/12/18 01:25:12 cde-hit $ -->
+<!-- $XConsortium: Tasks.sgm /main/6 1996/09/08 22:51:39 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -7,11 +7,15 @@
 <!-- (c) Copyright 1995 FUJITSU LIMITED. -->
 <!-- (c) Copyright 1995 Hitachi. -->
 <Chapter Id="Tasks">
-<Title>&calcname; 使い方</Title>
-<Para>このトピックは、&calcname;で実行可能な基本機能を演算モードに関わらず、カバーしています。
-&calcname;の特定のボタンに関するヘルプを参照する場合は、&calcname;の [ヘルプ] メニューで [アイテムヘルプ] を選択して、ポインタをヘルプが必要なボタンの上に移動し、マウス・ボタン 1 をクリックしてください。</Para>
+<Title>&calcname; Tasks</Title>
+<Para>This topic covers basic functions that you can perform with &calcname;
+regardless of the mode of operation.
+If you want help on a specific &calcname; button, choose
+On Item from the &calcname; Help menu, move the pointer to the
+button on which you need help, and click mouse button 1.
+</Para>
 <Procedure>
-<Title>&calcname;の使い方</Title>
+<Title>Using &calcname;</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.TSKS.item.1">
@@ -45,7 +49,7 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>関数および定数の作成と変更</Title>
+<Title>Creating and Modifying Functions and Constants</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.TSKS.item.10">
@@ -64,7 +68,7 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>簡単な数学的計算の実行</Title>
+<Title>Performing Simple Mathematical Operations</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.TSKS.item.14">
@@ -92,7 +96,7 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>財務演算の実行</Title>
+<Title>Performing Financial Operations</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.TSKS.item.21">
@@ -126,178 +130,191 @@
 </Step>
 </Procedure>
 <Sect1 Id="enternum">
-<Title>数値を入力するには</Title>
-<Para>電卓に数値を入力する方法は 2 通りあります。
+<Title>To Enter Numbers</Title>
+<Para>You can enter numbers into the calculator in two ways:
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.TSKS.item.30">
-<Para> キーボードで、数値を入力してください。
+<Para>Typing the numbers from the keyboard
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.31">
-<Para> マウス・ボタン 1 で、数字ボタンをクリックしてください。
+<Para>Clicking mouse button 1 on the number buttons
 </Para>
 </ListItem>
 </ItemizedList>
-<Para>たとえば、47.5 という数値を入力するには、ポインタを &calcname;ウィンドウに移動して、以下のどちらかを行ってください。
+<Para>For example, to enter the number 47.5, move the pointer into the
+&calcname; window and do one of the following:
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.TSKS.item.32">
-<Para> 47.5 を入力してください。
+<Para>Type 47.5
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.33">
-<Para> [4]、[7]、[.]、[5] ボタンを順番にクリックしてください。
+<Para>Click 4, 7, ., and 5 in succession.
 </Para>
 </ListItem>
 </ItemizedList>
-<Para>表示ウィンドウの値を消去するには [Clr] ボタンをクリックしてください。</Para>
+<Para>Click Clr to clear the display window.</Para>
 </Sect1>
 <Sect1 Id="usekbd">
-<Title>キーボード割付けを表示するには</Title>
+<Title>To Display Keyboard Equivalents</Title>
 <IndexTerm>
-<Primary>キーボード操作</Primary>
+<Primary>keyboard operation</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>マウス操作</Primary>
+<Primary>mouse operation</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>キーボード・ニーモニック</Primary>
+<Primary>keyboard mnemonic</Primary>
 </IndexTerm>
-<Para>各 &calcname;ボタンには、同じ機能を実行するキーボード・ニーモニックが、それぞれ対応付けられています。ニーモニックを表示するには
+<Para>For each &calcname; button
+there is a corresponding keyboard mnemonic that performs the same function.
+To display the mnemonics:
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.TSKS.item.34">
-<Para> [Keys] ボタンをクリックするか、[k] キーを押してください。
+<Para>Click the Keys button or press k.
 </Para>
 </ListItem>
 </ItemizedList>
-<Para>&calcname;ボタンのラベルは、必要に応じてニーモニックと機能を &minus; で区切って両方とも表示します。
-キーボード・ニーモニックは大文字の場合と小文字の場合がありますので、注意してください。</Para>
+<Para>The &calcname; button labels
+display both the mnemonic and the function, separated by a &minus; where
+necessary. Note that some keyboard mnemonics are uppercase, and some are
+lowercase.</Para>
 </Sect1>
 <Sect1 Id="accuracy">
-<Title>精度を設定するには</Title>
-<Para>数値の精度は、デフォルトでは小数第 2 位です。
-精度を設定するには、以下のように操作してください。
+<Title>To Set Accuracy</Title>
+<Para>The numeric accuracy is two places by default.
+To set the accuracy you want:
 </Para>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.35">
-<Para> [Accuracy] ボタンをクリックするか、<Keycap>Shift] + [a</Keycap> キーを押してください。</Para>
-<Para>表示ウィンドウとモード行の間に "Accuracy" という語が表示されます。
+<Para>Click Accuracy or press Shift a.</Para>
+<Para>The word "Accuracy" appears between
+the display window and the mode line.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.36">
-<Para> 精度に指定する桁の数を入力してください。</Para>
-<Para>表示が、小数点の右に指定した桁数を示すものに変わります。
+<Para>Type the number of places you want for accuracy.</Para>
+<Para>The display shifts to show the requested number of places to the right of the
+point.
 </Para>
 </ListItem>
 </OrderedList>
 </Sect1>
 <Sect1 Id="taskchngmodes">
-<Title>モードを変更するには</Title>
+<Title>To Change Modes</Title>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.TSKS.item.37">
-<Para> 表示領域の下のモード行にある一番目のメニュー・ボタンの上で、マウス・ボタン 1 を押してください。</Para>
+<Para>Press mouse button 1 on the first menu button in the mode line below
+the display area.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.38">
-<Para> 以下のモードのひとつを選択してください。</Para>
+<Para>Choose one of the following modes:</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.TSKS.item.39">
-<Para> 科学 (デフォルト) &emdash;&sigspace; サイン、コサイン、対数などの科学演算を実行できます。
+<Para>Scientific (the default) &emdash;&sigspace; Provides scientific functions such as sine,
+cosine, and log
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.40">
-<Para> 財務 &emdash;&sigspace; 支払、期間などの財務関数を実行できます。
+<Para>Financial &emdash;&sigspace; Provides financial functions such as
+payment and term
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.41">
-<Para> 論理 &emdash;&sigspace; 論理積、排他的ノアなどのブール論理演算を実行できます。</Para>
+<Para>Logical &emdash;&sigspace; Provides Boolean logical operators such as And and Xnor</Para>
 </ListItem>
 </ItemizedList>
-<Para>電卓の中央にあるモード依存キーは、ユーザが選択したモードを反映して変わります。
+<Para>The mode-dependent keys in the center of the Calculator change to reflect
+the mode you choose.
 </Para>
 </ListItem>
 </ItemizedList>
-<Para>関連項目
+<Para>See Also
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.TSKS.item.42">
-<Para><Link Type="jump" Linkend="changemodes">"モードの変更"</Link>
+<Para><Link Type="jump" Linkend="changemodes">"Changing Modes"</Link>
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.43">
-<Para><Link Type="jump" Linkend="scimodebtns">"科学モード・ボタン"</Link>
+<Para><Link Type="jump" Linkend="scimodebtns">"Scientific Mode Buttons"</Link>
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.44">
-<Para><Link Type="jump" Linkend="finmodebtns">"財務モード・ボタン"</Link>
+<Para><Link Type="jump" Linkend="finmodebtns">"Financial Mode Buttons"</Link>
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.45">
-<Para><Link Type="jump" Linkend="logmodebtns">"論理モード・ボタン"</Link>
+<Para><Link Type="jump" Linkend="logmodebtns">"Logical Mode Buttons"</Link>
 </Para>
 </ListItem>
 </ItemizedList>
 </Sect1>
 <Sect1 Id="taskchangebase">
-<Title>基数を変更するには</Title>
+<Title>To Change the Numeric Base</Title>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.46">
-<Para> 表示領域の下のモード行にある二番目のオプション・メニュー・ボタンの上で、マウス・ボタン 1 を押してください。
+<Para>Press mouse button 1 on the second option menu button in the mode
+line below the display area.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.47">
-<Para> ボタンのメニューから、基数を選択してください。</Para>
+<Para>Choose the numeric base from the button menu:</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.TSKS.item.48">
-<Para> Bin  &emdash;&sigspace;  2 進
+<Para>Bin &emdash;&sigspace; Binary
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.49">
-<Para> Oct  &emdash;&sigspace;  8 進
+<Para>Oct &emdash;&sigspace; Octal
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.50">
-<Para> Dec  &emdash;&sigspace;  10 進
+<Para>Dec &emdash;&sigspace; Decimal
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.51">
-<Para> Hex  &emdash;&sigspace;  16 進
+<Para>Hex &emdash;&sigspace; Hexadecimal
 </Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.52">
-<Para> 表示領域の下のモード行にある二番目のオプション・メニュー・ボタンをクリックしてください。
+<Para>Click the second option menu button in the mode line below the display area.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.53">
-<Para> オプション・メニュー・リストから、基数を選択してください。
+<Para>Choose the numeric base you want from the option menu list.
 </Para>
 </ListItem>
 </OrderedList>
 </Sect1>
 <Sect1 Id="taskchangedisp">
-<Title>演算の表示モードを変更するには</Title>
+<Title>To Change the Display Mode for Operations</Title>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.TSKS.item.54">
-<Para> 表示領域の下のモード行にある三番目のオプション・メニュー・ボタンの上で、マウス・ボタン 1 を押してください。
+<Para>Press mouse button 1 on the third option menu button in the mode line
+below the display area.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.55">
-<Para> ボタンのメニューから、表示モードを選択してください。
+<Para>Choose the display mode from the button menu:
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.TSKS.item.56">
-<Para> Eng  &emdash;&sigspace;  エンジニアリング
+<Para>Eng &emdash;&sigspace; Engineering
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.57">
-<Para> Fix  &emdash;&sigspace;  固定小数点
+<Para>Fix &emdash;&sigspace; Fixed
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.58">
-<Para> Sci  &emdash;&sigspace;  科学
+<Para>Sci &emdash;&sigspace; Scientific
 </Para>
 </ListItem>
 </ItemizedList>
@@ -305,29 +322,31 @@
 </ItemizedList>
 </Sect1>
 <Sect1 Id="taskchangetrig">
-<Title>演算の角度の単位を変更するには</Title>
+<Title>To Change the Trigonometric Base for Operations</Title>
 <Note>
-<Para>角度の単位は、電卓が科学モード(デフォルト)の場合にのみ選択できます。
+<Para>You can only choose a trigonometric base when Calculator is in
+Scientific mode (the default).
 </Para>
 </Note>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.59">
-<Para> 表示領域の下のモード行にある四番目のオプション・メニュー・ボタンの上で、マウス・ボタン 1 をクリックしてください。</Para>
+<Para>Press mouse button 1 on the fourth option menu button in the mode
+line below the display area.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.60">
-<Para> ボタンのメニューから角度の単位を選択してください。
+<Para>Choose the trigonometric base from the button menu:
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.TSKS.item.61">
-<Para> Deg  &emdash;&sigspace;  度
+<Para>Deg &emdash;&sigspace; Degrees
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.62">
-<Para> Grad	&emdash;&sigspace;  グラジエント
+<Para>Grad &emdash;&sigspace; Gradients
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.63">
-<Para> Rad  &emdash;&sigspace;  ラジアン
+<Para>Rad &emdash;&sigspace; Radians
 </Para>
 </ListItem>
 </ItemizedList>
@@ -335,89 +354,104 @@
 </OrderedList>
 </Sect1>
 <Sect1 Id="viewmemreg">
-<Title>メモリ・レジスタまたは財務登録を表示するには</Title>
+<Title>To View Memory or Financial Registers</Title>
 <IndexTerm>
-<Primary>メモリ・レジスタ</Primary>
+<Primary>memory register</Primary>
 </IndexTerm>
-<Para>&calcname;には、0 - 9 の番号が付けられた 10 個のメモリ・レジスタがあり、値を記憶し、検索することができます。</Para>
-<Para>&calcname;が 科学モードまたは論理モードの場合は、&calcname;の [オプション] メニューで [メモリ・レジスタ] を選択して、レジスタの内容を表示してください。</Para>
+<Para>&calcname; has ten memory registers numbered 0 - 9 into which you can store
+and retrieve values.</Para>
+<Para>When &calcname; is in Scientific or Logical mode,
+choose Memory Registers from the
+&calcname; Options menu to view the
+contents of these registers.</Para>
 <Graphic Entityref="memregs" Id="HCALC.TSKS.fig.1"></Graphic>
-<Para>&calcname;が財務モードの場合は、[オプション] メニューで [財務登録] を選択して、財務登録の内容を表示してください。</Para>
+<Para>When &calcname; is in Financial mode, choose Financial Registers from the
+Options menu to view
+the contents of the financial registers.</Para>
 <Graphic Entityref="finregs" Id="HCALC.TSKS.fig.2"></Graphic>
 </Sect1>
 <Sect1 Id="asciiHelp">
-<Title>ASCII 文字に相当する数値を調べるには</Title>
+<Title>To Find Numeric Values of ASCII Characters</Title>
 <IndexTerm>
-<Primary>ASCII 文字変換</Primary>
+<Primary>ASCII character conversion</Primary>
 </IndexTerm>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.64">
-<Para> &calcname;の [オプション] メニューで [ASCII 変換] を選択してください。
-  ダイアログ・ボックスが表示されます。</Para>
+<Para>Choose ASCII Convert from the &calcname; Options menu. A dialog box appears:</Para>
 <Graphic Entityref="getascii" Id="HCALC.TSKS.fig.3"></Graphic>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.65">
-<Para> [文字] フィールドに、相当する数値を求める ASCII 文字を入力してください。
+<Para>Type the ASCII character for which you want the numeric equivalent value
+in the Character field.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.66">
-<Para> [適用] をクリックしてください。</Para>
-<Para>ASCII 文字に相当する数値が、&calcname;の表示ウィンドウに表示されます。</Para>
-<Para>たとえば、A という文字を入力した場合は、10 進数での値は 65 です。
-基数として 16 進を用いた場合の値は 41 です。
+<Para>Click Apply.</Para>
+<Para>The numeric value of the ASCII character appears in the
+&calcname; display window.</Para>
+<Para>For example, if you typed the letter A, the
+decimal value is 65. If you have Hexadecimal selected as the numeric base,
+the value is 41.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.67">
-<Para> 上記の手順を終えたら、[閉じる] をクリックしてください。
+<Para>Click Close when you are through.
 </Para>
 </ListItem>
 </OrderedList>
 </Sect1>
 <Sect1 Id="functionHelp">
-<Title>関数を作成または削除するには</Title>
+<Title>To Create or Delete a Function</Title>
 <IndexTerm>
-<Primary>関数, 作成</Primary>
+<Primary>function, create</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>関数の作成</Primary>
+<Primary>create function</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>関数, 削除</Primary>
+<Primary>function, delete</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>関数の削除</Primary>
+<Primary>delete function</Primary>
 </IndexTerm>
 <Procedure>
-<Title>関数を作成するには</Title>
+<Title>To Create a Function</Title>
 <Step>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.68">
-<Para> [オプション] メニューで、[関数の入力] を選択してください。
-新規関数ダイアログ・ボックスが表示されます。</Para>
+<Para>Choose Enter Function from the Options menu. The New Function dialog box
+appears:</Para>
 <Graphic Entityref="newfunction1" Id="HCALC.TSKS.fig.4"></Graphic>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.69">
-<Para> 新規関数の番号を入力してください。</Para>
-<Para>既存の関数の番号を表示するには、電卓の [Functions] ボタンの上でマウス・ボタン 3 を押してください。関数を作成するには、最大 10 (0 から 9)までで使用可能な次の番号を使用してください。
-既存の関数を変更するには、その番号を 入力してください。</Para>
-<Para>入力した関数番号に、すでに関数がある場合には、ダイアログ・ボックスが表示され、既存の関数を上書きするかどうかを確認します。
-上書きする場合は [確認] をクリックしてください。
-既存の関数をそのまま保持する場合は、[取消し] をクリックしてください。</Para>
+<Para>Type the number for the new function.</Para>
+<Para>To display the number of existing functions, press mouse button 3 on the Functions button in the Calculator. To create a new function, use
+the next available number up to a maximum of 10 (numbered 0 through 9).
+To modify an existing function, type its number.</Para>
+<Para>If a function already exists for the function number you typed, a
+dialog box appears asking whether you want to overwrite the existing
+function. Click Confirm to overwrite; Click Cancel to retain the
+existing function.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.70">
-<Para> [説明] フィールドに、関数の説明を最大 40 文字で入力してください。</Para>
-<Para>たとえば、矩形の面積を求める関数を作成する場合は、"矩形の面積"と記述してください。</Para>
+<Para>Type a description of the function in the Description field (up to
+a maximum of 40 characters).</Para>
+<Para>For example, if you wanted to create a function that would find the
+area of a rectangle, you might describe it as "Area of a rectangle."</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.71">
-<Para> 関数の値を入力してください。</Para>
-<Para>たとえば、矩形の面積を求める関数の場合には、縦と横の値を、それぞれメモリ・レジスタ 1 とメモリ・レジスタ 2 に入力して、解をメモリ・レジスタ 3 に格納します。関数の値は、R1 </Para>
+<Para>Type the value for the function.</Para>
+<Para>For example, the function to find the area of a rectangle might
+put the values of length and width in memory register 1 and memory
+register 2, respectively, and put the result in memory register 3.
+The value for the function would then be R1</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.72">
-<Para> R2 = S3 になります。</Para>
-<Para>"R" は "レジスタ"、"S" は "記憶" という意味です。</Para>
+<Para>R2 = S3.</Para>
+<Para>"R" stands for "register" and "S" stands for "store."</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.73">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 <Graphic Entityref="newfunction2" Id="HCALC.TSKS.fig.5"></Graphic>
 </ListItem>
@@ -425,19 +459,20 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>関数を削除するには</Title>
+<Title>To Delete a Function</Title>
 <Step>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.74">
-<Para> [オプション] メニューで、[関数の入力] を選択してください。
+<Para>Choose Enter Function from the Options menu.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.75">
-<Para> 表示されたダイアログ・ボックスで、関数番号を入力してください。
+<Para>Type the function number in the dialog box that appears.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.76">
-<Para> [説明] および [値] フィールドに情報を入力せずに、[了解] をクリックしてください。
+<Para>Click OK without typing information in the Description or Value
+fields.
 </Para>
 </ListItem>
 </OrderedList>
@@ -445,31 +480,34 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="constantHelp">
-<Title>定数リストに定数を追加するには</Title>
+<Title>To Add a Constant to the Constants List</Title>
 <IndexTerm>
-<Primary>定数, 追加</Primary>
+<Primary>constant, add</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>定数の追加</Primary>
+<Primary>add a constant</Primary>
 </IndexTerm>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.77">
-<Para> [オプション] メニューで、[定数の入力] を選択してください。</Para>
-<Para>[新規定数] ダイアログ・ボックスが表示されます。</Para>
+<Para>Choose Enter Constant from the Options menu.</Para>
+<Para>The New Constant dialog box appears.</Para>
 <Graphic Entityref="newconstant1" Id="HCALC.TSKS.fig.6"></Graphic>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.78">
-<Para> 定数の番号を入力してください。</Para>
-<Para>既存の定数の番号を表示するには、電卓の [Constants] ボタンの上でマウス・ボタン 3 を押してください。新規定数を追加するには、最大 10 (0 から 9)までで使用可能な次の番号を使用してください。
-既存の定数を変更するには、その番号を入力してください。</Para>
+<Para>Type a number for the constant.</Para>
+<Para>To display the number of existing constants, press mouse button 3 on the Constants button in the Calculator. To add a new constant, use
+the next available number up to a maximum of 10 (numbered 0 through 9).
+To modify an existing constant, type its number.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.79">
-<Para> [説明] フィールドに、定数の説明を最大 40 文字で入力してください。</Para>
-<Para>たとえば、5 の階乗を定数として追加する場合は、"5 の階乗"という説明を入力してください。</Para>
+<Para>Type a description for the constant in the Description field (up to
+a maximum of 40 characters).</Para>
+<Para>For example, if you wanted to add the constant for 5!, you might
+type "Five factorial" as the description.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.80">
-<Para> 定数の値を入力してください。</Para>
-<Para>5 の階乗の場合は、120 または 5</Para>
+<Para>Type the value for the constant.</Para>
+<Para>For 5!, you could type either 120 or 5</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.81">
 <Para>4</Para>
@@ -481,209 +519,221 @@
 <Para>2</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.84">
-<Para>1 を入力してください。</Para>
+<Para>1.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.85">
-<Para> [了解] をクリックしてください。
-</Para>
-<Para>入力した定数番号に、すでに定数がある場合には、ダイアログ・ボックスが表示され、既存の定数を上書きするかどうかを確認します。
-上書きする場合は [確認] をクリックしてください。
-既存の定数をそのまま保持する場合は、[取消し] をクリックしてください。</Para>
+<Para>Click OK.</Para>
+<Para>If a constant already exists for the constant number you typed, a
+dialog box appears asking whether you want to overwrite the existing
+constant. Click Confirm to overwrite; Click Cancel to retain the
+existing constant.</Para>
 </ListItem>
 </OrderedList>
 <Graphic Entityref="newconstant2" Id="HCALC.TSKS.fig.7"></Graphic>
 </Sect1>
 <Sect1 Id="onitem">
-<Title>特定のキーに関するヘルプを参照するには</Title>
+<Title>To Get Help on a Specific Key</Title>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.86">
-<Para> [ヘルプ] メニューで、[アイテムヘルプ] を選択してください。</Para>
-<Para>ポインタの形状が ? に変わります。
+<Para>Choose On Item from the Help menu.</Para>
+<Para>The pointer
+changes to a ?.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.87">
-<Para> 情報が必要な &calcname;ボタンをクリックしてください。
+<Para>Click the &calcname; button for which you want information.
 </Para>
 </ListItem>
 </OrderedList>
 </Sect1>
 <Sect1 Id="selectconstant">
-<Title>定数値を選択するには</Title>
+<Title>To Select a Constant Value</Title>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.88">
-<Para> [Constants] ボタンをクリックしてください。</Para>
-<Para>モード行に "Constants" という語が表示されます。
+<Para>Click Constants.</Para>
+<Para>The word Constants appears in the mode
+line.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.89">
-<Para> 使用する定数を表す番号をクリックしてください。
+<Para>Click a number that represents the constant you want to use.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.90">
-<Para> 定数のアクティブ・リストを参照するには、マウス・ボタン 3 で [Constants] ボタンをクリックしてください。
-デフォルト値が 10 個あります。</Para>
+<Para>Click Constants with button 3 to
+see the active list of constants. There are ten default values:</Para>
 <Graphic Entityref="constants" Id="HCALC.TSKS.fig.8"></Graphic>
-<Para>デフォルトのリストに、定数を追加できます。
-<Link Type="jump" Linkend="constantHelp">定数を入力するには</Link>を参照してください。
+<Para>You can add your own constant values to the default list. See <Link Type="jump" Linkend="constantHelp">To Add a Constant to the Constants List</Link>.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.91">
-<Para> 定数番号のキーをクリックするか、キーボードで入力してください。</Para>
-<Para>表示領域に定数の値が表示され、"Constants"という語が消えます。
+<Para>Click the key of the constant number or
+type it from the keyboard.</Para>
+<Para>The value of the constant appears in the
+display and the word Constants disappears.
 </Para>
 </ListItem>
 </OrderedList>
 </Sect1>
 <Sect1 Id="mathops">
-<Title>簡単な数学的計算を実行するには</Title>
+<Title>To Perform Simple Mathematical Operations</Title>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.92">
-<Para> 電卓ウィンドウに、ポインタを移動してください。
+<Para>Move the pointer into the Calculator window.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.93">
-<Para> 一番目の値を入力してください。
+<Para>Type the first value.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.94">
-<Para> 実行する数学的計算のボタンをクリック、またはキーを入力してください。</Para>
+<Para>Click the button (or type the key) for the mathematical operation you
+want to perform:</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.TSKS.item.95">
-<Para> + &emdash;&sigspace; 加算
+<Para>+ &emdash;&sigspace; Addition
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.96">
-<Para> - &emdash;&sigspace; 減算
+<Para>- &emdash;&sigspace; Subtraction
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.97">
-<Para> * &emdash;&sigspace; 乗算
+<Para>* &emdash;&sigspace; Multiplication
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.98">
-<Para> / &emdash;&sigspace; 除算
+<Para>/ &emdash;&sigspace; Division
 </Para>
 </ListItem>
 </ItemizedList>
-<Para>表示ウィンドウの一番目の値の後に、演算記号が表示されます。</Para>
+<Para>The operation indicator appears in the display window after the first
+value.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.99">
-<Para> 二番目の値を入力してください。</Para>
+<Para>Type the second value.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.100">
-<Para> [=] ボタンをクリック、またはキーボード上の [=] キーを押してください。</Para>
-<Para>計算の答えが表示ウィンドウに表示されます。
+<Para>Click the = button (or press the = key on the computer keyboard).</Para>
+<Para>The answer to the calculation appears in the display window.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>関連項目</Para>
+<Para>See Also</Para>
 <Para><XRef Linkend="combops"></Para>
 </Sect1>
 <Sect1 Id="combops">
-<Title>複合演算を実行するには</Title>
+<Title>To Perform Combined Operations</Title>
 <IndexTerm>
-<Primary>複合演算</Primary>
+<Primary>combined operations</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>優先, 使い方</Primary>
+<Primary>precedence, using</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>計算の優先</Primary>
+<Primary>arithmetic precedence</Primary>
 </IndexTerm>
-<Para>計算は、計算の優先なしに、左から右に実行されます。
-&emdash;&sigspace; たとえば、2+3*4=20 です。優先を実行するには、括弧を使用してください。&emdash;&sigspace; たとえば、2+(3*4)=14 です。</Para>
+<Para>Calculations are performed from left to right, with no arithmetic
+precedence &emdash;&sigspace; for example, 2+3*4=20. To establish precedence,
+use
+parentheses &emdash;&sigspace; for example, 2+(3*4)=14.</Para>
 <Procedure>
-<Title>例</Title>
+<Title>Example</Title>
 <Step>
-<Para>47.5 と 22.98 の合計に 5 を掛けた数と、47.5 と 22.98 の積を加算した
-合計を 5 で割る場合に、優先は以下のようになります。
+<Para>You want to add 47.5 and 22.98, multiply that sum by 5, and the product of
+47.5 and 22.98, and divide the total by 5. The precedence for this is
 ((47.5+22.98)*5+(47.5*22.98))/5=?</Para>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.101">
-<Para> ポインタを &calcname;ウィンドウの中に移動してください。
+<Para>Move the pointer into the &calcname; window.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.102">
-<Para> [Clr] ボタンをクリックして、表示ウィンドウを消去してください。
+<Para>Click Clr to clear the display window.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.103">
-<Para> [(] ボタンを 2 回クリックするか、[(] キーを 2 回押してください。
-表示領域とモード行の間に"("が表示されます。
+<Para>Click ( twice or press the ( key twice. A ( appears between the
+display window and the mode line.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.104">
-<Para> 47.5 を入力してください。
+<Para>Enter 47.5.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.105">
-<Para> [+] ボタンをクリックするか、[+] キーを押してください。
-"(" が表示領域とモード行の間に表示され続け、表示ウィンドウの"47.5"の後に "+" が表示されることに注意してください。
+<Para>Click + or press the + key. Note that the ( stays visible between the
+display window and the mode line and the + appears in the display window
+following 47.5.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.106">
-<Para> 22.98 を入力してください。
+<Para>Enter 22.98.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.107">
-<Para> [)] ボタンをクリックするか、[)] キーを押してください。
+<Para>Click ) or press the ) key.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.108">
-<Para> [&times;] ボタン&sigspace;をクリックするか、[</Para>
+<Para>Click &times; &sigspace; or press the</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.109">
-<Para>] キーです。
-表示ウィンドウの ")" の後に "&times;" &sigspace; が表示されます。
+<Para>key. A
+&sigspace;
+&times; &sigspace appears
+in the display window after the ).
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.110">
-<Para> 5 を入力してください。
+<Para>Enter 5.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.111">
-<Para> [+] ボタンをクリックするか、[+] キーを押してください。
-表示ウィンドウの "5" の後に、"+" が表示されます。
+<Para>Click + or press the + key. A + appears in the display window after
+the 5.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.112">
-<Para> [(] ボタンをクリックするか、[(] キーを押してください。
+<Para>Click ( or press the ( key.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.113">
-<Para> 47.5 を入力してください。
+<Para>Enter 47.5.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.114">
-<Para> &sigspace; &times; &sigspace; ボタンをクリックするか、[</Para>
+<Para>Click &sigspace; &times; &sigspace; or press the</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.115">
-<Para>] キーです。
-表示ウィンドウの"47.5"の後に、&sigspace; &times; &sigspace; が表示されます。
+<Para>key. A &sigspace;
+&times; &sigspace; appears
+in the display window after the 47.5.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.116">
-<Para> 22.98 を入力してください。
+<Para>Enter 22.98.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.117">
-<Para> [)] ボタンを 2 回クリックするか、[)] キーを 2 回押してください。
-&calcname;が、括弧内の演算を実行して、結果の 1443.95 を表示します。
-表示ウィンドウとモード行の間に表示されていた "(" は、消えました。
+<Para>Click ) twice or press the ) key twice. &calcname; performs the
+operations within the parentheses and displays the result 1443.95. The (
+is no longer visible between the display window and the mode line.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.118">
-<Para> [/] ボタンをクリックするか、[/] キーを押してください。
-表示ウィンドウとモード行の間に、"/" が表示されます。
+<Para>Click / or press the / button. A / appears between the display window and
+the mode line.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.119">
-<Para> 5 を入力してください。
+<Para>Enter 5.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.120">
-<Para> [=] ボタンをクリックするか、[=] キーを入力してください。</Para>
-<Para>答えの 288.79 が、表示ウィンドウに表示されます。
+<Para>Click = or press the = key.</Para>
+<Para>The answer, 288.79, appears in the display
+window.
 </Para>
 </ListItem>
 </OrderedList>
@@ -691,678 +741,760 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="reciprocal">
-<Title>逆数を求めるには</Title>
+<Title>To Find a Reciprocal</Title>
 <IndexTerm>
-<Primary>逆数</Primary>
+<Primary>reciprocal</Primary>
 </IndexTerm>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.121">
-<Para> ポインタを &calcname;ウィンドウの中に移動してください。
+<Para>Move the pointer into the &calcname; window.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.122">
-<Para> 逆数を求める数値を入力してください。
+<Para>Type the value for which you want to find the reciprocal.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.123">
-<Para> [1/x] ボタンをクリックするか、[r] キーを押してください。</Para>
-<Para>答えが表示ウィンドウに表示されます。
+<Para>Click 1/x or press r.</Para>
+<Para>The answer appears in the display
+window.
 </Para>
 </ListItem>
 </OrderedList>
 </Sect1>
 <Sect1 Id="sqrt">
-<Title>平方根を求めるには</Title>
+<Title>To Find a Square Root</Title>
 <IndexTerm>
-<Primary>平方根</Primary>
+<Primary>square root</Primary>
 </IndexTerm>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.124">
-<Para> ポインタを &calcname;ウィンドウの中に移動してください。
+<Para>Move the pointer into the &calcname; window.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.125">
-<Para> 平方根を求める数値を入力してください。
+<Para>Type the value for which you want to find the square root.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.126">
-<Para> [Sqrt] ボタンをクリックするか、[s] キーを押してください。</Para>
-<Para>答えが表示ウィンドウに表示されます。
+<Para>Click Sqrt or press s.</Para>
+<Para>The answer appears in the display
+window.
 </Para>
 </ListItem>
 </OrderedList>
 </Sect1>
 <Sect1 Id="square">
-<Title>数値を二乗するには</Title>
+<Title>To Square a Number</Title>
 <IndexTerm>
-<Primary>数値を二乗</Primary>
+<Primary>square a number</Primary>
 </IndexTerm>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.127">
-<Para> ポインタを &calcname;ウィンドウの中に移動してください。
+<Para>Move the pointer into the &calcname; window.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.128">
-<Para> 二乗する数値を入力してください。
+<Para>Type the value you want to square.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.129">
-<Para> [x^2] ボタンをクリックするか、[@] キーを押してください。</Para>
-<Para>答えが表示ウィンドウに表示されます。
+<Para>Click x^2 or press @.</Para>
+<Para>The answer appears in the display
+window.
 </Para>
 </ListItem>
 </OrderedList>
 </Sect1>
 <Sect1 Id="percent">
-<Title>百分率を求めるには</Title>
+<Title>To Find a Given Percentage</Title>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.130">
-<Para> ポインタを &calcname;ウィンドウの中に移動してください。
+<Para>Move the pointer into the &calcname; window.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.131">
-<Para> 百分率を求める数値を入力してください。
+<Para>Type the value from which you want to find a percentage.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.132">
-<Para> [%] ボタンをクリックするか、キーボード上の [%] キーを押してください。
+<Para>Click % or press % on your keyboard.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.133">
-<Para> 求める百分率を入力してください。</Para>
-<Para>答えが表示ウィンドウに表示されます。
+<Para>Type the percentage you want to find.</Para>
+<Para>The answer appears in the display window.
 </Para>
 </ListItem>
 </OrderedList>
 </Sect1>
 <Sect1 Id="chngsign">
-<Title>表示値の符号を変更するには</Title>
+<Title>To Change the Sign of the Displayed Value</Title>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.TSKS.item.134">
-<Para> [+/-] ボタンをクリックするか、<Keycap>Shift] + [c</Keycap> キーを押してください。</Para>
-<Para>符号が変わります。"+"は表示されませんので、注意してください。
+<Para>Click +/- or press Shift c.</Para>
+<Para>The sign changes. Note that + is not
+displayed.
 </Para>
 </ListItem>
 </ItemizedList>
 </Sect1>
 <Sect1 Id="TermTask">
-<Title>支払期間の数を計算するには</Title>
-<Para>一定の利率で、将来の値に達するまでに必要な、年金の支払期間の数を計算できます。
+<Title>To Calculate the Number of Payment Periods</Title>
+<Para>You can calculate the number of payments of an ordinary annuity
+necessary to accumulate a future value with a constant interest rate.
 </Para>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.135">
-<Para> 電卓は [財務] モードにしてください。表示領域の下にあるモード・メニュー・ボタンが、[科学] または [論理] の場合には、まず、メニュー・ボタンの上でマウス・ボタン 1 を押して、[財務] を選択してください。</Para>
+<Para>Calculator must be in Financial mode. If the first mode menu button
+under the display area reads either Scientific or Logical, press mouse
+button 1 on the menu button and choose Financial.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.136">
-<Para> 財務登録を消去するには、[CLRfregs] ボタンをクリックしてください。</Para>
+<Para>Click CLRfregs to clear the financial registers.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.137">
-<Para> 支払い金額を入力して、[Pmt] ボタンをクリックしてください。</Para>
+<Para>Type the payment amount and click Pmt.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.138">
-<Para> 将来の値を入力して、[Fv] ボタンをクリックしてください。</Para>
+<Para>Type the future value amount and click Fv.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.139">
-<Para> 利率を入力して、[i%Yr] ボタンをクリックしてください。
+<Para>Type the interest amount and click i%Yr.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.140">
-<Para> 年間の支払い回数を入力して、[P/YR] ボタンをクリックしてください。</Para>
+<Para>Type the number of payments per year and click P/YR.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.141">
-<Para> [Term] ボタンをクリックしてください。
+<Para>Click Term.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>求める将来の値に達するまでに必要な期間が、表示ウィンドウに表示されます。</Para>
+<Para>The time needed to accumulate the desired future value appears in
+the display window.</Para>
 <Procedure>
-<Title>例</Title>
+<Title>Example</Title>
 <Step>
-<Para>毎年 6 月に $2000 貯金するとします。利率が 4.5% の場合に、口座が $25,000
-になるには何年かかるでしょうか?
+<Para>Suppose you deposit $2000 into a savings account each June.
+At an interest rate of 4.5%, how long will it take for you to have
+$25,000 in your account?
 </Para>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.142">
-<Para> 2000 を入力して、[+/&minus;] ボタンをクリックしてください。
-(支払は、借方なので、マイナスにしなければなりません。)
+<Para>Type 2000 and
+click +/&minus; (The payment is a debit and therefore should be negative).
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.143">
-<Para> [Pmt] ボタンをクリックしてください。
+<Para>Click Pmt.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.144">
-<Para> 25000 を入力して、[Fv] ボタンをクリックしてください。
+<Para>Type 25000 and
+click Fv.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.145">
-<Para> 4.5 を入力して、[i%Yr] ボタンをクリックしてください。
+<Para>Type 4.5 and
+click i%Yr.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.146">
-<Para> 1 を入力して、[P/YR] ボタンをクリックしてください。
+<Para>Type 1 and
+click P/YR
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.147">
-<Para> [Term] ボタンをクリックしてください。
+<Para>Click Term
 </Para>
 </ListItem>
 </OrderedList>
-<Para>結果の 10.14 は、口座に $25,000 を貯蓄するのに、10 年以上かかることを示しています。</Para>
+<Para>The result, 10.14, indicates that it will take slightly more than 10 years
+to accumulate $25,000 in the account.</Para>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="intTask">
-<Title>期間の金利を計算するには</Title>
-<Para>期間の金利を計算できます。
+<Title>To Calculate Periodic Interest Rate</Title>
+<Para>You can calculate periodic interest rate.
 </Para>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.148">
-<Para> 電卓は [財務] モードにしてください。表示領域の下にあるモード・メニュー・ボタンが、[科学] または [論理] の場合には、まず、メニュー・ボタンの上でマウス・ボタン 1 を押して、[財務] を選択してください。</Para>
+<Para>Calculator must be in Financial mode. If the first mode menu button
+under the display area reads either Scientific or Logical, press mouse
+button 1 on the menu button and choose Financial.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.149">
-<Para> 財務登録を消去するには、[CLRfregs] ボタンをクリックしてください。</Para>
+<Para>Click CLRfregs to clear the financial registers.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.150">
-<Para> 現在の投資金額(現在の値)を入力して、[Pv] ボタンをクリックしてください。</Para>
+<Para>Type the amount current invested (the present value) and click Pv.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.151">
-<Para> 満期金額を入力して、[Fv] ボタンをクリックしてください。</Para>
+<Para>Type the maturity value and click Fv.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.152">
-<Para> 期間を月数で入力して、[Term] ボタンをクリックしてください。</Para>
+<Para>Type the number of months of the period and click Term.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.153">
-<Para> 年間の支払い回数を入力して、[P/YR] ボタンをクリックしてください。</Para>
+<Para>Type the number of payments per year and click P/YR.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.154">
-<Para> [i%Yr] ボタンをクリックしてください。</Para>
-<Para>利率が、表示ウィンドウに表示されます。
+<Para>Click i%Yr.</Para>
+<Para>The interest rate appears in the display window.
 </Para>
 </ListItem>
 </OrderedList>
 <Note>
-<Para>[Accuracy] ボタンをクリックし、小数の精度をクリックすることによって、精度を向上させることができます。
+<Para>You can increase the accuracy by clicking the Accuracy button and
+then clicking the desired decimal precision.
 </Para>
 </Note>
 <Procedure>
-<Title>例</Title>
+<Title>Example</Title>
 <Step>
-<Para>債券に $25,000 を投資するとします。債券の償還期間は 10 年で、償還金額は $60,000 である場合に、投資に対するこの期間の利率は何パーセントでしょうか?
+<Para>Suppose you invested $25,000 in a bond. The bond matures in ten years, and
+has a maturity value of $60,000. What is the periodic interest rate for
+your investment?
 </Para>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.155">
-<Para> 25000 を入力して、[Pv] ボタンをクリックしてください。
+<Para>Enter 25000 and
+click Pv.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.156">
-<Para> 60000 を入力して、[Fv] ボタンをクリックしてください。
+<Para>Enter 60000 and
+click Fv.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.157">
-<Para> 120 を入力して、[Term] ボタンをクリックしてください。
+<Para>Enter 120 and
+click Term.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.158">
-<Para> 1 を入力して、[P/YR] ボタンをクリックしてください。
+<Para>Enter 1 and
+click P/YR.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.159">
-<Para> [i%Yr] ボタンをクリックしてください。
+<Para>Click i%Yr.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>利率は 8.79% です。</Para>
+<Para>The interest rate is 8.79%.</Para>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="PvTask">
-<Title>投資の現在の値を計算するには</Title>
-<Para>投資の現在の値を計算できます。
+<Title>To Calculate the Present Value of an Investment</Title>
+<Para>You can calculate the present value of an investment.
 </Para>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.160">
-<Para> 電卓は [財務] モードにしてください。表示領域の下にあるモード・メニュー・ボタンが、[科学] または [論理] の場合には、まず、メニュー・ボタンの上でマウス・ボタン 1 を押して、[財務] を選択してください。</Para>
+<Para>Calculator must be in Financial mode. If the first mode menu button
+under the display area reads either Scientific or Logical, press mouse
+button 1 on the menu button and choose Financial.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.161">
-<Para> 財務登録を消去するには、[CLRfregs] ボタンをクリックしてください。</Para>
+<Para>Click CLRfregs to clear the financial registers.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.162">
-<Para> 支払金額を入力して、 [+/&minus;] ボタンをクリックし、[Pmt] ボタンをクリックしてください。</Para>
+<Para>Type the payment amount, click +/&minus;; and click Pmt.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.163">
-<Para> 年間複合利率を入力して、[i%Yr] ボタンをクリックしてください。</Para>
+<Para>Type the yearly compounded interest rate and click i%Yr.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.164">
-<Para> 投資期間を入力して、[Term] ボタンをクリックしてください。</Para>
+<Para>Type the term of the investment and click Term.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.165">
-<Para> 年間支払い回数を入力して、[P/YR] ボタンをクリックしてください。</Para>
+<Para>Type the number of payments per year and click P/YR.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.166">
-<Para> [Pv] ボタンをクリックしてください。
+<Para>Click Pv.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>例</Title>
+<Title>Example</Title>
 <Step>
-<Para>$1,000,000 を得るとします。$400,000 を一括で支払うか、$50,000 を毎年 1 回 20 年間支払うというオプションがあります。
-分割払いを選択した場合は、全額を年利 9% の一年複利で運用するものとします。
-時価は、どちらのオプションが有利でしょうか?</Para>
+<Para>Assume that you won $1,000,000. You have the option of a lump sum payment
+of $400,000 or $50,000 once a year for twenty years. If you select the
+latter, you intend to invest the entire amount at a rate of 9% compounded
+annually. Which option is worth more in today's dollars?</Para>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.167">
-<Para> 50000 を入力して、[+/&minus;] ボタンをクリックしてください。
+<Para>Type 50000 and
+click +/&minus;.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.168">
-<Para> [Pmt] ボタンをクリックしてください。
+<Para>Click Pmt.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.169">
-<Para> 9 を入力して、[i%Yr] ボタンをクリックしてください。
+<Para>Type 9 and
+click i%Yr.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.170">
-<Para> 20 を入力して、[Term] ボタンをクリックしてください。
+<Para>Type 20 and
+click Term.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.171">
-<Para> 1 を入力して、[P/YR] ボタンをクリックしてください。
+<Para>Type 1 and
+click P/YR.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.172">
-<Para> [Pv] ボタンをクリックしてください。
+<Para>Click Pv.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>結果は 456427.28 です。
-これは、20 年間に渡って毎年 $50,000 ずつ支払われる $1,000,000 は、時価では $456,427.28 に相当するという意味です。</Para>
+<Para>The result is 456427.28, which means that $1,000,000 paid over 20 years in
+$50,000 installments is worth $456,427.28 in today's dollars.</Para>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="PmtTask">
-<Title>ローンの定期支払い金額を計算するには</Title>
-<Para>ローンの定期支払い金額を計算できます。
+<Title>To Calculate the Periodic Payment of a Loan</Title>
+<Para>You can calculate the amount of the periodic payment of a loan.
 </Para>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.173">
-<Para> 電卓は [財務] モードにしてください。表示領域の下にあるモード・メニュー・ボタンが、[科学] または [論理] の場合には、まず、メニュー・ボタンの上でマウス・ボタン 1 を押して、[財務] を選択してください。</Para>
+<Para>Calculator must be in Financial mode. If the first mode menu button
+under the display area reads either Scientific or Logical, press mouse
+button 1 on the menu button and choose Financial.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.174">
-<Para> 財務登録を消去するには、[CLRfregs] ボタンをクリックしてください。</Para>
+<Para>Click CLRfregs to clear the financial registers.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.175">
-<Para> ローンの金額を入力して、[+/&minus;] ボタンをクリックし、[Pv] ボタンをクリックしてください。</Para>
+<Para>Type the loan amount, click +/&minus; and click Pv.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.176">
-<Para> 利率を入力して、[i%Yr] ボタンをクリックしてください。</Para>
+<Para>Type the interest rate and click i%Yr.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.177">
-<Para> ローンの期間を入力して、[Term] ボタンをクリックしてください。
+<Para>Type the term of the loan and click Term.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.178">
-<Para> 年間支払い回数を入力して、[P/YR] ボタンをクリックしてください。</Para>
+<Para>Type the number of
+payments per year and click P/YR.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.179">
-<Para> [Pmt] ボタンをクリックしてください。
+<Para>Click Pmt.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>例</Title>
+<Title>Example</Title>
 <Step>
-<Para>新しい家の購入を考慮しているとします。
-$120,000 を年利 11%、返済期間 30 年 で借りる必要があります。
-一ケ月当たりの支払い金額はいくらになるでしょうか?</Para>
+<Para>You are considering buying a new home. You need to borrow
+$120,000 at 11% for thirty years. What is the monthly payment?</Para>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.180">
-<Para> 120000 を入力して、[+/&minus;] ボタンをクリックしてください。
+<Para>Type 120000 and
+click +/&minus;.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.181">
-<Para> [Pv] ボタンをクリックしてください。
+<Para>Click Pv.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.182">
-<Para> 11 を入力して、[i%Yr] ボタンをクリックしてください。
+<Para>Type 11 and
+click i%Yr.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.183">
-<Para> 360 を入力して、[Term] ボタンをクリックしてください。
+<Para>Type 360 and
+click Term.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.184">
-<Para> 12 を入力して、[P/YR] ボタンをクリックしてください。
+<Para>Type 12 and click P/YR.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.185">
-<Para> [Pmt] ボタンをクリックしてください。
+<Para>Click Pmt.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>結果の 1142.79 が、一ケ月の支払い金額です。</Para>
+<Para>The result, 1142.79, is the amount of your monthly payment.</Para>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="FvTask">
-<Title>投資の将来の値を計算するには</Title>
-<Para>投資の将来の値を計算できます。
+<Title>To Calculate the Future Value of an Investment</Title>
+<Para>You can calculate the future value of an investment.
 </Para>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.186">
-<Para> 電卓は [財務] モードにしてください。表示領域の下にあるモード・メニュー・ボタンが、[科学] または [論理] の場合には、まず、メニュー・ボタンの上でマウス・ボタン 1 を押して、[財務] を選択してください。</Para>
+<Para>Calculator must be in Financial mode. If the first mode menu button
+under the display area reads either Scientific or Logical, press mouse
+button 1 on the menu button and choose Financial.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.187">
-<Para> 財務登録を消去するには、[CLRfregs] ボタンをクリックしてください。</Para>
+<Para>Click CLRfregs to clear the financial registers.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.188">
-<Para> 投資金額を入力して、 [+/&minus;] ボタンをクリックし、[Pmt] ボタンをクリックしてください。</Para>
+<Para>Type the investment amount, click +/&minus; and click Pmt.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.189">
-<Para> 利率を入力して、[i%Yr] ボタンをクリックしてください。</Para>
+<Para>Type the interest amount and click i%Yr.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.190">
-<Para> 投資期間を入力して、[Term] ボタンをクリックしてください。</Para>
+<Para>Type the term of the investment and click Term.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.191">
-<Para> 年間支払い回数を入力して、[P/YR] ボタンをクリックしてください。</Para>
+<Para>Type the number of payments per year and click P/YR.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.192">
-<Para> [Fv] ボタンをクリックしてください。
+<Para>Click Fv.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>例</Title>
+<Title>Example</Title>
 <Step>
-<Para>預金口座に毎年 $5,000 を 20 年間貯蓄するとします。
-口座は、年利 8% の複利です。20 年後の口座の金額はいくらになるでしょうか?
+<Para>Suppose you invest $5,000 in a savings account each year for twenty years.
+The account pays 8% interest compounded annually. What will the value of
+your account be at the end of twenty years?
 </Para>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.193">
-<Para> 5000 を入力して、[+/&minus;] ボタンをクリックしてください。
+<Para>Enter 5000 and
+click +/&minus;.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.194">
-<Para> [Pmt] ボタンをクリックしてください。
+<Para>Click Pmt.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.195">
-<Para> 8 を入力して、[i%Yr] ボタンをクリックしてください。
+<Para>Enter 8 and
+click i%Yr.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.196">
-<Para> 20 を入力して、[Term] ボタンをクリックしてください。
+<Para>Enter 20 and
+click Term.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.197">
-<Para> 1 を入力して、[P/YR] ボタンをクリックしてください。
+<Para>Enter 1 and
+click P/YR.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.198">
-<Para> 0 を入力して、[Pv] ボタンをクリックしてください。
+<Para>Enter 0 and
+click Pv.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.199">
-<Para> [Fv] ボタンをクリックしてください。
+<Para>Click Fv.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>結果の 228809.82 が、20 年後の口座の金額です。</Para>
+<Para>The result, 228809.82, is the amount you'll have in your account after
+twenty years.</Para>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="CtrmTask">
-<Title>複合期間の数を計算するには</Title>
-<Para>投資の現在の値が、複合期間を通した固定利率を用いた場合に、将来の値に増えるまでに必要な複合期間の数を計算するには、[Ctrm] ボタンを使用してください。</Para>
+<Title>To Calculate the Number of Compounding Periods</Title>
+<Para>Use Ctrm to calculate the number of compounding periods needed for
+an investment of present value to increase to a future value, earning
+a fixed interest rate per compounding period.
+</Para>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.200">
-<Para> 電卓は [財務] モードにしてください。表示領域の下にあるモード・メニュー・ボタンが、[科学] または [論理] の場合には、まず、メニュー・ボタンの上でマウス・ボタン 1 を押して、[財務] を選択してください。</Para>
+<Para>Calculator must be in Financial mode. If the first mode menu button
+under the display area reads either Scientific or Logical, press mouse
+button 1 on the menu button and choose Financial.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.201">
-<Para> 財務登録を消去するには、[CLRfregs] ボタンをクリックしてください。</Para>
+<Para>Click CLRfregs to clear the financial registers.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.202">
-<Para> 支払い金額を入力して、[Pv] ボタンをクリックしてください。</Para>
+<Para>Type the payment amount and click Pv.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.203">
-<Para> 目標の将来の値を入力して、[Fv] ボタンをクリックしてください。</Para>
+<Para>Type the target future value and click Fv.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.204">
-<Para> 複利の利率を入力して、[i%Yr] ボタンをクリックしてください。</Para>
+<Para>Type the compounding interest rate and click i%Yr.</Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.205">
-<Para> [Ctrm] ボタンをクリックしてください。
+<Para>Click Ctrm.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>例</Title>
+<Title>Example</Title>
 <Step>
-<Para>年利 6.5% の一ケ月複利の口座に、$10,000 を預金するとします。
-この口座が $20,000 に増えるには、どのくらいかかるでしょうか?。
+<Para>Suppose you deposit
+$10,000 in an account that pays 6.5% interest, compounded monthly. You'd
+like to know how long it will take for your account to increase to
+$20,000.
 </Para>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.206">
-<Para> 10000 を入力して、[Pv] ボタンをクリックしてください。
+<Para>Enter 10000 and
+click Pv.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.207">
-<Para> 20000 を入力して、[Fv] ボタンをクリックしてください。
+<Para>Enter 20000 and
+click Fv.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.208">
-<Para> 6.5 を入力して、[i%Yr] ボタンをクリックしてください。
+<Para>Enter 6.5 and
+click i%Yr.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.209">
-<Para> [Ctrm] ボタンをクリックしてください。
+<Para>Click Ctrm.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>結果は 128.31 です。これは、128.31 ケ月かかること、つまり 10 年以上かかることを示しています。</Para>
+<Para>The result, 128.31, tells you that it will take 128.31 months, or more than
+ten years.</Para>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="DdbTask">
-<Title>倍額定率法で減価償却費用を計算するには</Title>
-<Para>倍額定率法で減価償却費用を計算するには、[Ddb] ボタンを使用してください。</Para>
-<Para>減価償却関数では、電卓のメモリ・レジスタを使用しますが、減価償却関数を使用する場合は財務登録としてではなく、特定の値を特定のメモリ・レジスタに格納します。
-[Ddb] ボタンを使用する場合に、値と対応するメモリ・レジスタは以下のようになります。
+<Title>To Calculate Depreciation Using Double-Declining Balance</Title>
+<Para>Use Ddb to calculate the depreciation allowance on an asset for a specified
+period of time using the double-declining balance method.</Para>
+<Para>Depreciation
+functions use the calculator memory registers, not the financial registers.
+Certain values must be in
+specific memory registers when you use the depreciation functions. For
+Ddb, the values and the corresponding
+memory registers are:
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.TSKS.item.210">
-<Para> メモリ・レジスタ 0 - 資産に対する支払い金額
+<Para>Memory Register 0 - Amount paid for the asset
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.211">
-<Para> メモリ・レジスタ 1 - 耐用年数の終了時の残存価額
+<Para>Memory Register 1 - Salvage value at the end of useful life
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.212">
-<Para> メモリ・レジスタ 2 - 資産の耐用年数
+<Para>Memory Register 2 - Useful life of the asset
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.213">
-<Para> メモリ・レジスタ 3 - 減価償却金額を算出する期間
+<Para>Memory Register 3 - Time period for depreciation allowance
 </Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>例</Title>
+<Title>Example,</Title>
 <Step>
-<Para>3 年前に $5,000 で、新しいプリンタを購入したとします。
-プリンタの耐用年数は 10 年で、その時点での残存価額は $500 です。
-今年の年間減価償却費用を、倍額定率法で算出するものとします。</Para>
+<Para>Suppose you bought a new printer for $5000 three years ago. The useful
+life of the
+printer is ten years, and the salvage value at that time is $500. You'd
+like to know the depreciation expense for this year, using the
+double-declining balance method.</Para>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.214">
-<Para> 5000 を入力してください。
+<Para>Type 5000.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.215">
-<Para> [Store] ボタンをクリック後、[0] ボタンをクリックして、プリンタに対する支払い金額をメモリ・レジスタ 0 に格納してください。
+<Para>Click Store and then click 0 to place the amount paid for the printer in
+memory register 0.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.216">
-<Para> 500 を入力してください。
+<Para>Type 500.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.217">
-<Para> [Store] ボタンをクリック後、[1] ボタンをクリックして、残存価額をメモリ・レジスタ 1 に格納してください。
+<Para>Click Store and then click 1 to place the salvage value in memory register
+1.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.218">
-<Para> 10 を入力してください。
+<Para>Type 10.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.219">
-<Para> [Store] ボタンをクリック後、[2] ボタンをクリックして、耐用年数をメモリ・レジスタ 2 に格納してください。
+<Para>Click Store and then click 2 to place the useful life in memory register 2.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.220">
-<Para> 3 を入力してください。
+<Para>Type 3.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.221">
-<Para> [Store] ボタンボタンをクリック後、[3] ボタンをクリックして、減価償却金額を求める期間(今年)を、メモリ・レジスタ 3 に格納してください。
+<Para>Click Store and then click 3 to place the time period (this year) for the
+depreciation allowance in memory register 3.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.222">
-<Para> [Ddb] ボタンをクリックしてください。
+<Para>Click Ddb.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>結果は 640.00 です。これは、3 年目の減価償却費用が $640.00 ということを示しています。</Para>
+<Para>The result, 640.00, tells you that the depreciation expense for the third
+year is $640.00.</Para>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="SlnTask">
-<Title>定額法で減価償却費用を計算するには</Title>
-<Para>定額法で減価償却費用を計算するには、[Sln] ボタンを使用してください。</Para>
-<Para>減価償却関数では、電卓のメモリ・レジスタを使用しますが、減価償却関数を使用する場合は財務登録としてではなく、特定の値を特定のメモリ・レジスタに格納します。
-[Sln] ボタンを使用する場合に、値と対応するメモリ・レジスタは以下のようになります。
+<Title>To Calculate Straight-Line Depreciation</Title>
+<Para>Use Sln to calculate the straight-line depreciation allowance on an asset for
+one period.</Para>
+<Para>Depreciation
+functions use the calculator memory registers, not the financial registers,
+and when using the depreciation functions, certain values must be in
+specific memory registers. For Sln, the values and the corresponding
+memory registers are:
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.TSKS.item.223">
-<Para> メモリ・レジスタ 0 - 資産に対する支払い金額
+<Para>Memory Register 0 - Amount paid for the asset
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.224">
-<Para> メモリ・レジスタ 1 - 耐用年数の終了時の残存価額
+<Para>Memory Register 1 - Salvage value at the end of useful life
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.225">
-<Para> メモリ・レジスタ 2 - 資産の耐用年数
+<Para>Memory Register 2 - Useful life of the asset
 </Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>例</Title>
+<Title>Example,</Title>
 <Step>
-<Para>3 年前に $5,000 で、新しいプリンタを購入したとします。
-プリンタの耐用年数は 10 年で、その時点での残存価額は $500 です。
-年間減価償却費用を、定額法で算出するものとします。</Para>
+<Para>Suppose you bought a new printer for $5000 three years ago. The useful
+life of the
+printer is ten years, and the salvage value at that time is $500. You'd
+like to know the yearly depreciation expense using the
+straight-line method.</Para>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.226">
-<Para> 5000 を入力してください。
+<Para>Type 5000.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.227">
-<Para> [Store] ボタンをクリック後、[0] ボタンをクリックして、プリンタに対する支払いを金額メモリ・レジスタ 0 に格納してください。
+<Para>Click Store and then click 0 to place the amount paid for the printer in
+memory register 0.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.228">
-<Para> 500 を入力してください。
+<Para>Type 500.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.229">
-<Para> [Store] ボタンをクリック後、[1] ボタンをクリックして、残存価額をメモリ・レジスタ 1 に格納してください。
+<Para>Click Store and then click 1 to place the salvage value in memory register
+1.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.230">
-<Para> 10 を入力してください。
+<Para>Enter 10.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.231">
-<Para> [Store] ボタンをクリック後、[2] ボタンをクリックして、耐用年数をメモリ・レジスタ 2 に格納してください。
+<Para>Click Store and then click 2 to place the useful life in memory register 2.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.232">
-<Para> [Sln] ボタンをクリックしてください。
+<Para>Click Sln.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>結果は 450.00 です。これは、年間減価償却費用は $450.00 であるということを示しています。</Para>
+<Para>The result, 450.00, tells you that the yearly depreciation expense
+is $450.00.</Para>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="SydTask">
-<Title>算術級数法で減価償却費用を計算するには</Title>
-<Para>算術級数法で減価償却費用を計算するには、[Syd] ボタンを使用してください。</Para>
-<Para>減価償却関数では、電卓のメモリ・レジスタを使用しますが、減価償却関数を使用する場合は財務登録としてではなく、特定の値を特定のメモリ・レジスタに格納します。
-[Syd] ボタンを使用する場合に、値と対応するメモリ・レジスタは、以下のようになります。
+<Title>To Calculate Sum-of-the-Years'-Digits Depreciation</Title>
+<Para>Use Syd to calculate the sum-of-the-year's-digits depreciation.</Para>
+<Para>Depreciation
+functions use the calculator memory registers, not the financial registers,
+and when using the depreciation functions, certain values must be in
+specific memory registers. For Syd, the values and the corresponding
+memory registers are:
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.TSKS.item.233">
-<Para> メモリ・レジスタ 0 - 資産に対する支払い金額
+<Para>Memory Register 0 - Amount paid for the asset
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.234">
-<Para> メモリ・レジスタ 1 - 耐用年数の終了時の残存価額
+<Para>Memory Register 1 - Salvage value at the end of useful life
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.235">
-<Para> メモリ・レジスタ 2 - 資産の耐用年数
+<Para>Memory Register 2 - Useful life of the asset
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.236">
-<Para> メモリ・レジスタ 3 - 減価償却金額を算出する期間
+<Para>Memory Register 3 - Time period for depreciation allowance
 </Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>例</Title>
+<Title>Example</Title>
 <Step>
-<Para>3 年前に $5,000 で、新しいプリンタを購入したとします。
-プリンタの耐用年数は 10 年で、その時点での残存価額は $500 です。
-今年の年間減価償却費用を、算術級数法で算出するものとします。</Para>
+<Para>Suppose you bought a new printer for $5000 three years ago. The useful
+life of the
+printer is ten years, and the salvage value at that time is $500. You'd
+like to know the yearly depreciation expense for this year, using the
+sum-of-the-years'-digits method.</Para>
 <OrderedList Role="tight">
 <ListItem Id="HCALC.TSKS.item.237">
-<Para> 5000 を入力してください。
+<Para>Type 5000.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.238">
-<Para> [Store] ボタンをクリック後、[0] ボタンをクリックして、プリンタに対する支払い金額をメモリ・レジスタ 0 に格納してください。
+<Para>Click Store and then click 0 to place the amount paid for the printer in
+memory register 0.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.239">
-<Para> 500 を入力してください。
+<Para>Enter 500.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.240">
-<Para> [Store] ボタンをクリック後、[1] ボタンをクリックして、残存価額をメモリ・レジスタ 1 に格納してください。
+<Para>Click Store and then click 1 to place the salvage value in memory register
+1.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.241">
-<Para> 10 を入力してください。
+<Para>Enter 10.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.242">
-<Para> [Store] ボタンをクリック後、[2] ボタンをクリックして、耐用年数をメモリ・レジスタ 2 に格納してください。
+<Para>Click Store and then click 2 to place the useful life in memory register 2.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.243">
-<Para> 3 を入力してください。
+<Para>Enter 3.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.TSKS.item.244">
-<Para> [Syd] ボタンをクリックしてください。
+<Para>Click Syd.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>結果は 654.55 です。これは、3 年目の年間減価償却費用は $654.55 であるということを示しています。</Para>
+<Para>The result, 654.55, tells you that the yearly depreciation expense
+for the third year is $654.55.</Para>
 </Step>
 </Procedure>
 </Sect1>

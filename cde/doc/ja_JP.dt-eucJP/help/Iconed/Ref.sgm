@@ -1,4 +1,4 @@
-<!-- $XConsortium: Ref.sgm /main/6 1996/12/18 01:54:53 cde-hit $ -->
+<!-- $XConsortium: Ref.sgm /main/9 1996/09/08 22:27:12 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,51 +9,53 @@
 <!-- Help volume: Iconed    -->
 <!-- File name:   Reference -->
 <Chapter Id="Reference">
-<Title>アイコン・エディタ・リファレンス</Title>
+<Title>Icon Editor Reference</Title>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HICND.REF.item.1">
-<Para> <XRef Linkend="IconSearchPathsSI"></Para>
+<Para><XRef Linkend="IconSearchPathsSI"></Para>
 </ListItem>
 <ListItem Id="HICND.REF.item.2">
-<Para> <XRef Linkend="IconEditorToolsPanelSI"></Para>
+<Para><XRef Linkend="IconEditorToolsPanelSI"></Para>
 </ListItem>
 <ListItem Id="HICND.REF.item.3">
-<Para> <XRef Linkend="IconEditorMenusSI"></Para>
+<Para><XRef Linkend="IconEditorMenusSI"></Para>
 </ListItem>
 <ListItem Id="HICND.REF.item.4">
-<Para> <XRef Linkend="IEWindowsAndDialogsSI"></Para>
+<Para><XRef Linkend="IEWindowsAndDialogsSI"></Para>
 </ListItem>
 <ListItem Id="HICND.REF.item.5">
-<Para> <XRef Linkend="IEopenDB"></Para>
+<Para><XRef Linkend="IEopenDB"></Para>
 </ListItem>
 </ItemizedList>
 <Sect1 Id="IconSearchPathsSI">
-<Title>アイコン検索パス</Title>
+<Title>Icon Search Paths</Title>
 <IndexTerm>
-<Primary>検索パス: アイコン</Primary>
+<Primary>search paths: for icons</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>アイコン: 検索パス</Primary>
+<Primary>icons: search paths</Primary>
 </IndexTerm>
-<Para>イメージ・ファイルの検索パスは、2 つの環境変数で定義します。</Para>
-<Para>システムは、以下の環境変数が存在しない場合は、DTUSERAPPSEARCHPATH および DTAPPSEARCHPATH を使用します。</Para>
+<Para>The search path for image files is defined by two environment variables:</Para>
+<Para>The system uses DTUSERAPPSEARCHPATH and DTAPPSEARCHPATH unless
+the following variables exist:</Para>
 <VariableList>
 <VarListEntry>
-<Term> DTUSERICONSEARCHPATH </Term>
+<Term>DTUSERICONSEARCHPATH</Term>
 <ListItem>
-<Para> 個人用環境変数です。使用する場合は、<ComputerOutput>/<Symbol Role="Variable">HomeDirectory</Symbol>/.dtprofile</ComputerOutput>に定義します。</Para>
+<Para>A personal variable. If used, it
+should be defined in <ComputerOutput>/<Symbol Role="Variable">HomeDirectory</Symbol>/.dtprofile</ComputerOutput>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> DTICONSEARCHPATH     </Term>
+<Term>DTICONSEARCHPATH</Term>
 <ListItem>
-<Para> システム全体の環境変数です。</Para>
+<Para>A system-wide variable.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Sect2 Id="DefaultIconSearchPath">
-<Title>デフォルト検索パス</Title>
-<Para>DTICONSEARCHPATH のデフォルト値を以下に示します。
+<Title>Default Search Path</Title>
+<Para>The default value for DTICONSEARCHPATH is:
 </Para>
 <ProgramListing><ComputerOutput>/<Symbol Role="Variable">HomeDirectory</Symbol>/.dt/icons</ComputerOutput>
 <ComputerOutput>/etc/dt/appconfig/icons/C</ComputerOutput>
@@ -61,103 +63,111 @@
 </ProgramListing>
 </Sect2>
 <Sect2 Id="AddDirectorytoPersonalSearchPathDE">
-<Title>個人用アイコン検索パスを変更するには</Title>
+<Title>To Modify the Personal Icon Search Path</Title>
 <IndexTerm>
-<Primary>追加: アクション検索パスのディレクトリ</Primary>
+<Primary>adding: directory to actions search path</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ディレクトリ: アクション検索パスの追加</Primary>
+<Primary>directory: adding to actions search path</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>アクション: 検索パス, ディレクトリの追加</Primary>
+<Primary>action: search path, adding directory</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>検索パス, アクション</Primary>
+<Primary>search path, actions</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>パス:アクション検索パス</Primary>
+<Primary>path: actions search path</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>DTACTIONSEARCHPATH 環境変数</Primary>
+<Primary>DTACTIONSEARCHPATH environment variable</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>環境変数: DTACTIONSEARCHPATH</Primary>
+<Primary>environment variable: DTACTIONSEARCHPATH</Primary>
 </IndexTerm>
-<Para>検索パスにディレクトリを追加するには
-<ComputerOutput>/<Symbol Role="Variable">HomeDirectory</Symbol>/.dtprofile</ComputerOutput>を編集してください。
-環境変数 DTUSERICONSEARCHPATH の値を定義する行を追加してください。</Para>
-<ProgramListing>DTUSERICONSEARCHPATH=<Symbol Role="Variable">パス</Symbol> [,<Symbol Role="Variable">パス</Symbol> ...]
-        </ProgramListing>
+<Para>To add a directory to the search path,
+edit <ComputerOutput>/<Symbol Role="Variable">HomeDirectory</Symbol>/.dtprofile</ComputerOutput>. Add a line defining a value for
+the DTUSERICONSEARCHPATH:</Para>
+<ProgramListing>DTUSERICONSEARCHPATH=<Symbol Role="Variable">path</Symbol> [,<Symbol Role="Variable">path</Symbol> ...]
+</ProgramListing>
 </Sect2>
 <Sect2 Id="AddDirectorytoSystemSearchPathDE">
-<Title>システム全体のアイコン検索パスを変更するには</Title>
-<Para>システム全体の検索パスの変数は、<ComputerOutput>/etc/dt/Xsession.d</ComputerOutput>ディレクトリにあるファイルで定義されます。</Para>
+<Title>To Modify the System-wide Icon Search Path</Title>
+<Para>System-wide search path variables are defined in files located in
+the <ComputerOutput>/etc/dt/Xsession.d</ComputerOutput> directory.</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HICND.REF.item.6">
-<Para> このディレクトリにあるファイルの中で、環境変数 DTICONSEARCHPATH がすでに定義されている場合は、その値を編集して、検索パスに新規ディレクトリを追加してください。</Para>
+<Para>If DTICONSEARCHPATH is already defined in a file in this directory,
+edit the value to add the new directory on the search path.</Para>
 </ListItem>
 <ListItem Id="HICND.REF.item.7">
-<Para> このディレクトリにあるファイルで、環境変数 DTICONSEARCHPATH が定義されていない場合は、デフォルト検索パスと追加したい他のパスを含む値を定義してください。
-  (デフォルト検索パスは、ファイル<ComputerOutput>/usr/dt/bin/dtsearchpath</ComputerOutput>のコメントにリストされています。)
+<Para>If DTICONSEARCHPATH is not already defined in this directory, define
+it to include the default search path plus others you want to add.
+(The default search path is listed in comments in the file
+<ComputerOutput>/usr/dt/bin/dtsearchpath</ComputerOutput>.)
 </Para>
 </ListItem>
 </ItemizedList>
 </Sect2>
 </Sect1>
 <Sect1 Id="IconEditorToolsPanelSI">
-<Title>アイコン・エディタのツール</Title>
+<Title>Icon Editor Tools</Title>
 <IndexTerm>
-<Primary>ツール: アイコン・エディタ</Primary>
+<Primary>tools: Icon Editor</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>アイコン・エディタ: ツール</Primary>
+<Primary>Icon Editor: tools</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ツール: 描画</Primary>
+<Primary>tools: drawing</Primary>
 </IndexTerm>
-<Para>アイコン・エディタのツールの 1 つを選択すると、別のツールを選択するまで、選択したままになります。ツールを以下にリストし、説明します。
-
-</Para>
-<Para Id="point-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorPencilTool"></InlineGraphic><GlossTerm Role="nogloss">鉛筆</GlossTerm>&newline;手書きの線と個別のピクセルを描画します。</Para>
-<Para Id="line-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorLineTool"></InlineGraphic><GlossTerm Role="nogloss">直線</GlossTerm>&newline;直線を描画します。</Para>
-<Para Id="rectangle-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorRectangleTool"></InlineGraphic><GlossTerm Role="nogloss">矩形</GlossTerm>&newline;矩形を、塗りつぶしまたは輪郭で描画します。</Para>
-<Para Id="circle-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorCircleTool"></InlineGraphic><GlossTerm Role="nogloss">円</GlossTerm>&newline;円を、塗りつぶしまたは輪郭で描画します。</Para>
-<Para Id="eraser-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorEraserTool"></InlineGraphic><GlossTerm Role="nogloss">消しゴム</GlossTerm>&newline;イメージの広い範囲を消去します。</Para>
-<Para Id="flood-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorFloodTool"></InlineGraphic><GlossTerm Role="nogloss">塗りつぶし</GlossTerm>&newline;ある色の領域を、指定した色で塗りつぶします。</Para>
-<Para Id="polygon-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorPolygonOpenTool"></InlineGraphic><GlossTerm Role="nogloss">折れ線</GlossTerm>&newline;連続する複数の線分を描画します。</Para>
-<Para Id="polyline-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorPolygonClosedTool"></InlineGraphic><GlossTerm Role="nogloss">多角形</GlossTerm>&newline;最初の線と最後の線が接続して閉じた多角形を形成する、連続する線分を描画します。</Para>
-<Para Id="ellipse-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorEllipseTool"></InlineGraphic><GlossTerm Role="nogloss">楕円</GlossTerm>&newline;楕円を、塗りつぶしまたは輪郭で描画します。</Para>
-<Para Id="select-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorSelectionTool"></InlineGraphic><GlossTerm Role="nogloss">選択</GlossTerm>&newline;一次セレクションを実行します。[編集] メニューのいくつかのコマンドは、最初に一次セレクションが必要です。
- <Anchor Id="fill-tool">
+<Para>When you select one of Icon Editor's tools, it remains selected until you
+select another one. The tools are listed and described below:</Para>
+<Para Id="point-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorPencilTool"></InlineGraphic><GlossTerm Role="nogloss">Pencil</GlossTerm>&newline;For drawing freehand lines and individual pixels.</Para>
+<Para Id="line-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorLineTool"></InlineGraphic><GlossTerm Role="nogloss">Line</GlossTerm>&newline;For drawing straight lines.</Para>
+<Para Id="rectangle-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorRectangleTool"></InlineGraphic><GlossTerm Role="nogloss">Rectangle</GlossTerm>&newline;For drawing solid or outlined rectangles.</Para>
+<Para Id="circle-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorCircleTool"></InlineGraphic><GlossTerm Role="nogloss">Circle</GlossTerm>&newline;For drawing solid or outlined circles.</Para>
+<Para Id="eraser-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorEraserTool"></InlineGraphic><GlossTerm Role="nogloss">Eraser</GlossTerm>&newline;For erasing large areas of the image.</Para>
+<Para Id="flood-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorFloodTool"></InlineGraphic><GlossTerm Role="nogloss">Flood</GlossTerm>&newline;For flooding a region of one color with the
+selected color.</Para>
+<Para Id="polygon-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorPolygonOpenTool"></InlineGraphic><GlossTerm Role="nogloss">Open Polygon</GlossTerm>&newline;For drawing connected straight lines.</Para>
+<Para Id="polyline-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorPolygonClosedTool"></InlineGraphic><GlossTerm Role="nogloss">Closed Polygon</GlossTerm>&newline;For drawing connected straight lines,
+where the first line and last line are connected to form a closed polygon.</Para>
+<Para Id="ellipse-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorEllipseTool"></InlineGraphic><GlossTerm Role="nogloss">Ellipse</GlossTerm>&newline;For drawing solid or outlined ellipses.</Para>
+<Para Id="select-tool"><InlineGraphic Remap="graphic" Entityref="IconEditorSelectionTool"></InlineGraphic><GlossTerm Role="nogloss">Selection</GlossTerm>&newline;For making a primary selection. Several
+commands in the Edit menu require a primary selection first.
+<Anchor Id="fill-tool">
 </Para>
 <Procedure>
-<Title>塗りつぶし</Title>
+<Title>Fill Solids</Title>
 <Step>
-<Para>矩形、多角形、円、および楕円ツールを輪郭から塗りつぶしに変更するには、ツール・パレットの下にある [塗りつぶし] チェック・ボックスを選択してください。
-(<XRef Linkend="ToDrawAFilledImageTA">も参照してください。)</Para>
+<Para>Select the Fill Solids check box
+below the tool palette to change the rectangle, polygon,
+circle, and ellipse tools from outlines to solids in the tool palette.
+(See also <XRef Linkend="ToDrawAFilledImageTA">).</Para>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="IconEditorMenusSI">
-<Title>アイコン・エディタのメニュー</Title>
+<Title>Icon Editor Menus</Title>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HICND.REF.item.8">
-<Para> <XRef Linkend="IconEditorFileMenuDE"></Para>
+<Para><XRef Linkend="IconEditorFileMenuDE"></Para>
 </ListItem>
 <ListItem Id="HICND.REF.item.9">
-<Para> <XRef Linkend="IconEditorEditMenuDE"></Para>
+<Para><XRef Linkend="IconEditorEditMenuDE"></Para>
 </ListItem>
 <ListItem Id="HICND.REF.item.10">
-<Para> <XRef Linkend="IconEditorOptionsMenuDE"></Para>
+<Para><XRef Linkend="IconEditorOptionsMenuDE"></Para>
 </ListItem>
 <ListItem Id="HICND.REF.item.11">
-<Para> <XRef Linkend="IconEditorHelpMenuDE"></Para>
+<Para><XRef Linkend="IconEditorHelpMenuDE"></Para>
 </ListItem>
 </ItemizedList>
 <Para><Anchor Id="menubar">
 </Para>
 <Sect2 Id="IconEditorFileMenuDE">
-<Title>アイコン・エディタの [ファイル] メニュー</Title>
+<Title>Icon Editor File Menu</Title>
 <Para><Anchor Id="file-menu">
 <Anchor Id="newIcon">
 <Anchor Id="new">
@@ -168,158 +178,167 @@
 </Para>
 <VariableList>
 <VarListEntry>
-<Term> 新規 </Term>
+<Term>New</Term>
 <ListItem>
-<Para>	サイズ(ピクセル単位の幅と高さ)の入力を要求し、指定されたサイズの空の描画領域を作成します。
-		(<XRef Linkend="ToStartANewIconTA">を参照してください。)</Para>
+<Para>Prompts for a size (width and height, in pixels), and then
+creates a blank drawing area of that size.
+(See <XRef Linkend="ToStartANewIconTA">.)</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 開く </Term>
+<Term>Open</Term>
 <ListItem>
-<Para>	既存のビットマップ・ファイルまたはピックスマップ・ファイルを開きます。
-		(<XRef Linkend="ToOpenAnExistingIconTA">を参照してください。)</Para>
+<Para>Opens an existing bitmap or pixmap file.
+(See <XRef Linkend="ToOpenAnExistingIconTA">.)</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 保存 </Term>
+<Term>Save</Term>
 <ListItem>
-<Para>	既存の名前で現在のアイコンを保存します。アイコンに名前が付いていない場合には、アイコン・エディタは名前を入力するように要求します。
-		(<XRef Linkend="ToSaveAnIconTA">を参照してください。)</Para>
+<Para>Saves the current icon using its existing name. If the
+icon is unnamed, Icon Editor prompts you for a name.
+(See <XRef Linkend="ToSaveAnIconTA">.)</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 別名保存 </Term>
+<Term>Save As</Term>
 <ListItem>
-<Para>	新しい名前の入力を要求し、入力後現在のアイコンを保存します。
-		(<XRef Linkend="ToSaveAnIconAsTA">を参照してください。)</Para>
+<Para>Prompts for a new name, and then saves the current icon.
+(See <XRef Linkend="ToSaveAnIconAsTA">.)</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 終了 </Term>
+<Term>Exit</Term>
 <ListItem>
-<Para>	アイコン・エディタを閉じます。変更内容を保存していない場合には、アイコン・エディタは、そのまま終了すると変更内容が失われることを警告します。
-		変更内容を保存するには、取消しを選択して、アイコンを保存してください。</Para>
+<Para>Closes Icon Editor. If you have unsaved changes, Icon
+Editor warns you that the changes will be lost if you
+continue and exit. To save the changes, choose
+Cancel, and then save your icon.)</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </Sect2>
 <Sect2 Id="IconEditorEditMenuDE">
-<Title>アイコン・エディタの [編集] メニュー</Title>
+<Title>Icon Editor Edit Menu</Title>
 <Para><Anchor Id="edit-menu">
 <Anchor Id="edit-temp">
 <Anchor Id="editextra">
 </Para>
 <VariableList>
 <VarListEntry>
-<Term> 元に戻す </Term>
+<Term>Undo</Term>
 <ListItem>
-<Para>			<Anchor Id="undo">
-最近の描画操作を取り消して、アイコンを元の状態に戻します。
-		アイコン・エディタの大部分の操作は元に戻すことができます。
-		(<XRef Linkend="ToUndoADrawingOperationTA">を参照してください。)</Para>
+<Para><Anchor Id="undo">
+Cancels the most recent drawing operation, returning the
+icon to its previous state. Most operations within Icon
+Editor can be undone.
+(See <XRef Linkend="ToUndoADrawingOperationTA">.)</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 領域のカット </Term>
+<Term>Cut Area</Term>
 <ListItem>
-<Para>		<Anchor Id="cut">
-選択した領域をアイコンからカットします。
-		削除した領域は透明なカラーで塗りつぶされます。
-		カットした領域は、アイコン・エディタのクリップボードに保存されます。
-		(<XRef Linkend="ToCutPartOfAnIconTA">を参照してください。)</Para>
+<Para><Anchor Id="cut">
+Cuts the selected area from the icon. The region removed
+is filled with the transparent color. The cut region is
+saved in the Icon Editor clipboard.
+(See <XRef Linkend="ToCutPartOfAnIconTA">.)</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 領域のコピー </Term>
+<Term>Copy Area</Term>
 <ListItem>
-<Para>		<Anchor Id="copy">
-選択した領域をアイコン・エディタのクリップボードにコピーします。
-		(<XRef Linkend="ToCopyPartOfAnIconTA">を参照してください。)</Para>
+<Para><Anchor Id="copy">
+Copies the selected area into Icon Editor's clipboard.
+(See <XRef Linkend="ToCopyPartOfAnIconTA">.)</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 領域のペースト </Term>
+<Term>Paste Area</Term>
 <ListItem>
-<Para>		<Anchor Id="paste">
-クリップボードの内容をアイコンにペーストします。
-		(<XRef Linkend="ToCopyPartOfAnIconTA">または
-		<XRef Linkend="ToMovePartOfAnIconTA">を参照してください。)</Para>
+<Para><Anchor Id="paste">
+Pastes the contents of the clipboard into the icon.
+(See <XRef Linkend="ToCopyPartOfAnIconTA">or <XRef Linkend="ToMovePartOfAnIconTA">.)</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 領域の回転 </Term>
+<Term>Rotate Area</Term>
 <ListItem>
-<Para> 		<Anchor Id="rotate">
-選択した領域を左または右に 90 度回転します。
-		サブメニューで方向を選択してください。
-		(<XRef Linkend="ToRotatePartOfAnIconTA">を参照してください。)</Para>
+<Para><Anchor Id="rotate">
+Rotates the selected area to the left or right 90
+degrees. Choose the direction from the submenu.
+(See <XRef Linkend="ToRotatePartOfAnIconTA">.)</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 領域の反転 </Term>
+<Term>Flip Area</Term>
 <ListItem>
-<Para> 		<Anchor Id="flip">
-選択した領域の鏡像を、垂直または水平に反転させることによって作成します。
-		サブメニューで方向を選択してください。
-		(<XRef Linkend="ToRotatePartOfAnIconTA">を参照してください。)</Para>
+<Para><Anchor Id="flip">
+Creates a mirror image of the selected area by flipping it
+vertically or horizontally. Choose the direction
+from the submenu.
+(See <XRef Linkend="ToRotatePartOfAnIconTA">.)</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 領域のスケール </Term>
+<Term>Scale Area</Term>
 <ListItem>
-<Para>		<Anchor Id="scale">
-選択した領域をサイズ変更(または "スケール" )できるようにします。
-		(<XRef Linkend="ToResizePartOfAnIconTA">を参照してください。)</Para>
+<Para><Anchor Id="scale">
+Enables you to resize (or "scale") the selected area.
+(See <XRef Linkend="ToResizePartOfAnIconTA">.)</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> アイコンのサイズ変更 </Term>
+<Term>Resize Icon</Term>
 <ListItem>
-<Para>	<Anchor Id="resize">
-現在のアイコンに対する新しいサイズの入力を要求します。
-		(<XRef Linkend="ToResizeTheCurrentIconTA">を参照してください。)</Para>
+<Para><Anchor Id="resize">
+Prompts for a new size for the current icon.
+(See <XRef Linkend="ToResizeTheCurrentIconTA">.)</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ホットスポットの追加 </Term>
+<Term>Add Hotspot</Term>
 <ListItem>
-<Para>	<Anchor Id="add-hotspot">
-現在のアイコンのひとつのピクセルを"ホットスポット"として、指定できるようにします。
-		[ホットスポットの追加] を選択後、ホットスポットにしたいピクセルをクリックしてください。</Para>
-<Para>		ホットスポット領域は、マウス・ポインタのイメージを作成する場合に、使用します。
-		ホットスポットは、ポインタの<Emphasis>実際の</Emphasis>位置を表します。
-		(<XRef Linkend="ToAddAHotSpotTA">を参照してください。)</Para>
+<Para><Anchor Id="add-hotspot">
+Enables you to indicate a single pixel in the current
+icon as the "hotspot." After choosing Add Hotspot,
+click the pixel you want to be the hotspot.</Para>
+<Para>Hotspots are used when
+creating images for mouse pointers -- the hotspot
+represents the <Emphasis>actual</Emphasis> location of the pointer.
+(See <XRef Linkend="ToAddAHotSpotTA">.)</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ホットスポットの削除 </Term>
+<Term>Delete Hotspot</Term>
 <ListItem>
-<Para>	<Anchor Id="delete-hotspot">
-現在のアイコンからホットスポットを削除します。</Para>
+<Para><Anchor Id="delete-hotspot">
+Removes the hotspot from the current icon.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 画面イメージをグラブ </Term>
+<Term>Grab Screen Image</Term>
 <ListItem>
-<Para>	<Anchor Id="grab-image">
-画面の領域をグラブし、それを描画領域に読み込みます。
-		(<XRef Linkend="ToCopyPartOfTheDisplayTA">を参照してください。)
-		作業領域の上の X-Y サイズ表示は、グラブされた領域のサイズをピクセルで表示します。</Para>
+<Para><Anchor Id="grab-image">
+Grabs an area of the screen and loads it
+into the drawing area.
+(See <XRef Linkend="ToCopyPartOfTheDisplayTA">.)
+The X-Y Size display above the work area shows the size
+in pixels of the area being grabbed.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> アイコンの消去 </Term>
+<Term>Clear Icon</Term>
 <ListItem>
-<Para>		<Anchor Id="clear-icon">
-現在の描画領域を消去します。
-		(<XRef Linkend="ToStartANewIconTA">を参照してください。)</Para>
+<Para><Anchor Id="clear-icon">
+Clears the current drawing area.
+(See <XRef Linkend="ToStartANewIconTA">.)</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </Sect2>
 <Sect2 Id="IconEditorOptionsMenuDE">
-<Title>アイコン・エディタの [オプション] メニュー</Title>
+<Title>Icon Editor Options Menu</Title>
 <Para><Anchor Id="options-menu">
 <Anchor Id="magnification">
 <Anchor Id="output-format">
@@ -327,134 +346,146 @@
 </Para>
 <VariableList>
 <VarListEntry>
-<Term> グリッド表示 </Term>
+<Term>Visible Grid</Term>
 <ListItem>
-<Para>	グリッド・ラインを表示するかしないかを切り替えます。
-デフォルトでは表示します。</Para>
+<Para>Toggles the grid lines on and off. The default is
+on.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 出力形式 </Term>
+<Term>Output Format</Term>
 <ListItem>
-<Para>		アイコンを保存する時の出力形式を指定します。</Para>
+<Para>Determines the output format in which the icon will be saved:</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HICND.REF.item.12">
-<Para> XBM は、2 色のＸビットマップ形式です。
-			   ビットマップ・ファイルは、通常<Quote>.bm</Quote>というファイル名の接尾辞で識別されます。</Para>
+<Para>XBM for two-color X bitmap format. Bitmap files
+are normally identified by a <ComputerOutput>.bm</ComputerOutput> file-name
+suffix.</Para>
 </ListItem>
 <ListItem Id="HICND.REF.item.13">
-<Para> XPM は、マルチカラーのＸピックスマップ形式(デフォルト)です。
-			   ピックスマップ・ファイルは、通常<Quote>.pm</Quote>というファイル名の接尾辞で識別されます。</Para>
+<Para>XPM for multicolor X pixmap format (the
+default). Pixmap files are normally identified
+by a <ComputerOutput>.pm</ComputerOutput> file-name suffix.</Para>
 </ListItem>
 </ItemizedList>
-<Para><XRef Linkend="ToSaveAnIconTA">を参照してください。</Para>
+<Para>See <XRef Linkend="ToSaveAnIconTA">.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 拡大率 </Term>
+<Term>Magnification</Term>
 <ListItem>
-<Para>		描画領域のイメージの表示サイズを変更します。
-			拡大係数は 2x (通常サイズの 2 倍)から 12x (通常サイズの 12 倍)です。</Para>
+<Para>Changes the viewing size of the image in the
+drawing area. You can choose magnification
+factors from 2x (twice normal size) to 12x (twelve
+times normal size).</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </Sect2>
 <Sect2 Id="IconEditorHelpMenuDE">
-<Title>アイコン・エディタの [ヘルプ] メニュー</Title>
+<Title>Icon Editor Help Menu</Title>
 <Para><Anchor Id="help-menu">
 </Para>
 <VariableList>
 <VarListEntry>
-<Term> 概要 </Term>
+<Term>Overview</Term>
 <ListItem>
 <Para><Anchor Id="help-menu-introduction">
-アイコン・エディタの紹介ヘルプ・トピックを表示します。</Para>
+Displays the introduction help topic for Icon Editor</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 使い方 </Term>
+<Term>Tasks</Term>
 <ListItem>
 <Para><Anchor Id="help-menu-tasks">
-ほとんどのアイコン・エディタ操作の使用法を表示します。</Para>
+Displays task instructions for most Icon Editor
+operations</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>リファレンス </Term>
+<Term>Reference</Term>
 <ListItem>
 <Para><Anchor Id="help-menu-reference">
-ウィンドウ、ダイアログ・ボックス、メニュー、およびリソースなどアイコン・エディタのさまざまな機能のリファレンスの要約を表示します。</Para>
+Displays reference summaries for various Icon Editor
+features such as windows and dialog boxes, menus, and
+resources</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> アイテムヘルプ </Term>
+<Term>On Item</Term>
 <ListItem>
 <Para><Anchor Id="help-menu-onItem">
-選択したアイコン・エディタ・ウィンドウに項目の説明を表示します。</Para>
+Presents a description of the item in an Icon Editor
+window you have selected</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ヘルプの使い方 </Term>
+<Term>Using Help</Term>
 <ListItem>
 <Para><Anchor Id="help-menu-usingHelp">
-ヘルプ・ウィンドウの使い方に関するヘルプを表示します。</Para>
+Provides help on using the help windows</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> アイコン・エディタについて </Term>
+<Term>About the Icon Editor</Term>
 <ListItem>
 <Para><Anchor Id="help-menu-version">
-アイコン・エディタのバージョンと著作権の情報を表示します。</Para>
+Displays the version and copyright information for
+Icon Editor</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </Sect2>
 </Sect1>
 <Sect1 Id="IEWindowsAndDialogsSI">
-<Title>アイコン・エディタ・ウィンドウとダイアログ・ボックス</Title>
+<Title>Icon Editor Windows and Dialog Boxes</Title>
 <Procedure>
 <Title>Subtopics</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HICND.REF.item.14">
-<Para> <XRef Linkend="IconEditorMainWindowDE"></Para>
+<Para><XRef Linkend="IconEditorMainWindowDE"></Para>
 </ListItem>
 <ListItem Id="HICND.REF.item.15">
-<Para> <XRef Linkend="IconEditorColorPalettesPanelDE"></Para>
+<Para><XRef Linkend="IconEditorColorPalettesPanelDE"></Para>
 </ListItem>
 <ListItem Id="HICND.REF.item.16">
-<Para> <XRef Linkend="IconEditorConfirmationDialogDE"></Para>
+<Para><XRef Linkend="IconEditorConfirmationDialogDE"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Sect2 Id="IconEditorMainWindowDE">
-<Title>アイコン・エディタのメイン・ウィンドウ</Title>
+<Title>Icon Editor Main Window</Title>
 <Para><Anchor Id="main">
 <Anchor Id="viewport">
-アイコン・エディタのメイン・ウィンドウには、重要な領域が 5 つあります。</Para>
+The Icon Editor main window has five important areas:</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HICND.REF.item.17">
-<Para> <GlossTerm Role="nogloss">ステータス行</GlossTerm>は、メニュー・バーのすぐ下にあり、現在選択しているツールと、ポインタが現在指しているピクセルの座標を表示します。</Para>
+<Para>The <GlossTerm Role="nogloss">status line</GlossTerm> just below the menu bar describes the
+tool that is currently selected and the coordinates of the pixel
+currently pointed to by the pointer.</Para>
 </ListItem>
 <ListItem Id="HICND.REF.item.18">
-<Para> <GlossTerm Role="nogloss">描画領域</GlossTerm>は、そこにアイコン・イメージを描画する領域です。</Para>
+<Para>The <GlossTerm Role="nogloss">drawing area</GlossTerm> is where you draw the icon image.</Para>
 </ListItem>
 <ListItem Id="HICND.REF.item.19">
-<Para> <GlossTerm Role="nogloss">ツール・パレット</GlossTerm>には、消しゴムや選択ツールを含むいくつかの描画ツールがあります。</Para>
+<Para>The <GlossTerm Role="nogloss">tool palette</GlossTerm> provides several drawing
+tools, including an eraser and a selection tool.</Para>
 </ListItem>
 <ListItem Id="HICND.REF.item.20">
-<Para> <GlossTerm Role="nogloss">カラー・パレット</GlossTerm>は、描画カラーを提供します。
-   8 色のカラー、8 色のグレー、6 色のダイナミックカラーが使用できます。</Para>
+<Para>The <GlossTerm Role="nogloss">color palette</GlossTerm> provides drawing colors:
+eight static colors, eight static grays, and six dynamic colors.</Para>
 </ListItem>
 <ListItem Id="HICND.REF.item.21">
-<Para> <GlossTerm Role="nogloss">実物大アイコン領域</GlossTerm>は、アイコンの外観を実際のサイズで表示します。
-   ここには、フルカラー・バージョンと 2 色バージョンが表示されます。</Para>
+<Para>The <GlossTerm Role="nogloss">actual size icons area</GlossTerm> show what your icon looks like
+in actual size. It shows both the full-color and the two-color versions.</Para>
 </ListItem>
 </ItemizedList>
 <Graphic Entityref="IconEditorOverview" Id="HICND.REF.fig.1"></Graphic>
 </Sect2>
 <Sect2 Id="IconEditorColorPalettesPanelDE">
-<Title>アイコン・エディタのカラー・パレット</Title>
+<Title>Icon Editor Color Palettes</Title>
 <Para><Anchor Id="dymanic-colors">
 <Anchor Id="dynamic-colors">
 <Anchor Id="static-colors">
@@ -462,172 +493,198 @@
 </Para>
 <VariableList>
 <VarListEntry>
-<Term> <GlossTerm Role="nogloss"> カラー </GlossTerm> </Term>
+<Term><GlossTerm Role="nogloss"> Static Colors</GlossTerm></Term>
 <ListItem>
-<Para>		8 色の標準色です。
-					黒、白、3 原色、および 3 色の二次カラーです。</Para>
+<Para>Eight standard colors; black,
+white, the three primary colors,
+and the three secondary colors</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <GlossTerm Role="nogloss"> グレー </GlossTerm> </Term>
+<Term><GlossTerm Role="nogloss"> Static Grays</GlossTerm></Term>
 <ListItem>
-<Para>		8 色のグレーの影(10% から 90% のグレー)です。
-					</Para>
+<Para>Eight shades of gray (from
+10% to 90% gray)</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <GlossTerm Role="nogloss"> ダイナミックカラー </GlossTerm> </Term>
+<Term><GlossTerm Role="nogloss"> Dynamic Colors</GlossTerm></Term>
 <ListItem>
-<Para>    スタイル・マネージャを使用してユーザがカラーを変更する場合の6 色のダイナミックカラーです。
+<Para>Six dynamic colors that respond
+when you change colors using
+Style Manager
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
-<Para>スタイル・マネージャのヘルプ・ビューアの以下のトピックも参照してください。</Para>
+<Para>You may also want to refer to these topics in the Style Manager Help Viewer:</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HICND.REF.item.22">
-<Para> <OLink Type="JumpNewView" LocalInfo="Stylemgr SelectPaletteTA">パレットを選択するには</OLink>
+<Para><OLink Type="JumpNewView" LocalInfo="Stylemgr SelectPaletteTA">To
+Select a Palette</OLink>
 </Para>
 </ListItem>
 <ListItem Id="HICND.REF.item.23">
-<Para> <OLink Type="JumpNewView" LocalInfo="Stylemgr LimitColorUseTA">デスクトップが使用する色の数を変更するには</OLink>
+<Para><OLink Type="JumpNewView" LocalInfo="Stylemgr LimitColorUseTA">To
+Change the Number of Colors Used by the Desktop.</OLink>
 </Para>
 </ListItem>
 </ItemizedList>
 </Sect2>
 <Sect2 Id="IEopenDB">
-<Title>アイコン・エディタの [開く] ダイアログ・ボックスと [別名保存] ダイアログ・ボックス</Title>
+<Title>Icon Editor Open and Save As Dialog Boxes</Title>
 <VariableList>
 <VarListEntry>
-<Term> パス名またはフォルダ名の入力: </Term>
+<Term>Enter path or folder name:</Term>
 <ListItem>
-<Para> 開きたいアイコンを格納しているフォルダ、またはアイコンをそこに保存したいフォルダの完全パス名を入力してください。</Para>
+<Para>Type the full path name of the folder
+containing the icon you want to open or the folder
+where you want to save the icon.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> フォルダ </Term>
+<Term>Folders</Term>
 <ListItem>
-<Para> [パス名またはフォルダ名の入力] フィールドに表示されるフォルダの内部にあるフォルダのリストを表示します。
-	  このリストのフォルダをダブルクリックすると、フォルダおよびファイルのリストは、そのフォルダの内容表示に変わります。
-	  または、フォルダ・リストからフォルダを選択して、[更新] ボタンをクリックしても同様のことが行えます。</Para>
+<Para>Displays a list of the folders that are inside the folder shown
+in the "Enter path or folder name" text field.
+If you double-click on a folder in this list, the Folder and Files lists will
+change to show the contents of that folder. Or you can select a folder in the
+Folder list and then click on the Update button.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ファイル </Term>
+<Term>Files</Term>
 <ListItem>
-<Para> [パス名またはフォルダ名の入力] フィールドに表示されるフォルダに格納されているファイルのリストを表示します。
- [パス名またはフォルダ名の入力] フィールドの名前を変更した場合、ファイル・リストにファイルの新規リストを表示するには、[更新] ボタンをクリックしてください。</Para>
+<Para>Displays a list of the files contained in the folder that is shown
+in the "Enter path or folder name" field. If you change the name in the Enter
+path or folder name field, you must click the Update button to get the Files
+list to show the new list of files.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ファイル名を入力してください: </Term>
+<Term>Enter file name:</Term>
 <ListItem>
-<Para> 読み込むか、または保存するアイコンの名前を表示します。
- 希望するアイコンを指定する最も簡単な方法は、ファイル・リストのアイコン名をダブルクリックすることです。
- または、希望するアイコンの名前を入力して、[開く] ボタンをクリックしてください。</Para>
-<Para> アイコン名の正しい形式は、"名前.サイズ.形式" ですので注意してください。
- アイコンを正常に作動させるために、アイコン名にサイズおよび形式の情報がなければなりません。
- アイコン・エディタは、エディタのメニュー・バーから選択されたサイズおよび出力形式に従って、自動的に正しいサイズおよび形式の値にします。</Para>
+<Para>Displays the name of the icon that will be loaded or saved.
+The easiest way to specify the icon you want is to double-click on the
+icon name in the Files list. Or, you can type in the name for the icon you want
+and then click on the Open button.</Para>
+<Para>Note that
+the correct format for icon names is name.size.format. The size and format
+information must be in the icon name to make icons work properly. Icon editor
+should automatically fill in the correct size and format values based on the
+size and output format you chose from the menu bar in the editor.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 開く、または保存 </Term>
+<Term>Open or Save</Term>
 <ListItem>
-<Para> ファイルを開くか保存して、ダイアログ・ボックスを閉じます。</Para>
+<Para>Opens or Saves the file and closes the dialog box.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 更新 </Term>
+<Term>Update</Term>
 <ListItem>
-<Para> フォルダおよびファイルのリストを変更して、[パス名またはフォルダ名の入力] フィールドに表示されるフォルダの内容を表示します。
- フィールドにフォルダ名を入力して、[更新] ボタンをクリックしてください。
- または、開きたいフォルダがフォルダ・リストに表示されている場合は、そのままその名前をダブルクリックしてください。</Para>
+<Para>Changes the Folders and Files lists to show the contents of
+the folder the is shown in the Enter path or folder name field. You can type
+the folder name in the field and then click the Update button. Or, if the
+folder you want to open is shown in the Folders list, just double-click on its
+name.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 取消し </Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para> [開く] または [保存] の操作を取り消し、ダイアログ・ボックスを閉じます。</Para>
+<Para>Cancels the open or save and closes the dialog box.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ヘルプ </Term>
+<Term>Help</Term>
 <ListItem>
-<Para> このダイアログ・ボックスに関するヘルプを表示します。</Para>
+<Para>Displays help about this dialog box.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </Sect2>
 <Sect2 Id="IconEditorSaveAsDialogDE">
-<Title>アイコン・エディタの [別名保存] ダイアログ・ボックス</Title>
+<Title>Icon Editor save As Dialog Box</Title>
 <Para><Anchor Id="IEsaveasDB">
 </Para>
 <VariableList>
 <VarListEntry>
-<Term> パス名またはフォルダ名の入力: </Term>
+<Term>Enter path or folder name:</Term>
 <ListItem>
-<Para> アイコンをそこに保存したいフォルダの完全パス名を入力してください。</Para>
+<Para>Type the full path name of the folder
+where you want to save the icon.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> フォルダ </Term>
+<Term>Folders</Term>
 <ListItem>
-<Para> [パス名またはフォルダ名の入力] フィールドに表示されるフォルダの内部にあるフォルダのリストを表示します。
- このリストのフォルダをダブルクリックすると、フォルダおよびファイルのリストは、そのフォルダの内容表示に変わります。
- または、フォルダ・リストからフォルダを選択して、[更新] ボタンをクリックしても同様のことが行えます。</Para>
+<Para>Displays a list of the folders that are inside the folder shown
+in the "Enter path or folder name" text field.
+If you double-click on a folder in this list, the Folder and Files lists will
+change to show the contents of that folder. Or you can select a folder in the
+Folder list and then click on the Update button.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ファイル </Term>
+<Term>Files</Term>
 <ListItem>
-<Para> [パス名またはフォルダ名の入力] フィールドに表示されるフォルダに格納されているファイルのリストを表示します。
- [パス名またはフォルダ名の名前] フィールドの名前を変更した場合、ファイル・リストにファイルの新規リストを表示するには、[更新] ボタンをクリックしてください。	</Para>
+<Para>Displays a list of the files contained in the folder that is shown
+in the "Enter path or folder name" field. If you change the name in the Enter
+path or folder name field, you must click the Update button to get the Files
+list to show the new list of files.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ファイル名を入力してください: </Term>
+<Term>Enter file name:</Term>
 <ListItem>
-<Para> 保存したいアイコンの名前を入力してください。
- アイコン名の正しい形式は、"名前.サイズ.形式" ですので注意してください。
- アイコンを正常に作動させるために、アイコン名にサイズおよび形式の情報がなければなりません。
- エディタのメニュー・バーで指定したサイズおよび出力に従って、アイコン・エディタが自動的に正しいサイズおよび形式の値を設定します。</Para>
+<Para>Type the name for the icon you want to save. Note that
+the correct format for icon names is name.size.format. The size and format
+information must be in the icon name to make icons work properly. Icon editor
+should automatically fill in the correct size and format values based on the
+size and output format you chose from the menu bar in the editor.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 保存 </Term>
+<Term>Save</Term>
 <ListItem>
-<Para> ファイルを保存して、ダイアログ・ボックスを閉じます。</Para>
+<Para>Saves the file and closes the dialog box.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 更新 </Term>
+<Term>Update</Term>
 <ListItem>
-<Para> フォルダおよびファイルのリストを変更して、[パス名またはフォルダ名の入力] フィールドに表示されるフォルダの内容を表示します。
- フィールドにフォルダ名を入力して、[更新] ボタンをクリックしてください。
- または、開きたいフォルダがフォルダ・リストに表示されている場合は、そのままその名前をダブルクリックしてください。					</Para>
+<Para>Changes the Folders and Files lists to show the contents of
+the folder the is shown in the Enter path or folder name field. You can type
+the folder name in the field and then click the Update button. Or, if the
+folder you want to open is shown in the Folders list, just double-click on its
+name.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> 取消し </Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para> [保存] 操作を取り消して、ダイアログ・ボックスを閉じます。</Para>
+<Para>Cancels the save and closes the dialog box.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ヘルプ </Term>
+<Term>Help</Term>
 <ListItem>
-<Para> このダイアログ・ボックスに関するヘルプを表示します。</Para>
+<Para>Displays help about this dialog box.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </Sect2>
 <Sect2 Id="IconEditorConfirmationDialogDE">
-<Title>アイコン・エディタの確認ダイアログ・ボックス</Title>
+<Title>Icon Editor Confirmation Dialog Box</Title>
 <Para><Anchor Id="error">
 <Anchor Id="query">
-確認ダイアログ・ボックスは、ユーザがコマンドの実行によってデータを不注意で失うこと(たとえばアイコンを保存しないでアイコン・エディタを終了するなど)を、確認することによって防止します。</Para>
-<Para>継続するには [了解] をクリックしてください。コマンドを取り消すには [取消し] をクリックしてください。</Para>
-<!-- EOF:リファレンス -->
+The confirmation dialog box protects you from inadvertently losing data by
+verifying that you want to perform the command (such as exiting
+Icon Editor without saving your icon).</Para>
+<Para>Click OK to continue, or Cancel to cancel the command.</Para>
+<!-- EOF: Reference -->
 </Sect2>
 </Sect1>
 </Chapter>

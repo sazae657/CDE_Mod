@@ -1,4 +1,4 @@
-<!-- $XConsortium: Ref.sgm /main/3 1996/12/18 02:50:27 cde-hit $ -->
+<!-- $XConsortium: Ref.sgm /main/8 1996/09/08 22:24:45 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -7,1305 +7,1365 @@
 <!-- (c) Copyright 1995 FUJITSU LIMITED. -->
 <!-- (c) Copyright 1995 Hitachi. -->
 <Chapter Id="Reference">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î¥ê¥Õ¥¡¥ì¥ó¥¹</Title>
+<Title>Text Editor Reference</Title>
 <Procedure>
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤ÎÊÔ½¸¥­¡¼¤È¥«¡¼¥½¥ë¡¦¥­¡¼</Title>
+<Title>Text Editor Editing and Cursor Keys</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.1">
-<Para> <XRef Linkend="EditingAndCursorKeys"></Para>
+<Para><XRef Linkend="EditingAndCursorKeys"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.2">
-<Para> <XRef Linkend="UnixKeyBindings"></Para>
+<Para><XRef Linkend="UnixKeyBindings"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î¥á¥Ë¥å¡¼</Title>
+<Title>Text Editor Menus</Title>
 <Step>
 <Para><Anchor Id="menubar">
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.3">
-<Para> <XRef Linkend="TextEditorMenuAccelerators"></Para>
+<Para><XRef Linkend="TextEditorMenuAccelerators"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.4">
-<Para> <XRef Linkend="TextEditorFileMenu"></Para>
+<Para><XRef Linkend="TextEditorFileMenu"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.5">
-<Para> <XRef Linkend="TextEditorEditMenu"></Para>
+<Para><XRef Linkend="TextEditorEditMenu"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.6">
-<Para> <XRef Linkend="TextEditorFormatMenu"></Para>
+<Para><XRef Linkend="TextEditorFormatMenu"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.7">
-<Para> <XRef Linkend="TextEditorOptionsMenu"></Para>
+<Para><XRef Linkend="TextEditorOptionsMenu"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.8">
-<Para> <XRef Linkend="TextEditorHelpMenu"></Para>
+<Para><XRef Linkend="TextEditorHelpMenu"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î¥¦¥£¥ó¥É¥¦¤ª¤è¤Ó¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹</Title>
+<Title>Text Editor Window And Dialog Boxes</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.9">
-<Para> <XRef Linkend="TextEditorWindow"></Para>
+<Para><XRef Linkend="TextEditorWindow"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.10">
-<Para> <XRef Linkend="openDialog"></Para>
+<Para><XRef Linkend="openDialog"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.11">
-<Para> <XRef Linkend="saveAsDialog"></Para>
+<Para><XRef Linkend="saveAsDialog"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.12">
-<Para> <XRef Linkend="askIfSaveDialog"></Para>
+<Para><XRef Linkend="askIfSaveDialog"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.13">
-<Para> <XRef Linkend="includeDialog"></Para>
+<Para><XRef Linkend="includeDialog"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.14">
-<Para> <XRef Linkend="spellDialog"></Para>
+<Para><XRef Linkend="spellDialog"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.15">
-<Para> <XRef Linkend="findchangeDialog"></Para>
+<Para><XRef Linkend="findchangeDialog"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.16">
-<Para> <XRef Linkend="formatDialog"></Para>
+<Para><XRef Linkend="formatDialog"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.17">
-<Para> <XRef Linkend="copytofileDialog"></Para>
+<Para><XRef Linkend="copytofileDialog"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.18">
-<Para> <XRef Linkend="fileExistsDialog"></Para>
+<Para><XRef Linkend="fileExistsDialog"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>Áí¹ç¥ê¥Õ¥¡¥ì¥ó¥¹</Title>
+<Title>General Reference</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.19">
-<Para> <XRef Linkend="TextEditorCommandSyntax"></Para>
+<Para><XRef Linkend="TextEditorCommandSyntax"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.20">
-<Para> <XRef Linkend="TextEditorResources"></Para>
+<Para><XRef Linkend="TextEditorResources"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.21">
-<Para> <XRef Linkend="TextEditorFileset"></Para>
+<Para><XRef Linkend="TextEditorFileset"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.22">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Sect1 Id="TextEditorMenuAccelerators">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î¥á¥Ë¥å¡¼¡¦¥¢¥¯¥»¥é¥ì¡¼¥¿</Title>
+<Title>Text Editor Menu Accelerators</Title>
 <IndexTerm>
-<Primary> ¥á¥Ë¥å¡¼: ¥¢¥¯¥»¥é¥ì¡¼¥¿</Primary>
+<Primary>menus: accelerators</Primary>
 </IndexTerm>
 <VariableList>
 <VarListEntry>
-<Term>ÊÄ¤¸¤ë</Term>
+<Term>Close</Term>
 <ListItem>
-<Para>       <Keycap>Alt] + [F4</Keycap> ¥­¡¼</Para>
+<Para>Alt+F4</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥³¥Ô¡¼</Term>
+<Term>Copy</Term>
 <ListItem>
-<Para>       <Keycap>Control] + [C</Keycap> ¥­¡¼
+<Para>Control+C
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥«¥Ã¥È</Term>
+<Term>Cut</Term>
 <ListItem>
-<Para>       <Keycap>Control] + [X</Keycap> ¥­¡¼
+<Para>Control+X
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ºï½ü</Term>
+<Term>Delete</Term>
 <ListItem>
-<Para>	       [Delete] ¥­¡¼
+<Para>Delete key
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¸¡º÷¡¿ÊÑ¹¹</Term>
+<Term>Find/Change</Term>
 <ListItem>
-<Para>	<Keycap>Control] + [F</Keycap> ¥­¡¼
+<Para>Control+F
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¾å½ñ¤­</Term>
+<Term>Overstrike</Term>
 <ListItem>
-<Para>	 [Insert] ¥­¡¼
+<Para>Insert key
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Ú¡¼¥¹¥È</Term>
+<Term>Paste</Term>
 <ListItem>
-<Para>     <Keycap>Control] + [V</Keycap> ¥­¡¼
+<Para>Control+V
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>°õºþ</Term>
+<Term>Print</Term>
 <ListItem>
-<Para>	       <Keycap>Control] + [P</Keycap> ¥­¡¼
+<Para>Control+P
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¤¹¤Ù¤Æ¤òÁªÂò</Term>
+<Term>Select All</Term>
 <ListItem>
-<Para> <Keycap>Control] + [/</Keycap> ¥­¡¼
+<Para>Control+/
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¸µ¤ËÌá¤¹</Term>
+<Term>Undo</Term>
 <ListItem>
-<Para>     <Keycap>Control] + [Z</Keycap> ¥­¡¼</Para>
+<Para>Control+Z</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
-<Para>¥­¡¼¥Ü¡¼¥É¤Ë [Alt] ¥­¡¼¤¬¤Ê¤¤¾ì¹ç¤Ï¡¢¥·¥¹¥Æ¥à´ÉÍý¼Ô¤ËÌä¤¤¹ç¤ï¤»¤Æ¡¢¤½¤ì¤ËÂÐ±þ¤¹¤ë¥­¡¼¤ò³ÎÇ§¤·¤Æ¤¯¤À¤µ¤¤¡£</Para>
-<para>¤¹¤Ù¤Æ¤Î¥Ù¥ó¥À¤¬¡¢¤³¤ì¤é¤Î¥­¡¼¤òÄó¶¡¤·¤Æ¤¤¤ëÌõ¤Ç¤Ï¤Ê¤¤»ö¤Ë¡¢Ãí°Õ¤·¤Æ
-¤¯¤À¤µ¤¤¡£¥Ù¥ó¥À¡¦¥í¡¼¥«¥ë¤Ê¥É¥­¥å¥á¥ó¥È¤ò»²¾È¤·¤Æ¡¢Âå¤ï¤ê¤Î¥­¡¼³ä¤êÅö¤Æ¤ò
-Ãµ¤·¤Æ¤¯¤À¤µ¤¤¡£
+<Para>If your keyboard does not have an Alt key, ask your system
+administrator to identify the corresponding key.</Para>
+<para>Note that not all vendors' keyboards supply these keys.
+Please see your local vendor's documentation for alternate key bindings.
 </para>
 </Sect1>
 <Sect1 Id="EditingAndCursorKeys">
-<Title>ÊÔ½¸¥­¡¼¤È¥«¡¼¥½¥ë¡¦¥­¡¼</Title>
+<Title>Editing and Cursor Keys</Title>
 <IndexTerm>
-<Primary>ÊÔ½¸¥­¡¼</Primary>
+<Primary>editing keys</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[Control] ¥­¡¼</Primary>
+<Primary>control key</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[Alt] ¥­¡¼</Primary>
+<Primary>Alt key</Primary>
 </IndexTerm>
 <Procedure>
-<Title>ÊÔ½¸¥­¡¼</Title>
+<Title>Editing Keys</Title>
 <Step>
 <VariableList>
 <VarListEntry>
-<Term><Emphasis Role="heading">¥­¡¼ </Emphasis></Term>
+<Term><Emphasis Role="heading">Key</Emphasis></Term>
 <ListItem>
-<Para><Emphasis Role="heading"> ¥¢¥¯¥·¥ç¥ó</Emphasis></Para>
+<Para><Emphasis Role="heading">Action</Emphasis></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>[Backspace] </Term>
+<Term>Backspace</Term>
 <ListItem>
-<Para> ¥«¡¼¥½¥ë¤ÎÁ°¤ÎÊ¸»ú¤òºï½ü¤·¤Þ¤¹¡£</Para>
+<Para>Deletes the character before the cursor</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>[Delete]([Remove])    </Term>
+<Term>Delete (Remove)</Term>
 <ListItem>
-<Para> ÁÞÆþ¥«¡¼¥½¥ë¤Î¸å¤ÎÊ¸»ú¤òºï½ü¤·¤Þ¤¹¡£</Para>
+<Para>Deletes the character following the
+insertion cursor</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Keycap>Control] + [Delete</Keycap>
-(<Keycap>Control] + [Remove</Keycap>)</Term>
+<Term>Control+Delete
+(Control+Remove)</Term>
 <ListItem>
-<Para> ¥«¡¼¥½¥ë¤«¤é¸½ºß¤Î¹Ô¤Î½ª¤ï¤ê¤Þ¤Ç¤Î¤¹¤Ù¤Æ¤ÎÊ¸»ú¤òºï½ü¤·¤Þ¤¹¡£</Para>
+<Para>Deletes all the characters from the cursor to the end of the current line</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Keycap>Control] + [Backspace</Keycap> </Term>
+<Term>Control+Backspace</Term>
 <ListItem>
-<Para> Á°¤Î¸ì¤òºï½ü¤·¤Þ¤¹¡£</Para>
+<Para>Deletes the previous word</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Keycap>Shift] + [Backspace</Keycap> </Term>
+<Term>Shift+Backspace</Term>
 <ListItem>
-<Para> ¥«¡¼¥½¥ë¤«¤é¹Ô¤ÎºÇ½é¤Þ¤Ç¤ÎÊ¸»ú¤òºï½ü¤·¤Þ¤¹¡£</Para>
+<Para>Deletes characters from the cursor to the beginning of the line</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>¥«¡¼¥½¥ë¡¦¥­¡¼</Title>
+<Title>Cursor Keys</Title>
 <IndexTerm>
-<Primary> [Control] ¥­¡¼, Ìð°õ¥­¡¼¤È¤È¤â¤Ë»ÈÍÑ</Primary>
+<Primary>control key, used with arrow keys</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> Ìð°õ¥­¡¼</Primary>
+<Primary>arrow keys</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> ¥«¡¼¥½¥ë°ÜÆ°¥­¡¼</Primary>
+<Primary>cursor movement keys</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> ¥­¡¼¥Ü¡¼¥É¡¦¥Ê¥Ó¥²¡¼¥·¥ç¥ó</Primary>
+<Primary>keyboard navigation</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> ¥­¡¼: ¥«¡¼¥½¥ë¤Î°ÜÆ°</Primary>
+<Primary>keys: cursor movement</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> ¥­¡¼: Ìð°õ</Primary>
+<Primary>keys: arrow</Primary>
 </IndexTerm>
 <Step>
 <VariableList>
 <VarListEntry>
-<Term><Emphasis Role="heading">¥­¡¼      </Emphasis></Term>
+<Term><Emphasis Role="heading">Key</Emphasis></Term>
 <ListItem>
-<Para><Emphasis Role="heading"> ¥«¡¼¥½¥ë¤Î°ÜÆ°</Emphasis></Para>
+<Para><Emphasis Role="heading">Cursor Movement</Emphasis></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [¢¬] 		     </Term>
+<Term>Up Arrow</Term>
 <ListItem>
-<Para> 1 ¹Ô¾å¤Ø
+<Para>Up one line
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [¢­] 		     </Term>
+<Term>Down Arrow</Term>
 <ListItem>
-<Para> 1 ¹Ô²¼¤Ø
+<Para>Down one line
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [¢«] 		     </Term>
+<Term>Left Arrow</Term>
 <ListItem>
-<Para> 1 Ê¸»úº¸¤Ø
+<Para>Left one character
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [¢ª] 		     </Term>
+<Term>Right Arrow</Term>
 <ListItem>
-<Para> 1 Ê¸»ú±¦¤Ø
+<Para>Right one character
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [¢ª</Keycap> &sigspace; </Term>
+<Term>Control+Right&sigspace;Arrow&sigspace;</Term>
 <ListItem>
-<Para> 1 ¸ì±¦¤Ø
+<Para>Right one word
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [¢«</Keycap> &sigspace; </Term>
+<Term>Control+Left&sigspace;Arrow</Term>
 <ListItem>
-<Para> 1 ¸ìº¸¤Ø
+<Para>Left one word
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [¢­</Keycap> &sigspace; </Term>
+<Term>Control+Down&sigspace;Arrow&sigspace;</Term>
 <ListItem>
-<Para> ¼¡¤Î¥Ñ¥é¥°¥é¥Õ¤ÎÀèÆ¬¤Ø
+<Para>Beginning of the next paragraph
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [¢¬</Keycap> &sigspace; </Term>
+<Term>Control+Up&sigspace;Arrow</Term>
 <ListItem>
-<Para> Á°¤Î¥Ñ¥é¥°¥é¥Õ¤ÎÀèÆ¬¤Ø
+<Para>Beginning of the previous paragraph
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [Home] 			      </Term>
+<Term>Home</Term>
 <ListItem>
-<Para> ¸½ºß¤Î¹Ô¤ÎÀèÆ¬¤Ø
+<Para>Beginning of the current line
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> [End] 			      </Term>
+<Term>End</Term>
 <ListItem>
-<Para> ¸½ºß¤Î¹Ô¤Î½ª¤ï¤ê¤Ø
+<Para>End of the current line
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [Home</Keycap> 		      </Term>
+<Term>Control+Home</Term>
 <ListItem>
-<Para> ¥É¥­¥å¥á¥ó¥È¤ÎÀèÆ¬¤Ø
+<Para>Beginning of the document
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <Keycap>Control] + [End</Keycap> 		      </Term>
+<Term>Control+End</Term>
 <ListItem>
-<Para> ¥É¥­¥å¥á¥ó¥È¤ÎËöÈø¤Ø
+<Para>End of the document
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Note>
-<Para>¤´ÍøÍÑ¤Î¥·¥¹¥Æ¥à¤Ë¤è¤Ã¤Æ¤Ï¡¢¥­¡¼¤ÎÁÈ¤ß¹ç¤ï¤»¤¬°Û¤Ê¤ë¤³¤È¤¬¤¢¤ê¤Þ¤¹¡£
-¤½¤Î¾ì¹ç¡¢¥·¥¹¥Æ¥à´ÉÍý¼Ô¤ËÌä¤¤¹ç¤ï¤»¤Æ¡¢¤½¤ì¤¾¤ì¤ËÂÐ±þ¤¹¤ë¥­¡¼¤ò³ÎÇ§¤·¤Æ¤¯¤À¤µ¤¤¡£
+<Para>Some key combinations may be different on the system you are using.
+If so, ask your system administrator to identify the corresponding keys.
 </Para>
 </Note>
 <Para>&sigspace;
 </Para>
 <Para>&sigspace;</Para>
-<Para>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Ç Emacs ¤Î¥­¡¼³ä¤êÅö¤Æ¤ò»ÈÍÑ¤¹¤ë¾ì¹ç¤Ï¡¢<XRef Linkend="UnixKeybindings"> ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤¡£</Para>
+<Para>To use Emacs key bindings in Text Editor see <XRef Linkend="UnixKeybindings">.</Para>
 <Para>&sigspace;</Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.23">
-<Para> <XRef Linkend="ToEnterText"></Para>
+<Para><XRef Linkend="ToEnterText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.24">
-<Para> <XRef Linkend="ToScrollADocument"></Para>
+<Para><XRef Linkend="ToScrollADocument"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.25">
-<Para> <XRef Linkend="ToSelectText"></Para>
+<Para><XRef Linkend="ToSelectText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.26">
-<Para> <XRef Linkend="UnixKeybindings"></Para>
+<Para><XRef Linkend="UnixKeybindings"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.27">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="UnixKeyBindings">
-<Title>Unix ¤Î¥­¡¼³ä¤êÅö¤Æ</Title>
+<Title>Unix Key Bindings</Title>
 <IndexTerm>
-<Primary> Unix ¤Î¥­¡¼³ä¤êÅö¤Æ</Primary>
+<Primary>Unix keybindings</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> ¥­¡¼³ä¤êÅö¤Æ: Unix</Primary>
+<Primary>keybindings: Unix</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> Emacs ¤Î¥­¡¼³ä¤êÅö¤Æ</Primary>
+<Primary>Emacs keybindings</Primary>
 </IndexTerm>
-<Para>Unix ¤Î¥­¡¼³ä¤êÅö¤Æ¤Ë¤Ï¡¢³ÈÄ¥ Emacs ¥­¡¼¤Î¥»¥Ã¥È¤¬¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤ËÍÑ°Õ¤µ¤ì¤Æ¤¤¤Þ¤¹¡£
-¤¿¤È¤¨¤Ð¡¢¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Ë¤ª¤±¤ë <Keycap>Control] + [F</Keycap> ¥­¡¼(°ìÊ¸»úÁ°¿Ê) ¤ä <Keycap>Control] + [N</Keycap> ¥­¡¼(²þ¹Ô) ¤Ê¤É¤Ç¤¹¡£
-Unix ¤Î¥­¡¼³ä¤êÅö¤Æ(¥Ç¥Õ¥©¥ë¥È¤Ç¤ÏÌ¤ÀßÄê)¤ò»ÈÍÑ¤¹¤ë¤Ë¤Ï¡¢°Ê²¼¤Î¤³¤È¤ò¹Ô¤Ã¤Æ¤¯¤À¤µ¤¤¡£</Para>
+<Para>Unix key bindings provide a set of extended Emacs keys,
+such as Control+F (forward character) and Control+N (next line),
+in Text Editor. To enable Unix key bindings (which are
+set off by default), do the following:</Para>
 <OrderedList>
 <ListItem Id="HTXTE.REF.item.28">
-<Para> ¥Û¡¼¥à¡¦¥Ç¥£¥ì¥¯¥È¥ê¤Î <ComputerOutput>.Xdefaults</ComputerOutput> ¥Õ¥¡¥¤¥ë¤òÊÔ½¸¤·¡¢¤³¤Î¥Õ¥¡¥¤¥ë¤Ë°Ê²¼¤Î¹Ô¤òÄÉ²Ã¤·¤Æ¤¯¤À¤µ¤¤¡£</Para>
+<Para>Edit the <ComputerOutput>.Xdefaults</ComputerOutput> file in your home directory by
+adding this line to the file:</Para>
 <ProgramListing>#include "/usr/dt/app-defaults/<Symbol Role="Variable">lang</Symbol>/UNIXbindings"
 </ProgramListing>
-<Para><Symbol Role="Variable">lang</Symbol> ¤ò¥æ¡¼¥¶¤Î¸À¸ì´Ä¶­ÊÑ¿ôÃÍ¤ÈÃÖ´¹¤·¤Æ¤¯¤À¤µ¤¤¡£
-<ComputerOutput>.Xdefaults</ComputerOutput> ¥Õ¥¡¥¤¥ë¤¬Â¸ºß¤·¤Ê¤¤¾ì¹ç¤Ï¡¢¥Û¡¼¥à¡¦¥Ç¥£¥ì¥¯¥È¥ê¤Ë¤½¤Î¥Õ¥¡¥¤¥ë¤òºîÀ®¤·¤Æ¤¯¤À¤µ¤¤¡£</Para>
+<Para>Replace <Symbol Role="Variable">lang</Symbol> with the value of your language environment
+variable. If the <ComputerOutput>.Xdefaults</ComputerOutput> file does not exist,
+create the file in your home directory.</Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.29">
-<Para> ¸½ºß¤Î¥»¥Ã¥·¥ç¥ó¤«¤é¥í¥°¥¢¥¦¥È¤·¤Æ¤¯¤À¤µ¤¤¡£</Para>
+<Para>Log out of your current session.</Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.30">
-<Para> ¥í¥°¥¤¥ó¤·¡¢¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤òºÆµ¯Æ°¤·¤Æ¤¯¤À¤µ¤¤¡£</Para>
+<Para>Log in and restart Text Editor.</Para>
 </ListItem>
 </OrderedList>
 <Para>&sigspace;</Para>
-<Para>Unix ¤Î¥­¡¼³ä¤êÅö¤Æ¤ò»ÈÍÑ¤¹¤ë¾ì¹ç¡¢¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Ë¤Ï°Ê²¼¤Î¥³¥Þ¥ó¥É¤ÎÂåÂØ¥á¥Ë¥å¡¼¡¦¥¢¥¯¥»¥é¥ì¡¼¥¿¤¬ÍÑ°Õ¤µ¤ì¤Æ¤¤¤Þ¤¹¡£</Para>
+<Para>When you use Unix key bindings, Text Editor provides alternate menu
+accelerators for these commands:</Para>
 <VariableList>
 <VarListEntry>
-<Term><Emphasis Role="heading">¥³¥Þ¥ó¥É </Emphasis></Term>
+<Term><Emphasis Role="heading">Command</Emphasis></Term>
 <ListItem>
-<Para><Emphasis Role="heading"> ÂåÂØ¥á¥Ë¥å¡¼¡¦¥¢¥¯¥»¥é¥ì¡¼¥¿</Emphasis></Para>
+<Para><Emphasis Role="heading">Alternate Menu Accelerator</Emphasis></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¸µ¤ËÌá¤¹ (<Keycap>Control] + [Z</Keycap> ¥­¡¼)</Term>
+<Term>Undo (Control+Z)</Term>
 <ListItem>
-<Para>	   <Keycap>Control] + [_</Keycap> ¥­¡¼
+<Para>Control+_
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Ú¡¼¥¹¥È (<Keycap>Control] + [V</Keycap> ¥­¡¼)</Term>
+<Term>Paste (Control+V)</Term>
 <ListItem>
-<Para>	   <Keycap>Shift] + [Insert</Keycap> ¥­¡¼
+<Para>Shift+Insert
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¸¡º÷¡¿ÊÑ¹¹ (<Keycap>Control] + [F</Keycap> ¥­¡¼)&sigspace;</Term>
+<Term>Find/Change (Control+F)&sigspace;</Term>
 <ListItem>
-<Para>      <Keycap>Control] + [S</Keycap> ¥­¡¼
+<Para>Control+S
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>°õºþ (<Keycap>Control] + [P</Keycap> ¥­¡¼)</Term>
+<Term>Print (Control+P)</Term>
 <ListItem>
-<Para>		  <Emphasis>ÂåÂØ¥­¡¼¤Ê¤·</Emphasis>
+<Para><Emphasis>no alternate</Emphasis>
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Para>&sigspace;
-¤³¤ì¤é¤Î¥á¥Ë¥å¡¼¡¦¥¢¥¯¥»¥é¥ì¡¼¥¿¤òÊÑ¹¹¤·¤¿¤¤¾ì¹ç¤Ï¡¢<ComputerOutput>/usr/dt/app-defaults/<Symbol Role="Variable">lang</Symbol>/UNIXbindings</ComputerOutput>¥Õ¥¡¥¤¥ë¤ÎÆâÍÆ¤ò <ComputerOutput>.Xdefaults</ComputerOutput> ¥Õ¥¡¥¤¥ë¤Ë¥³¥Ô¡¼¤·¡¢¤½¤ì¤«¤éÊÑ¹¹¤ò²Ã¤¨¤Æ¤¯¤À¤µ¤¤¡£</Para>
+If you want to modify these menu accelerators, copy
+the contents of the
+<ComputerOutput>/usr/dt/app-defaults/<Symbol Role="Variable">lang</Symbol>/UNIXbindings</ComputerOutput>
+file into your <ComputerOutput>.Xdefaults</ComputerOutput> file, and then make your
+changes.</Para>
 <Note>
-<Para>Unix ¤Î¥­¡¼³ä¤êÅö¤Æ¤ò»ÈÍÑ¤·¤Æ¤¤¤ë¾ì¹ç¡¢<Keycap>Delete</Keycap>(<Keycap>Remove</Keycap>) ¥­¡¼¤Ï¡¢¥«¡¼¥½¥ë¤Î¼¡¤ÎÊ¸»ú¤Ç¤Ï¤Ê¤¯¡¢¥«¡¼¥½¥ë¤ÎÁ°¤ÎÊ¸»ú¤òºï½ü¤·¤Þ¤¹¡£
+<Para>When Unix key bindings are enabled, the Delete (Remove) key deletes the previous
+character rather than the character that follows the cursor.
 </Para>
 </Note>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.31">
-<Para> <XRef Linkend="ToEnterText"></Para>
+<Para><XRef Linkend="ToEnterText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.32">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.33">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="TextEditorFileMenu">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î [¥Õ¥¡¥¤¥ë] ¥á¥Ë¥å¡¼</Title>
+<Title>Text Editor File Menu</Title>
 <Para><Anchor Id="fileMenu"><IndexTerm>
-<Primary> ¥á¥Ë¥å¡¼:¥Õ¥¡¥¤¥ë</Primary>
+<Primary>menus:File</Primary>
 </IndexTerm>
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>¿·µ¬ </Term>
+<Term>New</Term>
 <ListItem>
-<Para>  ¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¡¦¥¦¥£¥ó¥É¥¦¤ò½é´ü²½¤·¤Þ¤¹¡£
-		ÊÑ¹¹¤·¤¿¥É¥­¥å¥á¥ó¥È¤òÊÝÂ¸¤·¤Æ¤¤¤Ê¤¤¾ì¹ç¡¢¥¦¥£¥ó¥É¥¦¤ò½é´ü²½¤¹¤ëÁ°¤Ë¡¢¤½¤ÎÊÝÂ¸¤ò¹Ô¤¦¤¿¤á¤Î¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤¬É½¼¨¤µ¤ì¤Þ¤¹¡£</Para>
+<Para>Clears the Text Editor window. If your document has unsaved
+changes a dialog box is displayed that enables you to save your work before the window is cleared.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>³«¤¯ </Term>
+<Term>Open</Term>
 <ListItem>
-<Para>  ´ûÂ¸¤Î¥Õ¥¡¥¤¥ë¤ò³«¤¯¤¿¤á¤Î¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>Displays a dialog box for opening an existing
+file.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¼è¹þ¤ß </Term>
+<Term>Include</Term>
 <ListItem>
-<Para>  ¸½ºß¤Î¥É¥­¥å¥á¥ó¥È¤ËÁÞÆþ¤¹¤ë¥Õ¥¡¥¤¥ë¤ò»ØÄê¤¹¤ë¤¿¤á¤Î¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>Displays a dialog box for
+specifying a file to be inserted into the current
+document.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ÊÝÂ¸ </Term>
+<Term>Save</Term>
 <ListItem>
-<Para>    ¥É¥­¥å¥á¥ó¥È¤ò¸½ºß¤Î¥Õ¥¡¥¤¥ë¤ËÊÝÂ¸¤·¤Þ¤¹¡£
-		¹ÔÀÞÊÖ¤·¤¬ÀßÄê¤µ¤ì¤Æ¤¤¤ë¾ì¹ç¡¢[ÊÝÂ¸] ¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤¬É½¼¨¤µ¤ì¤Þ¤¹¡£
-		¸½ºß¤Î¥É¥­¥å¥á¥ó¥È¤¬°ÊÁ°¤ËÊÝÂ¸¤µ¤ì¤Æ¤¤¤Ê¤¤¤â¤Î¤Ç¤¢¤ì¤Ð¡¢[ÊÌÌ¾ÊÝÂ¸] ¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤¬É½¼¨¤µ¤ì¤Þ¤¹¡£</Para>
+<Para>Saves the document to the current file. If
+Wrap To Fit is set on the Save dialog is displayed. If the
+current document has not been previously saved, the Save As dialog box is displayed.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ÊÌÌ¾ÊÝÂ¸ </Term>
+<Term>Save As</Term>
 <ListItem>
-<Para> ¥É¥­¥å¥á¥ó¥È¤ò¿·µ¬¥Õ¥¡¥¤¥ë¤ËÊÝÂ¸¤¹¤ë¤¿¤á¤Î¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>Displays a dialog box for saving a document to a
+new file.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Õ¥¡¥¤¥ë¤Ë¥³¥Ô¡¼</Term>
+<Term>Copy to File</Term>
 <ListItem>
-<Para>  É½¼¨¤Þ¤¿¤ÏÊÔ½¸¤·¤Æ¤¤¤ë¾ðÊó¤òÊÔ½¸¥»¥Ã¥·¥ç¥ó¤ÎÊÑ¹¹¤Ê¤·¤ËÊÌ¤Î¥Õ¥¡¥¤¥ë¤Ë¥³¥Ô¡¼¤·¤Þ¤¹¡£
-		[ÊÌÌ¾ÊÝÂ¸] ¥³¥Þ¥ó¥É¤Ï¡¢[¥Õ¥¡¥¤¥ë¤Ë¥³¥Ô¡¼] ¥³¥Þ¥ó¥É¤ËÃÖ´¹¤µ¤ì¤Æ¤¤¤ë¤³¤È¤¬¤¢¤ê¤Þ¤¹¡£</Para>
+<Para>Copies the information you are viewing or
+editing to a separate file without changing your edit session. In some
+instances, the Save As command is replaced by the Copy To File command.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>°õºþ </Term>
+<Term>Print</Term>
 <ListItem>
-<Para>  °õºþ¥ª¥×¥·¥ç¥ó¤òÁªÂò¤·¡¢¥É¥­¥å¥á¥ó¥È¤ò°õºþ¤¹¤ë¤¿¤á¤Î¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>Displays a dialog box for selecting print options
+and printing a document.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ÊÄ¤¸¤ë</Term>
+<Term>Close</Term>
 <ListItem>
-<Para> ¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¡¦¥¦¥£¥ó¥É¥¦¤òÊÄ¤¸¡¢¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤ò½ªÎ»¤·¤Þ¤¹¡£</Para>
+<Para>Closes the Text Editor window and exits Text Editor.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.34">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.35">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.36">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="TextEditorEditMenu">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î [ÊÔ½¸] ¥á¥Ë¥å¡¼</Title>
+<Title>Text Editor Edit Menu</Title>
 <Para><Anchor Id="editMenu"><IndexTerm>
-<Primary> ¥á¥Ë¥å¡¼:ÊÔ½¸</Primary>
+<Primary>menus:Edit</Primary>
 </IndexTerm>
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>¸µ¤ËÌá¤¹</Term>
+<Term>Undo</Term>
 <ListItem>
-<Para>  ºÇ¸å¤Ë¹Ô¤Ã¤¿¥«¥Ã¥È¡¢¥Ú¡¼¥¹¥È¡¢¾Ãµî¡¢ºï½ü¡¢ÃÖ´¹¡¢¼è¹þ¤ß¡¢¤Þ¤¿¤Ï½ñ¼°ÀßÄê¤ÎÁàºî¤ò¼è¤ê¾Ã¤·¤Þ¤¹¡£</Para>
+<Para>Reverses the last cut, paste, clear, delete, replace,
+include, or format operation</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥«¥Ã¥È</Term>
+<Term>Cut</Term>
 <ListItem>
-<Para>    ÁªÂò¤µ¤ì¤¿¥Æ¥­¥¹¥È¤òºï½ü¤·¡¢¤½¤ì¤ò¥¯¥ê¥Ã¥×¥Ü¡¼¥É¤Ë³ÊÇ¼¤·¤Þ¤¹¡£</Para>
+<Para>Removes the selected text and stores it on the clipboard</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥³¥Ô¡¼</Term>
+<Term>Copy</Term>
 <ListItem>
-<Para>    ÁªÂò¤µ¤ì¤¿¥Æ¥­¥¹¥È¤ò¥³¥Ô¡¼¤·¡¢¤½¤ì¤ò¥¯¥ê¥Ã¥×¥Ü¡¼¥É¤Ë³ÊÇ¼¤·¤Þ¤¹¡£</Para>
+<Para>Copies the selected text and stores it on the clipboard</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Ú¡¼¥¹¥È </Term>
+<Term>Paste</Term>
 <ListItem>
-<Para>  ºÇ¸å¤Ë¥«¥Ã¥È¤Þ¤¿¤Ï¥³¥Ô¡¼Áàºî¤ò¹Ô¤Ã¤¿¥Æ¥­¥¹¥È¤ò¸½ºß¤Î¥«¡¼¥½¥ë°ÌÃÖ¤Ë¥³¥Ô¡¼¤·¤Þ¤¹¡£</Para>
+<Para>Copies the text from the last cut or copy operation to the current
+cursor position</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¾Ãµî </Term>
+<Term>Clear</Term>
 <ListItem>
-<Para>     ÁªÂò¤µ¤ì¤¿¥Æ¥­¥¹¥È¤ò¥¹¥Ú¡¼¥¹¤ÈÃÖ´¹¤·¤Þ¤¹¡£</Para>
+<Para>Replaces the selected text with spaces</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ºï½ü </Term>
+<Term>Delete</Term>
 <ListItem>
-<Para>     ÁªÂò¤µ¤ì¤¿¥Æ¥­¥¹¥È¤òºï½ü¤·¤Þ¤¹¡£</Para>
+<Para>Deletes the selected text</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¤¹¤Ù¤Æ¤òÁªÂò </Term>
+<Term>Select All</Term>
 <ListItem>
-<Para>  ¥É¥­¥å¥á¥ó¥È¤Î¤¹¤Ù¤Æ¤Î¥Æ¥­¥¹¥È¤òÁªÂò¤·¤Þ¤¹¡£</Para>
+<Para>Selects all text in your document</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¸¡º÷¡¿ÊÑ¹¹ </Term>
+<Term>Find/Change</Term>
 <ListItem>
-<Para> ¥É¥­¥å¥á¥ó¥ÈÆâ¤Î¸ì¶ç¤ò¸¡º÷¤·¡¢¸¡º÷¤µ¤ì¤¿²Õ½ê¤ÎÊÑ¹¹¤ò¹Ô¤¦¤¿¤á¤Î¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤ò³«¤­¤Þ¤¹¡£</Para>
+<Para>Opens a dialog box that enables you to search for words or
+phrases in your document and make changes to occurrences
+that are found</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥¹¥Ú¥ë¡¦¥Á¥§¥Ã¥¯&sigspace; </Term>
+<Term>Check Spelling&sigspace;</Term>
 <ListItem>
-<Para> ¥É¥­¥å¥á¥ó¥È¾å¤Ç¥¹¥Ú¥ë¡¦¥Á¥§¥Ã¥«¤ò¼Â¹Ô¤·¤Þ¤¹¡£
+<Para>Runs the spell checker on the document
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.37">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.38">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.39">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="TextEditorFormatMenu">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î [½ñ¼°] ¥á¥Ë¥å¡¼</Title>
+<Title>Text Editor Format Menu</Title>
 <Para><Anchor Id="formatMenu"><IndexTerm>
-<Primary> ¥á¥Ë¥å¡¼:½ñ¼°</Primary>
+<Primary>menus:Format</Primary>
 </IndexTerm>
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>ÀßÄê </Term>
+<Term>Settings</Term>
 <ListItem>
-<Para>    ¥Þ¡¼¥¸¥ó¤ä¥Ñ¥é¥°¥é¥Õ¤ÎÂ·¤¨Êý¤òÀßÄê¤·¡¢½ñ¼°ÀßÄê¤ò¥É¥­¥å¥á¥ó¥È¤ËÅ¬ÍÑ¤¹¤ë¤¿¤á¤Î¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>Displays a dialog box for
+setting margins and paragraph alignment, and applying format settings to
+your document</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Ñ¥é¥°¥é¥Õ </Term>
+<Term>Paragraph</Term>
 <ListItem>
-<Para>	ÀßÄê¤ò¥«¡¼¥½¥ë¤Î¤¢¤ë¥Ñ¥é¥°¥é¥Õ¤ËÅ¬ÍÑ¤·¤Þ¤¹¡£</Para>
+<Para>Applies the settings to the paragraph containing
+the cursor</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¤¹¤Ù¤Æ</Term>
+<Term>All</Term>
 <ListItem>
-<Para>   ÀßÄê¤ò¥É¥­¥å¥á¥ó¥ÈÁ´ÂÎ¤ËÅ¬ÍÑ¤·¤Þ¤¹¡£
+<Para>Applies the settings to the entire document
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.40">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.41">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.42">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="TextEditorOptionsMenu">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î [¥ª¥×¥·¥ç¥ó] ¥á¥Ë¥å¡¼</Title>
+<Title>Text Editor Options Menu</Title>
 <Para><Anchor Id="optionsMenu"><IndexTerm>
-<Primary> ¥á¥Ë¥å¡¼: ¥ª¥×¥·¥ç¥ó</Primary>
+<Primary>menus: Options</Primary>
 </IndexTerm>
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>¾å½ñ¤­</Term>
+<Term>Overstrike</Term>
 <ListItem>
-<Para>  ´ûÂ¸¤ÎÊ¸»ú¤ò¾å½ñ¤­¤¹¤ë¥Æ¥­¥¹¥ÈÆþÎÏ¥â¡¼¥É¤ËÀÚ¤êÂØ¤¨¤Þ¤¹¡£</Para>
+<Para>Toggles the text entry mode that allows you
+to type over existing characters.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¹ÔÀÞÊÖ¤· </Term>
+<Term>Wrap To Fit</Term>
 <ListItem>
-<Para>  ¥¦¥£¥ó¥É¥¦¤Î²èÌÌÃ¼¤Ç¼«Æ°Åª¤Ë¹Ô¤òÀÞ¤êÊÖ¤¹¥Æ¥­¥¹¥ÈÆþÎÏ¥â¡¼¥É¤ËÀÚ¤êÂØ¤¨¤Þ¤¹¡£
-		[¹ÔÀÞÊÖ¤·] ¤¬ÀßÄê¤µ¤ì¤Æ¤¤¤Ê¤¤¾ì¹ç¡¢³Æ¹ÔËö¤´¤È¤Ë [Return] ¥­¡¼¤ò²¡¤µ¤Ê¤¯¤Æ¤Ï¤Ê¤ê¤Þ¤»¤ó¡£</Para>
+<Para>Toggles the text entry mode that causes lines
+to automatically wrap at the edge of the window. If Wrap To Fit is
+is not set on, you must press Return to end each line.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥¹¥Æ¡¼¥¿¥¹¹Ô </Term>
+<Term>Status Line</Term>
 <ListItem>
-<Para>  ¥¦¥£¥ó¥É¥¦¤Î°ìÈÖ²¼¤Ë¥¹¥Æ¡¼¥¿¥¹¹Ô¤òÉ½¼¨¤¹¤ë¤è¤¦¤ËÀÚ¤êÂØ¤¨¤Þ¤¹¡£
-		 ¥¹¥Æ¡¼¥¿¥¹¹Ô¤Ï¡¢¥«¡¼¥½¥ë¤Î¤¢¤ë¹Ô¤ÎÈÖ¹æ¡¢¥É¥­¥å¥á¥ó¥È¤Î¹Ô¤ÎÁí¿ô¡¢¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¡¦¥á¥Ã¥»¡¼¥¸¤òÉ½¼¨¤·¤¿¤ê¡¢[¾å½ñ¤­] ¥â¡¼¥É¤Ë¤Ê¤Ã¤Æ¤¤¤ë¾ì¹ç¡¢¤½¤ì¤ò¼¨¤·¤Þ¤¹¤Þ¤¿¡¢¥«¡¼¥½¥ë¤òÆÃÄê¤Î¹ÔÈÖ¹æ¤Ø°ÜÆ°¤µ¤»¤ëÊýË¡¤âÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>Toggles the display of a status line at the
+bottom of the window. The status line reports the line number where the
+cursor is located, the total number of lines in the document,
+application messages, and indicates when Overstrike mode is on.
+It also provides a way to move the cursor to a specific line number.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.43">
-<Para> <XRef Linkend="ToSetWrapToFit"></Para>
+<Para><XRef Linkend="ToSetWrapToFit"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.44">
-<Para> <XRef Linkend="ToSetOverstrikeMode"></Para>
+<Para><XRef Linkend="ToSetOverstrikeMode"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.45">
-<Para> <XRef Linkend="ToDisplayTheStatusLine"></Para>
+<Para><XRef Linkend="ToDisplayTheStatusLine"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.46">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.47">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.48">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="TextEditorHelpMenu">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î [¥Ø¥ë¥×] ¥á¥Ë¥å¡¼</Title>
+<Title>Text Editor Help Menu</Title>
 <Para><Anchor Id="helpMenu"><IndexTerm>
-<Primary> ¥á¥Ë¥å¡¼:¥Ø¥ë¥×</Primary>
+<Primary>menus:Help</Primary>
 </IndexTerm>
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>³µÍ×</Term>
+<Term>Overview</Term>
 <ListItem>
-<Para> ¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Îµ¯Æ°ÊýË¡¤òÀâÌÀ¤·¤Þ¤¹¡£</Para>
+<Para>Explains how to start Text Editor.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ÌÜ¼¡ &sigspace;</Term>
+<Term>Table of Contents &sigspace;</Term>
 <ListItem>
-<Para> ¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î¥Ø¥ë¥×¡¦¥È¥Ô¥Ã¥¯¤Î¥¢¥¦¥È¥é¥¤¥ó¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>Provides an outline of Text Editor
+help topics.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>»È¤¤Êý</Term>
+<Term>Tasks</Term>
 <ListItem>
-<Para> ¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î¤ª¤ª¤è¤½¤ÎÁàºîÊýË¡¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>Provides task instructions for most Text Editor
+operations.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥ê¥Õ¥¡¥ì¥ó¥¹</Term>
+<Term>Reference</Term>
 <ListItem>
-<Para> ¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤ÎÆÃÄ§(¤¿¤È¤¨¤Ð¡¢¥á¥Ë¥å¡¼¡¢¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¡¢¥ê¥½¡¼¥¹¡¢¤ª¤è¤Ó¥³¥Þ¥ó¥É¹Ô¥ª¥×¥·¥ç¥ó)¤ò³µÎ¬¤·¤Þ¤¹¡£</Para>
+<Para>Summarizes Text Editor features, such as
+menus, dialog boxes, resources, and command-line options.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥¢¥¤¥Æ¥à¥Ø¥ë¥×</Term>
+<Term>On Item</Term>
 <ListItem>
-<Para> ¥«¡¼¥½¥ë¤ò¡¢¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î¥¦¥£¥ó¥É¥¦¤Þ¤¿¤Ï¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤Î¹àÌÜ¤ò¥¯¥ê¥Ã¥¯¤Ç¤­¤ëÆÃ¼ì¥Ý¥¤¥ó¥¿¤ËÊÑ¹¹¤·¤Þ¤¹¡£
-		¥¯¥ê¥Ã¥¯¤·¤¿¹àÌÜ¤ÎÀâÌÀ¤¬É½¼¨¤µ¤ì¤Þ¤¹¡£</Para>
+<Para>Changes the cursor to a special pointer that
+you can click on an item in a Text Editor window or dialog box. A
+description of the item you've clicked is displayed.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Ø¥ë¥×¤Î»È¤¤Êý</Term>
+<Term>Using Help</Term>
 <ListItem>
-<Para>    ¥Ø¥ë¥×¡¦¥¦¥£¥ó¥É¥¦¤Î»È¤¤Êý¤Ë´Ø¤¹¤ë¥Ø¥ë¥×¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>Provides help on using Help windows.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Ë¤Ä¤¤¤Æ</Term>
+<Term>About Text Editor</Term>
 <ListItem>
-<Para>  ¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î¥Ð¡¼¥¸¥ç¥ó¤ª¤è¤ÓÃøºî¸¢¾ðÊó¤òÉ½¼¨¤·¤Þ¤¹¡£
+<Para>Displays the version and copyright information for
+Text Editor.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.49">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.50">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="TextEditorWindow">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¡¦¥¦¥£¥ó¥É¥¦</Title>
+<Title>Text Editor Window</Title>
 <Para><Anchor Id="editArea"><IndexTerm>
-<Primary> ¥¦¥£¥ó¥É¥¦, ¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿</Primary>
+<Primary>window, Text Editor</Primary>
 </IndexTerm>
 </Para>
 <Graphic Entityref="TextEditorWindow" Id="HTXTE.REF.fig.1"></Graphic>
 <Para>&sigspace;</Para>
 <VariableList>
 <VarListEntry>
-<Term>¥á¥Ë¥å¡¼¡¦¥Ð¡¼</Term>
+<Term>Menu bar</Term>
 <ListItem>
-<Para> ¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Ë¤Ï¡¢°Ê²¼¤Î 5 ¤Ä¤Î¥á¥Ë¥å¡¼¤¬¤¢¤ê¤Þ¤¹¡£
-		 [¥Õ¥¡¥¤¥ë]¡¢[ÊÔ½¸]¡¢[½ñ¼°]¡¢[¥ª¥×¥·¥ç¥ó]¡¢¤ª¤è¤Ó [¥Ø¥ë¥×]¤Ç¤¹¡£</Para>
+<Para>Text Editor provides five menus: File, Edit,
+Format, Options, and Help.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥É¥­¥å¥á¥ó¥È¡¦¥¦¥£¥ó¥É¥¦&sigspace;</Term>
+<Term>Document window&sigspace;</Term>
 <ListItem>
-<Para> ¥É¥­¥å¥á¥ó¥È¤ÎÆâÍÆ¤òÆþÎÏ¤¹¤ëÎÎ°è¤Ç¤¹¡£</Para>
+<Para>The area where you type the content of your
+document.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥¹¥Æ¡¼¥¿¥¹¹Ô </Term>
+<Term>Status line</Term>
 <ListItem>
-<Para> ¥«¡¼¥½¥ë¤Î¤¢¤ë¹Ô¤ÎÈÖ¹æ¡¢¥É¥­¥å¥á¥ó¥È¤Î¹Ô¤ÎÁí¿ô¡¢¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¡¦¥á¥Ã¥»¡¼¥¸¤òÉ½¼¨¤·¤¿¤ê¡¢[¾å½ñ¤­] ¥â¡¼¥É¤Ë¤Ê¤Ã¤Æ¤¤¤ë¾ì¹ç¡¢¤½¤ì¤ò¼¨¤·¤Þ¤¹¡£
-		¤Þ¤¿¡¢¥«¡¼¥½¥ë¤òÆÃÄê¤Î¹ÔÈÖ¹æ¤Ø°ÜÆ°¤µ¤»¤ëÊýË¡¤âÉ½¼¨¤·¤Þ¤¹¡£
+<Para>Reports the line number where the
+cursor is located, the total number of lines in the document,
+application messages, and indicates when Overstrike mode is on.
+It also provides a way to move the cursor to a specific line number.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.51">
-<Para> <XRef Linkend="ToEnterText"></Para>
+<Para><XRef Linkend="ToEnterText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.52">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.53">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="openDialog">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î [¥Õ¥¡¥¤¥ë¤ò³«¤¯] ¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹</Title>
+<Title>Text Editor Open a File Dialog Box</Title>
 <Graphic Entityref="TextEditorOpenFile" Id="HTXTE.REF.fig.2"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term>¥Ñ¥¹Ì¾¤Þ¤¿¤Ï¥Õ¥©¥ë¥ÀÌ¾¤òÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤&sigspace;</Term>
+<Term>Enter path or folder name&sigspace;</Term>
 <ListItem>
-<Para> ¸½ºß¤Î¥Õ¥©¥ë¥À¤Î¥Ñ¥¹Ì¾¤ò¼±ÊÌ¤·¤Þ¤¹¡£</Para>
+<Para>Identifies the path name of the current folder.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Õ¥£¥ë¥¿</Term>
+<Term>Filter</Term>
 <ListItem>
-<Para>   ¥¢¥¹¥¿¥ê¥¹¥¯ (*) ¤Ï¡¢¤¹¤Ù¤Æ¤Î¥Õ¥¡¥¤¥ë¤òÉ½¼¨¤·¤Þ¤¹¡£
-	     ¥ï¥¤¥ë¥É¥«¡¼¥ÉÊ¸»ú¤òÆþÎÏ¤·¤Æ¡¢³ÈÄ¥»Ò¤È°ìÃ×¤¹¤ë¥Õ¥¡¥¤¥ë¤Î¤ß¤òÉ½¼¨¤Ç¤­¤Þ¤¹¡£
-	     ¤¿¤È¤¨¤Ð¡¢*.doc ¤Ï¡¢.doc ¤È¤¤¤¦³ÈÄ¥»Ò¤ò»ý¤Ä¥Õ¥¡¥¤¥ë¤Î¤ß¤òÉ½¼¨¤·¤Þ¤¹¡£
-                 </Para>
+<Para>An asterisk (*) shows all files. You can enter
+wildcard characters to display only those files that
+match an extension. For example, *.doc lists
+only those files with a .doc extension.
+</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Õ¥¡¥¤¥ë</Term>
+<Term>Files</Term>
 <ListItem>
-<Para>   ¸½ºß¤Î¥Õ¥©¥ë¥À¤ËÃÖ¤«¤ì¤Æ¤¤¤ë¥Õ¥¡¥¤¥ë¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>Lists files located in the current folder.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Õ¥©¥ë¥À</Term>
+<Term>Folders</Term>
 <ListItem>
-<Para>   ¸½ºß¤Î¥Õ¥©¥ë¥À¤ËÃÖ¤«¤ì¤Æ¤¤¤ë¥Õ¥©¥ë¥À¤òÉ½¼¨¤·¤Þ¤¹¡£
-	     ¸½ºß¤Î¥Õ¥©¥ë¥À¡¢¥µ¥Ö¥Õ¥£¥ë¥À¡¢¤Þ¤¿¤ÏÊÌ¤Î¥Õ¥©¥ë¥À¤Î¥Õ¥¡¥¤¥ë¤ò³«¤¯¤³¤È¤¬¤Ç¤­¤Þ¤¹¡£</Para>
+<Para>Lists folders located in the current folder. You can open a file in the current folder, a subfolder, or
+a different folder.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Õ¥¡¥¤¥ëÌ¾¤òÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤</Term>
+<Term>Enter a file name</Term>
 <ListItem>
-<Para>  [¥Õ¥¡¥¤¥ë] ¥ê¥¹¥È¤ËÁªÂò¤µ¤ì¤¿¥Õ¥¡¥¤¥ëÌ¾¤òÉ½¼¨¤·¤Þ¤¹¡£
-	     ¥Õ¥¡¥¤¥ë¤ò³«¤¯¤Ë¤Ï¡¢[Return] ¥­¡¼¤ò²¡¤¹¤«¡¢[Î»²ò] ¤ò¥¯¥ê¥Ã¥¯¤·¤Æ¤¯¤À¤µ¤¤¡£
-	     ¤Þ¤¿¤Ï¡¢³«¤­¤¿¤¤¥Õ¥¡¥¤¥ë¤ÎÌ¾Á°¤òÆþÎÏ¤Ç¤­¤Þ¤¹¡£</Para>
+<Para>Displays the file name selected in the Files list.
+Press Return or click OK to open the file. Or,
+you can type the name of the file you want to open.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>Î»²ò</Term>
+<Term>OK</Term>
 <ListItem>
-<Para>	     [¥Õ¥¡¥¤¥ëÌ¾¤òÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤] ¥Õ¥£¡¼¥ë¥É¤Ë»ØÄê¤µ¤ì¤¿¥Õ¥¡¥¤¥ë¤ò³«¤­¤Þ¤¹¡£</Para>
+<Para>Opens the file specified in the Enter a file name field.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¹¹¿·</Term>
+<Term>Update</Term>
 <ListItem>
-<Para>	     ¥Õ¥£¥ë¥¿¡¦¥­¡¼¤ÎÊÑ¹¹¸å¡¢¤Þ¤¿¤Ï¿·µ¬¥Õ¥©¥ë¥À¤Ø¤ÎÊÑ¹¹¸å¤Ë¡¢¥Õ¥¡¥¤¥ë¤Î¿·µ¬¥ê¥¹¥È¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>Displays a new list of files after
+changing the filter key or changing to a new folder.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¼è¾Ã¤·</Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para>     [³«¤¯] Áàºî¤ò¼è¤ê¾Ã¤·¤Þ¤¹¡£</Para>
+<Para>Cancels the Open operation.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Ø¥ë¥×</Term>
+<Term>Help</Term>
 <ListItem>
-<Para>     ¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤Î¥Æ¥­¥¹¥ÈÆþÎÏ¥Õ¥£¡¼¥ë¥É¡¢ÁªÂò»è¥ê¥¹¥È¡¢¤ª¤è¤Ó¥Ü¥¿¥ó¤Ë¤Ä¤¤¤ÆÀâÌÀ¤·¤Þ¤¹¡£
+<Para>Describes text entry fields, selection
+lists, and buttons in the dialog box.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title> ´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.54">
-<Para> <XRef Linkend="ToOpenAnExistingDocument"></Para>
+<Para><XRef Linkend="ToOpenAnExistingDocument"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.55">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.56">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="saveAsDialog">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î [ÊÌÌ¾ÊÝÂ¸] ¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹</Title>
+<Title>Text Editor Save As Dialog Box</Title>
 <Graphic Entityref="TextEditorSaveAs" Id="HTXTE.REF.fig.3"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term>¥Ñ¥¹Ì¾¤Þ¤¿¤Ï¥Õ¥©¥ë¥ÀÌ¾¤òÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤&sigspace;</Term>
+<Term>Enter path or folder name&sigspace;</Term>
 <ListItem>
-<Para>	¸½ºß¤Î¥Õ¥©¥ë¥À¤Î¥Ñ¥¹Ì¾¤ò¼±ÊÌ¤·¤Þ¤¹¡£</Para>
-</ListItem>
-</VarListEntry>
-<VarListEntry>
-<Term>¥Õ¥£¥ë¥¿</Term>
-<ListItem>
-<Para>    ¥¢¥¹¥¿¥ê¥¹¥¯ (*) ¤Ï¡¢¤¹¤Ù¤Æ¤Î¥Õ¥¡¥¤¥ë¤òÉ½¼¨¤·¤Þ¤¹¡£
-	      ¥ï¥¤¥ë¥É¥«¡¼¥ÉÊ¸»ú¤òÆþÎÏ¤·¤Æ¡¢³ÈÄ¥»Ò¤È°ìÃ×¤¹¤ë¥Õ¥¡¥¤¥ë¤Î¤ß¤òÉ½¼¨¤Ç¤­¤Þ¤¹¡£
-	      ¤¿¤È¤¨¤Ð¡¢*.doc ¤Ï¡¢.doc ¤È¤¤¤¦³ÈÄ¥»Ò¤ò»ý¤Ä¥Õ¥¡¥¤¥ë¤Î¤ß¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
-</ListItem>
-</VarListEntry>
-<VarListEntry>
-<Term>¥Õ¥¡¥¤¥ë</Term>
-<ListItem>
-<Para>    ¸½ºß¤Î¥Õ¥©¥ë¥À¤ËÃÖ¤«¤ì¤Æ¤¤¤ë¥Õ¥¡¥¤¥ë¤òÉ½¼¨¤·¤Þ¤¹¡£
+<Para>Identifies the path name of the
+current folder.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Õ¥©¥ë¥À</Term>
+<Term>Filter</Term>
 <ListItem>
-<Para>    ¸½ºß¤Î¥Õ¥©¥ë¥À¤ËÃÖ¤«¤ì¤Æ¤¤¤ë¥Õ¥©¥ë¥À¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>An asterisk (*) shows all files. You can enter
+wildcard characters to display only those files that
+match an extension. For example, *.doc lists
+only those files with a .doc extension.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Õ¥¡¥¤¥ëÌ¾¤òÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤ </Term>
+<Term>Files</Term>
 <ListItem>
-<Para>	      ¥É¥­¥å¥á¥ó¥È¤Î¿·µ¬¥Õ¥¡¥¤¥ëÌ¾¤òÆþÎÏ¤¹¤ë¥Õ¥£¡¼¥ë¥É¤Ç¤¹¡£</Para>
+<Para>Lists files located in the current folder.
+</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>Î»²ò</Term>
+<Term>Folders</Term>
 <ListItem>
-<Para>	      »ØÄê¤µ¤ì¤¿Ì¾Á°¤ò»ÈÍÑ¤·¤Æ¥Õ¥¡¥¤¥ë¤òÊÝÂ¸¤·¤Þ¤¹¡£</Para>
+<Para>Lists folders located in the current folder.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¹¹¿·</Term>
+<Term>Enter file name</Term>
 <ListItem>
-<Para>	      ¥Õ¥£¥ë¥¿¡¦¥­¡¼¤ÎÊÑ¹¹¸å¡¢¤Þ¤¿¤Ï¿·µ¬¥Õ¥©¥ë¥À¤Ø¤ÎÊÑ¹¹¸å¤Ë¡¢¥Õ¥¡¥¤¥ë¤Î¿·µ¬¥ê¥¹¥È¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>Field in which you type a new file name for your document.
+</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¼è¾Ã¤·</Term>
+<Term>OK</Term>
 <ListItem>
-<Para>      [ÊÌÌ¾ÊÝÂ¸] Áàºî¤ò¼è¤ê¾Ã¤·¤Þ¤¹¡£
+<Para>Saves the file using the name provided.</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Update</Term>
+<ListItem>
+<Para>Displays a new list of files after
+changing the filter key or changing to a new folder.</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Cancel</Term>
+<ListItem>
+<Para>Cancels the Save As operation.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
-<Para>[¹ÔÀÞÊÖ¤·] ¤ò»ÈÍÑ¤·¤¿¾ì¹ç¡¢¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤Ë°Ê²¼¤ÎÄÉ²ÃÁªÂò»è¤¬É½¼¨¤µ¤ì¤Þ¤¹¡£</Para>
+<Para>If you use Wrap To Fit, these additional choices appear in the
+dialog box:</Para>
 <Graphic Entityref="TextEditorWordWrap" Id="HTXTE.REF.fig.4"></Graphic>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTXTE.REF.item.57">
-<Para> ÀÞÊÖ¤·¹Ô¤ÎºÇ¸å¤Ë²þ¹ÔÊ¸»ú¤òÄÉ²Ã¤¹¤ë¡£</Para>
-<Para>¤³¤ì¤Ï¡¢¥Ç¥Õ¥©¥ë¥È¤ÎÁªÂò»è¤Ç¤¹¡£
-³ÆÀÞÊÖ¤·¹Ô¤ÎºÇ¸å¤Ë²þ¹ÔÊ¸»ú¤òÄÉ²Ã¤·¡¢¥É¥­¥å¥á¥ó¥ÈÆâ¤Ç¤½¤ÎÊ¸»ú¤¬½Ð¸½¤¹¤ë¤¿¤Ó¤Ë¸·Ì©¤Ë¹ÔÊ¬³ä¤òÊÝ»ý¤·¤Þ¤¹¡£</Para>
+<Para>Add newline characters to the end of word-wrapped lines.</Para>
+<Para>This is the default choice. It adds a newline character to the
+end of each wrapped line and preserves line breaks
+exactly as they appear in your document.</Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.58">
-<Para> ²þ¹ÔÊ¸»ú¤òÄÉ²Ã¤·¤Ê¤¤¡£¤³¤ì¤Ï¡¢[Return] ¥­¡¼¤Ë¤è¤ë¹ÔÊ¬³ä¤Î¤ß¤òÊÝ»ý¤¹¤ë¡£</Para>
-<Para>¤³¤Î¥ª¥×¥·¥ç¥ó¤Ï¡¢[¹ÔÀÞÊÖ¤·] ¤Ë¤è¤Ã¤ÆÁÞÆþ¤µ¤ì¤¿ "¥½¥Õ¥È" ¹ÔÊ¬³ä¤òÊÝ»ý¤·¤Þ¤¹¡£
-¥É¥­¥å¥á¥ó¥È¤òºÆÅÙ³«¤¤¤¿»þ¡¢¥Æ¥­¥¹¥È¤Ï¿·µ¬¥¦¥£¥ó¥É¥¦¤ÎÉý¤ËÄ´À°¤µ¤ì¤Æ¤¤¤Þ¤¹¡£</Para>
+<Para>Do not add newlines. Only line breaks created by Return
+will be preserved.</Para>
+<Para>This option retains the "soft" line breaks inserted by Wrap To Fit.
+If you reopen the document, the text conforms to the width of the
+new window.
+</Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.59">
-<Para> <XRef Linkend="ToSaveADocumentToANewFile"></Para>
+<Para><XRef Linkend="ToSaveADocumentToANewFile"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.60">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.61">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="askIfSaveDialog">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î [ÊÝÂ¸] ¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹</Title>
+<Title>Text Editor Save Dialog Box</Title>
 <Para>&sigspace;
-[¹ÔÀÞÊÖ¤·] ¥ª¥×¥·¥ç¥ó¤ò»ÈÍÑ¤¹¤ë¤È¡¢¥É¥­¥å¥á¥ó¥È¤Ø¤ÎÊÑ¹¹»ö¹à¤ÎÊÝÂ¸»þ¤Ë [ÊÝÂ¸] ¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤¬É½¼¨¤µ¤ì¤Þ¤¹¡£
-[¹ÔÀÞÊÖ¤·] ¤Ë¤è¤Ã¤ÆÁÞÆþ¤µ¤ì¤¿¹ÔÊ¬³ä¤Ï¡¢°Ê²¼¤Î 2 ÄÌ¤ê¤ÎÊýË¡¤Ç½èÍý¤µ¤ì¤Þ¤¹¡£</Para>
+If you use the Wrap To Fit option, the Save dialog box is displayed when
+you save changes to your document. Line breaks inserted by Wrap To Fit
+can be handled in two ways:</Para>
 <Graphic Entityref="TextEditorSave" Id="HTXTE.REF.fig.5"></Graphic>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTXTE.REF.item.62">
-<Para> ÀÞÊÖ¤·¹Ô¤ÎºÇ¸å¤Ë²þ¹ÔÊ¸»ú¤òÄÉ²Ã¤¹¤ë¡£</Para>
-<Para>¤³¤ì¤Ï¡¢¥Ç¥Õ¥©¥ë¥È¤ÎÁªÂò»è¤Ç¤¹¡£
-³ÆÀÞÊÖ¤·¹Ô¤ÎºÇ¸å¤Ë²þ¹ÔÊ¸»ú¤òÄÉ²Ã¤·¡¢¥É¥­¥å¥á¥ó¥ÈÆâ¤Ç¤½¤ÎÊ¸»ú¤¬½Ð¸½¤¹¤ë¤¿¤Ó¤Ë¸·Ì©¤Ë¹ÔÊ¬³ä¤òÊÝ»ý¤·¤Þ¤¹¡£</Para>
+<Para>Add newline characters to the end of word-wrapped lines.</Para>
+<Para>This is the default choice. It adds a newline character to the
+end of each wrapped line and preserves line breaks
+exactly as they appear in your document.</Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.63">
-<Para> ²þ¹ÔÊ¸»ú¤òÄÉ²Ã¤·¤Ê¤¤¡£¤³¤ì¤Ï¡¢[Return] ¥­¡¼¤Ë¤è¤ë¹ÔÊ¬³ä¤Î¤ß¤òÊÝ»ý¤¹¤ë¡£</Para>
-<Para>¤³¤Î¥ª¥×¥·¥ç¥ó¤Ï¡¢[¹ÔÀÞÊÖ¤·] ¤Ë¤è¤Ã¤ÆÁÞÆþ¤µ¤ì¤¿ "¥½¥Õ¥È" ¹ÔÊ¬³ä¤òÊÝ»ý¤·¤Þ¤¹¡£
-¥É¥­¥å¥á¥ó¥È¤òºÆÅÙ³«¤¤¤¿»þ¡¢¥Æ¥­¥¹¥È¤Ï¿·µ¬¥¦¥£¥ó¥É¥¦¤ÎÉý¤ËÄ´À°¤µ¤ì¤Æ¤¤¤Þ¤¹¡£</Para>
+<Para>Do not add newlines. Only line breaks created by Return
+will be preserved.</Para>
+<Para>This option retains the "soft" line breaks inserted by Wrap To Fit.
+If you reopen the document, the text conforms to the width of the
+new window.
+</Para>
 </ListItem>
 </ItemizedList>
 <VariableList>
 <VarListEntry>
-<Term>¤Ï¤¤</Term>
+<Term>Yes</Term>
 <ListItem>
-<Para>	  ¸½ºß¤Î¥Õ¥¡¥¤¥ë¤òÊÝÂ¸¤¹¤ë¤«¡¢¤Þ¤¿¤Ï¥É¥­¥å¥á¥ó¥È¤òÊÝÂ¸¤¹¤ë¤¿¤á¤Î[ÊÌÌ¾ÊÝÂ¸] ¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>Saves the current file or displays the Save As
+dialog box for saving your document</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¤¤¤¤¤¨ </Term>
+<Term>No</Term>
 <ListItem>
-<Para>  ¥Õ¥¡¥¤¥ë¤òÊÝÂ¸¤·¤Ê¤¤¤Ç¡¢Áàºî¤ò·ÑÂ³¤·¤Þ¤¹¡£</Para>
+<Para>Proceeds with the operation without saving the file.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¼è¾Ã¤·</Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para>   Áàºî¤ò¼è¤ê¾Ã¤·¤Þ¤¹¡£</Para>
+<Para>Cancels the operation</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Ø¥ë¥×</Term>
+<Term>Help</Term>
 <ListItem>
-<Para>   [ÊÝÂ¸] ¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤Ë¤Ä¤¤¤ÆÀâÌÀ¤·¤Þ¤¹¡£
+<Para>Describes the Save dialog box
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Note>
-<Para>¸½ºßÊÔ½¸ºî¶È¤Ç¹Ô¤Ã¤Æ¤¤¤ëÊÑ¹¹¤òÌµ¸ú¤Ë¤¹¤ë¤è¤¦¤Ê¥á¥Ë¥å¡¼¡¦¥³¥Þ¥ó¥É¤òÁªÂò¤·¤¿¾ì¹ç¤Ë¤â¡¢[ÊÝÂ¸] ¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤ÏÉ½¼¨¤µ¤ì¤Þ¤¹¡£
+<Para>The Save dialog is also displayed if you choose a menu command that
+will result in the loss of your current editing changes.
 </Para>
 </Note>
 <Graphic Entityref="TextEditorConfirmClose" Id="HTXTE.REF.fig.6"></Graphic>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.64">
-<Para> <XRef Linkend="ToSaveADocumentToTheCurrentFile"></Para>
+<Para><XRef Linkend="ToSaveADocumentToTheCurrentFile"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.65">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.66">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="includeDialog">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î [¥Õ¥¡¥¤¥ë¤ò¼è¤ê¹þ¤à] ¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹</Title>
+<Title>Text Editor Include a File Dialog Box</Title>
 <Graphic Entityref="TextEditorInclude" Id="HTXTE.REF.fig.7"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term>¥Ñ¥¹Ì¾¤Þ¤¿¤Ï¥Õ¥©¥ë¥ÀÌ¾¤òÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤&sigspace;</Term>
+<Term>Enter path or folder name&sigspace;</Term>
 <ListItem>
-<Para>	¸½ºß¤Î¥Õ¥©¥ë¥À¤Î¥Ñ¥¹Ì¾¤ò¼±ÊÌ¤·¤Þ¤¹¡£</Para>
+<Para>Identifies the path name of the current folder.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Õ¥£¥ë¥¿</Term>
+<Term>Filter</Term>
 <ListItem>
-<Para>    ¥¢¥¹¥¿¥ê¥¹¥¯ (*) ¤Ï¡¢¤¹¤Ù¤Æ¤Î¥Õ¥¡¥¤¥ë¤òÉ½¼¨¤·¤Þ¤¹¡£
-	      ¥ï¥¤¥ë¥É¥«¡¼¥ÉÊ¸»ú¤òÆþÎÏ¤·¤Æ¡¢³ÈÄ¥»Ò¤È°ìÃ×¤¹¤ë¥Õ¥¡¥¤¥ë¤Î¤ß¤òÉ½¼¨¤Ç¤­¤Þ¤¹¡£
-	      ¤¿¤È¤¨¤Ð¡¢*.doc ¤Ï¡¢.doc ¤È¤¤¤¦³ÈÄ¥»Ò¤ò»ý¤Ä¥Õ¥¡¥¤¥ë¤Î¤ß¤òÉ½¼¨¤·¤Þ¤¹¡£
-                 </Para>
+<Para>An asterisk (*) shows all files. You can enter
+wildcard characters to display only those files that
+match an extension. For example, *.doc lists
+only those files with a .doc extension.
+</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Õ¥¡¥¤¥ë</Term>
+<Term>Files</Term>
 <ListItem>
-<Para>    ¸½ºß¤Î¥Õ¥©¥ë¥À¤ËÃÖ¤«¤ì¤Æ¤¤¤ë¥Õ¥¡¥¤¥ë¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>Lists files located in the current folder.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Õ¥©¥ë¥À</Term>
+<Term>Folders</Term>
 <ListItem>
-<Para>    ¸½ºß¤Î¥Õ¥©¥ë¥À¤ËÃÖ¤«¤ì¤Æ¤¤¤ë¥Õ¥©¥ë¥À¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
-<Para>¸½ºß¤Î¥Õ¥©¥ë¥À¡¢¥µ¥Ö¥Õ¥©¥ë¥À¡¢¤Þ¤¿¤ÏÊÌ¤Î¥Õ¥©¥ë¥À¤«¤é¥Õ¥¡¥¤¥ë¤òÁÞÆþ¤Ç¤­¤Þ¤¹¡£</Para>
+<Para>Lists folders located in the current folder.</Para>
+<Para>You can insert a file from the current folder, a subfolder, or
+a different folder.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Õ¥¡¥¤¥ëÌ¾¤òÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤</Term>
+<Term>Enter a file name</Term>
 <ListItem>
-<Para>  [¥Õ¥¡¥¤¥ë] ¥ê¥¹¥È¤ËÁªÂò¤µ¤ì¤¿¥Õ¥¡¥¤¥ëÌ¾¤òÉ½¼¨¤·¤Þ¤¹¡£
-	      ¥Õ¥¡¥¤¥ë¤ò¼è¤ê¹þ¤à¤Ë¤Ï¡¢[Return] ¥­¡¼¤ò²¡¤¹¤«¡¢[Î»²ò] ¤ò¥¯¥ê¥Ã¥¯¤·¤Æ¤¯¤À¤µ¤¤¡£
-	      ¤Þ¤¿¤Ï¡¢¼è¤ê¹þ¤ß¤¿¤¤¥Õ¥¡¥¤¥ë¤ÎÌ¾Á°¤òÆþÎÏ¤Ç¤­¤Þ¤¹¡£</Para>
+<Para>Displays the file name selected in the Files list.
+Click OK or press Return to include the file. Or,
+you can type the name of the file you want to include.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>Î»²ò</Term>
+<Term>OK</Term>
 <ListItem>
-<Para>	[¥Õ¥¡¥¤¥ëÌ¾¤òÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤] ¥Õ¥£¡¼¥ë¥É¤Ë»ØÄê¤µ¤ì¤¿¥Õ¥¡¥¤¥ë¤ò¥«¡¼¥½¥ë¤Î°ÌÃÖ¤ËÁÞÆþ¤·¤Þ¤¹¡£</Para>
+<Para>Inserts the file specified in the Enter file name field at the location of the cursor.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¹¹¿·</Term>
+<Term>Update</Term>
 <ListItem>
-<Para>	¥Õ¥£¥ë¥¿¡¦¥­¡¼¤ÎÊÑ¹¹¸å¡¢¤Þ¤¿¤Ï¿·µ¬¥Õ¥©¥ë¥À¤Ø¤ÎÊÑ¹¹¸å¤Ë¡¢¥Õ¥¡¥¤¥ë¤Î¿·µ¬¥ê¥¹¥È¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>Displays a new list of files after
+changing the filter key or changing to a new folder.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¼è¾Ã¤·</Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para>  [¼è¹þ¤ß] Áàºî¤ò¼è¤ê¾Ã¤·¤Þ¤¹¡£</Para>
+<Para>Cancels the Include operation.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Ø¥ë¥× </Term>
+<Term>Help</Term>
 <ListItem>
-<Para> ¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤Î¥Æ¥­¥¹¥ÈÆþÎÏ¥Õ¥£¡¼¥ë¥É¡¢ÁªÂò»è¥ê¥¹¥È¡¢¤ª¤è¤Ó¥Ü¥¿¥ó¤Ë¤Ä¤¤¤ÆÀâÌÀ¤·¤Þ¤¹¡£</Para>
+<Para>Describes text entry fields, selection
+lists, and buttons in the dialog box.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.67">
-<Para> <XRef Linkend="ToIncludeAFile"></Para>
+<Para><XRef Linkend="ToIncludeAFile"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.68">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.69">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="spellDialog">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î [¥¹¥Ú¥ë¥Á¥§¥Ã¥¯] ¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹</Title>
+<Title>Text Editor Spell Dialog Box</Title>
 <Para><Anchor Id="sp-spelllist">
 <Anchor Id="sp-changeto">
 </Para>
 <Graphic Entityref="TextEditorSpell" Id="HTXTE.REF.fig.8"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term>¥ß¥¹¥¹¥Ú¥ê¥ó¥°¤ÎÃ±¸ì</Term>
+<Term>Misspelled Words</Term>
 <ListItem>
-<Para> ¥É¥­¥å¥á¥ó¥ÈÆâ¤Ç¸¡º÷¤µ¤ì¤¿¥ß¥¹¥¹¥Ú¥ê¥ó¥°¤ÎÃ±¸ì¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>Lists the misspelled words found in the document.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ÊÑ¹¹¸åÊ¸»úÎó</Term>
+<Term>Change To</Term>
 <ListItem>
-<Para>	¥¹¥Ú¥ë¤ò½¤Àµ¤·¤¿Ã±¸ì¤òÆþÎÏ¤¹¤ë¥Õ¥£¡¼¥ë¥É¤Ç¤¹¡£</Para>
+<Para>Field in which to type the correctly spelled word.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¸¡º÷</Term>
+<Term>Find</Term>
 <ListItem>
-<Para>	   ºÇ½é¤Î¥ß¥¹¥¹¥Ú¥ê¥ó¥°¤ÎÃ±¸ì¤ò¸¡º÷¤·¤Þ¤¹¡£
-	   ÁÞÆþ¥«¡¼¥½¥ë¤Î°ÌÃÖ¤«¤é¸¡º÷¤ò³«»Ï¤·¤Þ¤¹¡£</Para>
+<Para>Finds the first occurrence of the misspelled
+word. Find proceeds from the location of the insertion cursor.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ÊÑ¹¹</Term>
+<Term>Change</Term>
 <ListItem>
-<Para>	   ¶¯Ä´É½¼¨¤ÎÃ±¸ì¤òÀµ¤·¤¤¥¹¥Ú¥ë¤ÎÃ±¸ì¤ÈÃÖ´¹¤·¤Þ¤¹¡£</Para>
+<Para>Replaces the highlighted word with the correct spelling.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¤¹¤Ù¤Æ¤òÊÑ¹¹</Term>
+<Term>Change All</Term>
 <ListItem>
-<Para>	¸¡½Ð¤µ¤ì¤¿¤¹¤Ù¤Æ¤Î¥ß¥¹¥¹¥Ú¥ê¥ó¥°¤ÎÃ±¸ì¤òÃÖ´¹¤·¤Þ¤¹¡£</Para>
+<Para>Replaces all occurrences of the misspelled word.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ÊÄ¤¸¤ë</Term>
+<Term>Close</Term>
 <ListItem>
-<Para>   ¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤òÊÄ¤¸¤Þ¤¹¡£
+<Para>Closes the dialog box.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Para>&sigspace;</Para>
 <Note>
-<Para>[¥¹¥Ú¥ë¡¦¥Á¥§¥Ã¥¯] ¥³¥Þ¥ó¥É¤Ï¡¢±Ñ¸ì¤Ë¤Î¤ß»ÈÍÑ²ÄÇ½¤Ç¤¹¡£
+<Para>The Check Spelling command is only available for English.
 </Para>
 </Note>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.70">
-<Para> <XRef Linkend="ToCheckSpelling"></Para>
+<Para><XRef Linkend="ToCheckSpelling"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.71">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.72">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="findchangeDialog">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î [¸¡º÷] ¤ª¤è¤Ó [ÊÑ¹¹] ¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹</Title>
+<Title>Text Editor Find/Change Dialog Box</Title>
 <Para><Anchor Id="fc-find">
 <Anchor Id="fc-changeto">
 </Para>
 <Graphic Entityref="TextEditorFindChange" Id="HTXTE.REF.fig.9"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term>¸¡º÷</Term>
+<Term>Find</Term>
 <ListItem>
-<Para> ¸¡º÷¤·¤¿¤¤¸ì¶ç¤òÆþÎÏ¤¹¤ë¥Õ¥£¡¼¥ë¥É¤Ç¤¹¡£
-       ¸¡º÷¤Ë¤¢¤¿¤ê¡¢ÂçÊ¸»ú¾®Ê¸»ú¤ò¶èÊÌ¤·¤Þ¤¹¡£</Para>
+<Para>Field in which to type a word or phrase that you
+want to find. Find is case sensitive.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ÊÑ¹¹¸åÊ¸»úÎó</Term>
+<Term>Change To</Term>
 <ListItem>
-<Para> ÃÖ´¹¥Æ¥­¥¹¥È¤òÆþÎÏ¤¹¤ë¥Õ¥£¡¼¥ë¥É¤Ç¤¹¡£</Para>
+<Para>Field in which to type the replacement text.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¸¡º÷</Term>
+<Term>Find</Term>
 <ListItem>
-<Para> ºÇ½é¤Î¥ß¥¹¥¹¥Ú¥ê¥ó¥°¤ÎÃ±¸ì¤ò¸¡º÷¤·¤Þ¤¹¡£</Para>
+<Para>Finds the first occurrence of the misspelled word.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ÊÑ¹¹</Term>
+<Term>Change</Term>
 <ListItem>
-<Para> ¶¯Ä´É½¼¨¤ÎÃ±¸ì¤òÃÖ´¹¥Æ¥­¥¹¥È¤ÈÃÖ´¹¤·¤Þ¤¹¡£</Para>
+<Para>Replaces the highlighted word with the replacement text.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¤¹¤Ù¤Æ¤òÊÑ¹¹</Term>
+<Term>Change All</Term>
 <ListItem>
-<Para> ¸¡½Ð¤µ¤ì¤¿¤¹¤Ù¤Æ¤Î¸¡º÷Ê¸»úÎó¤òÃÖ´¹¤·¤Þ¤¹¡£</Para>
+<Para>Replaces all occurrences of the search string.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ÊÄ¤¸¤ë</Term>
+<Term>Close</Term>
 <ListItem>
-<Para> ¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤òÊÄ¤¸¤Þ¤¹¡£</Para>
+<Para>Closes the dialog box.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.73">
-<Para> <XRef Linkend="ToFindOrChangeText"></Para>
+<Para><XRef Linkend="ToFindOrChangeText"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.74">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.75">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="formatDialog">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î [½ñ¼°¤ÎÀßÄê] ¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹</Title>
+<Title>Text Editor Format Settings Dialog Box</Title>
 <Para><Anchor Id="format-leftmargin">
 <Anchor Id="format-rightmargin">
 <Anchor Id="format-alignment">
@@ -1314,257 +1374,296 @@ Unix ¤Î¥­¡¼³ä¤êÅö¤Æ(¥Ç¥Õ¥©¥ë¥È¤Ç¤ÏÌ¤ÀßÄê)¤ò»ÈÍÑ¤¹¤ë¤Ë¤Ï¡¢°Ê²¼¤Î¤³¤È¤ò¹Ô¤Ã¤Æ¤¯¤À¤
 <Para>&sigspace;</Para>
 <VariableList>
 <VarListEntry>
-<Term>º¸¥Þ¡¼¥¸¥ó</Term>
+<Term>Left Margin</Term>
 <ListItem>
-<Para>  °õºþ¥Æ¥­¥¹¥È¤ËÂÐ¤¹¤ë¡¢»æ¤Îº¸Ã¼¤«¤é¤Î»ú²¼¤²Ê¸»ú¿ô</Para>
+<Para>The number of characters to indent the printed text from
+the left edge of the paper</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>±¦¥Þ¡¼¥¸¥ó</Term>
+<Term>Right Margin</Term>
 <ListItem>
-<Para>  ¥Æ¥­¥¹¥È¤Î¥«¥é¥à¿ô
+<Para>The number of columns for the text
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>º¸Â·¤¨</Term>
+<Term>Left Align</Term>
 <ListItem>
-<Para>      ¥Æ¥­¥¹¥È¹Ô¤òº¸¥Þ¡¼¥¸¥ó¤ËÂ·¤¨¤Þ¤¹¡£
+<Para>Aligns text lines on the left margin
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>±¦Â·¤¨</Term>
+<Term>Right Align</Term>
 <ListItem>
-<Para>      ¥Æ¥­¥¹¥È¹Ô¤ò±¦¥Þ¡¼¥¸¥ó¤ËÂ·¤¨¤Þ¤¹¡£
+<Para>Aligns text lines on the right margin
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>Î¾Ã¼Â·¤¨</Term>
+<Term>Justify</Term>
 <ListItem>
-<Para>    ¥Ö¥í¥Ã¥¯¡¦¥¹¥¿¥¤¥ë¤Î¥Æ¥­¥¹¥È¤òº¸¥Þ¡¼¥¸¥ó¤È±¦¥Þ¡¼¥¸¥ó¤¬Åù¤·¤¯¤Ê¤ë¤è¤¦¤ËÂ·¤¨¤Þ¤¹¡£</Para>
+<Para>Aligns text in a block style with equal left and right margins</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>Ãæ±ûÂ·¤¨</Term>
+<Term>Center</Term>
 <ListItem>
-<Para>	¥Æ¥­¥¹¥È¹Ô¤òÃæ±û¤ËÂ·¤¨¤Þ¤¹¡£</Para>
+<Para>Text lines are centered</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Ñ¥é¥°¥é¥Õ</Term>
+<Term>Paragraph</Term>
 <ListItem>
-<Para>	ÀßÄê¤ò¥«¡¼¥½¥ë¤Î¤¢¤ë¥Ñ¥é¥°¥é¥Õ¤ËÅ¬ÍÑ¤·¤Þ¤¹¡£</Para>
+<Para>Applies the settings to the paragraph
+containing the cursor</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¤¹¤Ù¤Æ</Term>
+<Term>All</Term>
 <ListItem>
-<Para>	ÀßÄê¤òÁ´¥É¥­¥å¥á¥ó¥È¤ËÅ¬ÍÑ¤·¤Þ¤¹¡£
+<Para>Applies the settings to the entire document
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ÊÄ¤¸¤ë</Term>
+<Term>Close</Term>
 <ListItem>
-<Para>	¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤òÊÄ¤¸¤Þ¤¹¡£</Para>
+<Para>Closes the dialog box</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.76">
-<Para> <XRef Linkend="ToFormatADocument"></Para>
+<Para><XRef Linkend="ToFormatADocument"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.77">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.78">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="copytofileDialog">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î [¥Õ¥¡¥¤¥ë¤Ë¥³¥Ô¡¼] ¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹</Title>
-<Para>Â¾¤Î¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Ï¡¢¾ðÊó¤òÊÔ½¸¤¹¤ë¥Ä¡¼¥ë¤È¤·¤Æ¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤ò»ÈÍÑ¤Ç¤­¡¢ÊÔ½¸¤Ç¹Ô¤Ã¤¿ÊÑ¹¹»ö¹à¤ÎÊÝÂ¸ÊýË¡¤ËÀ©¸Â¤òÀß¤±¤Æ¤¤¤ë¾ì¹ç¤¬¤¢¤ê¤Þ¤¹¡£
-¤¿¤È¤¨¤Ð¡¢[ÊÌÌ¾ÊÝÂ¸] ¥³¥Þ¥ó¥É¤Ï¡¢[¥Õ¥¡¥¤¥ë¤Ë¥³¥Ô¡¼] ¤ËÃÖ´¹¤µ¤ì¤Æ¤¤¤ë¤³¤È¤¬¤¢¤ê¤Þ¤¹¡£
-[¥Õ¥¡¥¤¥ë¤Ë¥³¥Ô¡¼] ¤Ç¤Ï¡¢ÊÔ½¸¥»¥Ã¥·¥ç¥ó¤Î¿·µ¬¥Õ¥¡¥¤¥ë¤Ø¤ÎÊÑ¹¹¤ò¹Ô¤ï¤º¤Ë¡¢É½¼¨¤Þ¤¿¤ÏÊÔ½¸¤·¤Æ¤¤¤ë¾ðÊó¤Î¥³¥Ô¡¼¤¬ºîÀ®¤Ç¤­¤Þ¤¹¡£</Para>
+<Title>Text Editor Copy To File Dialog Box</Title>
+<Para>Other applications can use Text Editor as a tool to edit information
+and may restrict how editing changes are saved. For example, in some
+instances the Save As command may be replaced by Copy To File,
+which enables you to create a copy of the information
+you are viewing or editing without changing your edit session to the
+new file.
+</Para>
 <Graphic Entityref="TextEditorCopyToFile" Id="HTXTE.REF.fig.11"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term>¥Ñ¥¹Ì¾¤Þ¤¿¤Ï¥Õ¥©¥ë¥ÀÌ¾¤òÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤&sigspace;</Term>
+<Term>Enter path or folder name&sigspace;</Term>
 <ListItem>
-<Para>	¸½ºß¤Î¥Õ¥©¥ë¥À¤Î¥Ñ¥¹Ì¾¤ò¼±ÊÌ¤·¤Þ¤¹¡£</Para>
-</ListItem>
-</VarListEntry>
-<VarListEntry>
-<Term>¥Õ¥£¥ë¥¿</Term>
-<ListItem>
-<Para>   ¥¢¥¹¥¿¥ê¥¹¥¯ (*) ¤Ï¡¢¤¹¤Ù¤Æ¤Î¥Õ¥¡¥¤¥ë¤òÉ½¼¨¤·¤Þ¤¹¡£
-	     ¥ï¥¤¥ë¥É¥«¡¼¥ÉÊ¸»ú¤òÆþÎÏ¤·¤Æ¡¢³ÈÄ¥»Ò¤È°ìÃ×¤¹¤ë¥Õ¥¡¥¤¥ë¤Î¤ß¤òÉ½¼¨¤Ç¤­¤Þ¤¹¡£
-	     ¤¿¤È¤¨¤Ð¡¢*.doc ¤Ï¡¢.doc ¤È¤¤¤¦³ÈÄ¥»Ò¤ò»ý¤Ä¥Õ¥¡¥¤¥ë¤Î¤ß¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
-</ListItem>
-</VarListEntry>
-<VarListEntry>
-<Term>¥Õ¥¡¥¤¥ë</Term>
-<ListItem>
-<Para>   ¸½ºß¤Î¥Õ¥©¥ë¥À¤ËÃÖ¤«¤ì¤Æ¤¤¤ë¥Õ¥¡¥¤¥ë¤òÉ½¼¨¤·¤Þ¤¹¡£
+<Para>Identifies the path name of the
+current folder.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Õ¥©¥ë¥À</Term>
+<Term>Filter</Term>
 <ListItem>
-<Para>   ¸½ºß¤Î¥Õ¥©¥ë¥À¤ËÃÖ¤«¤ì¤Æ¤¤¤ë¥Õ¥©¥ë¥À¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>An asterisk (*) shows all files. You can enter
+wildcard characters to display only those files that
+match an extension. For example, *.doc lists
+only those files with a .doc extension.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¥Õ¥¡¥¤¥ëÌ¾¤òÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤</Term>
+<Term>Files</Term>
 <ListItem>
-<Para>	     ¥É¥­¥å¥á¥ó¥È¤Î¿·µ¬¥Õ¥¡¥¤¥ëÌ¾¤òÆþÎÏ¤¹¤ë¥Õ¥£¡¼¥ë¥É¤Ç¤¹¡£
+<Para>Lists files located in the current folder.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>Î»²ò</Term>
+<Term>Folders</Term>
 <ListItem>
-<Para>	     »ØÄê¤µ¤ì¤¿¥Õ¥¡¥¤¥ëÌ¾¤Ë¾ðÊó¤ò¥³¥Ô¡¼¤·¤Þ¤¹¡£</Para>
+<Para>Lists folders located in the current folder.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¹¹¿·</Term>
+<Term>Enter file name</Term>
 <ListItem>
-<Para>	     ¥Õ¥£¥ë¥¿¡¦¥­¡¼¤ÎÊÑ¹¹¸å¡¢¤Þ¤¿¤Ï¿·µ¬¥Õ¥©¥ë¥À¤Ø¤ÎÊÑ¹¹¸å¤Ë¡¢¥Õ¥¡¥¤¥ë¤Î¿·µ¬¥ê¥¹¥È¤òÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>Field in which you type a new file name for your document.
+</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>¼è¾Ã¤·</Term>
+<Term>OK</Term>
 <ListItem>
-<Para>     [ÊÌÌ¾ÊÝÂ¸] Áàºî¤ò¼è¤ê¾Ã¤·¤Þ¤¹¡£
+<Para>Copies the information to the file name provided.</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Update</Term>
+<ListItem>
+<Para>Displays a new list of files after
+changing the filter key or changing to a new folder.</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Cancel</Term>
+<ListItem>
+<Para>Cancels the Save As operation.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
-<Para>[¹ÔÀÞÊÖ¤·] ¤ò»ÈÍÑ¤·¤¿¾ì¹ç¡¢¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤Ë°Ê²¼¤ÎÄÉ²ÃÁªÂò»è¤¬É½¼¨¤µ¤ì¤Þ¤¹¡£</Para>
+<Para>If you use Wrap To Fit, these additional choices appear in the
+dialog box:</Para>
 <Graphic Entityref="TextEditorWordWrap" Id="HTXTE.REF.fig.12"></Graphic>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTXTE.REF.item.79">
-<Para> ÀÞÊÖ¤·¹Ô¤ÎºÇ¸å¤Ë²þ¹ÔÊ¸»ú¤òÄÉ²Ã¤¹¤ë¡£</Para>
-<Para>¤³¤ì¤Ï¡¢¥Ç¥Õ¥©¥ë¥È¤ÎÁªÂò»è¤Ç¤¹¡£
-³ÆÀÞÊÖ¤·¹Ô¤ÎºÇ¸å¤Ë²þ¹ÔÊ¸»ú¤òÄÉ²Ã¤·¡¢¥É¥­¥å¥á¥ó¥ÈÆâ¤Ç¤½¤ÎÊ¸»ú¤¬½Ð¸½¤¹¤ë¤¿¤Ó¤Ë¸·Ì©¤Ë¹ÔÊ¬³ä¤òÊÝ»ý¤·¤Þ¤¹¡£</Para>
+<Para>Add newline characters to the end of word-wrapped lines.</Para>
+<Para>This is the default choice. It adds a newline character to the
+end of each wrapped line and preserves line breaks
+exactly as they appear in your document.</Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.80">
-<Para> ²þ¹ÔÊ¸»ú¤òÄÉ²Ã¤·¤Ê¤¤¡£¤³¤ì¤Ï¡¢[Return] ¥­¡¼¤Ë¤è¤ë¹ÔÊ¬³ä¤Î¤ß¤òÊÝ»ý¤¹¤ë¡£</Para>
-<Para>¤³¤Î¥ª¥×¥·¥ç¥ó¤Ï¡¢[¹ÔÀÞÊÖ¤·] ¤Ë¤è¤Ã¤ÆÁÞÆþ¤µ¤ì¤¿ "¥½¥Õ¥È" ¹ÔÊ¬³ä¤òÊÝ»ý¤·¤Þ¤¹¡£
-¥É¥­¥å¥á¥ó¥È¤òºÆÅÙ³«¤¤¤¿»þ¡¢¥Æ¥­¥¹¥È¤Ï¿·µ¬¥¦¥£¥ó¥É¥¦¤ÎÉý¤ËÄ´À°¤µ¤ì¤Æ¤¤¤Þ¤¹¡£</Para>
+<Para>Do not add newlines. Only line breaks created by Return
+will be preserved.</Para>
+<Para>This option retains the "soft" line breaks inserted by Wrap To Fit.
+If you reopen the document, the text conforms to the width of the
+new window.
+</Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.81">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.82">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="fileExistsDialog">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î [´ûÂ¸¥Õ¥¡¥¤¥ë] ¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹</Title>
+<Title>Text Editor File Exists Dialog Box</Title>
 <Graphic Entityref="TextEditorFileExists" Id="HTXTE.REF.fig.13"></Graphic>
-<Para>¥É¥­¥å¥á¥ó¥È¤ÎÊÝÂ¸»þ¤Ë¡¢´ûÂ¸¤Î¥Õ¥¡¥¤¥ëÌ¾¤òÆþÎÏ¤¹¤ë¤È¡¢¤³¤Î¥À¥¤¥¢¥í¥°¡¦¥Ü¥Ã¥¯¥¹¤¬É½¼¨¤µ¤ì¤Þ¤¹¡£</Para>
+<Para>When saving a document, if you enter the name of an existing file
+this dialog box is displayed.</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HTXTE.REF.item.83">
-<Para> ¸µ¤Î¥Õ¥¡¥¤¥ë¤ò¾å½ñ¤­¤¹¤ë¤Ë¤Ï¡¢[Î»²ò] ¤ò¥¯¥ê¥Ã¥¯¤·¤Æ¤¯¤À¤µ¤¤¡£</Para>
+<Para>To overwrite the original file, click OK.</Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.84">
-<Para> ÊÌ¤Î¥Õ¥¡¥¤¥ëÌ¾¤òÆþÎÏ¤¹¤ë¤Ë¤Ï¡¢[¼è¾Ã¤·] ¤ò¥¯¥ê¥Ã¥¯¤·¡¢[¥Õ¥¡¥¤¥ë] ¥á¥Ë¥å¡¼¤«¤é [ÊÌÌ¾ÊÝÂ¸] ¤òÁªÂò¤·¤Æ¤¯¤À¤µ¤¤¡£
+<Para>To enter a different file name, click Cancel and choose
+Save As from the File menu.
 </Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.85">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.86">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="TextEditorCommandSyntax">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î¥³¥Þ¥ó¥É¹Ô¤Î·Á¼°¤È¥ª¥×¥·¥ç¥ó</Title>
+<Title>Text Editor Command-line Syntax and Options</Title>
 <IndexTerm>
-<Primary> ¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿: Ã¼Ëö¥¨¥ß¥å¥ì¡¼¥¿¡¦¥¦¥£¥ó¥É¥¦¤Ç¤Îµ¯Æ°</Primary>
+<Primary>Text Editor: starting in Terminal window</Primary>
 </IndexTerm>
-<Para>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿µ¯Æ°¤Î¥³¥Þ¥ó¥É¹Ô·Á¼°¤Ï¡¢°Ê²¼¤Î¤È¤ª¤ê¤Ç¤¹¡£
+<Para>The command-line syntax for starting Text Editor is:
 </Para>
 <ProgramListing>dtpad [<Symbol Role="Variable">options</Symbol>] 
 </ProgramListing>
-<Para>¤³¤Î <Symbol Role="Variable">options</Symbol> ¤Ï¡¢°Ê²¼¤Î¤É¤ì¤«¤Ç¤¹¡£</Para>
+<Para>Where <Symbol Role="Variable">options</Symbol> is one or more of the following:</Para>
 <VariableList>
 <VarListEntry>
-<Term> <ComputerOutput>-server</ComputerOutput> </Term>
+<Term><ComputerOutput>-server</ComputerOutput></Term>
 <ListItem>
-<Para> ½é´ü¥¦¥£¥ó¥É¥¦¤òÉ½¼¨¤·¤Ê¤¤¤Ç¥µ¡¼¥Ð¡¦¥â¡¼¥É¤Ç¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤òµ¯Æ°¤¹¤ë¤è¤¦¤Ë»ØÄê¤·¤Þ¤¹¡£¥Ç¥Õ¥©¥ë¥È¤Î¥ê¥¯¥¨¥¹¥¿¡¦¥â¡¼¥É¤Ç¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤òÂ³¤±¤Æ¼Â¹Ô¤¹¤ë¾ì¹ç¡¢¥µ¡¼¥Ð¤Ï³ÆÍ×µá¤´¤È¤ËÊÌ¡¹¤ËÊÔ½¸¥¦¥£¥ó¥É¥¦¤òºîÀ®¤·¤Þ¤¹¡£</Para>
+<Para>Specifies that Text Editor should be started in server
+mode with no initial window displayed. Subsequent invocations of Text
+Editor that run in the default requestor mode cause the server to create
+a separate edit window for each request.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <ComputerOutput>-standAlone</ComputerOutput> </Term>
+<Term><ComputerOutput>-standAlone</ComputerOutput></Term>
 <ListItem>
-<Para> ¤³¤Î¥ª¥×¥·¥ç¥ó¤ò»ÈÍÑ¤¹¤ë¤È¡¢¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Ï¥¹¥¿¥ó¥É¥¢¥í¥ó¡¦¥â¡¼¥É¤Çµ¯Æ°¤·¤Þ¤¹¡£¤³¤Î¥â¡¼¥É¤Ï¡¢¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¡¦¥µ¡¼¥Ð¤Ë°ÍÂ¸¤»¤º¤ËÆÈ¼«¤ËÊÔ½¸¤ò½èÍý¤·¤Þ¤¹¡£ ¤³¤ì¤Ï¡¢Â¾¤Î¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¡¦¥¦¥£¥ó¥É¥¦¤Î¤½¤ì¤È¤Ï°Û¤Ê¤ë´Ä¶­¤Ë¤¢¤ë¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤òÍ×µá¤¹¤ë¾ì¹ç¤ËÍ­¸ú¤Ç¤¹¡£Îã¤È¤·¤Æ¤Ï¡¢°Û¤Ê¤ë¥í¥±¡¼¥ë¤Î¤â¤È¤Ç¥¤¥ó¥¹¥¿¥ó¥¹¤ò¼Â¹Ô¤¹¤ë¾ì¹ç¤ä¡¢°Û¤Ê¤ë¥«¥é¡¼¡¦¥ê¥½¡¼¥¹¤Ç¥¤¥ó¥¹¥¿¥ó¥¹¤ò¼Â¹Ô¤¹¤ë¾ì¹ç¤Ç¤¹¡£¤³¤ì¤Ï¡¢<ComputerOutput>standAlone</ComputerOutput> ¥ê¥½¡¼¥¹¤ò True ¤ËÀßÄê¤·¤¿¾ì¹ç¤ÈÆ±Åù¤Ç¤¹¡£</Para>
+<Para>This option forces Text Editor to run in standalone
+mode in which it handles its own editing independently of the Text Editor
+server. This can be useful if one desires an instance of
+Text Editor with an environment different from that of other Text Editor
+windows. An example would be running an instance under a different locale,
+or with different color resources. This is equivalent to setting
+the <ComputerOutput>standAlone</ComputerOutput> resource to True.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <ComputerOutput>-exitOnLastClose</ComputerOutput></Term>
+<Term><ComputerOutput>-exitOnLastClose</ComputerOutput></Term>
 <ListItem>
-<Para> ¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¡¦¥µ¡¼¥Ð¡¦¥×¥í¥»¥¹¤ò¡¢ºÇ¸å¤ÎÊÔ½¸¥¦¥£¥ó¥É¥¦¤¬ÊÄ¤¸¤¿»þÅÀ¤Ç½ªÎ»¤µ¤»¤ë¤è¤¦¤Ë»ØÄê¤·¤Þ¤¹¡£¤³¤Î¥ª¥×¥·¥ç¥ó¤Ï¡¢<ComputerOutput>-server</ComputerOutput> ¥ª¥×¥·¥ç¥ó¤ò»ÈÍÑ¤·¤¿¾ì¹ç¤Î¤ßÅ¬ÍÑ²ÄÇ½¤Ç¤¹¡£¤³¤Î¥ª¥×¥·¥ç¥ó¤ò»ØÄê¤·¤Ê¤¤¤È¡¢¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¡¦¥µ¡¼¥Ð¡¦¥×¥í¥»¥¹¤Ï¤¤¤Ä¤Þ¤Ç¤â¥¢¥¯¥Æ¥£¥Ö¤Ê¤Þ¤Þ¤Ç¡¢¤¹¤Ù¤Æ¤ÎÊÔ½¸¥¦¥£¥ó¥É¥¦¤¬ÊÄ¤¸¤é¤ì¤Æ¤â½ª¤ï¤ê¤Þ¤»¤ó¡£</Para>
+<Para>Specifies that the Text Editor server process
+should terminate when the last edit window for the display is closed. This
+option is applicable only with the <ComputerOutput>-server</ComputerOutput> option. If this option is not
+specified, the Text Editor server process remains active indefinately, even
+when all edit windows have been closed.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <ComputerOutput>-noBlocking</ComputerOutput></Term>
+<Term><ComputerOutput>-noBlocking</ComputerOutput></Term>
 <ListItem>
-<Para> ¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¡¦¥µ¡¼¥Ð¤Ë¤è¤Ã¤Æ¡¢»²¾È¤·¤¿¥Õ¥©¥ë¥À¤Î¥Õ¥¡¥¤¥ë¤Ë¥¢¥¯¥»¥¹¤Ç¤­¤ë¤³¤È¤¬ÄÌÃÎ¤µ¤ì¤ë¤ÈÆ±»þ¤Ë¡¢¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¡¦¥ê¥¯¥¨¥¹¥¿¤¬½ªÎ»¤¹¤ë¤è¤¦¤Ë»ØÄê¤·¤Þ¤¹¡£¤³¤Î¥ª¥×¥·¥ç¥ó¤¬¤Ê¤¤¤È¡¢¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¡¦¥ê¥¯¥¨¥¹¥¿¡¦¥×¥í¥»¥¹¤ÏÊÄºÉ¤·¡¢¥¦¥£¥ó¥É¥¦¤¬ÊÄ¤¸¤é¤ì¤¿¤È¤¤¤¦¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¡¦¥µ¡¼¥Ð¤«¤é¤ÎÄÌÃÎ¤ò¼õ¿®¤·¤¿¾ì¹ç¤Î¤ß½ªÎ»¤·¤Þ¤¹¡£</Para>
+<Para>Specifies that the Text Editor
+requestor terminate as soon as the Text Editor server signifies that it can
+access a file in the referenced folder. In the absence of this option the
+Text Editor requestor process will block, and will exit only when it
+receives notification from the Text Editor server that the window has been closed.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <ComputerOutput>-statusLine</ComputerOutput></Term>
+<Term><ComputerOutput>-statusLine</ComputerOutput></Term>
 <ListItem>
-<Para> ¤³¤Î¥ª¥×¥·¥ç¥ó¤ò»ÈÍÑ¤¹¤ë¤È¡¢¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Ï¡¢ÊÔ½¸¥¦¥£¥ó¥É¥¦¤Î°ìÈÖ²¼¤Ë¥¹¥Æ¡¼¥¿¥¹¹Ô¤òÉ½¼¨¤·¤Þ¤¹¡£¥¹¥Æ¡¼¥¿¥¹¹Ô¤Ï¡¢¥«¡¼¥½¥ë¤Î¤¢¤ë¹Ô¤ÎÈÖ¹æ¡¢¥É¥­¥å¥á¥ó¥È¤Î¹Ô¤ÎÁí¿ô¡¢¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¡¦¥á¥Ã¥»¡¼¥¸¤òÉ½¼¨¤·¤¿¤ê¡¢[¾å½ñ¤­] ¥â¡¼¥É¤Ë¤Ê¤Ã¤Æ¤¤¤ë¾ì¹ç¡¢¥æ¡¼¥¶¤Ë¤½¤ì¤ò¼¨¤·¤Þ¤¹¡£¤Þ¤¿¡¢¥«¡¼¥½¥ë¤òÆÃÄê¤Î¹ÔÈÖ¹æ¤Ø°ÜÆ°¤µ¤»¤ëÊýË¡¤âÉ½¼¨¤·¤Þ¤¹¡£</Para>
+<Para>This option causes Text Editor to display a status
+line at the bottom of the edit window. The status line reports the line
+number where the cursor is located, the total number of lines in the document,
+application messages, and alerts the user when Overstrike mode is on.
+It also provides a way to move the cursor to a specific line number.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> <ComputerOutput>-wrapToFit</ComputerOutput></Term>
+<Term><ComputerOutput>-wrapToFit</ComputerOutput></Term>
 <ListItem>
-<Para> µ¯Æ°»þ¤Ë [¹ÔÀÞÊÖ¤·] ¤¬ÀßÄê¤µ¤ì¤ë¤è¤¦¤Ë»ØÄê¤·¤Þ¤¹¡£</Para>
+<Para>Specifies that Wrap To Fit is set on at start up.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.87">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.88">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.89">
-<Para> ¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î¥³¥Þ¥ó¥É¹Ô¥ª¥×¥·¥ç¥ó¤Î´°Á´¤Ê¥ê¥¹¥È¤ÈÀâÌÀ¤Ë¤Ä¤¤¤Æ¤Ï¡¢<ComputerOutput>dtpad(1)</ComputerOutput> ¤Î¥Þ¥Ë¥å¥¢¥ë¡¦¥Ú¡¼¥¸¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤¡£
+<Para>Refer to the <ComputerOutput>dtpad(1)</ComputerOutput> man page for a
+complete list and description of Text Editor command-line options.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -1572,81 +1671,96 @@ Unix ¤Î¥­¡¼³ä¤êÅö¤Æ(¥Ç¥Õ¥©¥ë¥È¤Ç¤ÏÌ¤ÀßÄê)¤ò»ÈÍÑ¤¹¤ë¤Ë¤Ï¡¢°Ê²¼¤Î¤³¤È¤ò¹Ô¤Ã¤Æ¤¯¤À¤
 </Procedure>
 </Sect1>
 <Sect1 Id="TextEditorResources">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î¥ê¥½¡¼¥¹</Title>
+<Title>Text Editor Resources</Title>
 <IndexTerm>
-<Primary> ¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¡¦¥ê¥½¡¼¥¹</Primary>
+<Primary>application resources</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> ¥ê¥½¡¼¥¹</Primary>
+<Primary>resources</Primary>
 </IndexTerm>
-<Para>°Ê²¼¤Î¥ê¥½¡¼¥¹¤Ë¤è¤Ã¤Æ¡¢¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î³°´Ñ¤ÈÆ°ºî¤¬À©¸æ¤µ¤ì¤Þ¤¹¡£
+<Para>The following resources control the appearance and behavior of
+Text Editor.
 </Para>
 <Para><ComputerOutput>Dtpad*server: [ true | false ]</ComputerOutput>
 </Para>
-<Para Role="indent">¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤ò¡¢É½¼¨¤ËÂÐ¤¹¤ë¤½¤Î¸å¤ËÂ³¤¯¤¹¤Ù¤Æ¤ÎÊÔ½¸Í×µá¤ò½èÍý¤¹¤ë¤¿¤á¤Ë¥µ¡¼¥Ð¡¦¥â¡¼¥É¤Çµ¯Æ°¤¹¤ë¤«¤É¤¦¤«¤ò»ØÄê¤·¤Þ¤¹¡£
-¤³¤Î¥ê¥½¡¼¥¹¤ò True ¤ËÀßÄê¤¹¤ë¤³¤È¤Ï¡¢<ComputerOutput>-server</ComputerOutput> ¥³¥Þ¥ó¥É¹Ô¥ª¥×¥·¥ç¥ó¤ò»ØÄê¤¹¤ë¤Î¤ÈÆ±Åù¤Ç¤¹¡£</Para>
-<Para><ComputerOutput>Dtpad*standAlone:  [ true | false ]</ComputerOutput>
+<Para Role="indent">Specifies that Text Editor should be started in server mode to
+process all subsequent edit requests for the display. Setting this resource
+to True is equivalent to specifying the <ComputerOutput>-server</ComputerOutput> command-line option.</Para>
+<Para><ComputerOutput>Dtpad*standAlone: [ true | false ]</ComputerOutput>
 </Para>
-<Para Role="indent">¸½ºß¤Î¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¡¦¥×¥í¥»¥¹¤ò¡¢¥¹¥¿¥ó¥É¥¢¥í¥ó¡¦¥â¡¼¥É(¡áÆÈ¼«¤ËÊÔ½¸¤ò½èÍý¤¹¤ë)¤Ç¼Â¹Ô¤¹¤ë¤«¡¢¥ê¥¯¥¨¥¹¥¿¡¦¥â¡¼¥É(¡á¼ÂºÝ¤ÎÊÔ½¸¤Ï¡¢1 ¤Ä 1 ¤ÄÊÌ¡¹¤Î¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¡¦¥µ¡¼¥Ð¡¦¥×¥í¥»¥¹¤Ç½èÍý¤µ¤ì¤ë)¤Ç¼Â¹Ô¤¹¤ë¤«¤ò»ØÄê¤·¤Þ¤¹¡£
-¤³¤Î¥ê¥½¡¼¥¹¤ò True ¤ËÀßÄê¤¹¤ë¤³¤È¤Ï¡¢<ComputerOutput>-standAlone</ComputerOutput> ¥³¥Þ¥ó¥É¹Ô¥ª¥×¥·¥ç¥ó¤ò»ØÄê¤¹¤ë¤Î¤ÈÆ±Åù¤Ç¤¹¡£</Para>
-<Para><ComputerOutput>Dtpad*blocking:  [ true | false ]</ComputerOutput>
+<Para Role="indent">Specifies whether the current Text Editor process should run in
+standalone mode, where it handles its own editing, or in requestor mode,
+where the actual editing is handled by a single, separate Text Editor
+server process. Setting this resource to True is
+equivalent to specifying the <ComputerOutput>-standAlone</ComputerOutput> command-line option.</Para>
+<Para><ComputerOutput>Dtpad*blocking: [ true | false ]</ComputerOutput>
 </Para>
-<Para Role="indent">¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤ò¥Ç¥Õ¥©¥ë¥È¤Î¥ê¥¯¥¨¥¹¥¿¡¦¥â¡¼¥É(¡á¼ÂºÝ¤ÎÊÔ½¸¤Ï¡¢1 ¤Ä 1 ¤ÄÊÌ¡¹¤Î¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¡¦¥µ¡¼¥Ð¡¦¥×¥í¥»¥¹¤Ç½èÍý¤µ¤ì¤ë)¤Ç¼Â¹Ô¤¹¤ë¾ì¹ç¡¢ÊÔ½¸Í×µá¤È´ØÏ¢¤¹¤ë¥¦¥£¥ó¥É¥¦¤¬ÊÄ¤¸¤ë¤Þ¤Ç¡¢¥ê¥¯¥¨¥¹¥¿¡¦¥×¥í¥»¥¹¤¬½ªÎ»¤·¤Ê¤¤¤è¤¦¤Ë»ØÄê¤·¤Þ¤¹¡£
-¤³¤Î¥ê¥½¡¼¥¹¤ò False ¤ËÀßÄê¤¹¤ë¤³¤È¤Ï¡¢<ComputerOutput>-noBlocking</ComputerOutput> ¥³¥Þ¥ó¥É¹Ô¥ª¥×¥·¥ç¥ó¤ò»ØÄê¤¹¤ë¤Î¤ÈÆ±Åù¤Ç¤¹¡£</Para>
-<Para><ComputerOutput>Dtpad*exitOnLastClose:  [ true | false ]</ComputerOutput>
+<Para Role="indent">Specifies that when Text Editor is run in the default
+requestor mode, where the actual editing is handled by a separate Text
+Editor server process, the requestor process should not exit until the
+window associated with the edit request is closed. Setting
+this resource to False is equivalent to specifying the
+<ComputerOutput>-noBlocking</ComputerOutput> command-line option.</Para>
+<Para><ComputerOutput>Dtpad*exitOnLastClose: [ true | false ]</ComputerOutput>
 </Para>
-<Para Role="indent">¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¡¦¥µ¡¼¥Ð¡¦¥×¥í¥»¥¹¤ò¡¢ºÇ¸å¤Î¥¢¥¯¥Æ¥£¥ÖÊÔ½¸¥¦¥£¥ó¥É¥¦¤¬ÊÄ¤¸¤¿»þÅÀ¤Ç½ªÎ»¤µ¤»¤ë¤«¤É¤¦¤«¤ò»ØÄê¤·¤Þ¤¹¡£
-¤³¤Î¥ê¥½¡¼¥¹¤ò False ¤ËÀßÄê¤·¤¿¾ì¹ç¡¢¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¡¦¥µ¡¼¥Ð¤Ï½èÍý¤ò·ÑÂ³¤·¤Æ¡¢¥Õ¥¡¥¤¥ëÊÔ½¸¤ò»Ø¼¨¤¹¤ë¥á¥Ã¥»¡¼¥¸¤ò¼õ¤±¼è¤ì¤ë¾õÂÖ¤Ë¤Ê¤ê¤Þ¤¹¡£
-¤³¤Î¥ê¥½¡¼¥¹¤ò True ¤ËÀßÄê¤·¤¿¾ì¹ç¡¢¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¡¦¥µ¡¼¥Ð¤Ï¡¢ºÇ¸å¤Î¥¢¥¯¥Æ¥£¥ÖÊÔ½¸¥¦¥£¥ó¥É¥¦¤¬ÊÄ¤¸¤¿»þÅÀ¤Ç½ªÎ»¤·¤Þ¤¹¡£</Para>
-<Para><ComputerOutput>Dtpad*statusLine:  [ true | false ]</ComputerOutput>
+<Para Role="indent">Specifies whether the Text Editor server process should terminate when
+the last active edit window is closed. If this resource is set to False, then the
+Text Editor server will continue to run, ready to receive a message to edit
+a file. If this resource is set to True, the Text Editor server will terminate when the last active
+edit window is closed.</Para>
+<Para><ComputerOutput>Dtpad*statusLine: [ true | false ]</ComputerOutput>
 </Para>
-<Para Role="indent">¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤ÎÊÔ½¸¥¦¥£¥ó¥É¥¦¤Î°ìÈÖ²¼¤Ë¥¹¥Æ¡¼¥¿¥¹¹Ô¤òÉ½¼¨¤¹¤ë¤«¤É¤¦¤«¤ò»ØÄê¤·¤Þ¤¹¡£
-¤³¤Î¥ê¥½¡¼¥¹¤ò True ¤ËÀßÄê¤¹¤ë¤³¤È¤Ï¡¢<ComputerOutput>-statusLine</ComputerOutput> ¥³¥Þ¥ó¥É¹Ô¥ª¥×¥·¥ç¥ó¤ò»ØÄê¤¹¤ë¤Î¤ÈÆ±Åù¤Ç¤¹¡£</Para>
-<Para><ComputerOutput>Dtpad*wrapToFit:  [ true | false ]</ComputerOutput>
+<Para Role="indent">Specifies whether Text Editor should display the status line at
+the bottom of the edit window. Setting this resource to True is equivalent
+to specifying the <ComputerOutput>-statusLine</ComputerOutput> command-line option.</Para>
+<Para><ComputerOutput>Dtpad*wrapToFit: [ true | false ]</ComputerOutput>
 </Para>
-<Para Role="indent">¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿µ¯Æ°»þ¤Î [¹ÔÀÞÊÖ¤·] ¤ÎÀßÄê¤ò¥ª¥ó(True)¤Ë¤·¤Æ¤ª¤¯¤«¡¢¥ª¥Õ(False)¤Ë¤·¤Æ¤ª¤¯¤«¤ò»ØÄê¤·¤Þ¤¹¡£
-¤³¤Î¥ê¥½¡¼¥¹¤ò True ¤ËÀßÄê¤¹¤ë¤³¤È¤Ï¡¢<ComputerOutput>-wrapToFit</ComputerOutput> ¥³¥Þ¥ó¥É¹Ô¥ª¥×¥·¥ç¥ó¤ò»ØÄê¤¹¤ë¤Î¤ÈÆ±Åù¤Ç¤¹¡£</Para>
+<Para Role="indent">Specifies whether Text Editor should have Wrap To Fit enabled
+(True) or
+disabled (False) when the editor is started. Setting this resource to True
+is equivalent to specifying the <ComputerOutput>-wrapToFit</ComputerOutput> command-line
+option.</Para>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.90">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.91">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.92">
-<Para> ¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î¥ê¥½¡¼¥¹¤Î´°Á´¥ê¥¹¥È¤ÈÀâÌÀ¤Ë¤Ä¤¤¤Æ¤Ï¡¢<ComputerOutput>dtpad(1)</ComputerOutput> ¤Î¥Þ¥Ë¥å¥¢¥ë¡¦¥Ú¡¼¥¸¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤¡£</Para>
+<Para>Refer to the <ComputerOutput>dtpad(1)</ComputerOutput> man page for a
+complete list and description of Text Editor resources.</Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="TextEditorFileset">
-<Title>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î¥Õ¥¡¥¤¥ë¥»¥Ã¥È</Title>
+<Title>Text Editor Fileset</Title>
 <IndexTerm>
-<Primary>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿, ¼Â¹Ô·Á¼°</Primary>
+<Primary>Text Editor, executable</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¡¦¥Ç¥Õ¥©¥ë¥È</Primary>
+<Primary>application defaults</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>¥ê¥½¡¼¥¹</Primary>
+<Primary>resources</Primary>
 </IndexTerm>
-<Para>¥Æ¥­¥¹¥È¡¦¥¨¥Ç¥£¥¿¤Î¼Â¹Ô·Á¼°¥Õ¥¡¥¤¥ë¤ª¤è¤Ó¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¡¦¥Ç¥Õ¥©¥ë¥È¡¦¥Õ¥¡¥¤¥ë¤Ï¡¢°Ê²¼¤Î¤È¤ª¤ê¤Ç¤¹¡£
-
-</Para>
+<Para>Text Editor's executable file and application defaults file
+are:</Para>
 <VariableList>
 <VarListEntry>
-<Term> ¼Â¹Ô·Á¼°¥Õ¥¡¥¤¥ë</Term>
+<Term>Executable file</Term>
 <ListItem>
-<Para> <ComputerOutput>/usr/dt/bin/dtpad</ComputerOutput>
+<Para><ComputerOutput>/usr/dt/bin/dtpad</ComputerOutput>
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¡¦¥Ç¥Õ¥©¥ë¥È¡¦¥Õ¥¡¥¤¥ë</Term>
+<Term>Application defaults file</Term>
 <ListItem>
 <Para><ComputerOutput>/usr/dt/app-defaults/<Symbol Role="Variable">lang</Symbol>/Dtpad</ComputerOutput>
 </Para>
@@ -1654,14 +1768,14 @@ Unix ¤Î¥­¡¼³ä¤êÅö¤Æ(¥Ç¥Õ¥©¥ë¥È¤Ç¤ÏÌ¤ÀßÄê)¤ò»ÈÍÑ¤¹¤ë¤Ë¤Ï¡¢°Ê²¼¤Î¤³¤È¤ò¹Ô¤Ã¤Æ¤¯¤À¤
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>´ØÏ¢¹àÌÜ</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HTXTE.REF.item.93">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HTXTE.REF.item.94">
-<Para> <XRef Linkend="TableOfContents"></Para>
+<Para><XRef Linkend="TableOfContents"></Para>
 </ListItem>
 </ItemizedList>
 </Step>

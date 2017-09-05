@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: scricon.pm /main/3 1996/12/18 02:46:24 cde-hit $ */
+/* $XConsortium: ScreenOL.pm /main/3 1995/07/18 17:24:09 drk $ */
 static char * ScreenOL [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "64 37 8 1 0 0",

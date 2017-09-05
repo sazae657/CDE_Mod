@@ -21,7 +21,7 @@
  * $EndLog$
  */
 /*
- * @(#)$XConsortium: drawarea.pm /main/3 1996/12/18 01:12:32 cde-hit $
+ * @(#)$XConsortium: drawarea.pm /main/2 1996/07/18 15:32:32 drk $
  */
 /* XPM */
 static char * drawarea_pm[] = {

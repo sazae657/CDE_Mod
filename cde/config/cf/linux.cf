@@ -111,8 +111,8 @@ XCOMM binutils:  (LinuxBinUtilsMajorVersion)
 #define NeedWidePrototypes	NO
 #define SetTtyGroup		YES
 
-#define CcCmd			gcc -g -pipe
-#define CplusplusCmd		g++ -g -pipe -fpermissive
+#define CcCmd			cc -g -pipe
+#define CplusplusCmd		c++ -g -pipe -fpermissive
 #define AsCmd			as
 #define LdCmd			ld
 

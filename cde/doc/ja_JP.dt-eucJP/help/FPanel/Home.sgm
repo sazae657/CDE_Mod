@@ -1,4 +1,4 @@
-<!-- $XConsortium: Home.sgm /main/3 1996/12/18 01:37:51 cde-hit $ -->
+<!-- $XConsortium: Home.sgm /main/8 1996/10/29 22:42:55 cdedoc $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -7,45 +7,47 @@
 <!-- (c) Copyright 1995 FUJITSU LIMITED. -->
 <!-- (c) Copyright 1995 Hitachi. -->
 <PartIntro Id="SDL-RESERVED-hometopic">
-<Title>フロントパネルのヘルプ</Title>
-<TitleAbbrev>フロントパネルのヘルプ</TitleAbbrev>
+<Title>Front Panel Help</Title>
+<TitleAbbrev>Front Panel Help</TitleAbbrev>
 <!-- **** UNRESOLVED IDs **** -->
 <Para><Anchor Id="VUEUsingHelp">
-フロントパネルは、すべてのワークスペースに存在するデスクトップ・ウィンドウです。<IndexTerm>
-<Primary>フロントパネル</Primary></IndexTerm>
+The Front Panel is a desktop window that exists in all workspaces.<IndexTerm>
+<Primary>Front Panel</Primary></IndexTerm>
 </Para>
 <Graphic Entityref="FPWholeFrontPanel" Id="HFPNL.HTOP.fig.1"></Graphic>
-<Para>フロントパネルには、主要なコンポーネントが 2 つあります。</Para>
+<Para>The Front Panel has two major components:</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFPNL.HTOP.item.1">
-<Para> <Link Type="Definition" Linkend="MainPanelQuick">メインパネル</Link></Para>
-<Para>この内容の説明は、<XRef Linkend="TourMainPanel">を参照してください。</Para>
+<Para><Link Type="Definition" Linkend="MainPanelQuick">Main Panel</Link>.</Para>
+<Para>For a description
+of its contents, see <XRef Linkend="TourMainPanel">.</Para>
 </ListItem>
 <ListItem Id="HFPNL.HTOP.item.2">
-<Para> <Link Type="Definition" Linkend="SubpanelQuick">サブパネル</Link>
-サブパネルの内容は
-<XRef Linkend="TourSubpanels">を参照してください。</Para>
+<Para><Link Type="Definition" Linkend="SubpanelQuick">Subpanels</Link>.</Para>
+<Para>For a description of
+their contents, see <XRef Linkend="TourSubpanels">.</Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>フロントパネル・コントロール</Title>
+<Title>Front Panel Controls</Title>
 <Step>
-<Para>フロントパネルの各アイコンはフロントパネル"コントロール"です。
-コントロールに関する一般情報は、<Link Type="Definition" Linkend="ControlsQuick">ここをクリック</Link>してください。</Para>
+<Para>Each icon in the Front Panel is a Front Panel "control."
+<Link Type="Definition" Linkend="ControlsQuick">Click here</Link> for general information
+about controls.</Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFPNL.HTOP.item.3">
-<Para> <XRef Linkend="TOC"></Para>
+<Para><XRef Linkend="TOC"></Para>
 </ListItem>
 <ListItem Id="HFPNL.HTOP.item.4">
-<Para> <XRef Linkend="UsingFrontPanel"></Para>
+<Para><XRef Linkend="UsingFrontPanel"></Para>
 </ListItem>
 <ListItem Id="HFPNL.HTOP.item.5">
-<Para> <XRef Linkend="FrontPanelReference"></Para>
+<Para><XRef Linkend="FrontPanelReference"></Para>
 </ListItem>
 </ItemizedList>
 </Step>

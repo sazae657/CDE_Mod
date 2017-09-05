@@ -1,4 +1,4 @@
-<!-- $XConsortium: GEntity.sgm /main/7 1996/12/18 02:25:25 cde-hit $ -->
+<!-- $XConsortium: GEntity.sgm /main/8 1996/10/29 15:35:21 cdedoc $ -->
 <!entity mail-icon				SYSTEM "./Mailer/graphics/mailicon.tif" NDATA TIFF>
 <!entity MainWindow				SYSTEM "./Mailer/graphics/mainwin.tif" NDATA TIFF>
 <!entity MMailBox				SYSTEM "./Mailer/graphics/mailbox.tif" NDATA TIFF>

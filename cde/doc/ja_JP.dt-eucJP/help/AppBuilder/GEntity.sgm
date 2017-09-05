@@ -1,4 +1,4 @@
-<!-- $XConsortium: GEntity.sgm /main/7 1996/12/18 01:07:36 cde-hit $ -->
+<!-- $XConsortium: GEntity.sgm /main/6 1996/10/29 17:43:43 drk $ -->
 <!entity ABiconFig		SYSTEM "./AppBuilder/graphics/abicon.pm" NDATA XPM>
 <!entity AlignMenuFig		SYSTEM "./AppBuilder/graphics/align.tif" NDATA TIFF>
 <!entity AppFrameworkEdFig	SYSTEM "./AppBuilder/graphics/frmwrked.tif" NDATA TIFF>

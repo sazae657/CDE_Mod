@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: fponitem.pm /main/3 1996/12/18 01:41:16 cde-hit $ */
+/* $XConsortium: fponitem.pm /main/3 1995/07/18 17:34:26 drk $ */
 /* Designed by the User Interaction Design Group, Hewlett-Packard. */
 /* (c) Copyright 1993 Hewlett-Packard Company. */
 static char *helponFP32[]={

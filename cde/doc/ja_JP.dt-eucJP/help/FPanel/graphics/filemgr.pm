@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: filemgr.pm /main/3 1996/12/18 01:40:36 cde-hit $ */
+/* $XConsortium: fphome.pm /main/3 1995/07/18 17:33:35 drk $ */
 /*********************************************************************
 *  (c) Copyright 1993, 1994 Hewlett-Packard Company	
 *  (c) Copyright 1993, 1994 International Business Machines Corp.

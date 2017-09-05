@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: mdticon.pm /main/5 1996/12/18 02:17:33 cde-hit $ */
+/* $XConsortium: mdticon.pm /main/5 1996/10/29 15:54:31 drk $ */
 static char * mdticon_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "90 165 18 1 0 0",

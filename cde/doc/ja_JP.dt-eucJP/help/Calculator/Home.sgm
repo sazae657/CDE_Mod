@@ -1,4 +1,4 @@
-<!-- $XConsortium: Home.sgm /main/5 1996/12/18 01:24:37 cde-hit $ -->
+<!-- $XConsortium: Home.sgm /main/6 1996/09/08 22:51:14 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -7,59 +7,73 @@
 <!-- (c) Copyright 1995 FUJITSU LIMITED. -->
 <!-- (c) Copyright 1995 Hitachi. -->
 <PartIntro Id="SDL-RESERVED-hometopic">
-<Title>&calcname; ヘルプ</Title>
-<TitleAbbrev>&calcname; ヘルプ</TitleAbbrev>
-<Para>科学、財務、および論理式などの広範囲な計算をするには、&calcname;を使用し
-てください。マウスまたはキーボードを使用して、普通の電卓と同様の操作をし
-てください。
+<Title>&calcname; Help</Title>
+<TitleAbbrev>&calcname; Help</TitleAbbrev>
+<Para>Use &calcname; to perform a wide variety of scientific,
+financial, and logical functions. You operate it in much the same way as
+a hand-held calculator, using either the mouse or the keyboard.
 </Para>
 <Note>
-<Para>&calcname;ヘルプウインドウがある場合には、コンピュータ・キーボードから &calcname;へ、機能やデータを入力することは、できません。コンピュータ・キーボードを使用して&calcname;機能やデータを入力する場合は、 &calcname;ヘルプウインドウを閉じて下さい。
+<Para>You cannot enter functions or data to &calcname; from the computer
+keyboard when any
+&calcname; help window is present. You can still perform all &calcname;
+functions with the mouse. Close the &calcname; help window if you want
+to use the computer keyboard to enter &calcname; functions or data.
 </Para>
 </Note>
-<Para>&calcname;には、以下の機能があります。
+<Para>&calcname; has these features:
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.HTOP.item.1">
-<Para> 3 種類のユーザ選択モード: 科学(デフォルト)、財務、論理
+<Para>Three user-selectable modes: Scientific (default), Financial, and Logical.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.HTOP.item.2">
-<Para> 科学モードで操作する場合の 3 種類の角度の単位: Deg (度(デフォルト))、ラジアン (Rad)、グラジエント (Grad)
+<Para>Three trigonometric bases when operating in Scientific mode: Degrees
+(default),
+Radians, or Gradients.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.HTOP.item.3">
-<Para> 数値を記憶する 10 個のメモリ・レジスタ。数値をレジスタに記憶し、取り出し、指定したレジスタと表示領域の間で数値を交換することができます。
+<Para>Ten memory registers for storing values. You can store values into the
+registers, recall them, and exchange values between a specified register
+and the display area.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.HTOP.item.4">
-<Para> 4 種類の基数: Bin (2 進)、Oct (8 進)、Dec (10 進(デフォルト))、Hex (16 進)
+<Para>Four numeric bases: Binary, Octal, Decimal (default), or Hexadecimal.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.HTOP.item.5">
-<Para> 四則計算: 加算(+)、減算(&minus;)、乗算(&times;)、除算(/)
+<Para>Four basic arithmetic operations: add (+), subtract (&minus;),
+multiply (&times;), and divide (/).
 </Para>
 </ListItem>
 </ItemizedList>
 <Graphic Entityref="calcareas" Id="HCALC.HTOP.fig.1"></Graphic>
-<Para Id="modedepend">"モード依存ボタン" はモードを変更すると、変わります。デフォルト・モードは、図に示すように科学です。
-&calcname; 操作モードの変更方法については、<Link Type="jump" Linkend="changemodes"><ComputerOutput>モードの変更</ComputerOutput></Link>を参照してください。</Para>
-<Para>&calcname;のヘルプを使用する場合は、以下に注意してください。
+<Para Id="modedepend">The "Mode Dependent Buttons" change when you
+change modes. The
+default mode is Scientific, as shown in the figure. See <Link Type="jump" Linkend="changemodes"><ComputerOutput>Changing
+Modes</ComputerOutput></Link> for information on how to change the &calcname; mode of
+operation.</Para>
+<Para>Here's some information to keep in mind as you use &calcname; Help:
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.HTOP.item.6">
-<Para> ヘルプ・トピックで表示するイラストレーションは、デフォルト CDE 画面から
-取ったものです。ユーザまたはシステム管理者が画面をカスタマイズしている場合は、画面はイラストレーションとは異なります。
+<Para>Illustrations shown in these help topics were taken from the default CDE
+screens. Your screens may be different from the illustrations if you or
+your system administrator have customized any of the screens.
 </Para>
 </ListItem>
 <ListItem Id="HCALC.HTOP.item.7">
-<Para> &calcname;コントロールは、"キー"に対する"ボタン"と見なされます。
-&calcname;コントロールと、それに対するキーボード割付けは、さらに容易に
-識別できます。
+<Para>A &calcname; control is referred to as a "button" as opposed to a "key."
+This is to more easily distinguish between a &calcname; control and its
+keyboard equivalent.
 </Para>
 </ListItem>
 </ItemizedList>
-<Para>トピックに関するヘルプは、以下に表示したトピックをクリックしてください。
+<Para>Click on any of the topics listed below
+for help on that topic.
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCALC.HTOP.item.8">

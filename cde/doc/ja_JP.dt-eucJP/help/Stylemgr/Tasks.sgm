@@ -1,4 +1,4 @@
-<!-- $XConsortium: Tasks.sgm /main/6 1996/12/18 02:42:37 cde-hit $ -->
+<!-- $XConsortium: Tasks.sgm /main/11 1996/09/14 19:04:44 cdedoc $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,453 +9,463 @@
 <!-- Help volume: Stylemgr -->
 <!-- File name:   Tasks    -->
 <Chapter Id="Tasks">
-<Title>スタイル・マネージャの使い方</Title>
+<Title>Style Manager Tasks</Title>
 <Procedure>
-<Title>画面の外観のカスタマイズ</Title>
+<Title>Customizing Screen Appearance</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HSTYM.TSKS.item.1">
-<Para> <XRef Linkend="SelectPaletteTA"></Para>
+<Para><XRef Linkend="SelectPaletteTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.2">
-<Para> <XRef Linkend="ModifyPaletteTA"></Para>
+<Para><XRef Linkend="ModifyPaletteTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.3">
-<Para> <XRef Linkend="CreatePaletteTA"></Para>
+<Para><XRef Linkend="CreatePaletteTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.4">
-<Para> <XRef Linkend="DeletePaletteTA"></Para>
+<Para><XRef Linkend="DeletePaletteTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.5">
-<Para> <XRef Linkend="LimitColorUseTA"></Para>
+<Para><XRef Linkend="LimitColorUseTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.6">
-<Para> <XRef Linkend="ChangeFontSizeTA"></Para>
+<Para><XRef Linkend="ChangeFontSizeTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.7">
-<Para> <XRef Linkend="ChangeBackdropTA"></Para>
+<Para><XRef Linkend="ChangeBackdropTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>キーボードのカスタマイズ</Title>
+<Title>Customizing the Keyboard</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HSTYM.TSKS.item.8">
-<Para> <XRef Linkend="ChangeKeyboardTA"></Para>
+<Para><XRef Linkend="ChangeKeyboardTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.9">
-<Para> <XRef Linkend="ChangeKeyboardRepeatTA"></Para>
+<Para><XRef Linkend="ChangeKeyboardRepeatTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>マウスのカスタマイズ</Title>
+<Title>Customizing the Mouse</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HSTYM.TSKS.item.10">
-<Para> <XRef Linkend="ChangeMouseTA"></Para>
+<Para><XRef Linkend="ChangeMouseTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.11">
-<Para> <XRef Linkend="ChangeMouseB2TA"></Para>
+<Para><XRef Linkend="ChangeMouseB2TA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.12">
-<Para> <XRef Linkend="ChangeMouseDoubleTA"></Para>
+<Para><XRef Linkend="ChangeMouseDoubleTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.13">
-<Para> <XRef Linkend="ChangeMouseAccTA"></Para>
+<Para><XRef Linkend="ChangeMouseAccTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.14">
-<Para> <XRef Linkend="ChangeMouseThreshTA"></Para>
+<Para><XRef Linkend="ChangeMouseThreshTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>オーディオのカスタマイズ</Title>
+<Title>Customizing Audio</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HSTYM.TSKS.item.15">
-<Para> <XRef Linkend="ChangeAudioTA"></Para>
+<Para><XRef Linkend="ChangeAudioTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.16">
-<Para> <XRef Linkend="ChangeAudioToneTA"></Para>
+<Para><XRef Linkend="ChangeAudioToneTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.17">
-<Para> <XRef Linkend="ChangeAudioDurationTA"></Para>
+<Para><XRef Linkend="ChangeAudioDurationTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>画面のカスタマイズ</Title>
+<Title>Customizing Screens</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HSTYM.TSKS.item.18">
-<Para> <XRef Linkend="ChangeScreenTA"></Para>
+<Para><XRef Linkend="ChangeScreenTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.19">
-<Para> <XRef Linkend="ChangeScreenLockTA"></Para>
+<Para><XRef Linkend="ChangeScreenLockTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>ウィンドウのカスタマイズ</Title>
+<Title>Customizing Windows</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HSTYM.TSKS.item.20">
-<Para> <XRef Linkend="WindowFocusBehaviorTA"></Para>
+<Para><XRef Linkend="WindowFocusBehaviorTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.21">
-<Para> <XRef Linkend="WindowBehaviorTA"></Para>
+<Para><XRef Linkend="WindowBehaviorTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.22">
-<Para> <XRef Linkend="WindowIconBehaviorTA"></Para>
+<Para><XRef Linkend="WindowIconBehaviorTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>セッションの起動とログアウトのカスタマイズ</Title>
+<Title>Customizing Session Startup and Logout</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HSTYM.TSKS.item.23">
-<Para> <XRef Linkend="ChangeSessionsTA"></Para>
+<Para><XRef Linkend="ChangeSessionsTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.24">
-<Para> <XRef Linkend="SaveSessionsTA"></Para>
+<Para><XRef Linkend="SaveSessionsTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.25">
-<Para> <XRef Linkend="LogoutPreferenceTA"></Para>
+<Para><XRef Linkend="LogoutPreferenceTA"></Para>
 </ListItem>
 </ItemizedList>
-<Para>以下の説明では、マウスを使用することを前提にしています。
-大部分の指定はマウスなしでもできます。
-詳細は、<OLink Type="Jump" LocalInfo="Intromgr DesktopKeyboardNav">デスクトップのキーボード・ショートカット</OLink>を参照してください。
+<Para>These instructions assume that you are using a mouse. Most tasks can
+also be done without a mouse. See <OLink Type="Jump" LocalInfo="Intromgr
+DesktopKeyboardNav"> Keyboard Shortcuts for the Desktop</OLink> for more
+information.
 </Para>
 </Step>
 </Procedure>
 <Sect1 Id="SelectPaletteTA">
-<Title> パレットを選択するには</Title>
+<Title>To Select a Palette</Title>
 <IndexTerm>
-<Primary>パレット: 選択</Primary>
+<Primary>palette: selecting</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>変更: カラー</Primary>
+<Primary>changing: colors</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>カラー: 変更</Primary>
+<Primary>color: changing</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ワークスペース: カラー, 変更</Primary>
+<Primary>workspace: colors, changing</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>選択: パレット</Primary>
+<Primary>selecting: palette</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [カラー]</Primary>
+<Primary>dialog box: Color</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[カラー] ダイアログ・ボックス</Primary>
+<Primary>Color dialog box</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.26">
-<Para> スタイル・マネージャの [カラー] コントロールを選択してください。
+<Para>Click the Style Manager Color control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.27">
-<Para> [パレット] リストからパレットを選択してください。
+<Para>Select a palette from the Palettes list.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.28">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>デスクトップのカラーは、予め定義したカラー・パレットで決まります。
-[カラー] ダイアログ・ボックスは、ご利用のシステムのパレットとユーザが追加したパレットをリストします。
+<Para>Desktop colors come from predefined color palettes. The
+Color dialog box lists the palettes that
+came with your system plus any palettes you have added.
 <!-- <figure nonumber entity=ColorDialogBox>
 <\figure>
  
 <list plain tight>
  
-* ((1)) パレットのリスト
+* ((1)) List of palettes.
  
-* ((2)) 選択したパレットのカラーを表すカラー・ボタン
+* ((2)) Color buttons, representing the selected palette's colors.
  
-<\list>  -->ダイアログ・ボックス・コントロールに関する説明は、<XRef Linkend="SMColorDialogDE">を参照してください。
+<\list>  -->For a description of the dialog box controls,
+see <XRef Linkend="SMColorDialogDE">.
 </Para>
 <Procedure>
-<Title> 関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.29">
-<Para> <XRef Linkend="ModifyPaletteTA"></Para>
+<Para><XRef Linkend="ModifyPaletteTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.30">
-<Para> <XRef Linkend="CreatePaletteTA"></Para>
+<Para><XRef Linkend="CreatePaletteTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ModifyPaletteTA">
-<Title> パレットを変更するには</Title>
+<Title>To Modify a Palette</Title>
 <IndexTerm>
-<Primary>パレット: 変更</Primary>
+<Primary>palette: modifying</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>変更: パレット</Primary>
+<Primary>modifying: palette</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>変更: カラー</Primary>
+<Primary>modifying: colors</Primary>
 </IndexTerm>
 <Note>
-<Para>これは現在選択しているパレットのカラー設定の変更手順です。
-選択したデフォルト・パレット(デスクトップが提供するパレットのひとつ)がある場合は、それをコピーしてください。
-(<XRef Linkend="CreatePaletteTA">を参照してください。)
-これにより、必要に応じてデフォルト・パレットの元の設定に戻すことができます。
+<Para>This procedure changes the color settings of the currently selected
+palette. If you have a default palette (one of the palettes provided
+with the Desktop) selected, you may want to copy it.
+(See <XRef Linkend="CreatePaletteTA">.)
+This ensures that you can return to the original
+settings of the default palette if necessary.
 </Para>
 </Note>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.31">
-<Para> スタイル・マネージャの [カラー] コントロールをクリックしてください。
+<Para>Click the Style Manager Color control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.32">
-<Para> [カラー] ダイアログ・ボックスのパレットを選択してください。
+<Para>Select a palette in the Color dialog box.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.33">
-<Para> [カラーの変更] ダイアログ・ボックスを開くには、カラー・ボタンをダブルクリックしてください。&newline;<Emphasis>または</Emphasis>、カラー・ボタンをクリック後、[変更] をクリックしてください。
+<Para>Double-click a color button to open the Modify Color dialog box. &newline;<Emphasis>Or</Emphasis>, click a color button, then click Modify.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.34">
-<Para> [カラーの変更] ダイアログ・ボックスで、設定をアジャストしてください。
+<Para>Adjust the settings in the Modify Color dialog box.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.35">
-<Para> [カラーの変更] ダイアログ・ボックスで、[了解] をクリックしてください。
+<Para>Click OK in the Modify Color dialog box.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.36">
-<Para> 他のカラー・ボタンを変更するには、手順 2-4 を繰り返してください。
+<Para>Repeat steps 2-4 to modify another color button.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.37">
-<Para> [カラー] ダイアログ・ボックスで、[了解] をクリックしてください。
+<Para>Click OK in the Color dialog box.
 </Para>
 </ListItem>
 </OrderedList>
 <IndexTerm>
-<Primary>[カラー] ダイアログ・ボックス</Primary>
+<Primary>Color dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [カラー]</Primary>
+<Primary>dialog box: Color</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[カラーの変更] ダイアログ・ボックス</Primary>
+<Primary>Modify Color dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [カラーの変更]</Primary>
+<Primary>dialog box: Modify Color</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>カラー: パレットの変更</Primary>
+<Primary>colors: changing palette</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>パレット: カラーの変更</Primary>
+<Primary>palette: changing colors</Primary>
 </IndexTerm>
 <!-- <figure nonumber entity=ModifyDialogBox>
 <\figure>
  
 <list plain tight>
  
-* ((1)) 現在のカラーを表示します。
+* ((1)) Shows the current color.
  
-* ((2)) 変更内容に従って、新しいカラーを表示します。
+* ((2)) Shows the new color as you make changes.
  
-* ((3)) ワークスペースでカラーを選択するためのポインタを表示します。
+* ((3)) Displays a pointer for you to choose a color in the workspace.
  
-* ((4)) 赤、緑、および青の値を変更します。
+* ((4)) Changes red, green, and blue values.
  
-* ((5)) 赤、緑、および青の割合を変更します。
+* ((5)) Changes red, green, and blue proportions.
  
-* ((6)) カラーの純度を変更します。
+* ((6)) Changes the color's purity.
  
-* ((7)) カラーの明るさを変更します。
+* ((7)) Changes the color's brightness.
  
 <\list>  -->
 <Procedure>
-<Title>ワークスペースの色をグラブするには</Title>
+<Title>To Grab a Color from the Workspace</Title>
 <IndexTerm>
-<Primary>グラブ: ワークスペースの色</Primary>
+<Primary>grabbing: color from workspace</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>カラー: ワークスペースからグラブ</Primary>
+<Primary>color: grabbing from workspace</Primary>
 </IndexTerm>
 <Step>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.38">
-<Para> [色をグラブ] をクリックしてください。
-  グラブ・ポインタが表示されます。
+<Para>Click Grab Color.
+The grab pointer appears.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.39">
-<Para> ポインタを、グラブするワークスペース上の色に移動してください。
+<Para>Move the pointer to an area of color on the workspace that you want
+to grab.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.40">
-<Para> [了解] をクリックして、そのカラーを新しいカラーにしてください。
+<Para>Click OK to make that color the New color.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>[カラーの変更] ダイアログ・ボックスのコントロールに関する説明は、<XRef Linkend="SMModifyPaletteDialogDE">を参照してください。
+<Para>For a description of the Modify Color dialog box controls,
+see <XRef Linkend="SMModifyPaletteDialogDE">.
 </Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title> 関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.41">
-<Para> <XRef Linkend="CreatePaletteTA"></Para>
+<Para><XRef Linkend="CreatePaletteTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="CreatePaletteTA">
-<Title> カスタム・パレットを作成するには</Title>
+<Title>To Create a Custom Palette</Title>
 <IndexTerm>
-<Primary>パレット: 追加</Primary>
+<Primary>palette: adding</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>パレット: 作成</Primary>
+<Primary>palette: creating</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>パレット: コピー</Primary>
+<Primary>palette: copying</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>作成: カスタム・パレット</Primary>
+<Primary>creating: custom palette</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>コピー: パレット, コピー</Primary>
+<Primary>copying: palette, copying</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[カラー] ダイアログ・ボックス</Primary>
+<Primary>Color dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [カラー]</Primary>
+<Primary>dialog box: Color</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.42">
-<Para> スタイル・マネージャの [カラー] コントロールをクリックしてください。</Para>
+<Para>Click the Style Manager Color control.</Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.43">
-<Para> [カラー] ダイアログ・ボックスで、追加を選択してください。
+<Para>Choose Add in the Color dialog box.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.44">
-<Para> [新規パレット] フィールドに、新しいパレット名を入力してください。
+<Para>Type the new palette in the New Palette field.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.45">
-<Para> [パレットの追加] ダイアログ・ボックスで、[了解] をクリックしてください。
+<Para>Click OK in the Add Palette dialog box.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.46">
-<Para> [変更] をクリックし、パレットを変更してください。
-  (<XRef Linkend="ModifyPaletteTA">を参照してください。)
+<Para>Click Modify and modify the palette (See <XRef Linkend="ModifyPaletteTA">.)
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.47">
-<Para> [カラー] ダイアログ・ボックスで、[了解] をクリックしてください。
+<Para>Click OK in the Color dialog box.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>パレットを追加するには、現在選択しているパレットのコピーを作成し、コピーに一意名を付けます。
-その後、元のパレットはそのままにして、コピーを変更してください。
+<Para>Adding a palette makes a copy of the currently selected palette and gives the
+copy a unique name. You then modify
+the copy, keeping the original palette intact.
 </Para>
 <Procedure>
-<Title> 関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.48">
-<Para> <XRef Linkend="ModifyPaletteTA"></Para>
+<Para><XRef Linkend="ModifyPaletteTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="DeletePaletteTA">
-<Title> パレットを削除するには</Title>
+<Title>To Delete a Palette</Title>
 <IndexTerm>
-<Primary>パレット: 削除</Primary>
+<Primary>palette: deleting</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [パレットの削除]</Primary>
+<Primary>dialog box: Delete Palette</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>削除: パレット</Primary>
+<Primary>deleting: palette</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.49">
-<Para> スタイル・マネージャの [カラー] コントロールをクリックしてください。</Para>
+<Para>Click the Style Manager Color control.</Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.50">
-<Para> [パレット] リストからパレットを選択してください。
+<Para>Select the palette from the Palettes list.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.51">
-<Para> [削除] を選択してください。
+<Para>Choose Delete.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.52">
-<Para> [パレットの削除] ダイアログ・ボックスで [了解] をクリックして、削除を確認してください。
+<Para>Click OK in the Delete Palette dialog box to confirm deletion.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>削除したパレットを復元するには</Title>
+<Title>To Restore a Deleted Palette</Title>
 <IndexTerm>
-<Primary>パレット: 削除後の復元</Primary>
+<Primary>palette: restoring deleted</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>削除: 削除したパレット</Primary>
+<Primary>restoring: deleted palette</Primary>
 </IndexTerm>
 <Step>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.53">
-<Para> ファイル・マネージャ表示を開いて、<Symbol Role="Variable">HomeDirectory</Symbol>/.dt/palettes フォルダを表示してください。
+<Para>Open a File Manager view of the showing <Symbol Role="Variable">HomeDirectory</Symbol>/.dt/palettes folder.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.54">
-<Para> システム・パレットの場合は、ファイル ~<Symbol Role="Variable">PaletteName</Symbol>.<Quote>dp</Quote>を削除してください。
+<Para>For system palettes, remove the file ~<Symbol Role="Variable">PaletteName</Symbol>.<ComputerOutput>dp</ComputerOutput>.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.55">
-<Para> ユーザが追加したパレットの場合は、削除したパレットの名前を ~<Symbol Role="Variable">PaletteName</Symbol>.<Quote>dp</Quote> から <Symbol Role="Variable">PaletteName</Symbol>.<Quote>dp</Quote>に変更してください。
+<Para>For user added palettes, rename the deleted palette
+from ~<Symbol Role="Variable">PaletteName</Symbol>.<ComputerOutput>dp</ComputerOutput> to <Symbol Role="Variable">PaletteName</Symbol>.<ComputerOutput>dp</ComputerOutput>.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.56">
-<Para> スタイル・マネージャを再起動してください。(閉じた後、再度開く)
+<Para>Restart Style Manager (close, then reopen).
 </Para>
 </ListItem>
 </OrderedList>
-<Para>パレットを削除するには、スタイル・マネージャはパレットのコピーを、ユーザのホーム・フォルダの .dt/palettes サブフォルダに格納します。
-このコピーのファイル名は、<ComputerOutput>~</ComputerOutput>で始まります。
+<Para>When you delete a palette, Style Manager places a copy of the palette
+in the .dt/palettes subfolder in your home folder. The file name
+of this copy begins with <ComputerOutput>~</ComputerOutput>.
 </Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title> 関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.57">
-<Para> ファイルの名前の変更方法については、<OLink Type="JumpNewView" LocalInfo="Filemgr ToRenameAnObjectTA"> ファイルまたはフォルダの名前を変更するには</OLink> で説明しています。
+<Para><OLink Type="JumpNewView" LocalInfo="Filemgr ToRenameAnObjectTA"> To rename
+a file or folder </OLink> explains how to rename a file.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -463,693 +473,693 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="LimitColorUseTA">
-<Title> デスクトップが使用するカラーの数を変更するには</Title>
+<Title>To Change the Number of Colors Used by the Desktop</Title>
 <IndexTerm>
-<Primary>カラー: 使用制限</Primary>
+<Primary>color: limiting usage</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>制限: カラーの使用</Primary>
+<Primary>limiting: color usage</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>変更: 色の数</Primary>
+<Primary>changing: number of colors</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.58">
-<Para> スタイル・マネージャの [カラー] コントロールをクリックしてください。
+<Para>Click the Style Manager Color control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.59">
-<Para> [カラー] ダイアログ・ボックスで、[使う色数] を選択してください。
+<Para>Choose Number of Colors in the Color dialog box.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.60">
-<Para> 使う色数オプションを選択して、デスクトップで使用する色の数を設定してください。
-  (デスクトップがカラーを使用する方法については、<XRef Linkend="SMColorConcepts">を参照してください。)
+<Para>Select a color use option to set the number of colors used in the
+desktop. (See <XRef Linkend="SMColorConcepts"> for information on how the desktop
+uses colors.)
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.61">
-<Para> [使う色数] ダイアログ・ボックスで、[了解] をクリックしてください。
+<Para>Click OK in the Number of Colors dialog box.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.62">
-<Para> [カラー] ダイアログ・ボックスで、[了解] をクリックしてください。
+<Para>Click OK in the Color dialog box.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>この変更を有効にするには、ログアウトして再度ログインしなければなりません。<IndexTerm>
-<Primary>[カラー] ダイアログ・ボックス</Primary>
+<Para>You must log out and log back in before this change takes effect.<IndexTerm>
+<Primary>Color dialog box</Primary>
 </IndexTerm><IndexTerm>
-<Primary>ダイアログ・ボックス: [カラー]</Primary>
+<Primary>dialog box: Color</Primary>
 </IndexTerm>
 <!-- <figure nonumber entity=ColorUseDialogBox>
-<\figure> -->
-<!-- <procedure> 関連項目
- 
-<list bullet tight>
- 
-* カラーの使用をリソース設定で制御する方法については、<link hyperlink="Misctopic ManagingColorsSI" type=JumpNewView>カラーの管理<\link>で説明しています。
- 
-* 次にアプリケーションを起動した時に、使う色数の新しい値を有効にする方法については、<link hyperlink="Misctopic ChangingWithStyleMgrTA" type=JumpNewView>
-  スタイル・マネージャでリソースを変更するには<\link>で説明しています。
- 
-<\list>  -->
-</Para>
+<\figure> --></Para>
 </Sect1>
 <Sect1 Id="ChangeFontSizeTA">
-<Title> フォント・サイズを選択するには</Title>
+<Title>To Select a Font Size</Title>
 <IndexTerm>
-<Primary>フォント: 新しいサイズの選択</Primary>
+<Primary>font: selecting new size</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>選択: フォント・サイズ</Primary>
+<Primary>selecting: font size</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[フォント] ダイアログ・ボックス</Primary>
+<Primary>Font dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [フォント]</Primary>
+<Primary>dialog box: Font</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>タイプのサイズ: フォントを参照</Primary>
+<Primary>type size: see font</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.63">
-<Para> スタイル・マネージャの [フォント] コントロールをクリックしてください。
+<Para>Click the Style Manager Font control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.64">
-<Para> フォント・サイズを選択してください。
+<Para>Select a font size.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.65">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>ウィンドウ・ラベルおよびテキストは、アプリケーションが起動された場合に、新しいフォント・サイズを表示します。
+<Para>Window labels and text show the new font size as applications are started.
 <!-- <figure nonumber entity=FontDialogBox>
 <\figure> --></Para>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.66">
-<Para> <XRef Linkend="SMFontDialogDE"></Para>
+<Para><XRef Linkend="SMFontDialogDE"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ChangeBackdropTA">
-<Title> 背景を選択するには</Title>
+<Title>To Select a Backdrop</Title>
 <IndexTerm>
-<Primary>背景: 選択</Primary>
+<Primary>backdrop: selecting</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>選択: 背景</Primary>
+<Primary>selecting: backdrop</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.67">
-<Para> 背景を指定するワークスペースに切り替えてください。
+<Para>Switch to the workspace in which you want the backdrop.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.68">
-<Para> スタイル・マネージャの [背景] コントロールをクリックしてください。
+<Para>Click the Style Manager Backdrop control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.69">
-<Para> 背景を選択してください。
+<Para>Select a backdrop.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.70">
-<Para> [適用] をクリックしてください。
+<Para>Click Apply.
 </Para>
 </ListItem>
 </OrderedList>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [背景]</Primary>
+<Primary>dialog box: Backdrop</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[背景] ダイアログ・ボックス</Primary>
+<Primary>Backdrop dialog box</Primary>
 </IndexTerm>
 <!-- <figure nonumber entity=BackdropDialogBox>
 <\figure> -->
-<Para>背景はワークスペース(ウィンドウの下の画面領域)をカバーするパターンです。
+<Para>A backdrop is a pattern that covers the workspace (the screen area
+underneath your windows).
 </Para>
 </Sect1>
 <Sect1 Id="ChangeKeyboardTA">
-<Title> キーボードのキーを押したときの音量をアジャストするには</Title>
+<Title>To Adjust the Keyboard Click Volume</Title>
 <IndexTerm>
-<Primary>カスタマイズ: キーボードのキーを押したときの音量</Primary>
+<Primary>customizing: keyboard click volume</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>キーボード: キーを押したときの音量のカスタマイズ</Primary>
+<Primary>keyboard: customizing click volume</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[キーボード] ダイアログ・ボックス</Primary>
+<Primary>Keyboard dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [キーボード]</Primary>
+<Primary>dialog box: Keyboard</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.71">
-<Para> スタイル・マネージャの [キーボード] コントロールをクリックしてください。
+<Para>Click the Style Manager Keyboard control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.72">
-<Para> [キーを押したときの音量] ゲージをアジャストしてください。
+<Para>Adjust the Click Volume gauge.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.73">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.74">
-<Para> <XRef Linkend="SMKeyboardDialogDE"></Para>
+<Para><XRef Linkend="SMKeyboardDialogDE"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.75">
-<Para> <XRef Linkend="ChangeKeyboardRepeatTA"></Para>
+<Para><XRef Linkend="ChangeKeyboardRepeatTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ChangeKeyboardRepeatTA">
-<Title>キー反復させるには</Title>
+<Title>To Make Keys Repeat</Title>
 <IndexTerm>
-<Primary>カスタマイズ: キー反復動作</Primary>
+<Primary>customizing: key repeat behavior</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>キーボード: 反復動作のカスタマイズ</Primary>
+<Primary>keyboard: customizing repeat behavior</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[キーボード] ダイアログ・ボックス</Primary>
+<Primary>Keyboard dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [キーボード]</Primary>
+<Primary>dialog box: Keyboard</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.76">
-<Para> スタイル・マネージャの [キーボード] コントロールをクリックしてください。
+<Para>Click the Style Manager Keyboard control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.77">
-<Para> [オートリピート] チェック・ボックスを選択して、押し続けた時にキーを反復するように指定します。
+<Para>Select the Auto Repeat check box to have a key repeat when held down.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.78">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 </ListItem>
 </OrderedList>
 <!-- <figure nonumber entity=KeyboardDialogBox>
 <\figure> -->
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.79">
-<Para> <XRef Linkend="SMKeyboardDialogDE"></Para>
+<Para><XRef Linkend="SMKeyboardDialogDE"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.80">
-<Para> <XRef Linkend="ChangeKeyboardTA"></Para>
+<Para><XRef Linkend="ChangeKeyboardTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ChangeMouseTA">
-<Title> マウスの向きを変更するには</Title>
+<Title>To Change Mouse Orientation</Title>
 <IndexTerm>
-<Primary>カスタマイズ: マウスの向き</Primary>
+<Primary>customizing: mouse orientation</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>マウス: 向きのカスタマイズ</Primary>
+<Primary>mouse: customizing orientation</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[マウス] ダイアログ・ボックス</Primary>
+<Primary>Mouse dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [マウス]</Primary>
+<Primary>dialog box: Mouse</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.81">
-<Para> スタイル・マネージャの [マウス] コントロールをクリックしてください。
+<Para>Click the Style Manager Mouse control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.82">
-<Para> [右] または [左] チェック・ボックスを選択してください。
-  これは、マウス・ボタン 1 と 3 を反対にします。
+<Para>Select the Right or Left check box.
+This will reverse mouse buttons 1 and 3.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.83">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.84">
-<Para> <XRef Linkend="SMMouseDialogDE"></Para>
+<Para><XRef Linkend="SMMouseDialogDE"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.85">
-<Para> <XRef Linkend="ChangeMouseB2TA"></Para>
+<Para><XRef Linkend="ChangeMouseB2TA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.86">
-<Para> <XRef Linkend="ChangeMouseDoubleTA"></Para>
+<Para><XRef Linkend="ChangeMouseDoubleTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.87">
-<Para> <XRef Linkend="ChangeMouseAccTA"></Para>
+<Para><XRef Linkend="ChangeMouseAccTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.88">
-<Para> <XRef Linkend="ChangeMouseThreshTA"></Para>
+<Para><XRef Linkend="ChangeMouseThreshTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ChangeMouseB2TA">
-<Title>マウス・ボタン 2 の動作を変更するには</Title>
+<Title>To Change Mouse Button 2 Behavior</Title>
 <IndexTerm>
-<Primary>カスタマイズ: マウス・ボタン 2 の動作</Primary>
+<Primary>customizing: mouse button 2 behavior</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>マウス: ボタン 2 の動作のカスタマイズ</Primary>
+<Primary>mouse: customizing button 2 behavior</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[マウス] ダイアログ・ボックス</Primary>
+<Primary>Mouse dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [マウス]</Primary>
+<Primary>dialog box: Mouse</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.89">
-<Para> スタイル・マネージャの [マウス] コントロールをクリックしてください。
+<Para>Click the Style Manager Mouse control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.90">
-<Para> [転送] または [アジャスト] チェック・ボックスを選択して、マウス・ボタン 2 に関するアクションを選択してください。
+<Para>Select the Transfer or Adjust check box to associate that
+action with mouse button 2.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.91">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.92">
-<Para> <XRef Linkend="SMMouseDialogDE"></Para>
+<Para><XRef Linkend="SMMouseDialogDE"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.93">
-<Para> <XRef Linkend="ChangeMouseTA"></Para>
+<Para><XRef Linkend="ChangeMouseTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.94">
-<Para> <XRef Linkend="ChangeMouseDoubleTA"></Para>
+<Para><XRef Linkend="ChangeMouseDoubleTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.95">
-<Para> <XRef Linkend="ChangeMouseAccTA"></Para>
+<Para><XRef Linkend="ChangeMouseAccTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.96">
-<Para> <XRef Linkend="ChangeMouseThreshTA"></Para>
+<Para><XRef Linkend="ChangeMouseThreshTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ChangeMouseDoubleTA">
-<Title>マウスのダブルクリック間隔を変更するには</Title>
+<Title>To Change Mouse Double-Click Speed</Title>
 <IndexTerm>
-<Primary>カスタマイズ: マウスのダブルクリック間隔</Primary>
+<Primary>customizing: mouse double-click speed</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>マウス: ダブルクリック間隔のカスタマイズ</Primary>
+<Primary>mouse: customizing double-click speed</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[マウス] ダイアログ・ボックス</Primary>
+<Primary>Mouse dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [マウス]</Primary>
+<Primary>dialog box: Mouse</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.97">
-<Para> スタイル・マネージャの [マウス] コントロールをクリックしてください。
+<Para>Click the Style Manager Mouse control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.98">
-<Para> [ダブルクリック] ゲージをアジャストして、ダブルクリックとみなす、クリックとクリックの間の最大時間を設定してください。
+<Para>Adjust the Double-Click gauge to set the maximum amount of time between
+single clicks to be considered a double-click.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.99">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>新しいダブルクリック間隔は、次回にログインした時に有効になります。
+<Para>The new double-click speed takes effect the next time you log in.
 </Para>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.100">
-<Para> <XRef Linkend="SMMouseDialogDE"></Para>
+<Para><XRef Linkend="SMMouseDialogDE"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.101">
-<Para> <XRef Linkend="ChangeMouseTA"></Para>
+<Para><XRef Linkend="ChangeMouseTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.102">
-<Para> <XRef Linkend="ChangeMouseB2TA"></Para>
+<Para><XRef Linkend="ChangeMouseB2TA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.103">
-<Para> <XRef Linkend="ChangeMouseAccTA"></Para>
+<Para><XRef Linkend="ChangeMouseAccTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.104">
-<Para> <XRef Linkend="ChangeMouseThreshTA"></Para>
+<Para><XRef Linkend="ChangeMouseThreshTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ChangeMouseAccTA">
-<Title> マウスの速度を変更するには</Title>
+<Title>To Change Mouse Acceleration</Title>
 <IndexTerm>
-<Primary>カスタマイズ: マウスの速度</Primary>
+<Primary>customizing: mouse acceleration</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>マウス: 速度のカスタマイズ</Primary>
+<Primary>mouse: customizing acceleration</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary> [マウス] ダイアログ・ボックス</Primary>
+<Primary>Mouse dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [マウス]</Primary>
+<Primary>dialog box: Mouse</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.105">
-<Para> スタイル・マネージャの [マウス] コントロールをクリックしてください。
+<Para>Click the Style Manager Mouse control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.106">
-<Para> [速度] ゲージをアジャストしてください。
+<Para>Adjust the Acceleration gauge.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.107">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.108">
-<Para> <XRef Linkend="SMMouseDialogDE"></Para>
+<Para><XRef Linkend="SMMouseDialogDE"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.109">
-<Para> <XRef Linkend="ChangeMouseTA"></Para>
+<Para><XRef Linkend="ChangeMouseTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.110">
-<Para> <XRef Linkend="ChangeMouseB2TA"></Para>
+<Para><XRef Linkend="ChangeMouseB2TA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.111">
-<Para> <XRef Linkend="ChangeMouseDoubleTA"></Para>
+<Para><XRef Linkend="ChangeMouseDoubleTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.112">
-<Para> <XRef Linkend="ChangeMouseThreshTA"></Para>
+<Para><XRef Linkend="ChangeMouseThreshTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ChangeMouseThreshTA">
-<Title> マウスのしきい値を変更するには</Title>
+<Title>To Change Mouse Threshold</Title>
 <IndexTerm>
-<Primary>カスタマイズ: マウスのしきい値</Primary>
+<Primary>customizing: mouse threshold</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>マウス: しきい値のカスタマイズ</Primary>
+<Primary>mouse: customizing threshold</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[マウス] ダイアログ・ボックス</Primary>
+<Primary>Mouse dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [マウス]</Primary>
+<Primary>dialog box: Mouse</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.113">
-<Para> スタイル・マネージャの [マウス] コントロールをクリックしてください。
+<Para>Click the Style Manager Mouse control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.114">
-<Para> [しきい値] ゲージをアジャストしてください。
+<Para>Adjust the Threshold gauge.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.115">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.116">
-<Para> <XRef Linkend="SMMouseDialogDE"></Para>
+<Para><XRef Linkend="SMMouseDialogDE"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.117">
-<Para> <XRef Linkend="ChangeMouseTA"></Para>
+<Para><XRef Linkend="ChangeMouseTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.118">
-<Para> <XRef Linkend="ChangeMouseB2TA"></Para>
+<Para><XRef Linkend="ChangeMouseB2TA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.119">
-<Para> <XRef Linkend="ChangeMouseDoubleTA"></Para>
+<Para><XRef Linkend="ChangeMouseDoubleTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.120">
-<Para> <XRef Linkend="ChangeMouseAccTA"></Para>
+<Para><XRef Linkend="ChangeMouseAccTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ChangeAudioTA">
-<Title> ビープ音の音量を変更するには</Title>
+<Title>To Change Beep Volume</Title>
 <IndexTerm>
-<Primary>カスタマイズ: ビープ音の音量</Primary>
+<Primary>customizing: beep volume</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>オーディオ: 音量のカスタマイズ</Primary>
+<Primary>audio: customizing volume</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[ビープ音] ダイアログ・ボックス</Primary>
+<Primary>Beep dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [ビープ音]</Primary>
+<Primary>dialog box: Beep</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.121">
-<Para> スタイル・マネージャの [ビープ音] コントロールをクリックしてください。
+<Para>Click the Style Manager Beep control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.122">
-<Para> [音量] ゲージをアジャストしてください。
+<Para>Adjust the Volume gauge.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.123">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.124">
-<Para> <XRef Linkend="SMAudioDialogDE"></Para>
+<Para><XRef Linkend="SMAudioDialogDE"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ChangeAudioToneTA">
-<Title> ビープ音の音程を変更するには</Title>
+<Title>To Change Beep Tone</Title>
 <IndexTerm>
-<Primary>カスタマイズ: ビープ音の音程</Primary>
+<Primary>customizing: beep tone</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>オーディオ: 音程のカスタマイズ</Primary>
+<Primary>audio: customizing tone</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[ビープ音] ダイアログ・ボックス</Primary>
+<Primary>Beep dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [ビープ音]</Primary>
+<Primary>dialog box: Beep</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.125">
-<Para> スタイル・マネージャの [ビープ音] コントロールをクリックしてください。
+<Para>Click the Style Manager Beep control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.126">
-<Para> [音程] ゲージをアジャストしてください。
+<Para>Adjust the Tone gauge.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.127">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.128">
-<Para> <XRef Linkend="SMAudioDialogDE"></Para>
+<Para><XRef Linkend="SMAudioDialogDE"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.129">
-<Para> <XRef Linkend="ChangeAudioDurationTA"></Para>
+<Para><XRef Linkend="ChangeAudioDurationTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.130">
-<Para> <XRef Linkend="ChangeAudioTA"></Para>
+<Para><XRef Linkend="ChangeAudioTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ChangeAudioDurationTA">
-<Title> ビープ音の音長を変更するには</Title>
+<Title>To Change Beep Duration</Title>
 <IndexTerm>
-<Primary>カスタマイズ: ビープ音の音長</Primary>
+<Primary>customizing: beep volume</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>オーディオ: 音長のカスタマイズ</Primary>
+<Primary>audio: customizing volume</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[ビープ音] ダイアログ・ボックス</Primary>
+<Primary>Beep dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [ビープ音]</Primary>
+<Primary>dialog box: Beep</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.131">
-<Para> スタイル・マネージャの [ビープ音] コントロールをクリックしてください。
+<Para>Click the Style Manager Beep control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.132">
-<Para> [音長] ゲージをアジャストしてください。
+<Para>Adjust the Duration gauge.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.133">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.134">
-<Para> <XRef Linkend="SMAudioDialogDE"></Para>
+<Para><XRef Linkend="SMAudioDialogDE"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.135">
-<Para> <XRef Linkend="ChangeAudioToneTA"></Para>
+<Para><XRef Linkend="ChangeAudioToneTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.136">
-<Para> <XRef Linkend="ChangeAudioTA"></Para>
+<Para><XRef Linkend="ChangeAudioTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ChangeScreenTA">
-<Title> 画面ブランカの設定を変更するには</Title>
+<Title>To Change Screen Blanker Settings</Title>
 <IndexTerm>
-<Primary>カスタマイズ: 画面ブランカ</Primary>
+<Primary>customizing: screen blanker</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>画面: ブランカ, カスタマイズ</Primary>
+<Primary>screen: blanker, customizing</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[画面] ダイアログ・ボックス</Primary>
+<Primary>Screen dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [画面]</Primary>
+<Primary>dialog box: Screen</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.137">
-<Para> スタイル・マネージャの [画面] コントロールをクリックしてください。
+<Para>Click the Style Manager Screen control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.138">
-<Para> 画面ブランカを起動しないようにするには、[オフ] を選択してください。</Para>
+<Para>To prevent the screen blanker from activating, select Off.</Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.139">
-<Para> 画面ブランカを [オン] に設定した場合は、アクティビティがない場合に画面ブランカを開始するまでの時間を、[画面ブランカの開始] ゲージをスライドすることによって指定してください。
+<Para>If the screen blanker is set On, you can adjust the time of no
+activity after which it will start by sliding the Start Blanker gauge.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.140">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.141">
-<Para> <XRef Linkend="SMScreenDialogDE"></Para>
+<Para><XRef Linkend="SMScreenDialogDE"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.142">
-<Para> <XRef Linkend="ChangeScreenLockTA"></Para>
+<Para><XRef Linkend="ChangeScreenLockTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ChangeScreenLockTA">
-<Title> 画面ロックの設定を変更するには</Title>
+<Title>To Change Screen Lock Settings</Title>
 <IndexTerm>
-<Primary>カスタマイズ: 画面ロック</Primary>
+<Primary>customizing: screen lock</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>画面: ロック, カスタマイズ</Primary>
+<Primary>screen: lock, customizing</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[画面] ダイアログ・ボックス</Primary>
+<Primary>Screen dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [画面]</Primary>
+<Primary>dialog box: Screen</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.143">
-<Para> スタイル・マネージャの [画面] コントロールをクリックしてください。
+<Para>Click the Style Manager Screen control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.144">
-<Para> 画面をロックする時にバックグラウンドを表示しない場合には、[透明ロック] を選択してください。
+<Para>Select Transparent Lock if you do not want a background displayed
+when you lock your screen.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.145">
-<Para> [バックグラウンドのロックの使用] チェック・ボックスを選択した場合には、使用するバックグラウンド(複数可)をリストから選択してください。</Para>
-<Para>最新の選択バックグラウンドのプレビューが表示されます。
-  複数のバックグラウンドを選択した場合には、リストに表示された順番で遷移します。</Para>
+<Para>If you selected Use Backgrounds For Lock check box, select the
+background or backgrounds you want to use from the list.</Para>
+<Para>A preview of the latest selected background displays. If you select more
+than one background, they will cycle in the order in which they
+appear in the list.</Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.146">
-<Para> 複数のバックグラウンドを選択した場合には、次のバックグラウンドを開始するまでに各バックグラウンドを実行する分数を、[バックグラウンドの切り替え時間] ゲージをスライドして設定してください。</Para>
-<Para>0 を設定すると、最後に選択したバックグラウンド(プレビュー領域に表示されている)のみが使用されます。
+<Para>If you selected more that one background, set the number of minutes
+each background should run before the next one starts by sliding the
+Time For Background gauge.</Para>
+<Para>A setting of 0 means that only the last selected background (displaying
+in the preview area) will be used.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.147">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 </ListItem>
 </OrderedList>
@@ -1159,286 +1169,295 @@
 <figure nonumber entity=ScreenNoExtDialogBox>
 <\figure> -->
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.148">
-<Para> <XRef Linkend="SMScreenDialogDE"></Para>
+<Para><XRef Linkend="SMScreenDialogDE"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="WindowFocusBehaviorTA">
-<Title> ウィンドウ・フォーカスの動作を変更するには</Title>
+<Title>To Change Window Focus Behavior</Title>
 <IndexTerm>
-<Primary>フォーカス: ウィンドウが獲得する方法の変更</Primary>
+<Primary>focus: changing how window acquires</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フォーカス: ポインタ</Primary>
+<Primary>focus: pointer</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>動作: ウィンドウのカスタマイズ</Primary>
+<Primary>behavior: customizing window</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[ウィンドウ] ダイアログ・ボックス</Primary>
+<Primary>Window dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [ウィンドウ]</Primary>
+<Primary>dialog box: Window</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ウィンドウ: フォーカス・ポリシー</Primary>
+<Primary>window: focus policy</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ウィンドウ・フォーカス・ポリシー</Primary>
+<Primary>window focus policy</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>フォーカス・ポリシー: ウィンドウ</Primary>
+<Primary>focus policy: window</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.149">
-<Para> スタイル・マネージャの [ウィンドウ] コントロールをクリックしてください。
+<Para>Click the Style Manager Window control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.150">
-<Para> マウス・ポインタをウィンドウに入れた時点でウィンドウをアクティブにする場合は、[ポインタでウィンドウをアクティブに] を選択してください。
-  あるいは、マウス・ポインタをウィンドウに入れ、マウス・ボタン 1 をクリックした時点でウィンドウをアクティブにする場合は、[クリックでウィンドウをアクティブに] を選択してください。
-  [ポインタでウィンドウをアクティブに] を選択した場合には、ウィンドウをアクティブにするのに <Keycap>Alt</Keycap> + <Keycap>Tab</Keycap> を使用できませんので、注意してください。
+<Para>Select Point In Window To Make Active to make a window active when the mouse
+pointer enters it, or Click In Window To Make Active to make a window active when
+the mouse pointer enters the window and you click mouse button 1.
+Note that if you select Point In Window To Make Active, you cannot use <Keycap>Alt</Keycap>+<Keycap>Tab</Keycap>
+to change the active window.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.151">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.152">
-<Para> ワークスペース・マネージャの再起動を確認されるので、[了解] をクリックしてください。
+<Para>Click OK when asked to Restart the Workspace Manager.
 </Para>
 </ListItem>
 </OrderedList>
 <IndexTerm>
-<Primary>フォーカスされたウィンドウを手前に</Primary>
+<Primary>raising window with focus</Primary>
 </IndexTerm>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.153">
-<Para> <XRef Linkend="SMWindowsDialogDE"></Para>
+<Para><XRef Linkend="SMWindowsDialogDE"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.154">
-<Para> <XRef Linkend="WindowBehaviorTA"></Para>
+<Para><XRef Linkend="WindowBehaviorTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.155">
-<Para> <XRef Linkend="WindowIconBehaviorTA"></Para>
+<Para><XRef Linkend="WindowIconBehaviorTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="WindowBehaviorTA">
-<Title> アクティブ・ウィンドウの表示方法を変更するには</Title>
+<Title>To Change How Active Windows are Displayed</Title>
 <IndexTerm>
-<Primary>動作: ウィンドウのカスタマイズ</Primary>
+<Primary>behavior: customizing window</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[ウィンドウ] ダイアログ・ボックス</Primary>
+<Primary>Window dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [ウィンドウ]</Primary>
+<Primary>dialog box: Window</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.156">
-<Para> スタイル・マネージャの [ウィンドウ] コントロールをクリックしてください。
+<Para>Click the Style Manager Window control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.157">
-<Para> 部分的に隠れているウィンドウがアクティブになった時点で一番手前に表示するには、[アクティブにされたウィンドウを手前に] を選択してください。
+<Para>Select Raise Window When Made Active to bring a partially concealed
+window to the top when it becomes active.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.158">
-<Para> 二次ウィンドウが表示された場合に、メイン・ウィンドウを一番手前に保つには、[主ウィンドウをトップにする] を選択してください。
+<Para>Select Allow Primary Windows On Top so main window remains on top when secondary
+windows are displayed.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.159">
-<Para> ウィンドウの輪郭を最初に移動する代わりに、ウィンドウの移動中にそのウィンドウ自体を移動するには、[移動中の内容表示] を選択してください。
+<Para>Select Show Contents During Move to move the window during a window move instead of
+just moving the outline at first.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.160">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.161">
-<Para> ワークスペース・マネージャの再起動を確認されるので、[了解] をクリックしてください。
+<Para>Click OK when asked to Restart the Workspace Manager.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.162">
-<Para> <XRef Linkend="SMWindowsDialogDE"></Para>
+<Para><XRef Linkend="SMWindowsDialogDE"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.163">
-<Para> <XRef Linkend="WindowFocusBehaviorTA"></Para>
+<Para><XRef Linkend="WindowFocusBehaviorTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.164">
-<Para> <XRef Linkend="WindowIconBehaviorTA"></Para>
+<Para><XRef Linkend="WindowIconBehaviorTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="WindowIconBehaviorTA">
-<Title> ウィンドウ・アイコンの動作を変更には</Title>
+<Title>To Change Window Icon Behavior</Title>
 <IndexTerm>
-<Primary>アイコン: アイコン・ボックスの表示</Primary>
+<Primary>icon: displaying icon box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ウィンドウ: アイコンの動作のカスタマイズ</Primary>
+<Primary>window: customizing icon behavior</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[ウィンドウ] ダイアログ・ボックス</Primary>
+<Primary>Window dialog box</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ダイアログ・ボックス: [ウィンドウ]</Primary>
+<Primary>dialog box: Window</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.165">
-<Para> スタイル・マネージャの [ウィンドウ] コントロールをクリックしてください。
+<Para>Click the Style Manager Window control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.166">
-<Para> ウィンドウ・アイコンをアイコン・ボックス内に表示する場合は、[アイコン・ボックスの使用] を選択してください。
-  または、ウィンドウ・アイコンをワークスペースの背景に直に配置する場合は、[ワークスペースに配置] を選択してください。
+<Para>Select Use Icon Box to have windows icons displayed in an icon box, or
+Place On Workspace to have window icons placed right on the workspace
+backdrop.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.167">
-<Para> [了解] をクリックしてください。
+<Para>Click OK.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.168">
-<Para> ワークスペース・マネージャの再起動を確認されるので、[了解] をクリックしてください。
+<Para>Click OK when asked to Restart the Workspace Manager.
 </Para>
 </ListItem>
 </OrderedList>
 <IndexTerm>
-<Primary>ウィンドウの配置方法</Primary>
+<Primary>placement of window</Primary>
 </IndexTerm>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.169">
-<Para> <XRef Linkend="SMWindowsDialogDE"></Para>
+<Para><XRef Linkend="SMWindowsDialogDE"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.170">
-<Para> <XRef Linkend="WindowFocusBehaviorTA"></Para>
+<Para><XRef Linkend="WindowFocusBehaviorTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.171">
-<Para> <XRef Linkend="WindowBehaviorTA"></Para>
+<Para><XRef Linkend="WindowBehaviorTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="ChangeSessionsTA">
-<Title> 次回のセッションの開始方法を決定するには</Title>
+<Title>To Determine How Your Next Session Starts</Title>
 <IndexTerm>
-<Primary>変更: 次回のセッションの開始方法</Primary>
+<Primary>changing: how your next session starts</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>セッション: 起動の変更</Primary>
+<Primary>session: changing startup</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>起動: セッションの変更</Primary>
+<Primary>startup: changing session</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>[起動] ダイアログ・ボックス</Primary>
+<Primary>Startup dialog box</Primary>
 </IndexTerm>
-<IndexTerm><Primary>ダイアログ・ボックス: [起動]</Primary></IndexTerm>
-<Para>ログアウト時に、デスクトップはユーザの現在のセッションを保存し、次回のログイン時にそれを復旧します。
-ログイン時に別のセッションを開始することを指定するには:
+<IndexTerm><Primary>dialog box: Startup</Primary></IndexTerm>
+<Para>When you log out, the desktop saves your current session and restores it
+the next time you log in. To indicate you want to return to a different
+session at login:
 </Para>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.172">
-<Para> スタイル・マネージャの [起動] コントロールをクリックしてください。
+<Para>Click the Style Manager Startup control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.173">
-<Para> 保存したセッションに戻るには、[ホームセッションを開始] を選択してください。
-  セッションの保存方法を調べるには、<XRef Linkend="SaveSessionsTA">を参照してください。
+<Para>Select Return to Home Session to return to a saved session.
+To find out how to save a session, see <XRef Linkend="SaveSessionsTA">.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.174">
-<Para> [了解] をクリックしてください。</Para>
+<Para>Click OK.</Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.175">
-<Para> <XRef Linkend="SMStartupDialogDE"></Para>
+<Para><XRef Linkend="SMStartupDialogDE"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="SaveSessionsTA">
-<Title>実行中のセッションを保存するには</Title>
+<Title>To Save a Session in Progress</Title>
 <IndexTerm>
-<Primary>セッション: 保存</Primary>
+<Primary>session: saving</Primary>
 </IndexTerm>
-<Para>ログアウト時に、デスクトップはユーザの現在のセッションを保存し、次回のログイン時にそれを復旧します。
-別のセッションを保存するために、ログイン時の状態(ユーザの<GlossTerm>ホーム・セッション</GlossTerm>)に戻ることを選択できます。</Para>
+<Para>When you log out, the desktop saves your current session and restores
+it the next time you log in. To save a different session you can choose
+to return to at login (known as your <GlossTerm>home session</GlossTerm>):</Para>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.176">
-<Para> スタイル・マネージャの [起動] コントロールをクリックしてください。
+<Para>Click the Style Manager Startup control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.177">
-<Para> [ホームセッションを設定] をクリックしてください。</Para>
+<Para>Click Set Home Session.</Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.178">
-<Para> 確認ダイアログ・ボックスが表示されたら、[了解] をクリックしてください。
+<Para>Click OK in the confirmation dialog box that appears.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.179">
-<Para> [起動] ダイアログ・ボックスで、[了解] をクリックしてください。</Para>
+<Para>Click OK in the Startup dialog box.</Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HSTYM.TSKS.item.180">
-<Para> <XRef Linkend="ChangeSessionsTA"></Para>
+<Para><XRef Linkend="ChangeSessionsTA"></Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.181">
-<Para> <XRef Linkend="SMStartupDialogDE"></Para>
+<Para><XRef Linkend="SMStartupDialogDE"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="LogoutPreferenceTA">
-<Title>ログアウト確認設定の変更を設定するには</Title>
+<Title>To Set Your Logout Confirmation Preference</Title>
 <OrderedList>
 <ListItem Id="HSTYM.TSKS.item.182">
-<Para> スタイル・マネージャの [起動] コントロールをクリックしてください。
+<Para>Click the Style Manager Startup control.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.183">
-<Para> [ログアウト確認] の [オン] または [オフ] を選択してください。
-[ログアウト確認] を [オン] に設定した場合は、ログアウト時に必ず確認されます。</Para>
+<Para>Select On or Off for Logout Confirmation.
+If you set Logout Confirmation to On, you will be asked for confirmation
+that you want to log out whenever you log out.</Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.184">
-<Para> 確認ダイアログ・ボックスが表示されたら、[了解] をクリックしてください。
+<Para>Click OK in the confirmation dialog box that appears.
 </Para>
 </ListItem>
 <ListItem Id="HSTYM.TSKS.item.185">
-<Para> [起動] ダイアログ・ボックスで、[了解] をクリックしてください。
+<Para>Click OK in the Startup dialog box.
 </Para>
 </ListItem>
 </OrderedList>

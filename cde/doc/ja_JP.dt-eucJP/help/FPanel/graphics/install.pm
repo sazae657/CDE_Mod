@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: install.pm /main/3 1996/12/18 01:41:50 cde-hit $ */
+/* $XConsortium: fpinstall.pm /main/3 1995/07/18 17:33:51 drk $ */
 /* Designed by the User Interaction Design Group, Hewlett-Packard */
 /* Copyright (c) 1993 Hewlett-Packard */
 static char *dropzone32[]={

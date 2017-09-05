@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: backdrop.pm /main/3 1996/12/18 02:44:05 cde-hit $ */
+/* $XConsortium: BackdrOL.pm /main/3 1995/07/18 17:23:26 drk $ */
 static char * Backdrop [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "64 37 7 1 0 0",

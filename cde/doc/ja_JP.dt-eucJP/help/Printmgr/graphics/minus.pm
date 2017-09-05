@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: minus.pm /main/3 1996/12/18 02:36:18 cde-hit $ */
+/* $XConsortium: minus.pm /main/3 1995/07/18 17:37:14 drk $ */
 static char * minus_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "60 30 17 1 0 0",

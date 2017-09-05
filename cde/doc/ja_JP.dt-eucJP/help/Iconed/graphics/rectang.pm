@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: rectang.pm /main/3 1996/12/18 01:56:58 cde-hit $ */
+/* $XConsortium: IEtRecta.pm /main/3 1995/07/18 17:22:56 drk $ */
 static char * IEtRecta [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "36 36 4 1 0 0",

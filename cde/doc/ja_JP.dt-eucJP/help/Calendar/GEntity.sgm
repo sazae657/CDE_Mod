@@ -1,4 +1,4 @@
-<!-- $XConsortium: GEntity.sgm /main/7 1996/12/18 01:27:37 cde-hit $ -->
+<!-- $XConsortium: GEntity.sgm /main/8 1996/11/19 15:52:30 cdedoc $ -->
 <!entity Calendar-Icon                          SYSTEM "./Calendar/graphics/fpanel.tif" NDATA TIFF>
 <!entity Calendar-Parts-Diag                    SYSTEM "./Calendar/graphics/calparts.tif" NDATA TIFF>
 <!entity Calendar-Month-View                    SYSTEM "./Calendar/graphics/monthvw.tif" NDATA TIFF>

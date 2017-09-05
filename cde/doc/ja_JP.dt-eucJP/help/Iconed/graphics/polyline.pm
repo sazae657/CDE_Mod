@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: polyline.pm /main/3 1996/12/18 01:56:49 cde-hit $ */
+/* $XConsortium: IEtPolyl.pm /main/3 1995/07/18 17:22:48 drk $ */
 static char * IEtPolyl [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "36 36 4 1 0 0",

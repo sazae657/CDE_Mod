@@ -1,4 +1,4 @@
-<!-- $XConsortium: Appendix.sgm /main/3 1996/12/18 01:27:28 cde-hit $ -->
+<!-- $XConsortium: Appendix.sgm /main/5 1996/09/08 22:20:21 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -7,128 +7,130 @@
 <!-- (c) Copyright 1995 FUJITSU LIMITED. -->
 <!-- (c) Copyright 1995 Hitachi. -->
 <Appendix Role="notoc" Id="appt-ed">
-<Title>アポイントエディタ</Title>
+<Title>The Appointment Editor</Title>
 <Para><Graphic Entityref="Calendar-Appt-Ed-Plain" Id="HCAL.MIT.grph.1"></Graphic></Para>
 </Appendix>
 <Appendix Role="notoc" Id="todo-ed">
-<Title>予定表エディタ</Title>
+<Title>The To Do Editor</Title>
 <Para><Graphic Entityref="Calendar-ToDo-Ed" Id="HCAL.MIT.grph.2"></Graphic></Para>
 </Appendix>
 <Appendix Role="notoc" Id="prev-view">
-<Title>前を表示</Title>
+<Title>Previous View</Title>
 <Para><Graphic Entityref="Calendar-Prev-View" Id="HCAL.MIT.grph.3"></Graphic></Para>
 </Appendix>
 <Appendix Role="notoc" Id="today">
-<Title>今日</Title>
+<Title>Today</Title>
 <Para><Graphic Entityref="Calendar-Today" Id="HCAL.MIT.grph.4"></Graphic></Para>
 </Appendix>
 <Appendix Role="notoc" Id="next-view">
-<Title>次を表示</Title>
+<Title>Next View</Title>
 <Para><Graphic Entityref="Calendar-Next-View" Id="HCAL.MIT.grph.5"></Graphic></Para>
 </Appendix>
 <Appendix Role="notoc" Id="day-button">
-<Title>日表示</Title>
+<Title>Day View</Title>
 <Para><Graphic Entityref="Calendar-Day-View" Id="HCAL.MIT.grph.6"></Graphic></Para>
 </Appendix>
 <Appendix Role="notoc" Id="week-button">
-<Title>週表示</Title>
+<Title>Week View</Title>
 <Para><Graphic Entityref="Calendar-Week-View" Id="HCAL.MIT.grph.7"></Graphic></Para>
 </Appendix>
 <Appendix Role="notoc" Id="month-button">
-<Title>月表示</Title>
+<Title>Month View</Title>
 <Para><Graphic Entityref="Calendar-Month-View" Id="HCAL.MIT.grph.8"></Graphic></Para>
 </Appendix>
 <Appendix Role="notoc" Id="year-button">
-<Title>年表示</Title>
+<Title>Year View</Title>
 <Para><Graphic Entityref="Calendar-Year-View" Id="HCAL.MIT.grph.9"></Graphic></Para>
 </Appendix>
 <Appendix Role="notoc" Id="calendar-components">
-<Title>カレンダ・コンポーネント</Title>
+<Title>Calendar Components</Title>
 <IndexTerm>
-<Primary SortAs="かれんだ, めいん・うぃんどう">カレンダ, メイン・ウィンドウ</Primary>
+<Primary SortAs="calendar, main window">Calendar, main window</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>メイン・ウィンドウ</Primary>
+<Primary>main window</Primary>
 </IndexTerm>
 <Para>&newline;&empty;</Para>
 <Graphic Entityref="Calendar-Parts-Diag" Id="HCAL.MIT.fig.1"></Graphic>
 <Para>&newline;&empty;</Para>
 <VariableList>
 <VarListEntry>
-<Term>ツール・バー</Term>
+<Term>Tool bar</Term>
 <ListItem>
-<Para>		アポイントエディタまたは予定表エディタを開くアイコン、およびカレンダ表示を変更するアイコンを格納しています。
+<Para>Contains the icons for opening the Appointment or
+To Do Editors, and changing the Calendar view.
 &newline;&empty;&newline;</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>アポイントエディタ・アイコン</Term>
+<Term>Appt Editor icon</Term>
 <ListItem>
-<Para>	アポイントエディタを開きます。
+<Para>Opens the Appointment Editor.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>To Do Editor icon</Term>
 <ListItem>
-<Para>	予定表エディタを開きます。
+<Para>Opens the To Do Editor.
 &newline;&empty;&newline;</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>前を表示矢印</Term>
+<Term>Previous view arrow</Term>
 <ListItem>
-<Para>		カレンダ表示を前の表示に変更します。(月表示の例:
-			1994 年 11 月 を 1994 年 10 月に変更します。)
+<Para>Changes the Calendar view to the previous view (Month
+view example: from November 1994 to October 1994).
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>今日ボタン</Term>
+<Term>Today button</Term>
 <ListItem>
-<Para>		カレンダ表示を、現在の日を表示するように変更します。
+<Para>Changes the Calendar view to show the current day.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>次を表示矢印</Term>
+<Term>Next view arrow</Term>
 <ListItem>
-<Para>		カレンダ表示を次の表示に変更します。(週表示の例:
-			"1994 年 10 月 17 日、月曜から始まる週" を
-			"1994 年 10 月 24日、月曜から始まる週" に変更します。)
+<Para>Changes the Calendar view to the next view (Week view
+example: from "Week Starting Mon, October 17 1994"
+to "Week Starting Mon, October 24 1994".
 &newline;&empty;&newline;</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>アイコンの表示</Term>
+<Term>View icons</Term>
 <ListItem>
-<Para>	現在の表示を、日、週、月、または年表示に変更するには、アイコンの表示を使用してください。
+<Para>Use the view icons to Change the current view
+to day, week, month, or year view.
 &newline;&empty;&newline;</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>表示ラベル</Term>
+<Term>View label</Term>
 <ListItem>
-<Para>		表示する日、週、月、または年のタイトルです。
+<Para>Title of day, week, month, or year displayed.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>カレンダ表示</Term>
+<Term>Calendar view</Term>
 <ListItem>
-<Para>		カレンダのメイン表示です。
+<Para>Main view of the Calendar.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>メッセージ領域</Term>
+<Term>Message area</Term>
 <ListItem>
-<Para>	カレンダのステータス・メッセージを表示します。
+<Para>Displays status messages from Calendar.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Para>&newline;&empty;</Para>
-<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">前の項目に戻る</Link>
+<Para><Link Type="jump" Linkend="SDL-RESERVED-hometopic">Return to the previous topic.</Link>
 </Para>
 </Appendix>

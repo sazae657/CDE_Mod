@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: mouse.pm /main/3 1996/12/18 02:45:59 cde-hit $ */
+/* $XConsortium: MouseOL.pm /main/3 1995/07/18 17:24:00 drk $ */
 static char * MouseOL [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "64 37 7 1 0 0",

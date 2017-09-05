@@ -1,4 +1,4 @@
-<!-- $XConsortium: Home.sgm /main/3 1996/12/18 01:35:21 cde-hit $ -->
+<!-- $XConsortium: Home.sgm /main/5 1996/09/08 22:49:34 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -7,52 +7,53 @@
 <!-- (c) Copyright 1995 FUJITSU LIMITED. -->
 <!-- (c) Copyright 1995 Hitachi. -->
 <PartIntro Id="SDL-RESERVED-hometopic">
-<Title>[アクション作成] のヘルプ</Title>
-<TitleAbbrev>[アクション作成] のヘルプ</TitleAbbrev>
-<Para>[アクション作成] は、以下を作成するアプリケーションです。
+<Title>Create Action Help</Title>
+<TitleAbbrev>Create Action Help</TitleAbbrev>
+<Para>Create Action is an application for creating:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HCRA.HTOP.item.1">
-<Para> アプリケーションを起動する <GlossTerm>アクション</GlossTerm>
+<Para>An <GlossTerm>action</GlossTerm> to start an application
 </Para>
 </ListItem>
 <ListItem Id="HCRA.HTOP.item.2">
-<Para> アプリケーションのデータ・ファイルの <GlossTerm Role="baseform=データ型">データ型</GlossTerm>
+<Para>A <GlossTerm Role="baseform=data types">data type</GlossTerm> for an application's data files
 </Para>
 </ListItem>
 <ListItem Id="HCRA.HTOP.item.3">
-<Para> アプリケーションのデータ・ファイルを開いたり印刷したりするためのアクション
+<Para>Actions for opening and printing the application's data files
 </Para>
 </ListItem>
 </ItemizedList>
-<Para>[アクション作成] は、シェル・スクリプトの簡易アクションの作成も行えます。</Para>
+<Para>Create Action is also useful for creating simple actions for shell scripts.</Para>
 <Procedure>
-<Title>[アクション作成] を実行するには</Title>
+<Title>To Run Create Action</Title>
 <IndexTerm>
-<Primary>アクション作成:起動</Primary>
+<Primary>Create Action:starting</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>アクション:作成</Primary>
+<Primary>action:creating</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>データ型:作成</Primary>
+<Primary>data type:creating</Primary>
 </IndexTerm>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HCRA.HTOP.item.4">
-<Para> アプリケーション・マネージャの [Desktop_Apps] アプリケーション・グループを開き、[アクション作成] をダブルクリックしてください。</Para>
+<Para>Open the Desktop_Apps application group in the Application Manager and
+double-click Create Action.</Para>
 <Graphic Entityref="CACreateActionIcon" Id="HCRA.HTOP.fig.1"></Graphic>
 </ListItem>
 </ItemizedList>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HCRA.HTOP.item.5">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HCRA.HTOP.item.6">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 <ListItem Id="HCRA.HTOP.item.7">
-<Para> <XRef Linkend="TOC"></Para>
+<Para><XRef Linkend="TOC"></Para>
 </ListItem>
 </ItemizedList>
 </Step>

@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: fphelp.pm /main/3 1996/12/18 01:40:53 cde-hit $ */
+/* $XConsortium: fphelpfp.pm /main/3 1995/07/18 17:33:10 drk $ */
 static char * Ffphelp [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "32 32 16 1 0 0",

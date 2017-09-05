@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: pjicon.pm /main/3 1996/12/18 02:36:31 cde-hit $ */
+/* $XConsortium: DtPrtjb.m.pm /main/3 1995/07/18 17:36:48 drk $ */
 static char * prtjob_m_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "32 32 12 1 0 0",

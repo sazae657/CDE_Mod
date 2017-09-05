@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: prticon.pm /main/3 1996/12/18 02:38:18 cde-hit $ */
+/* $XConsortium: DtPrtpr.m.pm /main/3 1995/07/18 17:36:58 drk $ */
 static char * Fprnt_m_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "32 32 13 1 0 0",

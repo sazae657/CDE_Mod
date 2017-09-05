@@ -1,4 +1,4 @@
-<!-- $XConsortium: Home.sgm /main/3 1996/12/18 01:07:46 cde-hit $ -->
+<!-- $XConsortium: Home.sgm /main/6 1996/09/08 22:00:27 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,55 +9,70 @@
 <!--	Help Volume: Application Builder
 	File Name: hometopic -->
 <PartIntro Id="SDL-RESERVED-hometopic">
-<Title>  アプリケーション・ビルダのヘルプ</Title>
+<Title>Application Builder Help</Title>
 <Para>&newline;&empty;</Para>
-<Para>アプリケーション・ビルダは、グラフィカル・ユーザ・インタフェースを構築するための使いやすいツールです。</Para>
+<Para>Application Builder (also called App Builder) is an
+easy-to-use tool for building graphical user interfaces.</Para>
 <Para>&newline;&empty;
 </Para>
 <Graphic Entityref="MainWindowFig" Id="H.HT.fig.1"></Graphic>
 <Procedure>
-<Title> &appb; を開くには</Title>
+<Title>To Open &appb;</Title>
 <Step>
-<Para><Anchor Id="ABOpenStart"> 
+<Para><Anchor Id="ABOpenStart">
 &newline; &empty;
-<Graphic Entityref="ABiconFig" Id="H.HT.grph.1"></Graphic> アプリケーション・ビルダ・アイコン</Para>
-<Para>&newline; &empty; このアイコンがデスクトップ上に表示されている場合は、ダブルクリックして、アプリケーション・ビルダの既存のセッションを復元してください。
-アプリケーション・ビルダがフロントパネル上にインストールされている場合は、[アプリケーション・ビルダ] アイコンをクリックして、新規セッションを開いてください。
-[アプリケーション・ビルダ] アイコンが、デスクトップ上およびフロントパネル上にない場合は、<XRef Linkend="ABStartAB"> を参照してください。</Para>
+<Graphic Entityref="ABiconFig" Id="H.HT.grph.1"></Graphic> Application Builder Icon</Para>
+<Para>&newline; &empty; If this icon appears on the desktop, double-click on
+it to restore an existing session of App Builder. If App Builder has
+been installed on the Front Panel, click on the App Builder icon to
+open a new session. See <XRef Linkend="ABStartAB"> if the App Builder icon is
+not on the desktop or on the Front Panel.</Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title> アプリケーション・ビルダが実行する内容</Title>
+<Title>What App Builder Does</Title>
 <Step>
-<Para>アプリケーション・ビルダは、開発者およびその他の人が、共通デスクトップ環境にうまく統合するアプリケーションを構築するための簡単な方法を提供します。
-アプリケーション・ビルダは、アプリケーションのユーザ・インタフェースに Motif オブジェクトを組み込むための補助と、ToolTalk メッセージ・サービス、ドラッグ＆ドロップなどのデスクトップ統合サービスをサポートするルーチンに対する呼び出しの生成という 2 種類の 基本サービスを提供します。</Para>
-<Para>重要なサポートには、以下のものがあります。
+<Para>Application Builder (also called App Builder) provides a simple method
+for developers and others to construct applications that integrate
+well into the Common Desktop Environment. It provides two basic
+services: aid in assembling Motif objects into the desired application
+user interface, and generation of appropriate calls to the routines
+that support desktop integration services (ToolTalk messaging, drag
+and drop, for example).</Para>
+<Para>Key supported tasks include:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="H.HT.item.1">
-<Para> アプリケーション用ユーザ・インタフェースの対話型配置。
-&ProductName; Motif ツールキットのオブジェクトのコレクションから、部品単位で構築します。
- </Para>
+<Para>Interactive layout of the user interface for an application,
+constructing it piece-by-piece from a collection of objects from the
+&ProductName; Motif toolkit.
+</Para>
 </ListItem>
 <ListItem Id="H.HT.item.2">
-<Para> アプリケーション・インタフェース動作の要素を提供するオブジェクト間の接続の定義と、接続を試験できる限定テスト・モード。
- </Para>
+<Para>Definition of connections between objects to provide elements
+of application interface behavior, and a limited test mode that allows
+connections to be exercised.
+</Para>
 </ListItem>
 <ListItem Id="H.HT.item.3">
-<Para> アプリケーションと &ProductName; デスクトップ・サービス間に必要な連結の対話型仕様。
- </Para>
+<Para>Interactive specification of the interconnections desired
+between the application and &ProductName; desktop services.
+</Para>
 </ListItem>
 <ListItem Id="H.HT.item.4">
-<Para> アプリケーション・ビルダを使用する、以前に作成したアプリケーションの編集。
- </Para>
+<Para>Editing of applications previously created using App Builder.
+</Para>
 </ListItem>
 <ListItem Id="H.HT.item.5">
-<Para> アプリケーション用の C 言語ソース・コードと、関連プロジェクト・ファイルの生成。
- </Para>
+<Para>Generation of C language source code and associated project
+files for the application.
+</Para>
 </ListItem>
 <ListItem Id="H.HT.item.6">
-<Para> アプリケーション・ビルダ内でのアプリケーションの作成 (コンパイル)と起動。開発者が、構築／実行／デバッグ・サイクルを、共通の環境で実行できるようにします。
-これは、アプリケーション・ビルダを終了し再起動しなくてもできます。</Para>
+<Para>Generation (compilation) and invocation of the application
+from within Application Builder, allowing you to execute
+the build/run/debug cycle from a common environment (without
+having to exit and restart App Builder)</Para>
 </ListItem>
 </ItemizedList>
 <!-- EOF -->

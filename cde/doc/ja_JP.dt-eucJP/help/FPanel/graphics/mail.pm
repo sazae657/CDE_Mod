@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: mail.pm /main/3 1996/12/18 01:42:17 cde-hit $ */
+/* $XConsortium: fpmail.pm /main/3 1995/07/18 17:34:17 drk $ */
 /*********************************************************************
 *  (c) Copyright 1993, 1994 Hewlett-Packard Company	
 *  (c) Copyright 1993, 1994 International Business Machines Corp.

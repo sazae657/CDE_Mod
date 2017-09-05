@@ -1,4 +1,4 @@
-<!-- $XConsortium: TOC.sgm /main/3 1996/12/18 02:26:32 cde-hit $ -->
+<!-- $XConsortium: TOC.sgm /main/4 1996/06/19 16:16:55 drk $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,200 +9,200 @@
 <!-- Help volume: Mailer -->
 <!-- File name: TOC -->
 <Chapter Id="TOC">
-<Title>目次</Title>
+<Title>Table of Contents</Title>
 <Procedure>
-<Title> メール・プログラムの使い方</Title>
+<Title>Mailer Tasks</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HMLR.TOC.item.1">
-<Para> <XRef Linkend="ReadAMessageTA"></Para>
+<Para><XRef Linkend="ReadAMessageTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.2">
-<Para> <XRef Linkend="SortAMessageTA"></Para>
+<Para><XRef Linkend="SortAMessageTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.3">
-<Para> <XRef Linkend="FindingMessagesTA"></Para>
+<Para><XRef Linkend="FindingMessagesTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.4">
-<Para> <XRef Linkend="SavingMessagesTA"></Para>
+<Para><XRef Linkend="SavingMessagesTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.5">
-<Para> <XRef Linkend="OpeningAMailboxTA"></Para>
+<Para><XRef Linkend="OpeningAMailboxTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.6">
-<Para> <XRef Linkend="CloseMailboxTA"></Para>
+<Para><XRef Linkend="CloseMailboxTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.7">
-<Para> <XRef Linkend="ComposingMessagesTA"></Para>
+<Para><XRef Linkend="ComposingMessagesTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.8">
-<Para> <XRef Linkend="ReplyingMessagesTA"></Para>
+<Para><XRef Linkend="ReplyingMessagesTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.9">
-<Para> <XRef Linkend="ForwardingMessagesTA"></Para>
+<Para><XRef Linkend="ForwardingMessagesTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.10">
-<Para> <XRef Linkend="IncludeAllTA"></Para>
+<Para><XRef Linkend="IncludeAllTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.11">
-<Para> <XRef Linkend="IncludeTextTA"></Para>
+<Para><XRef Linkend="IncludeTextTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.12">
-<Para> <XRef Linkend="AutomaticSendMailTA"></Para>
+<Para><XRef Linkend="AutomaticSendMailTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.13">
-<Para> <XRef Linkend="PrintingMessagesTA"></Para>
+<Para><XRef Linkend="PrintingMessagesTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.14">
-<Para> <XRef Linkend="OpenAttachmentsTA"></Para>
+<Para><XRef Linkend="OpenAttachmentsTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.15">
-<Para> <XRef Linkend="SendingAttachmentsTA"></Para>
+<Para><XRef Linkend="SendingAttachmentsTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.16">
-<Para> <XRef Linkend="MovingAttachmentsTA"></Para>
+<Para><XRef Linkend="MovingAttachmentsTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.17">
-<Para> <XRef Linkend="AttachPrintTA"></Para>
+<Para><XRef Linkend="AttachPrintTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.18">
-<Para> <XRef Linkend="CreatingMailboxsTA"></Para>
+<Para><XRef Linkend="CreatingMailboxsTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.19">
-<Para> <XRef Linkend="FilingMessagesTA"></Para>
+<Para><XRef Linkend="FilingMessagesTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.20">
-<Para> <XRef Linkend="DeleteAMessageTA"></Para>
+<Para><XRef Linkend="DeleteAMessageTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.21">
-<Para> <XRef Linkend="UndeletingMessageTA"></Para>
+<Para><XRef Linkend="UndeletingMessageTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.22">
-<Para> <XRef Linkend="EmptyingMailboxTA"></Para>
+<Para><XRef Linkend="EmptyingMailboxTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.23">
-<Para> <XRef Linkend="EditExistingTA"></Para>
+<Para><XRef Linkend="EditExistingTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.24">
-<Para> <XRef Linkend="FindTextTA"></Para>
+<Para><XRef Linkend="FindTextTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.25">
-<Para> <XRef Linkend="SpellCheckTA"></Para>
+<Para><XRef Linkend="SpellCheckTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.26">
-<Para> <XRef Linkend="SettingPropertiesTA"></Para>
+<Para><XRef Linkend="SettingPropertiesTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.27">
-<Para> <XRef Linkend="MailDragAndDropTA"></Para>
+<Para><XRef Linkend="MailDragAndDropTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.28">
-<Para> <XRef Linkend="CreateAliasTA"></Para>
+<Para><XRef Linkend="CreateAliasTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.29">
-<Para> <XRef Linkend="MailTemplatesTA"></Para>
+<Para><XRef Linkend="MailTemplatesTA"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.30">
-<Para> <XRef Linkend="SendFormatTA"></Para>
+<Para><XRef Linkend="SendFormatTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title> メール・プログラムのリファレンス</Title>
+<Title>Mailer Reference</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HMLR.TOC.item.31">
-<Para> <XRef Linkend="MMailboxMenu"></Para>
+<Para><XRef Linkend="MMailboxMenu"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.32">
-<Para> <XRef Linkend="MMsgMenu"></Para>
+<Para><XRef Linkend="MMsgMenu"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.33">
-<Para> <XRef Linkend="MEditMenu"></Para>
+<Para><XRef Linkend="MEditMenu"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.34">
-<Para> <XRef Linkend="MAttachMenu"></Para>
+<Para><XRef Linkend="MAttachMenu"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.35">
-<Para> <XRef Linkend="MViewMenu"></Para>
+<Para><XRef Linkend="MViewMenu"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.36">
-<Para> <XRef Linkend="MComposeMenu"></Para>
+<Para><XRef Linkend="MComposeMenu"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.37">
-<Para> <XRef Linkend="MMoveMenu"></Para>
+<Para><XRef Linkend="MMoveMenu"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.38">
-<Para> <XRef Linkend="MMailboxButton"></Para>
+<Para><XRef Linkend="MMailboxButton"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.39">
-<Para> <XRef Linkend="MComposeButton"></Para>
+<Para><XRef Linkend="MComposeButton"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.40">
-<Para> <XRef Linkend="MComposeFileMenu"></Para>
+<Para><XRef Linkend="MComposeFileMenu"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.41">
-<Para> <XRef Linkend="MComposeEditMenu"></Para>
+<Para><XRef Linkend="MComposeEditMenu"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.42">
-<Para> <XRef Linkend="MComposeAttachMenu"></Para>
+<Para><XRef Linkend="MComposeAttachMenu"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.43">
-<Para> <XRef Linkend="MComposeFormatMenu"></Para>
+<Para><XRef Linkend="MComposeFormatMenu"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.44">
-<Para> <XRef Linkend="MMsgList"></Para>
+<Para><XRef Linkend="MMsgList"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.45">
-<Para> <XRef Linkend="MHeader"></Para>
+<Para><XRef Linkend="MHeader"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.46">
-<Para> <XRef Linkend="MComposeWindow"></Para>
+<Para><XRef Linkend="MComposeWindow"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.47">
-<Para> <XRef Linkend="MailerMenuAccelerators"></Para>
+<Para><XRef Linkend="MailerMenuAccelerators"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.48">
-<Para> <XRef Linkend="MFileSelection"></Para>
+<Para><XRef Linkend="MFileSelection"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.49">
-<Para> <XRef Linkend="MessageHeaderListOptions"></Para>
+<Para><XRef Linkend="MessageHeaderListOptions"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.50">
-<Para> <XRef Linkend="MessageViewOptions"></Para>
+<Para><XRef Linkend="MessageViewOptions"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.51">
-<Para> <XRef Linkend="ComposeWindowOptions"></Para>
+<Para><XRef Linkend="ComposeWindowOptions"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.52">
-<Para> <XRef Linkend="MessageFilingOptions"></Para>
+<Para><XRef Linkend="MessageFilingOptions"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.53">
-<Para> <XRef Linkend="VacationMailOptions"></Para>
+<Para><XRef Linkend="VacationMailOptions"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.54">
-<Para> <XRef Linkend="MailTemplateOptions"></Para>
+<Para><XRef Linkend="MailTemplateOptions"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.55">
-<Para> <XRef Linkend="MailAliasOptions"></Para>
+<Para><XRef Linkend="MailAliasOptions"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.56">
-<Para> <XRef Linkend="AdvancedMailOptions"></Para>
+<Para><XRef Linkend="AdvancedMailOptions"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.57">
-<Para> <XRef Linkend="FindAMessage"></Para>
+<Para><XRef Linkend="FindAMessage"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.58">
-<Para> <XRef Linkend="MoveOtherMailboxes"></Para>
+<Para><XRef Linkend="MoveOtherMailboxes"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.59">
-<Para> <XRef Linkend="UndeleteList"></Para>
+<Para><XRef Linkend="UndeleteList"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.60">
-<Para> <XRef Linkend="RenameAnAttachment"></Para>
+<Para><XRef Linkend="RenameAnAttachment"></Para>
 </ListItem>
 <ListItem Id="HMLR.TOC.item.61">
-<Para> <XRef Linkend="FormatSettings"></Para>
+<Para><XRef Linkend="FormatSettings"></Para>
 </ListItem>
 </ItemizedList>
 <!-- EOF: TOC -->

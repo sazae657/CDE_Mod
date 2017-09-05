@@ -1,4 +1,4 @@
-<!-- $XConsortium: Keyboard.sgm /main/4 1996/12/18 02:12:13 cde-hit $ -->
+<!-- $XConsortium: Keyboard.sgm /main/8 1996/09/08 22:28:11 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -7,197 +7,202 @@
 <!-- (c) Copyright 1995 FUJITSU LIMITED. -->
 <!-- (c) Copyright 1995 Hitachi. -->
 <Chapter Id="DesktopKeyboardNav">
-<Title>デスクトップのキーボード・ショートカット</Title>
+<Title>Keyboard Shortcuts for the Desktop</Title>
 <IndexTerm>
-<Primary>キーボード・ショートカット</Primary>
+<Primary>keyboard shortcuts</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HIMGR.KEYB.item.1">
-<Para> <XRef Linkend="WindowKBNavTA"></Para>
+<Para><XRef Linkend="WindowKBNavTA"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.2">
-<Para> <XRef Linkend="MenuKBNavTA"></Para>
+<Para><XRef Linkend="MenuKBNavTA"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.3">
-<Para> <XRef Linkend="FPanelKBNavTA"></Para>
+<Para><XRef Linkend="FPanelKBNavTA"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.4">
-<Para> <XRef Linkend="WorkspaceKBNavTA"></Para>
+<Para><XRef Linkend="WorkspaceKBNavTA"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.5">
-<Para> <XRef Linkend="HelpKBNavTA"></Para>
+<Para><XRef Linkend="HelpKBNavTA"></Para>
 </ListItem>
 </ItemizedList>
-<Para>キーボード・ショートカットは、ウィンドウやコントロールの移動および選択、メニューの選択、ワークスペースのナビゲートなどのデスクトップ作業を、マウスを使用しないで実現する方法を提供します。</Para>
-<Para>デスクトップ上をナビゲードするのにキーボードを使用する場合は、以下のこと
-に注意してください。
+<Para>Keyboard shortcuts offer a way to accomplish desktop tasks such
+as moving and selecting windows and controls, choosing menus, and
+navigating in workspaces without the use of your mouse.</Para>
+<Para>When you use the keyboard to navigate on the desktop, note that:
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.6">
-<Para> キーボードによっては、[Alt] キーは、[Extend char] キーです。
+<Para>Alt is the same as Extend char on some keyboards.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.7">
-<Para> キーボードによっては、[Return] キーは [Enter] キーです。
+<Para>Return is the same as Enter on some keyboards.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.8">
-<Para> スタイル・マネージャにおける [ウィンドウの動作] 設定は、"クリックでウィンドウをアクティブに" (デフォルト) にしてください。</Para>
-<Para>詳細は、スタイル・マネージャのヘルプ・ボリュームの
-  <OLink Type="JumpNewView" LocalInfo="Stylemgr WindowFocusBehaviorTA">ウィンドウ
-  の動作を変更するには</OLink> を参照してください。
+<Para>In Style Manager, the Window Behavior setting must be "Click In Window
+To Make Active" (this is the default).</Para>
+<Para>For more information, see
+<OLink Type="JumpNewView" LocalInfo="Stylemgr WindowFocusBehaviorTA"> To Change
+Window Behavior</OLink> in the Style Manager help volume.
 </Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>キーボード・フォーカスと強調表示</Title>
+<Title>Keyboard Focus and the Highlight</Title>
 <IndexTerm>
-<Primary>強調表示</Primary>
+<Primary>highlight</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>キーボード・フォーカス</Primary>
+<Primary>keyboard focus</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>タブ・グループ</Primary>
+<Primary>tab group</Primary>
 </IndexTerm>
 <Step>
 <Para>&newline;&empty;
-キーボード・フォーカスは、ウィンドウ、メニュー、コントロールのどの要素が
-選択され、入力に応答するかを表示するのに、<Emphasis>強調表示</Emphasis>を使用します。
-選択したメニュー項目や、ボタンなどのコントロールを起動するには、[Return] キーを押してください。</Para>
-<Para>ウィンドウとダイアログ・ボックスでは、<Emphasis>タブ・グループ</Emphasis>間で
-キーボード・フォーカスを移動できます。タブ・グループは、ボタンのセットなどの
-関連するコントロールの集合です。</Para>
-<Para><InlineGraphic Remap="graphic" Role="left" Entityref="KBFocus"></InlineGraphic>&newline;&empty;&newline;ダイアログ・ボックスのこの部分は、[了解] ボタンのキーボード・フォーカスを
-表示します。&newline;&newline;[了解]、[取消し]、[ヘルプ] ボタンは、タブ・グループです。</Para>
+Keyboard focus uses the <Symbol Role="Variable">highlight</Symbol> to show you which
+element of a window, menu, or control is selected and will respond to
+your input. To activate a selected menu item or control (such as a button),
+press Return.</Para>
+<Para>In windows and dialog boxes, you can move the keyboard focus among
+<Emphasis>tab groups</Emphasis>. A tab group is a collection of related
+controls, such as a set of buttons.</Para>
+<Para><InlineGraphic Remap="graphic" Role="left" Entityref="KBFocus"></InlineGraphic>&newline;&empty;
+&newline;This portion of a dialog box shows the keyboard focus on the OK
+button.&newline;&newline;The OK, Cancel, and Help buttons are a tab group.</Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>キーボード・フォーカスの移動</Title>
+<Title>Moving the Keyboard Focus</Title>
 <Step>
 <Para><Anchor Id="MovingKBFocus"><IndexTerm>
-<Primary>キーボード・フォーカスの移動</Primary>
+<Primary>moving the keyboard focus</Primary>
 </IndexTerm>
 &newline;&empty;
-強調表示で示されるキーボード・フォーカスを移動するには</Para>
+To move the keyboard focus, as shown by the highlight:</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HIMGR.KEYB.item.9">
-<Para> ウィンドウ内、ダイアログ・ボックス内、およびフロントパネル内の場合
-  </Para>
+<Para>Within a window, dialog box, or the Front Panel
+</Para>
 <VariableList>
 <VarListEntry>
-<Term><Emphasis Role="heading">押すキー </Emphasis></Term>
+<Term><Emphasis Role="heading">Press</Emphasis></Term>
 <ListItem>
-<Para><Emphasis Role="heading"> 移動先</Emphasis></Para>
+<Para><Emphasis Role="heading">To move to</Emphasis></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> Tab </Term>
+<Term>Tab</Term>
 <ListItem>
-<Para> 次のタブ・グループ
-  </Para>
+<Para>The next tab group
+</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> Shift+Tab </Term>
+<Term>Shift+Tab</Term>
 <ListItem>
-<Para> 前のタブ・グループ
-  </Para>
+<Para>The previous tab group
+</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>↓</Term>
+<Term>Down Arrow</Term>
 <ListItem>
-<Para> タブ・グループ内の次のコントロール
-  </Para>
+<Para>The next control in the tab group
+</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>↑</Term>
+<Term>Up Arrow</Term>
 <ListItem>
-<Para> タブ・グループ内の前のコントロール
-  </Para>
+<Para>The previous control in a tab group
+</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.10">
-<Para> ワークスペース内の場合
-  </Para>
+<Para>Within a workspace
+</Para>
 <VariableList>
 <VarListEntry>
-<Term><Emphasis Role="heading">押すキー </Emphasis></Term>
+<Term><Emphasis Role="heading">Press</Emphasis></Term>
 <ListItem>
-<Para><Emphasis Role="heading"> 移動先</Emphasis></Para>
+<Para><Emphasis Role="heading">To move to</Emphasis></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> Alt+Tab または Alt+Esc </Term>
+<Term>Alt+Tab or Alt+Esc</Term>
 <ListItem>
-<Para> 次のウィンドウかアイコン
-  </Para>
+<Para>The next window or icon
+</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> Shift +Alt+Tab </Term>
+<Term>Shift+Alt+Tab</Term>
 <ListItem>
-<Para> 前のウィンドウかアイコン
-  </Para>
+<Para>The previous window or icon
+</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> Alt+↑</Term>
+<Term>Alt+Up Arrow</Term>
 <ListItem>
-<Para> ウィンドウの重なりの一番下のウィンドウ (一番上に変更)
-  </Para>
+<Para>The bottom window in a stack of windows (bringing it forward)
+</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> Alt+↓</Term>
+<Term>Alt+Down Arrow</Term>
 <ListItem>
-<Para> ウィンドウの重なりの一番下
-  </Para>
+<Para>The bottom of the window stack
+</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> Alt+F6 </Term>
+<Term>Alt+F6</Term>
 <ListItem>
-<Para> アプリケーションに属するか、フロントパネルとサブパネルの間の
-   次のウィンドウ、</Para>
+<Para>The next window belonging to an application, or between
+the Front Panel and a subpanel
+</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> Shift+Alt+F6 </Term>
+<Term>Shift+Alt+F6</Term>
 <ListItem>
-<Para> アプリケーションに属するか、フロントパネルとサブパネル
-   の間の前のウィンドウ
-  </Para>
+<Para>The previous window belonging to an application, or
+between the Front Panel and a subpanel
+</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.11">
-<Para> メニュー内の場合
-  </Para>
+<Para>Within a menu
+</Para>
 <VariableList>
 <VarListEntry>
-<Term><Emphasis Role="heading">押すキー </Emphasis></Term>
+<Term><Emphasis Role="heading">Press</Emphasis></Term>
 <ListItem>
-<Para><Emphasis Role="heading"> 移動先</Emphasis></Para>
+<Para><Emphasis Role="heading">To move to</Emphasis></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ↓ </Term>
+<Term>Down Arrow</Term>
 <ListItem>
-<Para> 次のメニュー項目
-  </Para>
+<Para>The next menu item
+</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term> ↑ </Term>
+<Term>Up Arrow</Term>
 <ListItem>
-<Para> 前のメニュー項目
-  </Para>
+<Para>The previous menu item
+</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
@@ -206,145 +211,141 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.12">
-<Para> <XRef Linkend="ManagingWindowsSI"></Para>
+<Para><XRef Linkend="ManagingWindowsSI"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.13">
-<Para> <XRef Linkend="SettingUpOrganizingWorkspacesSI"></Para>
+<Para><XRef Linkend="SettingUpOrganizingWorkspacesSI"></Para>
 </ListItem>
 </ItemizedList>
 <!-- WINDOW KEYBOARD NAVIGATION TASKS -->
 </Step>
 </Procedure>
 <Sect1 Id="WindowKBNavTA">
-<Title>ウィンドウのキーボード・ナビゲーション</Title>
+<Title>Window Keyboard Navigation</Title>
 <IndexTerm>
-<Primary>キーボード: ウィンドウ・ナビゲーション</Primary>
+<Primary>keyboard: window navigation</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.14">
-<Para> <XRef Linkend="ToOpenAndCloseAWindowKB"></Para>
+<Para><XRef Linkend="ToOpenAndCloseAWindowKB"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.15">
-<Para> <XRef Linkend="ToSelectAWindowOrIconKB"></Para>
+<Para><XRef Linkend="ToSelectAWindowOrIconKB"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.16">
-<Para> <XRef Linkend="ToMinimizeAWindowKB"></Para>
+<Para><XRef Linkend="ToMinimizeAWindowKB"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.17">
-<Para> <XRef Linkend="ToRestoreAWindowKB"></Para>
+<Para><XRef Linkend="ToRestoreAWindowKB"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.18">
-<Para> <XRef Linkend="ToMoveAWindowIconKB"></Para>
+<Para><XRef Linkend="ToMoveAWindowIconKB"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.19">
-<Para> <XRef Linkend="ToResizeAWindowKB"></Para>
+<Para><XRef Linkend="ToResizeAWindowKB"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.20">
-<Para> <XRef Linkend="ToScrollAWindowKB">
+<Para><XRef Linkend="ToScrollAWindowKB">
 <!-- 	<item> <xref ToSelectTextKB>
 	<item> CUT, COPY, PASTE?
 --></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.21">
-<Para> <XRef Linkend="ToChooseAListItemKB"></Para>
+<Para><XRef Linkend="ToChooseAListItemKB"></Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.22">
-<Para> <XRef Linkend="ManagingWindowsSI"></Para>
+<Para><XRef Linkend="ManagingWindowsSI"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Sect2 Id="ToOpenAndCloseAWindowKB">
-<Title>ウィンドウを開く、および閉じるには</Title>
+<Title>To Open and Close a Window</Title>
 <IndexTerm>
-<Primary>開く: ウィンドウ, キーボードで</Primary>
+<Primary>opening: window, with keyboard</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>閉じる: ウィンドウ, キーボードで</Primary>
+<Primary>closing: window, with keyboard</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ウィンドウ: 開く, キーボードで</Primary>
+<Primary>window: opening, with keyboard</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ウィンドウ: 閉じる, キーボードで</Primary>
+<Primary>window: closing, with keyboard</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>キーボード: ウィンドウを開く、および閉じる</Primary>
+<Primary>keyboard: opening and closing windows</Primary>
 </IndexTerm>
 <Procedure>
-<Title>アプリケーション・ウィンドウを開くには</Title>
+<Title>To Open an Application Window</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HIMGR.KEYB.item.23">
-<Para> フロントパネルで
-  </Para>
+<Para>From the Front Panel:
+</Para>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.24">
-<Para> <Keycap>Alt] + [Tab</Keycap> キーを押して、キーボード・フォーカスをフロントパネル
-  に移動してください。
-  </Para>
+<Para>Press Alt+Tab to move the keyboard focus to the Front Panel.
+</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.25">
-<Para> 矢印キーを押して、フロントパネルの強調表示を移動して、コントロールを
-  選択してください。
-  </Para>
+<Para>Press the arrow keys to move the highlight within the Front Panel
+and select a control.
+</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.26">
-<Para> [Return] キーを押して、コントロールを選択し、アプリケーションの
-  ウィンドウを開いてください。
-  </Para>
+<Para>Press Return to choose the control and open the application's
+window.
+</Para>
 </ListItem>
 </OrderedList>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.27">
-<Para> アプリケーション・マネージャで
-  </Para>
+<Para>From Application Manager:
+</Para>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.28">
-<Para> 上記のフロントパネル・コントロールを選択して、アプリケーション・
-  マネージャのウィンドウを開いてください。
-  </Para>
+<Para>Open the Application Manager window by choosing its Front
+Panel control as described above.
+</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.29">
-<Para> 矢印キーを押して、アプリケーション・マネージャのウィンドウ内の
-  アプリケーション・グループのアイコンに、強調表示を移動してください。
-  </Para>
+<Para>Press the arrow keys to move the highlight to an application group
+icon within the Application Manager window.
+</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.30">
-<Para> [Return] キーを 2 回押して、アプリケーション・グループを開いてく
-  ださい。
-  </Para>
+<Para>Press Return twice to open the application group.
+</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.31">
-<Para> 矢印キーを押して、アプリケーションまたはアクション・アイコンに強
-  調表示を移動後、[Return] キーを 2 回押して、アプリケーションを起動して
-  ください。
-  </Para>
+<Para>Press the arrow keys to move the highlight to an application
+or action icon, then press Return twice to start the application.
+</Para>
 </ListItem>
 </OrderedList>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.32">
-<Para> 端末エミュレータ・ウィンドウで
-  </Para>
+<Para>From a Terminal Emulator window:
+</Para>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.33">
-<Para> 上記のフロントパネル・コントロールを選択して、端末エミュレータ・
-  ウィンドウを開いてください。
-  </Para>
+<Para>Open a terminal emulator window by choosing its Front Panel
+control as described above.
+</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.34">
-<Para> ウィンドウが開いたら、アプリケーションを起動するコマンドを入力し
-  てください。
-  </Para>
+<Para>When the window opens, type the command that starts the application.
+</Para>
 </ListItem>
 </OrderedList>
 </ListItem>
@@ -352,41 +353,41 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>ウィンドウを閉じるには</Title>
+<Title>To Close a Window</Title>
 <Step>
-<Para>ウィンドウを閉じると、それをすべてのワークスペースから削除します。
+<Para>Closing a window removes it from all workspaces.
 </Para>
 <Caution>
-<Para>アプリケーション・ウィンドウを閉じる前に、作業を保存してください。
+<Para>Before closing an application window, save your work.
 </Para>
 </Caution>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.35">
-<Para> <Keycap>Alt] + [Tab</Keycap> キーを押して、閉じるウィンドウに、強調表示を移動してください。</Para>
+<Para>Press Alt+Tab to move the highlight to the window
+you want to close.</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.36">
-<Para> <Keycap>Alt] + [F4</Keycap> キーを押してください。
+<Para>Press Alt+F4.
 </Para>
 </ListItem>
 </OrderedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.37">
-<Para> <Link Type="jump" Linkend="MovingKBFocus">キーボード・フォーカスの移動</Link>
+<Para><Link Type="jump" Linkend="MovingKBFocus">Moving the Keyboard Focus</Link>
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.38">
-<Para> アプリケーション・マネージャのヘルプ・ボリュームの
-<OLink Type="JumpNewView" LocalInfo="Appmanager StartApplicationAppMgr">アプリケーションを起動するには</OLink>、を参照してください。
+<Para><OLink Type="JumpNewView" LocalInfo="Appmanager StartApplicationAppMgr">To Start an Application</OLink> in the Application Manager help volume
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.39">
-<Para> 端末エミュレータのヘルプ・ボリュームの
-<OLink Type="JumpNewView" LocalInfo="Terminal XTRunningClientsTA">dtterm ウィンドウでアプリケーションを起動するには</OLink>、を参照してください。
+<Para><OLink Type="JumpNewView" LocalInfo="Terminal XTRunningClientsTA">To Start Applications in a dtterm Window</OLink> in the Terminal Emulator
+help volume
 </Para>
 </ListItem>
 </ItemizedList>
@@ -394,275 +395,268 @@
 </Procedure>
 </Sect2>
 <Sect2 Id="ToSelectAWindowOrIconKB">
-<Title>ウィンドウおよびアイコンを選択するには</Title>
+<Title>To Select a Window or Icon</Title>
 <IndexTerm>
-<Primary>選択: ウィンドウ, キーボードで</Primary>
+<Primary>selecting: windows, with keyboard</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>キーボード: ウィンドウおよびアイコンの選択</Primary>
+<Primary>keyboard: selecting windows and icons</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ウィンドウ: キーボードで選択</Primary>
+<Primary>window: selecting keyboard</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HIMGR.KEYB.item.40">
-<Para> <Keycap>Alt] + [Tab</Keycap> キーを押して、選択するウィンドウまたはアイコンに、強調表示を移動してください。</Para>
-<Para>ウィンドウまたはアイコンが選択されると、境界の色が変わり、アクティブであり、マウスまたはキーボードからに入力を受け入れることを示します。
+<Para>Press Alt+Tab to move the highlight to the window or icon
+you want to select.</Para>
+<Para>When a window or icon is selected, its border changes color to show that it
+is active and will receive input from the mouse or keyboard.
 </Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.41">
-<Para> <Link Type="jump" Linkend="MovingKBFocus">キーボード・フォーカスの移動</Link>
+<Para><Link Type="jump" Linkend="MovingKBFocus">Moving the Keyboard Focus</Link>
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.42">
-<Para> <XRef Linkend="ToMinimizeAWindowKB"> 
+<Para><XRef Linkend="ToMinimizeAWindowKB">
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.43">
-<Para> <XRef Linkend="ToRestoreAWindowKB"></Para>
+<Para><XRef Linkend="ToRestoreAWindowKB"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.44">
-<Para> <XRef Linkend="WorkspaceKBNavTA"></Para>
+<Para><XRef Linkend="WorkspaceKBNavTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect2>
 <Sect2 Id="ToMinimizeAWindowKB">
-<Title>ウィンドウをアイコンに変えるには(アイコン化)</Title>
+<Title>To Turn a Window into an Icon (Minimize)</Title>
 <IndexTerm>
-<Primary>アイコン化: ウィンドウ, キーボードで</Primary>
+<Primary>iconify: window, with keyboard</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>キーボード: ウィンドウのアイコン化</Primary>
+<Primary>keyboard: minimize a window</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.45">
-<Para> <Keycap>Alt] + [Tab</Keycap> キーを押して、アイコン化するウィンドウに、強調表示
-を移動してください。
+<Para>Press Alt+Tab to move the highlight to the window you
+want to minimize.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.46">
-<Para> [Alt] キーを押しながらスペースバーを押して、ウィンドウ・メニューを
-表示してください。
+<Para>Press Alt+Spacebar to display the Window menu.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.47">
-<Para> アイコン化する項目を選択してください。
-  </Para>
+<Para>Choose the Minimize item:
+</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.48">
-<Para> [アイコン化] を選択するまで [↓] キーを押して、[Return] キーを押
-  してください。
-  </Para>
+<Para>Press Down Arrow until you select Minimize, then press Return.
+</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.49">
-<Para> <Emphasis>または</Emphasis>、[アイコン化] のメニューのニーモニックである
-  [N] キーを押してください。
-  </Para>
+<Para><Emphasis>Or</Emphasis>, press N, the menu's mnemonic for Minimize.
+</Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.50">
-<Para> <Link Type="jump" Linkend="MovingKBFocus">キーボード・フォーカスの移動</Link>
+<Para><Link Type="jump" Linkend="MovingKBFocus">Moving the Keyboard Focus</Link>
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.51">
-<Para> <XRef Linkend="ToRestoreAWindowKB"></Para>
+<Para><XRef Linkend="ToRestoreAWindowKB"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.52">
-<Para> <XRef Linkend="WindowMenuKB"></Para>
+<Para><XRef Linkend="WindowMenuKB"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect2>
 <Sect2 Id="ToRestoreAWindowKB">
-<Title>アイコンからウィンドウを復元するには</Title>
+<Title>To Restore a Window from an Icon</Title>
 <IndexTerm>
-<Primary>ウィンドウの復元, キーボードで</Primary>
+<Primary>restoring a window, with keyboard</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>キーボード: ウィンドウの復元</Primary>
+<Primary>keyboard: restoring a window</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.53">
-<Para> <Keycap>Alt] + [Tab</Keycap> キーを押して、復元するアイコンに、強調表示を移動し
-てください。</Para>
+<Para>Press Alt+Tab to move the highlight to the icon you
+want to restore.</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.54">
-<Para> [Alt] キーを押しながらスペースバーを押して、ウィンドウ・メニューを
-表示してください。
+<Para>Press Alt+Spacebar to display the Window menu.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.55">
-<Para>[↓] キーを押して [復元] を選択して、[Return] キーを押してください。
+<Para>Press Down Arrow to choose Restore, then press Return.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.56">
-<Para> <Link Type="jump" Linkend="MovingKBFocus">キーボード・フォーカスの移動</Link>
+<Para><Link Type="jump" Linkend="MovingKBFocus">Moving the Keyboard Focus</Link>
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.57">
-<Para> <XRef Linkend="WindowMenuKB"></Para>
+<Para><XRef Linkend="WindowMenuKB"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect2>
 <Sect2 Id="ToMoveAWindowIconKB">
-<Title>ウィンドウおよびウィンドウ・アイコンを移動するには</Title>
+<Title>To Move a Window or Window Icon</Title>
 <IndexTerm>
-<Primary>ウィンドウ: キーボードで移動</Primary>
+<Primary>window: moving with keyboard</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>キーボード: ウィンドウの移動</Primary>
+<Primary>keyboard: moving windows</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.58">
-<Para> <Keycap>Alt] + [Tab</Keycap> キーを押して、移動するウィンドウまたはアイコンに、強調表示を移動してください。</Para>
+<Para>Press Alt+Tab to move the highlight to the window or
+icon you want to move.</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.59">
-<Para> [Alt] キーを押しながらスペースバーを押して、ウィンドウ・メニューを
-表示してください。
+<Para>Press Alt+Spacebar to display the Window menu.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.60">
-<Para> [移動] のメニューのニーモニックである、[M] キーを押してください。
+<Para>Press M, the menu's mnemonic for Move.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.61">
-<Para> 矢印キーを押して、ウィンドウまたはアイコンを再配置してください。</Para>
-<Para>ウィンドウまたはアイコンの移動速度を上げるには、矢印キーを押す間中、[Control] キーを押し続けてください。
+<Para>Press the arrow keys to relocate the window or icon.</Para>
+<Para>Hold down Control while you press an arrow key to speed up the movement
+of the window or icon.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.62">
-<Para> ウィンドウまたはアイコンを配置する場所に移動したら、[Return] キー
-を押してください。</Para>
-<Para>移動操作を取り消すには、[Esc] キーを押してください。</Para>
+<Para>When you've moved the window or icon to where you want it, press
+Return.</Para>
+<Para>To cancel the move operation, press Esc.</Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.63">
-<Para> <Link Type="jump" Linkend="MovingKBFocus">キーボード・フォーカスの移動</Link>
+<Para><Link Type="jump" Linkend="MovingKBFocus">Moving the Keyboard Focus</Link>
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.64">
-<Para> <XRef Linkend="WindowMenuKB"></Para>
+<Para><XRef Linkend="WindowMenuKB"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect2>
 <Sect2 Id="ToResizeAWindowKB">
-<Title>ウィンドウをサイズ変更するには</Title>
+<Title>To Resize a Window</Title>
 <IndexTerm>
-<Primary>ウィンドウ: サイズ変更, キーボードで</Primary>
+<Primary>window: resizing, with keyboard</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>キーボード: ウィンドウのサイズ変更</Primary>
+<Primary>keyboard: resizing windows</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.65">
-<Para><Keycap>Alt] + [Tab</Keycap> キーを押して、リサイズしたいウィンドウに、
-強調表示を移してください。
-</Para>
+<Para>Press Alt+Tab to move the highlight to the window you
+want to resize.</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.66">
-<Para><Keycap>Alt] + [Spacebar</Keycap> を押して、[ウィンドウ] メニューを
-表示してください。
+<Para>Press Alt+Spacebar to display the Window menu.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.67">
-<Para><Keycap>S</Keycap> を押してください。これは、[サイズ] への、メニューの
-ニーモニックです。
+<Para>Press S, the menu's mnemonic for Size.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.68">
-<Para>ウィンドウを拡大または縮小するには、矢印キーを押してください。
-アウトラインが表示され、ウィンドウのサイズを示します。</Para>
-<Para>ウィンドウのサイズ変更の速度を上げるには、矢印キーを押す間中、 [Control]
-キーを押し続けてください。
+<Para>Press the arrow keys to stretch or shrink the window. An
+outline appears to show you the window's size.</Para>
+<Para>Hold down Control while you press an arrow key to size the window faster.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.69">
-<Para> アウトラインが必要なサイズを示したら、[Return] キーを押してください。</Para>
-<Para>サイズ変更操作を取り消すには、[Esc] キーを押してください。
+<Para>When the outline shows the size you want, press Return.</Para>
+<Para>To cancel the resize operation, press Esc.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.70">
-<Para> <Link Type="jump" Linkend="MovingKBFocus">キーボード・フォーカスの移動</Link>
+<Para><Link Type="jump" Linkend="MovingKBFocus">Moving the Keyboard Focus</Link>
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.71">
-<Para> <XRef Linkend="WindowMenuKB"></Para>
+<Para><XRef Linkend="WindowMenuKB"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect2>
 <Sect2 Id="ToScrollAWindowKB">
-<Title>ウィンドウの内容をスクロールするには</Title>
+<Title>To Scroll a Window's Contents</Title>
 <IndexTerm>
-<Primary>キーボード: ウィンドウの内容のスクロール</Primary>
+<Primary>keyboard: scrolling windows contents</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ウィンドウ: キーボードでスクロール</Primary>
+<Primary>window: scrolling with keyboard</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.72">
-<Para> <Keycap>Alt] + [Tab</Keycap> キーを押して、スクロールするウィンドウに、強調表示
-で示されるキーボード・フォーカスを移動してください。</Para>
+<Para>Press Alt+Tab to move the keyboard focus, as shown by the highlight,
+to the window whose contents you want to scroll.</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.73">
-<Para> [Tab] キーを押して、スクロールするウィンドウ領域に移動してください。</Para>
+<Para>Press Tab to move to the window area you want to scroll.</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.74">
-<Para> 矢印キー、[Prev] と [Next]、または [Page Up] と [Page Down] を押し
-てください。</Para>
-<Para>スクロール速度を上げるには、矢印キーを押す間中、 [Control] キーを押し続け
-てください。
+<Para>Press the arrow keys, Prev and Next, or Page Up and Page Down.</Para>
+<Para>Hold down Control while you press an arrow key to scroll faster.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.75">
-<Para> <Link Type="jump" Linkend="MovingKBFocus">キーボード・フォーカスの移動</Link>
+<Para><Link Type="jump" Linkend="MovingKBFocus">Moving the Keyboard Focus</Link>
 </Para>
 </ListItem>
 </ItemizedList>
 <!--
-<s2 id=ToSelectTextKB>テキストを選択するには
+<s2 id=ToSelectTextKB>To Select Text
 
-<procedure>関連項目
+<procedure>See Also
 <list bullet tight>
-<item> <link MovingKBFocus>キーボード・フォーカスの移動<\link>
+<item> <link MovingKBFocus>Moving the Keyboard Focus<\link>
 <\list>
 
 -->
@@ -670,36 +664,37 @@
 </Procedure>
 </Sect2>
 <Sect2 Id="ToChooseAListItemKB">
-<Title>リスト項目を選択するには</Title>
+<Title>To Select a List Item</Title>
 <IndexTerm>
-<Primary>選択: リスト項目, キーボードで</Primary>
+<Primary>selecting: list item, with keyboard</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>キーボード: リスト項目の選択</Primary>
+<Primary>keyboard: selecting a list item</Primary>
 </IndexTerm>
-<Para>ウィンドウおよびダイアログ・ボックスによっては、オプションまたは設定を選択する
-リストを表示します。
+<Para>Some windows and dialog boxes display lists from which you
+select options or settings.
 </Para>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.76">
-<Para> [Tab] キーを押して、リストに強調表示を移動してください。</Para>
+<Para>Press Tab to move the highlight to the list.</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.77">
-<Para> 矢印キーを押して、リスト内を移動してください。</Para>
-<Para>可能な場合に、リストの複数の連続する項目を選択するには、<Keycap>Shift] + [↓</Keycap>
-キーか <Keycap>Shift] + [↑</Keycap> キーを押してください。</Para>
+<Para>Press the arrow keys to move through the list.</Para>
+<Para>To select more then one contiguous item in lists that allow you to do so,
+press Shift+Down Arrow or Shift+Up Arrow.</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.78">
-<Para> [Tab] キーを押して、[了解] などの適切なボタンに、強調表示を移動して、[Return] キーを押してください。
+<Para>Press Tab to move the highlight to the appropriate button
+(such as OK), then press Return.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.79">
-<Para> <Link Type="jump" Linkend="MovingKBFocus">キーボード・フォーカスの移動</Link>
+<Para><Link Type="jump" Linkend="MovingKBFocus">Moving the Keyboard Focus</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -709,76 +704,80 @@
 </Sect2>
 </Sect1>
 <Sect1 Id="MenuKBNavTA">
-<Title>メニューのキーボード・ナビゲーション</Title>
+<Title>Menu Keyboard Navigation</Title>
 <IndexTerm>
-<Primary>キーボード: メニュー・ナビゲーション</Primary>
+<Primary>keyboard: menu navigation</Primary>
 </IndexTerm>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HIMGR.KEYB.item.80">
-<Para> <XRef Linkend="Pull-downMenuKB"></Para>
+<Para><XRef Linkend="Pull-downMenuKB"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.81">
-<Para> <XRef Linkend="Pop-upMenuKB"></Para>
+<Para><XRef Linkend="Pop-upMenuKB"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.82">
-<Para> <XRef Linkend="WindowMenuKB"></Para>
+<Para><XRef Linkend="WindowMenuKB"></Para>
 </ListItem>
 </ItemizedList>
-<Para>メニューには、ウィンドウを管理し、ソフトウェア・アプリケーションを操作する
-コマンドに対するアクセスがあります。</Para>
-<Para>選択不可のメニュー項目は、アクティブではありません。このような項目は、特定の条件下でのみ使用できます。</Para>
-<Para>メニュー名および項目の下線付きの文字は、<GlossTerm>ニーモニック</GlossTerm>と
-呼ばれています。メニュー項目の右にリストされた一連のキーは、<GlossTerm>アクセラレータ</GlossTerm>と呼ばれています。</Para>
-<Para>ニーモニックとアクセラレータは、メニュー項目へクイック・アクセスを実行する
-ためにあります。</Para>
+<Para>Menus provide access to commands you use to manage windows and operate
+software applications.</Para>
+<Para>Menu items that appear dimmed are inactive. They are available only under
+certain conditions.</Para>
+<Para>An underlined character in a menu name or item is called a
+<GlossTerm>mnemonic</GlossTerm>. The sequence of keys listed to the right
+of some menu items is called an <GlossTerm>accelerator</GlossTerm>.</Para>
+<Para>Mnemonics and accelerators provide quick keyboard access to menu items.</Para>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HIMGR.KEYB.item.83">
-<Para> <XRef Linkend="UsingMenusSI"></Para>
+<Para><XRef Linkend="UsingMenusSI"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Sect2 Id="Pull-downMenuKB">
-<Title>プルダウン・メニューを表示するには</Title>
+<Title>To Display a Pull-down Menu</Title>
 <IndexTerm>
-<Primary>プルダウン・メニュー: キーボードで表示</Primary>
+<Primary>pull-down menu: displaying with keyboard</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>キーボード: プルダウン・メニューの表示</Primary>
+<Primary>keyboard: displaying pull-down menus</Primary>
 </IndexTerm>
 <Para>&newline;&empty;</Para>
-<Para>ウィンドウのメニュー・バーのプルダウン・メニューを表示するには</Para>
+<Para>To display a pull-down menu from a window's menu bar:</Para>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.84">
-<Para> <Keycap>Alt] + [Tab</Keycap> キーを押して、アプリケーション・ウィンドウに
-強調表示を移動してください。</Para>
+<Para>Press Alt+Tab to move the highlight to the application
+window.</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.85">
-<Para> [F10] キーを押して、メニュー・バーの最初のメニューに、強調表示を移動後、矢印キーを使用してメニューを表示し、その中の項目に移動してください。</Para>
+<Para>Press F10 to move the highlight to the name of the first menu in the
+menu bar, then use the arrow keys to display menus and move among their
+items.</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.86">
-<Para> [Return] キーを押して、強調表示された項目を選択してください。</Para>
-<Para>項目を選択しないでメニューを消すには、[Esc] キーを押してください。
+<Para>Press Return to choose a highlighted item.</Para>
+<Para>To dismiss a menu without choosing an item, press Esc.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>また、メニューのニーモニックを使用して、プルダウン・メニューの項目を選択
-することもできます。</Para>
+<Para>You can also choose an item from a pull-down menu using the menu's
+mnemonics:</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HIMGR.KEYB.item.87">
-<Para> [Alt] キーを押しながら、メニューの名前の下線付き文字を押した後、メニュー項目の名前の下線付き文字を押してください。
+<Para>Hold down Alt and press the underlined letter in the menu's name, then
+press the underlined letter in the menu item's name.
 </Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.88">
-<Para> <Link Type="jump" Linkend="MovingKBFocus">キーボード・フォーカスの移動</Link>
+<Para><Link Type="jump" Linkend="MovingKBFocus">Moving the Keyboard Focus</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -786,45 +785,46 @@
 </Procedure>
 </Sect2>
 <Sect2 Id="Pop-upMenuKB">
-<Title>ポップアップ・メニューを使用するには</Title>
+<Title>To Use a Pop-up Menu</Title>
 <IndexTerm>
-<Primary>ポップアップ・メニュー: キーボードで選択</Primary>
+<Primary>pop-up menu: choosing with keyboard</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>キーボード: ポップアップ・メニューの使い方</Primary>
+<Primary>keyboard: using pop-up menus</Primary>
 </IndexTerm>
-<Para>コンポーネント上のキーボード・フォーカスで、コンポーネントのポップアップ
-メニューを表示する場合
+<Para>With the keyboard focus on the component whose pop-up menu you want to
+display:
 </Para>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.89">
-<Para> <Keycap>Shift] + [F10</Keycap> キーを押して、ポップアップ・メニューを表示してください。</Para>
+<Para>Press Shift-F10 to display the pop-up menu.</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.90">
-<Para> メニュー項目を選択する場合
- </Para>
+<Para>Choose a menu item:
+</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.91">
-<Para> [↓] キーを押して、メニュー内を移動し、必要な項目を強調表示した後、[Return] キーを押してください。</Para>
+<Para>Press the Down Arrow key to move through the menu, highlight the item
+you want, then press Return.</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.92">
-<Para> <Emphasis>または、</Emphasis>メニュー項目の名前の下線付き文字(ニーモック)
- を入力してください。</Para>
+<Para><Emphasis>Or</Emphasis>, Type the underlined letter in the menu item's
+name (its mnemonic).</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.93">
-<Para> <Emphasis>または、</Emphasis>項目の名前の右にリストされたアクセラレータを
- 入力してください。
- </Para>
+<Para><Emphasis>Or,</Emphasis> Type the accelerator, as listed to the
+right of the item's name.
+</Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.94">
-<Para> <Link Type="jump" Linkend="MovingKBFocus">キーボード・フォーカスの移動</Link>
+<Para><Link Type="jump" Linkend="MovingKBFocus">Moving the Keyboard Focus</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -832,39 +832,38 @@
 </Procedure>
 </Sect2>
 <Sect2 Id="WindowMenuKB">
-<Title>ウィンドウ・メニューを使用するには</Title>
+<Title>To Use the Window Menu</Title>
 <IndexTerm>
-<Primary>キーボード: ウィンドウ・メニューの表示</Primary>
+<Primary>keyboard: displaying the Window menu</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ウィンドウ・メニュー: キーボードの使い方</Primary>
+<Primary>Window menu: keyboard usage</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.95">
-<Para> <Keycap>Alt] + [Tab</Keycap> キーまたは <Keycap>Alt] + [Esc</Keycap> キーを押して、強調表示
-で示されるキーボード・フォーカスを、ウィンドウまたはアイコンに移動してく
-ださい。</Para>
+<Para>Press Alt+Tab or Alt+Esc to move the keyboard focus, as shown
+by the highlight, to the window or icon.</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.96">
-<Para> [Alt] キーを押しながらスペースバーを押して、ウィンドウ・メニューを
-表示してください。</Para>
+<Para>Press Alt+Spacebar to display the Window menu.</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.97">
-<Para> メニュー項目のニーモニック(項目の名前の下線付き文字)のキーを押してください。
+<Para>Press the key for the menu item's mnemonic (the underlined character
+in the item's name).
 </Para>
 </ListItem>
 </OrderedList>
-<Para>項目を選択しないでメニューを消すには、[Esc] キーを押してください。</Para>
+<Para>To close the menu without choosing an item, press Esc.</Para>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HIMGR.KEYB.item.98">
-<Para> <Link Type="jump" Linkend="MovingKBFocus">キーボード・フォーカスの移動</Link>
+<Para><Link Type="jump" Linkend="MovingKBFocus">Moving the Keyboard Focus</Link>
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.99">
-<Para> <Link Type="jump" Linkend="WindowMenu">ウィンドウ・メニュー</Link>
+<Para><Link Type="jump" Linkend="WindowMenu">The Window Menu</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -874,58 +873,58 @@
 </Sect2>
 </Sect1>
 <Sect1 Id="WorkspaceKBNavTA">
-<Title>ワークスペースのキーボード・ナビゲーション</Title>
+<Title>Workspace Keyboard Navigation</Title>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HIMGR.KEYB.item.100">
-<Para> <XRef Linkend="ToSwitchWorkspaceKB"></Para>
+<Para><XRef Linkend="ToSwitchWorkspaceKB"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.101">
-<Para> <XRef Linkend="ToRenameAWorkspaceKB"></Para>
+<Para><XRef Linkend="ToRenameAWorkspaceKB"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.102">
-<Para> <XRef Linkend="ToMoveAmongWindows"></Para>
+<Para><XRef Linkend="ToMoveAmongWindows"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.103">
-<Para> <XRef Linkend="ToDisplayInOtherWorkspacesKB"></Para>
+<Para><XRef Linkend="ToDisplayInOtherWorkspacesKB"></Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HIMGR.KEYB.item.104">
-<Para> <XRef Linkend="UsingWorkspacesSI"></Para>
+<Para><XRef Linkend="UsingWorkspacesSI"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Sect2 Id="ToSwitchWorkspaceKB">
-<Title>別のワークスペースに切り替えるには</Title>
+<Title>To Switch to Another Workspace</Title>
 <IndexTerm>
-<Primary>キーボード: ワークスペースの切替え</Primary>
+<Primary>keyboard: switching workspaces</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.105">
-<Para> 強調表示で示されるキーボード・フォーカスが、フロントパネル上に移動
-するまで <Keycap>Alt] + [Tab</Keycap> キーを押してください。
+<Para>Press Alt+Tab until you've placed the keyboard focus, as shown by the
+highlight, on the Front Panel.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.106">
-<Para> 矢印キーを押して、表示するワークスペースのボタンに、強調表示を移動
-してください。
+<Para>Press the arrow keys to move the highlight to the button for the
+workspace you want to display.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.107">
-<Para> [Return] キーを押してください。
+<Para>Press Return.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.108">
-<Para> <Link Type="jump" Linkend="MovingKBFocus">キーボード・フォーカスの移動</Link>
+<Para><Link Type="jump" Linkend="MovingKBFocus">Moving the Keyboard Focus</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -933,135 +932,135 @@
 </Procedure>
 </Sect2>
 <Sect2 Id="ToRenameAWorkspaceKB">
-<Title>ワークスペースの名前を変更するには</Title>
+<Title>To Rename a Workspace</Title>
 <IndexTerm>
-<Primary>キーボード: ワークスペースの名前の変更</Primary>
+<Primary>keyboard: renaming a workspace</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.109">
-<Para> 強調表示で示されるキーボード・フォーカスが、フロントパネル上に移動
-するまで、<Keycap>Alt] + [Tab</Keycap> キーを押してください。
+<Para>Press Alt+Tab until you've placed the keyboard focus, as shown by the
+highlight, on the Front Panel.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.110">
-<Para> 矢印キーを押して、名前を変更するワークスペースに、強調表示を移動し
-てください。
+<Para>Press the arrow keys to move the highlight to the button for the
+workspace you want to rename.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.111">
-<Para> <Keycap>Shift] + [F10</Keycap> キーを押して、ワークスペース・ボタンの
-ポップアップ・メニューを表示してください。
+<Para>Press Shift+F10 to display the workspace button's pop-up menu.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.112">
-<Para> [↓] キーを押して [名前の変更] を選択し、[Return] キーを押してください。</Para>
-<Para>ボタンがテキスト・フィールドに変わります。
+<Para>Press the Down Arrow key to select Rename, then press
+Return.</Para>
+<Para>The button becomes a text field.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.113">
-<Para> テキスト・フィールドのワークスペースの名前を編集してください。
+<Para>Edit the workspace's name in the text field.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.114">
-<Para> ワークスペースの名前を変更したら、[Return] キーを押してください。
+<Para>Once you've renamed the workspace, press Return.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.115">
-<Para> <Link Type="jump" Linkend="MovingKBFocus">キーボード・フォーカスの移動</Link>
+<Para><Link Type="jump" Linkend="MovingKBFocus">Moving the Keyboard Focus</Link>
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.116">
-<Para> <XRef Linkend="EditTextFieldsTA"></Para>
+<Para><XRef Linkend="EditTextFieldsTA"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.117">
-<Para> <XRef Linkend="ToSwitchWorkspaceKB"></Para>
+<Para><XRef Linkend="ToSwitchWorkspaceKB"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect2>
 <Sect2 Id="ToMoveAmongWindows">
-<Title>ウィンドウ間を移動するには</Title>
+<Title>To Move among Windows</Title>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HIMGR.KEYB.item.118">
-<Para> 次のウィンドウまたはアイコンに移動するには、<Keycap>Alt] + [Tab</Keycap> キー、または <Keycap>Alt] + [Esc</Keycap> キーを押してください。</Para>
+<Para>To move to the next window or icon, press Alt+Tab or Alt+Esc.</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.119">
-<Para> 前のウィンドウまたはアイコンに移動するには、<Keycap>Shift] + [Alt] + [Tab</Keycap>
-キー、または <Keycap>Shift] + [Alt] + [Esc</Keycap> キーを押してください。</Para>
+<Para>To move to the previous window or icon, press Shift+Alt+Tab or
+Shift+Alt+Esc.</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.120">
-<Para> ウィンドウの重なり順を入れ替えるには、<Keycap>Alt] + [↑</Keycap> キーか、<Keycap>Alt] + [↓</Keycap> キーを押してください。</Para>
+<Para>To shuffle through a stack of windows, press Alt+Up Arrow or Alt+Down
+Arrow.</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.121">
-<Para> ひとつのアプリケーションに属するウィンドウ間を移動するには、または
-フロントパネルとサブパネルの間を移動するには、<Keycap>Alt] + [F6</Keycap> キーか、<Keycap>Shift] + [Alt] + [F6</Keycap> キーを押してください。
+<Para>To move between the windows belonging to an application, or the Front
+Panel and a subpanel, press Alt+F6 or Shift+Alt+F6.
 </Para>
 </ListItem>
 </ItemizedList>
 </Sect2>
 <Sect2 Id="ToDisplayInOtherWorkspacesKB">
-<Title>別のワークスペースにあるウィンドウを表示するには</Title>
+<Title>To Display a Window in Other Workspaces</Title>
 <IndexTerm>
-<Primary>キーボード: ウィンドウをワークスペースに配置</Primary>
+<Primary>keyboard: placing windows in workspaces</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.122">
-<Para> <Keycap>Alt] + [Tab</Keycap> キーを押して、表示する別のワークスペースに、強調表示で
-示されたキーボード・フォーカスを移動してください。
+<Para>Press Alt+Tab to move the keyboard focus, as shown by the highlight, to
+the window you want to display in other workspaces.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.123">
-<Para> [Alt] キーを押しながらスペースバーを押して、ウィンドウ・メニューを
-表示してください。
+<Para>Display the Window menu by pressing Alt+Spacebar.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.124">
-<Para> [↓] キーを押して [配置するワークスペース] を選択後、[Return] キー
-を押してください。</Para>
-<Para>[配置するワークスペース] ダイアログ・ボックスが表示されます。</Para>
+<Para>Press the Down Arrow key to select Occupy Workspace, then press Return.</Para>
+<Para>The Occupy Workspace dialog box appears</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.125">
-<Para> キーボード・フォーカスが [ワークスペース] リストに移動するまで、[Tab] キーを押してください。
+<Para>Press Tab until the keyboard focus is placed in the Workspaces list.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.126">
-<Para> ウィンドウを表示するワークスペースを選択してください。</Para>
+<Para>Select the workspaces in which you want the window to appear:</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.127">
-<Para> [↓] キーか [↑] キーを押して、リスト内を移動してください。
- </Para>
+<Para>Press Down Arrow or Up Arrow to move through the list.
+</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.128">
-<Para> 複数のワークスペースを選択するには、<Keycap>Shift] + [↓</Keycap> キーか、<Keycap>Shift] + [↑</Keycap> キーを押してください。
+<Para>To select more than one workspace, press Shift+Down Arrow or Shift+Up
+Arrow.
 </Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.129">
-<Para> [Tab] キーを押して、[了解] にキーボード・フォーカスを移動した後、[Return] キーを押してください。
+<Para>Press Tab to move the keyboard focus to OK, then press Return.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.130">
-<Para> <Link Type="jump" Linkend="MovingKBFocus">キーボード・フォーカスの移動</Link>
+<Para><Link Type="jump" Linkend="MovingKBFocus">Moving the Keyboard Focus</Link>
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.131">
-<Para> <Link Type="jump" Linkend="WindowMenu">ウィンドウ・メニュー</Link>
+<Para><Link Type="jump" Linkend="WindowMenu">The Window Menu</Link>
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.132">
-<Para> <XRef Linkend="ToSwitchWorkspaceKB"></Para>
+<Para><XRef Linkend="ToSwitchWorkspaceKB"></Para>
 </ListItem>
 </ItemizedList>
 <!-- FRONTPANEL KEYBOARD NAVIGATION -->
@@ -1070,48 +1069,47 @@
 </Sect2>
 </Sect1>
 <Sect1 Id="FPanelKBNavTA">
-<Title>フロントパネルのキーボード・ナビゲーション</Title>
+<Title>Front Panel Keyboard Navigation</Title>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HIMGR.KEYB.item.133">
-<Para> <XRef Linkend="ToChoseAFPControlKB"></Para>
+<Para><XRef Linkend="ToChoseAFPControlKB"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.134">
-<Para> <XRef Linkend="ToUseASubpanelKB"></Para>
+<Para><XRef Linkend="ToUseASubpanelKB"></Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.135">
-<Para> <XRef Linkend="ToMoveTheFPKB"></Para>
+<Para><XRef Linkend="ToMoveTheFPKB"></Para>
 </ListItem>
 </ItemizedList>
-<Para>フロントパネルの使い方の詳細は、<OLink Type="Jump" LocalInfo="FPanel SDL-RESERVED-hometopic">フロントパネルのヘルプ</OLink>を
-参照してください。</Para>
+<Para>For more information about using the Front Panel, see
+<OLink Type="Jump" LocalInfo="FPanel SDL-RESERVED-hometopic">Front Panel Help</OLink>.</Para>
 <Sect2 Id="ToChoseAFPControlKB">
-<Title>フロントパネル・コントロールを選択するには</Title>
+<Title>To Choose a Front Panel Control</Title>
 <IndexTerm>
-<Primary>キーボード: フロントパネル・コントロールの選択</Primary>
+<Primary>keyboard: choosing a Front Panel control</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.136">
-<Para> <Keycap>Alt] + [Tab</Keycap> キーを押して、フロントパネルに、キーボード・
-フォーカスを移動してください。
+<Para>Press Alt+Tab to move the keyboard focus to the Front Panel.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.137">
-<Para> 矢印キーを押して、フロントパネル内で強調表示を移動し、コントロール
-を選択してください。
+<Para>Press the arrow keys to move the highlight within the Front Panel
+and choose a control.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.138">
-<Para> [Return] キーを押してコントロールを選択し、アプリケーションの
-ウィンドウを開いてください。
+<Para>Press Return to choose the control and open the application' s
+window.
 </Para>
 </ListItem>
 </OrderedList>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.139">
-<Para> <Link Type="jump" Linkend="MovingKBFocus">キーボード・フォーカスの移動</Link>
+<Para><Link Type="jump" Linkend="MovingKBFocus">Moving the Keyboard Focus</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -1119,40 +1117,39 @@
 </Procedure>
 </Sect2>
 <Sect2 Id="ToUseASubpanelKB">
-<Title>サブパネル・コントロールを選択するには</Title>
+<Title>To Choose a Subpanel Control</Title>
 <IndexTerm>
-<Primary>キーボード: サブパネル・コントロールの選択</Primary>
+<Primary>keyboard: choosing a subpanel control</Primary>
 </IndexTerm>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.140">
-<Para> <Keycap>Alt] + [Tab</Keycap> キーを押して、フロントパネルに、キーボード・
-フォーカスを移動してください。
+<Para>Press Alt+Tab to move the keyboard focus to the Front Panel.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.141">
-<Para> 矢印キーを押して、フロントパネル内で強調表示をサブパネルの矢印
-コントロールに移動した後、[Return] キーを押してください。
+<Para>Press the arrow keys to move the highlight within the Front Panel
+to one of the subpanel arrow controls, then press Return.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.142">
-<Para> 矢印キーを押して、サブパネル内で強調表示をコントロールに移動した後、[Return] キーを押してコントロールを選択してください。
+<Para>Press the arrow keys to move the highlight among the controls
+within the subpanel, then press Return to choose a selected control.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>コントロールを選択しないでサブパネルを閉じるには、[Esc] キーを押してください。
+<Para>To close the subpanel without choosing a control, press Esc.
 </Para>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.143">
-<Para> <Link Type="jump" Linkend="MovingKBFocus">キーボード・フォーカスの移動</Link>
+<Para><Link Type="jump" Linkend="MovingKBFocus">Moving the Keyboard Focus</Link>
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.144">
-<Para> フロントパネルのヘルプ・ボリュームの
- <OLink Type="JumpNewView" LocalInfo="FPanel TourSubpanels">サブパネルの紹介
- </OLink>
+<Para><OLink Type="JumpNewView" LocalInfo="FPanel TourSubpanels">Tour of the
+Subpanels</OLink> in the Front Panel help volume
 </Para>
 </ListItem>
 </ItemizedList>
@@ -1160,40 +1157,39 @@
 </Procedure>
 </Sect2>
 <Sect2 Id="ToMoveTheFPKB">
-<Title>フロントパネルを移動するには</Title>
+<Title>To Move the Front Panel</Title>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.145">
-<Para> <Keycap>Alt] + [Tab</Keycap> キーを押して、キーボード・フォーカスをフロントパネルに
-移動してください。
+<Para>Press Alt+Tab to move the keyboard focus to the Front Panel.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.146">
-<Para> [Alt] キーを押しながらスペースバーを押して、フロントパネルのメニューを
-表示してください。
+<Para>Press Alt+Spacebar to display the Front Panel menu.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.147">
-<Para> [移動] のメニューのニーモニックである [M] キーを押してください。
+<Para>Press M, the menu's mnemonic for Move.
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.148">
-<Para> 矢印キーを押して、フロントパネルを再配置してください。</Para>
-<Para>フロントパネルの移動速度を上げるには、矢印キーを押す間中、[Control] キー
-を押し続けてください。</Para>
+<Para>Press the arrow keys to relocate the Front Panel.</Para>
+<Para>Hold down the Control key while you press an arrow Key to speed up the
+movement of the Front Panel.</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.149">
-<Para> フロントパネルを望みの場所に移動したら、[Return] キーを押してください。
+<Para>When you've moved the Front Panel to where you want it, press
+Return.
 </Para>
 </ListItem>
 </OrderedList>
-<Para>移動操作を取り消すには、[Esc] キーを押してください。
+<Para>To cancel the move operation, press Esc.
 </Para>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.150">
-<Para> <Link Type="jump" Linkend="MovingKBFocus">キーボード・フォーカスの移動</Link>
+<Para><Link Type="jump" Linkend="MovingKBFocus">Moving the Keyboard Focus</Link>
 </Para>
 </ListItem>
 </ItemizedList>
@@ -1203,64 +1199,65 @@
 </Sect2>
 </Sect1>
 <Sect1 Id="HelpKBNavTA">
-<Title>オンライン・ヘルプのキーボード・ナビゲーション</Title>
+<Title>Online Help Keyboard Navigation</Title>
 <IndexTerm>
-<Primary>キーボード: ヘルプのハイパーリンクの選択</Primary>
+<Primary>keyboard: choosing help hyperlinks</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>キーボード: ハイパーリンクから戻る</Primary>
+<Primary>keyboard: returning from a hyperlink</Primary>
 </IndexTerm>
 <Para>&newline;&empty;</Para>
 <Procedure>
-<Title>ウィンドウに関するヘルプを参照するには</Title>
+<Title>To Get Help in Any Window</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HIMGR.KEYB.item.151">
-<Para> [F1] キー、またはキーボードにある場合には [Help] キーを押してください。
+<Para>Press F1 (or the Help key if your keyboard has one).
 </Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>ヘルプ・トピックのハイパーリンクを選択するには</Title>
+<Title>To Choose a Help Topic Hyperlink</Title>
 <Step>
-<Para>ヘルプ・トピックのハイパーリンクは、以下のように表示されます。
+<Para>Help topic hyperlinks appear as:
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HIMGR.KEYB.item.152">
-<Para> ヘルプ・ウィンドウ内では、下線付きのテキスト
+<Para>Underlined text in a help window
 </Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.153">
-<Para> グラフィックを囲む、角のないボックス
+<Para>An open-cornered box surrounding a graphic
 </Para>
 </ListItem>
 </ItemizedList>
-<Para>関連情報を表示するには、ハイパーリンクを選択してください。</Para>
+<Para>Choose hyperlinks to display related information.</Para>
 <OrderedList>
 <ListItem Id="HIMGR.KEYB.item.154">
-<Para> ヘルプ・ウィンドウにまだキーボード・フォーカスがない場合には、<Keycap>Alt] + [Tab</Keycap> キーを押して、ヘルプ・ウィンドウに強調表示を移動してください。</Para>
+<Para>If the help window does not already have the keyboard focus,
+press Alt+Tab to move the highlight to the help window.</Para>
 </ListItem>
 <ListItem Id="HIMGR.KEYB.item.155">
-<Para> [Tab] キーと矢印キーを押して、選択するハイパーリンクに強調表示を
-移動後、[Return] キーを押してください。
+<Para>Press Tab and the arrow keys to move the highlight to the hyperlink
+you want to choose, then press Return.
 </Para>
 </ListItem>
 </OrderedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>ハイパーリンクから前のトピックへ戻るには</Title>
+<Title>To Return from a Hyperlink to the Previous Topic</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HIMGR.KEYB.item.156">
-<Para> キーボード・アクセラレータである <Keycap>Control] + [B</Keycap> を押してください。
+<Para>Press Control+B, the keyboard accelerator for Backtrack.
 </Para>
 </ListItem>
 </ItemizedList>
-<Para>ヘルプの使い方についての詳細は、<OLink Type="Jump" LocalInfo="Help4Help SDL-RESERVED-hometopic">ヘルプの使い方</OLink>を
-参照してください。
+<Para>For more information about using Help, see
+<OLink Type="Jump" LocalInfo="Help4Help SDL-RESERVED-hometopic">Using Help</OLink>.
 </Para>
 </Step>
 </Procedure>

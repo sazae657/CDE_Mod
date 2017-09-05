@@ -1,4 +1,4 @@
-<!-- $XConsortium: adbook.sgm /main/1 1996/12/18 01:38:40 cde-hit $ -->
+<!-- $XConsortium: adbook.sgm /main/9 1996/09/14 19:04:08 cdedoc $ -->
 <!DOCTYPE DocBook PUBLIC "-//HaL and O'Reilly//DTD DocBook V2.2.1//EN" [
 
 <!ENTITY CDEcopyright "<GlossTerm Role=nogloss>Common Desktop Environment 1.x Internal Release</GlossTerm>
@@ -62,7 +62,7 @@
 <!entity FPIconEditorIcon	SYSTEM "./graphics/iconedit.pm" NDATA XPM>
 <!entity FPHelpIntro		SYSTEM "./graphics/helpintr.pm" NDATA XPM>
 <!entity FPSmallHelp            SYSTEM "./graphics/smallhelp.pm" NDATA XPM>
-<!entity FPSmallInfo            SYSTEM "./graphics/smallinf.tif" NDATA TIFF>
+<!entity FPSmallInfo            SYSTEM "./graphics/smallinf.tif" NDATA XPM>
 <!entity FPOnItemFrontPanelHelp SYSTEM "./graphics/fponitem.pm" NDATA XPM>
 <!entity FPWholeFrontPanel      SYSTEM "./graphics/wholefp.tif" NDATA TIFF>
 <!entity FPMainAndSubpanel      SYSTEM "./graphics/mainsub.tif" NDATA TIFF>

@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: audio.pm /main/3 1996/12/18 02:43:30 cde-hit $ */
+/* $XConsortium: AudioOL.pm /main/3 1995/07/18 17:23:19 drk $ */
 static char * AudioOL [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "64 37 9 1 0 0",

@@ -1,4 +1,4 @@
-<!-- $XConsortium: GEntity.sgm /main/9 1996/12/18 02:33:30 cde-hit $ -->
+<!-- $XConsortium: GEntity.sgm /main/9 1996/08/31 15:57:13 rws $ -->
 <!entity ConfirmCancelJob SYSTEM "./Printmgr/graphics/dojob.tif" NDATA TIFF>
 <!entity FindDialog SYSTEM "./Printmgr/graphics/find.tif" NDATA TIFF>
 <!entity FindSetDialog SYSTEM "./Printmgr/graphics/findset.tif" NDATA TIFF>

@@ -1,4 +1,4 @@
-<!-- $XConsortium: Home.sgm /main/3 1996/12/18 02:33:42 cde-hit $ -->
+<!-- $XConsortium: Home.sgm /main/7 1996/10/29 22:18:34 cdedoc $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,49 +9,55 @@
 <!-- Help volume: Printmgr -->
 <!-- File name:   HomeTopic -->
 <PartIntro Id="SDL-RESERVED-hometopic">
-<Title>印刷のヘルプ</Title>
+<Title>Printing Help</Title>
 <IndexTerm>
-<Primary>概要</Primary>
+<Primary>overview</Primary>
 </IndexTerm>
 <!-- **** UNRESOLVED IDs **** -->
 <Para><Anchor Id="VUEUsingHelp">
-ドキュメント(印刷ジョブ)を印刷スプーラに送信後、印刷の進行状態を調べるには、印刷マネージャまたはプリンタ・ジョブ・アプリケーションを使用できます。
-プリンタ・ジョブは、1 台のプリンタ上のジョブに関する情報をユーザに表示します。
-印刷マネージャは、ご利用のシステム上のすべてのプリンタを表示します。</Para>
-<Para>印刷マネージャは、ファイルの印刷、印刷ジョブの検索、印刷ジョブの取消し、プリンタおよび印刷ジョブ・ステータスの調査を簡単に行う方法を提供します。</Para>
+After you submit a document (print job) for printing, you can use the Print
+Manager or Printer Jobs applications to find out about the progress of the
+printing. Printer Jobs gives you information about jobs on a single
+printer. Print Manager shows all the printers that are on your system.</Para>
+<Para>Print Manager provides an easy way to print files, find print jobs, cancel
+print jobs, and look at printer and print job status.</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HPRNTM.HTOP.item.1">
-<Para> <XRef Linkend="TOC"></Para>
+<Para><XRef Linkend="TOC"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.HTOP.item.2">
-<Para> <XRef Linkend="tasks"></Para>
+<Para><XRef Linkend="tasks"></Para>
 </ListItem>
 <ListItem Id="HPRNTM.HTOP.item.3">
-<Para> <XRef Linkend="reference"></Para>
+<Para><XRef Linkend="reference"></Para>
 </ListItem>
 </ItemizedList>
 <Procedure>
-<Title>印刷マネージャを開くには</Title>
+<Title>To Open Print Manager</Title>
 <Step>
-<Para>[個人プリンタ] サブパネルで [プリンタ] コントロールの上の矢印コントロールをクリックすると表示される [印刷マネージャ] コントロールをクリックしてください。
+<Para>Click the Print Manager control in from the Personal
+Printers subpanel, which you display by clicking on the
+arrow control above the Printers control.
 </Para>
 <Graphic Entityref="Launch" Id="HPRNTM.HTOP.fig.1"></Graphic>
 </Step>
 </Procedure>
 <Procedure>
-<Title>プリンタ・ジョブ・アプリケーションを開くには</Title>
+<Title>To Open the Printer Jobs Application</Title>
 <Step>
-<Para>プリンタ・ジョブ・アプリケーションを開く方法は 2 通りあります。
+<Para>There are two ways to open the Printer Jobs Application
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HPRNTM.HTOP.item.4">
-<Para> フロントパネルで、[プリンタ] コントロールをクリックしてください。
-これは、サブパネルからプリンタをコピーしていない場合に、デフォルト・プリンタを開きます。
-サブパネルからプリンタをコピーした場合には、代わりにそのプリンタを開きます。</Para>
+<Para>Click the Printer control in the Front Panel. This will open
+the default printer if you have not copied a printer from the subpanel.
+If you have copied a printer from the subpanel, that printer
+will be opened instead.</Para>
 <Graphic Entityref="PJLaunch" Id="HPRNTM.HTOP.fig.2"></Graphic>
 </ListItem>
 <ListItem Id="HPRNTM.HTOP.item.5">
-<Para> [個人プリンタ] サブパネルで、[プリンタ] コントロールの上の矢印コントロールをクリックすると表示されるプリンタ・アイコンをクリックしてください。</Para>
+<Para>Click a printer icon in the Personal Printers subpanel, which
+you display by clicking on the arrow control above the Printers control.</Para>
 </ListItem>
 </ItemizedList>
 <!-- EOF: HomeTopic -->

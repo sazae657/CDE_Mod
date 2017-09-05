@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: pencil.pm /main/3 1996/12/18 01:56:32 cde-hit $ */
+/* $XConsortium: IEtPencl.pm /main/3 1995/07/18 17:22:31 drk $ */
 static char * IEtPencl [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "36 36 9 1 0 0",

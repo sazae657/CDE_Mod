@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: mstylmgr.pm /main/5 1996/12/18 02:18:46 cde-hit $ */
+/* $XConsortium: mstylmgr.pm /main/5 1996/10/29 15:55:34 drk $ */
 static char * mstylmgr_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "438 85 22 1 0 0",

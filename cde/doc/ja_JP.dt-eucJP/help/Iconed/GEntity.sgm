@@ -1,4 +1,4 @@
-<!-- $XConsortium: GEntity.sgm /main/8 1996/12/18 01:54:27 cde-hit $ -->
+<!-- $XConsortium: GEntity.sgm /main/7 1996/06/19 16:14:34 drk $ -->
 <!entity IconEditorCircleTool SYSTEM "./Iconed/graphics/circle.pm" NDATA XPM>
 <!entity IconEditorEllipseTool SYSTEM "./Iconed/graphics/ellipse.pm" NDATA XPM>
 <!entity IconEditorEraserTool SYSTEM "./Iconed/graphics/erase.pm" NDATA XPM>

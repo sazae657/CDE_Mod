@@ -1,4 +1,4 @@
-<!-- $XConsortium: Home.sgm /main/3 1996/12/18 01:45:37 cde-hit $ -->
+<!-- $XConsortium: Home.sgm /main/5 1996/09/08 21:46:30 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -7,90 +7,94 @@
 <!-- (c) Copyright 1995 FUJITSU LIMITED. -->
 <!-- (c) Copyright 1995 Hitachi. -->
 <PartIntro Id="SDL-RESERVED-hometopic">
-<Title>ファイル・マネージャのヘルプ</Title>
-<TitleAbbrev>ファイル・マネージャのヘルプ</TitleAbbrev>
+<Title>File Manager Help</Title>
+<TitleAbbrev>File Manager Help</TitleAbbrev>
 <!-- **** UNRESOLVED IDs **** -->
 <Para><Anchor Id="VUEUsingHelp"><IndexTerm>
-<Primary>紹介</Primary>
+<Primary>introduction</Primary>
 </IndexTerm>
-ワークスペース・オブジェクト、すなわちファイル、フォルダおよびアプリケーションを作成、検索、および使用するには、ファイル・マネージャを使用してください。
-ファイル・マネージャでは、各オブジェクトはアイコンで表されます。
-ファイル・マネージャは、ユーザがさまざまなことをこれらのオブジェクトを用いてできるようにします。
-たとえば、オブジェクトを移動する、コピーする、開く、削除などの操作ができます。
+Use File Manager to create, find, and use workspace objects: files,
+folders, and applications. Each object is represented by an
+icon in File Manager. File Manager allows you to do a number of
+things with these objects. For example, you can move, copy, open,
+and delete them.
 </Para>
 <Graphic Entityref="FM-MainWindowOverview" Id="HFMGR.HTOP.fig.1"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term>メニュー</Term>
+<Term>Menus</Term>
 <ListItem>
-<Para>	ファイル・マネージャのコマンドを格納しています。
+<Para>Contains the commands for File Manager
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>パスのアイコン表示</Term>
+<Term>Iconic Path</Term>
 <ListItem>
-<Para>  表示中のフォルダの場所を表示するのに、アイコンを使用します。
+<Para>Uses icons to show the location of the folder you are viewing
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>テキスト・パス</Term>
+<Term>Text Path</Term>
 <ListItem>
-<Para>  表示中のフォルダの場所を表示するのに、テキストを使用します。
+<Para>Uses text to show the location of the folder you are viewing
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ステータス行</Term>
+<Term>Status line</Term>
 <ListItem>
-<Para>	表示中のフォルダの完全パス名を表示します。
+<Para>Shows the full path name of the folder you are viewing
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>表示領域</Term>
+<Term>View area</Term>
 <ListItem>
-<Para>	表示中のフォルダの内容を表示します。
+<Para>Shows the contents of the folder you are viewing
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>オブジェクト・アイコン</Term>
+<Term>Object icons</Term>
 <ListItem>
-<Para>  各アイコンは、現在のフォルダにあるファイルまたはフォルダを表します。
+<Para>Each icon represents a file or folder in the current
+folder
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>メッセージ行</Term>
+<Term>Message line</Term>
 <ListItem>
-<Para>	ウィンドウの一番下にあるこの行は、表示中のフォルダ内に、オブジェクトがいくつ存在するかを表示します。また、ファイル・マネージャが、フォルダを開くなどのアクションによりビジーである場合には、メッセージを表示します。</Para>
+<Para>This line at the bottom of the window shows how many objects
+are inside the folder you are viewing. It also shows messages
+when File Manager is busy doing actions such as opening a folder.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>ファイル・マネージャを開くには</Title>
+<Title>To Open File Manager</Title>
 <Step>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.HTOP.item.1">
-<Para> フロントパネルの [ファイル・マネージャ] コントロールをクリックしてください。
+<Para>Click the File Manager control in the Front Panel.
 </Para>
 <Graphic Entityref="FM-FrontPanelControl" Id="HFMGR.HTOP.fig.2"></Graphic>
 </ListItem>
 </ItemizedList>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.HTOP.item.2">
-<Para> <XRef Linkend="TOC"></Para>
+<Para><XRef Linkend="TOC"></Para>
 </ListItem>
 <ListItem Id="HFMGR.HTOP.item.3">
-<Para> <XRef Linkend="tasks"></Para>
+<Para><XRef Linkend="tasks"></Para>
 </ListItem>
 <ListItem Id="HFMGR.HTOP.item.4">
-<Para> <XRef Linkend="concepts"></Para>
+<Para><XRef Linkend="concepts"></Para>
 </ListItem>
 <ListItem Id="HFMGR.HTOP.item.5">
-<Para> <XRef Linkend="reference"></Para>
+<Para><XRef Linkend="reference"></Para>
 </ListItem>
 </ItemizedList>
 </Step>

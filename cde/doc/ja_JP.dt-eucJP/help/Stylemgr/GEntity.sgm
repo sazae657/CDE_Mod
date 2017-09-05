@@ -1,4 +1,4 @@
-<!-- $XConsortium: GEntity.sgm /main/8 1996/12/18 02:41:33 cde-hit $ -->
+<!-- $XConsortium: GEntity.sgm /main/11 1996/09/03 11:03:52 rws $ -->
 <!entity StyleAudioIcon SYSTEM "./Stylemgr/graphics/audio.pm" NDATA XPM>
 <!entity StyleBackdropIcon SYSTEM "./Stylemgr/graphics/backdrop.pm" NDATA XPM>
 <!entity StyleColorIcon SYSTEM "./Stylemgr/graphics/color.pm" NDATA XPM>

@@ -1,4 +1,4 @@
-<!-- $XConsortium: MetaInfo.sgm /main/3 1996/12/18 01:27:54 cde-hit $ -->
+<!-- $XConsortium: MetaInfo.sgm /main/3 1996/09/08 22:20:37 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -7,13 +7,14 @@
 <!-- (c) Copyright 1995 FUJITSU LIMITED. -->
 <!-- (c) Copyright 1995 Hitachi. -->
 <DocInfo>
-<Title>カレンダのヘルプ</Title>
+<Title>Calendar Help</Title>
 <AuthorGroup>
 <CorpAuthor>X Consortium</CorpAuthor>
 </AuthorGroup>
 <Abstract Id="SDL-RESERVED-abstract">
-<Para>このヘルプ・ボリュームは、カレンダの使い方について説明します。
-カレンダは、アポイントと予定項目のスケジュール、通知のトリガ、グループアポイントのスケジュール、ユーザのカレンダの表示と印刷ができます。
+<Para>This help volume provides information about using Calendar to
+schedule appointments and To Do items, trigger reminders, schedule group
+appointments, and view and print your calendar.
 </Para>
 </Abstract>
 <LegalNotice Id="SDL-RESERVED-copyright">
@@ -22,5 +23,5 @@
 </BlockQuote>
 </LegalNotice>
 </DocInfo>
-<Title>カレンダのヘルプ</Title>
+<Title>Calendar Help</Title>
 <!--fickle 1.15 help-to-docbook 1.4 01/17/96 16:27:20-->

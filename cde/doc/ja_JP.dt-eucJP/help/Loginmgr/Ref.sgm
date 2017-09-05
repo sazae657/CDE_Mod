@@ -1,4 +1,4 @@
-<!-- $XConsortium: Ref.sgm /main/3 1996/12/18 02:24:19 cde-hit $ -->
+<!-- $XConsortium: Ref.sgm /main/5 1996/09/08 22:53:28 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,18 +9,20 @@
 <!-- Help volume: Loginmgr -->
 <!-- File name:   Reference -->
 <Chapter Id="Reference">
-<Title>ログイン・マネージャのリファレンス</Title>
-<Para>ログイン・マネージャのリソースに関する情報は、dtlogin のマニュアル・ページで検索できます。
-dtlogin のマニュアル・ページを表示するには、コマンド行で以下のように入力してください。
+<Title>Login Manager Reference</Title>
+<Para>You can find information on Login Manager resources in the dtlogin
+man page. To view the dtlogin man page, type the following at a
+command line:
 </Para>
 <ProgramListing>man dtlogin
 </ProgramListing>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HLGMGR.REF.item.1">
-<Para> 共通デスクトップ環境: 上級ユーザ及びシステム管理者ガイド</Para>
+<Para>Common Desktop Enviroment: Advanced User's and System Administration
+Guide</Para>
 </ListItem>
 </ItemizedList>
 <!-- EOF: Reference -->

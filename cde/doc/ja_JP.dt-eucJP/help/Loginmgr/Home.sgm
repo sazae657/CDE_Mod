@@ -1,4 +1,4 @@
-<!-- $XConsortium: Home.sgm /main/3 1996/12/18 02:23:57 cde-hit $ -->
+<!-- $XConsortium: Home.sgm /main/4 1996/09/08 22:53:12 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,27 +9,29 @@
 <!-- Help Volume: Loginmgr  -->
 <!-- File name:   HomeTopic -->
 <PartIntro Id="SDL-RESERVED-hometopic">
-<Title>ログイン・マネージャ </Title>
-<TitleAbbrev>ログイン・マネージャ</TitleAbbrev>
+<Title>Login Manager</Title>
+<TitleAbbrev>Login Manager </TitleAbbrev>
 <!-- **** UNRESOLVED IDs **** -->
 <Para><Anchor Id="VUEUsingHelp">
 <Anchor Id="AnnotatorTutorial"><IndexTerm>
-<Primary>紹介</Primary>
+<Primary>Introduction</Primary>
 </IndexTerm>
-ログイン・マネージャは、ユーザのコンピュータへのアクセスをコントロールします。
-ログイン・マネージャは、ユーザのログイン名とパスワードを確認した後、ユーザが選択したセッション・マネージャを起動します。</Para>
+The Login Manager controls your access to your computer. It
+validates your login name and password, and
+then starts Session Manager to begin
+the session you've chosen.</Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HLGMGR.HTOP.item.1">
-<Para> <XRef Linkend="TOC"></Para>
+<Para><XRef Linkend="TOC"></Para>
 </ListItem>
 <ListItem Id="HLGMGR.HTOP.item.2">
-<Para> <XRef Linkend="Concepts"></Para>
+<Para><XRef Linkend="Concepts"></Para>
 </ListItem>
 <ListItem Id="HLGMGR.HTOP.item.3">
-<Para> <XRef Linkend="Tasks"></Para>
+<Para><XRef Linkend="Tasks"></Para>
 </ListItem>
 <ListItem Id="HLGMGR.HTOP.item.4">
-<Para> <XRef Linkend="Reference"></Para>
+<Para><XRef Linkend="Reference"></Para>
 </ListItem>
 </ItemizedList>
 <!-- EOF: HomeTopic -->

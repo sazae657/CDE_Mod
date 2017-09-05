@@ -1,4 +1,4 @@
-<!-- $XConsortium: Concepts.sgm /main/5 1996/12/18 01:45:20 cde-hit $ -->
+<!-- $XConsortium: Concepts.sgm /main/10 1996/10/29 21:34:20 cdedoc $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -9,199 +9,233 @@
 <!-- Help volume: Filemgr  -->
 <!-- File name:   Concepts -->
 <Chapter Id="Concepts">
-<Title>ファイル・マネージャの概念</Title>
-<Para>ファイル・マネージャをよく理解するには、以下のトピックを読んでください。
+<Title>File Manager Concepts</Title>
+<Para>For a better understanding of File Manager, you may want to read the
+following topics.
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.CNCP.item.1">
-<Para> <XRef Linkend="TheHierarchicalFileSystemSI"></Para>
+<Para><XRef Linkend="TheHierarchicalFileSystemSI"></Para>
 </ListItem>
 <ListItem Id="HFMGR.CNCP.item.2">
-<Para> <XRef Linkend="PathConcepts"></Para>
+<Para><XRef Linkend="PathConcepts"></Para>
 </ListItem>
 <ListItem Id="HFMGR.CNCP.item.3">
-<Para> <XRef Linkend="FileOwnershipAndSecuritySI"></Para>
+<Para><XRef Linkend="FileOwnershipAndSecuritySI"></Para>
 </ListItem>
 <ListItem Id="HFMGR.CNCP.item.4">
-<Para> <XRef Linkend="DesktopIntro"></Para>
+<Para><XRef Linkend="DesktopIntro"></Para>
 </ListItem>
 <ListItem Id="HFMGR.CNCP.item.5">
-<Para> <XRef Linkend="MatchingPatterns"></Para>
+<Para><XRef Linkend="MatchingPatterns"></Para>
 </ListItem>
 <ListItem Id="HFMGR.CNCP.item.6">
-<Para> <XRef Linkend="IconBrowser"></Para>
+<Para><XRef Linkend="IconBrowser"></Para>
 </ListItem>
 </ItemizedList>
 <Sect1 Id="TheHierarchicalFileSystemSI">
-<Title>階層ファイル・システム</Title>
+<Title>Hierarchical File System</Title>
 <IndexTerm>
-<Primary>階層ファイル・システム</Primary>
+<Primary>hierarchical file system</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ファイル: システム, 階層</Primary>
+<Primary>file: system, hierarchical</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>定義: ファイル</Primary>
+<Primary>definition: file</Primary>
 </IndexTerm>
-<Para>コンピュータを初めて使うユーザには、階層ファイル・システムという概念も初めてだと思います。
-このトピックは、階層ファイル・システムの基本コンポーネントについて説明します。
+<Para>If you are new to computers, the idea of a hierarchical file system may
+also be new to you. This topic describes the basic components of the
+hierarchical file system.
 </Para>
 <Procedure>
-<Title>ファイルとは何か?</Title>
+<Title>What's a File?</Title>
 <Step>
-<Para><Emphasis>ファイル</Emphasis> は、情報を格納するコンテナです。ユーザが使用する大部分のファイルは、情報(データ)を特別な形式&emdash;、すなわちドキュメント、スプレッドシート、チャートで格納しています。
-形式は、ファイル内部にデータを配置する固有の方法です。
-ファイルの形式は、データ型と呼ばれています。</Para>
-<Para>ファイル・マネージャが、アイコン表示モードのひとつである場合に、ユーザはファイルのデータ型を、ファイルを表すアイコンで判断できます。
-各データ型は、それぞれ異なるアイコンで表されます。</Para>
-<Para>大部分のアプリケーション・プログラムが認識できるデータ型の種類は限られています。
-たとえば、ドキュメント・エディタではスプレッドシート・ファイルは読み込めません。
-デスクトップは、ユーザが異なるファイルのタイプを<GlossTerm Role="baseform=データ型">データ型</GlossTerm> データベースを使用して認識するのを助けます。
-データ型は、固有のフォーマットのファイルを識別して、それを適切なアプリケーションに関連付けます。
-大抵、ファイル上をダブルクリックすると、デスクトップは、ファイルのデータ型を認識するアプリケーションを自動的に起動します。</Para>
-<Para>ファイル名の最大長は、システム毎に変わります。オペレーティング・システムによっては、14 文字より長いファイル名は使用できません。
-必要に応じて、システム管理者に相談してください。
-</Para>
-</Step>
-</Procedure>
-<Procedure>
-<Title>フォルダとは何か?</Title>
-<IndexTerm>
-<Primary>定義: フォルダ</Primary>
-</IndexTerm>
-<Step>
-<Para><Emphasis>フォルダ</Emphasis> はファイル・キャビネットのフォルダと同様のファイルのコンテナです。
-フォルダには、他のフォルダ&emdash;<Emphasis>サブフォルダ</Emphasis>とも呼ばれるものを格納できます。
-フォルダおよびサブフォルダに、階層を形成する複数の層を作成できます。
-(フォルダはディレクトリとも呼ばれます。)</Para>
-<Para>フォルダの下に格納される各サブフォルダ&emdash;と各フォルダの親フォルダ&emdash;からなるフォルダ階層の図を描いて、各フォルダからその親フォルダへ線を引くと、図は上下逆のツリーになります。
-したがって、フォルダ階層をしばしば<Emphasis>ツリー</Emphasis>と呼んでいます。</Para>
-<Para>任意のひとつのフォルダ内で、各ファイル名は一意の名前でなければなりません。
-しかし、別のフォルダにあるファイルは、同じ名前を持つことができます。</Para>
-<Para>フォルダ間をナビゲートする場合、現在の場所が、<Emphasis>現在のフォルダ</Emphasis>になります。
+<Para>A <Symbol Role="Variable">file</Symbol> is a container that holds information. Most of the
+files you use contain information (data) in some particular
+format&emdash;a document, a spreadsheet, a chart. The format is
+the particular way the data is arranged inside the file.
+The format of a file is known as its data type.</Para>
+<Para>When File Manager is in one of its icon-view modes, you can identify the
+data type of a file by the icon used to represent the file.
+Each data type has a different icon.</Para>
+<Para>Most application programs understand a limited number of data types. For
+example, a document editor probably cannot read a spreadsheet file.
+The desktop helps you recognize different types of files using a
+<GlossTerm Role="baseform=data types">data type</GlossTerm> database. A data type identifies
+the files of a particular format and associates them with the appropriate
+applications. In most cases, when you
+double-click on a file, the desktop will automatically launch
+the application that understands that file's data type.</Para>
+<Para>The maximum allowable size of a file name varies from system to system.
+Some operating systems do not allow file names longer than 14 characters.
+If necessary, consult your system administrator.
 </Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>パスとは何か?</Title>
+<Title>What's a Folder?</Title>
 <IndexTerm>
-<Primary>定義: パス</Primary>
-</IndexTerm>
-<IndexTerm>
-<Primary>パス: 定義</Primary>
+<Primary>definition: folder</Primary>
 </IndexTerm>
 <Step>
-<Para>ファイルの場所は、しばしばファイルを導くフォルダおよびサブフォルダの名前を表示して指定されます。
-&emdash;このリストを、<Emphasis>パス</Emphasis>と言います。
-(<XRef Linkend="PathConcepts">を参照してください。)
-ファイル・マネージャでは、ファイルのパスは、2 箇所で見ることができます。
-1 箇所目は、パスのアイコン表示のフォルダ文字列です。
-2 箇所目は、表示領域の上のテキスト・パス行に、テキスト形式で表示されます。
+<Para>A <Emphasis>folder</Emphasis> is a container for files, similar to a folder in
+a file cabinet. In fact, File Manager uses a folder icon to represent a
+folder. A folder can contain other folders&emdash;
+sometimes called <Emphasis>subfolders</Emphasis>. With folders and subfolders,
+you can create multiple layers of organization that form a hierarchy.
+(in other contexts, folders are often referred to as directories.)</Para>
+<Para>If you drew a picture of the folder hierarchy with each subfolder
+underneath the folder that contains it&emdash;its parent
+folder&emdash;and drew a line from each folder to its parent, the
+picture would look like an upside-down tree. Therefore, we often call
+the folder hierarchy a folder <Emphasis>tree</Emphasis>.</Para>
+<Para>Within any single folder, each file name must
+have a unique name. However, files
+in different folders can have the same name.</Para>
+<Para>As you navigate from folder to folder, your current location is
+referred to as the <Emphasis>current folder</Emphasis>.
+</Para>
+</Step>
+</Procedure>
+<Procedure>
+<Title>What's a Path?</Title>
+<IndexTerm>
+<Primary>definition: path</Primary>
+</IndexTerm>
+<IndexTerm>
+<Primary>path: defined</Primary>
+</IndexTerm>
+<Step>
+<Para>The location of a file is often specified
+by listing the names of the folders and
+subfolders that lead to the file&emdash;this list is called a <Emphasis>path</Emphasis>.
+(See <XRef Linkend="PathConcepts">.) A file's path is
+visible in two places in File Manager. First it is shown in
+the iconic path as a string of folders. Second, it is shown in
+text form in the text path line above the view area.
 </Para>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="PathConcepts">
-<Title>パスとパス名</Title>
-<Para>オブジェクトへのパスは、ファイル・システム内でオブジェクトが格納された場所を指定する方法です。
-パスを指定する方法は 3 通りあります。
-絶対パス、相対パス、ネットワーク・パスです。
+<Title>Paths and Path Names</Title>
+<Para>The path to an object is a way to specify where the object is located
+in the file system. There are three ways to specify the path:
+absolute path, relative path, and fully qualified path.
 </Para>
 <Procedure>
-<Title>絶対パス</Title>
+<Title>Absolute Paths</Title>
 <Step>
-<Para><Emphasis>ルート・フォルダ</Emphasis>から始まるパスは、<Emphasis>絶対</Emphasis>パスです。
-ルート・フォルダは階層フォルダ・ツリーの最上位のフォルダです。
-パスがスラッシュ(<ComputerOutput>/</ComputerOutput>)で始まっている場合は、ルート・フォルダから指定した絶対パスです。
-たとえば、以下はファイル<ComputerOutput>letter</ComputerOutput>の絶対パスです。
+<Para>A path is an <Emphasis>absolute</Emphasis> path if it begins at the <Emphasis>root folder</Emphasis>.
+The root folder is the highest folder in the hierarchical folder tree.
+If a path begins with a slash
+(<ComputerOutput>/</ComputerOutput>), it is an absolute path specified from the root folder. For
+example, the following is an absolute path to the file <ComputerOutput>letter</ComputerOutput>:
 </Para>
 <ProgramListing>/usr/dt/config/letter</ProgramListing>
 </Step>
 </Procedure>
 <Procedure>
-<Title>相対パス</Title>
+<Title>Relative Paths</Title>
 <Step>
-<Para>ファイルまたはフォルダの場所を、現在のフォルダに関連させて記述した場合は、<Emphasis>相対</Emphasis>パスです。
-ユーザがフォルダにいて、フォルダ・ツリーを下に移動する場合は、完全パス名を指定する必要はありません。
-ユーザはパスの次のフォルダの名前で始まるパスだけを入力できます。
-パスがスラッシュで始まっていない場合は相対パスです。
-たとえば、現在のフォルダが<ComputerOutput>/usr/dt</ComputerOutput>で、''/usr/dt/config/letters''に移動する場合は、以下の相対パスを使用できます。
+<Para>A path is <Emphasis>relative</Emphasis> if it describes the location of a file or folder
+as it relates to the current folder.
+If you are in a folder and you want to move down the folder tree,
+you don't need to type the full path name. You
+can just type the path starting with the name
+of the next folder in the path.
+If a path does not begin
+with a slash, it is a relative path. For example, if the current
+folder is <ComputerOutput>/usr/dt</ComputerOutput>,
+and you want to move to the folder ''/usr/dt/config/letters,''
+you would use the following relative path:
 </Para>
 <ProgramListing>config/letters</ProgramListing>
 <IndexTerm>
-<Primary>.. (親フォルダ)</Primary>
+<Primary>.. (parent folder)</Primary>
 </IndexTerm>
-<Para>相対パスを指定するには、2 種類の特殊フォルダ名が便利です。
-<ComputerOutput>.</ComputerOutput> フォルダ(時に"ドット"と呼ばれる)は、カレント・フォルダを表します。
-<ComputerOutput>..</ComputerOutput> フォルダ(時に"ドット・ドット"と呼ばれる)は、<Emphasis>親フォルダ</Emphasis>を表します。
-&emdash;親フォルダは、フォルダ階層を 1 レベル上がったフォルダです。
-たとえば、現在のフォルダが<ComputerOutput>/usr/dt/config/panels</ComputerOutput>の場合に、<ComputerOutput>sys.dtwmrc</ComputerOutput>ファイルへの相対パスは以下のようになります。
+<Para>Two special folder names are useful when specifying relative paths.
+The <ComputerOutput>.</ComputerOutput> folder (sometimes called "dot") represents the current
+folder. The <ComputerOutput>..</ComputerOutput> folder (sometimes called "dot-dot") represents
+the <Symbol Role="Variable">parent</Symbol> folder&emdash;the folder one level up in the folder
+hierarchy. For example, if your current folder is
+<ComputerOutput>/usr/dt/config/panels</ComputerOutput>, then the relative path to the <ComputerOutput>sys.dtwmrc</ComputerOutput>
+file becomes:
 </Para>
 <ProgramListing>../sys.dtwmrc</ProgramListing>
-<Para>これは、<ComputerOutput>/usr/dt/config</ComputerOutput>フォルダ内のファイルは、現在のフォルダより 1 レベル上だからです。
+<Para>because the file is in the <ComputerOutput>/usr/dt/config</ComputerOutput> folder, one level
+above the current folder.
 <!-- Do we need the following section if Remote Systems is out?
 ************************************************************
-<procedure>ネットワーク・パス
+<procedure>The Network Path
  
-絶対パスと相対パスは、両方ともデスクトップと同様にオペレーティング・システムによるものです。
-ネットワーク・パスは、デスクトップに固有のアプリケーションによる特別なパスです。
-ネットワーク・パスは、ファイル・システムを格納するシステムの名前を含んでいます。</Para>
-<Para>以下に、ネットワーク・パスの例を示します。システムの名は``mysystem''です。</Para>
+Both the absolute and relative path names are by the operating system as
+well as by the desktop.  The network path is a special path used only by
+certain applications in the desktop.  It includes the name of the system
+containing the file system.</Para>
+<Para>Here is an example of a network path.  The name of the system is
+``mysystem'':</Para>
 <Para><ex>mysystem:/usr/dt/config/sys.dtwmrc<\ex>
 ************************************************************
 --></Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>関連項目</Title>
+<Title>See Also</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HFMGR.CNCP.item.7">
-<Para> <XRef Linkend="ToChangeToAnotherDirectoryTA">
+<Para><XRef Linkend="ToChangeToAnotherDirectoryTA">
 <!-- * <xref ToSpecifyRemotePath> --></Para>
 </ListItem>
 <ListItem Id="HFMGR.CNCP.item.8">
-<Para> <XRef Linkend="ToFindAFileByNameTA"></Para>
+<Para><XRef Linkend="ToFindAFileByNameTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.CNCP.item.9">
-<Para> <XRef Linkend="ToFindAFileByContentsTA"></Para>
+<Para><XRef Linkend="ToFindAFileByContentsTA"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="FileOwnershipAndSecuritySI">
-<Title>オブジェクトの所有者とセキュリティ</Title>
-<Para>3 つのグループのユーザがオブジェクトにアクセスできます。
-<Emphasis>所有者</Emphasis>、<Emphasis>グループ</Emphasis>、<Emphasis>その他</Emphasis>です。
-アクセスは 3 つの機能に分割されています。
-<Emphasis>読み取り</Emphasis>権、<Emphasis>書き込み</Emphasis>権、<Emphasis>実行</Emphasis>権です。
+<Title>Object Ownership and Security</Title>
+<Para>Three groups of users can access objects:
+<Emphasis>owner</Emphasis>, <Emphasis>group</Emphasis>, and
+<Emphasis>other</Emphasis>.
+Access is divided into three functions:
+<Emphasis>read</Emphasis>
+permission, <Emphasis>write</Emphasis> permission,
+and <Emphasis>execute</Emphasis> permission.
 </Para>
 <Procedure>
-<Title>誰がアクセスしたか?</Title>
+<Title>Who Has Access?</Title>
 <Step>
-<Para>ユーザの基本クラスは 3 つあります。
+<Para>The three basic classes of users are:
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><GlossTerm Role="nogloss">所有者</GlossTerm></Term>
+<Term><GlossTerm Role="nogloss">Owner</GlossTerm></Term>
 <ListItem>
-<Para> 通常は、ファイルを作成した人です。
+<Para>Usually the person who created the file.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><GlossTerm Role="nogloss">グループ</GlossTerm></Term>
+<Term><GlossTerm Role="nogloss">Group</GlossTerm></Term>
 <ListItem>
-<Para> システム管理者がグループ化した複数のユーザです。
-		       たとえば、部のメンバは同じグループに所属します。
+<Para>Several users that have been grouped together by
+the system administrator. For example, the
+members of a department might belong to the same
+group.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><GlossTerm Role="nogloss">その他</GlossTerm></Term>
+<Term><GlossTerm Role="nogloss">Other</GlossTerm></Term>
 <ListItem>
-<Para> システム上の他のすべてのユーザです。
+<Para>All other users on the system.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -209,176 +243,204 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>アクセスの種類は?</Title>
+<Title>What Kind of Access?</Title>
 <Step>
-<Para>ファイルに関するアクセス権は、そのファイルに対して所有者、グループのメンバ、その他のユーザがアクセスする方法を指定します。
+<Para>The access permissions on a file specifies how that file can be accessed by
+the owner, members of the group, and other users.
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><GlossTerm Role="nogloss">読み取り権</GlossTerm></Term>
+<Term><GlossTerm Role="nogloss">Read Permission</GlossTerm></Term>
 <ListItem>
-<Para> オブジェクトの内容をコピー、または表示するアクセスが可能です。
+<Para>Allows access to copy or view the
+contents of the object.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><GlossTerm Role="nogloss">書き込み権</GlossTerm></Term>
+<Term><GlossTerm Role="nogloss">Write Permission</GlossTerm></Term>
 <ListItem>
-<Para> オブジェクトの内容を変更する、あるいは、オブジェクトを削除するアクセスが可能です。
+<Para>Allows access to change the contents
+of the object or remove the object.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><GlossTerm Role="nogloss">実行権</GlossTerm></Term>
+<Term><GlossTerm Role="nogloss">Execute Permission</GlossTerm></Term>
 <ListItem>
-<Para> ファイルに対しては、ファイル(実行形式ファイル、スクリプト、およびアクション)を<Emphasis>実行</Emphasis>するアクセスが可能です。
-			フォルダに対しては、そのフォルダ内のコマンド、スクリプト、およびアクションを実行するアクセスが可能です。
+<Para>For a file, allows access to <Emphasis>run</Emphasis>
+the file (for executable files,
+scripts, and actions). For a
+folder, allows access to run
+commands, scripts, and actions
+within that folder.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
-<Para>ファイル・マネージャを用いて、ファイルまたはフォルダに対するアクセス権を表示および変更することができます。
-(<XRef Linkend="ToChangeAnObjectsOwnerTA">および<XRef Linkend="ToChangeAnObjectsPermissionsTA">を参照してください。)
+<Para>With File Manager, you can view and change the access permissions for
+files or folders.
+See <XRef Linkend="ToChangeAnObjectsOwnerTA"> and <XRef Linkend="ToChangeAnObjectsPermissionsTA">.
 </Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>例</Title>
+<Title>Examples</Title>
 <Step>
-<Para>フォルダを個人用にするには:
+<Para>To make a folder private:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.CNCP.item.10">
-<Para> ユーザ自身(所有者)に読み取り権と書き込み権と実行権を与えて、グループとその他には、全くアクセス権を与えないようにフォルダの属性を変更してください。
-  これは、ユーザと root ユーザのみがフォルダの内容を表示できるということです。
+<Para>Change the folder's properties, giving yourself (the owner) read,
+write, and execute permission, but giving no permissions for group and
+other. This means that only you and the root user can view the
+contents of the folder.
 </Para>
 </ListItem>
 </ItemizedList>
-<Para>作成したオブジェクトを誰でも使用できるようにした上に、不正に上書きされるのを防止するには
+<Para>To make an object that you've created available for everyone to use, but
+protect it so it isn't inadvertently overwritten:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.CNCP.item.11">
-<Para> 読み取り権および実行権を、所有者、グループまたはその他に与えて、ファイルの属性を変更してください。
-  誰にも書き込み権を与えないてはいけません。
+<Para>Change the file's properties, giving read and execute permission to
+owner, group, and other. Don't give anyone write permission.
 </Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>デフォルトのアクセス権</Title>
+<Title>Default Permissions</Title>
 <Step>
-<Para>ユーザが新規ファイルまたはフォルダを作成した時のデフォルトのアクセス権は、システム管理者が変更します。
-現在のデフォルトを調べるには、新規ファイルまたはフォルダを作成後、[選択] メニューで [アクセス権の変更] を選択して、デフォルトのアクセス権を表示してください。
+<Para>The default permissions used when you create a new file or folder may be
+altered by your system administrator. To determine what your current
+defaults are, create a new file or folder, then Select
+Change Permissions from the Selected menu to view the
+default permissions.
 </Para>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="DesktopIntro">
-<Title>オブジェクトへアクセスしやすくする - 紹介 &newline; ワークスペース・オブジェクト</Title>
+<Title>Making Objects More Accessible - Introducing &newline; Workspace Objects</Title>
 <IndexTerm>
-<Primary>ワークスペース・オブジェクト</Primary>
+<Primary>workspace objects</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ワークスペース: オブジェクト</Primary>
+<Primary>workspace: objects</Primary>
 </IndexTerm>
-<Para>ファイル・マネージャには、ファイル・システムのすべてのオブジェクトを表示する方法があります。
-しかし、オブジェクトは、ユーザがそのオブジェクトを格納しているフォルダを表示している場合にのみ、見ることができます。</Para>
-<Para>オブジェクトへアクセスしやすくするには、そのオブジェクトをワークスペースの背景上に直接置いてください。
-ワークスペースは、ウィンドウをその上に表示する領域または面です。
-(<XRef Linkend="ToPutAnObjectOnTheDesktopTA">を参照してください。)
-そこにオブジェクトが置かれると、そこは<Emphasis>ワークスペース・オブジェクト</Emphasis>と呼ばれます。</Para>
-<Para>オブジェクトをワークスペース上に配置することは、オリジナルのファイルまたはフォルダを変えません。
-実際は、デスクトップ上に表示されるアイコンは、実際のファイルまたはフォルダに対するショートカット(リンク) にすぎません。
-ユーザがワークスペース・オブジェクトに関して実行する操作は、実際にはそれが表すファイルまたはフォルダで実行されます。
+<Para>File Manager provides a way to view all the objects in your file
+system. However, the object is only visible when you are viewing the
+folder it is in.</Para>
+<Para>To make an object more accessible, you can put it directly on the
+workspace backdrop.
+The workspace is that area or surface on which windows appear to lie.
+(See <XRef Linkend="ToPutAnObjectOnTheDesktopTA">.) When an object is placed there,
+it is called a <Emphasis>workspace object</Emphasis>.</Para>
+<Para>Placing an object on the workspace does not alter the original file or
+folder. In fact, the icon that appears on the desktop is really just
+a shortcut (link) for accessing the real file or folder. Any operation you
+perform on the workspace object is actually performed on the file or
+folder it represents.
 </Para>
 <Procedure>
-<Title>ひとつのワークスペースに表示されるワークスペース・オブジェクト</Title>
+<Title>Workspace Objects Appear in One Workspace</Title>
 <Step>
-<Para>ワークスペース上にオブジェクトを配置する場合に、オブジェクトは現在のワークスペースのみに表示されます。
-オブジェクトを他のワークスペースに配置する場合は、そのワークスペースに切り替えて、オブジェクトを置かなければなりません。
+<Para>When you place an object on the workspace, it appears only in the current
+workspace. If you want the object in other workspaces, you must switch
+to those workspaces and put the object on them.
 </Para>
 </Step>
 </Procedure>
 <Procedure>
-<Title>ワークスペース・オブジェクトの使い方</Title>
+<Title>Using Workspace Objects</Title>
 <Step>
-<Para>ワークスペース・オブジェクトは、ファイル・マネージャ・ウィンドウまたはアプリケーション・マネージャ・ウィンドウの中とまったく同じに使用できます。
-オブジェクトのデフォルトのアクションを実行するには、デスクトップ上のオブジェクトのアイコンをダブルクリックしてください。</Para>
-<Para>また、各ワークスペース・オブジェクトには、オブジェクトに対するコマンドおよびアクションを格納するポップアップ・メニューもあります。
-ワークスペース・オブジェクトのポップアップ・メニューをマウスを使用して表示するには、アイコンを指して、マウス・ボタン 3 を押し続けてください。
-キーボードでメニュー表示するには、[Alt+Tab] キーをアイコンが強調表示されるまで押した後、[Shift+F10] キーを押してください。
+<Para>You use workspace objects exactly like the objects inside
+the File Manager or Application Manager windows.
+To execute an object's default action, double-click
+its icon on the desktop.</Para>
+<Para>Each workspace object also has a pop-up menu containing commands
+and actions for the object. To display the pop-up menu for a workspace
+object
+using the mouse, point to the icon, then press and hold mouse button 3.
+To display the menu through the keyboard, press Alt+Tab until
+the icon is highlighted, then press Shift+F10.
 </Para>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="MatchingPatterns">
-<Title>ファイル検索のパターン一致</Title>
+<Title>Matching Patterns for Finding Files</Title>
 <IndexTerm>
-<Primary>ワイルドカード, 一致</Primary>
+<Primary>wildcards, matching</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>ワイルドカードの一致</Primary>
+<Primary>matching wildcards</Primary>
 </IndexTerm>
-<Para>ファイル名またはフォルダ名を指定する場合に、アスタリスク(<ComputerOutput>*</ComputerOutput>)およびクエスチョン・マーク(<ComputerOutput>?</ComputerOutput>)をワイルドカード文字として使用できます。
-<ComputerOutput>*</ComputerOutput>は、0 以上の文字で構成される任意の文字列と一致します。
-<ComputerOutput>?</ComputerOutput>は、任意の一文字と一致します。
+<Para>When you specify a file or folder name, you can include wildcard
+characters such as asterisk (<ComputerOutput>*</ComputerOutput>) and question mark (<ComputerOutput>?</ComputerOutput>). The <ComputerOutput>*</ComputerOutput>
+matches any string of zero or more characters, and <ComputerOutput>?</ComputerOutput>
+matches any single character.
 </Para>
 <Procedure>
-<Title>例</Title>
+<Title>Examples</Title>
 <Step>
 <VariableList>
 <VarListEntry>
 <Term><ComputerOutput>ba*</ComputerOutput></Term>
 <ListItem>
-<Para>   文字列 <ComputerOutput>ba</ComputerOutput> で始まる、すべての名前と一致します。
+<Para>Matches all names that begin with the string <ComputerOutput>ba</ComputerOutput>
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term><ComputerOutput>ba?</ComputerOutput></Term>
 <ListItem>
-<Para>   文字列 <ComputerOutput>ba</ComputerOutput> で始まる、全部で 3 文字の名前と一致します。
+<Para>Matches all three letter names that begin with the string <ComputerOutput>ba</ComputerOutput>
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term><ComputerOutput>*.vf</ComputerOutput></Term>
 <ListItem>
-<Para>  拡張子 <ComputerOutput>.vf</ComputerOutput> で終わる、すべての名前と一致します。
+<Para>Matches all names that end with the <ComputerOutput>.vf</ComputerOutput> extension
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term><ComputerOutput>*.???</ComputerOutput></Term>
 <ListItem>
-<Para> ドット(.) の後に続く 3 文字の拡張子を持つ名前と一致します。
+<Para>Matches all names that have a three-character dot extension
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Note>
-<Para>ファイル名と内容は、<ComputerOutput>find</ComputerOutput> コマンドと同じ正規表現構文を使用して指定することができます。
-(詳細は、<ComputerOutput>find (1)</ComputerOutput> のマニュアル・ページを参照してください。)
+<Para>The file name and contents can be specified using the same regular
+expression syntax allowed by the <ComputerOutput>find</ComputerOutput> command. (Refer to the
+<ComputerOutput>find (1)</ComputerOutput> man page for more information.)
 </Para>
 </Note>
 </Step>
 </Procedure>
 </Sect1>
 <Sect1 Id="IconBrowser">
-<Title>ファイル・マネージャをアイコン・ブラウザとして使用する</Title>
-<Para>名前が <ComputerOutput>.pm</ComputerOutput> または <ComputerOutput>.bm</ComputerOutput> で終わるファイルは、アイコンの描画イメージを格納しています。
-これらはファイル・マネージャがアイコンを構築する場合に使用するアイコンです。
-デフォルトでは、これらの格納する描画イメージを参照するには、これらのファイルを開かなければなりません。
-アイコンのブラウズを可能にする場合に、ファイル・マネージャは、各ファイルのアイコンを、描画イメージがファイル内部に格納されているかのように表示します。</Para>
-<Para>アイコンのブラウズのためにファイル・マネージャを再構成する方法を調べるには、以下を参照してください。
+<Title>Using File Manager as an Icon Browser</Title>
+<Para>Files with names that end in
+<ComputerOutput>.pm</ComputerOutput> or <ComputerOutput>.bm</ComputerOutput> contain icon drawings.
+These are the icons that File Manager uses when it builds icons. By default,
+you must open these files to see the drawings they contain. If you enable
+icon browsing, File Manager will make the icon for each file look like
+whatever drawing is stored inside the file.</Para>
+<Para>To find out how to reconfigure File Manager for icon browsing, see:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HFMGR.CNCP.item.12">
-<Para> <XRef Linkend="ToEnableIconBrowsingTA"></Para>
+<Para><XRef Linkend="ToEnableIconBrowsingTA"></Para>
 </ListItem>
 <ListItem Id="HFMGR.CNCP.item.13">
-<Para> <XRef Linkend="ToDisableIconBrowsingTA"></Para>
+<Para><XRef Linkend="ToDisableIconBrowsingTA"></Para>
 </ListItem>
 </ItemizedList>
 <!-- EOF: Concepts -->

@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: noteicon.pm /main/4 1996/12/18 02:54:16 cde-hit $ */
+/* $XConsortium: noteicon.pm /main/4 1996/06/19 16:19:36 drk $ */
 static char * noteicon [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "32 32 3 1 0 0",

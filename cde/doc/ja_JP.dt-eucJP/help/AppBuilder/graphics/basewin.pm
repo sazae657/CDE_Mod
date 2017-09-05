@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: basewin.pm /main/3 1996/12/18 01:10:15 cde-hit $ */
+/* $XConsortium: basewin.pm /main/1 1996/03/09 20:11:34 rws $ */
 static char * basewin_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "48 32 7 1 0 0",

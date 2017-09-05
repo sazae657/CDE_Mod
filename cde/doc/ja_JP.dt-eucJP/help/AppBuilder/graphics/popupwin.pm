@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: popupwin.pm /main/3 1996/12/18 01:18:30 cde-hit $ */
+/* $XConsortium: popupwin.pm /main/1 1996/03/09 20:12:33 rws $ */
 static char * popupwin_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "48 32 8 1 0 0",

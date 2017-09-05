@@ -1,4 +1,4 @@
-<!-- $XConsortium: Ref.sgm /main/5 1996/12/18 01:35:39 cde-hit $ -->
+<!-- $XConsortium: Ref.sgm /main/7 1996/09/08 22:49:42 rws $ -->
 <!-- (c) Copyright 1995 Digital Equipment Corporation. -->
 <!-- (c) Copyright 1995 Hewlett-Packard Company. -->
 <!-- (c) Copyright 1995 International Business Machines Corp. -->
@@ -7,124 +7,130 @@
 <!-- (c) Copyright 1995 FUJITSU LIMITED. -->
 <!-- (c) Copyright 1995 Hitachi. -->
 <Chapter Id="Reference">
-<Title>[アクション作成] のリファレンス</Title>
+<Title>Create Action Reference</Title>
 <Procedure>
-<Title>[アクション作成] の一般情報</Title>
+<Title>General Create Action Information</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCRA.REF.item.1">
-<Para> <XRef Linkend="WhatCreateActionDoes"></Para>
+<Para><XRef Linkend="WhatCreateActionDoes"></Para>
 </ListItem>
 <ListItem Id="HCRA.REF.item.2">
-<Para> <XRef Linkend="CreateActionFunctionality"></Para>
+<Para><XRef Linkend="CreateActionFunctionality"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Procedure>
-<Title>[アクション作成] ウィンドウ</Title>
+<Title>Create Action Windows</Title>
 <Step>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCRA.REF.item.3">
-<Para> <XRef Linkend="CreateActionMainWindow"></Para>
+<Para><XRef Linkend="CreateActionMainWindow"></Para>
 </ListItem>
 <ListItem Id="HCRA.REF.item.4">
-<Para> <XRef Linkend="AddDatatypeWindow"></Para>
+<Para><XRef Linkend="AddDatatypeWindow"></Para>
 </ListItem>
 <ListItem Id="HCRA.REF.item.5">
-<Para> <XRef Linkend="DatatypeCriteriaWindow"></Para>
+<Para><XRef Linkend="DatatypeCriteriaWindow"></Para>
 </ListItem>
 <ListItem Id="HCRA.REF.item.6">
-<Para> <XRef Linkend="FindIconSetDialog"></Para>
+<Para><XRef Linkend="FindIconSetDialog"></Para>
 </ListItem>
 </ItemizedList>
 </Step>
 </Procedure>
 <Sect1 Id="WhatCreateActionDoes">
-<Title>[アクション作成] によって作成されたファイル</Title>
+<Title>Files Created by Create Action</Title>
 <IndexTerm>
-<Primary>アクション作成:作成されたファイル</Primary>
+<Primary>Create Action:files created by</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>アクション名</Primary>
+<Primary>action name</Primary>
 </IndexTerm>
-<Para>[アクション作成] の出力は、以下のとおりです。
+<Para>The output from Create Action is:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HCRA.REF.item.7">
-<Para> コマンドを実行するアクションの定義。定義を格納するファイル
-  <ComputerOutput><Symbol Role="Variable">HomeFolder</Symbol>/.dt/types/<Symbol Role="Variable">action_name</Symbol>.dt</ComputerOutput> が作成されます。</Para>
+<Para>An action definition that runs a command. A file
+<ComputerOutput><Symbol Role="Variable">HomeFolder</Symbol>/.dt/types/<Symbol Role="Variable">action_name</Symbol>.dt</ComputerOutput> is created containing the
+definition.</Para>
 <Para><IndexTerm>
-<Primary>アクション・アイコン</Primary>
-</IndexTerm>
-</Para></ListItem>
+<Primary>action icon</Primary>
+</IndexTerm></Para>
+</ListItem>
 <ListItem Id="HCRA.REF.item.8">
-<Para> アクションの <GlossTerm>アクション・アイコン</GlossTerm> 。アクション・アイコンは、ユーザのホーム・ディレクトリに置かれます。アイコンをダブルクリックすると、アクション・コマンドが実行されます。
- オプションで、ドロップ可能なデータ型を指定して、ドロップ領域にアクション・アイコンを作成できます。</Para>
+<Para>An <GlossTerm>action icon</GlossTerm> for the action. The action icon is placed in your home
+directory. The icon runs the action command when it is double-clicked.
+Optionally, you can make the action icon a drop zone by specifying
+droppable data types.</Para>
 </ListItem>
 <ListItem Id="HCRA.REF.item.9">
-<Para> [アクション作成] の拡張機能を使用する場合は、以下も作成します。</Para>
+<Para>If you use the advanced functions of Create Action, it may also create:</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCRA.REF.item.10">
-<Para> アプリケーションのデータ・ファイルに対する 1 つ以上のデータ型。
+<Para>One or more data types for the application's data files.
 </Para>
 </ListItem>
 <ListItem Id="HCRA.REF.item.11">
-<Para> データ型に対する [開く] アクションと [印刷] アクション。
+<Para>Open and Print actions for the data type
 </Para>
 </ListItem>
 </ItemizedList>
-<Para>データ型、および [開く] アクションと [印刷] アクションもファイル
-<ComputerOutput><Symbol Role="Variable">HomeFolder</Symbol>/.dt/types/<Symbol Role="Variable">action_name</Symbol>.dt</ComputerOutput> に書き込まれます。
+<Para>The data type(s) and Open and Print actions are also written to the file
+<ComputerOutput><Symbol Role="Variable">HomeFolder</Symbol>/.dt/types/<Symbol Role="Variable">action_name</Symbol>.dt</ComputerOutput>.
 </Para>
 </ListItem>
 </ItemizedList>
 </Sect1>
 <Sect1 Id="CreateActionFunctionality">
-<Title>アクション作成に関する制限事項</Title>
+<Title>Limitations of Create Action</Title>
 <Procedure>
-<Title>アクション作成に関する制限事項</Title>
+<Title>Create Action Limitations</Title>
 <IndexTerm>
-<Primary>アクション作成:アクションに関する制限事項</Primary>
+<Primary>Create Action:action limitations</Primary>
 </IndexTerm>
 <Step>
-<Para>以下の場合には、[アクション作成] を使用して、アプリケーションのアクションを作成できません。
+<Para>You cannot use Create Action to create the action for an application if:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HCRA.REF.item.12">
-<Para> コマンド行が、ファイルではないパラメータを要求する場合。
-たとえば、コマンドに対するアクションを書くのに、[アクション作成] は使用できません。</Para>
+<Para>The command line requires a non-file parameter. For example, you cannot
+use Create Action to write an action for the command:</Para>
 <ProgramListing>lp -d<Symbol Role="Variable">device</Symbol> <Symbol Role="Variable">filename</Symbol></ProgramListing>
-<Para>ここで、ユーザはコマンドを実行するたびに、デバイスを入力しなければなりません。
-(これを実行するアクションを手動で作成することができます。)</Para>
+<Para>where the user has to supply device each time the command is executed.
+(You can manually create an action that does this.)</Para>
 </ListItem>
 <ListItem Id="HCRA.REF.item.13">
-<Para> アクション名と異なるアクション・アイコン上のラベルをユーザに表示する場合。
-  たとえば、既存のアクションのローカル言語バージョンを提供するのに、[アクション作成] は使用できません。</Para>
+<Para>You want the user to see a different label on the action icon than the action
+name. For example, you cannot use Create Action to provide a local-
+language version of an existing action.</Para>
 </ListItem>
 <ListItem Id="HCRA.REF.item.14">
-<Para> アクションに、以下のアクションのようなアクション・データベースの拡張機能が必要な場合。
+<Para>The action requires some of the advanced features of the action database,
+such as actions that:
 </Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCRA.REF.item.15">
-<Para> アクション定義から離れたシステム上にコマンドを発行する場合。
-	</Para>
+<Para>Launch commands on systems remote from the action definition.
+</Para>
 </ListItem>
 <ListItem Id="HCRA.REF.item.16">
-<Para> 他のアクションを起動する場合。
-	</Para>
+<Para>Invoke other actions.
+</Para>
 </ListItem>
 <ListItem Id="HCRA.REF.item.17">
-<Para> 別のユーザとして実行する場合(たとえば、スーパーユーザとして)。
-	</Para>
+<Para>Must be run as a different user (for example, as superuser).
+</Para>
 </ListItem>
 <ListItem Id="HCRA.REF.item.18">
-<Para> "マップ" 機能の拡張使用を行う場合。
-	</Para>
+<Para>Make extensive use of the "map" feature.
+</Para>
 </ListItem>
 <ListItem Id="HCRA.REF.item.19">
-<Para> アクションに指定するファイル引き数の数によって、非常に異なる動作をする場合。
-	</Para>
+<Para>Have very different behaviors, depending on the number of file
+arguments supplied to the action.
+</Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
@@ -132,21 +138,23 @@
 </Step>
 </Procedure>
 <Procedure>
-<Title>データ型に関する制限事項</Title>
+<Title>Data Type Limitations</Title>
 <IndexTerm>
-<Primary>アクション作成:データ型に関する制限事項</Primary>
+<Primary>Create Action:data type limitations</Primary>
 </IndexTerm>
 <Step>
-<Para>以下の場合には、[アクション作成] を使用して、アプリケーションのデータ型を作成できません。
+<Para>You cannot use Create Action to create the data type for an application if:
 </Para>
 <ItemizedList Mark="&bull;">
 <ListItem Id="HCRA.REF.item.20">
-<Para> データ型に、[開く] と [印刷] 以外の関連する追加アクションが必要な場合。
+<Para>The data type must have additional actions associated with it other than
+Open and Print.
 </Para>
 </ListItem>
 <ListItem Id="HCRA.REF.item.21">
-<Para> データ型に対する [開く] アクションが、アクションのコマンドではない場合。
-  たとえば、アプリケーションのアプリケーション・グループを表すディレクトリの一意のアイコンを生成するデータ型を作成するのに、[アクション作成] は使用できません。
+<Para>The Open action for the data type is not the action's command. For example,
+you cannot use Create Action to create the data type that provides a unique
+icon for the directory representing the application's application group.
 </Para>
 </ListItem>
 </ItemizedList>
@@ -154,70 +162,75 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="CreateActionMainWindow">
-<Title>[アクション作成] のメイン・ウィンドウ</Title>
+<Title>Create Action Main Window</Title>
 <IndexTerm>
-<Primary>アクション作成:メイン・ウィンドウ</Primary>
+<Primary>Create Action:main window</Primary>
 </IndexTerm>
-<Para>使い方については、<XRef Linkend="ToCreateAction"> を参照してください。</Para>
+<Para>For task information, see <XRef Linkend="ToCreateAction">.</Para>
 <Graphic Entityref="CAMainWindow" Id="HCRA.REF.fig.1"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term>アクション名</Term>
+<Term>Action Name</Term>
 <ListItem>
-<Para> アクションの名前を入力してください。名前は大文字と小文字を区別して、スペースを含むことはできません。</Para>
+<Para>Type the name of the action. The name is case sensitive and
+cannot include spaces.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>アクション・アイコン</Term>
+<Term>Action Icons</Term>
 <ListItem>
-<Para> アクション・アイコンが使用するアイコン・イメージを表示します。</Para>
+<Para>Displays the icon image that will be used by the action icon.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>アイコンセット検索</Term>
+<Term>Find Set</Term>
 <ListItem>
-<Para> [アイコンセット検索] ダイアログ・ボックスを表示します。
-[アイコンセット検索] ダイアログ・ボックスを使用して、別の既存のビットマップまたはピックスマップ・ファイルを選択してください。</Para>
+<Para>Displays the Find Set dialog box. Use the Find Set dialog box to
+select a different, existing bitmap or pixmap file.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>アイコン編集</Term>
+<Term>Edit Icon</Term>
 <ListItem>
-<Para> アイコン・エディタを開きます。アイコン・エディタを使用して、新規アイコンを作成するか、既存のアイコンを編集してください。</Para>
+<Para>Opens the Icon Editor. Use Icon Editor to create a new
+icon or edit an existing one.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>アクションが開かれた時のコマンド</Term>
+<Term>Command When Action is Opened</Term>
 <ListItem>
-<Para> コマンドを入力してください。ファイル引き数には、書式 <ComputerOutput>$</ComputerOutput><Symbol Role="Variable">n</Symbol> を使用してください。</Para>
+<Para>Type the command. Use the
+syntax <ComputerOutput>$</ComputerOutput><Symbol Role="Variable">n</Symbol> for a file argument.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>アクション・アイコンのヘルプ・テキスト</Term>
+<Term>Help Text for Action Icon</Term>
 <ListItem>
-<Para> アクション・アイコンのアイテムヘルプのテキストを入力してください。</Para>
+<Para>Type the text of the on-item help for the action
+icon.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ウィンドウタイプ</Term>
+<Term>Window Type</Term>
 <ListItem>
-<Para> アクションが作成するウィンドウのタイプを選択してください。</Para>
+<Para>Select the type of window the action will create:</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCRA.REF.item.22">
-<Para> グラフィック: アプリケーションは、独自のウィンドウを表示します。
+<Para>Graphical: The application displays its own window
 </Para>
 </ListItem>
 <ListItem Id="HCRA.REF.item.23">
-<Para> 端末エミュレータ (自動的に閉じる): アクションは、アクションの完了時に閉じる端末エミュレータ・ウィンドウを表示します。
+<Para>Terminal (Auto-Close): The action displays a terminal window that closes
+when the action completes
 </Para>
 </ListItem>
 <ListItem Id="HCRA.REF.item.24">
-<Para> 端末エミュレータ (手動で閉じる): アクションは、ユーザが手動で閉じなければならない
-端末エミュレータ・ウィンドウを表示します。
+<Para>Terminal (Manual Close): The action displays a terminal window that the
+user must manually close
 </Para>
 </ListItem>
 <ListItem Id="HCRA.REF.item.25">
-<Para> 出力なし: アプリケーションには、ウィンドウは必要ありません。
+<Para>No Ouptput: The application requires no window
 </Para>
 </ListItem>
 </ItemizedList>
@@ -225,48 +238,54 @@
 </VarListEntry>
 </VariableList>
 <Procedure>
-<Title>拡張機能</Title>
+<Title>Advanced Functions</Title>
 <Step>
-<Para>拡張機能は、"アクション・アイコンがダブルクリックされた時のコマンド" フィールドにファイル引き数がある場合にのみ使用してください。
+<Para>Use the advanced features only if the command in the "Command When Action
+Icon Is Double-clicked" field includes a file argument.
 </Para>
 <Graphic Entityref="CAAdvancedMainWIndow" Id="HCRA.REF.fig.2"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term>アクションを開く時点でユーザに確認</Term>
+<Term>When Action Opens, Ask Users for</Term>
 <ListItem>
-<Para> アクション・アイコンがダブルクリックされた時に表示されるファイル・プロンプトを入力してください。</Para>
+<Para>Type the file prompt that is displayed when the
+action icon is double-clicked.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>このアクションで使用するデータ型</Term>
+<Term>Datatypes That Use This Action</Term>
 <ListItem>
-<Para> このアクションに作成するデータ型のリストです。
-このリストは、読み込み専用です。
-[データ型の追加] ダイアログ・ボックスを使用してデータ型を作成すると、エントリが追加されます。</Para>
+<Para>A list of the data types created for this
+action. This list is read-only. Entries are added when you create the
+data types using the Add Datatype dialog box.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>追加</Term>
+<Term>Add</Term>
 <ListItem>
-<Para> 新規データ型を追加する [データ型の追加] ダイアログ・ボックスを開きます。</Para>
+<Para>Opens the Add Data Type dialog box for creating a new data type.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>削除</Term>
+<Term>Delete</Term>
 <ListItem>
-<Para> 選択したデータ型を "このアクションで使用するデータ型" リストから削除します。</Para>
+<Para>Deletes the selected data type from the "Data Types That Use This
+Action" list.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>編集</Term>
+<Term>Edit</Term>
 <ListItem>
-<Para> "このアクションで使用するデータ型" リスト内の選択したデータ型を編集する場合に選択してください。</Para>
+<Para>Choose to edit the data types selected in the "Datatypes That Use This
+Action" list.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ドロップ可能なデータ型</Term>
+<Term>Droppable Datatypes</Term>
 <ListItem>
-<Para> アクション・アイコンが任意の型のデータ・ファイルを受け入れるか、それとも "このアクションで使用するデータ型" リストにあるデータ型のファイルのみを受け入れるかを選択してください。</Para>
+<Para>Select whether the action icon will accept any type
+data file, or only files of data types in the "Datatypes That Use This
+Action" list.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
@@ -274,311 +293,323 @@
 </Procedure>
 </Sect1>
 <Sect1 Id="AddDatatypeWindow">
-<Title>[データ型の追加] ダイアログ・ボックス</Title>
+<Title>Add Datatype Dialog Box</Title>
 <IndexTerm>
-<Primary>[データ型の追加] ダイアログ・ボックス</Primary>
+<Primary>Add Datatype dialog box</Primary>
 </IndexTerm>
-<Para>使い方については、<XRef Linkend="ToCreateDatatype"> を参照してください。</Para>
+<Para>For task information, see <XRef Linkend="ToCreateDatatype">.</Para>
 <VariableList>
 <VarListEntry>
-<Term>データ型ファミリの名前</Term>
+<Term>Name of Datatype Family</Term>
 <ListItem>
-<Para> データ型の名前で、自動的に付けられます。
-テキスト・フィールドを編集できます。
-名前は大文字小文字を区別し、スペースを含むことはできません。</Para>
+<Para>The data type name. A name is supplied
+automatically. You can edit the
+text field. The name is case sensitive and cannot include spaces.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>特性の識別</Term>
+<Term>Identifying Characteristics</Term>
 <ListItem>
-<Para> ファイルの入力規準のリストです。
-特性を設定およに変更するには、[編集] を使用してください。</Para>
+<Para>A list of the criteria for typing the file.
+Use Edit to set and change characteristics.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>編集</Term>
+<Term>Edit</Term>
 <ListItem>
-<Para> [特性の識別] ダイアログ・ボックスを表示します。</Para>
+<Para>Displays the Identifying Characteristics dialog box.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>データ型アイコンのヘルプ・テキスト</Term>
+<Term>Help Text for this Datatype Icon</Term>
 <ListItem>
-<Para> このデータ型のファイルのアイテムヘルプのテキストを入力してください。</Para>
+<Para>Type the text of the on-item help for
+files of this data type.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>データ型アイコン</Term>
+<Term>Datatype Icons</Term>
 <ListItem>
-<Para> データ型が使用するアイコン・イメージを表示します。</Para>
+<Para>Displays the icon image that will be used by the data type.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>アイコンセット検索</Term>
+<Term>Find Set</Term>
 <ListItem>
-<Para> [アイコンセット検索] ダイアログ・ボックスを表示します。
-[アイコンセット検索] ダイアログ・ボックスを使用して、別の既存のビットマップまたはピックスマップ・ファイルを選択してください。</Para>
+<Para>Displays the Find Set dialog box. Use the Find Set dialog box to
+select a different, existing bitmap or pixmap file.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>アイコン編集</Term>
+<Term>Edit Icon</Term>
 <ListItem>
-<Para> アイコン・エディタを開きます。アイコン・エディタを使用して、新規アイコンを作成するか、既存のアイコンを編集してください。</Para>
+<Para>Opens the Icon Editor. Use Icon Editor to create a new
+icon or edit an existing one.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>データ型を開くコマンド</Term>
+<Term>Command to Open this Datatype</Term>
 <ListItem>
-<Para> ユーザがデータ型をダブルクリックした時に実行されるコマンドを表示します。
-このコマンドは、[アクション・アイコンがダブルクリックされた時のコマンド] フィールドに表示されるコマンドと同じです。</Para>
+<Para>Displays the command that is executed when
+the user double-clicks the data type. This is the same command shown in the
+ommand When Action Icon is Double-clicked field.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>データ型を印刷するコマンド</Term>
+<Term>Command to Print this Datatype</Term>
 <ListItem>
-<Para> データ型を印刷するのにアプリケーションが使用するコマンド行を入力してください。</Para>
+<Para>Type the command line supplied by the
+application to print the data type.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>了解</Term>
+<Term>OK</Term>
 <ListItem>
-<Para> データ型情報を作成し、データ型を [このアクションで使用するデータ型] リストに追加して、ダイアログ・ボックスを閉じます。</Para>
+<Para>Creates the data type information, adds the data type to the Datatypes
+That Use This Action list, and closes the dialog box.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>適用</Term>
+<Term>Apply</Term>
 <ListItem>
-<Para> データ型情報を作成し、データ型を [このアクションで使用するデータ型] リストに追加します。
-ダイアログ・ボックスは開いたままです。</Para>
+<Para>Creates the data type information and adds the data type to the Datatypes
+That Use This Action list. The dialog box remains open.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>取消し</Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para> データ型を作成しないで、[データ型の追加] ダイアログ・ボックスを閉じます。</Para>
+<Para>Closes the Add Datatype dialog box without creating a data type.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ヘルプ</Term>
+<Term>Help</Term>
 <ListItem>
-<Para> オンライン・ヘルプを表示します。</Para>
+<Para>Displays online help.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </Sect1>
 <Sect1 Id="DatatypeCriteriaWindow">
-<Title>[特性の識別] ダイアログ・ボックス</Title>
+<Title>Identifying Characteristics Dialog Box</Title>
 <IndexTerm>
-<Primary>[特性の識別] ダイアログ・ボックス</Primary>
+<Primary>Identifying Characteristics dialog box</Primary>
 </IndexTerm>
-<Para>使い方については、<XRef Linkend="ToCreateDatatype"> を参照してください。</Para>
+<Para>For task information, see <XRef Linkend="ToCreateDatatype">.</Para>
 <Graphic Entityref="CAIdentifyingCharWindow" Id="HCRA.REF.fig.3"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term>すべての取込み</Term>
+<Term>Include All</Term>
 <ListItem>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCRA.REF.item.26">
-<Para> ファイル: データ型をファイルにのみ適用する場合に選択してください。
-	</Para>
+<Para>Files: Select if the data type applies only to files.
+</Para>
 </ListItem>
 <ListItem Id="HCRA.REF.item.27">
-<Para> フォルダ: データ型をフォルダにのみ適用する場合に選択してください。
-	</Para>
+<Para>Folders: Select if the data type applies only to folders.
+</Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ファイル名のパターン</Term>
+<Term>Name Pattern</Term>
 <ListItem>
-<Para> チェック・ボックスを選択して、ファイル名のパターンを入力してください。
-以下の特殊文字を使用できます。
-	</Para>
+<Para>Select the check box and type the name pattern. You can use
+these special characters:
+</Para>
 <ItemizedList Mark="&bull;" Role="tight">
 <ListItem Id="HCRA.REF.item.28">
-<Para> <ComputerOutput>*</ComputerOutput>: 任意の文字列と一致します。
-	</Para>
+<Para><ComputerOutput>*</ComputerOutput>: Matches any sequence of characters.
+</Para>
 </ListItem>
 <ListItem Id="HCRA.REF.item.29">
-<Para> <ComputerOutput>?</ComputerOutput>: 任意の一文字と一致します。
-	</Para>
+<Para><ComputerOutput>?</ComputerOutput>: Matches any single character.
+</Para>
 </ListItem>
 </ItemizedList>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>アクセス権のパターン</Term>
+<Term>Permission Pattern</Term>
 <ListItem>
-<Para> チェック・ボックスを選択して、適用するラジオ・ボタンを選択してください。
-アクセス権が問題ではない場合には、[どちらでも可] を選択してください。</Para>
+<Para>Select the check box, and then select the radio buttons
+that apply. Select Either if the permission doesn't matter.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>内容</Term>
+<Term>Contents</Term>
 <ListItem>
-<Para> チェック・ボックスを選択して、ファイルが格納するデータを入力してください。</Para>
+<Para>Select the check box and type the data the file must contain.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>型</Term>
+<Term>Type</Term>
 <ListItem>
-<Para> データの型を選択してください。テキスト(ASCII)データには、[ストリング] を使用してください。</Para>
+<Para>Select the type of data. Use String to text (ASCII) data.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>開始バイト</Term>
+<Term>Start byte</Term>
 <ListItem>
-<Para> データの検索を開始するファイル内の場所を入力してください。
-ファイルの先頭から開始する場合は、<ComputerOutput>1</ComputerOutput> を使用してください。</Para>
+<Para>Type the location in the file to start searching for the data.
+Use <ComputerOutput>1</ComputerOutput> to start at the beginning of the file.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>了解</Term>
+<Term>OK</Term>
 <ListItem>
-<Para> 特性を [データ型の追加] ダイアログ・ボックスの [特性の識別] に適用し、[特性の識別] ダイアログ・ボックスを閉じます。</Para>
+<Para>Applies the characteristics to the Identifying Characteristics in the
+Add Datatype dialog box and closes the Identifying Characteristics dialog box.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>取消し</Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para> 変更内容を保存しないで、ダイアログ・ボックスを閉じます。</Para>
+<Para>Closes the dialog box without saving the changes.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>消去</Term>
+<Term>Clear</Term>
 <ListItem>
-<Para> 設定を消去し、デフォルトに戻します。</Para>
+<Para>Clears the settings to the default.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ヘルプ</Term>
+<Term>Help</Term>
 <ListItem>
-<Para> オンライン・ヘルプを表示します。</Para>
+<Para>Displays online help.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </Sect1>
 <Sect1 Id="FindIconSetDialog">
-<Title>[アイコンセット検索] ダイアログ・ボックス</Title>
+<Title>Find Set Dialog Box</Title>
 <IndexTerm>
-<Primary>[アイコンセット検索] ダイアログ・ボックス</Primary>
+<Primary>Find Set dialog box</Primary>
 </IndexTerm>
-<Para>[アイコンセット検索] ダイアログ・ボックスは、アクションまたはデータ型に使用されるアイコン・イメージを指定できます。
-使い方については、<XRef Linkend="ToSpecifyIcon"> を参照してください。</Para>
+<Para>The Find Set dialog box lets you specify the icon image to be used
+for an action or data type. For task information, see <XRef Linkend="ToSpecifyIcon">.</Para>
 <Graphic Entityref="CAFindSetWindow" Id="HCRA.REF.fig.4"></Graphic>
 <VariableList>
 <VarListEntry>
-<Term>アイコン・フォルダ</Term>
+<Term>Icon Folders</Term>
 <ListItem>
-<Para> アイコン検索パス上のフォルダを表示します。フォルダが格納しているアイコンを参照するには、フォルダをダブルクリックしてください。</Para>
+<Para>Lists the folders on the icon search path. Double-click a
+folder to see the icons it contains.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>アイコン・ファイル</Term>
+<Term>Icon Files</Term>
 <ListItem>
-<Para> そのディレクトリにあるアイコンを表示します。
-アイコン・ファイルをクリックして選択してください。
-アイコン・ファイルの名前は、[アイコン・ファイル名の入力] テキスト・フィールドに表示されています。</Para>
+<Para>Lists the icons in the directory. Click an icon file to select
+it. It's name is displayed in the Enter Icon Filename text field.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>アイコン・ファイル名の入力</Term>
+<Term>Enter Icon Filename</Term>
 <ListItem>
-<Para> アイコン・ファイルの <GlossTerm>ベース名</GlossTerm> を入力するテキスト・フィールドです。
-[アイコン・ファイル] リストの項目をクリックすると、フィールドの内容が変わります。</Para>
+<Para>Text field for entering the <GlossTerm>base name</GlossTerm>of
+the icon file. The contents of the field changes when you click an item
+in the Icon Files list.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>了解</Term>
+<Term>OK</Term>
 <ListItem>
-<Para> [アイコン・ファイル名の入力] テキスト・フィールドに入力されたアイコンを指定のアイコンにして、[アイコンセット検索] ダイアログ・ボックスを閉じます。</Para>
+<Para>Makes the icon specified in the Enter Icon Filename text field the
+designated icon and closes the Find Set dialog box.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>取消し</Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para> アイコンを変更しないで、ダイアログ・ボックスを閉じます。</Para>
+<Para>Closes the dialog box without changing the icon.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ヘルプ</Term>
+<Term>Help</Term>
 <ListItem>
-<Para> オンライン・ヘルプを表示します。</Para>
+<Para>Displays online help.</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 </Sect1>
 <Sect1 Id="openDialog">
-<Title>アクション作成の [開く] ダイアログ・ボックス</Title>
+<Title>Create Action Open Dialog Box</Title>
 <IndexTerm>
-<Primary>アクション作成:アクション・ファイルを開く</Primary>
+<Primary>Create Action:opening an action file</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>アクション:開く</Primary>
+<Primary>action:opening</Primary>
 </IndexTerm>
 <IndexTerm>
-<Primary>アクション:編集</Primary>
+<Primary>action:editing</Primary>
 </IndexTerm>
 <VariableList>
 <VarListEntry>
-<Term>パス名またはフォルダ名の入力&sigspace;</Term>
+<Term>Enter path or folder name&sigspace;</Term>
 <ListItem>
-<Para> 現在のフォルダのパス名を識別します。</Para>
+<Para>Identifies the path name of the current folder.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>フィルタ</Term>
+<Term>Filter</Term>
 <ListItem>
-<Para>    アスタリスク (*) は、すべてのファイルを表示します。
-	      ワイルドカード文字を使用して、拡張子と一致するファイルのみを表示できます。
-	      たとえば、*.doc は、.doc という拡張子を持つファイルのみを表示します。
-                 </Para>
+<Para>An asterisk (*) shows all files. You can enter
+wildcard characters to display only those files that
+match an extension. For example, *.doc lists
+only those files with a .doc extension.
+</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ファイル</Term>
+<Term>Files</Term>
 <ListItem>
-<Para>    現在のフォルダにあるファイルを表示します。</Para>
+<Para>Lists files located in the current folder.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>フォルダ</Term>
+<Term>Folders</Term>
 <ListItem>
-<Para>    現在のフォルダにあるフォルダを表示します。</Para>
-<Para>現在のフォルダ、サブフォルダ、または別のフォルダのファイルを開くことができます。</Para>
+<Para>Lists folders located in the current folder.</Para>
+<Para>You can open a file in the current folder, a subfolder, or
+a different folder.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ファイル名を入力してください</Term>
+<Term>Enter a file name</Term>
 <ListItem>
-<Para>   [ファイル] リストに選択されたファイル名を表示します。
-		 ファイルを開くには、[Return] キーを押すか、[了解] をクリックしてください。
-		 または、開きたいファイルの名前を入力できます。</Para>
+<Para>Displays the file name selected in the Files list.
+Press Return or click OK to open the file. Or,
+you can type the name of the file you want to open.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>了解</Term>
+<Term>OK</Term>
 <ListItem>
-<Para>		 [ファイル名を入力してください] フィールドに指定されたファイルを開きます。</Para>
+<Para>Opens the file specified in the Enter a file name field.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>更新</Term>
+<Term>Update</Term>
 <ListItem>
-<Para>		 フィルタ・キーの変更後、または新規フォルダへの変更後に、ファイルの新規リストを表示します。</Para>
+<Para>Displays a new list of files after
+changing the filter key or changing to a new folder.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>取消し</Term>
+<Term>Cancel</Term>
 <ListItem>
-<Para>	 [開く] 操作を取り消します。</Para>
+<Para>Cancels the Open operation.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ヘルプ</Term>
+<Term>Help</Term>
 <ListItem>
-<Para>	 ダイアログ・ボックスのテキスト入力フィールド、選択肢リスト、およびボタンについて説明します。
+<Para>Describes text entry fields, selection
+lists, and buttons in the dialog box.
 </Para>
 </ListItem>
 </VarListEntry>

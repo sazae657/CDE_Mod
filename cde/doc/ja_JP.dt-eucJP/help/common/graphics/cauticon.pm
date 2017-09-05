@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: cauticon.pm /main/4 1996/12/18 02:53:58 cde-hit $ */
+/* $XConsortium: cauticon.pm /main/4 1996/06/19 16:19:29 drk $ */
 static char * cauticon [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "31 28 4 1 0 0",

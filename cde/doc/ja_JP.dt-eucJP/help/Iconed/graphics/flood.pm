@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: flood.pm /main/3 1996/12/18 01:56:06 cde-hit $ */
+/* $XConsortium: IEtFlood.pm /main/3 1995/07/18 17:22:14 drk $ */
 static char * IEtFlood [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "36 36 13 1 0 0",

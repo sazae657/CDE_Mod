@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: helpmgr.pm /main/5 1996/12/18 02:15:44 cde-hit $ */
+/* $XConsortium: helpmgr.pm /main/5 1996/10/29 15:54:03 drk $ */
 static char * helpmgr_pm[] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "44 41 13 1 0 0",

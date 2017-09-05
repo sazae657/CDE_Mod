@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: printer.pm /main/3 1996/12/18 01:43:44 cde-hit $ */
+/* $XConsortium: fpprinter.pm /main/3 1995/07/18 17:34:36 drk $ */
 static char * Fprnt [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "48 48 13 1 0 0",

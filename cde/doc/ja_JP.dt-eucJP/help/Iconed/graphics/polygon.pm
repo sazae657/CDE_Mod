@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: polygon.pm /main/3 1996/12/18 01:56:40 cde-hit $ */
+/* $XConsortium: IEtPolyg.pm /main/3 1995/07/18 17:22:40 drk $ */
 static char * IEtPolyg [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "36 36 4 1 0 0",

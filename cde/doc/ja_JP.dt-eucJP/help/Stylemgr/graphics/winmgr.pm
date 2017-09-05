@@ -1,5 +1,5 @@
 /* XPM */
-/* $XConsortium: winmgr.pm /main/3 1996/12/18 02:47:12 cde-hit $ */
+/* $XConsortium: WinmgrOL.pm /main/3 1995/07/18 17:24:25 drk $ */
 static char * Vuewm [] = {
 /* width height ncolors cpp [x_hot y_hot] */
 "64 37 7 1 0 0",
