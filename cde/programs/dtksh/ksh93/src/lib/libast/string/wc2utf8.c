@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,12 +20,11 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * Glenn Fowler
  * AT&T Research
  *
- * convert wide character to utf8 in s
+ * convert wide character to UTF-8 in s
  * s must have room for at least 6 bytes
  * return value is the number of chars placed in s
  * thanks Tom Duff
@@ -62,11 +62,15 @@ wc2utf8(register char* s, register uint32_t w)
 			*s++ = ops[i].prefix | (w >> ops[i].shift);
 			switch (ops[i].shift)
 			{
-			case 30:	*s++ = 0x80 | ((w >> 24) & 0x3f);
-			case 24:	*s++ = 0x80 | ((w >> 18) & 0x3f);
-			case 18:	*s++ = 0x80 | ((w >> 12) & 0x3f);
-			case 12:	*s++ = 0x80 | ((w >>  6) & 0x3f);
-			case  6:	*s++ = 0x80 | (w & 0x3f);
+			case 30: *s++ = 0x80 | ((w >> 24) & 0x3f);
+				 /* FALLTHROUGH */
+			case 24: *s++ = 0x80 | ((w >> 18) & 0x3f);
+				 /* FALLTHROUGH */
+			case 18: *s++ = 0x80 | ((w >> 12) & 0x3f);
+				 /* FALLTHROUGH */
+			case 12: *s++ = 0x80 | ((w >>  6) & 0x3f);
+				 /* FALLTHROUGH */
+			case  6: *s++ = 0x80 | (w & 0x3f);
 			}
 			return s - b;
 		}

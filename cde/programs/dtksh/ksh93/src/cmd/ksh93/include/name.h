@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 #ifndef _NV_PRIVATE
 /*
  * This is the implementation header file for name-value pairs
@@ -42,6 +42,7 @@ union Value
 	int			i;
 	unsigned int		u;
 	int32_t			*lp;
+	pid_t			*pidp;
 	Sflong_t		*llp;	/* for long long arithmetic */
 	int16_t			s;
 	int16_t			*sp;
@@ -74,7 +75,7 @@ union Value
 #if SHOPT_FIXEDARRAY
 #   define ARRAY_FIXED	ARRAY_NOCLONE		/* For index values */
 #endif /* SHOPT_FIXEDARRAY */
-#define NV_FARRAY	0x10000000		/* fixed sized arrays */
+#define NV_FARRAY	0x10000000		/* fixed-size arrays */
 #define NV_ASETSUB	8			/* set subscript */
 
 /* These flags are used as options to array_get() */
@@ -129,7 +130,7 @@ struct Ufunction
 #define NV_COMVAR	0x4000000
 #define NV_UNJUST	0x800000		/* clear justify attributes */
 #define NV_FUNCTION	(NV_RJUST|NV_FUNCT)	/* value is shell function */
-#define NV_FPOSIX	NV_LJUST		/* posix function semantics */
+#define NV_FPOSIX	NV_LJUST		/* POSIX function semantics */
 #define NV_FTMP		NV_ZFILL		/* function source in tmpfile */
 #define NV_STATICF	NV_INTEGER		/* static class function */
 
@@ -149,8 +150,6 @@ struct Ufunction
 #define is_afunction(n)	(nv_isattr(n,NV_FUNCTION|NV_REF)==NV_FUNCTION)
 #define	nv_funtree(n)	((n)->nvalue.rp->ptree)
 #define	funptr(n)	((n)->nvalue.bfp)
-
-#define NV_SUBQUOTE	(NV_ADD<<1)	/* used with nv_endsubscript */
 
 /* NAMNOD MACROS */
 /* ... for attributes */
@@ -173,7 +172,7 @@ struct Ufunction
 #undef nv_size
 #define nv_size(np)	((np)->nvsize)
 #define _nv_hasget(np)  ((np)->nvfun && (np)->nvfun->disc && nv_hasget(np))
-#define nv_isnull(np)	(!(np)->nvalue.cp && (nv_isattr(np,NV_SHORT|NV_INTEGER)!=(NV_SHORT|NV_INTEGER)) && !_nv_hasget(np))
+#define nv_isnull(np)	(!(np)->nvalue.cp && !_nv_hasget(np))
 
 /* ...	for arrays */
 
@@ -213,7 +212,7 @@ extern Namval_t		*nv_parent(Namval_t*);
 extern char		*nv_getbuf(size_t);
 extern Namval_t		*nv_mount(Namval_t*, const char *name, Dt_t*);
 extern Namval_t		*nv_arraychild(Namval_t*, Namval_t*, int);
-extern int		nv_compare(Dt_t*, Void_t*, Void_t*, Dtdisc_t*);
+extern int		nv_compare(Dt_t*, void*, void*, Dtdisc_t*);
 extern void		nv_outnode(Namval_t*,Sfio_t*, int, int);
 extern int		nv_subsaved(Namval_t*, int);
 extern void		nv_typename(Namval_t*, Sfio_t*);
@@ -243,6 +242,7 @@ extern const char	e_restricted[];
 extern const char	e_ident[];
 extern const char	e_varname[];
 extern const char	e_noalias[];
+extern const char	e_notrackedalias[];
 extern const char	e_noarray[];
 extern const char	e_notenum[];
 extern const char	e_nounattr[];

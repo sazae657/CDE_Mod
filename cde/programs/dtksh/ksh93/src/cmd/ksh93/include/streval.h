@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 #ifndef SEQPOINT
 /*
  * D. G. Korn
@@ -75,6 +75,7 @@ struct lval
 	const char	*expr;
 	const  void	*ptr;
 	int		nosub;
+	char		*sub;
 	short		flag;
 	short		nargs;
 	short		emode;
@@ -102,7 +103,7 @@ typedef struct _arith_
 	short		elen;
 } Arith_t;
 #define ARITH_COMP	04	/* set when compile separate from execute */
-#define ARITH_ASSIGNOP	010	/* set during assignment operators  */
+#define ARITH_ASSIGNOP	010	/* set during assignment operators */
 
 #define MAXPREC		15	/* maximum precision level */
 #define SEQPOINT	0200	/* sequence point */
@@ -176,7 +177,6 @@ extern const char		strval_states[64];
 extern const char		e_moretokens[];
 extern const char		e_argcount[];
 extern const char		e_paren[];
-extern const char		e_badnum[];
 extern const char		e_badcolon[];
 extern const char		e_recursive[];
 extern const char		e_divzero[];

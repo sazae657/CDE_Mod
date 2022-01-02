@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -28,11 +29,7 @@
 */
 
 /* synchronize unseekable write streams */
-#if __STD_C
 static void _sfwrsync(void)
-#else
-static void _sfwrsync()
-#endif
 {	reg Sfpool_t*	p;
 	reg Sfio_t*	f;
 	reg int		n;
@@ -57,15 +54,7 @@ static void _sfwrsync()
 	}
 }
 
-#if __STD_C
-ssize_t sfrd(Sfio_t* f, Void_t* buf, size_t n, Sfdisc_t* disc)
-#else
-ssize_t sfrd(f,buf,n,disc)
-Sfio_t*		f;
-Void_t*		buf;
-size_t		n;
-Sfdisc_t*	disc;
-#endif
+ssize_t sfrd(Sfio_t* f, void* buf, size_t n, Sfdisc_t* disc)
 {
 	Sfoff_t		r;
 	reg Sfdisc_t*	dc;
@@ -216,10 +205,10 @@ Sfdisc_t*	disc;
 				(void)SFSK(f,f->here,SEEK_SET,dc);
 
 				/* make a buffer */
-				(void)SFSETBUF(f,(Void_t*)f->tiny,(size_t)SF_UNBOUND);
+				(void)SFSETBUF(f,(void*)f->tiny,(size_t)SF_UNBOUND);
 
 				if(!buf)
-				{	buf = (Void_t*)f->data;
+				{	buf = (void*)f->data;
 					n = f->size;
 				}
 			}
@@ -303,7 +292,7 @@ Sfdisc_t*	disc;
 		case SF_EDISC :
 			if(!local && !(f->flags&SF_STRING))
 				goto do_continue;
-			/* else fall thru */
+			/* FALLTHROUGH */
 		case SF_ESTACK :
 			SFMTXRETURN(f, -1);
 		}

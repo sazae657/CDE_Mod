@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,16 +20,12 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
-#pragma clang diagnostic ignored "-Wmacro-redefined"
-#pragma clang diagnostic ignored "-Wparentheses"
-#pragma clang diagnostic ignored "-Wunused-value"
 
 /*
  * Advanced Software Technology Library
  * AT&T Research
  *
- * std + posix + ast
+ * std + POSIX + AST
  */
 
 #ifndef _AST_H
@@ -80,28 +77,36 @@ struct _sfio_s;
 #endif
 
 /*
+ * tcc on FreeBSD: Avoid using nonexistent math
+ * builtins by pretending to be an ancient gcc.
+ */
+#if __TINYC__ && __GNUC__ >= 3 && __FreeBSD__
+#undef __GNUC__
+#undef __GNUC_MINOR__
+#undef __GNUC_PATCHLEVEL__
+#define __GNUC__ 2
+#define __GNUC_MINOR__ 95
+#define __GNUC_PATCHLEVEL__ 3
+#endif
+
+/*
  * exit() support -- this matches shell exit codes
  */
 
-#define EXIT_BITS	8			/* # exit status bits	*/
+#define EXIT_BITS	8	/* # exit status bits	*/
 
-#define EXIT_USAGE	2			/* usage exit code	*/
-#define EXIT_QUIT	((1<<(EXIT_BITS))-1)	/* parent should quit	*/
-#define EXIT_NOTFOUND	((1<<(EXIT_BITS-1))-1)	/* command not found	*/
-#define EXIT_NOEXEC	((1<<(EXIT_BITS-1))-2)	/* other exec error	*/
+#define EXIT_USAGE	2	/* usage exit code	*/
+#define EXIT_QUIT	255	/* parent should quit	*/
+#define EXIT_NOTFOUND	127	/* command not found	*/
+#define EXIT_NOEXEC	126	/* other exec error	*/
 
-#define EXIT_CODE(x)	((x)&((1<<EXIT_BITS)-1))
-#define EXIT_CORE(x)	(EXIT_CODE(x)|(1<<EXIT_BITS)|(1<<(EXIT_BITS-1)))
-#define EXIT_TERM(x)	(EXIT_CODE(x)|(1<<EXIT_BITS))
+#define EXIT_CODE(x)	((x) & EXIT_QUIT)
+#define EXIT_CORE(x)	(EXIT_CODE(x) | 256 | 128)
+#define EXIT_TERM(x)	(EXIT_CODE(x) | 256)
 
-/*
- * NOTE: for compatibility the following work for EXIT_BITS={7,8}
- */
-
-#define EXIT_STATUS(x)	(((x)&((1<<(EXIT_BITS-2))-1))?(x):EXIT_CODE((x)>>EXIT_BITS))
-
-#define EXITED_CORE(x)	(((x)&((1<<EXIT_BITS)|(1<<(EXIT_BITS-1))))==((1<<EXIT_BITS)|(1<<(EXIT_BITS-1)))||((x)&((1<<(EXIT_BITS-1))|(1<<(EXIT_BITS-2))))==((1<<(EXIT_BITS-1))|(1<<(EXIT_BITS-2))))
-#define EXITED_TERM(x)	((x)&((1<<EXIT_BITS)|(1<<(EXIT_BITS-1))))
+#define EXIT_STATUS(x)	(((x) & 63) ? (x) : EXIT_CODE((x) >> 8))
+#define EXITED_CORE(x)	(((x) & (256 | 128)) == (256 | 128) || ((x) & (128 | 64)) == (128 | 64))
+#define EXITED_TERM(x)	((x) & (256 | 128))
 
 /*
  * astconflist() flags
@@ -177,7 +182,7 @@ typedef struct
 #define FMT_ALWAYS	0x01		/* always quote			*/
 #define FMT_ESCAPED	0x02		/* already escaped		*/
 #define FMT_SHELL	0x04		/* escape $ ` too		*/
-#define FMT_WIDE	0x08		/* don't escape 8 bit chars	*/
+#define FMT_WIDE	0x08		/* don't escape 8-bit chars	*/
 #define FMT_PARAM	0x10		/* disable FMT_SHELL ${$( quote	*/
 
 /*
@@ -189,6 +194,14 @@ typedef struct
 #define FMT_EXP_WIDE	0x080		/* expand \u \U \x wide chars	*/
 #define FMT_EXP_NOCR	0x100		/* skip \r			*/
 #define FMT_EXP_NONL	0x200		/* skip \n			*/
+
+/*
+ * Define inline as an empty macro if we are
+ * compiling with C89.
+ */
+#if __STDC_VERSION__ < 199901L
+#define inline
+#endif
 
 /*
  * multibyte macros
@@ -227,13 +240,8 @@ typedef struct
 #define strneq(a,b,n)	(*(a)==*(b)&&!strncmp(a,b,n))
 #define strsignal(s)	fmtsignal(s)
 
-#if defined(__STDC__) || defined(__cplusplus) || defined(c_plusplus)
 #define NiL		0
-#define NoP(x)		(void)(x)
-#else
-#define NiL		((char*)0)
-#define NoP(x)		(&x,1)
-#endif
+#define NoP(x)		do (void)(x); while(0)	/* for silencing "unused parameter" warnings */
 
 #if !defined(NoF)
 #define NoF(x)		void _DATA_ ## x () {}
@@ -266,9 +274,29 @@ extern char*		astconf(const char*, const char*, const char*);
 extern Ast_confdisc_f	astconfdisc(Ast_confdisc_f);
 extern void		astconflist(Sfio_t*, const char*, int, const char*);
 extern off_t		astcopy(int, int, off_t);
-extern int		astlicense(char*, int, char*, char*, int, int, int);
 extern int		astquery(int, const char*, ...);
 extern void		astwinsize(int, int*, int*);
+#if _lib_sysconf
+/* prefer sysconf for astconf_long and astconf_ulong to improve performance */
+#define CONF_ARG_MAX		_SC_ARG_MAX
+#define CONF_CHILD_MAX		_SC_CHILD_MAX
+#define CONF_CLK_TCK		_SC_CLK_TCK
+#define CONF_NGROUPS_MAX	_SC_NGROUPS_MAX
+#define CONF_OPEN_MAX		_SC_OPEN_MAX
+#define CONF_PAGESIZE		_SC_PAGESIZE
+#define astconf_long(x)		sysconf(x)
+#define astconf_ulong(x)	(unsigned long)sysconf(x)
+#else
+/* fallback in case sysconf isn't available */
+#define CONF_ARG_MAX		"ARG_MAX"
+#define CONF_CHILD_MAX		"CHILD_MAX"
+#define CONF_CLK_TCK		"CLK_TCK"
+#define CONF_NGROUPS_MAX	"NGROUPS_MAX"
+#define CONF_OPEN_MAX		"OPEN_MAX"
+#define CONF_PAGESIZE		"PAGESIZE"
+#define astconf_long(x)		strtol(astconf(x,NiL,NiL),NiL,0)
+#define astconf_ulong(x)	strtoul(astconf(x,NiL,NiL),NiL,0)
+#endif
 
 extern ssize_t		base64encode(const void*, size_t, void**, void*, size_t, void**);
 extern ssize_t		base64decode(const void*, size_t, void**, void*, size_t, void**);
@@ -318,6 +346,7 @@ extern int		pathcheck(const char*, const char*, Pathcheck_t*);
 extern int		pathexists(char*, int);
 extern char*		pathfind(const char*, const char*, const char*, char*, size_t);
 extern int		pathgetlink(const char*, char*, int);
+extern int		pathicase(const char*);
 extern int		pathinclude(const char*);
 extern char*		pathkey(char*, char*, const char*, const char*, const char*);
 extern char*		pathkey_20100601(const char*, const char*, const char*, char*, size_t, char*, size_t);

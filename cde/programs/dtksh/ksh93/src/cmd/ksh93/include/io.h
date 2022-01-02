@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  *	UNIX shell
  *	David Korn
@@ -31,13 +31,6 @@
 #   define  IOBSIZE	(SF_BUFSIZE*sizeof(char*))
 #endif /* IOBSIZE */
 #define IOMAXTRY	20
-
-#ifndef SF_CLOSING
-#define SF_CLOSING	SF_CLOSE
-#endif
-#ifndef SF_APPENDWR
-#define SF_APPENDWR	SF_APPEND
-#endif
 
 /* used for output of shell errors */
 #define ERRIO		2
@@ -55,12 +48,6 @@
 #define IOPICKFD	0x10000 /* file descriptor number was selected automatically */
 #define IOHERESTRING	0x20000 /* allow here documents to be string streams */
 
-/*
- * The remainder of this file is only used when compiled with shell
- */
-
-#if KSHELL
-
 #ifndef ARG_RAW
     struct ionod;
 #endif /* !ARG_RAW */
@@ -72,7 +59,7 @@ extern int	sh_iorenumber(Shell_t*,int,int);
 extern void 	sh_pclose(int[]);
 extern int	sh_rpipe(int[]);
 extern void 	sh_iorestore(Shell_t*,int,int);
-#if defined(__EXPORT__) && defined(_BLD_DLL) && defined(_BLD_shell) 
+#if defined(__EXPORT__) && defined(_BLD_DLL)
    __EXPORT__
 #endif
 extern Sfio_t 	*sh_iostream(Shell_t*,int);
@@ -119,4 +106,3 @@ extern const char	e_sysrc[];
 extern const char	e_stdprompt[];
 extern const char	e_supprompt[];
 extern const char	e_ambiguous[];
-#endif /* KSHELL */

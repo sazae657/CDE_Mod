@@ -2,6 +2,7 @@
 #                                                                      #
 #               This software is part of the ast package               #
 #          Copyright (c) 1982-2012 AT&T Intellectual Property          #
+#          Copyright (c) 2020-2021 Contributors to ksh 93u+m           #
 #                      and is licensed under the                       #
 #                 Eclipse Public License, Version 1.0                  #
 #                    by AT&T Intellectual Property                     #
@@ -17,18 +18,8 @@
 #                  David Korn <dgk@research.att.com>                   #
 #                                                                      #
 ########################################################################
-function err_exit
-{
-	print -u2 -n "\t"
-	print -u2 -r ${Command}[$1]: "${@:2}"
-	let Errors+=1
-}
-alias err_exit='err_exit $LINENO'
 
-Command=${0##*/}
-integer Errors=0
-
-[[ -d $tmp && -w $tmp && $tmp == "$PWD" ]] || { err\_exit "$LINENO" '$tmp not set; run this from shtests. Aborting.'; exit 1; }
+. "${SHTESTS_COMMON:-${0%/*}/_common}"
 
 unset HISTFILE
 export LC_ALL=C ENV=/./dev/null
@@ -60,7 +51,7 @@ export ENV=/.$rc
 if	[[ -o privileged ]]
 then
 	[[ $(print env_hit | $SHELL 2>&1) == "OK" ]] &&
-		err_exit 'privileged nointeractive shell reads $ENV file'
+		err_exit 'privileged noninteractive shell reads $ENV file'
 	[[ $(print env_hit | $SHELL -E 2>&1) == "OK" ]] &&
 		err_exit 'privileged -E reads $ENV file'
 	[[ $(print env_hit | $SHELL +E 2>&1) == "OK" ]] &&
@@ -71,7 +62,7 @@ then
 		err_exit 'privileged --norc reads $ENV file'
 else
 	[[ $(print env_hit | $SHELL 2>&1) == "OK" ]] &&
-		err_exit 'nointeractive shell reads $ENV file'
+		err_exit 'noninteractive shell reads $ENV file'
 	[[ $(print env_hit | $SHELL -E 2>&1) == "OK" ]] ||
 		err_exit '-E ignores $ENV file'
 	[[ $(print env_hit | $SHELL +E 2>&1) == "OK" ]] &&
@@ -88,7 +79,7 @@ export ENV=/./dev/null
 if	[[ -o privileged ]]
 then
 	[[ $(print env_hit | HOME=$tmp $SHELL 2>&1) == "OK" ]] &&
-		err_exit 'privileged nointeractive shell reads $HOME/.kshrc file'
+		err_exit 'privileged noninteractive shell reads $HOME/.kshrc file'
 	[[ $(print env_hit | HOME=$tmp $SHELL -E 2>&1) == "OK" ]] &&
 		err_exit 'privileged -E ignores empty $ENV'
 	[[ $(print env_hit | HOME=$tmp $SHELL +E 2>&1) == "OK" ]] &&
@@ -99,7 +90,7 @@ then
 		err_exit 'privileged --norc reads $HOME/.kshrc file'
 else
 	[[ $(print env_hit | HOME=$tmp $SHELL 2>&1) == "OK" ]] &&
-		err_exit 'nointeractive shell reads $HOME/.kshrc file'
+		err_exit 'noninteractive shell reads $HOME/.kshrc file'
 	[[ $(print env_hit | HOME=$tmp $SHELL -E 2>&1) == "OK" ]] &&
 		err_exit '-E ignores empty $ENV'
 	[[ $(print env_hit | HOME=$tmp $SHELL +E 2>&1) == "OK" ]] &&
@@ -114,7 +105,7 @@ unset ENV
 if	[[ -o privileged ]]
 then
 	[[ $(print env_hit | HOME=$tmp $SHELL 2>&1) == "OK" ]] &&
-		err_exit 'privileged nointeractive shell reads $HOME/.kshrc file'
+		err_exit 'privileged noninteractive shell reads $HOME/.kshrc file'
 	[[ $(print env_hit | HOME=$tmp $SHELL -E 2>&1) == "OK" ]] &&
 		err_exit 'privileged -E reads $HOME/.kshrc file'
 	[[ $(print env_hit | HOME=$tmp $SHELL +E 2>&1) == "OK" ]] &&
@@ -125,7 +116,7 @@ then
 		err_exit 'privileged --norc reads $HOME/.kshrc file'
 else
 	[[ $(print env_hit | HOME=$tmp $SHELL 2>&1) == "OK" ]] &&
-		err_exit 'nointeractive shell reads $HOME/.kshrc file'
+		err_exit 'noninteractive shell reads $HOME/.kshrc file'
 	[[ $(set +x; print env_hit | HOME=$tmp $SHELL -E 2>&1) == "OK" ]] ||
 		err_exit '-E ignores $HOME/.kshrc file'
 	[[ $(print env_hit | HOME=$tmp $SHELL +E 2>&1) == "OK" ]] &&
@@ -202,20 +193,21 @@ rm .profile
 
 # { exec interactive login_shell restricted xtrace } in the following test
 
-for opt in \
+set -- \
 	allexport all-export all_export \
 	bgnice bg-nice bg_nice \
-	clobber emacs \
+	clobber \
 	errexit err-exit err_exit \
 	glob \
 	globstar glob-star glob_star \
-	gmacs \
 	ignoreeof ignore-eof ignore_eof \
 	keyword log markdirs monitor notify \
 	pipefail pipe-fail pipe_fail \
 	trackall track-all track_all \
-	unset verbose vi \
-	viraw vi-raw vi_raw
+	unset verbose
+((SHOPT_ESH)) && set -- "$@" emacs gmacs
+((SHOPT_VSH)) && set -- "$@" vi viraw vi-raw vi_raw
+for opt
 do	old=$opt
 	if [[ ! -o $opt ]]
 	then	old=no$opt
@@ -394,15 +386,16 @@ got=$(
 [[ $got == @((12|21)(12|21)) ]] || err_exit "& job delayed by --pipefail, expected '$exp', got '$got'"
 $SHELL -c '[[ $- == *c* ]]' || err_exit 'option c not in $-'
 > $tmp/.profile
-for i in i l r s D E a b e f h k n t u v x B C G H
+for i in i l r s D E a b e f h k n t u v x $(let SHOPT_BRACEPAT && echo B) C G $(let SHOPT_HISTEXPAND && echo H)
 do	HOME=$tmp ENV=/./dev/null $SHELL -$i >/dev/null 2>&1 <<- ++EOF++ || err_exit "option $i not in \$-"
 	[[ \$- == *$i* ]] || exit 1
 	++EOF++
 done
-letters=ilrabefhknuvxBCGE
+letters=ilrabefhknuvx$(let SHOPT_BRACEPAT && echo B)CGE
 integer j=0
 for i in interactive login restricted allexport notify errexit \
-	noglob trackall keyword noexec nounset verbose xtrace braceexpand \
+	noglob trackall keyword noexec nounset verbose xtrace \
+	$(let SHOPT_BRACEPAT && echo braceexpand) \
 	noclobber globstar rc
 do	HOME=$tmp ENV=/./dev/null $SHELL -o $i >/dev/null 2>&1 <<- ++EOF++ || err_exit "option $i not equivalent to ${letters:j:1}"
 	[[ \$- == *${letters:j:1}* ]] || exit 1
@@ -532,16 +525,21 @@ print $'alias print=:\nprint foobar' > dotfile
 [[ $(ENV=/.$PWD/envfile $SHELL -i -c : 2>/dev/null) == foobar ]] && err_exit 'files source from profile does not process aliases correctly'
 
 # ======
-# test that '-o posix' option (not having a letter) does not affect "$-" expansion
-# other than B = braceexpand
 if [[ -o ?posix ]]; then
-(
-	command set +o posix 2>/dev/null
-	opt1=${-/B/}
-	command set -o posix 2>/dev/null
-	opt2=$-
-	[[ $opt1 == "$opt2" ]]
-) || err_exit '-o posix option affects $- expansion'
+	(set +o posix; o1=${-/B/}; set -o posix; o2=${-/B/}; [[ $o1 == "$o2" ]]) || err_exit 'set -o posix affects $- expansion'
+	(set +o posix; set --posix >/dev/null; [[ -o posix ]]) || err_exit "set --posix != set -o posix"
+	(set -o posix; set --noposix; [[ -o posix ]]) && err_exit "set --noposix != set +o posix"
+	(set -o posix +o letoctal; [[ -o letoctal ]]) && err_exit "failed to stop posix option from turning on letoctal"
+if((SHOPT_BRACEPAT)); then
+	(set +B; set -o posix -B; [[ -o braceexpand ]]) || err_exit "failed to stop posix option from turning off bracceexpand"
+	(set --posix; [[ -o braceexpand ]]) && err_exit "set --posix fails to disable braceexpand"
+	(set -o posix; [[ -o braceexpand ]]) && err_exit "set -o posix fails to disable braceexpand"
+fi # SHOPT_BRACEPAT
+	(set --default -o posix; [[ -o letoctal ]]) && err_exit "set --default failed to stop posix option from changing others"
+	(set --posix; [[ -o letoctal ]]) || err_exit "set --posix fails to enable letoctal"
+	(set -o posix; [[ -o letoctal ]]) || err_exit "set -o posix fails to enable letoctal"
+	$SHELL --posix < <(echo 'exit 0') || err_exit "ksh fails to handle --posix during startup"
+	$SHELL -o posix < <(echo 'exit 0') || err_exit "ksh fails to handle -o posix during startup"
 fi
 
 # ======
@@ -551,6 +549,7 @@ fi
 
 # ======
 # Brace expansion could not be turned off in command substitutions (rhbz#1078698)
+if((SHOPT_BRACEPAT)); then
 set -B
 expect='test{1,2}'
 actual=$(set +B; echo `echo test{1,2}`)
@@ -562,6 +561,7 @@ actual=$(set +B; echo $(echo test{1,2}))
 actual=$(set +B; echo ${ echo test{1,2}; })
 [[ $actual == "$expect" ]] || err_exit 'Brace expansion not turned off in ${ comsub; }' \
 	"(expected $(printf %q "$expect"), got $(printf %q "$actual"))"
+fi # SHOPT_BRACEPAT
 
 # ======
 # ksh 93u+ did not correctly handle the combination of pipefail and (errexit or the ERR trap).

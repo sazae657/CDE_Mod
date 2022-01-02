@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * Fault handling routines
  *
@@ -49,7 +49,7 @@ static int	cursig = -1;
     /*
      * This exception handler is called after vmalloc() unlocks the region
      */
-    static int malloc_done(Vmalloc_t* vm, int type, Void_t* val, Vmdisc_t* dp)
+    static int malloc_done(Vmalloc_t* vm, int type, void* val, Vmdisc_t* dp)
     {
 	dp->exceptf = 0;
 	sh_exit(SH_EXITSIG);
@@ -250,9 +250,9 @@ void sh_siginit(void *ptr)
 		tp++;
 	}
 	shp->gd->sigmax = n++;
-	shp->st.trapcom = (char**)calloc(n,sizeof(char*));
-	shp->sigflag = (unsigned char*)calloc(n,1);
-	shp->gd->sigmsg = (char**)calloc(n,sizeof(char*));
+	shp->st.trapcom = (char**)sh_calloc(n,sizeof(char*));
+	shp->sigflag = (unsigned char*)sh_calloc(n,1);
+	shp->gd->sigmsg = (char**)sh_calloc(n,sizeof(char*));
 	for(tp=shtab_signals; sig=tp->sh_number; tp++)
 	{
 		n = (sig>>SH_SIGBITS);
@@ -413,7 +413,7 @@ void	sh_chktrap(Shell_t* shp)
 	}
 	if(shp->sigflag[SIGALRM]&SH_SIGALRM)
 		sh_timetraps(shp);
-#ifdef SHOPT_BGX
+#if SHOPT_BGX
 	if((shp->sigflag[SIGCHLD]&SH_SIGTRAP) && shp->st.trapcom[SIGCHLD])
 		job_chldtrap(shp,shp->st.trapcom[SIGCHLD],1);
 #endif /* SHOPT_BGX */
@@ -421,7 +421,7 @@ void	sh_chktrap(Shell_t* shp)
 	{
 		if(sig==cursig)
 			continue;
-#ifdef SHOPT_BGX
+#if SHOPT_BGX
 		if(sig==SIGCHLD)
 			continue;
 #endif /* SHOPT_BGX */
@@ -433,6 +433,15 @@ void	sh_chktrap(Shell_t* shp)
 				cursig = sig;
  				sh_trap(trap,0);
 				cursig = -1;
+				/* If we're in a PS2 prompt, then we just parsed and executed a trap in the middle of parsing
+				 * another command, so the lexer state is overwritten. Escape to avoid crashing the lexer. */
+				if(sh.nextprompt == 2)
+				{
+					fcclose();		/* force lexer to abort partial command */
+					sh.nextprompt = 1;	/* next display prompt is PS1 */
+					sh.lastsig = sig;	/* make sh_exit() set $? to signal exit status */
+					sh_exit(SH_EXITSIG);	/* start a new command line */
+				}
  			}
 		}
 	}
@@ -442,11 +451,12 @@ void	sh_chktrap(Shell_t* shp)
 /*
  * parse and execute the given trap string, stream or tree depending on mode
  * mode==0 for string, mode==1 for stream, mode==2 for parse tree
+ * The return value is the exit status of the trap action.
  */
 int sh_trap(const char *trap, int mode)
 {
 	Shell_t	*shp = sh_getinterp();
-	int	jmpval, savxit = shp->exitval;
+	int	jmpval, savxit = shp->exitval, savxit_return;
 	int	was_history = sh_isstate(SH_HISTORY);
 	int	was_verbose = sh_isstate(SH_VERBOSE);
 	int	staktop = staktell();
@@ -487,6 +497,7 @@ int sh_trap(const char *trap, int mode)
 	sh_popcontext(shp,&buff);
 	shp->intrap--;
 	sfsync(shp->outpool);
+	savxit_return = shp->exitval;
 	if(jmpval!=SH_JMPEXIT && jmpval!=SH_JMPFUN)
 		shp->exitval=savxit;
 	stakset(savptr,staktop);
@@ -498,7 +509,7 @@ int sh_trap(const char *trap, int mode)
 	exitset();
 	if(jmpval>SH_JMPTRAP && (((struct checkpt*)shp->jmpbuffer)->prev || ((struct checkpt*)shp->jmpbuffer)->mode==SH_JMPSCRIPT))
 		siglongjmp(*shp->jmplist,jmpval);
-	return(shp->exitval);
+	return(savxit_return);
 }
 
 /*
@@ -510,7 +521,11 @@ void sh_exit(register int xno)
 	register struct checkpt	*pp = (struct checkpt*)shp->jmplist;
 	register int		sig=0;
 	register Sfio_t*	pool;
-	shp->exitval=xno;
+	/* POSIX requires exit status >= 2 for error in 'test'/'[' */
+	if(xno == 1 && (shp->bltindata.bnode==SYSTEST || shp->bltindata.bnode==SYSBRACKET))
+		shp->exitval = 2;
+	else
+		shp->exitval = xno;
 	if(xno==SH_EXITSIG)
 		shp->exitval |= (sig=shp->lastsig);
 	if(pp && pp->mode>1)
@@ -531,7 +546,7 @@ void sh_exit(register int xno)
 		sh_offstate(SH_STOPOK);
 		shp->trapnote = 0;
 		shp->forked = 1;
-		if(!shp->subshell && (sig=sh_fork(shp,0,NIL(int*))))
+		if(sh_isstate(SH_INTERACTIVE) && (sig=sh_fork(shp,0,NIL(int*))))
 		{
 			job.curpgid = 0;
 			job.parent = (pid_t)-1;
@@ -548,7 +563,7 @@ void sh_exit(register int xno)
 		{
 			if(shp->subshell)
 				sh_subfork();
-			/* child process, put to sleep */
+			/* script or child process; put to sleep */
 			sh_offstate(SH_STOPOK);
 			sh_offstate(SH_MONITOR);
 			shp->sigflag[SIGTSTP] = 0;
@@ -573,10 +588,11 @@ void sh_exit(register int xno)
 	sfclrlock(sfstdin);
 	if(!pp)
 		sh_done(shp,sig);
+	shp->arithrecursion = 0;
 	shp->prefix = 0;
 #if SHOPT_TYPEDEF
 	shp->mktype = 0;
-#endif /* SHOPT_TYPEDEF*/
+#endif /* SHOPT_TYPEDEF */
 	if(job.in_critical)
 		job_unlock();
 	if(pp->mode == SH_JMPSCRIPT && !pp->prev) 
@@ -597,7 +613,7 @@ static void array_notify(Namval_t *np, void *data)
  * This is the exit routine for the shell
  */
 
-void sh_done(void *ptr, register int sig)
+noreturn void sh_done(void *ptr, register int sig)
 {
 	Shell_t	*shp = (Shell_t*)ptr;
 	register char *t;
@@ -610,7 +626,7 @@ void sh_done(void *ptr, register int sig)
 		(*shp->userinit)(shp, -1);
 	if(t=shp->st.trapcom[0])
 	{
-		shp->st.trapcom[0]=0; /*should free but not long */
+		shp->st.trapcom[0]=0; /* should free but not long */
 		sh_trap(t,0);
 		savxit = shp->exitval;
 	}
@@ -626,9 +642,17 @@ void sh_done(void *ptr, register int sig)
 	sh_accend();
 #endif	/* SHOPT_ACCT */
 #if SHOPT_VSH || SHOPT_ESH
-	if(mbwide()||sh_isoption(SH_EMACS)||sh_isoption(SH_VI)||sh_isoption(SH_GMACS))
-		tty_cooked(-1);
+	if(mbwide()
+#if SHOPT_ESH
+	|| sh_isoption(SH_EMACS)
+	|| sh_isoption(SH_GMACS)
 #endif
+#if SHOPT_VSH
+	|| sh_isoption(SH_VI)
+#endif
+	)
+		tty_cooked(-1);
+#endif /* SHOPT_VSH || SHOPT_ESH */
 #ifdef JOBS
 	if((sh_isoption(SH_INTERACTIVE) && shp->login_sh) || (!sh_isoption(SH_INTERACTIVE) && (sig==SIGHUP)))
 		job_walk(sfstderr, job_hup, SIGHUP, NIL(char**));
@@ -667,8 +691,7 @@ void sh_done(void *ptr, register int sig)
 
 	/* Exit with portable 8-bit status (128 + signum) if last child process exits due to signal */
 	if (savxit & SH_EXITSIG)
-		savxit -= SH_EXITSIG + 128;
+		savxit = savxit & ~SH_EXITSIG | 0200;
 
 	exit(savxit&SH_EXITMASK);
 }
-

@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -30,7 +31,7 @@
 **	consideration is stacking a discipline onto a read stream. Each
 **	discipline operation implies buffer synchronization so the stream
 **	buffer should be empty. However, a read stream representing an
-**	unseekable device (eg, a pipe) may not be synchronizable. In that
+**	unseekable device (e.g., a pipe) may not be synchronizable. In that
 **	case, any buffered data must then be fed to the new discipline
 **	to preserve data processing semantics. This is done by creating
 **	a temporary discipline to cache such buffered data and feed
@@ -47,30 +48,14 @@ typedef struct _dccache_s
 	uchar*		endb;
 } Dccache_t;
 
-#if __STD_C
-static int _dccaexcept(Sfio_t* f, int type, Void_t* val, Sfdisc_t* disc)
-#else
-static int _dccaexcept(f,type,val,disc)
-Sfio_t*		f;
-int		type;
-Void_t*		val;
-Sfdisc_t*	disc;
-#endif
+static int _dccaexcept(Sfio_t* f, int type, void* val, Sfdisc_t* disc)
 {
 	if(disc && type == SF_FINAL)
 		free(disc);
 	return 0;
 }
 
-#if __STD_C
-static ssize_t _dccaread(Sfio_t* f, Void_t* buf, size_t size, Sfdisc_t* disc)
-#else
-static ssize_t _dccaread(f, buf, size, disc)
-Sfio_t*		f;
-Void_t*		buf;
-size_t		size;
-Sfdisc_t*	disc;
-#endif
+static ssize_t _dccaread(Sfio_t* f, void* buf, size_t size, Sfdisc_t* disc)
 {
 	ssize_t		sz;
 	Sfdisc_t	*prev;
@@ -103,13 +88,7 @@ Sfdisc_t*	disc;
 	return sz;
 }
 
-#if __STD_C
 Sfdisc_t* sfdisc(Sfio_t* f, Sfdisc_t* disc)
-#else
-Sfdisc_t* sfdisc(f,disc)
-Sfio_t*		f;
-Sfdisc_t*	disc;
-#endif
 {
 	Sfdisc_t	*d, *rdisc;
 	Sfread_f	oreadf;
@@ -200,7 +179,7 @@ Sfdisc_t*	disc;
 		disc = d->disc;
 		if(d->exceptf)
 		{	SFOPEN(f,0);
-			if((*(d->exceptf))(f,SF_DPOP,(Void_t*)disc,d) < 0 )
+			if((*(d->exceptf))(f,SF_DPOP,(void*)disc,d) < 0 )
 				goto done;
 			SFLOCK(f,0);
 		}
@@ -214,7 +193,7 @@ Sfdisc_t*	disc;
 			d = f->disc;
 			if(d && d->exceptf)
 			{	SFOPEN(f,0);
-				if( (*(d->exceptf))(f,SF_DPUSH,(Void_t*)disc,d) < 0 )
+				if( (*(d->exceptf))(f,SF_DPUSH,(void*)disc,d) < 0 )
 					goto done;
 				SFLOCK(f,0);
 			}
@@ -254,12 +233,12 @@ Sfdisc_t*	disc;
 		{	SETLOCAL(f);
 			f->bits &= ~SF_NULL;	/* turn off /dev/null handling */
 			if((f->bits&SF_MMAP) || (f->mode&SF_INIT))
-				sfsetbuf(f,NIL(Void_t*),(size_t)SF_UNBOUND);
+				sfsetbuf(f,NIL(void*),(size_t)SF_UNBOUND);
 			else if(f->data == f->tiny)
-				sfsetbuf(f,NIL(Void_t*),0);
+				sfsetbuf(f,NIL(void*),0);
 			else
 			{	int	flags = f->flags;
-				sfsetbuf(f,(Void_t*)f->data,f->size);
+				sfsetbuf(f,(void*)f->data,f->size);
 				f->flags |= (flags&SF_MALLOC);
 			}
 		}

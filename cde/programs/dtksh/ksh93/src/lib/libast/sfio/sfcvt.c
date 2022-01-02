@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,9 +20,7 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#if __STDC__
 #include	"FEATURE/standards"
-#endif
 #include	"sfhdr.h"
 
 /*	Convert a floating point value to ASCII.
@@ -53,6 +52,16 @@ static char		*Zero = "0";
 #undef	isnanl
 #define isnanl(n)	isnan(n)
 #endif
+#endif
+
+#if defined(__ia64__) && defined(signbit)
+# if defined __GNUC__ && __GNUC__ >= 4
+#  define __signbitl(f)			__builtin_signbitl(f)
+# else
+#  if _lib_copysignl
+#    define __signbitl(f)	(int)(copysignl(1.0,(f))<0.0)
+#  endif
+# endif
 #endif
 
 #if !_lib_signbit
@@ -98,20 +107,14 @@ static int neg0d(double f)
 #endif
 #endif
 
-#if __STD_C
-char* _sfcvt(Void_t* vp, char* buf, size_t size, int n_digit,
-		int* decpt, int* sign, int* len, int format)
-#else
-char* _sfcvt(vp,buf,size,n_digit,decpt,sign,len,format)
-Void_t*		vp;		/* pointer to value to convert	*/
-char*		buf;		/* conversion goes here		*/
-size_t		size;		/* size of buf			*/
-int		n_digit;	/* number of digits wanted	*/
-int*		decpt;		/* to return decimal point	*/
-int*		sign;		/* to return sign		*/
-int*		len;		/* return string length		*/
-int		format;		/* conversion format		*/
-#endif
+char* _sfcvt(void*	vp,		/* pointer to value to convert	*/
+	     char*	buf,		/* conversion goes here		*/
+	     size_t	size,		/* size of buf			*/
+	     int	n_digit,	/* number of digits wanted	*/
+	     int*	decpt,		/* to return decimal point	*/
+	     int*	sign,		/* to return sign		*/
+	     int*	len,		/* return string length		*/
+	     int	format)		/* conversion format		*/
 {
 	reg char		*sp;
 	reg long		n, v;
@@ -150,44 +153,16 @@ int		format;		/* conversion format		*/
 			return SF_INF;
 		}
 #endif
-# if _c99_in_the_wild
-#  if _lib_signbit
+
+#if _lib_signbit
 		if (signbit(f))
-#  else
-#   if _lib_copysignl
-		if (copysignl(1.0, f) < 0.0)
-#   else
-#    if _lib_copysign
-		if (copysign(1.0, (double)f) < 0.0)
-#    else
-		if (f < 0.0)
-#    endif
-#   endif
-#  endif
-		{	f = -f;
-			*sign = 1;
-		}
-#  if _lib_fpclassify
-		switch (fpclassify(f))
-		{
-		case FP_INFINITE:
-			return SF_INF;
-		case FP_NAN:
-			return SF_NAN;
-		case FP_ZERO:
-			return SF_ZERO;
-		}
-#  endif
-# else
-#  if _lib_signbit
-		if (signbit(f))
-#  else
+#else
 		if (f < 0.0 || f == 0.0 && neg0ld(f))
-#  endif
+#endif
 		{	f = -f;
 			*sign = 1;
 		}
-# endif
+
 		if(f < LDBL_MIN)
 			return SF_ZERO;
 		if(f > LDBL_MAX)
@@ -328,40 +303,16 @@ int		format;		/* conversion format		*/
 			return SF_INF;
 		}
 #endif
-#if _c99_in_the_wild
-# if _lib_signbit
+
+#if _lib_signbit
 		if (signbit(f))
-# else
-#  if _lib_copysign
-		if (copysign(1.0, f) < 0.0)
-#  else
-		if (f < 0.0)
-#  endif
-# endif
-		{	f = -f;
-			*sign = 1;
-		}
-# if _lib_fpclassify
-		switch (fpclassify(f))
-		{
-		case FP_INFINITE:
-			return SF_INF;
-		case FP_NAN:
-			return SF_NAN;
-		case FP_ZERO:
-			return SF_ZERO;
-		}
-# endif
 #else
-# if _lib_signbit
-		if (signbit(f))
-# else
 		if (f < 0.0 || f == 0.0 && neg0d(f))
-# endif
+#endif
 		{	f = -f;
 			*sign = 1;
 		}
-#endif
+
 		if(f < DBL_MIN)
 			return SF_ZERO;
 		if(f > DBL_MAX)

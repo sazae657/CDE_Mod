@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  *   Routines to implement a stack-like storage library
  *   
@@ -120,13 +120,12 @@ static const char Omsg[] = "malloc failed while growing stack\n";
 /*
  * default overflow exception
  */
-static char *overflow(int n)
+static noreturn char *overflow(int n)
 {
 	NoP(n);
 	write(2,Omsg, sizeof(Omsg)-1);
 	exit(2);
-	/* NOTREACHED */
-	return(0);
+	UNREACHABLE();
 }
 
 /*

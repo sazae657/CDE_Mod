@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,11 +20,10 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 #include <ast.h>
 
-#undef	_lib_getopt	/* we can satisfy the api */
+#undef	_lib_getopt	/* we can satisfy the API */
 
 #if _lib_getopt
 
@@ -31,7 +31,7 @@ NoN(getopt)
 
 #else
 
-#undef	_BLD_ast	/* enable ast imports since we're user static */
+#undef	_BLD_ast	/* enable AST imports since we're user static */
 
 #include <error.h>
 #include <option.h>
@@ -43,8 +43,12 @@ char*		optarg = 0;
 
 static int	lastoptind;
 
+/*
+ * Avoid a null-test optimization bug caused by glibc's headers
+ * by naming this function '_ast_getopt' instead of 'getopt'.
+ */
 extern int
-getopt(int argc, char* const* argv, const char* optstring)
+_ast_getopt(int argc, char* const* argv, const char* optstring)
 {
 	int	n;
 
@@ -56,7 +60,7 @@ getopt(int argc, char* const* argv, const char* optstring)
 	{
 	case ':':
 		n = '?';
-		/*FALLTHROUGH*/
+		/* FALLTHROUGH */
 	case '?':
 		if (opterr && (!optstring || *optstring != ':'))
 		{

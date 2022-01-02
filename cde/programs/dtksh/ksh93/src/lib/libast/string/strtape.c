@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * local device pathname for portable tape unit specification is returned
  * if e is non-null then it is set to the next unused char in s
@@ -76,7 +76,7 @@ strtape(register const char* s, register char** e)
 	if (!access("/dev/rmt/.", F_OK))
 	{
 		/*
-		 * system V
+		 * System V
 		 */
 
 		if (!mtdensity) mtdensity = 'm';
@@ -93,7 +93,7 @@ strtape(register const char* s, register char** e)
 	else if (!access("/dev/nst0", F_OK))
 	{
 		/*
-		 * linux
+		 * Linux
 		 */
 
 		sfsprintf(tapefile, sizeof(tapefile), "/dev/%sst%c", mtrewind, mtunit);

@@ -17,13 +17,7 @@ tst	lib_mmap note{ standard mmap interface that works }end execute{
 	#define Failed(file)	(remove(file),1)
 
 	int
-	#if _STD_
 	main(int argc, char** argv)
-	#else
-	main(argc,argv)
-	int     argc;
-	char**  argv;
-	#endif
 	{
 		caddr_t		mm;
 		char		*t, *u, *f;
@@ -118,7 +112,7 @@ tst	lib_mmap note{ standard mmap interface that works }end execute{
 	}
 }end
 
-tst	lib_mmap64 -D_LARGEFILE64_SOURCE note{ mmap64 interface and implementation work }end execute{
+tst	lib_mmap64 note{ mmap64 interface and implementation work }end execute{
 	#if !_lib_mmap
 	(
 	#endif
@@ -128,6 +122,8 @@ tst	lib_mmap64 -D_LARGEFILE64_SOURCE note{ mmap64 interface and implementation w
 	#include <sys/types.h>
 	#include <sys/mman.h>
 	#include <sys/stat.h>
+	#include <stdlib.h>
+	#include <string.h>
 	
 	int
 	main()
@@ -219,12 +215,13 @@ tst	mmap_devzero note{ use mmap on /dev/zero to get raw memory }end execute{
 	}
 }end
 
-tst	note{ mmap is worth using }end output{
+tst	note{ mmap is fast enough to be worth using }end output{
 	#if !_lib_mmap
 	(
 	#endif
 	#include <unistd.h>
 	#include <fcntl.h>
+	#include <string.h>
 	#include <sys/types.h>
 	#include <sys/mman.h>
 	#include <sys/stat.h>
@@ -238,13 +235,7 @@ tst	note{ mmap is worth using }end output{
 	#define Failed(file)	(remove(file),1)
 	
 	int
-	#if _STD_
 	main(int argc, char** argv)
-	#else
-	main(argc,argv)
-	int     argc;
-	char**  argv;
-	#endif
 	{
 		caddr_t		mm;
 		char		*t, *f;

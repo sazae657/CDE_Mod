@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -26,12 +27,7 @@
 **	Written by Kiem-Phong Vo.
 */
 
-#if __STD_C
 int sfpurge(Sfio_t* f)
-#else
-int sfpurge(f)
-Sfio_t*	f;
-#endif
 {
 	reg int	mode;
 	SFMTXDECL(f);
@@ -42,7 +38,7 @@ Sfio_t*	f;
 		SFMTXRETURN(f, -1);
 
 	if((f->flags&SF_IOCHECK) && f->disc && f->disc->exceptf)
-		(void)(*f->disc->exceptf)(f,SF_PURGE,(Void_t*)((int)1),f->disc);
+		(void)(*f->disc->exceptf)(f,SF_PURGE,(void*)((int)1),f->disc);
 
 	if(f->disc == _Sfudisc)
 		(void)sfclose((*_Sfstack)(f,NIL(Sfio_t*)));
@@ -78,7 +74,7 @@ Sfio_t*	f;
 
 		/* 2-way pipe, must clear read buffer */
 		(void)_sfmode(f,SF_READ,1);
-		/* fall through */
+		/* FALLTHROUGH */
 	case SF_READ:
 		if(f->extent >= 0 && f->endb > f->next)
 		{	f->here -= f->endb-f->next;
@@ -92,7 +88,7 @@ Sfio_t*	f;
 
 done:
 	if((f->flags&SF_IOCHECK) && f->disc && f->disc->exceptf)
-		(void)(*f->disc->exceptf)(f,SF_PURGE,(Void_t*)((int)0),f->disc);
+		(void)(*f->disc->exceptf)(f,SF_PURGE,(void*)((int)0),f->disc);
 
 	SFMTXRETURN(f, 0);
 }

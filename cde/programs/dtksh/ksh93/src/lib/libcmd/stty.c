@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1992-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -18,7 +19,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * stty.c
  * Written by David Korn
@@ -26,8 +26,8 @@
  */
 
 static const char usage[] =
-"[-?@(#)$Id: stty (AT&T Research) 2010-04-01 $\n]"
-USAGE_LICENSE
+"[-?@(#)$Id: stty (ksh 93u+m) 2021-11-23 $\n]"
+"[--catalog?" ERROR_CATALOG "]"
 "[+NAME?stty - set or get terminal modes]"
 "[+DESCRIPTION?\bstty\b sets certain terminal I/O modes for the device "
     "that is the current standard input; without arguments, it writes the "
@@ -54,7 +54,7 @@ USAGE_LICENSE
 "[+EXIT STATUS?]"
     "{"
         "[+0?All modes reported or set successfully.]"
-        "[+>0?Standard input not a terminaol or one or more modes "
+        "[+>0?Standard input not a terminal or one or more modes "
             "failed.]"
     "}"
 "[+SEE ALSO?\btegetattr\b(2), \btcsetattr\b(2), \bioctl\b(2)]"
@@ -109,6 +109,7 @@ USAGE_LICENSE
 #define CASE	10
 #define TABS	11
 #define WIND	12
+#define WINDSZ	13
 
 #undef	SS			/* who co-opted this namespace?	*/
 
@@ -156,6 +157,7 @@ static const Tty_t Ttable[] =
 { "rows",	WIND,	W_SIZE,	IG,	0, 24, C("\an\a is the number of lines for display") },
 { "cols",	WIND,	W_SIZE,	IG,	1, 80, C("\an\a is the number of columns for display") },
 { "columns",	WIND,	W_SIZE,	IG,	1, 80, C("Same as \bcols\b") },
+{ "size",	WINDSZ,	W_SIZE,	IG,	2, 0, C("Current terminal window size") },
 #endif
 { "intr",	CHAR,	T_CHAR,	SS,	VINTR, 'C', C("Send an interrupt signal") },
 { "quit",	CHAR,	T_CHAR,	SS,	VQUIT, '|', C("Send a quit signal") },
@@ -197,7 +199,7 @@ static const Tty_t Ttable[] =
 #if _mem_c_line_termios
 { "line",	NUM,	C_LINE,	0,	0, 0, C("Line discipline number") },
 #endif
-{ "min",	NUM,	T_CHAR,	0,	VMIN, 0, C("Mininmum number of characters to read in raw mode") },
+{ "min",	NUM,	T_CHAR,	0,	VMIN, 0, C("Minimum number of characters to read in raw mode") },
 { "time",	NUM,	T_CHAR,	0,	VTIME, 0, C("Number of .1 second intervals with raw mode") },
 
 { "parenb",	BIT,	C_FLAG,	0,	PARENB,	PARENB, C("Enable (disable) parity generation and detection") },
@@ -229,7 +231,7 @@ static const Tty_t Ttable[] =
 { "inlcr",	BIT,	I_FLAG,	US,	INLCR, INLCR, C("Translate (do not translate) carriage return to newline") },
 { "igncr",	BIT,	I_FLAG,	US,	IGNCR, IGNCR, C("Ignore (do not ignore) carriage return") },
 #ifdef IUCLC
-{ "iuclc",	BIT,	I_FLAG,	US,	IUCLC, IUCLC, C("Map (do not map) upper-case to lower case") },
+{ "iuclc",	BIT,	I_FLAG,	US,	IUCLC, IUCLC, C("Map (do not map) uppercase to lowercase") },
 #endif /* IUCLC */
 { "ixon",	BIT,	I_FLAG,	0,	IXON, IXON, C("Enable (disable) XON/XOFF flow control. \bstop\b character stops output") },
 #ifdef IXANY
@@ -645,14 +647,23 @@ static void set(char *argv[], struct termios *sp)
 			off=1;
 		}
 		if(!(tp=lookup(cp)) || (off && (tp->type!=BIT) && (tp->type!=TABS)))
+		{
 			error(ERROR_exit(1),"%s: unknown mode",cp);
+			UNREACHABLE();
+		}
 		switch(tp->type)
 		{
 		    case CHAR:
 			if(off)
+			{
 				error(ERROR_exit(1),"%s: unknown mode",cp);
+				UNREACHABLE();
+			}
 			if(!*argv)
+			{
 				error(ERROR_exit(1),"missing argument to %s",cp);
+				UNREACHABLE();
+			}
 			c = gettchar(*argv++);
 			if(c>=0)
 				sp->c_cc[tp->mask] = c;
@@ -693,26 +704,53 @@ static void set(char *argv[], struct termios *sp)
 			break;
 #ifdef TIOCSWINSZ
 		    case WIND:
+		    case WINDSZ:
 		    {
 			struct winsize win;
 			int n;
 			if(ioctl(0,TIOCGWINSZ,&win)<0)
-				error(ERROR_system(1),"cannot set %s",tp->name);
-			if(!(cp= *argv))
 			{
-				sfprintf(sfstdout,"%d\n",tp->mask?win.ws_col:win.ws_row);
+				error(ERROR_system(1),"cannot set %s",tp->name);
+				UNREACHABLE();
+			}
+			if(!(cp = *argv))
+			{
+				switch(tp->mask)
+				{
+				    case 0: /* stty rows */
+					sfprintf(sfstdout,"%d\n",win.ws_row);
+					break;
+				    case 1: /* stty cols/stty columns */
+					sfprintf(sfstdout,"%d\n",win.ws_col);
+					break;
+				    case 2: /* stty size */
+					sfprintf(sfstdout,"%d %d\n",win.ws_row,win.ws_col);
+					break;
+				}
 				break;
+			}
+			if(tp->mask==2)
+			{
+				/* 'stty size' doesn't set the terminal window size */
+				error(ERROR_system(1),"%s: invalid argument",argv[0]);
+				UNREACHABLE();
 			}
 			argv++;
 			n=strtol(cp,&cp,10);
 			if(*cp)
+			{
 				error(ERROR_system(1),"%d: invalid number of %s",argv[-1],tp->name);
+				UNREACHABLE();
+			}
 			if(tp->mask)
 				win.ws_col = n;
 			else
 				win.ws_row = n;
 			if(ioctl(0,TIOCSWINSZ,&win)<0)
+			{
 				error(ERROR_system(1),"cannot set %s",tp->name);
+				UNREACHABLE();
+			}
 			break;
 		    }
 #endif
@@ -727,11 +765,15 @@ static void set(char *argv[], struct termios *sp)
 					break;
 				}
 				error(ERROR_exit(1), "%s: missing numeric argument", tp->name);
+				UNREACHABLE();
 			}
 			argv++;
 			c = (int)strtol(cp, &ep, 10);
 			if (*ep)
+			{
 				error(ERROR_exit(1), "%s: %s: numeric argument expected", tp->name, cp);
+				UNREACHABLE();
+			}
 			switch (tp->field)
 			{
 #if _mem_c_line_termios
@@ -748,7 +790,10 @@ static void set(char *argv[], struct termios *sp)
 						cfsetospeed(sp, c);
 				}
 				else
+				{
 					error(ERROR_exit(1), "%s: %s: invalid speed", tp->name, cp);
+					UNREACHABLE();
+				}
 				break;
 			case T_CHAR:
 				sp->c_cc[tp->mask] = c;
@@ -872,6 +917,7 @@ static int infof(Opt_t* op, Sfio_t* sp, const char* s, Optdisc_t* dp)
 	sfprintf(sp,"}[+Control Assignments.?If \ac\a is \bundef\b or an empty "
 		"string then the control assignment is disabled.]{");
 	listchars(sp,WIND);
+	listmode(sp,"size");
 	listchars(sp,CHAR);
 	sfprintf(sp,"}[+Combination Modes.]{");
 	listmode(sp,"ek");
@@ -936,24 +982,33 @@ b_stty(int argc, char** argv, Shbltin_t* context)
 				}
 				continue;
 			}
-			/*FALLTHROUGH*/
+			/* FALLTHROUGH */
 		case ':':
 			if (!opt_info.offset)
 				error(2, "%s", opt_info.arg);
 			else if (!(tp = lookup(argv[opt_info.index]+1)) || (tp->type != BIT && tp->type != TABS))
+			{
 				error(ERROR_exit(1), "%s: unknown mode", argv[opt_info.index]);
+				UNREACHABLE();
+			}
 			break;
 		case '?':
 			error(ERROR_usage(2), "%s", opt_info.arg);
-			break;
+			UNREACHABLE();
 		}
 		break;
 	}
 	argv += opt_info.index;
 	if (error_info.errors || (flags && *argv) || (flags&(flags-1)))
+	{
 		error(ERROR_usage(2), "%s", optusage(NiL));
+		UNREACHABLE();
+	}
 	if (tcgetattr(fd, &tty) < 0)
+	{
 		error(ERROR_system(1), "not a tty");
+		UNREACHABLE();
+	}
 	if (flags & T_FLAG)
 		sfprintf(sfstdout, "%d\n", tcgetpgrp(0));
 	else if (*argv)
@@ -963,7 +1018,10 @@ b_stty(int argc, char** argv, Shbltin_t* context)
 		else
 			set(argv, &tty);
 		if (tcsetattr(0, TCSANOW, &tty) < 0)
+		{
 			error(ERROR_system(1), "cannot set tty");
+			UNREACHABLE();
+		}
 	}
 	else
 		output(&tty, flags);

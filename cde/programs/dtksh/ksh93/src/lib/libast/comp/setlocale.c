@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 /*
  * setlocale() intercept
@@ -36,7 +36,7 @@
 #include <ctype.h>
 #include <mc.h>
 #include <namval.h>
-#include <errno.h>
+#include <error.h>
 
 #if ( _lib_wcwidth || _lib_wctomb ) && _hdr_wctype
 #include <wctype.h>
@@ -162,7 +162,7 @@ native_setlocale(int category, const char* locale)
 		return 0;
 
 	/*
-	 * win32 doesn't have LC_MESSAGES
+	 * Win32 doesn't have LC_MESSAGES
 	 */
 
 	if (category == LC_MESSAGES)
@@ -199,7 +199,7 @@ native_setlocale(int category, const char* locale)
 /*
  * LC_COLLATE and LC_CTYPE debug support
  *
- * mutibyte debug encoding
+ * multibyte debug encoding
  *
  *	DL0 [ '0' .. '4' ] c1 ... c4 DR0
  *	DL1 [ '0' .. '4' ] c1 ... c4 DR1
@@ -526,7 +526,7 @@ set_collate(Lc_category_t* cp)
 }
 
 /*
- * workaround the interesting sjis that translates unshifted 7 bit ascii!
+ * workaround the interesting SJIS that translates unshifted 7 bit ASCII!
  */
 
 #if _hdr_wchar && _typ_mbstate_t && _lib_mbrtowc
@@ -547,19 +547,11 @@ sjis_mbtowc(register wchar_t* p, register const char* s, size_t n)
 
 #endif
 
-#if 0
-
-#define utf8_wctomb	wctomb
-
-#else
-
 static int
 utf8_wctomb(char* u, wchar_t w) 
 {
 	return u ? wc2utf8(u, w) : 0;
 }
-
-#endif
 
 static const uint32_t		utf8mask[] =
 {
@@ -633,9 +625,7 @@ utf8_mbtowc(wchar_t* wp, const char* str, size_t n)
 	if (!*sp)
 		return 0;
  invalid:
-#ifdef EILSEQ
 	errno = EILSEQ;
-#endif
 	ast.mb_sync = (const char*)sp - str;
 	return -1;
 }
@@ -2283,7 +2273,7 @@ set_ctype(Lc_category_t* cp)
 #ifdef mb_state
 		{
 			/*
-			 * check for sjis that translates unshifted 7 bit ascii!
+			 * check for SJIS that translates unshifted 7 bit ASCII!
 			 */
 
 			char*	s;
@@ -2421,7 +2411,7 @@ default_setlocale(int category, const char* locale)
 #if !_UWIN
 
 /*
- * workaround for systems that shall not be named (solaris,freebsd)
+ * workaround for Solaris and FreeBSD systems
  * the call free() with addresses that look like the came from the stack
  */
 

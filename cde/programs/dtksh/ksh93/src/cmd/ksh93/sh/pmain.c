@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,14 +18,13 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 #include	<shell.h>
 
 #include	"FEATURE/externs"
 
 #if defined(__sun) && _sys_mman && _lib_memcntl && defined(MHA_MAPSIZE_STACK) && defined(MC_HAT_ADVISE)
-#   undef	VM_FLAGS	/* solaris vs vmalloc.h symbol clash */
+#   undef	VM_FLAGS	/* Solaris vs vmalloc.h symbol clash */
 #   include	<sys/mman.h>
 #else
 #   undef	_lib_memcntl

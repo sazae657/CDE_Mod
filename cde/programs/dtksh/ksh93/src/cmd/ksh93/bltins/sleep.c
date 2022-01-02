@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,9 +18,8 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
- * sleep delay
+ * sleep [-s] duration
  *
  *   David Korn
  *   AT&T Labs
@@ -33,12 +33,6 @@
 #include	"builtins.h"
 #include	"FEATURE/time"
 #include	"FEATURE/poll"
-#ifdef _NEXT_SOURCE
-#   define sleep	_ast_sleep
-#endif /* _NEXT_SOURCE */
-#ifdef _lib_poll_notimer
-#   undef _lib_poll
-#endif /* _lib_poll_notimer */
 
 int	b_sleep(register int argc,char *argv[],Shbltin_t *context)
 {
@@ -60,10 +54,13 @@ int	b_sleep(register int argc,char *argv[],Shbltin_t *context)
 			break;
 		case '?':
 			errormsg(SH_DICT,ERROR_usage(2), "%s", opt_info.arg);
-			break;
+			UNREACHABLE();
 	}
 	if(error_info.errors)
+	{
 		errormsg(SH_DICT, ERROR_usage(2), "%s", optusage(NULL));
+		UNREACHABLE();
+	}
 	argv += opt_info.index;
 	if(cp = *argv)
 	{
@@ -73,6 +70,7 @@ int	b_sleep(register int argc,char *argv[],Shbltin_t *context)
 			Time_t now,ns;
 			char* pp;
 			now = TMX_NOW;
+			ns = 0;
 			if(*cp == 'P' || *cp == 'p')
 				ns = tmxdate(cp, &last, now);
 			else if(*last=='.' && shp->decomma && d==(unsigned long)d)
@@ -92,23 +90,32 @@ int	b_sleep(register int argc,char *argv[],Shbltin_t *context)
 					ns = tmxdate(pp, &last, now);
 			}
 			if(*last)
+			{
 				errormsg(SH_DICT,ERROR_exit(1),e_number,*argv);
+				UNREACHABLE();
+			}
 			d = ns - now;
 			d /= TMX_RESOLUTION;
 		}
 skip:
 		if(argv[1])
+		{
 			errormsg(SH_DICT,ERROR_exit(1),e_oneoperand);
+			UNREACHABLE();
+		}
 	}
 	else if(!sflag)
+	{
 		errormsg(SH_DICT,ERROR_exit(1),e_oneoperand);
+		UNREACHABLE();
+	}
 	if(d > .10)
 	{
 		time(&tloc);
 		tloc += (time_t)(d+.5);
 	}
 	if(sflag && d==0)
-		pause();
+		pause();  /* 'sleep -s' waits until a signal is sent */
 	else while(1)
 	{
 		time_t now;
@@ -128,9 +135,10 @@ skip:
 }
 
 /*
- * delay execution for time <t>
+ * Delay execution for time <t>.
+ * If sflag==1, stop sleeping when any signal is received
+ * (such as SIGWINCH in an interactive shell).
  */
-
 void sh_delay(double t, int sflag)
 {
 	Shell_t *shp = sh_getinterp();
@@ -139,7 +147,7 @@ void sh_delay(double t, int sflag)
 
 	ts.tv_sec = n;
 	ts.tv_nsec = 1000000000 * (t - (double)n);
-	while(tvsleep(&ts, &tx) < 0 && errno == EINTR)
+	while(tvsleep(&ts, &tx) < 0)
 	{
 		if ((shp->trapnote & (SH_SIGSET | SH_SIGTRAP)) || sflag)
 			return;

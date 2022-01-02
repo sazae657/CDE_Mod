@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 #ifndef _SHNODES_H
 #define _SHNODES_H	1
 /*
@@ -31,21 +31,21 @@
 #include	"argnod.h"
 
 /* command tree for tretyp */
-#define FINT		(02<<COMBITS)		/* non-interruptable */
+#define FINT		(02<<COMBITS)		/* non-interruptible */
 #define FAMP		(04<<COMBITS)		/* background */
 #define FPIN		(010<<COMBITS)		/* input is a pipe */
 #define FPOU		(040<<COMBITS)		/* output is a pipe */
 #define FPCL		(0100<<COMBITS)		/* close the pipe */
 #define FCOOP		(0200<<COMBITS)		/* cooperating process */
-#define FSHOWME		(0400<<COMBITS)		/* set for showme commands  */
+#define FSHOWME		(0400<<COMBITS)		/* set for showme commands */
 #define FALTPIPE	(02000<<COMBITS)	/* alternate pipes &| */
-#define FPOSIX		(02<<COMBITS)		/* posix semantics function */
+#define FPOSIX		(02<<COMBITS)		/* POSIX semantics function */
 #define FLINENO		(04<<COMBITS)		/* for/case has line number */
 #define FOPTGET		(0200<<COMBITS)		/* function calls getopts */
 
-#define TNEGATE		(01<<COMBITS)		/* ! inside [[...]] */
-#define TBINARY		(02<<COMBITS)		/* binary operator in [[...]] */
-#define TUNARY		(04<<COMBITS)		/* unary operator in [[...]] */
+#define TNEGATE		(01<<COMBITS)		/* ! inside [[ ... ]] */
+#define TBINARY		(02<<COMBITS)		/* binary operator in [[ ... ]] */
+#define TUNARY		(04<<COMBITS)		/* unary operator in [[ ... ]] */
 #define TTEST		(010<<COMBITS)
 #define TPAREN		(TBINARY|TUNARY)
 #define TSHIFT		(COMBITS+4)
@@ -170,7 +170,7 @@ struct arithnod
 };
 
 
-/* types of ionodes stored in iofile  */
+/* types of ionodes stored in iofile */
 #define IOUFD		0x3f	/* file descriptor number mask */
 #define IOPUT		0x40	/* > redirection operator */
 #define IOAPP		0x80	/* >> redirection operator */
@@ -212,7 +212,7 @@ union Shnode_u
 extern void			sh_freeup(Shell_t*);
 extern void			sh_funstaks(struct slnod*,int);
 extern Sfio_t 			*sh_subshell(Shell_t*,Shnode_t*, volatile int, int);
-#if defined(__EXPORT__) && defined(_BLD_DLL) && defined(_BLD_shell) 
+#if defined(__EXPORT__) && defined(_BLD_DLL)
    __EXPORT__
 #endif
 extern int			sh_tdump(Sfio_t*, const Shnode_t*);

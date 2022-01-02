@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * Glenn Fowler
  * AT&T Research
@@ -96,7 +96,7 @@ typedef struct Optstate_s
 	int		style;		/* default opthelp() style	*/
 	int		width;		/* format line width		*/
 	int		flags;		/* display flags		*/
-	int		emphasis;	/* ansi term emphasis ok	*/
+	int		emphasis;	/* ANSI term emphasis ok	*/
 	int		localized;	/* locale initialized		*/
 	Dtdisc_t	msgdisc;	/* msgdict discipline		*/
 	Dt_t*		msgdict;	/* default ast.id catalog msgs	*/

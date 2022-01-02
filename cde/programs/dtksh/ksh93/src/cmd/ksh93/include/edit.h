@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 #ifndef SEARCHSIZE
 /*
  *  edit.h -  common data structure for vi and emacs edit options
@@ -31,16 +31,6 @@
 
 #include	"FEATURE/options"
 #include        "FEATURE/locale"
-#if !SHOPT_VSH && !SHOPT_ESH
-#   define ed_winsize()	(SEARCHSIZE)
-#else
-
-#if !KSHELL
-#   include	<setjmp.h>
-#   include	<sig.h>
-#   include	<ctype.h>
-#endif /* KSHELL */
-
 #include	"FEATURE/setjmp"
 #include	"terminal.h"
 
@@ -92,7 +82,6 @@ typedef struct edit
 	int	e_lnext;
 	int	e_plen;		/* length of prompt string */
 	char	e_crlf;		/* zero if cannot return to beginning of line */
-	char	e_nocrnl;	/* don't put a new-line with ^L */
 	char	e_keytrap;	/* set when in keytrap */
 	int	e_llimit;	/* line length limit */
 	int	e_hline;	/* current history line number */
@@ -112,13 +101,13 @@ typedef struct edit
 	char	*e_outptr;	/* pointer to position in output buffer */
 	char	*e_outlast;	/* pointer to end of output buffer */
 	genchar	*e_inbuf;	/* pointer to input buffer */
-	char	*e_prompt;	/* pointer to buffer containing the prompt */
+	char	*e_prompt;	/* pointer to trimmed final line of PS1 prompt, used when redrawing command line */
 	genchar	*e_killbuf;	/* pointer to delete buffer */
 	char	e_search[SEARCHSIZE];	/* search string */
 	genchar	*e_physbuf;	/* temporary workspace buffer */
 	int	e_lbuf[LOOKAHEAD];/* pointer to look-ahead buffer */
 	int	e_fd;		/* file descriptor */
-	int	e_ttyspeed;	/* line speed, also indicates tty parms are valid */
+	int	e_ttyspeed;	/* line speed, also indicates tty parameters are valid */
 	int	e_tabcount;
 #ifdef _hdr_utime
 	ino_t	e_tty_ino;
@@ -131,14 +120,10 @@ typedef struct edit
 	struct termio e_ott;
 #endif
 	int	*e_globals;	/* global variables */
-	genchar	*e_window;	/* display window  image */
+	genchar	*e_window;	/* display window image */
 	char	e_inmacro;	/* processing macro expansion */
-#if KSHELL
 	char	e_vi_insert[2];	/* for sh_keytrap */
 	int32_t e_col;		/* for sh_keytrap */
-#else
-	char	e_prbuff[PRSIZE]; /* prompt buffer */
-#endif /* KSHELL */
 	struct termios	e_ttyparm;      /* initial tty parameters */
 	struct termios	e_nttyparm;     /* raw tty parameters */
 	struct termios e_savetty;	/* saved terminal state */
@@ -188,23 +173,6 @@ typedef struct edit
 		(c<'J'?c+1-'A':(c+10-'J'))))))))))))))))
 #endif
 
-#if !KSHELL
-#   define STRIP	0377
-#   define GMACS	1
-#   define EMACS	2
-#   define VIRAW	4
-#   define EDITVI	8
-#   define NOHIST	16
-#   define EDITMASK	15
-#   define is_option(m)	(opt_flag&(m))
-    extern char opt_flag;
-#   ifdef SYSCALL
-#	define read(fd,buff,n)	syscall(3,fd,buff,n)
-#   else
-#	define read(fd,buff,n)	rEAd(fd,buff,n)
-#   endif /* SYSCALL */
-#endif	/* KSHELL */
-
 extern void	ed_crlf(Edit_t*);
 extern void	ed_putchar(Edit_t*, int);
 extern void	ed_ringbell(void);
@@ -219,29 +187,25 @@ extern int	ed_read(void*, int, char*, int, int);
 extern int	ed_emacsread(void*, int, char*, int, int);
 extern Edpos_t	ed_curpos(Edit_t*, genchar*, int, int, Edpos_t);
 extern int	ed_setcursor(Edit_t*, genchar*, int, int, int);
-#if KSHELL
-	extern int	ed_macro(Edit_t*,int);
-	extern int	ed_expand(Edit_t*, char[],int*,int*,int,int);
-	extern int	ed_fulledit(Edit_t*);
-	extern void	*ed_open(Shell_t*);
-#endif /* KSHELL */
-#   if SHOPT_MULTIBYTE
+extern int	ed_macro(Edit_t*,int);
+extern int	ed_expand(Edit_t*, char[],int*,int*,int,int);
+extern int	ed_fulledit(Edit_t*);
+extern void	*ed_open(Shell_t*);
+#if SHOPT_MULTIBYTE
 	extern int ed_internal(const char*, genchar*);
 	extern int ed_external(const genchar*, char*);
 	extern void ed_gencpy(genchar*,const genchar*);
 	extern void ed_genncpy(genchar*,const genchar*,int);
 	extern int ed_genlen(const genchar*);
-	extern int ed_setwidth(const char*);
-#  endif /* SHOPT_MULTIBYTE */
+#endif /* SHOPT_MULTIBYTE */
 #if SHOPT_EDPREDICT
-   extern int	ed_histgen(Edit_t*, const char*);
-   extern void	ed_histlist(Edit_t*, int);
+    extern int	ed_histgen(Edit_t*, const char*);
+#   if SHOPT_ESH || SHOPT_VSH
+        extern void	ed_histlist(Edit_t*, int);
+#   endif /* SHOPT_ESH || SHOPT_VSH */
 #endif /* SHOPT_EDPREDICT */
 
 extern const char	e_runvi[];
-#if !KSHELL
-   extern const char	e_version[];
-#endif /* KSHELL */
 
 #if SHOPT_HISTEXPAND
 
@@ -269,7 +233,15 @@ extern const char	e_runvi[];
 #define	HIST_FLAG_RETURN_MASK	(HIST_EVENT|HIST_PRINT|HIST_ERROR)
 
 extern int hist_expand(const char *, char **);
-#endif
 
-#endif
-#endif
+#endif /* SHOPT_HISTEXPAND */
+
+#if SHOPT_ESH
+extern void	emacs_redraw(void*);
+#endif /* SHOPT_ESH */
+
+#if SHOPT_VSH
+extern void	vi_redraw(void*);
+#endif /* SHOPT_VSH */
+
+#endif /* !SEARCHSIZE */

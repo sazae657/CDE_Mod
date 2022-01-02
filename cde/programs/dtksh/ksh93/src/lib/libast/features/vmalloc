@@ -11,7 +11,7 @@ ref	-D_def_map_ast=1
 lib	atexit,getpagesize,mallinfo,mallopt,memalign,mstats
 lib	onexit,pvalloc,strdup,valloc,vmalloc
 lib	_malloc,__malloc,__libc_malloc
-hdr	alloca,malloc,stat,stdlib,unistd
+hdr	alloca,malloc,stat,stdlib,unistd,sys/shm
 mem	mallinfo.arena,mstats.bytes_total malloc.h
 sys	stat
 typ	ssize_t
@@ -49,16 +49,12 @@ tst	map_malloc note{ map malloc to _ast_malloc }end noexecute{
 	int main() { return 1; }
 	#else
 	static int user = 0;
-	_BEGIN_EXTERNS_
 	#if _lib_strdup
-	extern char* strdup _ARG_((const char*));
+	extern char* strdup(const char*);
 	#define LOCAL()	strdup("s")
 	#else
-	extern void* calloc _ARG_((unsigned int, unsigned int));
+	extern void* calloc(unsigned int, unsigned int);
 	#define LOCAL()	calloc(1,1)
-	#endif
-	#if __CYGWIN__
-	#define extern __declspec(dllexport)
 	#endif
 	#define HT double
 	static HT heap[1024 * 4];
@@ -66,7 +62,6 @@ tst	map_malloc note{ map malloc to _ast_malloc }end noexecute{
 	static HT* op;
 	#define MALLOC(n) if(user)return&heap[0];op=hp;hp+=(n+sizeof(HT)-1)/sizeof(HT);return(void*)op;
 	#define INTERCEPTED(p) (((char*)(p))==((char*)&heap[0]))
-	#if _STD_
 	extern void free(void* p) { }
 	extern void _free(void* p) { }
 	extern void __free(void* p) { }
@@ -75,17 +70,6 @@ tst	map_malloc note{ map malloc to _ast_malloc }end noexecute{
 	extern void* _malloc(unsigned int n) { MALLOC(n); }
 	extern void* __malloc(unsigned int n) { MALLOC(n); }
 	extern void* __libc_malloc(unsigned int n) { MALLOC(n); }
-	#else
-	extern void free(p) char* p; { }
-	extern void _free(p) char* p; { }
-	extern void __free(p) char* p; { }
-	extern void __libc_free(p) char* p; { }
-	extern void* malloc(n) unsigned int n; { MALLOC(n); }
-	extern void* _malloc(n) unsigned int n; { MALLOC(n); }
-	extern void* __malloc(n) unsigned int n; { MALLOC(n); }
-	extern void* __libc_malloc(n) unsigned int n; { MALLOC(n); }
-	#endif
-	_END_EXTERNS_
 	int main() { user = 1; return !INTERCEPTED(LOCAL()); }
 	#endif
 }end
@@ -94,13 +78,8 @@ tst	map_malloc note{ map malloc to _ast_malloc -- wimp-o mach? }end noexecute{
 	#if _map_malloc
 	int main() { return 0; }
 	#else
-	_BEGIN_EXTERNS_
-	#if _STD_
-	void* calloc(unsigned n, unsigned m) { exit(1); }
-	#else
-	void* calloc(n, m) unsigned n, m; { exit(1); }
-	#endif
-	_END_EXTERNS_
+	#include <stdlib.h>
+	void* calloc(size_t n, size_t m) { exit(1); }
 	int main() { return 0; }
 	#endif
 }end
@@ -122,11 +101,8 @@ tst	mal_alloca note{ alloca is based on malloc() }end execute{
 	#if _hdr_alloca
 	#include	<alloca.h>
 	#endif
-	#if _STD_
-	void* malloc(unsigned int size)
-	#else
-	void* malloc(size) unsigned int size;
-	#endif
+	#include <stdlib.h>
+	void* malloc(size_t size)
 	{	exit(0);
 		return 0;
 	}
@@ -152,7 +128,7 @@ tst	stk_down note{ stack grows downward }end execute{
 	int main() { return growdown() ? 0 : 1; }
 }end
 
-tst	malloc_hook note{ gnu malloc hooks work }end execute{
+tst	malloc_hook note{ GNU malloc hooks work }end execute{
 	#include <malloc.h>
 
 	static int      	test_free_hit = 0;
@@ -207,9 +183,13 @@ tst	malloc_hook note{ gnu malloc hooks work }end execute{
 
 cat{
 	#include "FEATURE/mmap"
-	#if _AST_ksh_release || _BLD_INSTRUMENT || cray || _UWIN && _BLD_ast
+	/* AST vmalloc is deprecated for being crashy and wasteful; ksh 93u+m uses the OS's malloc by default */
+	#undef _std_malloc
+	#undef _AST_std_malloc
+	#if !_AST_vmalloc
 	#undef	_map_malloc
 	#define _std_malloc	1	/* defer to standard malloc */
+	#define _AST_std_malloc	1
 	#endif
 	#if _mmap_anon
 	#define _mem_mmap_anon	1

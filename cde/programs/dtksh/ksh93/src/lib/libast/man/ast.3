@@ -44,6 +44,8 @@ ast \- miscellaneous libast support
 #include <ast.h>
 
 char*          astconf(const char* \fIname\fP, const char* \fIpath\fP, const char* \fIvalue\fP);
+long           astconf_long(\fIarg\fP);
+unsigned long  astconf_ulong(\fIarg\fP);
 Ast_confdisc_t astconfdisc(Ast_confdisc_t new_notify);
 void           astconflist(Sfio_t* stream, const char* path, int flags);
 off_t          astcopy(int \fIrfd\fP, int \fIwfd\fP, off_t \fIn\fP);
@@ -52,10 +54,10 @@ int            astquery(int \fIfd\fP, const char* \fIformat\fP , ...);
 .SH DESCRIPTION
 .L astconf
 is a string interface to the
-.IR confstr (2),
+.IR confstr (3),
 .IR pathconf (2),
 and
-.IR sysconf (2)
+.IR sysconf (3)
 calls.
 If
 .I value
@@ -74,7 +76,7 @@ In this case if
 is
 .L 0
 then
-\f5"/"\fP
+\f3"/"\fP
 is used.
 Otherwise if
 .I path
@@ -92,7 +94,7 @@ If
 is
 .L 0
 then a valid string is always returned;
-\f5""\fP
+\f3""\fP
 is returned if
 .I name
 has no configuration value.
@@ -155,6 +157,30 @@ User defined
 values may also be set and queried, but these should probably have
 some form of vendor prefix to avoid being stomped by future standards.
 .PP
+.L astconf_long
+and
+.L astconf_ulong
+are macros that call either
+.I sysconf
+or
+.LR astconf ,
+preferring
+.I sysconf
+if it's available.
+.L astconf_long
+returns a signed long value while
+.L astconf_ulong
+returns an unsigned long value.
+The argument passed to these macros may be one of the following:
+.EX
+CONF_ARG_MAX
+CONF_CHILD_MAX
+CONF_CLK_TCK
+CONF_NGROUPS_MAX
+CONF_OPEN_MAX
+CONF_PAGESIZE
+.EE
+.PP
 .L astconfdisc
 registers a discipline function
 .EX
@@ -179,7 +205,7 @@ If
 .I path
 is
 .L 0
-then \f5"/"\fP is used where appropriate.
+then \f3"/"\fP is used where appropriate.
 If
 .I flags
 is
@@ -226,7 +252,7 @@ outputs an
 prompt specified by
 .I "format, .\|.\|."
 to the controlling terminal and reads a response from the controlling terminal.
-Offirmative response returns
+Affirmative response returns
 .LR 0 ,
 .L EOF
 or quit response returns
@@ -259,7 +285,7 @@ and
 are set to
 .LR 0 .
 If
-.I ioctl (2)
+.IR ioctl (2)
 methods fail then the environment variable
 .L LINES
 is used to set
@@ -269,4 +295,4 @@ and the environment variable
 is used to set
 .IR *cols .
 .SH "SEE ALSO"
-getconf(1), confstr(2), mmap(2), pathconf(2), read(2), sysconf(2), write(2)
+getconf(1), confstr(3), mmap(2), pathconf(2), read(2), sysconf(3), write(2)

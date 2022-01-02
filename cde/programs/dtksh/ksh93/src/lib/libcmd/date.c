@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1992-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -18,7 +19,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * Glenn Fowler
  * AT&T Research
@@ -28,11 +28,11 @@
 
 static const char usage[] =
 "[-?\n@(#)$Id: date (AT&T Research) 2011-01-27 $\n]"
-USAGE_LICENSE
+"[--catalog?" ERROR_CATALOG "]"
 "[+NAME?date - set/list/convert dates]"
 "[+DESCRIPTION?\bdate\b sets the current date and time (with appropriate"
-"	privilege), lists the current date or file dates, or converts"
-"	dates.]"
+"	privileges, provided the shell isn't in restricted mode), lists"
+"	the current date or file dates, or converts dates.]"
 "[+?Most common \adate\a forms are recognized, including those for"
 "	\bcrontab\b(1), \bls\b(1), \btouch\b(1), and the default"
 "	output from \bdate\b itself.]"
@@ -42,7 +42,7 @@ USAGE_LICENSE
 "	\ayymmddHHMM.SS\a, or \ammddHHMMccyy.SS\a or \accyymmddHHMM.SS\a."
 "	Conflicting standards and practice allow a leading or trailing"
 "	2 or 4 digit year for the 10 and 12 digit forms; the X/Open trailing"
-"	form is used to disambiguate (\btouch\b(1) uses the leading form.)"
+"	form is used to disambiguate (\btouch\b(1) uses the leading form)."
 "	Avoid the 10 digit form to avoid confusion. The digit fields are:]{"
 "		[+cc?Century - 1, 19-20.]"
 "		[+yy?Year in century, 00-99.]"
@@ -82,7 +82,7 @@ USAGE_LICENSE
 "	are padded with \b0\b and string fields are padded with space."
 "	\afield\a may also be preceded by \bE\b for alternate era"
 "	representation or \bO\b for alternate digit representation (if"
-"	supported by the current locale.) Finally, an integral \awidth\a"
+"	supported by the current locale). Finally, an integral \awidth\a"
 "	preceding \afield\a truncates the field to \awidth\a characters."
 "	The fields are:]:[format]{"
 "		[+%?% character]"
@@ -95,8 +95,8 @@ USAGE_LICENSE
 "		[+d?day of month number]"
 "		[+D?date as \amm/dd/yy\a]"
 "		[+e?blank padded day of month number]"
-"		[+f?print a date with the format '\%Y.\%m.\%d-\%H:\%M:\%S']"
-"		[+F?%ISO 8601:2000 standard date format; equivalent to Y-%m-%d]"
+"		[+f?print a date with the format \b%Y.%m.%d-%H:%M:%S\b]"
+"		[+F?ISO 8601:2000 standard date format; equivalent to \b%Y-%m-%d\b]"
 "		[+g?\bls\b(1) \b-l\b recent date with \ahh:mm\a]"
 "		[+G?\bls\b(1) \b-l\b distant date with \ayyyy\a]"
 "		[+h?abbreviated month name]"
@@ -114,9 +114,10 @@ USAGE_LICENSE
 "		[+n?newline character]"
 "		[+N?nanoseconds 000000000-999999999]"
 "		[+p?meridian (e.g., \bAM\b or \bPM\b)]"
+"		[+P?lowercase meridian (e.g., \bam\b or \bpm\b)]"
 "		[+q?quarter of the year]"
 "		[+Q?\a<del>recent<del>distant<del>\a: \a<del>\a is a unique"
-"			delimter character; \arecent\a format for recent"
+"			delimiter character; \arecent\a format for recent"
 "			dates, \adistant\a format otherwise]"
 "		[+r?12-hour time as \ahh:mm:ss meridian\a]"
 "		[+R?24-hour time as \ahh:mm\a]"
@@ -156,7 +157,7 @@ USAGE_LICENSE
 "	monotonic increasing time. Not available on all systems.]"
 "[L:last?List only the last time for multiple \adate\a operands.]"
 "[l:leap-seconds?Include leap seconds in time calculations. Leap seconds"
-"	after the ast library release date are not accounted for.]"
+"	after the AST library release date are not accounted for.]"
 "[m:modify-time|mtime?List file argument modify times.]"
 "[n!:network?Set network time.]"
 "[p:parse?Add \aformat\a to the list of \bstrptime\b(3) parse conversion"
@@ -205,10 +206,6 @@ typedef struct Fmt
 	struct Fmt*	next;
 	char*		format;
 } Fmt_t;
-
-#ifndef ENOSYS
-#define ENOSYS		EINVAL
-#endif
 
 /*
  * set the system clock
@@ -344,7 +341,10 @@ b_date(int argc, register char** argv, Shbltin_t* context)
 			continue;
 		case 'p':
 			if (!(f = newof(0, Fmt_t, 1, 0)))
-				error(ERROR_SYSTEM|3, "out of space [format]");
+			{
+				error(ERROR_SYSTEM|ERROR_PANIC, "out of memory [format]");
+				UNREACHABLE();
+			}
 			f->next = fmts;
 			f->format = opt_info.arg;
 			fmts = f;
@@ -379,8 +379,8 @@ b_date(int argc, register char** argv, Shbltin_t* context)
 			listzones = tm_data.zone;
 			continue;
 		case '?':
-			error(ERROR_USAGE|4, "%s", opt_info.arg);
-			continue;
+			error(ERROR_usage(2), "%s", opt_info.arg);
+			UNREACHABLE();
 		case ':':
 			error(2, "%s", opt_info.arg);
 			continue;
@@ -389,7 +389,10 @@ b_date(int argc, register char** argv, Shbltin_t* context)
 	}
 	argv += opt_info.index;
 	if (error_info.errors)
-		error(ERROR_USAGE|4, "%s", optusage(NiL));
+	{
+		error(ERROR_usage(2), "%s", optusage(NiL));
+		UNREACHABLE();
+	}
 	now = tmxgettime();
 	if (listzones)
 	{
@@ -437,7 +440,10 @@ b_date(int argc, register char** argv, Shbltin_t* context)
 	else if (filetime)
 	{
 		if (!*argv)
-			error(ERROR_USAGE|4, "%s", optusage(NiL));
+		{
+			error(ERROR_usage(2), "%s", optusage(NiL));
+			UNREACHABLE();
+		}
 		n = argv[1] != 0;
 		while (s = *argv++)
 		{
@@ -477,7 +483,10 @@ b_date(int argc, register char** argv, Shbltin_t* context)
 		if (s || (s = string))
 		{
 			if (*argv && string)
-				error(ERROR_USAGE|4, "%s", optusage(NiL));
+			{
+				error(ERROR_usage(2), "%s", optusage(NiL));
+				UNREACHABLE();
+			}
 			now = convert(fmts, s, now);
 			if (*argv && (s = *++argv))
 			{
@@ -501,7 +510,10 @@ b_date(int argc, register char** argv, Shbltin_t* context)
 			sfprintf(sfstdout, "%s\n", buf);
 		}
 		else if (settime(context, cmd, now, increment, network))
+		{
 			error(ERROR_SYSTEM|3, "cannot set system time");
+			UNREACHABLE();
+		}
 	}
 	while (fmts != &fmt)
 	{

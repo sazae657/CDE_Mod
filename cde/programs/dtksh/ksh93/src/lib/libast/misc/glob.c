@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,10 +20,9 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 /*
- * file name expansion - posix.2 glob with gnu and ast extensions
+ * file name expansion - POSIX.2 glob with GNU and AST extensions
  *
  *	David Korn
  *	Glenn Fowler
@@ -37,7 +37,12 @@
 #include <ctype.h>
 #include <regex.h>
 
-#define GLOB_MAGIC	0xaaaa0000
+/*
+ * GLOB_MAGIC is used for sanity checking. Its significant bits must not overlap with those used
+ * for flags. If a new GLOB_* flag bit is added to glob.h, these must be adapted accordingly.
+ */
+#define GLOB_MAGIC	0xAAA80000	/* 10101010101010000000000000000000 */
+#define GLOB_FLAGMASK	0x0007FFFF	/* 00000000000001111111111111111111 */
 
 #define MATCH_RAW	1
 #define MATCH_MAKE	2
@@ -125,6 +130,8 @@ gl_type(glob_t* gp, const char* path, int flags)
 		type = 0;
 	else if (S_ISDIR(st.st_mode))
 		type = GLOB_DIR;
+	else if (S_ISLNK(st.st_mode))
+		type = GLOB_SYM;
 	else if (!S_ISREG(st.st_mode))
 		type = GLOB_DEV;
 	else if (st.st_mode & (S_IXUSR|S_IXGRP|S_IXOTH))
@@ -141,7 +148,9 @@ gl_type(glob_t* gp, const char* path, int flags)
 static int
 gl_attr(glob_t* gp, const char* path, int flags)
 {
-	return strchr(astconf("PATH_ATTRIBUTES", path, NiL), 'c') ? GLOB_ICASE : 0;
+	NOT_USED(gp);
+	NOT_USED(flags);
+	return pathicase(path) > 0 ? GLOB_ICASE : 0;
 }
 
 /*
@@ -371,6 +380,7 @@ again:
 		case '(':
 			if (!(gp->gl_flags & GLOB_AUGMENTED))
 				continue;
+			/* FALLTHROUGH */
 		case '*':
 		case '?':
 			meta = MATCH_META;
@@ -479,9 +489,13 @@ skip:
 				break;
 			prefix = streq(dirname, ".") ? (char*)0 : dirname;
 		}
-		if ((!starstar && !gp->gl_starstar || (*gp->gl_type)(gp, dirname, GLOB_STARSTAR) == GLOB_DIR) && (dirf = (*gp->gl_diropen)(gp, dirname)))
+		if ((!starstar && !gp->gl_starstar || (t1 = (*gp->gl_type)(gp, dirname, GLOB_STARSTAR)) == GLOB_DIR
+			|| t1 == GLOB_SYM && pat[0]=='*' && pat[1]=='\0') /* follow symlinks to dirs for non-globstar components */
+		&& (dirf = (*gp->gl_diropen)(gp, dirname)))
 		{
-			if (!(gp->re_flags & REG_ICASE) && ((*gp->gl_attr)(gp, dirname, 0) & GLOB_ICASE))
+			if (!(gp->re_flags & REG_ICASE)
+			&& (gp->gl_flags & GLOB_DCASE)
+			&& ((*gp->gl_attr)(gp, dirname, 0) & GLOB_ICASE))
 			{
 				if (!prei)
 				{
@@ -528,13 +542,23 @@ skip:
 				*restore2 = gp->gl_delim;
 			while ((name = (*gp->gl_dirnext)(gp, dirf)) && !*gp->gl_intr)
 			{
-				if (name[0] == '.' && (!name[1] || name[1] == '.' && !name[2]))
-					continue;  /* do not ever match '.' or '..' */
+				/*
+				 * For security and usability, only match '..' or '.' as the final element if:
+				 *	- its' specified literally, or
+				 *	- we're in file name completion mode.
+				 * To avoid breaking globstar, make sure that '.' or '..' is skipped if, and only if, it is the
+				 * final element in the pattern (i.e., if 'pat' does not contain a slash) and is not specified
+				 * literally as '.' or '..', i.e. only if '.' or '..' was actually resolved from a glob pattern.
+				 */
+				if (!(matchdir && (pat[0] == '.' && (!pat[1] || pat[1] == '.' && !pat[2]) || strchr(pat,'/')))
+				&& name[0] == '.' && (!name[1] || name[1] == '.' && !name[2])
+				&& !(gp->gl_flags & GLOB_FCOMPLETE))
+					continue;
 				if (notdir = (gp->gl_status & GLOB_NOTDIR))
 					gp->gl_status &= ~GLOB_NOTDIR;
 				if (ire && !regexec(ire, name, 0, NiL, 0))
 					continue;
-				if (matchdir && !notdir)
+				if (matchdir && (name[0] != '.' || name[1] && (name[1] != '.' || name[2])) && !notdir)
 					addmatch(gp, prefix, name, matchdir, NiL, anymeta);
 				if (!regexec(pre, name, 0, NiL, 0))
 				{
@@ -572,7 +596,7 @@ skip:
 }
 
 int
-glob(const char* pattern, int flags, int (*errfn)(const char*, int), register glob_t* gp)
+_ast_glob(const char* pattern, int flags, int (*errfn)(const char*, int), register glob_t* gp)
 {
 	register globlist_t*	ap;
 	register char*		pat;
@@ -608,7 +632,7 @@ glob(const char* pattern, int flags, int (*errfn)(const char*, int), register gl
 	}
 	else
 	{
-		gp->gl_flags = (flags&0xffff)|GLOB_MAGIC;
+		gp->gl_flags = (flags & GLOB_FLAGMASK) | GLOB_MAGIC;
 		gp->re_flags = REG_SHELL|REG_NOSUB|REG_LEFT|REG_RIGHT|((flags&GLOB_AUGMENTED)?REG_AUGMENTED:0);
 		gp->gl_pathc = 0;
 		gp->gl_ignore = 0;
@@ -725,7 +749,7 @@ glob(const char* pattern, int flags, int (*errfn)(const char*, int), register gl
 					f &= ~GLOB_STARSTAR;
 				continue;
 			case ')':
-				flags = (gp->gl_flags = f) & 0xffff;
+				flags = (gp->gl_flags = f) & GLOB_FLAGMASK;
 				if (f & GLOB_ICASE)
 					gp->re_flags |= REG_ICASE;
 				else
@@ -816,7 +840,7 @@ glob(const char* pattern, int flags, int (*errfn)(const char*, int), register gl
 }
 
 void
-globfree(glob_t* gp)
+_ast_globfree(glob_t* gp)
 {
 	if ((gp->gl_flags & GLOB_MAGIC) == GLOB_MAGIC)
 	{

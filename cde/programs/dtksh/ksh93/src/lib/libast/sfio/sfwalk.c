@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -26,14 +27,9 @@
 ** Written by Kiem-Phong Vo.
 */
 
-#if __STD_C
-int sfwalk(Sfwalk_f walkf, Void_t* data, int type)
-#else
-int sfwalk(walkf, data, type)
-Sfwalk_f	walkf;	/* return <0: stop, >=0: continue	*/
-Void_t*		data;
-int		type;	/* walk streams with all given flags	*/
-#endif
+int sfwalk(Sfwalk_f	walkf,	/* return <0: stop, >=0: continue	*/
+	   void*	data,
+	   int		type)	/* walk streams with all given flags	*/
 {
 	Sfpool_t	*p;
 	Sfio_t		*f;

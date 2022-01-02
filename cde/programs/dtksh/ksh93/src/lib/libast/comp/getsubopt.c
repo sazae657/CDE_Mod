@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,14 +20,13 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
- * Xopen 4.2 compatibility
+ * X/Open 4.2 compatibility
  */
 
 #include <ast.h>
 
-#undef	_lib_getsubopt	/* we can satisfy the api */
+#undef	_lib_getsubopt	/* we can satisfy the API */
 
 #if _lib_getsubopt
 
@@ -34,7 +34,7 @@ NoN(getsubopt)
 
 #else
 
-#undef	_BLD_ast	/* enable ast imports since we're user static */
+#undef	_BLD_ast	/* enable AST imports since we're user static */
 
 #include <error.h>
 

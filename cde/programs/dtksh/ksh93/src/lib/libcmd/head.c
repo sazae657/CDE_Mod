@@ -1,7 +1,8 @@
 /***********************************************************************
 *                                                                      *
 *               This software is part of the ast package               *
-*          Copyright (c) 1992-2012 AT&T Intellectual Property          *
+*          Copyright (c) 1992-2013 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -14,11 +15,10 @@
 *                            AT&T Research                             *
 *                           Florham Park NJ                            *
 *                                                                      *
-*                 Glenn Fowler <gsf@research.att.com>                  *
-*                  David Korn <dgk@research.att.com>                   *
+*               Glenn Fowler <glenn.s.fowler@gmail.com>                *
+*                    David Korn <dgkorn@gmail.com>                     *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * David Korn
  * AT&T Bell Laboratories
@@ -27,8 +27,8 @@
  */
 
 static const char usage[] =
-"[-n?\n@(#)$Id: head (AT&T Research) 2012-05-31 $\n]"
-USAGE_LICENSE
+"[-n?\n@(#)$Id: head (AT&T Research) 2013-09-19 $\n]"
+"[--catalog?" ERROR_CATALOG "]"
 "[+NAME?head - output beginning portion of one or more files ]"
 "[+DESCRIPTION?\bhead\b copies one or more input files to standard "
     "output stopping at a designated point for each file or to the end of "
@@ -38,14 +38,17 @@ USAGE_LICENSE
     "with the \b-q\b and \b-v\b options.]"
 "[+?If no \afile\a is given, or if the \afile\a is \b-\b, \bhead\b "
     "copies from standard input starting at the current location.]"
-"[+?The option argument for \b-c\b, and \b-s\b can optionally be "
-    "followed by one of the following characters to specify a different unit "
-    "other than a single byte:]"
-    "{"
-        "[+b?512 bytes.]"
-        "[+k?1-killobyte.]"
-        "[+m?1-megabyte.]"
-    "}"
+"[+?The option argument for \b-n\b, \b-c\b and \b-s\b may end in one of the following "
+	"case-insensitive unit suffixes, with an optional trailing \bB\b ignored:]{"
+		"[+b?512 (block)]"
+		"[+k?1000 (kilo)]"
+		"[+Ki?1024 (kibi)]"
+		"[+M?1000*1000 (mega)]"
+		"[+Mi?1024*1024 (mebi)]"
+		"[+G?1000*1000*1000 (giga)]"
+		"[+Gi?1024*1024*1024 (gibi)]"
+		"[+...?and so on for T, Ti, P, Pi, E, and Ei.]"
+	"}"
 "[+?For backwards compatibility, \b-\b\anumber\a is equivalent to \b-n\b "
     "\anumber\a.]"
 "[n:lines?Copy \alines\a lines from each file.]#[lines:=10]"
@@ -77,6 +80,7 @@ b_head(int argc, register char** argv, Shbltin_t* context)
 	register off_t		keep = 10;
 	register off_t		skip = 0;
 	register int		delim = '\n';
+	off_t			moved;
 	int			header = 1;
 	char*			format = (char*)header_fmt+1;
 
@@ -87,7 +91,7 @@ b_head(int argc, register char** argv, Shbltin_t* context)
 		{
 		case 'c':
 			delim = -1;
-			/*FALLTHROUGH*/
+			/* FALLTHROUGH */
 		case 'n':
 			if (opt_info.offset && argv[opt_info.index][opt_info.offset] == 'c')
 			{
@@ -108,7 +112,7 @@ b_head(int argc, register char** argv, Shbltin_t* context)
 			continue;
 		case '?':
 			error(ERROR_usage(2), "%s", opt_info.arg);
-			continue;
+			UNREACHABLE();
 		case ':':
 			error(2, "%s", opt_info.arg);
 			continue;
@@ -118,7 +122,10 @@ b_head(int argc, register char** argv, Shbltin_t* context)
 	argv += opt_info.index;
 	argc -= opt_info.index;
 	if (error_info.errors)
+	{
 		error(ERROR_usage(2), "%s", optusage(NiL));
+		UNREACHABLE();
+	}
 	if (cp = *argv)
 		argv++;
 	do
@@ -138,9 +145,16 @@ b_head(int argc, register char** argv, Shbltin_t* context)
 			sfprintf(sfstdout, format, cp);
 		format = (char*)header_fmt;
 		if (skip > 0)
-			sfmove(fp, NiL, skip, delim);
-		if (sfmove(fp, sfstdout, keep, delim) < 0 && !ERROR_PIPE(errno) && errno != EINTR)
+		{
+			if ((moved = sfmove(fp, NiL, skip, delim)) < 0 && !ERROR_PIPE(errno) && errno != EINTR)
+				error(ERROR_system(0), "%s: skip error", cp);
+			if (delim >= 0 && moved < skip)
+				goto next;
+		}
+		if ((moved = sfmove(fp, sfstdout, keep, delim)) < 0 && !ERROR_PIPE(errno) && errno != EINTR ||
+			delim >= 0 && moved < keep && sfmove(fp, sfstdout, SF_UNBOUND, -1) < 0 && !ERROR_PIPE(errno) && errno != EINTR)
 			error(ERROR_system(0), "%s: read error", cp);
+	next:
 		if (fp != sfstdin)
 			sfclose(fp);
 	} while (cp = *argv++);

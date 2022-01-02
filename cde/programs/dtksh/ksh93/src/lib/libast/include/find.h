@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * Glenn Fowler
  * AT&T Research
@@ -40,7 +40,7 @@
 
 #define FIND_GENERATE	(1<<0)		/* generate new codes		*/
 #define FIND_ICASE	(1<<1)		/* ignore case in match		*/
-#define FIND_GNU	(1<<2)		/* generate gnu format codes	*/
+#define FIND_GNU	(1<<2)		/* generate GNU format codes	*/
 #define FIND_OLD	(1<<3)		/* generate old format codes	*/
 #define FIND_TYPE	(1<<4)		/* generate type with codes	*/
 #define FIND_VERIFY	(1<<5)		/* verify the dir hierarchy	*/

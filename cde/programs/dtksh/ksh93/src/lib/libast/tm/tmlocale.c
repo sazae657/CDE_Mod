@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * Glenn Fowler
  * AT&T Research
@@ -44,7 +44,7 @@ static struct
 } state;
 
 /*
- * this is unix dadgummit
+ * this is Unix dadgummit
  */
 
 static int
@@ -182,7 +182,7 @@ static const Map_t map[] =
 #undef	extern
 
 /*
- * convert ms word date spec w to posix strftime format f
+ * convert MS Word date spec w to POSIX strftime format f
  * next char after f returned
  * the caller already made sure f is big enough
  */
@@ -217,7 +217,7 @@ word2posix(register char* f, register char* w, int alternate)
 			{
 			case 1:
 				p = '-';
-				/*FALLTHROUGH*/
+				/* FALLTHROUGH */
 			case 2:
 				c = 'd';
 				break;
@@ -234,7 +234,7 @@ word2posix(register char* f, register char* w, int alternate)
 			{
 			case 1:
 				p = '-';
-				/*FALLTHROUGH*/
+				/* FALLTHROUGH */
 			default:
 				c = 'I';
 				break;
@@ -245,7 +245,7 @@ word2posix(register char* f, register char* w, int alternate)
 			{
 			case 1:
 				p = '-';
-				/*FALLTHROUGH*/
+				/* FALLTHROUGH */
 			default:
 				c = 'H';
 				break;
@@ -256,7 +256,7 @@ word2posix(register char* f, register char* w, int alternate)
 			{
 			case 1:
 				p = '-';
-				/*FALLTHROUGH*/
+				/* FALLTHROUGH */
 			case 2:
 				c = 'm';
 				break;
@@ -273,7 +273,7 @@ word2posix(register char* f, register char* w, int alternate)
 			{
 			case 1:
 				p = '-';
-				/*FALLTHROUGH*/
+				/* FALLTHROUGH */
 			default:
 				c = 'M';
 				break;
@@ -284,7 +284,7 @@ word2posix(register char* f, register char* w, int alternate)
 			{
 			case 1:
 				p = '-';
-				/*FALLTHROUGH*/
+				/* FALLTHROUGH */
 			default:
 				c = 'S';
 				break;
@@ -295,7 +295,7 @@ word2posix(register char* f, register char* w, int alternate)
 			{
 			case 1:
 				p = '-';
-				/*FALLTHROUGH*/
+				/* FALLTHROUGH */
 			case 2:
 				c = 'y';
 				break;
@@ -375,7 +375,7 @@ native_lc_time(Lc_info_t* li)
 	if (!standardized(li, b))
 	{
 		/*
-		 * synthesize TM_TIME format from the ms word template
+		 * synthesize TM_TIME format from the MS Word template
 		 */
 
 		if (!GetLocaleInfo(lcid, LOCALE_ITIME, buf, sizeof(buf)))
@@ -637,8 +637,14 @@ tmlocale(void)
 		else if (tm_info.deformat != tm_info.format[TM_DEFAULT])
 			state.format = tm_info.deformat;
 	}
+
+	/* load the locale set in LC_TIME */
 	li = LCINFO(AST_LC_TIME);
-	if (!li->data)
+	if (!li->data || state.locale != li)
+	{
 		load(li);
+		state.locale = li;
+	}
+
 	return tm_info.format;
 }

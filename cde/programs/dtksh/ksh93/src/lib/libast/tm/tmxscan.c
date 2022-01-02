@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2014 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                     Phong Vo <phongvo@gmail.com>                     *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * Glenn Fowler
  * AT&T Research
@@ -253,7 +253,7 @@ scan(register const char* s, char** e, const char* format, char** f, Time_t t, l
 			case 'd':
 				if (pedantic && !isdigit(*s))
 					goto next;
-				/*FALLTHROUGH*/
+				/* FALLTHROUGH */
 			case 'e':
 				NUMBER(2, 1, 31);
 				set.mday = n;
@@ -301,7 +301,7 @@ scan(register const char* s, char** e, const char* format, char** f, Time_t t, l
 						s++;
 					continue;
 				}
-				/*FALLTHROUGH*/
+				/* FALLTHROUGH */
 			case 't':
 				while (isspace(*s))
 					s++;
@@ -384,6 +384,7 @@ scan(register const char* s, char** e, const char* format, char** f, Time_t t, l
 					u = 0;
 				if (d == 'q')
 					continue;
+				/* FALLTHROUGH */
 			case 'z':
 				if ((zp = tmzone(s, &u, u, &m)))
 				{

@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,13 +20,12 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 /*
  * catopen intercept
- * the ast catalogs are checked first
- * the ast mc* and native cat* routines do all the work
- * catalogs found by mcfind() are converted from utf to ucs
+ * the AST catalogs are checked first
+ * the AST mc* and native cat* routines do all the work
+ * catalogs found by mcfind() are converted from UTF to UCS
  *
  * nl_catd is cast to void*
  * this is either an Mc_t* (Mc_t.set != 0)
@@ -77,7 +77,7 @@ _ast_catopen(const char* name, int flag)
 	char		path[PATH_MAX];
 
 	/*
-	 * first try the ast catalogs
+	 * first try the AST catalogs
 	 */
 
 #if DEBUG_trace

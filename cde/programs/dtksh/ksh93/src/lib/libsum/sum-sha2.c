@@ -1,4 +1,3 @@
-#pragma prototyped
 
 #if _typ_int64_t
 
@@ -40,7 +39,7 @@
  * ASSERT NOTE:
  * Some sanity checking code is included using assert().  On my FreeBSD
  * system, this additional code can be removed by compiling with NDEBUG
- * defined.  Check your own systems manpage on assert() to see how to
+ * defined.  Check your own system's man page on assert() to see how to
  * compile WITHOUT the sanity checking code on your system.
  *
  * UNROLLED TRANSFORM LOOP NOTE:
@@ -118,7 +117,7 @@ typedef uint64_t sha2_word64;	/* Exactly 8 bytes */
  * Define the following sha2_* types to types of the correct length on
  * the native architecture.   Most BSD systems and Linux define u_intXX_t
  * types.  Machines with very recent ANSI C headers, can use the
- * uintXX_t definintions from inttypes.h by defining SHA2_USE_INTTYPES_H
+ * uintXX_t definitions from inttypes.h by defining SHA2_USE_INTTYPES_H
  * during compile or in the sha.h header file.
  *
  * Machines that support neither u_intXX_t nor inttypes.h's uintXX_t
@@ -665,7 +664,7 @@ sha256_block(register Sum_t* p, const void* s, size_t len)
 		data += SHA256_BLOCK_LENGTH;
 	}
 	if (len > 0) {
-		/* There's left-overs, so save 'em */
+		/* There's leftovers, so save 'em */
 		MEMCPY_BCOPY(sha->buffer, data, len);
 		sha->bitcount += len << 3;
 	}
@@ -1028,7 +1027,7 @@ sha512_block(register Sum_t* p, const void* s, size_t len)
 		data += SHA512_BLOCK_LENGTH;
 	}
 	if (len > 0) {
-		/* There's left-overs, so save 'em */
+		/* There's leftovers, so save 'em */
 		MEMCPY_BCOPY(sha->buffer, data, len);
 		ADDINC128(sha->bitcount, len << 3);
 	}

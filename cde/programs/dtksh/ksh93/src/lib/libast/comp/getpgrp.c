@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 #define getpgrp		______getpgrp
 
@@ -28,9 +28,9 @@
 #undef	getpgrp
 
 /*
- * bsd		int getpgrp(int);
- * s5		int getpgrp(void);
- * posix	pid_t getpgrp(void);
+ * BSD		int getpgrp(int);
+ * System V	int getpgrp(void);
+ * POSIX	pid_t getpgrp(void);
  * user		SOL
  */
 

@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1992-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -18,7 +19,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * David Korn
  * Glenn Fowler
@@ -29,7 +29,7 @@
 
 static const char usage[] =
 "[-?\n@(#)$Id: cmp (AT&T Research) 2010-04-11 $\n]"
-USAGE_LICENSE
+"[--catalog?" ERROR_CATALOG "]"
 "[+NAME?cmp - compare two files]"
 "[+DESCRIPTION?\bcmp\b compares two files \afile1\a and \afile2\a. "
     "\bcmp\b writes no output if the files are the same. By default, if the "
@@ -55,7 +55,7 @@ USAGE_LICENSE
 "[d:differences?Print at most \adifferences\a differences using "
     "\b--verbose\b output format. \b--differences=0\b is equivalent to "
     "\b--silent\b.]#[differences]"
-"[i:ignore-initial|skip?Skip the the first \askip1\a bytes in \afile1\a "
+"[i:ignore-initial|skip?Skip the first \askip1\a bytes in \afile1\a "
     "and the first \askip2\a bytes in \afile2\a. If \askip2\a is omitted "
     "then \askip1\a is used.]:[skip1[::skip2]]:=0::0]"
 "[l:verbose?Write the decimal byte number and the differing bytes (in "
@@ -165,15 +165,24 @@ cmp(const char* file1, Sfio_t* f1, const char* file2, Sfio_t* f2, int flags, Sfo
 			if (!(p1 = (unsigned char*)sfreserve(f1, SF_UNBOUND, 0)) || (c1 = sfvalue(f1)) <= 0)
 			{
 				if (sferror(f1))
+				{
 					error(ERROR_exit(2), "read error on %s", file1);
+					UNREACHABLE();
+				}
 				if ((e2 - p2) > 0 || sfreserve(f2, SF_UNBOUND, 0) && sfvalue(f2) > 0)
 				{
 					ret = 1;
 					if (!(flags & CMP_SILENT))
+					{
 						error(ERROR_exit(1), "EOF on %s", file1);
+						UNREACHABLE();
+					}
 				}
 				if (sferror(f2))
+				{
 					error(ERROR_exit(2), "read error on %s", file2);
+					UNREACHABLE();
+				}
 				return ret;
 			}
 			if (count > 0 && c1 > count)
@@ -186,9 +195,15 @@ cmp(const char* file1, Sfio_t* f1, const char* file2, Sfio_t* f2, int flags, Sfo
 			if (!(p2 = (unsigned char*)sfreserve(f2, SF_UNBOUND, 0)) || (c2 = sfvalue(f2)) <= 0)
 			{
 				if (sferror(f2))
+				{
 					error(ERROR_exit(2), "read error on %s", file2);
+					UNREACHABLE();
+				}
 				if (!(flags & CMP_SILENT))
+				{
 					error(ERROR_exit(1), "EOF on %s", file2);
+					UNREACHABLE();
+				}
 				return 1;
 			}
 			e2 = p2 + c2;
@@ -216,16 +231,6 @@ cmp(const char* file1, Sfio_t* f1, const char* file2, Sfio_t* f2, int flags, Sfo
 							return 1;
 						differences--;
 					}
-#if 0
-					if (!flags)
-						sfprintf(sfstdout, "%s %s differ: char %I*d, line %I*u\n", file1, file2, sizeof(pos), pos - (last - p1), sizeof(lines), lines);
-					else
-					{
-						sfprintf(sfstdout, "%6I*d", sizeof(pos), pos - (last - p1));
-						pretty(sfstdout, c1, -1, flags);
-						pretty(sfstdout, *(p2-1), '\n', flags);
-					}
-#else
 					if (flags & CMP_VERBOSE)
 						sfprintf(sfstdout, "%6I*d", sizeof(pos), pos - (last - p1));
 					else
@@ -238,7 +243,6 @@ cmp(const char* file1, Sfio_t* f1, const char* file2, Sfio_t* f2, int flags, Sfo
 					}
 					else
 						sfputc(sfstdout, '\n');
-#endif
 					if (!differences || differences < 0 && !(flags & CMP_VERBOSE))
 						return 1;
 					ret = 1;
@@ -311,13 +315,16 @@ b_cmp(int argc, register char** argv, Shbltin_t* context)
 			break;
 		case '?':
 			error(ERROR_usage(2), "%s", opt_info.arg);
-			break;
+			UNREACHABLE();
 		}
 		break;
 	}
 	argv += opt_info.index;
 	if (error_info.errors || !(file1 = *argv++) || !(file2 = *argv++))
+	{
 		error(ERROR_usage(2), "%s", optusage(NiL));
+		UNREACHABLE();
+	}
 	n = 2;
 	if (streq(file1, "-"))
 		f1 = sfstdin;

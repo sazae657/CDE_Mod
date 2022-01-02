@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,11 +20,10 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 /*
  * regcomp() regex_t cache
- * at&t research
+ * AT&T Research
  */
 
 #include <ast.h>
@@ -117,7 +117,7 @@ regcache(const char* pattern, regflags_t reflags, int* status)
 
 	/*
 	 * flush the cache if the locale changed
-	 * the ast setlocale() intercept maintains
+	 * the AST setlocale() intercept maintains
 	 * persistent setlocale() return values
 	 */
 

@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -26,13 +27,8 @@
 **	Written by Kiem-Phong Vo.
 */
 
-#if __STD_C
-static int _sfraiseall(int type, Void_t* data)
-#else
-static int _sfraiseall(type, data)
-int	type;	/* type of event	*/
-Void_t*	data;	/* associated data	*/
-#endif
+static int _sfraiseall(int	type,	/* type of event	*/
+		       void*	data)	/* associated data	*/
 {
 	Sfio_t		*f;
 	Sfpool_t	*p, *next;
@@ -54,12 +50,12 @@ Void_t*	data;	/* associated data	*/
 }
 
 #if __STD_C
-int sfraise(Sfio_t* f, int type, Void_t* data)
+int sfraise(Sfio_t* f, int type, void* data)
 #else
 int sfraise(f, type, data)
 Sfio_t*	f;	/* stream		*/
 int	type;	/* type of event	*/
-Void_t*	data;	/* associated data	*/
+void*	data;	/* associated data	*/
 #endif
 {
 	reg Sfdisc_t	*disc, *next, *d;

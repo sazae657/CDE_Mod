@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -119,7 +120,7 @@
 
 #if S2F_scan
 
-typedef int (*S2F_get_f)_ARG_((void*, int));
+typedef int (*S2F_get_f)(void*, int);
 
 #define ERR(e)
 #define GET(p)		(*get)(p,0)
@@ -170,24 +171,12 @@ extern
 #endif
 S2F_number
 #if S2F_scan
-#if __STD_C
 S2F_function(void* s, S2F_get_f get)
 #else
-S2F_function(s, get) void* s; S2F_get_f get;
-#endif
-#else
 #if S2F_size
-#if __STD_C
 S2F_function(const char* str, size_t size, char** end)
 #else
-S2F_function(str, size, end) char* str; size_t size; char** end;
-#endif
-#else
-#if __STD_C
 S2F_function(const char* str, char** end)
-#else
-S2F_function(str, end) char* str; char** end;
-#endif
 #endif
 #endif
 {

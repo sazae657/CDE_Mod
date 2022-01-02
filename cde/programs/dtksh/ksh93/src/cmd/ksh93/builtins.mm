@@ -19,7 +19,7 @@ are Linux, System V Release 4, Solaris, Sun OS, HP-UX Release 8 and above,
 AIX 3.2 and above, and Microsoft Windows systems. 
 .P
 This memo describes how to write and compile programs
-that can be loaded into \f5ksh\fP at run  time as built-in
+that can be loaded into \f5ksh\fP at run time as built-in
 commands.
 .AE   \" abstract end
 .H 1 INTRODUCTION
@@ -79,7 +79,7 @@ The development kit has three directories,
 It is best to set the value of the environment variable
 \f5PACKAGE_ast\fP to the pathname of the directory
 containing the development kit.
-The \f5include\fP directory contains a sub-directory
+The \f5include\fP directory contains a subdirectory
 named \f5ast\fP that contains interface prototypes
 for functions that you can call from built-ins.  The \f5lib\fP
 directory contains the \f5ast\fP library
@@ -123,7 +123,7 @@ to terminate your command.
 The return value will become the exit status of the command.
 The \f5open\fP built-in, installed in \f5lib/ksh\fP in the AST Toolkit, uses this method.
 The \f5Shbltin_t\fP structure contains a field named \f5shp\fP which is
-a pointer the the shell data that is needed for \f5shell\fP library callbacks.
+a pointer to the shell data that is needed for \f5shell\fP library callbacks.
 It also contains the fields, \f5shrun\fP, \f5shtrap\fP, \f5shexit\fP,
 and \f5shbltin\fP
 that are function pointers to the \f5shell\fP library functions \f5sh_run\fP, \f5sh_trap\fP
@@ -259,7 +259,7 @@ Brian W. Kernighan and Dennis M. Ritchie,
 .IR "The C Programming Language" ,
 Prentice Hall, 1978.
 .RF
-ANSI-C\*(Rf,
+ANSI C\*(Rf,
 .RS
 American National Standard for Information Systems \- Programming
 Language \- C, ANSI X3.159-1989.
@@ -280,7 +280,7 @@ services for your builtins.
 The header file \f5<ast.h>\fP
 provides prototypes for many \fBlibast\fP functions
 and all the symbol and function definitions from the
-ANSI-C headers, \f5<stddef.h>\fP,
+ANSI C headers, \f5<stddef.h>\fP,
 \f5<stdlib.h>\fP, \f5<stdarg.h>\fP, \f5<limits.h>\fP,
 and \f5<string.h>\fP.
 It also provides all the symbols and definitions for the
@@ -315,7 +315,7 @@ pp. , 1991.
 to perform all I/O operations.
 The \fBsfio\fP library, which is part of \fBlibast\fP,
 provides a superset of the functionality provided by the standard
-I/O library defined in ANSI-C.
+I/O library defined in ANSI C.
 If none of the additional functionality is required,
 and if you are not familiar with \fBsfio\fP and
 you do not want to spend the time learning it,
@@ -410,7 +410,7 @@ The variable \f5opt_info.num\fP will contain this
 value after the given argument is encountered.
 .LI \f5?\fP
 Used after a \f5:\fP or \f5#\fP (and after the optional \f5?\fP)
-to indicate the the
+to indicate the
 preceding option argument is not required.
 .LI \f5[\fP...\f5]\fP
 After a \f5:\fP or \f5#\fP, the characters contained
@@ -452,7 +452,7 @@ while(1) switch(n=optget(argv,"xf:[file]"))
 		break;
 	case '?':
 		error(ERROR_usage(2), opt_info.arg);
-		break;
+		UNREACHABLE();
 }
 .EE
 .H 2 "Storage Management"
@@ -509,7 +509,7 @@ name space.
 The \fBshell\fP library is used to access other shell services.
 .H 2 "The nval library"
 A great deal of power is derived from the ability to use
-portions of the hierarchal variable namespace provided by \f5ksh-93\fP
+portions of the hierarchical variable namespace provided by \f5ksh-93\fP
 and turn these names into active objects.
 .P
 The \fBnval\fP library is used to interface with shell
@@ -532,7 +532,7 @@ using this handle so that the space can be freed once
 the value is unset.
 The two most frequent operations are to get the value of
 the variable, and to assign value to the variable.
-The \f5nv_getval()\fP returns a pointer the the
+The \f5nv_getval()\fP function returns a pointer to the
 value of the variable.
 In some cases the pointer returned is to a region that
 will be overwritten by the next \f5nv_getval()\fP call
@@ -581,7 +581,7 @@ The \f5getval()\fP
 function is called by \f5nv_getval()\fP
 value and must return a string.
 The \f5getnum()\fP
-function is called by by the arithmetic evaluator
+function is called by the arithmetic evaluator
 and must return double.
 If omitted, then it will call \f5nv_getval()\fP and
 convert the result to a number.

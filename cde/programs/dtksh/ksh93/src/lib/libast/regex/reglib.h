@@ -1,7 +1,8 @@
 /***********************************************************************
 *                                                                      *
 *               This software is part of the ast package               *
-*          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 1985-2013 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,10 +20,9 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 /*
- * posix regex implementation
+ * POSIX regex implementation
  *
  * based on Doug McIlroy's C++ implementation
  * Knuth-Morris-Pratt adapted from Corman-Leiserson-Rivest
@@ -71,7 +71,7 @@ typedef struct regsubop_s
 
 #define MBSIZE(p)	((ast.tmp_int=mbsize(p))>0?ast.tmp_int:1)
 
-#undef	RE_DUP_MAX			/* posix puts this in limits.h!	*/
+#undef	RE_DUP_MAX			/* POSIX puts this in limits.h!	*/
 #define RE_DUP_MAX	(INT_MAX/2-1)	/* 2*RE_DUP_MAX won't overflow	*/
 #define RE_DUP_INF	(RE_DUP_MAX+1)	/* infinity, for *		*/
 #define BACK_REF_MAX	9
@@ -172,9 +172,9 @@ typedef struct regsubop_s
 
 #define HIT		SSIZE_MAX
 
-#define bitclr(p,c)	((p)[((c)>>3)&037]&=(~(1<<((c)&07))))
-#define bitset(p,c)	((p)[((c)>>3)&037]|=(1<<((c)&07)))
-#define bittst(p,c)	((p)[((c)>>3)&037]&(1<<((c)&07)))
+#define bitclr(p,c)	((p)[(c)>>3]&=(~(1<<((c)&07))))
+#define bitset(p,c)	((p)[(c)>>3]|=(1<<((c)&07)))
+#define bittst(p,c)	((p)[(c)>>3]&(1<<((c)&07)))
 
 #define setadd(p,c)	bitset((p)->bits,c)
 #define setclr(p,c)	bitclr((p)->bits,c)
@@ -536,6 +536,7 @@ typedef struct reglib_s			/* library private regex_t info	*/
 	Vector_t*	bestpos;	/* ditto for best match		*/
 	regmatch_t*	match;		/* subexrs in current match 	*/
 	regmatch_t*	best;		/* ditto in best match yet	*/
+	Stk_t*		mst;		/* match stack			*/
 	Stk_pos_t	stk;		/* exec stack pos		*/
 	size_t		min;		/* minimum match length		*/
 	size_t		nsub;		/* internal re_nsub		*/

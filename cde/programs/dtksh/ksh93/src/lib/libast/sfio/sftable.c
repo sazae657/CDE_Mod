@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -27,13 +28,7 @@
 **	Written by Kiem-Phong Vo.
 */
 
-#if __STD_C
 static char* sffmtint(const char* str, int* v)
-#else
-static char* sffmtint(str, v)
-char*	str;
-int*	v;
-#endif
 {	
 	for(*v = 0; isdigit(*str); ++str)
 		*v = *v * 10 + (*str - '0');
@@ -41,16 +36,8 @@ int*	v;
 	return (char*)str;
 }
 
-#if __STD_C
+/* type>0: scanf, type==0: printf, type==-1: internal */
 static Fmtpos_t* sffmtpos(Sfio_t* f,const char* form,va_list args,Sffmt_t* ft,int type)
-#else
-static Fmtpos_t* sffmtpos(f,form,args,ft,type)
-Sfio_t*		f;
-char*		form;
-va_list		args;
-Sffmt_t*	ft;
-int		type;	/* >0: scanf, =0: printf, -1: internal	*/
-#endif
 {
 	int		base, fmt, flags, dot, width, precis;
 	ssize_t		n_str, size = 0;
@@ -115,7 +102,7 @@ int		type;	/* >0: scanf, =0: printf, -1: internal	*/
 			for(v = 1;;)
 			{	switch(*form++)
 				{
-				case 0 :	/* not balancable, retract */
+				case 0 :	/* not balanceable, retract */
 					form = t_str;
 					t_str = NIL(char*);
 					n_str = 0;
@@ -178,7 +165,8 @@ int		type;	/* >0: scanf, =0: printf, -1: internal	*/
 			}
 			else if(*form != '*')
 				goto loop_flags;
-			else	form += 1; /* drop thru below */
+			else	form += 1;
+			/* FALLTHROUGH */
 
 		case '*' :
 			form = sffmtint(form,&n);
@@ -372,7 +360,7 @@ int		type;	/* >0: scanf, =0: printf, -1: internal	*/
 			memcpy(ft,&fp[n].ft,sizeof(Sffmt_t));
 			va_copy(ft->args,args);
 			ft->flags |= SFFMT_ARGPOS;
-			v = (*ft->extf)(f, (Void_t*)(&fp[n].argv), ft);
+			v = (*ft->extf)(f, (void*)(&fp[n].argv), ft);
 			va_copy(args,ft->args);
 			memcpy(&fp[n].ft,ft,sizeof(Sffmt_t));
 			if(v < 0)
@@ -417,7 +405,7 @@ int		type;	/* >0: scanf, =0: printf, -1: internal	*/
 					memcpy(&savft,ft,sizeof(Sffmt_t));
 			}
 			else if(type > 0) /* from sfvscanf */
-				fp[n].argv.vp = va_arg(args, Void_t*);
+				fp[n].argv.vp = va_arg(args, void*);
 			else switch(_Sftype[fp[n].ft.fmt])
 			{ case SFFMT_INT:
 			  case SFFMT_UINT:
@@ -439,7 +427,7 @@ int		type;	/* >0: scanf, =0: printf, -1: internal	*/
 					fp[n].argv.d  = va_arg(args,double);
 				break;
 	 		  case SFFMT_POINTER:
-					fp[n].argv.vp = va_arg(args,Void_t*);
+					fp[n].argv.vp = va_arg(args,void*);
 				break;
 			  case SFFMT_CHAR:
 				if(fp[n].ft.base >= 0)

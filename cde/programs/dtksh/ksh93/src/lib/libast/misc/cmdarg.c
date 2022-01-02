@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * Glenn Fowler
  * AT&T Research
@@ -127,7 +127,7 @@ cmdopen_20120411(char** argv, int argmax, int size, const char* argpat, Cmddisc_
 		argc = 0;
 	for (p = environ; *p; p++)
 		n += sizeof(char**) + strlen(*p) + 1;
-	if ((x = strtol(astconf("ARG_MAX", NiL, NiL), NiL, 0)) <= 0)
+	if ((x = astconf_long(CONF_ARG_MAX)) <= 0)
 		x = ARG_MAX;
 	if (size <= 0 || size > x)
 		size = x;
@@ -149,7 +149,7 @@ cmdopen_20120411(char** argv, int argmax, int size, const char* argpat, Cmddisc_
 	if (!(cmd = newof(0, Cmdarg_t, 1, n + m)))
 	{
 		if (disc->errorf)
-			(*disc->errorf)(NiL, sh, ERROR_SYSTEM|2, "out of space");
+			(*disc->errorf)(NiL, sh, ERROR_SYSTEM|2, "out of memory");
 		return 0;
 	}
 	cmd->id = lib;

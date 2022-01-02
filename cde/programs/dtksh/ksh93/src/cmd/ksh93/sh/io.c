@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 /*
  * Input/output file processing
@@ -36,6 +36,7 @@
 #include	"path.h"
 #include	"io.h"
 #include	"jobs.h"
+#include	"shlex.h"
 #include	"shnodes.h"
 #include	"history.h"
 #include	"edit.h"
@@ -181,8 +182,7 @@ getaddrinfo(const char* node, const char* service, const struct addrinfo* hint, 
 		errno = EADDRNOTAVAIL;
 		return EAI_SYSTEM;
 	}
-	if (!(ap = newof(0, struct addrinfo, 1, sizeof(struct sockaddr_in))))
-		return EAI_SYSTEM;
+	ap = sh_newof(0, struct addrinfo, 1, sizeof(struct sockaddr_in));
 	if (hint)
 		*ap = *hint;
 	ap->ai_family = hp->h_addrtype;
@@ -264,13 +264,12 @@ inetopen(const char* path, int flags, Inetintr_f onintr, void* handle)
 	}
 	if(flags==O_NONBLOCK)
 		return 1;
-	if (!(s = strdup(path)))
-		return -1;
+	s = sh_strdup(path);
 	if (t = strchr(s, '/'))
 	{
 		*t++ = 0;
 		if (streq(s, "local"))
-			s = strdup("localhost");
+			s = sh_strdup("localhost");
 		fd = getaddrinfo(s, t, &hint, &addr);
 	}
 	else
@@ -288,7 +287,7 @@ inetopen(const char* path, int flags, Inetintr_f onintr, void* handle)
 	for (p = addr; p; p = p->ai_next)
 	{
 		/*
-		 * some api's don't take the hint
+		 * some APIs don't take the hint
 		 */
 
 		if (!p->ai_protocol)
@@ -387,14 +386,6 @@ struct Match
 	char	*base;
 };
 
-static int matchf(void *handle, char *ptr, size_t size)
-{
-	struct Match *mp = (struct Match*)handle;
-	mp->offset += (ptr-mp->base);
-	return(1);
-}
-
-
 static struct fdsave	*filemap;
 static short		filemapsize;
 
@@ -411,7 +402,7 @@ int  sh_iovalidfd(Shell_t *shp, int fd)
 		return(0);
 	if(fd < shp->gd->lim.open_max)
 		return(1);
-	max = strtol(astconf("OPEN_MAX",NiL,NiL),NiL,0);
+	max = (int)astconf_long(CONF_OPEN_MAX);
 	if(fd >= max)
 	{
 		errno = EBADF;
@@ -421,7 +412,7 @@ int  sh_iovalidfd(Shell_t *shp, int fd)
 	if(n > max)
 		n = max;
 	max = shp->gd->lim.open_max;
-	shp->sftable = (Sfio_t**)calloc((n+1)*(sizeof(int*)+sizeof(Sfio_t*)+1),1);
+	shp->sftable = (Sfio_t**)sh_calloc((n+1)*(sizeof(int*)+sizeof(Sfio_t*)+1),1);
 	if(max)
 		memcpy(shp->sftable,sftable,max*sizeof(Sfio_t*));
 	shp->fdptrs = (int**)(&shp->sftable[n]);
@@ -468,7 +459,7 @@ int  sh_inuse(Shell_t *shp, int fd)
 void sh_ioinit(Shell_t *shp)
 {
 	filemapsize = 8;
-	filemap = (struct fdsave*)malloc(filemapsize*sizeof(struct fdsave));
+	filemap = (struct fdsave*)sh_malloc(filemapsize*sizeof(struct fdsave));
 	sh_iovalidfd(shp,16);
 	shp->sftable[0] = sfstdin;
 	shp->sftable[1] = sfstdout;
@@ -478,8 +469,8 @@ void sh_ioinit(Shell_t *shp)
 	sh_iostream(shp,1);
 	/* all write streams are in the same pool and share outbuff */
 	shp->outpool = sfopen(NIL(Sfio_t*),NIL(char*),"sw");  /* pool identifier */
-	shp->outbuff = (char*)malloc(IOBSIZE+4);
-	shp->errbuff = (char*)malloc(IOBSIZE/4);
+	shp->outbuff = (char*)sh_malloc(IOBSIZE+4);
+	shp->errbuff = (char*)sh_malloc(IOBSIZE/4);
 	sfsetbuf(sfstderr,shp->errbuff,IOBSIZE/4);
 	sfsetbuf(sfstdout,shp->outbuff,IOBSIZE);
 	sfpool(sfstdout,shp->outpool,SF_WRITE);
@@ -520,6 +511,11 @@ static int outexcept(register Sfio_t *iop,int type,void *data,Sfdisc_t *handle)
 				sfpurge(iop);
 				sfpool(iop,NIL(Sfio_t*),SF_WRITE);
 				errno = save;
+				/*
+				 * Note: UNREACHABLE() is avoided here because this errormsg() call will return.
+				 * The ERROR_system flag causes sh_exit() to be called, but if shp->jmplist->mode
+				 * is 0 (see above), then sh_exit() neither exits nor longjmps. See fault.c.
+				 */
 				errormsg(SH_DICT,ERROR_system(1),e_badwrite,sffileno(iop));
 				active = 0;
 				((struct checkpt*)shp->jmplist)->mode = mode;
@@ -559,8 +555,7 @@ Sfio_t *sh_iostream(Shell_t *shp, register int fd)
 	}
 	if(status&IOREAD)
 	{
-		if(!(bp = (char *)malloc(IOBSIZE+1)))
-			return(NIL(Sfio_t*));
+		bp = (char *)sh_malloc(IOBSIZE+1);
 		flags |= SF_READ;
 		if(!(status&IOWRITE))
 			flags &= ~SF_WRITE;
@@ -577,7 +572,7 @@ Sfio_t *sh_iostream(Shell_t *shp, register int fd)
 	}
 	else if(!(iop=sfnew((fd<=2?iop:0),bp,IOBSIZE,fd,flags)))
 		return(NIL(Sfio_t*));
-	dp = newof(0,struct Iodisc,1,0);
+	dp = sh_newof(0,struct Iodisc,1,0);
 	dp->sh = shp;
 	if(status&IOREAD)
 	{
@@ -627,6 +622,7 @@ static void io_preserve(Shell_t* shp, register Sfio_t *sp, register int f2)
 		shp->toomany = 1;
 		((struct checkpt*)shp->jmplist)->mode = SH_JMPERREXIT;
 		errormsg(SH_DICT,ERROR_system(1),e_toomany);
+		UNREACHABLE();
 	}
 	if(f2 >= shp->gd->lim.open_max)
 		sh_iovalidfd(shp,f2);
@@ -680,7 +676,10 @@ int sh_iorenumber(Shell_t *shp, register int f1,register int f2)
 		{
 			shp->fdstatus[f2] = (shp->fdstatus[f1]&~IOCLEX);
 			if((f2 = sh_fcntl(f1,F_DUPFD, f2)) < 0)
+			{
 				errormsg(SH_DICT,ERROR_system(1),e_file+4);
+				UNREACHABLE();
+			}
 			else if(f2 <= 2)
 				sh_iostream(shp,f2);
 		}
@@ -709,7 +708,10 @@ int sh_close(register int fd)
 	register Sfio_t *sp;
 	register int r = 0;
 	if(fd<0)
+	{
+		errno = EBADF;
 		return(-1);
+	}
 	if(fd >= shp->gd->lim.open_max)
 		sh_iovalidfd(shp,fd);
 	if(!(sp=shp->sftable[fd]) || sfclose(sp) < 0)
@@ -757,6 +759,7 @@ onintr(struct addrinfo* addr, void* handle)
 int sh_open(register const char *path, int flags, ...)
 {
 	Shell_t			*shp = sh_getinterp();
+	Sfio_t			*sp;
 	register int		fd = -1;
 	mode_t			mode;
 	char			*e;
@@ -871,6 +874,16 @@ int sh_open(register const char *path, int flags, ...)
 		mode = IOREAD;
 	if(fd >= shp->gd->lim.open_max)
 		sh_iovalidfd(shp,fd);
+	if((sp = shp->sftable[fd]) && (sfset(sp,0,0) & SF_STRING))
+	{
+		int n,err=errno;
+		if((n = sh_fcntl(fd,F_DUPFD,10)) >= 10)
+		{
+			while(close(fd) < 0 && errno == EINTR)
+				errno = err;
+			fd = n;
+		}
+	}
 	shp->fdstatus[fd] = mode;
 	return(fd);
 }
@@ -883,7 +896,10 @@ int sh_chkopen(register const char *name)
 {
 	register int fd = sh_open(name,O_RDONLY,0);
 	if(fd < 0)
+	{
 		errormsg(SH_DICT,ERROR_system(1),e_open,name);
+		UNREACHABLE();
+	}
 	return(fd);
 }
 
@@ -913,7 +929,10 @@ int	sh_pipe(register int pv[])
 	Shell_t *shp = sh_getinterp();
 	int fd[2];
 	if(pipe(fd)<0 || (pv[0]=fd[0])<0 || (pv[1]=fd[1])<0)
+	{
 		errormsg(SH_DICT,ERROR_system(1),e_pipe);
+		UNREACHABLE();
+	}
 	pv[0] = sh_iomovefd(pv[0]);
 	pv[1] = sh_iomovefd(pv[1]);
 	shp->fdstatus[pv[0]] = IONOSEEK|IOREAD;
@@ -936,7 +955,10 @@ int	sh_pipe(register int pv[])
 	Shell_t *shp = sh_getinterp();
 	int fd[2];
 	if(pipe(fd)<0 || (pv[0]=fd[0])<0 || (pv[1]=fd[1])<0)
+	{
 		errormsg(SH_DICT,ERROR_system(1),e_pipe);
+		UNREACHABLE();
+	}
 	pv[0] = sh_iomovefd(pv[0]);
 	pv[1] = sh_iomovefd(pv[1]);
 	shp->fdstatus[pv[0]] = IONOSEEK|IOREAD;
@@ -1116,7 +1138,6 @@ int	sh_redirect(Shell_t *shp,struct ionod *iop, int flag)
 	int r, indx = shp->topfd, perm= -1;
 	char *tname=0, *after="", *trace = shp->st.trap[SH_DEBUGTRAP];
 	Namval_t *np=0;
-	int isstring = shp->subshell?(sfset(sfstdout,0,0)&SF_STRING):0;
 
 	if(flag==2 && !sh_isoption(SH_POSIX))
 		clexec = 1;
@@ -1126,8 +1147,18 @@ int	sh_redirect(Shell_t *shp,struct ionod *iop, int flag)
 	{
 		iof=iop->iofile;
 		fn = (iof&IOUFD);
-		if(fn==1 && shp->subshell && !shp->subshare && (flag==2 || isstring))
-			sh_subfork();
+		if(fn==1)
+		{
+			if(shp->subshell && shp->comsub && (flag==1 || flag==2))
+			{
+				if(shp->subshare)
+				{
+					errormsg(SH_DICT,ERROR_exit(1),"cannot redirect stdout inside shared-state comsub");
+					UNREACHABLE();
+				}
+				sh_subfork();
+			}
+		}
 		if(shp->redir0 && fn==0 && !(iof&IOMOV))
 			shp->redir0 = 2;
 		io_op[0] = '0'+(iof&IOUFD);
@@ -1160,12 +1191,13 @@ int	sh_redirect(Shell_t *shp,struct ionod *iop, int flag)
 		}
 		if((iof&IOPROCSUB) && !(iof&IOLSEEK))
 		{
+			/* handle process substitution passed to redirection */
 			struct argnod *ap = (struct argnod*)stakalloc(ARGVAL+strlen(iop->ioname));
 			memset(ap, 0, ARGVAL);
 			if(iof&IOPUT)
 				ap->argflag = ARG_RAW;
 			else if(shp->subshell)
-				sh_subtmpfile(shp->comsub);
+				sh_subtmpfile(shp);
 			ap->argchn.ap = (struct argnod*)fname;
 			ap = sh_argprocsub(shp,ap);
 			fname = ap->argval;
@@ -1176,13 +1208,19 @@ int	sh_redirect(Shell_t *shp,struct ionod *iop, int flag)
 		{
 			np = nv_open(iop->iovname,shp->var_tree,NV_NOASSIGN|NV_VARNAME);
 			if(nv_isattr(np,NV_RDONLY))
+			{
 				errormsg(SH_DICT,ERROR_exit(1),e_readonly, nv_name(np));
+				UNREACHABLE();
+			}
 			io_op[0] = '}';
 			if((iof&IOLSEEK) || ((iof&IOMOV) && *fname=='-'))
 				fn = nv_getnum(np);
 		}
 		if(fn>=shp->gd->lim.open_max && !sh_iovalidfd(shp,fn))
+		{
 			errormsg(SH_DICT,ERROR_system(1),e_file+4);
+			UNREACHABLE();
+		}
 		if(iof&IOLSEEK)
 		{
 			io_op[2] = '#';
@@ -1227,7 +1265,7 @@ int	sh_redirect(Shell_t *shp,struct ionod *iop, int flag)
 					if(shp->subshell && dupfd==1)
 					{
 						if(sfset(sfstdout,0,0)&SF_STRING)
-							sh_subtmpfile(shp->comsub);
+							sh_subtmpfile(shp);
 						if(shp->comsub==1)
 							shp->subdup |= 1<<fn;
 						dupfd = sffileno(sfstdout);
@@ -1278,7 +1316,10 @@ int	sh_redirect(Shell_t *shp,struct ionod *iop, int flag)
 			else if(iof&IORDW)
 			{
 				if(sh_isoption(SH_RESTRICTED))
+				{
 					errormsg(SH_DICT,ERROR_exit(1),e_restricted,fname);
+					UNREACHABLE();
+				}
 				io_op[2] = '>';
 				o_mode = O_RDWR|O_CREAT;
 				if(iof&IOREWRITE)
@@ -1292,7 +1333,10 @@ int	sh_redirect(Shell_t *shp,struct ionod *iop, int flag)
 				fd=sh_chkopen(fname);
 			}
 			else if(sh_isoption(SH_RESTRICTED))
+			{
 				errormsg(SH_DICT,ERROR_exit(1),e_restricted,fname);
+				UNREACHABLE();
+			}
 			else
 			{
 				if(iof&IOAPP)
@@ -1321,6 +1365,7 @@ int	sh_redirect(Shell_t *shp,struct ionod *iop, int flag)
 							{
 								errno = EEXIST;
 								errormsg(SH_DICT,ERROR_system(1),e_exists,fname);
+								UNREACHABLE();
 							}
 						}
 						else
@@ -1331,7 +1376,10 @@ int	sh_redirect(Shell_t *shp,struct ionod *iop, int flag)
 				if(flag!=SH_SHOWME)
 				{
 					if((fd=sh_open(tname?tname:fname,o_mode,RW_ALL)) <0)
+					{
 						errormsg(SH_DICT,ERROR_system(1),((o_mode&O_CREAT)?e_create:e_open),fname);
+						UNREACHABLE();
+					}
 					if(perm>0)
 #if _lib_fchmod
 						fchmod(fd,perm);
@@ -1405,7 +1453,6 @@ int	sh_redirect(Shell_t *shp,struct ionod *iop, int flag)
 				else
 				{
 					regex_t *rp;
-					extern const char e_notimp[];
 					if(!(r&IOREAD))
 					{
 						message = e_noread;
@@ -1448,7 +1495,7 @@ int	sh_redirect(Shell_t *shp,struct ionod *iop, int flag)
 				}
 				else if(sh_subsavefd(fn))
 				{
-					if(fd==fn)
+					if(fd==fn && !shp->subshare)
 					{
 						if((r=sh_fcntl(fd,F_DUPFD,10)) > 0)
 						{
@@ -1513,8 +1560,7 @@ int	sh_redirect(Shell_t *shp,struct ionod *iop, int flag)
 	return(indx);
 fail:
 	errormsg(SH_DICT,ERROR_system(1),message,fname);
-	/* NOTREACHED */
-	return(0);
+	UNREACHABLE();
 }
 /*
  * Create a tmp file for the here-document
@@ -1528,7 +1574,10 @@ static int io_heredoc(Shell_t *shp,register struct ionod *iop, const char *name,
 		return(sh_open(e_devnull,O_RDONLY));
 	/* create an unnamed temporary file */
 	if(!(outfile=sftmp(0)))
+	{
 		errormsg(SH_DICT,ERROR_system(1),e_tmpcreate);
+		UNREACHABLE();
+	}
 	if(iop->iofile&IOSTRG)
 	{
 		if(traceon)
@@ -1539,7 +1588,7 @@ static int io_heredoc(Shell_t *shp,register struct ionod *iop, const char *name,
 	{
 		/*
 		 * the locking is only needed in case & blocks process
-		 * here-docs so this can be eliminted in some cases
+		 * here-docs so this can be eliminated in some cases
 		 */
 		struct flock	lock;
 		int	fno = sffileno(shp->heredocs);
@@ -1570,7 +1619,7 @@ static int io_heredoc(Shell_t *shp,register struct ionod *iop, const char *name,
 			sfclose(infile);
 			if(sffileno(tmp)>0)
 			{
-				sfsetbuf(tmp,malloc(IOBSIZE+1),IOBSIZE);
+				sfsetbuf(tmp,sh_malloc(IOBSIZE+1),IOBSIZE);
 				sfset(tmp,SF_MALLOC,1);
 			}
 			sfseek(shp->heredocs,off,SEEK_SET);
@@ -1634,8 +1683,7 @@ void sh_iosave(Shell_t *shp, register int origfd, int oldtop, char *name)
 		char 	*oldend = (char*)&filemap[filemapsize];
 		long	moved;
 		filemapsize += 8;
-		if(!(filemap = (struct fdsave*)realloc(filemap,filemapsize*sizeof(struct fdsave))))
-			errormsg(SH_DICT,ERROR_exit(4),e_nospace);
+		filemap = (struct fdsave*)sh_realloc(filemap,filemapsize*sizeof(struct fdsave));
 		if(moved = (char*)filemap - oldptr)
 		{
 			for(savefd=shp->gd->lim.open_max; --savefd>=0; )
@@ -1663,6 +1711,7 @@ void sh_iosave(Shell_t *shp, register int origfd, int oldtop, char *name)
 			shp->toomany=1;
 			((struct checkpt*)shp->jmplist)->mode = SH_JMPERREXIT;
 			errormsg(SH_DICT,ERROR_system(1),e_toomany);
+			UNREACHABLE();
 		}
 	}
 	filemap[shp->topfd].tname = name;
@@ -1719,11 +1768,6 @@ void	sh_iorestore(Shell_t *shp, int last, int jmpval)
 	register int 	origfd, savefd, fd;
 	int flag = (last&IOSUBSHELL);
 	last &= ~IOSUBSHELL;
-	/*
-	 * There was an issue with truncating files (see 'ftruncate' below) that was caused by
-	 * out-of-sync streams. So, to be safe, sync all streams before restoring file descriptors.
-	 */
-	sfsync(NULL);
 	for (fd = shp->topfd - 1; fd >= last; fd--)
 	{
 		if(!flag && filemap[fd].subshell)
@@ -1747,7 +1791,10 @@ void	sh_iorestore(Shell_t *shp, int last, int jmpval)
 			return;
 		}
 		if(filemap[fd].tname == Empty && shp->exitval==0)
+		{
+			sfsync(NIL(Sfio_t*));
 			ftruncate(origfd,lseek(origfd,0,SEEK_CUR));
+		}
 		else if(filemap[fd].tname)
 			io_usename(filemap[fd].tname,(int*)0,origfd,shp->exitval?2:1);
 		sh_close(origfd);
@@ -2098,6 +2145,8 @@ static int	io_prompt(Shell_t *shp,Sfio_t *iop,register int flag)
 		flag = 0;
 	if(flag==0)
 		return(sfsync(sfstderr));
+	/* Temporarily disable 'set -o notify' while expanding the prompt to avoid
+	   possible crashes (https://github.com/ksh93/ksh/issues/103). */
 	was_ttywait_on = sh_isstate(SH_TTYWAIT);
 	sh_offstate(SH_TTYWAIT);
 	sfflags = sfset(sfstderr,SF_SHARE|SF_PUBLIC|SF_READ,0);
@@ -2108,6 +2157,7 @@ static int	io_prompt(Shell_t *shp,Sfio_t *iop,register int flag)
 		case 1:
 		{
 			register int c;
+			sh_lexopen(sh.lex_context, &sh, 0);   /* reset lexer state */
 #if defined(TIOCLBIC) && defined(LFLUSHO)
 			if(!sh_isoption(SH_VI) && !sh_isoption(SH_EMACS) && !sh_isoption(SH_GMACS))
 			{
@@ -2120,7 +2170,7 @@ static int	io_prompt(Shell_t *shp,Sfio_t *iop,register int flag)
 			}
 #endif	/* TIOCLBIC */
 			cp = sh_mactry(shp,nv_getval(sh_scoped(shp,PS1NOD)));
-			shp->exitval = 0;
+			shp->exitval = 0;  /* avoid sending a signal on termination */
 			for(;c= *cp;cp++)
 			{
 				if(c==HIST_CHAR)
@@ -2140,8 +2190,15 @@ static int	io_prompt(Shell_t *shp,Sfio_t *iop,register int flag)
 			goto done;
 		}
 		case 2:
+		{
+			/* PS2 prompt. Save stack state to avoid corrupting command substitutions
+			 * in case we're executing a PS2.get discipline function at parse time. */
+			int	savestacktop = staktell();
+			char	*savestackptr = stakfreeze(0);
 			cp = nv_getval(sh_scoped(shp,PS2NOD));
+			stakset(savestackptr, savestacktop);
 			break;
+		}
 		case 3:
 			cp = nv_getval(sh_scoped(shp,PS3NOD));
 			break;
@@ -2154,7 +2211,7 @@ done:
 	if(*shp->prompt && (endprompt=(char*)sfreserve(sfstderr,0,0)))
 		*endprompt = 0;
 	if(was_ttywait_on)
-		sh_onstate(SH_TTYWAIT);
+		sh_onstate(SH_TTYWAIT);  /* re-enable 'set -o notify' */
 	sfset(sfstderr,sfflags&SF_READ|SF_SHARE|SF_PUBLIC,1);
 	return(sfsync(sfstderr));
 }
@@ -2289,8 +2346,7 @@ Sfio_t *sh_sfeval(register char *argv[])
 	if(argv[1])
 	{
 		register struct eval *ep;
-		if(!(ep = new_of(struct eval,0)))
-			return(NIL(Sfio_t*));
+		ep = new_of(struct eval,0);
 		ep->disc = eval_disc;
 		ep->argv = argv;
 		ep->slen  = -1;
@@ -2349,8 +2405,7 @@ static Sfio_t *subopen(Shell_t *shp,Sfio_t* sp, off_t offset, long size)
 	register struct subfile *disp;
 	if(sfseek(sp,offset,SEEK_SET) <0)
 		return(NIL(Sfio_t*));
-	if(!(disp = (struct subfile*)malloc(sizeof(struct subfile)+IOBSIZE+1)))
-		return(NIL(Sfio_t*));
+	disp = (struct subfile*)sh_malloc(sizeof(struct subfile)+IOBSIZE+1);
 	disp->disc = sub_disc;
 	disp->oldsp = sp;
 	disp->offset = offset;
@@ -2397,13 +2452,11 @@ static int subexcept(Sfio_t* sp,register int mode, void *data, Sfdisc_t* handle)
 		free((void*)disp);
 		return(0);
 	}
-#ifdef SF_ATEXIT
 	else if (mode==SF_ATEXIT)
 	{
 		sfdisc(sp, SF_POPDISC);
 		return(0);
 	}
-#endif
 	else if(mode==SF_READ)
 		return(0);
 	return(-1);
@@ -2656,13 +2709,16 @@ Sfio_t *sh_pathopen(const char *cp)
 		n = path_open(shp,cp,"");
 #endif
 	if(n < 0)
+	{
 		errormsg(SH_DICT,ERROR_system(1),e_open,cp);
+		UNREACHABLE();
+	}
 	return(sh_iostream(shp,n));
 }
 
 int sh_isdevfd(register const char *fd)
 {
-	if(!fd || memcmp(fd,"/dev/fd/",8) || fd[8]==0)
+	if(!fd || strncmp(fd,"/dev/fd/",8) || fd[8]==0)
 		return(0);
 	for ( fd=&fd[8] ; *fd != '\0' ; fd++ )
 	{
@@ -2689,4 +2745,3 @@ int sh_chdir(const char* dir)
 		errno = err;
 	return(r);
 }
-

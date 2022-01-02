@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -25,15 +26,10 @@
 **	Written by Kiem-Phong Vo
 */
 
-#if __STD_C
-int _sfexcept(Sfio_t* f, int type, ssize_t io, Sfdisc_t* disc)
-#else
-int _sfexcept(f,type,io,disc)
-Sfio_t*		f;	/* stream where the exception happened */
-int		type;	/* io type that was performed */
-ssize_t		io;	/* the io return value that indicated exception */
-Sfdisc_t*	disc;	/* discipline in use */
-#endif
+int _sfexcept(Sfio_t*	f,	/* stream where the exception happened */
+	      int	type,	/* io type that was performed */
+	      ssize_t	io,	/* the io return value that indicated exception */
+	      Sfdisc_t*	disc)	/* discipline in use */
 {
 	reg int		ev, local, lock;
 	reg ssize_t	size;

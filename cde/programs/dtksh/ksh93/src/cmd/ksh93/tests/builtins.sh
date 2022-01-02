@@ -2,6 +2,7 @@
 #                                                                      #
 #               This software is part of the ast package               #
 #          Copyright (c) 1982-2012 AT&T Intellectual Property          #
+#          Copyright (c) 2020-2021 Contributors to ksh 93u+m           #
 #                      and is licensed under the                       #
 #                 Eclipse Public License, Version 1.0                  #
 #                    by AT&T Intellectual Property                     #
@@ -17,23 +18,40 @@
 #                  David Korn <dgk@research.att.com>                   #
 #                                                                      #
 ########################################################################
-function err_exit
-{
-	print -u2 -n "\t"
-	print -u2 -r ${Command}[$1]: "${@:2}"
-	let Errors+=1
-}
-alias err_exit='err_exit $LINENO'
 
-Command=${0##*/}
-integer Errors=0
-
-[[ -d $tmp && -w $tmp && $tmp == "$PWD" ]] || { err\_exit "$LINENO" '$tmp not set; run this from shtests. Aborting.'; exit 1; }
+. "${SHTESTS_COMMON:-${0%/*}/_common}"
 
 bincat=$(whence -p cat)
 
-# test shell builtin commands
-builtin getconf
+# ======
+# These are regression tests for the getconf builtin.
+if builtin getconf 2> /dev/null; then
+	bingetconf=$(getconf GETCONF)
+	bad_result=$(getconf --version 2>&1)
+
+	# The -l option should convert all variable names to lowercase.
+	# https://github.com/att/ast/issues/1171
+	got=$(getconf -lq | awk '{ gsub(/=.*/, "") } /[[:upper:]]/ { print }')
+	[[ -n $got ]] && err_exit "'getconf -l' doesn't convert all variable names to lowercase" \
+		"(got $(printf %q "$got"))"
+
+	# The -q option should quote all string values.
+	# https://github.com/att/ast/issues/1173
+	exp="GETCONF=\"$bingetconf\""
+	got=$(getconf -q | grep 'GETCONF=')
+	[[ $exp == "$got" ]] || err_exit "'getconf -q' fails to quote string values" \
+		"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+	# The -n option should only return matching names.
+	# https://github.com/ksh93/ksh/issues/279
+	exp="GETCONF=$bingetconf"
+	got=$(getconf -n GETCONF)
+	[[ $exp == "$got" ]] || err_exit "'getconf -n' doesn't match names correctly" \
+		"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+fi
+
+# ======
+# Test shell builtin commands
 : ${foo=bar} || err_exit ": failed"
 [[ $foo == bar ]] || err_exit ": side effects failed"
 set -- - foobar
@@ -94,7 +112,7 @@ hello \
 	world \
 
 !
-[[ $REPLY == 'hello 	world' ]] || err_exit "read continuation2 failed"
+[[ $REPLY == 'hello 	world' ]] || err_exit "read continuation 2 failed"
 print "one\ntwo" | { read line
 	print $line | "$bincat" > /dev/null
 	read line
@@ -223,8 +241,7 @@ fi
 if	[[ $(LC_MESSAGES=C type test) != 'test is a shell builtin' ]]
 then	err_exit 'whence -v test not a builtin'
 fi
-builtin -d test
-if	[[ $(type test) == *builtin* ]]
+if	[[ $(builtin -d test; type test) == *builtin* ]]
 then	err_exit 'whence -v test after builtin -d incorrect'
 fi
 typeset -Z3 percent=$(printf '%o\n' "'%'")
@@ -236,11 +253,11 @@ if	(( $(printf 'x\0y' | wc -c) != 3 ))
 then	err_exit 'printf \0 not working'
 fi
 if	[[ $(printf "%bx%s\n" 'f\to\cbar') != $'f\to' ]]
-then	err_exit 'printf %bx%s\n  not working'
+then	err_exit 'printf %bx%s\n not working'
 fi
 alpha=abcdefghijklmnop
 if	[[ $(printf "%10.*s\n" 5 $alpha) != '     abcde' ]]
-then	err_exit 'printf %10.%s\n  not working'
+then	err_exit 'printf %10.%s\n not working'
 fi
 float x2=.0000625
 if	[[ $(printf "%10.5E\n" x2) != 6.25000E-05 ]]
@@ -250,10 +267,13 @@ x2=.000000001
 if	[[ $(printf "%g\n" x2 2>/dev/null) != 1e-09 ]]
 then	err_exit 'printf "%g" not working correctly'
 fi
-#FIXME#($SHELL read -s foobar <<\!
-#FIXME#testing
-#FIXME#!
-#FIXME#) 2> /dev/null || err_exit ksh read -s var fails
+
+(read -s foobar <<<testing_read_s) 2> /dev/null || err_exit "'read -s var' fails"
+exp=$'^[[:digit:]]+\ttesting_read_s$'
+got=$(fc -l -0)
+[[ $got =~ $exp ]] || err_exit "'read -s' did not write to history file" \
+	"(expected match of regex $(printf %q "$exp"), got $(printf %q "$got"))"
+
 if	[[ $(printf +3 2>/dev/null) !=   +3 ]]
 then	err_exit 'printf is not processing formats beginning with + correctly'
 fi
@@ -264,7 +284,7 @@ if	[[ $(trap --version 2> /dev/null;print done) != done ]]
 then	err_exit 'trap builtin terminating after --version'
 fi
 if	[[ $(set --version 2> /dev/null;print done) != done ]]
-then	err_exit 'set builtin terminating after --veresion'
+then	err_exit 'set builtin terminating after --version'
 fi
 unset -f foobar
 function foobar
@@ -295,8 +315,9 @@ actual=$(printf 'foo://ab_c%(url)q\n' $'<>"& \'\tabc')
 case ${LC_ALL:-${LC_CTYPE:-${LANG:-}}} in
 ( *[Uu][Tt][Ff]8* | *[Uu][Tt][Ff]-8* )
 	# HTML encoding UTF-8 characters
-	expect='正常終了 正常終了'
-	actual=$(printf %H '正常終了 正常終了')
+	# (UTF-8 literal characters wrapped in 'eval' to avoid syntax error on ja_JP.SJIS)
+	eval 'expect='\''正常終了 正常終了'\'
+	eval 'actual=$(printf %H '\''正常終了 正常終了'\'')'
 	[[ $actual == "$expect" ]] || err_exit 'printf %H: Japanese UTF-8 characters' \
 				"(expected $expect; got $actual)"
 	expect='w?h?á?t??'
@@ -313,7 +334,7 @@ case ${LC_ALL:-${LC_CTYPE:-${LANG:-}}} in
 	[[ $actual == "$expect" ]] || err_exit 'printf %H: Arabic UTF-8 characters' \
 				"(expected $expect; got $actual)"
 	expect='%E6%AD%A3%E5%B8%B8%E7%B5%82%E4%BA%86%20%E6%AD%A3%E5%B8%B8%E7%B5%82%E4%BA%86'
-	actual=$(printf %#H '正常終了 正常終了')
+	eval 'actual=$(printf %#H '\''正常終了 正常終了'\'')'
 	[[ $actual == "$expect" ]] || err_exit 'printf %H: Japanese UTF-8 characters' \
 				"(expected $expect; got $actual)"
 	expect='%C2%AB%20l%E2%80%99ab%C3%AEme%20de%20mon%C2%A0m%C3%A9tier%E2%80%A6%20%C2%BB'
@@ -391,14 +412,16 @@ wait $pid1
 wait $pid2
 (( $? == 127 )) || err_exit "subshell job known to parent"
 env=
-v=$(getconf LIBPATH)
-for v in ${v//,/ }
-do	v=${v#*:}
-	v=${v%%:*}
-	eval [[ \$$v ]] && env="$env $v=\"\$$v\""
-done
-if	[[ $(foo=bar; eval foo=\$foo $env exec -c \$SHELL -c \'print \$foo\') != bar ]]
-then	err_exit '"name=value exec -c ..." not working'
+if builtin getconf 2> /dev/null; then
+	v=$(getconf LIBPATH)
+	for v in ${v//,/ }
+	do	v=${v#*:}
+		v=${v%%:*}
+		eval [[ \$$v ]] && env="$env $v=\"\$$v\""
+	done
+	if	[[ $(foo=bar; eval foo=\$foo $env exec -c \$SHELL -c \'print \$foo\') != bar ]]
+	then	err_exit '"name=value exec -c ..." not working'
+	fi
 fi
 $SHELL -c 'OPTIND=-1000000; getopts a opt -a' 2> /dev/null
 [[ $? == 1 ]] || err_exit 'getopts with negative OPTIND not working'
@@ -563,8 +586,10 @@ fi
 	while (( i <2))
 	do	(( i++))
 	done) == $'0\n0\n1\n1\n2' ]]  || err_exit  "DEBUG trap not working"
-getconf UNIVERSE - ucb
-[[ $($SHELL -c 'echo -3') == -3 ]] || err_exit "echo -3 not working in ucb universe"
+if builtin getconf 2> /dev/null; then
+	getconf UNIVERSE - ucb
+	[[ $($SHELL -c 'echo -3') == -3 ]] || err_exit "echo -3 not working in ucb universe"
+fi
 typeset -F3 start_x=SECONDS total_t delay=0.02
 typeset reps=50 leeway=5
 sleep $(( 2 * leeway * reps * delay )) |
@@ -615,11 +640,11 @@ t=$(ulimit -t)
 $SHELL 2> /dev/null -c 'cd ""' && err_exit 'cd "" not producing an error'
 [[ $($SHELL 2> /dev/null -c 'cd "";print hi') != hi ]] && err_exit 'cd "" should not terminate script'
 
-builtin cat
-out=$tmp/seq.out
-for ((i=1; i<=11; i++)); do print "$i"; done >$out
-cmp -s <(print -- "$($bincat<( $bincat $out ) )") <(print -- "$(cat <( cat $out ) )") || err_exit "builtin cat differs from $bincat"
-builtin -d cat
+if builtin cat 2> /dev/null; then
+	out=$tmp/seq.out
+	for ((i=1; i<=11; i++)); do print "$i"; done >$out
+	cmp -s <(print -- "$($bincat<( $bincat $out ) )") <(print -- "$(cat <( cat $out ) )") || err_exit "builtin cat differs from $bincat"
+fi
 
 [[ $($SHELL -c '{ printf %R "["; print ok;}' 2> /dev/null) == ok ]] || err_exit $'\'printf %R "["\' causes shell to abort'
 
@@ -680,15 +705,10 @@ then	(
 			mv t1 t2
 			mkdir t1
 		)
-		[[ -f real_t1 ]] || err_exit 'real_t1 not found after parent directory renamed in subshell'
-	)
+		[[ -f real_t1 ]]
+	) || err_exit 'real_t1 not found after parent directory renamed in subshell'
 fi
 cd "$tmp"
-
-$SHELL +E -i <<- \! && err_exit 'interactive shell should not exit 0 after false'
-	false
-	exit
-!
 
 if	kill -L > /dev/null 2>&1
 then	[[ $(kill -l HUP) == "$(kill -L HUP)" ]] || err_exit 'kill -l and kill -L are not the same when given a signal name'
@@ -703,12 +723,10 @@ v=$($SHELL 2> /dev/null +o rc -ic $'getopts a:bc: opt --man\nprint $?')
 read baz <<< 'foo\\\\bar'
 [[ $baz == 'foo\\bar' ]] || err_exit 'read of foo\\\\bar not getting foo\\bar'
 
-: ~root
-[[ $(builtin) == *.sh.tilde* ]] &&  err_exit 'builtin contains .sh.tilde'
-
 # ======
 # Check that I/O errors are detected <https://github.com/att/ast/issues/1093>
 actual=$(
+    set +x
     {
         (
             trap "" PIPE
@@ -746,30 +764,72 @@ PATH=$tmp:$PATH $SHELL <<-\EOF || err_exit "'whence' gets wrong path on init"
 EOF
 
 # ======
-# `builtin -d` should not delete special builtins
+# 'builtin -d' should not delete special builtins
 (builtin -d export 2> /dev/null
 PATH=/dev/null
-whence -q export) || err_exit '`builtin -d` deletes special builtins'
+whence -q export) || err_exit "'builtin -d' deletes special builtins"
 
 # ======
-# `read -r -d` should not ignore `-r`
+# 'read -r -d' should not ignore '-r'
 printf '\\\000' | read -r -d ''
 [[ $REPLY == $'\\' ]] || err_exit "read -r -d '' ignores -r"
 
 # ======
-# Preceding a special builtin with `command` should disable its special properties
-foo=BUG command eval ':'
-[[ $foo == BUG ]] && err_exit '`command` fails to disable the special properties of special builtins'
+# BUG_CMDSPASGN: Preceding a special builtin with 'command' should disable its special properties.
+# Test that assignments preceding 'command' are local.
+for arg in '' -v -V -p -x
+do
+	for cmd in '' : true ls eval 'eval :' 'eval true' 'eval ls'
+	do
+		[[ $arg == -x ]] && ! command -xv "${cmd% *}" >/dev/null && continue
+		unset foo
+		eval "foo=BUG command $arg $cmd" >/dev/null 2>&1
+		got=$?
+		case $arg,$cmd in
+		-v, | -V, )	exp=2 ;;
+		*)		exp=0 ;;
+		esac
+		[[ $got == "$exp" ]] || err_exit "exit status of 'command $arg $cmd' is $got, expected $exp"
+		[[ -v foo ]] && err_exit "preceding assignment survives 'command $arg $cmd'"
+	done
+done
+
+# Regression that occurred after fixing the bug above: the += operator didn't work correctly.
+# https://www.mail-archive.com/ast-users@lists.research.att.com/msg00369.html
+unset foo
+integer foo=1
+exp=4
+got=$(foo+=3 command eval 'echo $foo')
+[[ $exp == $got ]] || err_exit "Test 1: += assignment for environment variables doesn't work with 'command special_builtin'" \
+	"(expected $exp, got $got)"
+foo+=3 command eval 'test $foo'
+(( foo == 1 )) || err_exit "environment isn't restored after 'command special_builtin'" \
+	"(expected 1, got $foo)"
+got=$(foo+=3 eval 'echo $foo')
+[[ $exp == $got ]] || err_exit "+= assignment for environment variables doesn't work with builtins" \
+	"(expected $exp, got $got)"
+
+unset foo
+exp=barbaz
+got=$(foo=bar; foo+=baz command eval 'echo $foo')
+[[ $exp == $got ]] || err_exit "Test 2: += assignment for environment variables doesn't work with 'command special_builtin'" \
+	"(expected $exp, got $got)"
+
+# Attempting to modify a readonly variable with the += operator should fail
+exp=2
+got=$(integer -r foo=2; foo+=3 command eval 'echo $foo' 2> /dev/null)
+[[ $? == 0 ]] && err_exit "+= assignment modifies readonly variables" \
+	"(expected $exp, got $got)"
 
 # ======
 # 'whence -f' should ignore functions
 foo_bar() { true; }
 actual="$(whence -f foo_bar)"
-whence -f foo_bar >/dev/null && err_exit "'whence -f' doesn't ignore functions (got '$(printf %q "$actual")')"
+whence -f foo_bar >/dev/null && err_exit "'whence -f' doesn't ignore functions (got $(printf %q "$actual"))"
 
 # whence -vq/type -q must be tested as well
 actual="$(type -f foo_bar 2>&1)"
-type -f foo_bar >/dev/null 2>&1 && err_exit "'type -f' doesn't ignore functions (got '$(printf %q "$actual")')"
+type -f foo_bar >/dev/null 2>&1 && err_exit "'type -f' doesn't ignore functions (got $(printf %q "$actual"))"
 type -qf foo_bar && err_exit "'type -qf' doesn't ignore functions"
 
 # Test the exit status of 'whence -q'
@@ -782,6 +842,93 @@ whence -q cat nonexist ls && err_exit "'whence -q' has the wrong exit status"
 whence -q cat nonexist && err_exit "'whence -q' has the wrong exit status"
 whence -q nonexist && err_exit "'whence -q' has the wrong exit status"
 PATH=$save_PATH
+
+# ======
+# These are the regression tests for the whence builtin's '-t' flag
+for w in 'whence -t' 'type -t' 'whence -t -v'; do
+	exp=file
+	got=$($w $SHELL)
+	[[ $exp == "$got" ]] || err_exit "'$w' has the wrong output for external commands" \
+		"(expected $(printf %q "$exp"); got $(printf %q "$got"))"
+	got=$(builtin -d chmod; hash chmod; $w chmod)
+	[[ $exp == "$got" ]] || err_exit "'$w' has the wrong output for tracked aliases" \
+		"(expected $(printf %q "$exp"); got $(printf %q "$got"))"
+	exp=keyword
+	got=$($w time)
+	[[ $exp == "$got" ]] || err_exit "'$w' has the wrong output for keywords" \
+		"(expected $(printf %q "$exp"); got $(printf %q "$got"))"
+	exp=builtin
+	got=$($w sleep)
+	[[ $exp == "$got" ]] || err_exit "'$w' has the wrong output for regular builtins" \
+		"(expected $(printf %q "$exp"); got $(printf %q "$got"))"
+	got=$($w export)
+	[[ $exp == "$got" ]] || err_exit "'$w' has the wrong output for special builtins" \
+		"(expected $(printf %q "$exp"); got $(printf %q "$got"))"
+	builtin -d cat
+	if [[ $(set +x; PATH=/opt/ast/bin type cat 2>&1) != "cat is a shell builtin version of /opt/ast/bin/cat" ]]
+	then	warning "/opt/ast/bin/cat isn't a builtin; skipping path-bound builtin tests"
+	else
+		got=$(PATH=/opt/ast/bin $w cat)
+		[[ $exp == "$got" ]] || err_exit "Test A: '$w' has the wrong output for path-bound builtins" \
+			"(expected $(printf %q "$exp"); got $(printf %q "$got"))"
+		got=$($w /opt/ast/bin/cat)
+		[[ $exp == "$got" ]] || err_exit "Test B: '$w' has the wrong output for path-bound builtins" \
+			"(expected $(printf %q "$exp"); got $(printf %q "$got"))"
+		got=$(PATH=/opt/ast/bin:$PATH; $w cat)
+		[[ $exp == "$got" ]] || err_exit "Test C: '$w' has the wrong output for path-bound builtins" \
+			"(expected $(printf %q "$exp"); got $(printf %q "$got"))"
+		got=$(builtin cat; $w cat)
+		[[ $exp == "$got" ]] || err_exit "Test D: '$w' has the wrong output for path-bound builtins" \
+			"(expected $(printf %q "$exp"); got $(printf %q "$got"))"
+	fi
+	exp=alias
+	got=$(alias foo=bar; $w foo)
+	[[ $exp == "$got" ]] || err_exit "'$w' has the wrong output for aliases" \
+		"(expected $(printf %q "$exp"); got $(printf %q "$got"))"
+	exp=function
+	got=$(foo() { true; }; $w foo)
+	[[ $exp == "$got" ]] || err_exit "'$w' has the wrong output for POSIX functions" \
+		"(expected $(printf %q "$exp"); got $(printf %q "$got"))"
+	got=$(function foo { true; }; $w foo)
+	[[ $exp == "$got" ]] || err_exit "'$w' has the wrong output for KornShell functions" \
+		"(expected $(printf %q "$exp"); got $(printf %q "$got"))"
+	got=$(autoload FooBar; $w FooBar)
+	[[ $exp == "$got" ]] || err_exit "'$w' has the wrong output for undefined autoloaded functions" \
+		"(expected $(printf %q "$exp"); got $(printf %q "$got"))"
+	echo 'FooBar() { true; }' > FooBar
+	got=$(FPATH=. autoload FooBar; $w FooBar)
+	[[ $exp == "$got" ]] || err_exit "'$w' has the wrong output for autoloaded POSIX functions" \
+		"(expected $(printf %q "$exp"); got $(printf %q "$got"))"
+	echo 'function FooBar { true; }' > FooBar
+	got=$(FPATH=. autoload FooBar; $w FooBar)
+	[[ $exp == "$got" ]] || err_exit "'$w' has the wrong output for autoloaded KornShell functions" \
+		"(expected $(printf %q "$exp"); got $(printf %q "$got"))"
+
+	# The final few tests are for '-t -a'
+	builtin -d cat
+	if [[ $(set +x; PATH=/opt/ast/bin type cat 2>&1) == "cat is a shell builtin version of /opt/ast/bin/cat" ]]
+	then	exp="alias
+function
+builtin
+$($w -pa cat)"
+		got=$(alias cat=false
+			autoload cat
+			PATH=/opt/ast/bin:$PATH $w -a cat)
+		[[ $exp == "$got" ]] || err_exit "'$w -a' output is incorrect (cat command)" \
+			"(expected $(printf %q "$exp"); got $(printf %q "$got"))"
+	fi
+	if [[ -n $($w -pa time) ]]
+	then	exp="keyword
+alias
+$($w -pa time)"
+	else
+		exp=$'keyword\nalias'
+	fi
+	got=$(alias time=nottime
+		$w -a time)
+	[[ $exp == "$got" ]] || err_exit "'$w -a' output is incorrect (time command)" \
+		"(expected $(printf %q "$exp"); got $(printf %q "$got"))"
+done
 
 # ======
 # 'cd ../.foo' should not exclude the '.' in '.foo'
@@ -805,23 +952,23 @@ actual=$( mkdir "$tmp/java" "$tmp/.java" 2>&1 &&
 # check that we cannot cd into a regular file and get misbehaviour
 : > "$tmp/regular_file"
 expect=": cd: $tmp/regular_file: [Not a directory]"
-actual=$(cd "$tmp/regular_file" 2>&1)
+actual=$(LC_ALL=C cd "$tmp/regular_file" 2>&1)
 e=$?
 [[ e -eq 1 && $actual == *"$expect" ]] || err_exit 'can cd into a regular file' \
 	"(expected status 1 and msg ending in $(printf %q "$expect"), got status $e and msg $(printf %q "$actual"))"
 
 # https://bugzilla.redhat.com/1102627
 if	[[ $(id -u) == '0' ]]
-then	print -u2 -r "${Command}[$LINENO]: warning: running as root: skipping tests involving directory search (x) permission"
+then	warning "running as root: skipping tests involving directory search (x) permission"
 else
 mkdir -m 600 "$tmp/no_x_dir"
 expect=": cd: $tmp/no_x_dir: [Permission denied]"
-actual=$(cd "$tmp/no_x_dir" 2>&1)
+actual=$(LC_ALL=C cd "$tmp/no_x_dir" 2>&1)
 e=$?
 [[ e -eq 1 && $actual == *"$expect" ]] || err_exit 'can cd into a directory without x permission bit (absolute path arg)' \
 	"(expected status 1 and msg ending in $(printf %q "$expect"), got status $e and msg $(printf %q "$actual"))"
 expect=": cd: no_x_dir: [Permission denied]"
-actual=$(cd "$tmp" 2>&1 && cd "no_x_dir" 2>&1)
+actual=$(cd "$tmp" 2>&1 && LC_ALL=C cd "no_x_dir" 2>&1)
 e=$?
 [[ e -eq 1 && $actual == *"$expect" ]] || err_exit 'can cd into a directory without x permission bit (relative path arg)' \
 	"(expected status 1 and msg ending in $(printf %q "$expect"), got status $e and msg $(printf %q "$actual"))"
@@ -839,7 +986,7 @@ actual=$({ a=$(cd; pwd); } >&-; print -r -- "$a")
 
 # CDPATH was not ignored by 'cd ./dir': https://github.com/ksh93/ksh/issues/151
 expect=': cd: ./dev: [No such file or directory]'
-actual=$( (CDPATH=/ cd -P ./dev && pwd) 2>&1 )
+actual=$( (CDPATH=/ LC_ALL=C cd -P ./dev && pwd) 2>&1 )
 let "(e=$?)==1" && [[ $actual == *"$expect" ]] || err_exit "CDPATH not ignored by cd ./dir" \
 	"(expected *$(printf %q "$expect") with status 1, got $(printf %q "$actual") with status $e)"
 
@@ -861,8 +1008,9 @@ unset foo
 [[ $(printf '%(%k)T') == $(printf '%(%_H)T') ]] || err_exit 'date format %k is not the same as %_H'
 [[ $(printf '%(%f)T') == $(printf '%(%Y.%m.%d-%H:%M:%S)T') ]] || err_exit 'date format %f is not the same as %Y.%m.%d-%H:%M:%S'
 [[ $(printf '%(%q)T') == $(printf '%(%Qz)T') ]] && err_exit 'date format %q is the same as %Qz'
+[[ $(printf '%(%Z)T') == $(date '+%Z') ]] || err_exit "date format %Z is incorrect (expected $(date '+%Z'), got $(printf '%(%Z)T'))"
 
-# Test manually specified blank and zero padding with 'printf  %T'
+# Test manually specified blank and zero padding with 'printf %T'
 (
 	IFS=$'\n\t' # Preserve spaces in output
 	for i in d e H I j J k l m M N S U V W y; do
@@ -973,22 +1121,27 @@ fi
 EOF
 "$SHELL" -i "$sleepsig" 2> /dev/null || err_exit "'sleep -s' doesn't work with intervals of more than 30 seconds"
 
-# ==========
+# ======
 # Builtins should handle unrecognized options correctly
-while IFS= read -r bltin <&3
-do	case $bltin in
-	echo | test | true | false | \[ | : | getconf | */getconf | uname | */uname | login | newgrp)
-		continue ;;
-	/*/*)	expect="Usage: ${bltin##*/} "
-		actual=$({ PATH=${bltin%/*}; "${bltin##*/}" --this-option-does-not-exist; } 2>&1) ;;
-	*/*)	err_exit "strange path name in 'builtin' output: $(printf %q "$bltin")"
-		continue ;;
-	*)	expect="Usage: $bltin "
-		actual=$({ "${bltin}" --this-option-does-not-exist; } 2>&1) ;;
-	esac
-	[[ $actual == *"$expect"* ]] || err_exit "$bltin should show usage info on unrecognized options" \
-			"(expected string containing $(printf %q "$expect"), got $(printf %q "$actual"))"
-done 3< <(builtin)
+function test_usage
+{
+	while IFS= read -r bltin <&3
+	do	case $bltin in
+		echo | test | true | false | \[ | : | expr | */expr | getconf | */getconf | uname | */uname | catclose | catgets | catopen | Dt* | _Dt* | X* | login | newgrp )
+			continue ;;
+		/*/*)	expect="Usage: ${bltin##*/} "
+			actual=$({ PATH=${bltin%/*}; "${bltin##*/}" --this-option-does-not-exist; } 2>&1) ;;
+		*/*)	err_exit "strange path name in 'builtin' output: $(printf %q "$bltin")"
+			continue ;;
+		autoload | compound | float | functions | integer | nameref)
+			bltin=typeset ;&
+		*)	expect="Usage: $bltin "
+			actual=$({ "${bltin}" --this-option-does-not-exist; } 2>&1) ;;
+		esac
+		[[ $actual == *"$expect"* ]] || err_exit "$bltin should show usage info on unrecognized options" \
+				"(expected string containing $(printf %q "$expect"), got $(printf %q "$actual"))"
+	done 3< <(builtin)
+}; test_usage
 
 # ======
 # The 'alarm' builtin could make 'read' crash due to IFS table corruption caused by unsafe asynchronous execution.
@@ -1010,6 +1163,354 @@ then	got=$( { "$SHELL" -c '
 	'; } 2>&1)
 	((!(e = $?))) || err_exit 'crash with alarm and IFS' \
 		"(got status $e$( ((e>128)) && print -n / && kill -l "$e"), $(printf %q "$got"))"
+fi
+
+# ======
+# Verify that the POSIX 'test' builtin exits with status 2 when given an invalid binary operator.
+for operator in '===' ']]'
+do
+	actual=$(test foo "$operator" foo 2>&1)
+	actual_status=$?
+	actual=${actual#*: }
+	expect="test: $operator: unknown operator"
+	expect_status=2
+	[[ "$actual" = "$expect" ]] || err_exit "test $operator failed" \
+		"(expected $(printf %q "$expect"), got $(printf %q "$actual"))"
+	[[ "$actual_status" = "$expect_status" ]] ||
+		err_exit "'test foo $operator foo' failed with the wrong exit status (expected $expect_status, got $actual_status)"
+done
+
+# ======
+# Regression test for https://github.com/att/ast/issues/1402
+#
+# We throw away stderr because we only want the value of '$t', not the error text from running
+# 'command' with an invalid flag.
+exp='good'
+got=$($SHELL -c 't=good; t=bad command -@; print $t' 2>/dev/null)
+[[ $exp == $got ]] || err_exit "temp var assignment with 'command'" \
+	"(expected $(printf %q "$expect"), got $(printf %q "$actual"))"
+
+# ======
+# Regression test for https://github.com/att/ast/issues/949
+if	(builtin chmod) 2>/dev/null
+then	foo_script='#!/bin/sh
+	exit 0'
+	echo "$foo_script" > "$tmp/foo1.sh"
+	echo "$foo_script" > "$tmp/foo2.sh"
+	builtin chmod
+	chmod +x "$tmp/foo1.sh" "$tmp/foo2.sh"
+	$SHELL "$tmp/foo1.sh" || err_exit "builtin 'chmod +x' doesn't work on first script"
+	$SHELL "$tmp/foo2.sh" || err_exit "builtin 'chmod +x' doesn't work on second script"
+fi
+
+# ======
+# In ksh93v- 2013-10-10 alpha cd doesn't fail on directories without execute permission.
+# Additionally, ksh93v- added a regression test for attempting to use cd on a file.
+mkdir "$tmp/noexecute"
+chmod -x "$tmp/noexecute"
+$SHELL -c "cd $tmp/noexecute" 2> /dev/null && err_exit "'cd' on directories without an execute bit doesn't fail"
+touch "$tmp/notadir"
+$SHELL -c "cd $tmp/notadir" 2> /dev/null && err_exit "'cd' on a normal file doesn't fail"
+
+# ======
+# 'kill %' should fail with exit status 1
+{ $SHELL -c 'kill %' ;} 2> /dev/null
+got=$?
+exp=1
+[[ $got == $exp ]] || err_exit "'kill %' has the wrong exit status (expected '$exp'; got '$got')"
+
+# ======
+# 'cd -' should recognize the value of an overridden $OLDPWD variable
+# https://github.com/ksh93/ksh/pull/249
+# https://github.com/att/ast/issues/8
+
+mkdir "$tmp/oldpwd" "$tmp/otherpwd"
+exp=$tmp/oldpwd
+OLDPWD=$exp
+cd - > /dev/null
+got=$PWD
+[[ $got == "$exp" ]] || err_exit "cd - doesn't recognize overridden OLDPWD variable" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+cd "$tmp"
+OLDPWD=$tmp/otherpwd
+got=$(OLDPWD=$tmp/oldpwd cd -)
+[[ $got == "$exp" ]] ||
+	err_exit "cd - doesn't recognize overridden OLDPWD variable if it is overridden in new scope" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+function fn
+{
+	typeset OLDPWD=/tmp
+	cd -
+}
+exp='/tmp'
+got=$(OLDPWD=/bin fn)
+[[ $got == "$exp" ]] ||
+	err_exit "cd - doesn't recognize overridden OLDPWD variable if it is overridden in function scope" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+function fn
+{
+	typeset PWD=bug
+	cd /tmp
+	echo "$PWD"
+}
+exp='/tmp'
+got=$(fn)
+[[ $got == "$exp" ]] ||
+	err_exit "PWD isn't set after cd if already set in function scope" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+# $PWD should be set correctly after cd
+exp="$PWD
+$PWD"
+got=$(echo $PWD; PWD=/tmp cd /dev; echo $PWD)
+[[ $got == "$exp" ]] ||
+	err_exit "PWD is incorrect after cd" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+# Test for $OLDPWD and/or $PWD leaking out of subshell
+exp='/tmp /dev'
+got=$(
+	PWD=/dev
+	OLDPWD=/tmp
+	(
+		cd /usr; cd /bin
+		cd - > /dev/null
+	)
+	echo $OLDPWD $PWD
+)
+[[ $got == "$exp" ]] ||
+	err_exit "OLDPWD and/or PWD leak out of subshell" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+# $OLDPWD and $PWD should survive after being set in a subshare
+exp='/usr /bin'
+got=$(
+	PWD=/dev
+	OLDPWD=/tmp
+	foo=${
+		cd /usr; cd /bin
+	}
+	echo $OLDPWD $PWD
+)
+[[ $got == "$exp" ]] ||
+	err_exit "OLDPWD and/or PWD fail to survive subshare" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+# ======
+# Test for bugs related to 'uname -d'
+# https://github.com/att/ast/pull/1187
+if	(builtin uname) 2>/dev/null
+then	builtin uname
+	exp=$(uname -o)
+
+	# Test for a possible crash (to avoid crashing the script, fork the subshell)
+	(
+		ulimit -t unlimited 2> /dev/null
+		uname -d > /dev/null
+	) || err_exit "'uname -d' crashes"
+
+	# 'uname -d' shouldn't change the output of 'uname -o'
+	got=$(ulimit -t unlimited 2> /dev/null; uname -d > /dev/null; uname -o)
+	[[ $exp == $got ]] || err_exit "'uname -d' changes the output of 'uname -o'" \
+		"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+fi
+
+# ======
+# https://github.com/ksh93/ksh/issues/138
+builtin -d cat
+if	[[ $'\n'${ builtin; }$'\n' == *$'\n/opt/ast/bin/cat\n'* ]]
+then	exp='  version         cat (*) ????-??-??'
+	got=$(/opt/ast/bin/cat --version 2>&1)
+	[[ $got == $exp ]] || err_exit "path-bound builtin not executable by literal canonical path" \
+		"(expected match of $(printf %q "$exp"), got $(printf %q "$got"))"
+	got=$(PATH=/opt/ast/bin:$PATH; "${ whence -p cat; }" --version 2>&1)
+	[[ $got == $exp ]] || err_exit "path-bound builtin not executable by canonical path resulting from expansion" \
+		"(expected match of $(printf %q "$exp"), got $(printf %q "$got"))"
+	got=$(PATH=/opt/ast/bin:$PATH; "$SHELL" -o restricted -c 'cat --version' 2>&1)
+	[[ $got == $exp ]] || err_exit "restricted shells do not recognize path-bound builtins" \
+		"(expected match of $(printf %q "$exp"), got $(printf %q "$got"))"
+	got=$(set +x; PATH=/opt/ast/bin cat --version 2>&1)
+	[[ $got == $exp ]] || err_exit "path-bound builtin not found on PATH in preceding assignment" \
+		"(expected match of $(printf %q "$exp"), got $(printf %q "$got"))"
+else	warning 'skipping path-bound builtin tests: builtin /opt/ast/bin/cat not found'
+fi
+
+# ======
+# part of https://github.com/ksh93/ksh/issues/153
+mkdir "$tmp/deleted"
+cd "$tmp/deleted"
+tmp=$tmp "$SHELL" -c 'cd /; rmdir "$tmp/deleted"'
+exp=$PWD
+got=$("$SHELL" -c 'cd /; echo "$OLDPWD"' 2>&1)
+[[ $got == "$exp" ]] || err_exit "OLDPWD not correct after cd'ing from a nonexistent PWD" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+cd "$tmp"
+
+# ======
+# BUG_CMDSPEXIT
+exp='ok1ok2ok3ok4ok5ok6ok7ok8ok9ok10ok11ok12end'
+got=$(	readonly v=foo
+	exec 2>/dev/null
+	# All the "special builtins" below should fail, and not exit, so 'print end' is reached.
+	# Ref.: http://pubs.opengroup.org/onlinepubs/9699919799/utilities/contents.html
+	# Left out are 'command exec /dev/null/nonexistent', where no shell follows the standard,
+	# as well as 'command exit' and 'command return', because, well, obviously.
+	command : </dev/null/no		|| print -n ok1
+	command . /dev/null/no		|| print -n ok2
+	command set +o bad@option	|| print -n ok3
+	command shift $(($# + 1))	|| print -n ok4
+	(unalias times; PATH=/dev/null; eval 'command times foo bar >/dev/null || print -n ok5')
+	command trap foo bar baz quux	|| print -n ok6
+	command unset v			|| print -n ok7
+	command eval "("		|| print -n ok8
+	command export v=baz		|| print -n ok9
+	command readonly v=bar		|| print -n ok10
+	command break			&& print -n ok11  # 'break' and 'continue' are POSIXly allowed to quietly...
+	command continue		&& print -n ok12  # ..."succeed" if they are used outside of a loop :-/
+	print end)
+[[ $got == "$exp" ]] || err_exit "prefixing special builtin with 'command' does not stop it from exiting the shell on error" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+# ======
+# https://github.com/att/ast/issues/872
+hist_leak=$tmp/hist_leak.sh
+print 'ulimit -n 15' > "$hist_leak"
+for ((i=0; i!=11; i++)) do
+	print 'true foo\nhist -s foo=bar 2> /dev/null' >> "$hist_leak"
+done
+print 'print OK' >> "$hist_leak"
+exp="OK"
+got="$($SHELL -i "$hist_leak" 2>&1)"
+[[ $exp == "$got" ]] || err_exit "file descriptor leak in hist builtin" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+# File descriptor leak after hist builtin substitution error
+hist_error_leak=$tmp/hist_error_leak.sh
+print 'ulimit -n 15' > "$hist_error_leak"
+for ((i=0; i!=11; i++)) do
+	print 'hist -s no=yes 2> /dev/null' >> "$hist_error_leak"
+done
+print 'print OK' >> "$hist_error_leak"
+exp="OK"
+got="$($SHELL -i "$hist_error_leak" 2>&1)"
+[[ $exp == "$got" ]] || err_exit "file descriptor leak after substitution error in hist builtin" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+# ======
+# printf -v works as of 2021-11-18
+integer ver=.sh.version
+exp=ok$'\f'0000$ver$'\n'
+printf -v got 'ok\f%012d\n' $ver 2>/dev/null
+[[ $got == "$exp" ]] || err_exit "printf -v not working" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+unset got
+printf -v 'got[1][two][3]' 'ok\f%012d\n' $ver 2>/dev/null
+[[ ${got[1]["two"][3]} == "$exp" ]] || err_exit "printf -v not working with array subscripts" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+unset got ver
+
+# ======
+# The rm builtin's -d option should remove files and empty directories without
+# removing non-empty directories (unless the -r option is also passed).
+# https://www.austingroupbugs.net/view.php?id=802
+if builtin rm 2> /dev/null; then
+	echo foo > "$tmp/bar"
+	mkdir "$tmp/emptydir"
+	mkdir -p "$tmp/nonemptydir1/subfolder"
+	mkdir "$tmp/nonemptydir2"
+	echo dummyfile > "$tmp/nonemptydir2/shouldexist"
+
+	# Tests for lone -d option
+	got=$(rm -d "$tmp/emptydir" 2>&1)
+	[[ $? == 0 ]] || err_exit 'rm builtin fails to remove empty directory with -d option' \
+		"(got $(printf %q "$got"))"
+	[[ -d $tmp/emptydir ]] && err_exit 'rm builtin fails to remove empty directory with -d option'
+	got=$(rm -d $tmp/bar 2>&1)
+	[[ $? == 0 ]] || err_exit 'rm builtin fails to remove files with -d option' \
+		"(got $(printf %q "$got"))"
+	[[ -f $tmp/bar ]] && err_exit 'rm builtin fails to remove files with -d option'
+	rm -d "$tmp/nonemptydir1" 2> /dev/null
+	[[ ! -d $tmp/nonemptydir1/subfolder ]] && err_exit 'rm builtin has unwanted recursion with -d option on folder containing folder'
+	rm -d "$tmp/nonemptydir2" 2> /dev/null
+	[[ ! -f $tmp/nonemptydir2/shouldexist ]] && err_exit 'rm builtin has unwanted recursion with -d option on folder containing file'
+
+	# Recreate non-empty directories in case the above tests failed
+	mkdir -p "$tmp/nonemptydir1/subfolder"
+	mkdir -p "$tmp/nonemptydir2"
+	echo dummyfile > "$tmp/nonemptydir2/shouldexist"
+
+	# Tests combining -d with -r
+	got=$(rm -rd "$tmp/nonemptydir1" 2>&1)
+	[[ $? == 0 ]] || err_exit 'rm builtin fails to remove non-empty directory and subdirectory with -rd options' \
+		"(got $(printf %q "$got"))"
+	[[ -d $tmp/nonemptydir1/subfolder || -d $tmp/nonemptydir1 ]] && err_exit 'rm builtin fails to remove all folders with -rd options'
+	got=$(rm -rd "$tmp/nonemptydir2" 2>&1)
+	[[ $? == 0 ]] || err_exit 'rm builtin fails to remove non-empty directory and file with -rd options' \
+		"(got $(printf %q "$got"))"
+	[[ -f $tmp/nonemptydir2/shouldexist || -d $tmp/nonemptydir2 ]] && err_exit 'rm builtin fails to remove all folders and files with -rd options'
+fi
+
+# ======
+# These are regression tests for the cd command's -e and -P flags
+mkdir -p "$tmp/failpwd"
+ln -s "$tmp/failpwd" "$tmp/failpwd1"
+cd "$tmp/failpwd1"
+rm ../failpwd1
+cd -P .
+got=$?; exp=0
+(( got == exp )) || err_exit "cd -P without -e exits with error status if \$PWD doesn't exist (expected $exp, got $got)"
+cd -eP .
+got=$?; exp=1
+(( got == exp )) || err_exit "cd -eP doesn't fail if \$PWD doesn't exist (expected $exp, got $got)"
+cd "$tmp"
+cd -P "$tmp/notadir" >/dev/null 2>&1
+got=$?; exp=1
+(( got == exp )) || err_exit "cd -P without -e fails with wrong exit status on nonexistent dir (expected $exp, got $got)"
+cd -eP "$tmp/notadir" >/dev/null 2>&1
+got=$?; exp=2
+(( got == exp )) || err_exit "cd -eP fails with wrong exit status on nonexistent dir (expected $exp, got $got)"
+OLDPWD="$tmp/baddir"
+cd -P - >/dev/null 2>&1
+got=$?; exp=1
+(( got == exp )) || err_exit "cd -P without -e fails with wrong exit status on \$OLDPWD (expected $exp, got $got)"
+cd -eP - >/dev/null 2>&1
+got=$?; exp=2
+(( got == exp )) || err_exit "cd -eP fails with wrong exit status on \$OLDPWD (expected $exp, got $got)"
+cd "$tmp" || err_exit "couldn't change directory from nonexistent dir"
+(set -o restricted; cd -P /) >/dev/null 2>&1
+got=$?; exp=1
+(( got == exp )) || err_exit "cd -P in restricted shell has wrong exit status (expected $exp, got $got)"
+(set -o restricted; cd -eP /) >/dev/null 2>&1
+got=$?; exp=2
+(( got == exp )) || err_exit "cd -eP in restricted shell has wrong exit status (expected $exp, got $got)"
+(set -o restricted; cd -?) >/dev/null 2>&1
+got=$?; exp=1
+(( got == exp )) || err_exit "cd -? shows usage info in restricted shell and has wrong exit status (expected $exp, got $got)"
+(cd -P '') >/dev/null 2>&1
+got=$?; exp=1
+(( got == exp )) || err_exit "cd -P to empty string has wrong exit status (expected $exp, got $got)"
+(cd -eP '') >/dev/null 2>&1
+got=$?; exp=2
+(( got == exp )) || err_exit "cd -eP to empty string has wrong exit status (expected $exp, got $got)"
+
+# ======
+# The head and tail builtins should work on files without newlines
+if builtin head 2> /dev/null; then
+	print -n nonewline > "$tmp/nonewline"
+	exp=nonewline
+	got=$(head -1 "$tmp/nonewline")
+	[[ $got == $exp ]] || err_exit "head builtin fails to correctly handle files without an ending newline" \
+		"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+fi
+if builtin tail 2> /dev/null; then
+	print -n 'newline\nnonewline' > "$tmp/nonewline"
+	exp=nonewline
+	got=$(tail -1 "$tmp/nonewline")
+	[[ $got == $exp ]] || err_exit "tail builtin fails to correctly handle files without an ending newline" \
+		"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
 fi
 
 # ======

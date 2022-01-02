@@ -1,7 +1,6 @@
-#pragma prototyped noticed
 
 /*
- * workarounds to bring the native interface close to posix and x/open
+ * workarounds to bring the native interface close to POSIX and X/Open
  */
 
 #if defined(__STDPP__directive) && defined(__STDPP__hide)
@@ -15,6 +14,7 @@ __STDPP__directive pragma pp:hide utime utimes
 #include <error.h>
 #include <tm.h>
 
+#include "FEATURE/float"
 #include "FEATURE/omitted"
 
 #undef	OMITTED
@@ -46,7 +46,7 @@ __STDPP__directive pragma pp:nohide utime utimes
 
 /*
  * these workarounds assume each system call foo() has a _foo() entry
- * which is true for __CYGWIN__ and __EMX__ (both gnu based)
+ * which is true for __CYGWIN__ and __EMX__ (both GNU based)
  *
  * the workarounds handle:
  *
@@ -55,9 +55,9 @@ __STDPP__directive pragma pp:nohide utime utimes
  *	(3) bogus getpagesize() return values
  *	(4) a fork() bug that screws up shell fork()+script
  *
- * NOTE: Not all workarounds can be handled by unix syscall intercepts.
+ * NOTE: Not all workarounds can be handled by Unix syscall intercepts.
  *	 In particular, { ksh nmake } have workarounds for case-ignorant
- *	 filesystems and { libast } has workarounds for win32 locale info.
+ *	 filesystems and { libast } has workarounds for Win32 locale info.
  */
 
 #undef _pathconf
@@ -204,7 +204,7 @@ execrate(const char* path, char* buf, int size, int physical)
 
 /*
  * return 0 if path is magic, -1 otherwise
- * ux!=0 set to 1 if path is unix executable
+ * ux!=0 set to 1 if path is Unix executable
  * ux!=0 also retains errno for -1 return
  */
 
@@ -354,7 +354,7 @@ chmod(const char* path, mode_t mode)
 #if CONVERT
 
 /*
- * this intercept converts dos env vars to unix
+ * this intercept converts DOS env vars to Unix
  * we'd rather intercept main but can't twist cc to do it
  * getuid() gets ksh to do the right thing and
  * that's our main concern
@@ -463,7 +463,7 @@ runve(int mode, const char* path, char* const* argv, char* const* envv)
 	if (mode == _P_DETACH)
 	{
 		/*
-		 * 2004-02-29 cygwin _P_DETACH is useless:
+		 * 2004-02-29 Cygwin _P_DETACH is useless:
 		 *	spawn*() returns 0 instead of the spawned pid
 		 *	spawned { pgid sid } are the same as the parent
 		 */
@@ -523,18 +523,18 @@ runve(int mode, const char* path, char* const* argv, char* const* envv)
 	}
 
 	/*
-	 * the win32 dll search order is
+	 * the Win32 dll search order is
 	 *	(1) the directory of path
 	 *	(2) .
 	 *	(3) /c/(WINNT|WINDOWS)/system32 /c/(WINNT|WINDOWS)
 	 *	(4) the directories on $PATH
-	 * there are no cygwin dlls in (3), so if (1) and (2) fail
+	 * there are no Cygwin dlls in (3), so if (1) and (2) fail
 	 * to produce the required dlls it's up to (4)
 	 *
 	 * the standard allows PATH to be anything once the path
 	 * to an executable is determined; this code ensures that PATH
-	 * contains /bin so that at least the cygwin dll, required
-	 * by all cygwin executables, will be found
+	 * contains /bin so that at least the Cygwin dll, required
+	 * by all Cygwin executables, will be found
 	 */
 
 	if (p = (char**)envv)
@@ -1009,7 +1009,7 @@ unlink(const char* path)
 #if __CYGWIN__
 
 /*
- * cygwin refuses to set st_ctime for some operations
+ * Cygwin refuses to set st_ctime for some operations
  * this rejects that refusal
  */
 
@@ -1087,13 +1087,11 @@ utime(const char* path, const struct utimbuf* ut)
 #endif
 
 /*
- * some systems (sun) miss a few functions required by their
- * own bsd-like macros
+ * some systems (Sun) miss a few functions required by their
+ * own BSD-like macros
  */
 
-#if !_lib_bzero || defined(bzero)
-
-#undef	bzero
+#if !_lib_bzero
 
 void
 bzero(void* b, size_t n)
@@ -1143,6 +1141,36 @@ getpagesize()
 __EXPORT__ double (*_imp__strtod)(const char*, char**) = strtod;
 #endif
 
+#endif
+
+/* Kludge to deal with GCC's overzealous optimizer breaking the pow functions.
+ *
+ * Removal of this will break IEEE floating point on the SVR4 platforms.
+ */
+#if _need_ast_pow_funs
+# if _lib_powf
+float (*volatile _ast_ppowf)(float,float) = &powf;
+float _ast_powf(float x, float y)
+{
+	return x == 1.0F ? 1.0F : (*_ast_ppowf)(x,y);
+}
+# endif
+
+# if _lib_pow
+double (*volatile _ast_ppow)(double,double) = &pow;
+double _ast_pow(double x, double y)
+{
+	return x == 1.0 ? 1.0 : (*_ast_ppow)(x,y);
+}
+# endif
+
+# if _lib_powl
+long double (*volatile _ast_ppowl)(long double,long double) = &powl;
+long double _ast_powl(long double x, long double y)
+{
+	return x == 1.0L ? 1.0L : (*_ast_ppowl)(x,y);
+}
+# endif
 #endif
 
 #ifndef OMITTED

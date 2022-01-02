@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1990-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,7 @@
 *                 Glenn Fowler <gsf@research.att.com>                  *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
+#pragma clang diagnostic ignored "-Wdeprecated-register"
 #pragma clang diagnostic ignored "-Wparentheses"
 
 /*
@@ -27,7 +28,7 @@
  */
 
 #define RELEASE_DATE "2021-01-21"
-static char id[] = "\n@(#)$Id: mamake (AT&T Research/ksh93) " RELEASE_DATE " $\0\n";
+static char id[] = "\n@(#)$Id: mamake (ksh 93u+m) " RELEASE_DATE " $\0\n";
 
 #if _PACKAGE_ast
 
@@ -35,8 +36,11 @@ static char id[] = "\n@(#)$Id: mamake (AT&T Research/ksh93) " RELEASE_DATE " $\0
 #include <error.h>
 
 static const char usage[] =
-"[-?\n@(#)$Id: mamake (AT&T Research/ksh93) " RELEASE_DATE " $\n]"
-USAGE_LICENSE
+"[-?\n@(#)$Id: mamake (ksh 93u+m) " RELEASE_DATE " $\n]"
+"[-author?Glenn Fowler <gsf@research.att.com>]"
+"[-copyright?(c) 1994-2012 AT&T Intellectual Property]"
+"[-copyright?(c) 2020-2021 Contributors to https://github.com/ksh93/ksh]"
+"[-license?http://www.eclipse.org/org/documents/epl-v10.html]"
 "[+NAME?mamake - make abstract machine make]"
 "[+DESCRIPTION?\bmamake\b reads \amake abstract machine\a target and"
 "	prerequisite file descriptions from a mamfile (see \b-f\b) and executes"
@@ -106,7 +110,7 @@ USAGE_LICENSE
 #include <sys/stat.h>
 #include <time.h>
 
-#if !_PACKAGE_ast && defined(__STDC__)
+#if !_PACKAGE_ast
 #include <stdlib.h>
 #include <string.h>
 #endif
@@ -383,7 +387,7 @@ buffer(void)
 	if (buf = state.old)
 		state.old = state.old->old;
 	else if (!(buf = newof(0, Buf_t, 1, 0)) || !(buf->buf = newof(0, char, CHUNK, 0)))
-		report(3, "out of space [buffer]", NiL, (unsigned long)0);
+		report(3, "out of memory [buffer]", NiL, (unsigned long)0);
 	buf->end = buf->buf + CHUNK;
 	buf->nxt = buf->buf;
 	return buf;
@@ -415,7 +419,7 @@ appendn(Buf_t* buf, char* str, int n)
 		i = buf->nxt - buf->buf;
 		m = (((buf->end - buf->buf) + n + CHUNK + 1) / CHUNK) * CHUNK;
 		if (!(buf->buf = newof(buf->buf, char, m, 0)))
-			report(3, "out of space [buffer resize]", NiL, (unsigned long)0);
+			report(3, "out of memory [buffer resize]", NiL, (unsigned long)0);
 		buf->end = buf->buf + m;
 		buf->nxt = buf->buf + i;
 	}
@@ -450,7 +454,7 @@ duplicate(char* s)
 
 	n = strlen(s);
 	if (!(t = newof(0, char, n, 1)))
-		report(3, "out of space [duplicate]", s, (unsigned long)0);
+		report(3, "out of memory [duplicate]", s, (unsigned long)0);
 	strcpy(t, s);
 	return t;
 }
@@ -465,7 +469,7 @@ dictionary(void)
 	Dict_t*	dict;
 
 	if (!(dict = newof(0, Dict_t, 1, 0)))
-		report(3, "out of space [dictionary]", NiL, (unsigned long)0);
+		report(3, "out of memory [dictionary]", NiL, (unsigned long)0);
 	return dict;
 }
 
@@ -539,7 +543,7 @@ search(register Dict_t* dict, char* name, void* value)
 	else if (value)
 	{
 		if (!(root = newof(0, Dict_item_t, 1, strlen(name))))
-			report(3, "out of space [dictionary]", name, (unsigned long)0);
+			report(3, "out of memory [dictionary]", name, (unsigned long)0);
 		strcpy(root->name, name);
 	}
 	if (root)
@@ -606,7 +610,7 @@ rule(char* name)
 	if (!(r = (Rule_t*)search(state.rules, name, NiL)))
 	{
 		if (!(r = newof(0, Rule_t, 1, 0)))
-			report(3, "out of space [rule]", name, (unsigned long)0);
+			report(3, "out of memory [rule]", name, (unsigned long)0);
 		r->name = (char*)search(state.rules, name, (void*)r);
 	}
 	return r;
@@ -625,7 +629,7 @@ cons(Rule_t* r, Rule_t* p)
 	if (!x)
 	{
 		if (!(x = newof(0, List_t, 1, 0)))
-			report(3, "out of space [list]", r->name, (unsigned long)0);
+			report(3, "out of memory [list]", r->name, (unsigned long)0);
 		x->rule = p;
 		x->next = r->prereqs;
 		r->prereqs = x;
@@ -709,7 +713,7 @@ view(void)
 			}
 			n = strlen(s);
 			if (!(vp = newof(0, View_t, 1, strlen(p) + n + 1)))
-				report(3, "out of space [view]", s, (unsigned long)0);
+				report(3, "out of memory [view]", s, (unsigned long)0);
 			vp->node = n + 1;
 			strcpy(vp->dir, s);
 			*(vp->dir + n) = '/';
@@ -861,7 +865,7 @@ substitute(Buf_t* buf, register char* s)
 				}
 				if (c != '-')
 					break;
-				/*FALLTHROUGH*/
+				/* FALLTHROUGH */
 			case 0:
 			case '=':
 			case '}':
@@ -1076,13 +1080,23 @@ push(char* file, Stdio_t* fp, int flags)
 	else if (++state.sp >= &state.streams[elementsof(state.streams)])
 		report(3, "input stream stack overflow", NiL, (unsigned long)0);
 	if (state.sp->fp = fp)
-		state.sp->file = "pipeline";
+	{
+		if(state.sp->file)
+			free(state.sp->file);
+		state.sp->file = strdup("pipeline");
+		if(!state.sp->file)
+			report(3, "out of memory [push]", NiL, (unsigned long)0);
+	}
 	else if (flags & STREAM_PIPE)
 		report(3, "pipe error", file, (unsigned long)0);
 	else if (!file || !strcmp(file, "-") || !strcmp(file, "/dev/stdin"))
 	{
 		flags |= STREAM_KEEP;
-		state.sp->file = "/dev/stdin";
+		if(state.sp->file)
+			free(state.sp->file);
+		state.sp->file = strdup("/dev/stdin");
+		if(!state.sp->file)
+			report(3, "out of memory [push]", NiL, (unsigned long)0);
 		state.sp->fp = stdin;
 	}
 	else
@@ -1092,6 +1106,8 @@ push(char* file, Stdio_t* fp, int flags)
 		{
 			if (!(state.sp->fp = fopen(path, "r")))
 				report(3, "cannot read", path, (unsigned long)0);
+			if(state.sp->file)
+				free(state.sp->file);
 			state.sp->file = duplicate(path);
 			drop(buf);
 		}
@@ -1136,7 +1152,7 @@ input(void)
 /*
  * pass shell action s to ${SHELL:-/bin/sh}
  * the -c wrapper ensures that scripts are run in the selected shell
- * even on systems that otherwise demand #! magic (can you say cygwin)
+ * even on systems that otherwise demand #! magic (can you say Cygwin)
  */
 
 static int
@@ -1443,6 +1459,7 @@ require(char* lib, int dontcare)
 	Buf_t*		tmp;
 	struct stat	st;
 
+	int		tofree = 0;
 	static int	dynamic = -1;
 
 	if (dynamic < 0)
@@ -1487,7 +1504,10 @@ require(char* lib, int dontcare)
 			}
 		}
 		if (r != lib)
+		{
+			tofree = 1;
 			r = duplicate(r);
+		}
 		search(state.vars, lib, r);
 		append(tmp, lib + 2);
 		append(tmp, ".req");
@@ -1516,6 +1536,8 @@ require(char* lib, int dontcare)
 				}
 			}
 			fclose(f);
+			if(tofree)
+				free(r);
 			r = use(buf);
 		}
 		else if (dontcare)
@@ -1530,7 +1552,11 @@ require(char* lib, int dontcare)
 			append(tmp, "rm -f x.${!-$$}.[cox]\n");
 			append(tmp, "exit $c\n");
 			if (execute(expand(buf, use(tmp))))
+			{
+				if(tofree)
+					free(r);
 				r = "";
+			}
 		}
 		r = duplicate(r);
 		search(state.vars, lib, r);
@@ -2115,7 +2141,7 @@ main(int argc, char** argv)
 			continue;
 		case 'N':
 			state.never = 1;
-			/*FALLTHROUGH*/
+			/* FALLTHROUGH */
 		case 'n':
 			append(state.opt, " -n");
 			state.exec = 0;
@@ -2154,8 +2180,8 @@ main(int argc, char** argv)
 			search(state.vars, "-strip-symbols", "1");
 			continue;
 		case '?':
-			error(ERROR_USAGE|4, "%s", opt_info.arg);
-			continue;
+			error(ERROR_usage(2), "%s", opt_info.arg);
+			UNREACHABLE();
 		case ':':
 			error(2, "%s", opt_info.arg);
 			continue;
@@ -2163,7 +2189,10 @@ main(int argc, char** argv)
 		break;
 	}
 	if (error_info.errors)
-		error(ERROR_USAGE|4, "%s", optusage(NiL));
+	{
+		error(ERROR_usage(2), "%s", optusage(NiL));
+		UNREACHABLE();
+	}
 	argv += opt_info.index;
 #else
 	while ((s = *++argv) && *s == '-')
@@ -2220,7 +2249,7 @@ main(int argc, char** argv)
 				continue;
 			case 'N':
 				state.never = 1;
-				/*FALLTHROUGH*/
+				/* FALLTHROUGH */
 			case 'n':
 				append(state.opt, " -n");
 				state.exec = 0;
@@ -2275,6 +2304,7 @@ main(int argc, char** argv)
 				break;
 			default:
 				report(2, "unknown option", s, (unsigned long)0);
+				/* FALLTHROUGH */
 			case '?':
 				usage();
 				break;

@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -31,13 +32,7 @@ void _STUB_vmstrdup(){}
  * return a copy of s using vmalloc
  */
 
-#if __STD_C
 char* vmstrdup(Vmalloc_t* v, register const char* s)
-#else
-char* vmstrdup(v, s)
-Vmalloc_t*	v;
-register char*	s;
-#endif
 {
 	register char*	t;
 	register size_t	n;

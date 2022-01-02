@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,10 +20,9 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 /*
- * ksh builtin command api
+ * ksh builtin command API
  */
 
 #ifndef _SHCMD_H
@@ -33,11 +33,7 @@
 #endif
 #define SH_PLUGIN_VERSION	AST_PLUGIN_VERSION(20111111L)
 
-#if __STDC__
 #define SHLIB(m)	unsigned long	plugin_version(void) { return SH_PLUGIN_VERSION; }
-#else
-#define SHLIB(m)	unsigned long	plugin_version() { return SH_PLUGIN_VERSION; }
-#endif
 
 #ifndef SH_VERSION
 #   define Shell_t	void

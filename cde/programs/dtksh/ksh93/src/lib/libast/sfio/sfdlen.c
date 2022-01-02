@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -26,12 +27,7 @@
 **	Written by Kiem-Phong Vo
 */
 
-#if __STD_C
 int _sfdlen(Sfdouble_t v)
-#else
-int _sfdlen(v)
-Sfdouble_t	v;
-#endif
 {
 #define N_ARRAY		(16*sizeof(Sfdouble_t))
 	reg int		n, w;

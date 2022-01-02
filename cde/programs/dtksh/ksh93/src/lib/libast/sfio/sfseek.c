@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -26,13 +27,7 @@
 **	Written by Kiem-Phong Vo.
 */
 
-#if __STD_C
 static void newpos(Sfio_t* f, Sfoff_t p)
-#else
-static void newpos(f, p)
-Sfio_t*	f;
-Sfoff_t p;
-#endif
 {
 #ifdef MAP_TYPE
 	if((f->bits&SF_MMAP) && f->data)
@@ -48,14 +43,9 @@ Sfoff_t p;
 	}
 }
 
-#if __STD_C
-Sfoff_t sfseek(Sfio_t* f, Sfoff_t p, int type)
-#else
-Sfoff_t sfseek(f,p,type)
-Sfio_t*	f;	/* seek to a new location in this stream */
-Sfoff_t	p;	/* place to seek to */
-int	type;	/* 0: from org, 1: from here, 2: from end */
-#endif
+Sfoff_t sfseek(Sfio_t*	f,	/* seek to a new location in this stream */
+	       Sfoff_t	p,	/* place to seek to */
+	       int	type)	/* 0: from org, 1: from here, 2: from end */
 {
 	Sfoff_t	r, s;
 	int	mode, local, hardseek, mustsync;
@@ -89,7 +79,7 @@ int	type;	/* 0: from org, 1: from here, 2: from end */
 	mustsync = (type&SF_SHARE) && !(type&SF_PUBLIC) &&
 		   (f->mode&SF_READ) && !(f->flags&SF_STRING);
 
-	/* Xopen-compliant */
+	/* X/Open-compliant */
 	if((type &= (SEEK_SET|SEEK_CUR|SEEK_END)) != SEEK_SET &&
 	   type != SEEK_CUR && type != SEEK_END )
 	{	errno = EINVAL;
@@ -203,10 +193,10 @@ int	type;	/* 0: from org, 1: from here, 2: from end */
 
 #ifdef MAP_TYPE
 	if(f->bits&SF_MMAP)
-	{	/* if mmap is not great, stop mmaping if moving around too much */
+	{	/* if mmap is not great, stop mmapping if moving around too much */
 #if _mmap_worthy < 2
 		if((f->next - f->data) < ((f->endb - f->data)/4) )
-		{	SFSETBUF(f,(Void_t*)f->tiny,(size_t)SF_UNBOUND);
+		{	SFSETBUF(f,(void*)f->tiny,(size_t)SF_UNBOUND);
 			hardseek = 1; /* this forces a hard seek below */
 		}
 		else

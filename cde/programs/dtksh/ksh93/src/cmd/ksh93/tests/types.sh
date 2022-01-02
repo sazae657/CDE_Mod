@@ -2,6 +2,7 @@
 #                                                                      #
 #               This software is part of the ast package               #
 #          Copyright (c) 1982-2012 AT&T Intellectual Property          #
+#          Copyright (c) 2020-2021 Contributors to ksh 93u+m           #
 #                      and is licensed under the                       #
 #                 Eclipse Public License, Version 1.0                  #
 #                    by AT&T Intellectual Property                     #
@@ -17,18 +18,8 @@
 #                  David Korn <dgk@research.att.com>                   #
 #                                                                      #
 ########################################################################
-function err_exit
-{
-	print -u2 -n "\t"
-	print -u2 -r ${Command}[$1]: "${@:2}"
-	(( Errors+=1 ))
-}
-alias err_exit='err_exit $LINENO'
 
-Command=${0##*/}
-integer Errors=0
-
-[[ -d $tmp && -w $tmp && $tmp == "$PWD" ]] || { err\_exit "$LINENO" '$tmp not set; run this from shtests. Aborting.'; exit 1; }
+. "${SHTESTS_COMMON:-${0%/*}/_common}"
 
 integer n=2
 
@@ -84,7 +75,7 @@ Frame_t frame
 [[ $(typeset -p frame) == 'Frame_t frame=(typeset file;typeset lineno)' ]] || err_exit 'empty fields in type not displayed'
 x=( typeset -a arr=([2]=abc [4]=(x=1 y=def));zz=abc)
 typeset -C y=x
-[[ "$x" == "$y" ]] || print -u2 'y is not equal to x'
+[[ "$x" == "$y" ]] || err_exit "y is not equal to x (y == $(printf %q "$y"); x == $(printf %q "$x"))"
 Type_t z=(y=(xa=bb xq=cc))
 typeset -A arr=([foo]=one [bar]=2)
 typeset -A brr=([foo]=one [bar]=2)
@@ -134,9 +125,9 @@ X_t x
 [[ ${x.s} == ${x.x} ]] || err_exit 'x.s should be x.x'
 typeset -T Y_t=( X_t r )
 Y_t z
-[[ ${z.r.x} == foo ]] || err_exit 'z.r.x should be foo'
-[[ ${z.r.y} == bam ]] || err_exit 'z.r.y should be bam'
-[[ ${z.r.s} == ${z.r.x} ]] || err_exit 'z.r.s should be z.r.x'
+[[ ${z.r.x} == foo ]] || err_exit "z.r.x should be foo (got $(printf %q "${z.r.x}"))"
+[[ ${z.r.y} == bam ]] || err_exit "z.r.y should be bam (got $(printf %q "${z.r.y}"))"
+[[ ${z.r.s} == ${z.r.x} ]] || err_exit "z.r.s should be z.r.x (expected $(printf %q "${z.r.x}"), got $(printf %q "${z.r.s}"))"
 
 unset xx yy
 typeset -T xx=(typeset yy=zz)
@@ -360,7 +351,7 @@ expected=$'(\n\ttypeset -l -i h=0\n\tbenchcmd_t -a m\n\ttypeset -l -E o=0\n)'
 expected=$'Std_file_t db.file[/etc/profile]=(action=preserve;typeset -A sum=([8242e663d6f7bb4c5427a0e58e2925f3]=1);)'
 {
   got=$($SHELL <<- \EOF 
-	MAGIC='stdinstall (at&t research) 2009-08-25'
+	MAGIC='stdinstall (AT&T Research) 2009-08-25'
 	typeset -T Std_file_t=(
 		typeset action
 		typeset -A sum
@@ -369,7 +360,7 @@ expected=$'Std_file_t db.file[/etc/profile]=(action=preserve;typeset -A sum=([82
 		typeset magic=$MAGIC
 		Std_file_t -A file
 	)
-	Std_t db=(magic='stdinstall (at&t research) 2009-08-25';Std_file_t -A file=( [/./home/gsf/.env.sh]=(action=preserve;typeset -A sum=([9b67ab407d01a52b3e73e3945b9a3ee0]=1);)[/etc/profile]=(action=preserve;typeset -A sum=([8242e663d6f7bb4c5427a0e58e2925f3]=1);)[/home/gsf/.profile]=(action=preserve;typeset -A sum=([3ce23137335219672bf2865d003a098e]=1);));)
+	Std_t db=(magic='stdinstall (AT&T Research) 2009-08-25';Std_file_t -A file=( [/./home/gsf/.env.sh]=(action=preserve;typeset -A sum=([9b67ab407d01a52b3e73e3945b9a3ee0]=1);)[/etc/profile]=(action=preserve;typeset -A sum=([8242e663d6f7bb4c5427a0e58e2925f3]=1);)[/home/gsf/.profile]=(action=preserve;typeset -A sum=([3ce23137335219672bf2865d003a098e]=1);));)
 	typeset -p db.file[/etc/profile]
 	EOF)
 } 2> /dev/null
@@ -461,20 +452,24 @@ cd "$tmp"
 FPATH=$PWD
 PATH=$PWD:$PATH
 cat > A_t <<-  \EOF
+	if	false
+	then	typeset -T Parser_shenanigans=(typeset -i foo)
+	fi
 	typeset -T A_t=(
 		B_t b
 	)
 EOF
 cat > B_t <<-  \EOF
+	PATH=/dev/null command -v Parser_shenanigans
 	typeset -T B_t=(
 		integer n=5
 	)
 EOF
 
 unset n
-if	n=$(FPATH=$PWD PATH=$PWD:$PATH $SHELL 2> /dev/null -c 'A_t a; print ${a.b.n}') 
-then	(( n==5 )) || err_exit 'dynamic loading of types gives wrong result'
-else	err_exit 'unable to load types dynamically'
+if	n=$(set +x; FPATH=$PWD PATH=$PWD:$PATH "$SHELL" -c 'A_t a; print ${a.b.n}' 2>&1)
+then	[[ $n == '5' ]] || err_exit "dynamic loading of types gives wrong result (got $(printf %q "$n"))"
+else	err_exit "unable to load types dynamically (got $(printf %q "$n"))"
 fi
 
 # check that typeset -T reproduces a type.
@@ -511,9 +506,9 @@ fi
 { $SHELL -c '(sleep 3;kill $$)& typeset -T x=( typeset -a s );compound c;x c.i;c.i.s[7][5][3]=hello;x c.j=c.i;[[ ${c.i} == "${c.j}" ]]';} 2> /dev/null
 exitval=$?
 if	[[ $(kill -l $exitval) == TERM ]]
-then	err_exit 'clone of multi-dimensional array timed out'
+then	err_exit 'clone of multidimensional array timed out'
 elif	((exitval))
-then	err_exit "c.i and c.j are not the same multi-dimensional array"
+then	err_exit "c.i and c.j are not the same multidimensional array"
 fi
 
 typeset -T foobar_t=(
@@ -641,6 +636,26 @@ bar.foo+=(bam)
 # ======
 # Type names that have 'a' as the first letter should be functional
 "$SHELL" -c 'typeset -T al=(typeset bar); al foo=(bar=testset)' || err_exit "type names that start with 'a' don't work"
+
+# ======
+# 'typeset -T' shouldn't list types created by enum
+got=$($SHELL -c 'enum Foo_t=(foo bar); typeset -T')
+[[ -z $got ]] || err_exit "Types created by enum are listed with 'typeset -T'" \
+	"(got $(printf %q "$got"))"
+
+# ======
+# Parser shenanigans.
+if	false
+then	typeset -T PARSER_t=(typeset name=foobar)
+fi
+PATH=/dev/null command -v PARSER_t >/dev/null && err_exit "PARSER_t incompletely defined though definition was never executed"
+
+unset v
+got=$( set +x; redirect 2>&1; typeset -T Subsh_t=(typeset -i x); Subsh_t -a v=( (x=1) (x=2) (x=3) ); typeset -p v )
+exp='Subsh_t -a v=((typeset -i x=1) (typeset -i x=2) (typeset -i x=3))'
+[[ $got == "$exp" ]] || err_exit "bad typeset output for Subsh_t" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+PATH=/dev/null command -v Subsh_t >/dev/null && err_exit "Subsh_t leaked out of subshell"
 
 # ======
 exit $((Errors<125?Errors:125))

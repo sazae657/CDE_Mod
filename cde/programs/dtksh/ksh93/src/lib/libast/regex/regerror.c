@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,13 +20,12 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 /*
- * posix regex error message handler
+ * POSIX regex error message handler
  */
 
-static const char id[] = "\n@(#)$Id: regex (AT&T Research) 2012-05-31 $\0\n";
+static const char id[] = "\n@(#)$Id: regex (AT&T Research) 2012-09-27 $\0\n";
 
 #include "reglib.h"
 
@@ -44,7 +44,7 @@ static const char*	reg_error[] =
 	/* REG_EBRACE	*/	"\\{...\\} or {...} imbalance",
 	/* REG_BADBR	*/	"invalid {...} digits",
 	/* REG_ERANGE	*/	"invalid [...] range endpoint",
-	/* REG_ESPACE	*/	"out of space",
+	/* REG_ESPACE	*/	"out of memory",
 	/* REG_BADRPT	*/	"unary op not preceded by re",
 	/* REG_ENULL	*/	"empty subexpr in pattern",
 	/* REG_ECOUNT	*/	"re component count overflow",

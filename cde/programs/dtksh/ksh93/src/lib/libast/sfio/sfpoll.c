@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -28,14 +29,9 @@
 **	Written by Kiem-Phong Vo.
 */
 
-#if __STD_C
-int sfpoll(Sfio_t** fa, reg int n, int tm)
-#else
-int sfpoll(fa, n, tm)
-Sfio_t**	fa;	/* array of streams to poll		*/
-reg int		n;	/* number of streams in array		*/
-int		tm;	/* time in millisecs for select/poll	*/
-#endif
+int sfpoll(Sfio_t** fa,	/* array of streams to poll		*/
+	   reg int n,	/* number of streams in array		*/
+	   int tm)	/* time in milliseconds for select/poll	*/
 {
 	reg int		r, c, m, np, eintr;
 	reg Sfio_t*	f;
@@ -138,7 +134,7 @@ int		tm;	/* time in millisecs for select/poll	*/
 		while((np = SFPOLL(fds,m,tm)) < 0 )
 		{	if(errno == eintr || errno == EAGAIN)
 				errno = 0;
-			else	break;
+			else	goto report;
 		}
 		if(np > 0) /* poll succeeded */
 			np = c;
@@ -147,19 +143,19 @@ int		tm;	/* time in millisecs for select/poll	*/
 		{	f = fa[check[r]];
 
 			if((f->flags&SF_WRITE) && !WRREADY(f) )
-			{	if(fds[m].revents&POLLOUT)
+			{	if(fds[m].revents&(POLLOUT|POLLHUP|POLLERR))
 					status[check[r]] |= SF_WRITE;
 			}
 
 			if((f->flags&SF_READ)  && !RDREADY(f))
 			{	if((f->mode&SF_WRITE) && HASAUXFD(f))
 					m += 1;
-				if(fds[m].revents&POLLIN)
+				if(fds[m].revents&(POLLIN|POLLHUP|POLLERR))
 					status[check[r]] |= SF_READ;
 			}
 		}
 
-		free((Void_t*)fds);
+		free((void*)fds);
 	}
 #endif /*_lib_poll*/
 
@@ -200,7 +196,7 @@ int		tm;	/* time in millisecs for select/poll	*/
 		while((np = select(m+1,&rd,&wr,NIL(fd_set*),tmp)) < 0 )
 		{	if(errno == eintr)
 				errno = 0;
-			else	break;
+			else	goto report;
 		}
 		if(np > 0)
 			np = c;
@@ -227,6 +223,7 @@ int		tm;	/* time in millisecs for select/poll	*/
 	}
 #endif /*_lib_select*/
 
+ report:
 	for(r = c = 0; c < n; ++c)
 	{	if(status[c] == 0)
 			continue;
@@ -236,7 +233,7 @@ int		tm;	/* time in millisecs for select/poll	*/
 
 		/* announce status */
 		if(f->disc && f->disc->exceptf)
-			(*f->disc->exceptf)(f,SF_READY,(Void_t*)(long)status[c],f->disc);
+			(*f->disc->exceptf)(f,SF_READY,(void*)(long)status[c],f->disc);
 
 		if(c > r) /* move to front of list */
 		{	fa[c] = fa[r];
@@ -245,6 +242,6 @@ int		tm;	/* time in millisecs for select/poll	*/
 		r += 1;
 	}
 
-	free((Void_t*)status);
+	free((void*)status);
 	return r ? r : np < 0 ? -1 : 0;
 }

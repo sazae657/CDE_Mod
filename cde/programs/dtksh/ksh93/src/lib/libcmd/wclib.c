@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1992-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -18,7 +19,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * David Korn
  * AT&T Bell Laboratories
@@ -110,7 +110,7 @@ static int invalid(const char *file, int nlines)
 }
 
 /*
- * handle utf space characters
+ * handle UTF space characters
  */
 
 static int chkstate(int state, register unsigned int c)
@@ -463,10 +463,7 @@ int wc_count(Wc_t *wp, Sfio_t *fd, const char* file)
 						while(mbc(c) && ((c|WC_ERR) || (c&7)==0)) 
 							c=type[*cp++];
 						if(eol(c) && (cp > endbuff))
-						{
-							c = WC_MB|WC_ERR;
 							goto eob;
-						}
 						if(mbc(c))
 							goto mbyte;
 						else if(c&WC_SP)
@@ -512,4 +509,3 @@ int wc_count(Wc_t *wp, Sfio_t *fd, const char* file)
 	wp->lines = nlines;
 	return 0;
 }
-

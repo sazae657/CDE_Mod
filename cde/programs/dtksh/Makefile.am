@@ -55,20 +55,28 @@ dtksh_SOURCES = init.c \
                 extra.c \
                 msgs.c
 
-init.c:
-	cd ksh93; ./bin/package flat make CCFLAGS='$(SUIDEXECDEFINES) -g -D_std_malloc'
-	cp ./ksh93/src/cmd/ksh93/sh/init.c init.c
-	$(PATCH) --posix init.c -i init.patch
-	./setup.sh
+ksh93/bin/ksh:
+	ksh93/bin/package flat make CCFLAGS='$(CFLAGS) $(SUIDEXECDEFINES)'
 
+init.c: ksh93/bin/ksh
+	$(CP) ksh93/src/cmd/ksh93/sh/init.c ./
+
+pmain.o: ksh93/bin/ksh
+	$(CP) ksh93/src/cmd/ksh93/pmain.o ./
+
+FEATURE: ksh93/bin/ksh
+	$(CP) -R ksh93/src/cmd/ksh93/FEATURE ./
 
 libshell.a: $(KSH93SLIBSHELL) dtksh-init.o
 	$(CP) $(KSH93LIBSHELL) libshell.a; \
 	$(AR) d libshell.a init.o; \
 	$(AR) cq libshell.a dtksh-init.o
 
+check-local:
+	./dtksh -c true && ksh93/bin/shtests --posix --utf8 SHELL=.libs/lt-dtksh
+
 clean-local:
-	cd ksh93 && ./bin/package flat clean
+	ksh93/bin/package clean
 
 DtFuncs.dtsh:
 	$(CP) DtFuncs.sh DtFuncs.dtsh

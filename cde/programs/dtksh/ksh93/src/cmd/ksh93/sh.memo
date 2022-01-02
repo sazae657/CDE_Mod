@@ -484,7 +484,7 @@ prior to evaluation.
 A convenient alias,
 .ce
 \f5alias r='hist -s'\fP
-has been pre-defined so that
+has been predefined so that
 the single key-stroke
 \f5r\fP
 can be used to re-execute the previous command
@@ -975,7 +975,7 @@ The value of
 variable
 is the value of the most
 recent assignment plus the elapsed time.
-By default, the time is measured in milli-seconds,
+By default, the time is measured in milliseconds,
 but since
 .B \s-1SECONDS\s+1
 is a floating point variable, the
@@ -1098,7 +1098,7 @@ A
 immediately preceding
 a single quoted string
 causes all the characters until the matching single quote
-to be interpreted as an ANSI-C language string.
+to be interpreted as an ANSI C language string.
 Thus, \f5'\en'\fP represents characters \f5\e\fP and
 \f5n\fP, whereas, \f5$'\en'\fP 
 represents the new-line character.
@@ -1222,7 +1222,7 @@ The third type of parameter is a variable.
 As mentioned earlier,
 \f5ksh\fP uses variables whose names
 consist of one or more
-alpha-numeric strings separated by a \fB\s+2.\s-2\fP.
+alphanumeric strings separated by a \fB\s+2.\s-2\fP.
 There is no need to specify the
 .I type
 of a variable in the shell because, by default,
@@ -1267,7 +1267,7 @@ For each of these attributes, a width can be defined explicitly or else
 it is defined the first time an assignment is made to the variable.
 Each assignment causes justification of the field, truncating
 if necessary.
-Assignment to fixed sized variables
+Assignment to fixed-size variables
 provides one way to generate a substring consisting of
 a fixed number of characters from
 the beginning or end of a string.
@@ -1460,7 +1460,7 @@ an associative array with the given arguments as subscripts.
 For example,
 .ce
 \f5bar=( [color]=red [shape]=box )\fP
-creates an associate array named \f5bar\fP whose
+creates an associative array named \f5bar\fP whose
 subscripts are \f5color\fP and \f5shape\fP.
 .P
 The third form for \fIassignment-list\fP is a list of
@@ -1661,7 +1661,7 @@ so that another notation was required.
 The arithmetic expression
 inside the double parentheses
 follows the same syntax, associativity and precedence
-as the ANSI-C\*(Rf
+as the ANSI C\*(Rf
 .RS
 American National Standard for Information Systems \- Programming
 Language \- C, ANSI X3.159-1989.
@@ -1675,7 +1675,7 @@ without additional quoting.
 All arithmetic evaluations are performed using
 double precision floating point arithmetic.
 Floating point constants follow the same rules as
-the ANSI-C programming language.
+the ANSI C programming language.
 Integer arithmetic constants are written as
 .ce
 .IB base # number,
@@ -1738,7 +1738,7 @@ The syntax,
 .ce
 \f5for\fP \fB((\fP \fIexpr1\fP\fB;\fP \fIexpr2\fP \fB;\fP \fIexpr3 \fP\fB))\fP
 can be used as the first line of a \f5for\fP loop with the same semantics
-as the \f5for\fP statement in the ANSI-C programming language.
+as the \f5for\fP statement in the ANSI C programming language.
 .P
 Arithmetic evaluations can also be performed as part of the evaluation
 of a command line.
@@ -1865,14 +1865,14 @@ and that ends in
 .BR a\-z .
 The sequence \f5[:alpha:]\fP
 inside a character class, matches any set of characters in
-the ANSI-C
+the ANSI C
 .B alpha
 class.
 Similarly, \f5[:\fP\fIclass\fP\f5:]\fP matches
 each of the characters in the given \fIclass\fP
-for all the ANSI-C character classes.
+for all the ANSI C character classes.
 For example, \f5[[:alnum:]_]\fP
-matches any alpha-numeric character or the character
+matches any alphanumeric character or the character
 .BR _ .
 .P
 \f5ksh\fP
@@ -2292,8 +2292,8 @@ The IEEE POSIX shell and utilities standard committee was unable
 to reconcile the differences between the System V and BSD
 versions of \f5echo\fP.
 They introduced a new command named \f5printf\fP
-which takes an ANSI-C format string and a list of options
-and outputs the strings using the ANSI-C formatting rules.
+which takes an ANSI C format string and a list of options
+and outputs the strings using the ANSI C formatting rules.
 Since \f5ksh\fP is POSIX conforming, it accepts \f5printf\fP.
 However, there is a
 .B \-f
@@ -2706,7 +2706,7 @@ A third reason to have a command built-in is so that
 it will be unaffected by the setting of the
 .B \s-1PATH\s+1
 variable.
-The \f5print\fP  command fits this category.
+The \f5print\fP command fits this category.
 Scripts that use \f5print\fP will be portable
 to all sites that run \f5ksh\fP.
 .P
@@ -2778,7 +2778,7 @@ the pathname for the built-in.  The basename of this path must
 be the name of an existing built-in for this to succeed.
 Specifying the name of the built-in without a pathname causes
 this built-in to be found before a path search.
-A built-in can be deleted  with the \fB\-d\fP option.
+A built-in can be deleted with the \fB\-d\fP option.
 .P
 On systems with run time loading of libraries, built-in commands
 can be added with the \f5builtin\fP command.
@@ -3113,7 +3113,7 @@ D. G Korn
 TM-59554-860602-03, 1986.
 .RF
 .H 1 "CODE CHANGES"
-\f5ksh\fP is written in ANSI-C as a reusable library.
+\f5ksh\fP is written in ANSI C as a reusable library.
 The code can be compiled with C++ and older K&R C as well.
 The code uses the IEEE POSIX 1003.1 and ISO 9945-1 standard\*(Rf
 .RS

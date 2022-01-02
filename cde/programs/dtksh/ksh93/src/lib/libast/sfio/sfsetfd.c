@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -26,13 +27,7 @@
 **	Written by Kiem-Phong Vo.
 */
 
-#if __STD_C
 static int _sfdup(int fd, int newfd)
-#else
-static int _sfdup(fd,newfd)
-int	fd;
-int	newfd;
-#endif
 {
 	reg int	dupfd;
 
@@ -55,13 +50,7 @@ int	newfd;
 #endif
 }
 
-#if __STD_C
 int sfsetfd(Sfio_t* f, int newfd)
-#else
-int sfsetfd(f,newfd)
-Sfio_t	*f;
-int	newfd;
-#endif
 {
 	reg int		oldfd;
 	SFMTXDECL(f);

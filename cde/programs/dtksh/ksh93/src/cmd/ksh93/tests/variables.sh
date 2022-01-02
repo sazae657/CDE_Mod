@@ -2,6 +2,7 @@
 #                                                                      #
 #               This software is part of the ast package               #
 #          Copyright (c) 1982-2012 AT&T Intellectual Property          #
+#          Copyright (c) 2020-2021 Contributors to ksh 93u+m           #
 #                      and is licensed under the                       #
 #                 Eclipse Public License, Version 1.0                  #
 #                    by AT&T Intellectual Property                     #
@@ -17,47 +18,117 @@
 #                  David Korn <dgk@research.att.com>                   #
 #                                                                      #
 ########################################################################
-function err_exit
-{
-	print -u2 -n "\t"
-	print -u2 -r "${Command}[$1]: ${@:2}"
-	let Errors+=1
-}
-alias err_exit='err_exit $LINENO'
 
-Command=${0##*/}
-integer Errors=0
-
-[[ -d $tmp && -w $tmp && $tmp == "$PWD" ]] || { err\_exit "$LINENO" '$tmp not set; run this from shtests. Aborting.'; exit 1; }
+. "${SHTESTS_COMMON:-${0%/*}/_common}"
 
 [[ ${.sh.version} == "$KSH_VERSION" ]] || err_exit '.sh.version != KSH_VERSION'
 unset ss
 [[ ${@ss} ]] && err_exit '${@ss} should be empty string when ss is unset'
 [[ ${!ss} == ss ]] ||  err_exit '${!ss} should be ss when ss is unset'
 [[ ${#ss} == 0 ]] ||  err_exit '${#ss} should be 0 when ss is unset'
+
 # RANDOM
 if	(( RANDOM==RANDOM || $RANDOM==$RANDOM ))
 then	err_exit RANDOM variable not working
 fi
+# When the $RANDOM variable is used in a forked subshell, it shouldn't
+# use the same pseudorandom seed as the main shell.
+# https://github.com/ksh93/ksh/issues/285
+# These tests sometimes fail as duplicate numbers can occur randomly, so try up to $N times.
+integer N=3 i rand1 rand2
+RANDOM=123
+function rand_print {
+	ulimit -t unlimited 2> /dev/null
+	print $RANDOM
+}
+for((i=0; i<N; i++))
+do	rand1=$(rand_print)
+	rand2=$(rand_print)
+	((rand1 != rand2)) && break
+done
+(( rand1 == rand2 )) && err_exit "Test 1: \$RANDOM seed in subshell doesn't change" \
+	"(both results are $rand1)"
+# Make sure we're actually using a different pseudorandom seed
+for((i=0; i<N; i++))
+do	rand1=$(
+		ulimit -t unlimited 2> /dev/null
+		test $RANDOM
+		print $RANDOM
+	)
+	rand2=${ print $RANDOM ;}
+	((rand1 != rand2)) && break
+done
+(( rand1 == rand2 )) && err_exit "Test 2: \$RANDOM seed in subshell doesn't change" \
+	"(both results are $rand1)"
+# $RANDOM should be reseeded when the final command is inside of a subshell
+for((i=0; i<N; i++))
+do	rand1=$("$SHELL" -c 'RANDOM=1; (echo $RANDOM)')
+	rand2=$("$SHELL" -c 'RANDOM=1; (echo $RANDOM)')
+	((rand1 != rand2)) && break
+done
+(( rand1 == rand2 )) && err_exit "Test 3: \$RANDOM seed in subshell doesn't change" \
+	"(both results are $rand1)"
+# $RANDOM should be reseeded for the ( simple_command & ) optimization
+for((i=0; i<N; i++))
+do	( echo $RANDOM & ) >|r1
+	( echo $RANDOM & ) >|r2
+	integer giveup=0
+	trap '((giveup++))' USR1
+	(sleep 2; kill -s USR1 $$) &
+	while	[[ ! -s r1 || ! -s r2 ]]
+	do	((giveup)) && break
+	done
+	if	((giveup))
+	then	err_exit "Test 4: ( echo $RANDOM & ) does not write output"
+	fi
+	kill $! 2>/dev/null
+	trap - USR1
+	unset giveup
+	[[ $(<r1) != "$(<r2)" ]] && break
+done
+[[ $(<r1) == "$(<r2)" ]] && err_exit "Test 4: \$RANDOM seed in ( simple_command & ) doesn't change" \
+	"(both results are $(printf %q "$(<r1)"))"
+# Virtual subshells should not influence the parent shell's RANDOM sequence
+RANDOM=456
+exp="$RANDOM $RANDOM $RANDOM $RANDOM $RANDOM"
+RANDOM=456
+got=
+for((i=0; i<5; i++))
+do	: $( : $RANDOM $RANDOM $RANDOM )
+	got+=${got:+ }$RANDOM
+done
+[[ $got == "$exp" ]] || err_exit 'Using $RANDOM in subshell influences reproducible sequence in parent environment' \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+# Forking a subshell shouldn't throw away the $RANDOM seed in the main shell
+exp=$(ulimit -t unlimited 2> /dev/null; RANDOM=123; echo $RANDOM)
+RANDOM=123
+(ulimit -t unlimited 2> /dev/null; true)
+got=${ echo $RANDOM ;}
+[[ $got == "$exp" ]] || err_exit "Forking a subshell resets the parent shell's \$RANDOM seed" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+# Similarly, forking a subshell shouldn't throw away a seed
+# previously set inside of the subshell
+exp=$(ulimit -t unlimited 2> /dev/null; RANDOM=789; echo $RANDOM)
+got=$(RANDOM=789; ulimit -t unlimited 2> /dev/null; echo $RANDOM)
+[[ $got == "$exp" ]] || err_exit "Forking a subshell resets the subshell's \$RANDOM seed" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+unset N i rand1 rand2
+
 # SECONDS
-let SECONDS=0.0
-sleep .001
-if	(( SECONDS < .001 ))
-then	err_exit "either 'sleep' or \$SECONDS not working"
+float secElapsed=0.0 secSleep=0.001
+let SECONDS=$secElapsed
+sleep $secSleep
+secElapsed=SECONDS
+if	(( secElapsed < secSleep ))
+then	err_exit "slept ${secElapsed} seconds instead of ${secSleep}: " \
+                 "either 'sleep' or \$SECONDS not working"
 fi
+unset -v secElapsed secSleep
 # _
 set abc def
 if	[[ $_ != def ]]
 then	err_exit _ variable not working
 fi
-# ERRNO
-#set abc def
-#rm -f foobar#
-#ERRNO=
-#2> /dev/null < foobar#
-#if	(( ERRNO == 0 ))
-#then	err_exit ERRNO variable not working
-#fi
 # PWD
 if	[[ !  $PWD -ef . ]]
 then	err_exit PWD variable failed, not equivalent to .
@@ -178,7 +249,6 @@ if	[[ $LANG != "$save_LANG" ]]
 then	err_exit "$save_LANG locale not working"
 fi
 
-unset RANDOM
 unset -n foo
 foo=junk
 function foo.get
@@ -235,6 +305,8 @@ x=$(cd ${tmp#/})
 if	[[ $x != $tmp ]]
 then	err_exit "CDPATH ${tmp#/} does not display new directory"
 fi
+unset CDPATH
+cd "${tmp#/}" >/dev/null 2>&1 && err_exit "CDPATH not deactivated after unset"
 cd "$tmp" || exit
 TMOUT=100
 (TMOUT=20)
@@ -508,12 +580,11 @@ fi
 function foo
 {
 	typeset SECONDS=0
-	sleep .002
+	sleep 0.002
 	print $SECONDS
-
 }
 x=$(foo)
-(( x >.001 && x < 1 ))
+(( x >= 0.002 && x < 1 ))
 '
 } 2> /dev/null   || err_exit 'SECONDS not working in function'
 cat > $tmp/script <<-\!
@@ -537,14 +608,14 @@ chmod +x $tmp/script
 . $tmp/script  1
 [[ $file == $tmp/script ]] || err_exit ".sh.file not working for dot scripts"
 [[ $($SHELL $tmp/script) == $tmp/script ]] || err_exit ".sh.file not working for scripts"
-[[ $(posixfun .sh.file) == $tmp/script ]] || err_exit ".sh.file not working for posix functions"
+[[ $(posixfun .sh.file) == $tmp/script ]] || err_exit ".sh.file not working for POSIX functions"
 [[ $(fun .sh.file) == $tmp/script ]] || err_exit ".sh.file not working for functions"
-[[ $(posixfun .sh.fun) == posixfun ]] || err_exit ".sh.fun not working for posix functions"
+[[ $(posixfun .sh.fun) == posixfun ]] || err_exit ".sh.fun not working for POSIX functions"
 [[ $(fun .sh.fun) == fun ]] || err_exit ".sh.fun not working for functions"
-[[ $(posixfun .sh.subshell) == 1 ]] || err_exit ".sh.subshell not working for posix functions"
+[[ $(posixfun .sh.subshell) == 1 ]] || err_exit ".sh.subshell not working for POSIX functions"
 [[ $(fun .sh.subshell) == 1 ]] || err_exit ".sh.subshell not working for functions"
 (
-    [[ $(posixfun .sh.subshell) == 2 ]]  || err_exit ".sh.subshell not working for posix functions in subshells"
+    [[ $(posixfun .sh.subshell) == 2 ]]  || err_exit ".sh.subshell not working for POSIX functions in subshells"
     [[ $(fun .sh.subshell) == 2 ]]  || err_exit ".sh.subshell not working for functions in subshells"
     (( .sh.subshell == 1 )) || err_exit ".sh.subshell not working in a subshell"
 )
@@ -635,6 +706,8 @@ set -- $x
 ( : & )
 [[ $pid == $! ]] || err_exit '$! value not preserved across subshells'
 
+# ======
+# BUG_KBGPID: $! was not updated under certain conditions
 pid=$!
 { : & } >&2
 [[ $pid == $! ]] && err_exit '$! value not updated after bg job in braces+redir'
@@ -643,6 +716,7 @@ pid=$!
 { : |& } >&2
 [[ $pid == $! ]] && err_exit '$! value not updated after co-process in braces+redir'
 
+# ======
 unset foo
 typeset -A foo
 function foo.set
@@ -707,7 +781,7 @@ actual=$(
 		(
 			echo ${.sh.subshell} | cat	# left element of pipe should increase ${.sh.subshell}
 			echo ${.sh.subshell}
-			ulimit -t unlimited		# fork
+			ulimit -t unlimited 2>/dev/null	# fork
 			echo ${.sh.subshell}		# should be same after forking existing virtual subshell
 		)
 		echo ${.sh.subshell}			# a background job should also increase ${.sh.subshell}
@@ -717,13 +791,22 @@ actual=$(
 expect=$'4\n3\n3\n2\n1'
 [[ $actual == "$expect" ]] || err_exit "\${.sh.subshell} failure (expected $(printf %q "$expect"), got $(printf %q "$actual"))"
 
-set -- {1..32768}
+# ${.sh.subshell} should increment when the final command is inside of a subshell
+exp=1
+got=$($SHELL -c '(echo ${.sh.subshell})')
+[[ $exp == $got ]] || err_exit '${.sh.subshell} fails to increment when the final command is inside of a subshell' \
+	"(expected '$exp', got '$got')"
+
+unset IFS
+if	((SHOPT_BRACEPAT)) && command set -o braceexpand
+then	set -- {1..32768}
+else	set -- $(awk 'BEGIN { for(i=1;i<=32768;i++) print i; }')
+fi
 (( $# == 32768 )) || err_exit "\$# failed -- expected 32768, got $#"
 set --
 
 unset r v x
 (
-	ulimit -t unlimited  # TODO: this test messes up LINENO past the subshell unless we fork it
 	x=foo
 	for v in EDITOR VISUAL OPTIND CDPATH FPATH PATH ENV RANDOM SECONDS _ LINENO
 	do	nameref r=$v
@@ -739,13 +822,17 @@ unset r v x
 )
 Errors=$?  # ensure error count survives subshell
 (
-	errmsg=$({ LANG=bad_LOCALE; } 2>&1)
+	# $x must be an unknown locale.
+	for x in x x.b@d xx_XX xx_XX.b@d
+	do	errmsg=$(set +x; { LANG=$x; } 2>&1)
+		[[ -n $errmsg ]] && break
+	done
 	if	[[ -z $errmsg ]]
-	then	print -u2 -r "${Command}[$LINENO]: warning: C library does not seem to verify locales: skipping LC_* tests"
+	then	warning "C library does not seem to verify locales: skipping LC_* tests"
 		exit $Errors
 	fi
-	x=x
-	for v in LC_ALL LC_CTYPE LC_MESSAGES LC_COLLATE LC_NUMERIC
+
+	for v in LC_ALL LC_CTYPE LC_MESSAGES LC_COLLATE LC_NUMERIC LC_TIME
 	do	nameref r=$v
 		unset $v
 		[[ $r ]] && err_exit "unset $v failed -- expected '', got '$r'"
@@ -879,8 +966,8 @@ actual=$(env SHLVL="2#11+x[\$(env echo Exploited vuln CVE-2019-14868 >&2)0]" "$S
 # Check unset, attribute and cleanup/restore behavior of special variables.
 
 # Keep the list in sync (minus ".sh") with shtab_variables[] in src/cmd/ksh93/data/variables.c
-# Note: as long as changing $PATH forks a virtual subshell, "PATH" should also be excluded below.
 set -- \
+	"PATH" \
 	"PS1" \
 	"PS2" \
 	"IFS" \
@@ -920,6 +1007,7 @@ set -- \
 	"LC_CTYPE" \
 	"LC_MESSAGES" \
 	"LC_NUMERIC" \
+	"LC_TIME" \
 	"FIGNORE" \
 	"KSH_VERSION" \
 	"JOBMAX" \
@@ -943,6 +1031,7 @@ set -- \
 	".sh.math" \
 	".sh.pool" \
 	".sh.pid" \
+	".sh.tilde" \
 	"SHLVL" \
 	"CSWIDTH"
 
@@ -1068,14 +1157,31 @@ $SHELL -c '
 		fi
 	done
 	exit $((errors + 1))
-' changecase_test "$@" PATH	# do include PATH here as well
+' changecase_test "$@"
 (((e = $?) == 1)) || err_exit "typeset -l/-u doesn't work on special variables" \
+	"(exit status $e$( ((e>128)) && print -n / && kill -l "$e"))"
+
+# ... unset followed by launching a forked subshell
+$SHELL -c '
+	errors=0
+	unset -v "$@" || let errors++
+	(
+		ulimit -t unlimited 2>/dev/null
+		for var do
+			[[ $var == _ ]] && continue	# only makes sense that $_ is immediately set again
+			[[ -v $var ]] && let errors++
+		done
+		exit $((errors + 1))
+	)
+	exit $?
+' unset_to_fork_test "$@"
+(((e = $?) == 1)) || err_exit "Failure in unsetting one or more special variables followed by launching forked subshell" \
 	"(exit status $e$( ((e>128)) && print -n / && kill -l "$e"))"
 
 # ======
 # ${.sh.pid} should be the forked subshell's PID
 (
-	ulimit -t unlimited
+	ulimit -t unlimited 2>/dev/null  # fork the subshell
 	[[ ${.sh.pid} == $$ ]]
 ) && err_exit "\${.sh.pid} is the same as \$$ (both are $$)"
 
@@ -1181,9 +1287,122 @@ Hi, I'm still a function! On line 6, my \$LINENO is 6
 ./lineno_autoload: line 9: \${bad\subst\in\main\script\on\line\9}: bad substitution
 end: main script \$LINENO == 10"
 
-got=$(FPATH=$tmp "$SHELL" ./lineno_autoload 2>&1)
-[[ $got == "$exp" ]] || err_exit 'Regression in \$LINENO and/or error messages.' \
+got=$(set +x; FPATH=$tmp "$SHELL" ./lineno_autoload 2>&1)
+[[ $got == "$exp" ]] || err_exit 'Regression in $LINENO and/or error messages.' \
 	$'Diff follows:\n'"$(diff -u <(print -r -- "$exp") <(print -r -- "$got") | sed $'s/^/\t| /')"
+
+# ======
+# Before 2021-02-26, the DEBUG trap corrupted ${.sh.fun}
+unset .sh.fun
+got=$(some_func() { :; }; trap some_func DEBUG; trap - DEBUG; print -r "${.sh.fun}")
+[[ -z $got ]] || err_exit "\${.sh.fun} leaks out of DEBUG trap (got $(printf %q "$got"))"
+
+# =====
+# Before 2021-03-06, ${foo=bar} and ${foo:=bar} did not work if `foo` had a numeric type
+# https://github.com/ksh93/ksh/issues/157
+# https://github.com/ksh93/ksh/pull/211#issuecomment-792336825
+
+unset a b
+typeset -i a
+b=3+39
+got=${a=b}
+[[ $got == 42 ]] || err_exit "\${a=b}: expansion not working for integer type (expected '42', got '$got')"
+[[ $a == 42 ]] || err_exit "\${a=b}: a was not assigned the correct integer value (expected '42', got '$a')"
+
+unset a b
+typeset -si a
+b=3+39
+got=${a=b}
+[[ $got == 42 ]] || err_exit "\${a=b}: expansion not working for short integer type (expected '42', got '$got')"
+[[ $a == 42 ]] || err_exit "\${a=b}: a was not assigned the correct short integer value (expected '42', got '$a')"
+
+unset a b
+typeset -F a
+b=3.75+38.25
+got=${a=b}
+exp=42.0000000000
+[[ $got == "$exp" ]] || err_exit "\${a=b}: expansion not working for float type (expected '$exp', got '$got')"
+[[ $a == "$exp" ]] || err_exit "\${a=b}: a was not assigned the correct float value (expected '$exp', got '$a')"
+
+unset a b
+typeset -i a
+b=3+39
+got=${a:=b}
+[[ $got == 42 ]] || err_exit "\${a:=b}: expansion not working for integer type (expected '42', got '$got')"
+[[ $a == 42 ]] || err_exit "\${a:=b}: a was not assigned the correct integer value (expected '42', got '$a')"
+
+unset a b
+typeset -si a
+b=3+39
+got=${a:=b}
+[[ $got == 42 ]] || err_exit "\${a:=b}: expansion not working for short integer type (expected '42', got '$got')"
+[[ $a == 42 ]] || err_exit "\${a:=b}: a was not assigned the correct short integer value (expected '42', got '$a')"
+
+unset a b
+typeset -F a
+b=3.75+38.25
+got=${a:=b}
+exp=42.0000000000
+[[ $got == "$exp" ]] || err_exit "\${a:=b}: expansion not working for float type (expected '$exp', got '$got')"
+[[ $a == "$exp" ]] || err_exit "\${a:=b}: a was not assigned the correct float value (expected '$exp', got '$a')"
+
+# ======
+# ${!FOO@} and ${!FOO*} expansions did not include FOO itself
+# https://github.com/ksh93/ksh/issues/183
+unset foo "${!foo@}"
+exp='foo foobar fool'
+got=$(IFS=/; foo=bar foobar=fbar fool=pity; print -r -- "${!foo@}")
+[[ $got == "$exp" ]] || err_exit "\${!foo@}: expected $(printf %q "$exp"), got $(printf %q "$got")"
+exp='foo/foobar/fool'
+got=$(IFS=/; foo=bar foobar=fbar fool=pity; print -r -- "${!foo*}")
+[[ $got == "$exp" ]] || err_exit "\${!foo*}: expected $(printf %q "$exp"), got $(printf %q "$got")"
+
+# ======
+# In ksh93v- ${.sh.subshell} is unset by the $PS4 prompt
+# https://github.com/att/ast/issues/1092
+exp='0'
+got="$($SHELL -c 'PS4="${.sh.subshell}"; echo ${.sh.subshell}')"
+[[ "$exp" == "$got" ]] || err_exit "\${.sh.subshell} is wrongly unset in the \$PS4 prompt" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+# ======
+# Corruption of SECONDS on leaving virtual subshell
+# https://github.com/ksh93/ksh/issues/253#issuecomment-815191052
+osec=$SECONDS
+(SECONDS=20)
+nsec=$SECONDS
+if	((nsec<osec || nsec>osec+0.1))
+then	err_exit "SECONDS corrupted after leaving virtual subshell (expected $osec, got $nsec)"
+fi
+
+# Corruption of LINENO on leaving virtual subshell
+lineno_subshell=$tmp/lineno_subshell.sh
+cat >| "$lineno_subshell" << 'EOF'
+(
+	unset LINENO
+	:
+)
+echo $LINENO
+EOF
+exp=5
+got=$($SHELL "$lineno_subshell")
+[[ $exp == $got ]] || err_exit "LINENO corrupted after leaving virtual subshell (expected $exp, got $got)"
+
+# ======
+# Check if ${.sh.file} is set to correct value after sourcing a file
+# https://github.com/att/ast/issues/472
+cat > $tmp/foo.sh <<EOF
+echo "foo"
+EOF
+. $tmp/foo.sh > /dev/null
+[[ ${.sh.file} == $0 ]] || err_exit "\${.sh.file} is not set to the correct value after sourcing a file"
+
+# ======
+# SHLVL should be decreased before exec'ing a program
+exp=$((SHLVL+1))$'\n'$((SHLVL+2))$'\n'$((SHLVL+1))
+got=$("$SHELL" -c 'echo $SHLVL; "$SHELL" -c "echo \$SHLVL"; exec "$SHELL" -c "echo \$SHLVL"')
+[[ $got == "$exp" ]] || err_exit "SHLVL not increased correctly" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
 
 # ======
 exit $((Errors<125?Errors:125))

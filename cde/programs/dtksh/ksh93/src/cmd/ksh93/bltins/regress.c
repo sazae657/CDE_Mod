@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,16 +18,15 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * regression test intercept control
- * enable with SHOPT_REGRESS==1 in Makefile
+ * enable with 'SHOPT REGRESS=1' in src/cmd/ksh93/SHOPT.sh
  * not for production use
  * see --man for details
  * all string constants inline here instead of in data/...
  *
  *   David Korn
- *   at&t research
+ *   AT&T Research
  */
 
 #include	"defs.h"
@@ -45,7 +45,7 @@
 
 static const char	usage[] =
 "[-1p0?\n@(#)$Id: __regress__ (AT&T Research) 2009-03-29 $\n]"
-USAGE_LICENSE
+"[--catalog?" SH_DICT "]"
 "[+NAME?__regress__ - shell regression test intercept control]"
 "[+DESCRIPTION?\b__regress__\b controls the regression test intercepts "
     "for shells compiled with SHOPT_REGRESS==1. Shells compiled this way are "
@@ -71,7 +71,7 @@ USAGE_LICENSE
     "trace line info is either \begid==rgid\b or \begid!=rgid\b. The "
     "intercepts are:]#?[original-egid:=1]"
     "{"
-        "[+getegid()?The intercept effecive gid is returned. The "
+        "[+getegid()?The intercept effective gid is returned. The "
             "\bsetgid\b() intercept may change this between the real gid and "
             "\aoriginal-egid\a.]"
         "[+setgid(gid)?Sets the intercept effective gid to \agid\a. "
@@ -83,7 +83,7 @@ USAGE_LICENSE
     "trace line info is either \beuid==ruid\b or \beuid!=ruid\b. The "
     "intercepts are:]#?[original-euid:=1]"
     "{"
-        "[+geteuid()?The intercept effecive uid is returned. The "
+        "[+geteuid()?The intercept effective uid is returned. The "
             "\bsetuid\b() intercept may change this between the real uid and "
             "\aoriginal-euid\a.]"
         "[+setuid(uid)?Sets the intercept effective uid to \auid\a. "
@@ -270,7 +270,7 @@ int b___regress__(int argc, char** argv, Shbltin_t *context)
 		{
 		case '?':
 			errormsg(SH_DICT, ERROR_usage(2), "%s", opt_info.arg);
-			break;
+			UNREACHABLE();
 		case ':':
 			errormsg(SH_DICT, 2, "%s", opt_info.arg);
 			break;
@@ -332,7 +332,10 @@ int b___regress__(int argc, char** argv, Shbltin_t *context)
 		break;
 	}
 	if (error_info.errors || *(argv + opt_info.index))
+	{
 		errormsg(SH_DICT, ERROR_usage(2), "%s", optusage(NiL));
+		UNREACHABLE();
+	}
 	return 0;
 }
 

@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * Glenn Fowler
  * AT&T Research
@@ -86,13 +86,13 @@ strperm(const char* aexpr, char** e, register int perm)
 					c = '=';
 				}
 				expr--;
-				/*FALLTHROUGH*/
+				/* FALLTHROUGH */
 			case '=':
 				if (who)
 					perm &= ~who;
 				else
 					perm = 0;
-				/*FALLTHROUGH*/
+				/* FALLTHROUGH */
 			case '+':
 			case '|':
 			case '-':
@@ -112,7 +112,7 @@ strperm(const char* aexpr, char** e, register int perm)
 					case 'X':
 						if (!S_ISDIR(perm) && !(perm & (S_IXUSR|S_IXGRP|S_IXOTH)))
 							continue;
-						/*FALLTHROUGH*/
+						/* FALLTHROUGH */
 					case 'x':
 						typ |= S_IXUSR|S_IXGRP|S_IXOTH;
 						continue;
@@ -165,7 +165,7 @@ strperm(const char* aexpr, char** e, register int perm)
 								perm &= ~who;
 							else
 								perm = 0;
-							/*FALLTHROUGH*/
+							/* FALLTHROUGH */
 						case '+':
 						case '|':
 							perm |= typ;
@@ -230,7 +230,7 @@ strperm(const char* aexpr, char** e, register int perm)
 						}
 						if (c)
 							break;
-						/*FALLTHROUGH*/
+						/* FALLTHROUGH */
 					default:
 						if (c < '0' || c > '7')
 						{

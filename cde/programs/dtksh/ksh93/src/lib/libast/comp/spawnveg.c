@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 /*
  * spawnveg -- spawnve with process group or session control
@@ -94,14 +94,18 @@ spawnveg(const char* path, char* const argv[], char* const envv[], pid_t pgid)
 #ifndef P_NOWAIT
 #define P_NOWAIT	_P_NOWAIT
 #endif
-#ifndef P_DETACH
+#if !defined(P_DETACH) && defined(_P_DETACH)
 #define P_DETACH	_P_DETACH
 #endif
 
 pid_t
 spawnveg(const char* path, char* const argv[], char* const envv[], pid_t pgid)
 {
+#if defined(P_DETACH)
 	return spawnve(pgid ? P_DETACH : P_NOWAIT, path, argv, envv ? envv : environ);
+#else
+	return spawnve(P_NOWAIT, path, argv, envv ? envv : environ);
+#endif
 }
 
 #else
@@ -111,7 +115,7 @@ spawnveg(const char* path, char* const argv[], char* const envv[], pid_t pgid)
 #include <spawn.h>
 
 /*
- * open-edition/mvs/zos fork+exec+(setpgid)
+ * MVS OpenEdition / z/OS fork+exec+(setpgid)
  */
 
 pid_t
@@ -135,10 +139,6 @@ spawnveg(const char* path, char* const argv[], char* const envv[], pid_t pgid)
 #include <sig.h>
 #include <ast_tty.h>
 #include <ast_vfork.h>
-
-#ifndef ENOSYS
-#define ENOSYS	EINVAL
-#endif
 
 #if _lib_spawnve && _hdr_process
 #include <process.h>
@@ -171,10 +171,6 @@ spawnveg(const char* path, char* const argv[], char* const envv[], pid_t pgid)
 #endif
 #endif
 
-#if 0
-	if (access(path, X_OK))
-		return -1;
-#endif
 	if (!envv)
 		envv = environ;
 #if _lib_spawnve

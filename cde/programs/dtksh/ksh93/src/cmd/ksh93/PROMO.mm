@@ -14,7 +14,7 @@ performed at shell-level without a significant loss in performance.
 In addition, "sh" scripts can be run on KSH-93 without modification.
 .P
 The code should conform to the IEEE POSIX 1003.1 standard and to the
-proposed ANSI-C standard so that it should be portable to all
+proposed ANSI C standard so that it should be portable to all
 such systems.  Like the previous version, KSH-88,
 it is designed to accept eight bit character sets
 transparently, thereby making it internationally compatible.
@@ -95,14 +95,14 @@ way scripts are.
 Substring Capabilities:  KSH-93 allows you to create a
 substring of any given string either by specifying the starting
 offset and length, or by stripping off leading
-or trailing substrings during parameter substitution.
+or trailing substrings during parameter expansion.
 You can also specify attributes, such as upper and lower case,
 field width, and justification to shell variables.
 .LI
 More pattern matching capabilities:  KSH-93 allows you to specify
 extended regular expressions for file and string matches.
 .LI
-KSH-93 uses a hierarchal name space for variables.
+KSH-93 uses a hierarchical name space for variables.
 Compound variables can be defined and variables can
 be passed by reference.  In addition, each variable
 can have one or more disciplines associated with
@@ -137,5 +137,5 @@ be embedded into an application to allow scripting.
 Documentation for KSH-93 consists of an "Introduction to KSH-93",
 "Compatibility with the Bourne Shell" and a manual page and a
 README file.  In addition, the "New KornShell Command and Programming
-Language," book is available from Prentice Hall.
+Language" book is available from Prentice Hall.
 

@@ -50,7 +50,7 @@
 #define CONVERT_POSTPONED 0
 #define CONVERT_FAILED   -1
 
-#define ADDBUILTIN(a,b) sh_addbuiltin(a, ((int (*)__PROTO__((int, char*[], Shbltin_t*)))b), (void*) 0)
+#define ADDBUILTIN(a,b) sh_addbuiltin(a, ((int (*)(int, char*[], Shbltin_t*))b), (void*) 0)
 
 extern Widget Toplevel;
 extern char str_nill[];

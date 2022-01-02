@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,12 +18,11 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * This is a program to execute 'execute only' and suid/sgid shell scripts.
  * This program must be owned by root and must have the set uid bit set.
  * It must not have the set group id bit set.  This program must be installed
- * where the define parameter THISPROG indicates to work correctly on system V
+ * where the define parameter THISPROG indicates to work correctly on System V.
  *
  *  Written by David Korn
  *  AT&T Labs
@@ -30,7 +30,7 @@
  */
 
 /* The file name of the script to execute is argv[0]
- * Argv[1] is the  program name
+ * argv[1] is the program name
  * The basic idea is to open the script as standard input, set the effective
  *   user and group id correctly, and then exec the shell.
  * The complicated part is getting the effective uid of the caller and 
@@ -58,7 +58,7 @@
 #define SPECIAL		04100	/* setuid execute only by owner */
 #define FDIN		10	/* must be same as /dev/fd below */
 #undef FDSYNC 
-#define FDSYNC		11	/* used on sys5 to synchronize cleanup */
+#define FDSYNC		11	/* used on SysV to synchronize cleanup */
 #define FDVERIFY	12	/* used to validate /tmp process */
 #undef BLKSIZE 
 #define BLKSIZE		sizeof(char*)*1024
@@ -87,7 +87,9 @@ static const char version[]	= "\n@(#)$Id: suid_exec "SH_RELEASE" $\n";
 static const char badopen[]	= "cannot open";
 static const char badexec[]	= "cannot exec";
 static const char devfd[]	= "/dev/fd/10";	/* must match FDIN above */
+#ifndef _lib_setreuid
 static char tmpname[]		= "/tmp/SUIDXXXXXX";
+#endif
 static char **arglist;
 
 static char *shell;
@@ -326,10 +328,15 @@ int eaccess(register const char *name, register int mode)
 				if((maxgroups=getgroups(0,groups)) < 0)
 				{
 					/* pre-POSIX system */
-					maxgroups=NGROUPS_MAX;
+					maxgroups = (int)astconf_long(CONF_NGROUPS_MAX);
 				}
 			}
 			groups = (gid_t*)malloc((maxgroups+1)*sizeof(gid_t));
+			if(!groups)
+			{
+				error(ERROR_SYSTEM|ERROR_PANIC,"out of memory");
+				UNREACHABLE();
+			}
 			n = getgroups(maxgroups,groups);
 			while(--n >= 0)
 			{
@@ -364,7 +371,7 @@ static void setids(int mode,int owner,int group)
 /*
  * This version of setids creates a /tmp file and copies itself into it.
  * The "clone" file is made executable with appropriate suid/sgid bits.
- * Finally, the clone is exec'ed.  This file is unlinked by a grandchild
+ * Finally, the clone is exec'd.  This file is unlinked by a grandchild
  * of this program, who waits around until the text is free.
  */
 
@@ -512,5 +519,3 @@ static int mycopy(int fdi, int fdo)
 }
 
 #endif /* _lib_setreuid */
-
-

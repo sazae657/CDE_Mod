@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,12 +20,11 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 #include <ast.h>
 #include <ast_getopt.h>
 
-#undef	_BLD_ast	/* enable ast imports since we're user static */
+#undef	_BLD_ast	/* enable AST imports since we're user static */
 
 #include <error.h>
 #include <option.h>

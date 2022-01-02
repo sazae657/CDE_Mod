@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -33,14 +34,7 @@
  * Written by Glenn S. Fowler.
  */
 
-#if __STD_C
-Void_t* vmgetmem(Vmalloc_t* vm, Void_t* data, size_t size)
-#else
-Void_t* vmgetmem(vm, data, size)
-Vmalloc_t*	vm;
-Void_t*		data;
-size_t		size;
-#endif
+void* vmgetmem(Vmalloc_t* vm, void* data, size_t size)
 {
 	if (!vm)
 		return vmopen(Vmdcheap, Vmbest, 0);

@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * UNIX shell
  *
@@ -53,8 +53,9 @@
 /* These routines are referenced by this module */
 static void	exfile(Shell_t*, Sfio_t*,int);
 static void	chkmail(Shell_t *shp, char*);
-#if defined(_lib_fork) && !defined(_NEXT_SOURCE) && !defined(__sun)
+#if !defined(_NEXT_SOURCE) && !defined(__sun)
     static void	fixargs(char**,int);
+#   undef fixargs_disabled
 #else
 #   define fixargs(a,b)
 #   define fixargs_disabled	1
@@ -103,7 +104,7 @@ int sh_source(Shell_t *shp, Sfio_t *iop, const char *file)
 		return 0;
 	}
 	oid = error_info.id;
-	nid = error_info.id = strdup(file);
+	nid = error_info.id = sh_strdup(file);
 	shp->st.filename = path_fullname(shp,stakptr(PATH_OFFSET));
 	REGRESS(source, "sh_source", ("%s", file));
 	exfile(shp, iop, fd);
@@ -127,7 +128,6 @@ int sh_main(int ac, char *av[], Shinit_f userinit)
 	struct stat	statb;
 	int i, rshflag;		/* set for restricted shell */
 	char *command;
-	free(malloc(64*1024));
 #ifdef _lib_sigvec
 	/* This is to clear mask that may be left on by rlogin */
 	clearsigmask(SIGALRM);
@@ -149,8 +149,6 @@ int sh_main(int ac, char *av[], Shinit_f userinit)
 	}
 	shp->fn_depth = shp->dot_depth = 0;
 	command = error_info.id;
-	/* set pidname '$$' */
-	srand(shp->gd->pid&0x7fff);
 	if(nv_isnull(PS4NOD))
 		nv_putval(PS4NOD,e_traceprompt,NV_RDONLY);
 	path_pwd(shp,1);
@@ -161,9 +159,11 @@ int sh_main(int ac, char *av[], Shinit_f userinit)
 	else
 		sh_onoption(SH_BRACEEXPAND);
 #endif
-	if((beenhere++)==0)
+	if(!beenhere)
 	{
+		beenhere++;
 		sh_onstate(SH_PROFILE);
+		shp->sigflag[SIGTSTP] |= SH_SIGIGNORE;
 		if(shp->gd->ppid==1)
 			shp->login_sh++;
 		if(shp->login_sh >= 2)
@@ -187,7 +187,7 @@ int sh_main(int ac, char *av[], Shinit_f userinit)
 #if SHOPT_REMOTE
 		/*
 		 * Building ksh with SHOPT_REMOTE=1 causes ksh to set --rc if stdin is
-		 * a socket (presumably part of a remote shell invocation.)
+		 * a socket (presumably part of a remote shell invocation).
 		 */
 		if(!sh_isoption(SH_RC) && !fstat(0, &statb) && REMOTE(statb.st_mode))
 			sh_onoption(SH_RC);
@@ -222,7 +222,7 @@ int sh_main(int ac, char *av[], Shinit_f userinit)
 			if(!sh_isoption(SH_NOUSRPROFILE) && !sh_isoption(SH_PRIVILEGED) && sh_isoption(SH_RC))
 			{
 				if(name = sh_mactry(shp,nv_getval(ENVNOD)))
-					name = *name ? strdup(name) : (char*)0;
+					name = *name ? sh_strdup(name) : (char*)0;
 #if SHOPT_SYSRC
 				if(!strmatch(name, "?(.)/./*"))
 					sh_source(shp, iop, e_sysrc);
@@ -237,6 +237,7 @@ int sh_main(int ac, char *av[], Shinit_f userinit)
 				sh_source(shp, iop, e_suidprofile);
 		}
 		shp->st.cmdname = error_info.id = command;
+		shp->sigflag[SIGTSTP] &= ~(SH_SIGIGNORE);
 		sh_offstate(SH_PROFILE);
 		if(rshflag)
 			sh_onoption(SH_RESTRICTED);
@@ -264,10 +265,13 @@ int sh_main(int ac, char *av[], Shinit_f userinit)
 #endif
 					fdin = (int)strtol(name+8, (char**)0, 10);
 					if(fstat(fdin,&statb)<0)
+					{
 						errormsg(SH_DICT,ERROR_system(1),e_open,name);
+						UNREACHABLE();
+					}
 #if !_WINIX
 					/*
-					 * try to undo effect of solaris 2.5+
+					 * try to undo effect of Solaris 2.5+
 					 * change for argv for setuid scripts
 					 */
 					if(shp->st.repl_index > 0)
@@ -275,7 +279,7 @@ int sh_main(int ac, char *av[], Shinit_f userinit)
 					if(((type = sh_type(cp = av[0])) & SH_TYPE_SH) && (name = nv_getval(L_ARGNOD)) && (!((type = sh_type(cp = name)) & SH_TYPE_SH)))
 					{
 						av[0] = (type & SH_TYPE_LOGIN) ? cp : path_basename(cp);
-						/*  exec to change $0 for ps */
+						/* exec to change $0 for ps */
 						execv(pathshell(),av);
 						/* exec fails */
 						shp->st.dolv[0] = av[0];
@@ -318,10 +322,13 @@ int sh_main(int ac, char *av[], Shinit_f userinit)
 							errno = EISDIR;
 						 error_info.id = av[0];
 						if(sp || errno!=ENOENT)
+						{
 							errormsg(SH_DICT,ERROR_system(ERROR_NOEXEC),e_open,name);
+							UNREACHABLE();
+						}
 						/* try sh -c 'name "$@"' */
 						sh_onoption(SH_CFLAG);
-						shp->comdiv = (char*)malloc(strlen(name)+7);
+						shp->comdiv = (char*)sh_malloc(strlen(name)+7);
 						name = strcopy(shp->comdiv,name);
 						if(shp->st.dolc)
 							strcopy(name," \"$@\"");
@@ -339,6 +346,10 @@ int sh_main(int ac, char *av[], Shinit_f userinit)
 				sh_accbegin(error_info.id);
 #endif	/* SHOPT_ACCT */
 		}
+		/* If the shell is initialised with std{in,out,err} closed, make the shell's FD state reflect that. */
+		for(i=0; i<=2; i++)
+			if(fcntl(i,F_GETFD,NiL)==-1 && errno==EBADF)	/* closed at OS level? */
+				sh_close(i); 				/* update shell FD state */
 	}
 	else
 	{
@@ -351,8 +362,6 @@ int sh_main(int ac, char *av[], Shinit_f userinit)
 	nv_putval(IFSNOD,(char*)e_sptbnl,NV_RDONLY);
 	exfile(shp,iop,fdin);
 	sh_done(shp,0);
-	/* NOTREACHED */
-	return(0);
 }
 
 /*
@@ -421,7 +430,7 @@ static void	exfile(register Shell_t *shp, register Sfio_t *iop,register int fno)
 		sfsync(shp->outpool);
 		shp->st.execbrk = shp->st.breakcnt = 0;
 		/* check for return from profile or env file */
-		if(sh_isstate(SH_PROFILE) && (jmpval==SH_JMPFUN || jmpval==SH_JMPEXIT || jmpval==SH_JMPERREXIT))
+		if(sh_isstate(SH_PROFILE) && (jmpval==SH_JMPFUN || jmpval==SH_JMPEXIT))
 		{
 			sh_setstate(states);
 			goto done;
@@ -477,7 +486,7 @@ static void	exfile(register Shell_t *shp, register Sfio_t *iop,register int fno)
 		if(sh_isoption(SH_VERBOSE))
 			sh_onstate(SH_VERBOSE);
 		sh_onstate(SH_ERREXIT);
-		/* -eim  flags don't apply to profiles */
+		/* -eim flags don't apply to profiles */
 		if(sh_isstate(SH_PROFILE))
 		{
 			sh_offstate(SH_INTERACTIVE);
@@ -528,20 +537,31 @@ static void	exfile(register Shell_t *shp, register Sfio_t *iop,register int fno)
 		errno = 0;
 		if(tdone || !sfreserve(iop,0,0))
 		{
+			int	sferr;
 		eof_or_error:
-			if(sh_isstate(SH_INTERACTIVE) && !sferror(iop)) 
+			sferr = sferror(iop);
+			if(sh_isstate(SH_INTERACTIVE))
 			{
-				if(--maxtry>0 && sh_isoption(SH_IGNOREEOF) &&
-					 !sferror(sfstderr) && (shp->fdstatus[fno]&IOTTY))
+				if(!sferr)
 				{
-					sfclrerr(iop);
-					errormsg(SH_DICT,0,e_logout);
+					if(--maxtry>0 && sh_isoption(SH_IGNOREEOF)
+					&& !sferror(sfstderr) && (shp->fdstatus[fno]&IOTTY))
+					{
+						sfclrerr(iop);
+						errormsg(SH_DICT,0,e_logout);
+						continue;
+					}
+					else if(job_close(shp)<0)
+						continue;
+				}
+				else if(sferr==SH_EXITSIG)
+				{
+					/* Ctrl+C with SIGINT ignored */
+					sfputc(sfstderr,'\n');
 					continue;
 				}
-				else if(job_close(shp)<0)
-					continue;
 			}
-			if(errno==0 && sferror(iop) && --maxtry>0)
+			if(errno==0 && sferr && --maxtry>0)
 			{
 				sfclrlock(iop);
 				sfclrerr(iop);
@@ -572,7 +592,7 @@ static void	exfile(register Shell_t *shp, register Sfio_t *iop,register int fno)
 		{
 			execflags = sh_state(SH_ERREXIT)|sh_state(SH_INTERACTIVE);
 			/* The last command may not have to fork */
-			if(!sh_isstate(SH_PROFILE) && sh_isoption(SH_CFLAG) &&
+			if(!sh_isstate(SH_PROFILE) && !sh_isstate(SH_INTERACTIVE) &&
 				(fno<0 || !(shp->fdstatus[fno]&(IOTTY|IONOSEEK)))
 				&& !sfreserve(iop,0,0))
 			{
@@ -600,7 +620,7 @@ done:
 	}
 	if(jmpval == SH_JMPSCRIPT)
 		siglongjmp(*shp->jmplist,jmpval);
-	else if(jmpval == SH_JMPEXIT || jmpval == SH_JMPERREXIT)
+	else if(jmpval == SH_JMPEXIT)
 		sh_done(shp,0);
 	if(fno>0)
 		sh_close(fno);
@@ -713,12 +733,13 @@ static void chkmail(Shell_t *shp, char *files)
  */
 static void fixargs(char **argv, int mode)
 {
-#if EXECARGS
+#   if EXECARGS
+	if(mode==0)
+		return;
 	*execargs=(char *)argv;
-#else
-	register char *cp;
+#   elif PSTAT
+	char *cp;
 	int offset=0,size;
-#   ifdef PSTAT
 	static int command_len;
 	char *buff;
 	union pstun un;
@@ -733,21 +754,6 @@ static void fixargs(char **argv, int mode)
 	}
 	stakseek(command_len+2);
 	buff = stakseek(0);
-#   elif _lib_setproctitle
-#	define command_len 255
-	char buff[command_len + 1];
-	if(mode==0)
-		return;
-#   else
-	static int command_len;
-	static char *buff;
-	if(mode==0)
-	{
-		buff = argv[0];
-		command_len = environ[0] - buff - 1;
-		return;
-	}
-#   endif /* PSTAT */
 	if(command_len==0)
 		return;
 	while((cp = *argv++) && offset < command_len)
@@ -760,12 +766,59 @@ static void fixargs(char **argv, int mode)
 	}
 	offset--;
 	memset(&buff[offset], 0, command_len - offset + 1);
-#   ifdef PSTAT
 	un.pst_command = stakptr(0);
 	pstat(PSTAT_SETCMD,un,0,0,0);
 #   elif _lib_setproctitle
+#	define CMDMAXLEN 255
+	char *cp;
+	int offset=0,size;
+	char buff[CMDMAXLEN + 1];
+	if(mode==0)
+		return;
+	while((cp = *argv++) && offset < CMDMAXLEN)
+	{
+		if(offset + (size=strlen(cp)) >= CMDMAXLEN)
+			size = CMDMAXLEN - offset;
+		memcpy(buff+offset,cp,size);
+		offset += size;
+		buff[offset++] = ' ';
+	}
+	buff[--offset] = '\0';
 	setproctitle("%s",buff);
-#   endif /* PSTAT */
-#endif /* EXECARGS */
+#	undef CMDMAXLEN
+#   else
+	/* Generic version, works on at least Linux and macOS */
+	char *cp;
+	int offset=0,size;
+	static int buffsize;
+	static char *buff;
+	if(mode==0)
+	{
+		int i;
+		buff = argv[0];
+		for(i=0; argv[i]; i++)
+			buffsize += strlen(argv[i]) + 1;
+		if(buffsize < 128 && buff + buffsize == *environ)
+		{
+			/* Move the environment to make space for a larger command line buffer */
+			for(i=0; environ[i]; i++)
+			{
+				buffsize += strlen(environ[i]) + 1;;
+				environ[i] = sh_strdup(environ[i]);
+			}
+		}
+		return;
+	}
+	while((cp = *argv++) && offset < buffsize)
+	{
+		if(offset + (size=strlen(cp)) >= buffsize)
+			size = buffsize - offset;
+		memcpy(buff+offset,cp,size);
+		offset += size;
+		buff[offset++] = ' ';
+	}
+	offset--;
+	memset(&buff[offset], 0, buffsize - offset + 1);
+#   endif
 }
 #endif /* !fixargs_disabled */

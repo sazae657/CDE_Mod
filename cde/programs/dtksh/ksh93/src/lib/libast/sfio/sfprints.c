@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -28,13 +29,7 @@
 **	Written by Kiem-Phong Vo.
 */
 
-#if __STD_C
 char* sfvprints(const char* form, va_list args)
-#else
-char* sfvprints(form, args)
-char*	form;
-va_list	args;
-#endif
 {
 	reg int		rv;
 	Sfnotify_f	notify = _Sfnotify;
@@ -58,37 +53,17 @@ va_list	args;
 	return (char*)f->data;
 }
 
-#if __STD_C
 char* sfprints(const char* form, ...)
-#else
-char* sfprints(va_alist)
-va_dcl
-#endif
 {
 	char*	s;
 	va_list	args;
-
-#if __STD_C
 	va_start(args,form);
-#else
-	char	*form;
-	va_start(args);
-	form = va_arg(args,char*);
-#endif
 	s = sfvprints(form, args);
 	va_end(args);
-
 	return s;
 }
 
-#if __STD_C
 ssize_t sfvaprints(char** sp, const char* form, va_list args)
-#else
-ssize_t sfvaprints(sp, form, args)
-char**	sp;
-char*	form;
-va_list	args;
-#endif
 {
 	char	*s;
 	ssize_t	n;
@@ -103,26 +78,12 @@ va_list	args;
 	}
 }
 
-#if __STD_C
 ssize_t sfaprints(char** sp, const char* form, ...)
-#else
-ssize_t sfaprints(va_alist)
-va_dcl
-#endif
 {
 	ssize_t	n;
 	va_list	args;
-
-#if __STD_C
 	va_start(args,form);
-#else
-	char	**sp, *form;
-	va_start(args);
-	sp = va_arg(args, char**);
-	form = va_arg(args, char*);
-#endif
 	n = sfvaprints(sp, form, args);
 	va_end(args);
-
 	return n;
 }

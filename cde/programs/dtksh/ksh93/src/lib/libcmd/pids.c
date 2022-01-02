@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1992-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -18,17 +19,16 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 #define FORMAT		"PID=%(pid)d PPID=%(ppid)d PGID=%(pgid)d TID=%(tid)d SID=%(sid)d"
 
 static const char usage[] =
 "[-?\n@(#)$Id: pids (AT&T Research) 2011-08-27 $\n]"
-USAGE_LICENSE
+"[--catalog?" ERROR_CATALOG "]"
 "[+NAME?pids - list calling shell process ids]"
 "[+DESCRIPTION?When invoked as a shell builtin, \bpids\b lists one or "
     "more of the calling process ids determined by \bgetpid\b(2), "
-    "\bgetppid\b(2), \bgetpgrp\b(2), \btcgetpgrp\b(2) and \bgetsid\b(2). "
+    "\bgetppid\b(2), \bgetpgrp\b(2), \btcgetpgrp\b(3) and \bgetsid\b(2). "
     "Unknown or invalid ids have the value \b-1\b.]"
 "[f:format?List the ids specified by \aformat\a. \aformat\a follows "
     "\bprintf\b(3) conventions, except that \bsfio\b(3) inline ids are used "
@@ -43,7 +43,7 @@ USAGE_LICENSE
         "[+sid?The session id.]"
     "}"
 "[+SEE ALSO?\bgetpid\b(2), \bgetppid\b(2), \bgetpgrp\b(2), "
-    "\btcgetpgrp\b(2), \bgetsid\b(2)]"
+    "\btcgetpgrp\b(3), \bgetsid\b(2)]"
 ;
 
 #include <cmd.h>
@@ -105,8 +105,8 @@ b_pids(int argc, char** argv, Shbltin_t* context)
 			format = opt_info.arg;
 			continue;
 		case '?':
-			error(ERROR_USAGE|4, "%s", opt_info.arg);
-			break;
+			error(ERROR_usage(2), "%s", opt_info.arg);
+			UNREACHABLE();
 		case ':':
 			error(2, "%s", opt_info.arg);
 			break;
@@ -115,7 +115,10 @@ b_pids(int argc, char** argv, Shbltin_t* context)
 	}
 	argv += opt_info.index;
 	if (error_info.errors || *argv)
-		error(ERROR_USAGE|4, "%s", optusage(NiL));
+	{
+		error(ERROR_usage(2), "%s", optusage(NiL));
+		UNREACHABLE();
+	}
 	if (!format)
 		format = FORMAT;
 	sfkeyprintf(sfstdout, format, format, key, NiL);

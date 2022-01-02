@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * David Korn
  * AT&T Labs
@@ -196,7 +196,10 @@ static int p_redirect(register const struct ionod *iop)
 			sfputl(outfile,iop->iofile|IOVNM);
 		else
 			sfputl(outfile,iop->iofile);
-		p_string(iop->ioname);
+		if((iop->iofile & IOPROCSUB) && !(iop->iofile & IOLSEEK))
+			p_tree((Shnode_t*)iop->ioname);	/* process substitution as file name to redirection */
+		else
+			p_string(iop->ioname);		/* file name, descriptor, etc. */
 		if(iop->iodelim)
 		{
 			p_string(iop->iodelim);

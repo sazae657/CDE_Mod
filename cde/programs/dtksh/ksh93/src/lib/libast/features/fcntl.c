@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * Glenn Fowler
  * AT&T Research
@@ -37,9 +37,7 @@
 
 #if _typ_off64_t
 #undef	off_t
-#ifdef __STDC__
 #define	off_t		off_t
-#endif
 #endif
 
 #if _hdr_fcntl
@@ -71,22 +69,16 @@ main()
 	int		f_lck = 0;
 	int		o_local = 2;
 
-	printf("#pragma prototyped\n");
-	printf("\n");
 	printf("#if _typ_off64_t\n");
 	printf("#undef	off_t\n");
-	printf("#ifdef __STDC__\n");
 	printf("#define	off_t		off_t\n");
-	printf("#endif\n");
 	printf("#endif\n");
 	printf("\n");
 	printf("#include <ast_fs.h>\n");
 	printf("\n");
 	printf("#if _typ_off64_t\n");
 	printf("#undef	off_t\n");
-	printf("#ifdef __STDC__\n");
 	printf("#define	off_t		off_t\n");
-	printf("#endif\n");
 	printf("#endif\n");
 	printf("\n");
 	printf("#include <fcntl.h>\n");

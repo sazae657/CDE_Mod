@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * access() euid/egid implementation
  */
@@ -109,7 +109,7 @@ eaccess(const char* path, register int flags)
 		if (ngroups == -2)
 		{
 			if ((ngroups = getgroups(0, (gid_t*)0)) <= 0)
-				ngroups = NGROUPS_MAX;
+				ngroups = (int)astconf_long(CONF_NGROUPS_MAX);
 			if (!(groups = newof(0, gid_t, ngroups + 1, 0)))
 				ngroups = -1;
 			else

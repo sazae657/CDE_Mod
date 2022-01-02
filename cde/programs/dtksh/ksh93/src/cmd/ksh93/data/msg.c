@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  *	UNIX shell
  *	S. R. Bourne
@@ -67,7 +67,9 @@ const char e_subst[]		= "%s: bad substitution";
 const char e_create[]		= "%s: cannot create";
 const char e_tmpcreate[]	= "cannot create temporary file";
 const char e_restricted[]	= "%s: restricted";
+#if SHOPT_PFSH
 const char e_pfsh[]		= "%s: disabled in profile shell";
+#endif
 const char e_pexists[]		= "process already exists";
 const char e_exists[]		= "%s: file already exists";
 const char e_pipe[]		= "cannot create pipe";
@@ -81,6 +83,9 @@ const char e_logout[]		= "Use 'exit' to terminate this shell";
 const char e_exec[]		= "%s: cannot execute";
 const char e_pwd[]		= "cannot access parent directories";
 const char e_found[]		= "%s: not found";
+#ifdef ENAMETOOLONG
+const char e_toolong[]		= "%s: file name too long";
+#endif
 const char e_defined[]		= "%s: function not defined";
 const char e_nointerp[]		= "%s: interpreter not found";
 const char e_subscript[]	= "%s: subscript out of range";
@@ -110,6 +115,7 @@ const char e_nounattr[]		= "cannot unset attribute C or A or a";
 const char e_selfref[]		= "%s: invalid self reference";
 const char e_globalref[]	= "%s: global reference cannot refer to local variable";
 const char e_noalias[]		= "%s: alias not found\n";
+const char e_notrackedalias[]	= "%s: tracked alias not found\n";
 const char e_format[]		= "%s: bad format";
 const char e_redef[]		= "%s: type cannot be redefined";
 const char e_required[]		= "%s: is a required element of %s";
@@ -133,8 +139,6 @@ const char e_overlimit[]	= "%s: limit exceeded";
 const char e_badsyntax[]	= "incorrect syntax";
 const char e_badwrite[]		= "write to %d failed";
 const char e_staticfun[]	= "%s: defined as a static function in type %s and cannot be redefined";
-const char e_on	[]		= "on";
-const char e_off[]		= "off";
 const char is_reserved[]	= " is a keyword";
 const char is_builtin[]		= " is a shell builtin";
 const char is_spcbuiltin[]	= " is a special shell builtin";

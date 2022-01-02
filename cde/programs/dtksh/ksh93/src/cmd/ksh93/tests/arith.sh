@@ -2,6 +2,7 @@
 #                                                                      #
 #               This software is part of the ast package               #
 #          Copyright (c) 1982-2012 AT&T Intellectual Property          #
+#          Copyright (c) 2020-2021 Contributors to ksh 93u+m           #
 #                      and is licensed under the                       #
 #                 Eclipse Public License, Version 1.0                  #
 #                    by AT&T Intellectual Property                     #
@@ -17,18 +18,11 @@
 #                  David Korn <dgk@research.att.com>                   #
 #                                                                      #
 ########################################################################
-function err_exit
-{
-	print -u2 -n "\t"
-	print -u2 -r ${Command}[$1]: "${@:2}"
-	let Errors+=1
-}
-alias err_exit='err_exit $LINENO'
 
-Command=${0##*/}
-integer Errors=0
+. "${SHTESTS_COMMON:-${0%/*}/_common}"
 
-[[ -d $tmp && -w $tmp && $tmp == "$PWD" ]] || { err\_exit "$LINENO" '$tmp not set; run this from shtests. Aborting.'; exit 1; }
+integer hasposix=0
+(set -o posix) 2>/dev/null && ((hasposix++))	# not using [[ -o ?posix ]] as it's broken on 93v-
 
 trap '' FPE # NOTE: osf.alpha requires this (no ieee math)
 
@@ -205,20 +199,20 @@ unset x
 integer y[3]=9 y[4]=2 i=3
 (( x = y[3] + y[4] ))
 if	[[ $x != 11 ]]
-then	err_exit "constant index array arithmetic failure"
+then	err_exit "constant indexed array arithmetic failure"
 fi
 (( x = $empty y[3] + y[4] ))
 if	[[ $x != 11 ]]
-then	err_exit "empty constant index array arithmetic failure"
+then	err_exit "empty constant indexed array arithmetic failure"
 fi
 (( x = y[i] + y[i+1] ))
 if	[[ $x != 11 ]]
-then	err_exit "variable subscript index array arithmetic failure"
+then	err_exit "variable subscript indexed array arithmetic failure"
 fi
 integer a[5]=3 a[2]=4
 (( x = y[a[5]] + y[a[2]] ))
 if	[[ $x != 11 ]]
-then	err_exit "nested subscript index array arithmetic failure"
+then	err_exit "nested subscript indexed array arithmetic failure"
 fi
 unset y
 typeset -Ai y
@@ -297,6 +291,12 @@ fi
 if	(( (4**3)**2 != pow(pow(4,3),2) ))
 then	err_exit '(4**3)**2 not working'
 fi
+if	(( 1**Inf != pow(1,Inf) ))
+then	err_exit '1**Inf not working'
+fi
+if	(( 1**NaN != pow(1,NaN) ))
+then	err_exit '1**NaN not working'
+fi
 typeset -Z3 x=11
 typeset -i x
 if	(( x != 11 ))
@@ -349,8 +349,14 @@ do	(( ipx = ip % 256 ))
 done
 unset x
 x=010
-(( x == 10 )) || err_exit 'leading zeros in x treated as octal arithmetic with $((x))'
-(( $x == 8 )) || err_exit 'leading zeros not treated as octal arithmetic with $x'
+(( x == 10 )) || err_exit 'leading zeros in x treated as octal arithmetic with ((x))'
+(( $x == 10 )) || err_exit 'leading zeros in x treated as octal arithmetic with (($x))'
+if	((hasposix))
+then	set --posix
+	((x == 8)) || err_exit 'posix: leading zeros in x not treated as octal arithmetic with ((x))'
+	(($x == 8)) || err_exit 'posix: leading zeros in x not treated as octal arithmetic with (($x))'
+	set --noposix
+fi
 unset x
 typeset -Z x=010
 (( x == 10 )) || err_exit 'leading zeros not ignored for arithmetic'
@@ -465,8 +471,12 @@ then	set \
 	(( NaN != NaN )) || err_exit 'NaN == NaN'
 	(( -5*Inf == -Inf )) || err_exit '-5*Inf != -Inf'
 	[[ $(print -- $((sqrt(-1.0)))) == ?(-)nan ]]|| err_exit 'sqrt(-1.0) != NaN'
+	(( pow(1.0,-Inf) == 1.0 )) || err_exit 'pow(1.0,-Inf) != 1.0'
+	(( pow(-Inf,0.0) == 1.0 )) || err_exit 'pow(-Inf,0.0) != 1.0'
 	(( pow(1.0,Inf) == 1.0 )) || err_exit 'pow(1.0,Inf) != 1.0'
 	(( pow(Inf,0.0) == 1.0 )) || err_exit 'pow(Inf,0.0) != 1.0'
+	(( pow(1.0,NaN) == 1.0 )) || err_exit 'pow(1.0,NaN) != 1.0'
+	(( pow(Nan,0.0) == 1.0 )) || err_exit 'pow(Nan,0.0) != 1.0'
 	[[ $(print -- $((NaN/Inf))) == ?(-)nan ]] || err_exit 'NaN/Inf != NaN'
 	(( 4.0/Inf == 0.0 )) || err_exit '4.0/Inf != 0.0'
 else	err_exit 'Inf and NaN not working'
@@ -534,18 +544,18 @@ i=0 j=1
 unset a x
 x=0
 ((a[++x]++))
-(( x==1)) || err_exit '((a[++x]++)) should only increment x once'
-(( a[1]==1))  || err_exit 'a[1] not incremented'
+((x==1)) || err_exit "((a[++x]++)) should only increment x once (expected '1', got '$x')"
+((a[1]==1)) || err_exit "a[1] not incremented (expected '1', got '${a[1]}')"
 unset a
 x=0
 ((a[x++]++))
-(( x==1)) || err_exit '((a[x++]++)) should only increment x once'
-(( a[0]==1))  || err_exit 'a[0] not incremented'
+((x==1)) || err_exit "((a[x++]++)) should only increment x once (expected '1', got '$x')"
+((a[0]==1)) || err_exit "a[0] not incremented (expected '1', got '${a[0]}')"
 unset a
 x=0
 ((a[x+=2]+=1))
-(( x==2)) || err_exit '((a[x+=2]++)) should result in x==2'
-(( a[2]==1))  || err_exit 'a[0] not 1'
+((x==2)) || err_exit "((a[x+=2]++)) should result in x==2 (expected '2', got '$x')"
+((a[2]==1)) || err_exit "a[0] not 1 (expected '1', got '${a[2]}')"
 
 unset a i
 typeset -a a
@@ -667,7 +677,7 @@ $SHELL 2> /dev/null -c 'str="0x1.df768ed398ee1e01329a130627ae0000p-1";typeset -l
 
 x=(3 6 12)
 (( x[2] /= x[0]))
-(( x[2] == 4 ))  || err_exit '(( x[2] /= x[0])) fails for index array'
+(( x[2] == 4 ))  || err_exit '(( x[2] /= x[0])) fails for indexed array'
 
 x=([0]=3 [1]=6 [2]=12)
 (( x[2] /= x[0]))
@@ -681,7 +691,9 @@ unset x
 let x=010
 [[ $x == 10 ]] || err_exit 'let treating 010 as octal'
 (set -o letoctal; let x=010; [[ $x == 8 ]]) || err_exit 'let not treating 010 as octal with letoctal on'
-(set -o posix 2>/dev/null; let x=010; [[ $x == 8 ]]) || err_exit 'let not treating 010 as octal with posix on'
+if [[ -o ?posix ]]
+then	(set -o posix; let x=010; [[ $x == 8 ]]) || err_exit 'let not treating 010 as octal with posix on'
+fi
 
 float z=0
 integer aa=2 a=1
@@ -689,51 +701,62 @@ typeset -A A
 A[a]=(typeset -A AA)
 A[a].AA[aa]=1
 (( z= A[a].AA[aa]++ ))
-(( z == 1 )) ||  err_exit "z should be 1 but is $z for associative array of
-associative array arithmetic"
-[[ ${A[a].AA[aa]} == 2 ]] || err_exit '${A[a].AA[aa]} should be 2 after ++ operation for associative array of associative array arithmetic'
+(( z == 1 )) ||  err_exit "z should be '1' but is '$z' for associative array of associative array arithmetic"
+[[ ${A[a].AA[aa]} == 2 ]] || err_exit "\${A[a].AA[aa]} should be '2' but is '${A[a].AA[aa]}'" \
+	'after ++ operation for associative array of associative array arithmetic'
 unset A[a]
 
 A[a]=(typeset -a AA)
 A[a].AA[aa]=1
 (( z += A[a].AA[aa++]++ ))
-(( z == 2 )) ||  err_exit "z should be 2 but is $z for associative array of
-index array arithmetic"
-(( aa == 3 )) || err_exit "subscript aa should be 3 but is $aa after ++"
-[[ ${A[a].AA[aa-1]} == 2 ]] || err_exit '${A[a].AA[aa]} should be 2 after ++ operation for ssociative array of index array arithmetic'
+(( z == 2 )) ||  err_exit "z should be '2' but is '$z' for associative array of indexed array arithmetic"
+(( aa == 3 )) || err_exit "subscript aa should be '3' but is '$aa' after ++"
+[[ ${A[a].AA[aa-1]} == 2 ]] || err_exit "\${A[a].AA[aa]} should be '2' but is '${A[a].AA[aa]}'" \
+	'after ++ operation for associative array of indexed array arithmetic'
 unset A
 
 typeset -a A
 A[a]=(typeset -A AA)
 A[a].AA[aa]=1
 (( z += A[a].AA[aa]++ ))
-(( z == 3 )) ||  err_exit "z should be 3 but is $z for index array of
-associative array arithmetic"
-[[ ${A[a].AA[aa]} == 2 ]] || err_exit '${A[a].AA[aa]} should be 2 after ++ operation for index array of associative array arithmetic'
+(( z == 3 )) ||  err_exit "z should be '3' but is '$z' for indexed array of associative array arithmetic"
+[[ ${A[a].AA[aa]} == 2 ]] || err_exit "\${A[a].AA[aa]} should be '2' but is '${A[a].AA[aa]}'" \
+	'after ++ operation for indexed array of associative array arithmetic'
 unset A[a]
 
 A[a]=(typeset -a AA)
 A[a].AA[aa]=1
 (( z += A[a++].AA[aa++]++ ))
-(( z == 4 )) ||  err_exit "z should be 4 but is $z for index array of
-index array arithmetic"
-[[ ${A[a-1].AA[aa-1]} == 2 ]] || err_exit '${A[a].AA[aa]} should be 2 after ++ operation for index array of index array arithmetic'
-(( aa == 4 )) || err_exit "subscript aa should be 4 but is $aa after ++"
-(( a == 2 )) || err_exit "subscript a should be 2 but is $a after ++"
+(( z == 4 )) ||  err_exit "z should be '4' but is '$z' for indexed array of indexed array arithmetic"
+[[ ${A[a-1].AA[aa-1]} == 2 ]] || err_exit "\${A[a].AA[aa]} should be '2' but is '${A[a].AA[aa]}'" \
+	'after ++ operation for indexed array of indexed array arithmetic'
+(( aa == 4 )) || err_exit "subscript aa should be '4' but is '$aa' after ++"
+(( a == 2 )) || err_exit "subscript a should be '2' but is '$a' after ++"
 unset A
 
 unset r x
 integer x
 r=020
-(($r == 16)) || err_exit 'leading 0 not treated as octal inside ((...))'
+(($r == 20)) || err_exit 'leading 0 treated as octal inside ((...))'
 x=$(($r))
-(( x == 16 )) || err_exit 'leading 0 not treated as octal inside $((...))'
+((x == 20)) || err_exit 'leading 0 treated as octal inside $((...))'
 x=$r
-((x == 20 )) || err_exit 'leading 0 should not be treated as octal outside ((...))'
+((x == 20)) || err_exit 'leading 0 treated as octal outside ((...))'
 print -- -020 | read x
-((x == -20)) || err_exit 'numbers with leading -0 should not be treated as octal outside ((...))'
+((x == -20)) || err_exit 'numbers with leading -0 treated as octal outside ((...))'
 print -- -8#20 | read x
 ((x == -16)) || err_exit 'numbers with leading -8# should be treated as octal'
+if	((hasposix))
+then	set --posix
+	(($r == 16)) || err_exit 'posix: leading 0 not treated as octal inside ((...))'
+	x=$(($r))
+	(( x == 16 )) || err_exit 'posix: leading 0 not treated as octal inside $((...))'
+	x=$r
+	((x == 16)) || err_exit 'posix: leading 0 not as octal outside ((...))'
+	print -- -020 | read x
+	((x == -16)) || err_exit 'posix: numbers with leading -0 should be treated as octal outside ((...))'
+	set --noposix
+fi
 
 unset x
 x=0x1
@@ -747,8 +770,13 @@ let "$x==10" || err_exit 'arithmetic with $x where $x is 010 should be decimal i
 (( 9.$x == 9.01 )) || err_exit 'arithmetic with 9.$x where x=010 should be 9.01' 
 (( 9$x == 9010 )) || err_exit 'arithmetic with 9$x where x=010 should be 9010' 
 x010=99
-((x$x == 99 )) || err_exit 'arithtmetic with x$x where x=010 should be $x010'
-(( 3+$x == 11 )) || err_exit '3+$x where x=010 should be 11 in ((...))'
+((x$x == 99 )) || err_exit 'arithmetic with x$x where x=010 should be $x010'
+(( 3+$x == 13 )) || err_exit '3+$x where x=010 should be 13 in ((...))'
+if	((hasposix))
+then	set --posix
+	(( 3+$x == 11 )) || err_exit 'posix: 3+$x where x=010 should be 11 in ((...))'
+	set --noposix
+fi
 let "(3+$x)==13" || err_exit 'let should not recognize leading 0 as octal'
 unset x
 typeset -RZ3 x=10 
@@ -763,6 +791,161 @@ v=$(printf $'%.28a\n' 64)
 # ======
 # Redirections with ((...)) should not cause a syntax error
 (eval '((1)) >/dev/null') 2>/dev/null || err_exit 'redirections with ((...)) yield a syntax error'
+
+# ======
+# Arbitrary command execution vulnerability in array subscripts in arithmetic expressions
+# https://github.com/ksh93/ksh/issues/152
+
+exp='array_test_1: 1$(echo INJECTION >&2): arithmetic syntax error'
+got=$(set +x; var='1$(echo INJECTION >&2)' "$SHELL" -c 'typeset -a a; ((a[$var]++)); typeset -p a' array_test_1 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 1A: expected $(printf %q "$exp"), got $(printf %q "$got")"
+got=$(set +x; var='1$(echo INJECTION >&2)' "$SHELL" -c 'typeset -a a; ((a["$var"]++)); typeset -p a' array_test_1 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 1B: expected $(printf %q "$exp"), got $(printf %q "$got")"
+
+exp='typeset -A a=(['\''1$(echo INJECTION >&2)'\'']=1)'
+got=$(set +x; { var='1$(echo INJECTION >&2)'; typeset -A a; ((a[$var]++)); typeset -p a; } 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 2A: expected $(printf %q "$exp"), got $(printf %q "$got")"
+got=$(set +x; { var='1$(echo INJECTION >&2)'; typeset -A a; ((a["$var"]++)); typeset -p a; } 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 2B: expected $(printf %q "$exp"), got $(printf %q "$got")"
+
+exp='typeset -A a=(['\''$0`echo INJECTION >&2`'\'']=1)'
+got=$(set +x; { var='$0`echo INJECTION >&2`'; typeset -A a; ((a[$var]++)); typeset -p a; } 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 3A: expected $(printf %q "$exp"), got $(printf %q "$got")"
+got=$(set +x; { var='$0`echo INJECTION >&2`'; typeset -A a; ((a["$var"]++)); typeset -p a; } 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 3B: expected $(printf %q "$exp"), got $(printf %q "$got")"
+
+exp='typeset -A a=(['\''x\]+b\[$(echo INJECTION >&2)'\'']=1)'
+got=$(set +x; { var="x\]+b\[\$(echo INJECTION >&2)"; typeset -A a; ((a[$var]++)); typeset -p a; } 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 4A: expected $(printf %q "$exp"), got $(printf %q "$got")"
+got=$(set +x; { var="x\]+b\[\$(echo INJECTION >&2)"; typeset -A a; ((a["$var"]++)); typeset -p a; } 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 4B: expected $(printf %q "$exp"), got $(printf %q "$got")"
+
+exp='typeset -A a=(['\''$var'\'']=1)'
+got=$(set +x; { var='$0$(echo INJECTION >&2)'; typeset -A a; ((a[\$var]++)); typeset -p a; } 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 5A: expected $(printf %q "$exp"), got $(printf %q "$got")"
+got=$(set +x; { var='1`echo INJECTION >&2`'; typeset -A a; ((a["\$var"]++)); typeset -p a; } 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 5B: expected $(printf %q "$exp"), got $(printf %q "$got")"
+got=$(set +x; { var=''; typeset -A a; ((a[\$var]++)); typeset -p a; } 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 5C: expected $(printf %q "$exp"), got $(printf %q "$got")"
+got=$(set +x; { var='\'; typeset -A a; ((a[\$var]++)); typeset -p a; } 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 5D: expected $(printf %q "$exp"), got $(printf %q "$got")"
+got=$(set +x; { var=']'; typeset -A a; ((a[\$var]++)); typeset -p a; } 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 5E: expected $(printf %q "$exp"), got $(printf %q "$got")"
+got=$(set +x; { var='x]foo'; typeset -A a; ((a[\$var]++)); typeset -p a; } 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 5F: expected $(printf %q "$exp"), got $(printf %q "$got")"
+got=$(set +x; { var=''; typeset -A a; let 'a[$var]++'; typeset -p a; } 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 5G: expected $(printf %q "$exp"), got $(printf %q "$got")"
+got=$(set +x; { var='\'; typeset -A a; let 'a[$var]++'; typeset -p a; } 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 5H: expected $(printf %q "$exp"), got $(printf %q "$got")"
+got=$(set +x; { var=']'; typeset -A a; let 'a[$var]++'; typeset -p a; } 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 5I: expected $(printf %q "$exp"), got $(printf %q "$got")"
+got=$(set +x; { var='x]foo'; typeset -A a; let 'a[$var]++'; typeset -p a; } 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 5J: expected $(printf %q "$exp"), got $(printf %q "$got")"
+got=$(set +x; { var='1$(echo INJECTION >&2)'; typeset -A a; ((a["\$var"]++)); typeset -p a; } 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 5K: expected $(printf %q "$exp"), got $(printf %q "$got")"
+got=$(set +x; { var="x\]+b\[\$(echo INJECTION >&2)"; typeset -A a; ((a[\$var]++)); typeset -p a; } 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 5L: expected $(printf %q "$exp"), got $(printf %q "$got")"
+got=$(set +x; { var="x\]+b\[\$(uname>&2)"; typeset -A a; ((a["\$var"]++)); typeset -p a; } 2>&1)
+[[ $got == "$exp" ]] || err_exit "Array subscript quoting test 5M: expected $(printf %q "$exp"), got $(printf %q "$got")"
+
+# ======
+# Arithmetic recursion level was not reset on encountering readonly error in combination with a recursive arithmetic expression.
+# (arithmetic array subscripts inside arithmetic expressions are one example of such recursion)
+# https://github.com/ksh93/ksh/pull/239#discussion_r606874442
+srcdir=${SHTESTS_COMMON%/tests/*}
+integer maxlevel=$(grep $'^#define MAXLEVEL\t' "$srcdir/sh/streval.c" | sed 's/.*MAXLEVEL//')
+if	((!maxlevel))
+then	err_exit "could not get maximum arithmetic recursion level from source code; update this test"
+	maxlevel=1024
+fi
+integer loopcount=maxlevel+10
+got=$(
+	typeset -r -A -i ro_arr=([a]=10 [b]=20 [c]=30)
+	set +x
+	for ((i=0; i<loopcount; i++)); do
+		let "ro_arr[i+1] += 5"
+	done 2>&1
+)
+[[ $got == *recursion* ]] && err_exit "recursion level not reset on readonly error (main shell)"
+got=$(
+	typeset -r -A -i ro_arr=([a]=10 [b]=20 [c]=30)
+	set +x
+	for ((i=0; i<loopcount; i++)); do
+		( ((ro_arr[i+1] += 5)) )
+	done 2>&1
+)
+[[ $got == *recursion* ]] && err_exit "recursion level not reset on readonly error (subshell)"
+
+# ======
+# Some math function tests and only error if function exits
+unset got
+got=0
+if ( (( exp10(3) )) ) 2> /dev/null
+then
+	(( (got=exp10(3)) == 1000 )) ||  err_exit "exp10(3) != 1000, got '$got'"
+fi
+got=0
+if ( (( int(6.89) )) ) 2> /dev/null
+then
+	(( (got=int(6.89)) == 6 )) ||  err_exit "int(6.89) != 6, got '$got'"
+fi
+got=0
+if ( (( int(-6.89) )) ) 2> /dev/null
+then
+	(( (got=int(-6.89)) == -6 )) ||  err_exit "int(-6.89) != -6, got '$got'"
+fi
+float got=-1
+if ( (( float(2./3) )) ) 2> /dev/null
+then
+	(( (got=float(2./3)) == 2./3 )) ||  err_exit "float(2./3) != 2./3, got '$got'"
+fi
+unset got
+
+# ======
+# https://github.com/ksh93/ksh/issues/326
+((hasposix)) && for m in u d i o x X
+do
+	set --posix
+	case $m in
+	o)	exp="10;21;32;" ;;
+	x)	exp="8;11;1a;" ;;
+	X)	exp="8;11;1A;" ;;
+	*)	exp="8;17;26;" ;;
+	esac
+	got=${ printf "%$m;" 010 021 032; }
+	[[ $got == "$exp" ]] || err_exit "posix: printf %$m does not recognize octal arguments" \
+		"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+	set --noposix
+done
+
+# ======
+# BUG_ARITHNAN: In ksh <= 93u+m 2021-11-15 and zsh 5.6 - 5.8, the case-insensitive
+# floating point constants Inf and NaN are recognised in arithmetic evaluation,
+# overriding any variables with the names Inf, NaN, INF, nan, etc.
+if	((hasposix))
+then	set --posix
+	Inf=42 NaN=13
+	inf=421 nan=137
+	INF=429 NAN=937
+	typeset -l v=$((Inf)),$((NaN)),$((inf)),$((nan)),$((INF)),$((NAN))
+	case $v in
+	( inf,nan,inf,nan,inf,nan )
+		err_exit "posix: arith: inf/nan override variables" ;;
+	( "$Inf,$NaN,$inf,$nan,$INF,$NAN" )
+		: mustNotHave BUG_ARITHNAN ;;
+	( * )
+		err_exit "posix: arith: weird inf/nan problem: $(printf %q "$v")" ;;
+	esac
+	unset -v Inf NaN inf nan INF NAN v
+	set --noposix
+fi
+
+# ======
+# https://github.com/ksh93/ksh/issues/334#issuecomment-968603087
+exp=21
+got=$(typeset -Z x=0x15; set +x; { echo $((x)); } 2>&1)
+[[ $got == "$exp" ]] || err_exit "typeset -Z corrupts hexadecimal number in arithmetic context" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
 
 # ======
 exit $((Errors<125?Errors:125))

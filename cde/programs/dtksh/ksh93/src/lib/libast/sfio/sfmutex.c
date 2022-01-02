@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -27,13 +28,7 @@
 */
 
 /* the main locking/unlocking interface */
-#if __STD_C
 int sfmutex(Sfio_t* f, int type)
-#else
-int sfmutex(f, type)
-Sfio_t*	f;
-int	type;
-#endif
 {
 #if !vt_threaded
 	NOTUSED(f); NOTUSED(type);

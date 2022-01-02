@@ -1,7 +1,8 @@
 /***********************************************************************
 *                                                                      *
 *               This software is part of the ast package               *
-*          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 1985-2013 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,10 +20,9 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 /*
- * posix regex record executor
+ * POSIX regex record executor
  * multiple record sized-buffer interface
  */
 
@@ -33,9 +33,9 @@
  */
 
 int
-regrexec(const regex_t* p, const char* s, size_t len, size_t nmatch, regmatch_t* match, regflags_t flags, int sep, void* handle, regrecord_t record)
+regrexec_20120528(const regex_t* p, const char* s, size_t len, size_t nmatch, regmatch_t* match, regflags_t flags, int sep, void* handle, regrecord_t record)
 {
-	register unsigned char*	buf = (unsigned char*)s;
+	register unsigned char*	buf;
 	register unsigned char*	beg;
 	register unsigned char*	l;
 	register unsigned char*	r;
@@ -72,7 +72,8 @@ regrexec(const regex_t* p, const char* s, size_t len, size_t nmatch, regmatch_t*
 	index = leftlen++;
 	for (;;)
 	{
-		while ((index += skip[buf[index]]) < mid);
+		while (index < mid)
+			index += skip[buf[index]];
 		if (index < HIT)
 			goto impossible;
 		index -= HIT;

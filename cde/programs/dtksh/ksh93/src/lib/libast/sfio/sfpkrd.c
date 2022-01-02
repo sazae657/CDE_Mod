@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -23,12 +24,13 @@
 
 /*
  * The preferred method is POSIX recv(2) with MSG_PEEK, which is detected as 'socket_peek'.
- * On Solaris/Illumos (__sun), _stream_peek and _lib_select are needed, as _socket_peek doesn't work correctly.
- * On at least macOS and Linux, sfpkrd() runs significantly faster if we disable these.
+ * On Solaris/illumos (__sun), _stream_peek and _lib_select are needed, as _socket_peek doesn't work correctly.
+ * On at least macOS and Linux, sfpkrd() runs significantly faster if we disable these. However,
+ * ed_read() still needs to use select to intercept SIGWINCH, so if the last argument given
+ # to sfpkrd is '2' select is always used when available.
  */
 #if _socket_peek && !__sun
 #undef _stream_peek
-#undef _lib_select
 #endif
 
 #if __APPLE__ && !_socket_peek
@@ -43,20 +45,16 @@
 #define STREAM_PEEK	001
 #define SOCKET_PEEK	002
 
-#if __STD_C
-ssize_t sfpkrd(int fd, Void_t* argbuf, size_t n, int rc, long tm, int action)
-#else
-ssize_t sfpkrd(fd, argbuf, n, rc, tm, action)
-int	fd;	/* file descriptor */
-Void_t*	argbuf;	/* buffer to read data */
-size_t	n;	/* buffer size */
-int	rc;	/* record character */
-long	tm;	/* time-out */
-int	action;	/* >0: peeking, if rc>=0, get action records,
-		   <0: no peeking, if rc>=0, get -action records,
-		   =0: no peeking, if rc>=0, must get a single record
-		*/
-#endif
+ssize_t sfpkrd(int	fd,	/* file descriptor */
+	       void*	argbuf,	/* buffer to read data */
+	       size_t	n,	/* buffer size */
+	       int	rc,	/* record character */
+	       long	tm,	/* time-out */
+	       int	action)	/* >0: peeking, if rc>=0, get action records,
+				   <0: no peeking, if rc>=0, get action records,
+				   =0: no peeking, if rc>=0, must get a single record
+				   =2: same as >0, but always use select(2)
+				*/
 {
 	reg ssize_t	r;
 	reg int		ntry, t;
@@ -105,12 +103,12 @@ int	action;	/* >0: peeking, if rc>=0, get action records,
 					break;
 			}
 		}
-#endif /* stream_peek */
+#endif /* _stream_peek */
 
 		if(ntry == 1)
 			break;
 
-		/* poll or select to see if data is present.  */
+		/* use select to see if data is present */
 		while(tm >= 0 || action > 0 ||
 			/* block until there is data before peeking again */
 			((t&STREAM_PEEK) && rc >= 0) ||
@@ -118,7 +116,11 @@ int	action;	/* >0: peeking, if rc>=0, get action records,
 			(t&SOCKET_PEEK) )
 		{	r = -2;
 #if _lib_select
-			if(r == -2)
+			if(r == -2
+#if !__sun /* select(2) is always used on Solaris or if action == 2 on other OSes */
+				&& action == 2
+#endif
+				)
 			{	fd_set		rd;
 				struct timeval	tmb, *tmp;
 				FD_ZERO(&rd);

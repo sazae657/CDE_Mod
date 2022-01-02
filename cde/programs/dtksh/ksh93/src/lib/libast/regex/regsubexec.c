@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,10 +20,9 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 /*
- * posix regex ed(1) style substitute execute
+ * POSIX regex ed(1) style substitute execute
  */
 
 #include "reglib.h"
@@ -219,11 +219,11 @@ regsubexec(const regex_t* p, const char* s, size_t nmatch, oldregmatch_t* oldmat
 
 		if (!(match = oldof(0, regmatch_t, nmatch, 0)))
 			return -1;
-			for (i = 0; i < nmatch; i++)
-			{
-				match[i].rm_so = oldmatch[i].rm_so;
-				match[i].rm_eo = oldmatch[i].rm_eo;
-			}
+		for (i = 0; i < nmatch; i++)
+		{
+			match[i].rm_so = oldmatch[i].rm_so;
+			match[i].rm_eo = oldmatch[i].rm_eo;
+		}
 		if (!(r = regsubexec_20120528(p, s, nmatch, match)))
 			for (i = 0; i < nmatch; i++)
 			{

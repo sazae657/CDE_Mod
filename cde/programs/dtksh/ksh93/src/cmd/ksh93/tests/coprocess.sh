@@ -2,6 +2,7 @@
 #                                                                      #
 #               This software is part of the ast package               #
 #          Copyright (c) 1982-2012 AT&T Intellectual Property          #
+#          Copyright (c) 2020-2021 Contributors to ksh 93u+m           #
 #                      and is licensed under the                       #
 #                 Eclipse Public License, Version 1.0                  #
 #                    by AT&T Intellectual Property                     #
@@ -18,21 +19,11 @@
 #                                                                      #
 ########################################################################
 # test the behavior of co-processes
-function err_exit
-{
-	print -u2 -n "\t"
-	print -u2 -r ${Command}[$1]: "${@:2}"
-	let Errors+=1
-}
-alias err_exit='err_exit $LINENO'
 
-Command=${0##*/}
-integer Errors=0
-
-[[ -d $tmp && -w $tmp && $tmp == "$PWD" ]] || { err\_exit "$LINENO" '$tmp not set; run this from shtests. Aborting.'; exit 1; }
+. "${SHTESTS_COMMON:-${0%/*}/_common}"
 
 if	[[ -d /cygdrive ]]
-then	err_exit cygwin detected - coprocess tests disabled - enable at the risk of wedging your system
+then	err_exit 'Cygwin detected - coprocess tests disabled - enable at the risk of wedging your system'
 	exit $((Errors))
 fi
 
@@ -48,9 +39,9 @@ function ping # id
 }
 
 bincat=$(whence -p cat)
-builtin cat
+builtin cat 2> /dev/null && builtincat=cat
 
-for cat in cat $bincat
+for cat in $builtincat $bincat
 do
 
 	$cat |&

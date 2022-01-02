@@ -2,6 +2,7 @@
 #                                                                      #
 #               This software is part of the ast package               #
 #          Copyright (c) 1985-2011 AT&T Intellectual Property          #
+#          Copyright (c) 2020-2021 Contributors to ksh 93u+m           #
 #                      and is licensed under the                       #
 #                 Eclipse Public License, Version 1.0                  #
 #                    by AT&T Intellectual Property                     #
@@ -27,7 +28,7 @@ esac
 
 ok=0
 for i in \
-	-x /lib/ld.so /lib/ld-*.so /usr/lib/ld.so /lib/rld \
+	-x /lib64/ld.so /lib/ld.so /lib64/ld-*.so /lib/ld-*.so /usr/lib/ld.so /lib/rld \
 	-f /usr/shlib/libc.so /shlib/libc.so /usr/lib/libc.so \
 	-r /usr/shlib/libc.so /shlib/libc.so
 do	case $i in

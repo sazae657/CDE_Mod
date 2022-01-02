@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -23,13 +24,7 @@
 
 #undef sfputd
 
-#if __STD_C
 int sfputd(reg Sfio_t* f, Sfdouble_t d)
-#else
-int sfputd(f,d)
-reg Sfio_t*	f;
-reg Sfdouble_t	d;
-#endif
 {
 	return __sf_putd(f,d);
 }

@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -27,15 +28,7 @@
 **	Written by Glenn Fowler (03/18/1998).
 */
 
-#if __STD_C
-static int slowexcept(Sfio_t* f, int type, Void_t* v, Sfdisc_t* disc)
-#else
-static int slowexcept(f, type, v, disc)
-Sfio_t*		f;
-int		type;
-Void_t*		v;
-Sfdisc_t*	disc;
-#endif
+static int slowexcept(Sfio_t* f, int type, void* v, Sfdisc_t* disc)
 {
 	NOTUSED(f);
 	NOTUSED(v);
@@ -57,12 +50,7 @@ Sfdisc_t*	disc;
 	return(0);
 }
 
-#if __STD_C
 int sfdcslow(Sfio_t* f)
-#else
-int sfdcslow(f)
-Sfio_t*	f;
-#endif
 {
 	Sfdisc_t*	disc;
 

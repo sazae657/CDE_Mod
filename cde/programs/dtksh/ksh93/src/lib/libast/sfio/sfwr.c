@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -30,14 +31,7 @@
 */
 
 /* hole preserving writes */
-#if __STD_C
 static ssize_t sfoutput(Sfio_t* f, char* buf, size_t n)
-#else
-static ssize_t sfoutput(f,buf,n)
-Sfio_t*		f;
-char*		buf;
-size_t		n;
-#endif
 {	reg char	*sp, *wbuf, *endbuf;
 	reg ssize_t	s, w, wr;
 
@@ -124,15 +118,7 @@ size_t		n;
 	return w > 0 ? w : -1;
 }
 
-#if __STD_C
-ssize_t sfwr(Sfio_t* f, const Void_t* buf, size_t n, Sfdisc_t* disc)
-#else
-ssize_t sfwr(f,buf,n,disc)
-Sfio_t*		f;
-Void_t*		buf;
-size_t		n;
-Sfdisc_t*	disc;
-#endif
+ssize_t sfwr(Sfio_t* f, const void* buf, size_t n, Sfdisc_t* disc)
 {
 	reg ssize_t	w;
 	reg Sfdisc_t*	dc;
@@ -238,7 +224,7 @@ Sfdisc_t*	disc;
 		case SF_EDISC :
 			if(!local && !(f->flags&SF_STRING))
 				goto do_continue;
-			/* else fall thru */
+			/* FALLTHROUGH */
 		case SF_ESTACK :
 			SFMTXRETURN(f, (ssize_t)(-1));
 		}

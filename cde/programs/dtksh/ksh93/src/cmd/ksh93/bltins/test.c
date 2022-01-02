@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * test expression
  * [ expression ]
@@ -82,24 +82,6 @@ static char *nxtarg(struct test*,int);
 static int expr(struct test*,int);
 static int e3(struct test*);
 
-/*
- * POSIX requires error status > 1 for test builtin.
- * Since ksh 'test' can parse arithmetic expressions, the #define
- * override is also needed in sh/arith.c and sh/streval.c
- */
-int _ERROR_exit_b_test(int exitval)
-{
-	if(sh_isstate(SH_INTESTCMD))
-	{
-		sh_offstate(SH_INTESTCMD);
-		if(exitval < 2)
-			exitval = 2;
-	}
-	return(ERROR_exit(exitval));
-}
-#undef ERROR_exit
-#define ERROR_exit(n) _ERROR_exit_b_test(n)
-
 static int test_strmatch(Shell_t *shp,const char *str, const char *pat)
 {
 	regoff_t match[2*(MATCH_MAX+1)],n;
@@ -133,7 +115,6 @@ int b_test(int argc, char *argv[],Shbltin_t *context)
 	register int not;
 	int exitval;
 
-	sh_onstate(SH_INTESTCMD);
 	tdata.sh = context->shp;
 	tdata.av = argv;
 	tdata.ap = 1;
@@ -141,36 +122,41 @@ int b_test(int argc, char *argv[],Shbltin_t *context)
 	{
 		cp = argv[--argc];
 		if(!c_eq(cp, ']'))
+		{
 			errormsg(SH_DICT,ERROR_exit(2),e_missing,"']'");
+			UNREACHABLE();
+		}
 	}
 	if(argc <= 1)
 	{
+		/* POSIX requires the test builtin to return 1 if expression is missing */
 		exitval = 1;
 		goto done;
 	}
 	cp = argv[1];
 	if(c_eq(cp,'(') && argc<=6 && c_eq(argv[argc-1],')'))
 	{
-		/* special case  ( binop ) to conform with standard */
-		if(!(argc==4  && (not=sh_lookup(cp=argv[2],shtab_testops))))
+		/* special case ( binop ) to conform with standard */
+		if(!(argc==4 && (not=sh_lookup(cp=argv[2],shtab_testops))))
 		{
 			cp =  (++argv)[1];
+			++tdata.av;
 			argc -= 2;
 		}
 	}
 	not = c_eq(cp,'!');
-	/* posix portion for test */
+	/* POSIX portion for test */
 	switch(argc)
 	{
 		case 5:
 			if(!not)
 				break;
 			argv++;
-			/* fall through */
+			/* FALLTHROUGH */
 		case 4:
 		{
 			register int op = sh_lookup(cp=argv[2],shtab_testops);
-			if(op&TEST_BINOP)
+			if(op&TEST_ANDOR)
 				break;
 			if(!op)
 			{
@@ -192,6 +178,7 @@ int b_test(int argc, char *argv[],Shbltin_t *context)
 					goto done;
 				}
 				errormsg(SH_DICT,ERROR_exit(2),e_badop,cp);
+				UNREACHABLE();
 			}
 			exitval = (test_binop(tdata.sh,op,argv[1],argv[3])^(argc!=5));
 			goto done;
@@ -218,7 +205,7 @@ int b_test(int argc, char *argv[],Shbltin_t *context)
 					av[2] = 0;
 					optget(av,sh_opttest);
 					errormsg(SH_DICT,ERROR_usage(2), "%s",opt_info.arg);
-					return(2);
+					UNREACHABLE();
 				}
 				break;
 			}
@@ -231,15 +218,15 @@ int b_test(int argc, char *argv[],Shbltin_t *context)
 	tdata.ac = argc;
 	exitval = (!expr(&tdata,0));
 done:
-	sh_offstate(SH_INTESTCMD);
 	return(exitval);
 }
 
 /*
  * evaluate a test expression.
  * flag is 0 on outer level
- * flag is 1 when in parenthesis
- * flag is 2 when evaluating -a 
+ * flag is 1 when in parentheses
+ * flag is 2 when evaluating -a (TEST_AND)
+ * flag is 3 when evaluating -o (TEST_OR)
  */
 static int expr(struct test *tp,register int flag)
 {
@@ -276,6 +263,7 @@ static int expr(struct test *tp,register int flag)
 		if(flag==0)
 			break;
 		errormsg(SH_DICT,ERROR_exit(2),e_badsyntax);
+		UNREACHABLE();
 	}
 	return(r);
 }
@@ -290,6 +278,7 @@ static char *nxtarg(struct test *tp,int mt)
 			return(0);
 		}
 		errormsg(SH_DICT,ERROR_exit(2),e_argument);
+		UNREACHABLE();
 	}
 	return(tp->av[tp->ap++]);
 }
@@ -301,14 +290,28 @@ static int e3(struct test *tp)
 	register int op;
 	char *binop;
 	arg=nxtarg(tp,0);
-	if(arg && c_eq(arg, '!'))
+	if(sh_isoption(SH_POSIX) && tp->ap + 1 < tp->ac && ((op=sh_lookup(tp->av[tp->ap],shtab_testops)) & TEST_ANDOR))
+	{	/*
+		 * In POSIX mode, makes sure standard binary -a/-o takes precedence
+		 * over nonstandard unary -a/-o if the lefthand expression is "!" or "("
+		 */
+		tp->ap++;
+		if(op==TEST_AND)
+			return(*arg && expr(tp,2));
+		else /* TEST_OR */
+			return(*arg || expr(tp,3));
+	}
+	if(arg && c_eq(arg, '!') && tp->ap < tp->ac)
 		return(!e3(tp));
 	if(c_eq(arg, '('))
 	{
 		op = expr(tp,1);
 		cp = nxtarg(tp,0);
 		if(!cp || !c_eq(cp, ')'))
+		{
 			errormsg(SH_DICT,ERROR_exit(2),e_missing,"')'");
+			UNREACHABLE();
+		}
 		return(op);
 	}
 	cp = nxtarg(tp,1);
@@ -340,6 +343,7 @@ static int e3(struct test *tp)
 			if(op==0 || !strchr(test_opchars+10,op))
 				return(1);
 			errormsg(SH_DICT,ERROR_exit(2),e_argument);
+			UNREACHABLE();
 		}
 		if(strchr(test_opchars,op))
 			return(test_unop(tp->sh,op,cp));
@@ -351,10 +355,13 @@ static int e3(struct test *tp)
 	}
 skip:
 	op = sh_lookup(binop=cp,shtab_testops);
-	if(!(op&TEST_BINOP))
+	if(!(op&TEST_ANDOR))
 		cp = nxtarg(tp,0);
 	if(!op)
+	{
 		errormsg(SH_DICT,ERROR_exit(2),e_badop,binop);
+		UNREACHABLE();
+	}
 	if(op==TEST_AND || op==TEST_OR)
 		tp->ap--;
 	return(test_binop(tp->sh,op,arg,cp));
@@ -394,7 +401,7 @@ int test_unop(Shell_t *shp,register int op,register const char *arg)
 	    case 'l':
 #endif
 	    case 'L':
-	    case 'h': /* undocumented, and hopefully will disappear */
+	    case 'h':
 		if(*arg==0 || arg[strlen(arg)-1]=='/' || lstat(arg,&statb)<0)
 			return(0);
 		return(S_ISLNK(statb.st_mode));
@@ -434,6 +441,7 @@ int test_unop(Shell_t *shp,register int op,register const char *arg)
 		return(*arg == 0);
 	    case 's':
 		sfsync(sfstdout);
+		/* FALLTHROUGH */
 	    case 'O':
 	    case 'G':
 		if(*arg==0 || test_stat(arg,&statb)<0)
@@ -481,21 +489,22 @@ int test_unop(Shell_t *shp,register int op,register const char *arg)
 		}
 		if(ap = nv_arrayptr(np))
 			return(nv_arrayisset(np,ap));
-		if(*arg=='I' && strcmp(arg,"IFS")==0)
-			return(nv_getval(np)!=NULL);  /* avoid BUG_IFSISSET */
-		return(!nv_isnull(np) || nv_isattr(np,NV_INTEGER));
+		return(!nv_isnull(np));
 	    }
 	    default:
 	    {
 		static char a[3] = "-?";
 		a[1]= op;
 		errormsg(SH_DICT,ERROR_exit(2),e_badop,a);
-		/* NOTREACHED  */
-		return(0);
+		UNREACHABLE();
 	    }
 	}
 }
 
+/*
+ * This function handles binary operators for both the
+ * test/[ built-in and the [[ ... ]] compound command
+ */
 int test_binop(Shell_t *shp,register int op,const char *left,const char *right)
 {
 	register double lnum = 0, rnum = 0;
@@ -510,7 +519,6 @@ int test_binop(Shell_t *shp,register int op,const char *left,const char *right)
 	}
 	switch(op)
 	{
-		/* op must be one of the following values */
 		case TEST_AND:
 		case TEST_OR:
 			return(*left!=0);
@@ -526,6 +534,9 @@ int test_binop(Shell_t *shp,register int op,const char *left,const char *right)
 			return(strcmp(left, right)==0);
 		case TEST_SNE:
 			return(strcmp(left, right)!=0);
+		case TEST_REP:
+			sfprintf(stkstd, "~(E)%s", right);
+			return(test_strmatch(shp, left, stkfreeze(stkstd, 1))>0);
 		case TEST_EF:
 			return(test_inode(left,right));
 		case TEST_NT:
@@ -545,8 +556,8 @@ int test_binop(Shell_t *shp,register int op,const char *left,const char *right)
 		case TEST_LE:
 			return(lnum<=rnum);
 	}
-	/* NOTREACHED */
-	return(0);
+	/* all possible binary operators should be covered above */
+	UNREACHABLE();
 }
 
 /*
@@ -652,7 +663,7 @@ skip:
 				if((maxgroups=getgroups(0,(gid_t*)0)) <= 0)
 				{
 					/* pre-POSIX system */
-					maxgroups=NGROUPS_MAX;
+					maxgroups = (int)astconf_long(CONF_NGROUPS_MAX);
 				}
 			}
 			groups = (gid_t*)stakalloc((maxgroups+1)*sizeof(gid_t));
@@ -666,7 +677,7 @@ skip:
 				}
 			}
 		}
-#   endif /* _lib_getgroups */
+#endif /* _lib_getgroups */
 		if(statb.st_mode & mode)
 			return(0);
 	}

@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,17 +18,21 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
- * exec [arg...]
+ * bg [job...]
+ * disown [job...]
+ * exec [-c] [-a name] [command [arg ...]]
  * eval [arg...]
+ * fg [job...]
  * jobs [-lnp] [job...]
- * login [arg...]
  * let expr...
+ * redirect [redirection...]
+ * source file [arg...]
  * . file [arg...]
  * :, true, false
  * wait [job...]
  * shift [n]
+ * times
  *
  *   David Korn
  *   AT&T Labs
@@ -55,15 +60,6 @@
 
 #define DOTMAX	MAXDEPTH	/* maximum level of . nesting */
 
-static void     noexport(Namval_t*,void*);
-
-struct login
-{
-	Shell_t *sh;
-	int     clear;
-	char    *arg0;
-};
-
 /*
  * Handler function for nv_scan() that unsets a variable's export attribute
  */
@@ -82,23 +78,20 @@ int    b_redirect(int argc,char *argv[],Shbltin_t *context){}
 #endif
 int    b_exec(int argc,char *argv[], Shbltin_t *context)
 {
-	struct login logdata;
 	register int n;
 	struct checkpt *pp;
 	const char *pname;
-
-	logdata.clear = 0;
-	logdata.arg0 = 0;
-	logdata.sh = context->shp;
-        logdata.sh->st.ioset = 0;
+	int	clear = 0;
+	char	*arg0 = 0;
+	NOT_USED(argc);
+	sh.st.ioset = 0;
 	while (n = optget(argv, *argv[0]=='r' ? sh_optredirect : sh_optexec)) switch (n)
 	{
 	    case 'a':
-		logdata.arg0 = opt_info.arg;
-		argc = 0;
+		arg0 = opt_info.arg;
 		break;
 	    case 'c':
-		logdata.clear=1;
+		clear=1;
 		break;
 	    case ':':
 		errormsg(SH_DICT,2, "%s", opt_info.arg);
@@ -108,52 +101,63 @@ int    b_exec(int argc,char *argv[], Shbltin_t *context)
 		return(2);
 	}
 	if(error_info.errors)
+	{
 		errormsg(SH_DICT,ERROR_usage(2),"%s",optusage((char*)0));
+		UNREACHABLE();
+	}
 	if(*argv[0]=='r' && argv[opt_info.index])  /* 'redirect' supports no args */
-		errormsg(SH_DICT,ERROR_exit(2),e_badsyntax);
+	{
+		errormsg(SH_DICT,ERROR_exit(2),"%s: %s",e_badsyntax,argv[opt_info.index]);
+		UNREACHABLE();
+	}
 	argv += opt_info.index;
 	if(!*argv)
 		return(0);
 
 	/* from here on, it's 'exec' with args, so we're replacing the shell */
 	if(sh_isoption(SH_RESTRICTED))
+	{
 		errormsg(SH_DICT,ERROR_exit(1),e_restricted,argv[0]);
+		UNREACHABLE();
+	}
 	else
-        {
-		register struct argnod *arg=logdata.sh->envlist;
+	{
+		register struct argnod *arg=sh.envlist;
 		register Namval_t* np;
 		register char *cp;
-		if(logdata.sh->subshell && !logdata.sh->subshare)
+		if(sh.subshell && !sh.subshare)
 			sh_subfork();
-		if(logdata.clear)
-			nv_scan(logdata.sh->var_tree,noexport,0,NV_EXPORT,NV_EXPORT);
+		if(clear)
+			nv_scan(sh.var_tree,noexport,0,NV_EXPORT,NV_EXPORT);
 		while(arg)
 		{
 			if((cp=strchr(arg->argval,'=')) &&
-				(*cp=0,np=nv_search(arg->argval,logdata.sh->var_tree,0)))
+				(*cp=0,np=nv_search(arg->argval,sh.var_tree,0)))
 			{
 				nv_onattr(np,NV_EXPORT);
-				sh_envput(logdata.sh->env,np);
+				sh_envput(sh.env,np);
 			}
 			if(cp)
 				*cp = '=';
 			arg=arg->argnxt.ap;
 		}
 		pname = argv[0];
-		if(logdata.arg0)
-			argv[0] = logdata.arg0;
+		if(arg0)
+			argv[0] = arg0;
 #ifdef JOBS
-		if(job_close(logdata.sh) < 0)
+		if(job_close(&sh) < 0)
 			return(1);
 #endif /* JOBS */
+		/* if the main shell is about to be replaced, decrease SHLVL to cancel out a subsequent increase */
+		if(!shgd->realsubshell)
+			(*SHLVL->nvalue.ip)--;
 		/* force bad exec to terminate shell */
-		pp = (struct checkpt*)logdata.sh->jmplist;
+		pp = (struct checkpt*)sh.jmplist;
 		pp->mode = SH_JMPEXIT;
 		sh_sigreset(2);
-		sh_freeup(logdata.sh);
-		path_exec(logdata.sh,pname,argv,NIL(struct argnod*));
-		sh_done(logdata.sh,0);
-        }
+		sh_freeup(&sh);
+		path_exec(&sh,pname,argv,NIL(struct argnod*));
+	}
 	return(1);
 }
 
@@ -170,11 +174,14 @@ int    b_let(int argc,char *argv[],Shbltin_t *context)
 		break;
 	    case '?':
 		errormsg(SH_DICT,ERROR_usage(2), "%s", opt_info.arg);
-		break;
+		UNREACHABLE();
 	}
 	argv += opt_info.index;
 	if(error_info.errors || !*argv)
+	{
 		errormsg(SH_DICT,ERROR_usage(2),"%s",optusage((char*)0));
+		UNREACHABLE();
+	}
 	while(arg= *argv++)
 		r = !sh_arith(shp,arg);
 	return(r);
@@ -195,7 +202,10 @@ int    b_eval(int argc,char *argv[], Shbltin_t *context)
 		return(2);
 	}
 	if(error_info.errors)
+	{
 		errormsg(SH_DICT,ERROR_usage(2),"%s",optusage((char*)0));
+		UNREACHABLE();
+	}
 	argv += opt_info.index;
 	if(*argv && **argv)
 	{
@@ -205,6 +215,10 @@ int    b_eval(int argc,char *argv[], Shbltin_t *context)
 	return(shp->exitval);
 }
 
+#if 0
+    /* for the dictionary generator */
+    int	b_source(register int n,char *argv[],Shbltin_t *context){}
+#endif
 int    b_dot_cmd(register int n,char *argv[],Shbltin_t *context)
 {
 	register char *script;
@@ -231,14 +245,20 @@ int    b_dot_cmd(register int n,char *argv[],Shbltin_t *context)
 	argv += opt_info.index;
 	script = *argv;
 	if(error_info.errors || !script)
+	{
 		errormsg(SH_DICT,ERROR_usage(2),"%s",optusage((char*)0));
+		UNREACHABLE();
+	}
 	if(shp->dot_depth+1 > DOTMAX)
+	{
 		errormsg(SH_DICT,ERROR_exit(1),e_toodeep,script);
+		UNREACHABLE();
+	}
 	if(!(np=shp->posix_fun))
 	{
 		/* check for KornShell style function first */
 		np = nv_search(script,shp->fun_tree,0);
-		if(np && is_afunction(np) && !nv_isattr(np,NV_FPOSIX))
+		if(np && is_afunction(np) && !nv_isattr(np,NV_FPOSIX) && !(sh_isoption(SH_POSIX) && shp->bltindata.bnode==SYSDOT))
 		{
 			if(!np->nvalue.ip)
 			{
@@ -249,7 +269,10 @@ int    b_dot_cmd(register int n,char *argv[],Shbltin_t *context)
 						np = 0;
 				}
 				else
+				{
 					errormsg(SH_DICT,ERROR_exit(1),e_found,script);
+					UNREACHABLE();
+				}
 			}
 		}
 		else
@@ -257,7 +280,10 @@ int    b_dot_cmd(register int n,char *argv[],Shbltin_t *context)
 		if(!np)
 		{
 			if((fd=path_open(shp,script,path_get(shp,script))) < 0)
+			{
 				errormsg(SH_DICT,ERROR_system(1),e_open,script);
+				UNREACHABLE();
+			}
 			filename = path_fullname(shp,stkptr(shp->stk,PATH_OFFSET));
 		}
 	}
@@ -291,7 +317,7 @@ int    b_dot_cmd(register int n,char *argv[],Shbltin_t *context)
 			sh_exec((Shnode_t*)(nv_funtree(np)),sh_isstate(SH_ERREXIT));
 		else
 		{
-			buffer = malloc(IOBSIZE+1);
+			buffer = sh_malloc(IOBSIZE+1);
 			iop = sfnew(NIL(Sfio_t*),buffer,IOBSIZE,fd,SF_READ);
 			sh_offstate(SH_NOFORK);
 			sh_eval(iop,sh_isstate(SH_PROFILE)?SH_FUNEVAL:0);
@@ -312,7 +338,7 @@ int    b_dot_cmd(register int n,char *argv[],Shbltin_t *context)
 	}
 	if (shp->st.self != &savst)
 		*shp->st.self = shp->st;
-	/* only restore the top Shscope_t portion for posix functions */
+	/* only restore the top Shscope_t portion for POSIX functions */
 	memcpy((void*)&shp->st, (void*)prevscope, sizeof(Shscope_t));
 	shp->topscope = (Shscope_t*)prevscope;
 	nv_putval(SH_PATHNAMENOD, shp->st.filename ,NV_NOFREE);
@@ -322,7 +348,7 @@ int    b_dot_cmd(register int n,char *argv[],Shbltin_t *context)
 }
 
 /*
- * null, true  command
+ * null, true command
  */
 int    b_true(int argc,register char *argv[],Shbltin_t *context)
 {
@@ -333,7 +359,7 @@ int    b_true(int argc,register char *argv[],Shbltin_t *context)
 }
 
 /*
- * false  command
+ * false command
  */
 int    b_false(int argc,register char *argv[], Shbltin_t *context)
 {
@@ -357,11 +383,17 @@ int    b_shift(register int n, register char *argv[], Shbltin_t *context)
 			return(2);
 	}
 	if(error_info.errors)
+	{
 		errormsg(SH_DICT,ERROR_usage(2),"%s",optusage((char*)0));
+		UNREACHABLE();
+	}
 	argv += opt_info.index;
 	n = ((arg= *argv)?(int)sh_arith(shp,arg):1);
 	if(n<0 || shp->st.dolc<n)
+	{
 		errormsg(SH_DICT,ERROR_exit(1),e_number,arg);
+		UNREACHABLE();
+	}
 	else
 	{
 		shp->st.dolv += n;
@@ -380,10 +412,13 @@ int    b_wait(int n,register char *argv[],Shbltin_t *context)
 			break;
 		case '?':
 			errormsg(SH_DICT,ERROR_usage(2), "%s",opt_info.arg);
-			break;
+			UNREACHABLE();
 	}
 	if(error_info.errors)
+	{
 		errormsg(SH_DICT,ERROR_usage(2),"%s",optusage((char*)0));
+		UNREACHABLE();
+	}
 	argv += opt_info.index;
 	job_bwait(argv);
 	return(shp->exitval);
@@ -411,20 +446,26 @@ int    b_bg(register int n,register char *argv[],Shbltin_t *context)
 		break;
 	    case '?':
 		errormsg(SH_DICT,ERROR_usage(2), "%s",opt_info.arg);
-		break;
+		UNREACHABLE();
 	}
 	if(error_info.errors)
+	{
 		errormsg(SH_DICT,ERROR_usage(2),"%s",optusage((char*)0));
+		UNREACHABLE();
+	}
 	argv += opt_info.index;
-	if(!sh_isoption(SH_MONITOR) || !job.jobcontrol)
+	if(!sh_isstate(SH_MONITOR))
 	{
 		errormsg(SH_DICT,ERROR_exit(1),e_no_jctl);
-		return(1);
+		UNREACHABLE();
 	}
 	if(flag=='d' && *argv==0)
 		argv = (char**)0;
 	if(job_walk(sfstdout,job_switch,flag,argv))
+	{
 		errormsg(SH_DICT,ERROR_exit(1),e_no_job);
+		UNREACHABLE();
+	}
 	return(shp->exitval);
 }
 
@@ -448,15 +489,21 @@ int    b_jobs(register int n,char *argv[],Shbltin_t *context)
 		break;
 	    case '?':
 		errormsg(SH_DICT,ERROR_usage(2), "%s",opt_info.arg);
-		break;
+		UNREACHABLE();
 	}
 	argv += opt_info.index;
 	if(error_info.errors)
+	{
 		errormsg(SH_DICT,ERROR_usage(2),"%s",optusage((char*)0));
+		UNREACHABLE();
+	}
 	if(*argv==0)
 		argv = (char**)0;
 	if(job_walk(sfstdout,job_list,flag,argv))
+	{
 		errormsg(SH_DICT,ERROR_exit(1),e_no_job);
+		UNREACHABLE();
+	}
 	job_wait((pid_t)0);
 	return(shp->exitval);
 }
@@ -477,7 +524,8 @@ static void	print_times(struct timeval utime, struct timeval stime)
 	sfprintf(sfstdout, "%dm%02d%c%03ds %dm%02d%c%03ds\n", ut_min, ut_sec, radix, ut_ms, st_min, st_sec, radix, st_ms);
 }
 #if _lib_getrusage
-static void	print_cpu_times()
+/* getrusage tends to have higher precision */
+static void	print_cpu_times(void)
 {
 	struct rusage usage;
 	/* Print the time (user & system) consumed by the shell. */
@@ -488,7 +536,7 @@ static void	print_cpu_times()
 	print_times(usage.ru_utime, usage.ru_stime);
 }
 #else  /* _lib_getrusage */
-static void	print_cpu_times()
+static void	print_cpu_times(void)
 {
 	struct timeval utime, stime;
 	double dtime;
@@ -522,12 +570,16 @@ int	b_times(int argc, char *argv[], Shbltin_t *context)
 	    case ':':
 		errormsg(SH_DICT, 2, "%s", opt_info.arg);
 		errormsg(SH_DICT, ERROR_usage(2), "%s", optusage((char*)0));
+		UNREACHABLE();
 	    default:
 		errormsg(SH_DICT, ERROR_usage(0), "%s", opt_info.arg);
 		return(2);
 	}
 	if (argv[opt_info.index])
+	{
 		errormsg(SH_DICT, ERROR_exit(2), e_toomanyops);
+		UNREACHABLE();
+	}
 	/* Get & print the times */
 	print_cpu_times();
 	return(0);
@@ -550,25 +602,33 @@ int	b_universe(int argc, char *argv[],Shbltin_t *context)
 		break;
 	    case '?':
 		errormsg(SH_DICT,ERROR_usage(2), "%s",opt_info.arg);
-		break;
+		UNREACHABLE();
 	}
 	argv += opt_info.index;
 	argc -= opt_info.index;
 	if(error_info.errors || argc>1)
+	{
 		errormsg(SH_DICT,ERROR_usage(2),"%s",optusage((char*)0));
+		UNREACHABLE();
+	}
 	if(arg = argv[0])
 	{
 		if(!astconf("UNIVERSE",0,arg))
+		{
 			errormsg(SH_DICT,ERROR_exit(1), e_badname,arg);
+			UNREACHABLE();
+		}
 	}
 	else
 	{
 		if(!(arg=astconf("UNIVERSE",0,0)))
+		{
 			errormsg(SH_DICT,ERROR_exit(1),e_nouniverse);
+			UNREACHABLE();
+		}
 		else
 			sfputr(sfstdout,arg,'\n');
 	}
 	return(0);
 }
 #endif /* cmd_universe */
-

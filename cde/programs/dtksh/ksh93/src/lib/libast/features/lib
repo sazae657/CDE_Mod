@@ -4,8 +4,13 @@ cmd	universe
 
 hdr	dirent,direntry,filio,fmtmsg,fnmatch,jioctl,libgen,limits
 hdr	locale,ndir,nl_types,process,spawn,syslog,utime,vfork
+hdr	linux/fs,linux/msdos_fs,sys/ioctl
+hdr	wctype
 hdr	wchar note{ <wchar.h> and isw*() really work }end execute{
 	#include <wchar.h>
+	#if _hdr_wctype
+	#include <wctype.h>
+	#endif
 	int
 	main()
 	{
@@ -13,7 +18,6 @@ hdr	wchar note{ <wchar.h> and isw*() really work }end execute{
 		return iswalnum(w) == 0;
 	}
 }end
-hdr	wctype wchar.h
 
 dat	_tzname,tzname
 
@@ -28,7 +32,7 @@ lib	getopt,getsubopt,getopt_long,getopt_long_only
 lib	glob,index,iswblank,iswctype,killpg,link,localeconv,madvise
 lib	mbtowc,mbrtowc,memalign,memchr,memcpy,memdup,memmove,memset
 lib	mkdir,mkfifo,mktemp,mktime
-lib	mount,on_exit,onexit,opendir,pathconf
+lib	mount,onexit,opendir,pathconf
 lib	readlink,remove,rename,rewinddir,rindex,rmdir,setlocale
 lib	setpgid,setpgrp,setpgrp2,setreuid,setsid,setuid,sigaction
 lib	sigprocmask,sigsetmask,sigunblock,sigvec,socketpair
@@ -37,9 +41,9 @@ lib	strchr,strcoll,strdup,strerror,strcasecmp,strncasecmp,strrchr,strstr
 lib	strmode,strxfrm,strftime,swab,symlink,sysconf,sysinfo,syslog
 lib	telldir,tmpnam,tzset,universe,unlink,utime,wctype
 lib	ftruncate,truncate
-lib	creat64,fstat64,fstatvfs64,ftruncate64 -D_LARGEFILE64_SOURCE
-lib	lseek64,lstat64 -D_LARGEFILE64_SOURCE
-lib	open64,readdir64,stat64,statvfs64,truncate64 -D_LARGEFILE64_SOURCE
+lib	creat64,fstat64,fstatvfs64,ftruncate64
+lib	lseek64,lstat64
+lib	open64,readdir64,stat64,statvfs64,truncate64
 
 lib,npt	strtod,strtold,strtol,strtoll,strtoul,strtoull stdlib.h
 lib,npt	sigflag signal.h
@@ -53,11 +57,10 @@ mem	inheritance.pgroup spawn.h
 sys	dir,filio,jioctl,localedef,ptem,resource
 sys	socket,stream,systeminfo,universe,vfork
 
-typ	ino64_t,off64_t -D_LARGEFILE64_SOURCE
-typ	struct.dirent64 -D_LARGEFILE64_SOURCE dirent.h
+typ	ino64_t,off64_t
+typ	struct.dirent64 dirent.h
 
 tst	tst_errno note{ errno can be assigned }end link{
-	_BEGIN_EXTERNS_
 	#define error		______error
 	#define strerror	______strerror
 	#include <errno.h>
@@ -68,15 +71,13 @@ tst	tst_errno note{ errno can be assigned }end link{
 	#endif
 	error() { }
 	strerror() { }
-	_END_EXTERNS_
 	int main() { errno = 0; error(); strerror(); return 0; }
 }end
 
 tst	lib_poll_fd_1 note{ fd is first arg to poll() }end execute{
 	#include <poll.h>
-	_BEGIN_EXTERNS_
-	extern int	pipe _ARG_((int*));
-	_END_EXTERNS_
+	#include <unistd.h>
+	extern int	pipe(int*);
 	int
 	main()
 	{	int		rw[2];
@@ -94,9 +95,8 @@ tst	lib_poll_fd_1 note{ fd is first arg to poll() }end execute{
 
 tst	lib_poll_fd_2 note{ fd is second arg to poll() }end execute{
 	#include <poll.h>
-	_BEGIN_EXTERNS_
-	extern int	pipe _ARG_((int*));
-	_END_EXTERNS_
+	#include <unistd.h>
+	extern int	pipe(int*);
 	int
 	main()
 	{	int		rw[2];
@@ -118,9 +118,7 @@ exp	_lib_poll	_lib_poll_fd_1||_lib_poll_fd_2
 tst	lib_poll_notimer note{ poll with no fds ignores timeout }end execute{
 	#include <sys/types.h>
 	#include <poll.h>
-	_BEGIN_EXTERNS_
-	extern time_t	time _ARG_((time_t*));
-	_END_EXTERNS_
+	extern time_t	time(time_t*);
 	#define TIMEOUT		4
 	int
 	main()
@@ -169,12 +167,10 @@ tst	sys_select note{ select() requires <sys/select.h> }end link{
 }end
 
 tst	pipe_rw note{ full duplex pipes }end execute{
-	_BEGIN_EXTERNS_
-	extern int	pipe _ARG_((int*));
-	extern int	read _ARG_((int, void*, int));
-	extern int	strcmp _ARG_((const char*, const char*));
-	extern int	write _ARG_((int, void*, int));
-	_END_EXTERNS_
+	extern int	pipe(int*);
+	extern int	read(int, void*, int);
+	extern int	strcmp(const char*, const char*);
+	extern int	write(int, void*, int);
 	int
 	main()
 	{
@@ -199,6 +195,7 @@ tst	pipe_rw note{ full duplex pipes }end execute{
 
 tst	lib_vfork unistd.h stdlib.h vfork.h note{ vfork exists and it works }end execute{
 	#include <signal.h>
+	#include <sys/wait.h>
 	int
 	main(argc, argv)
 	int	argc;
@@ -226,10 +223,8 @@ tst	lib_vfork unistd.h stdlib.h vfork.h note{ vfork exists and it works }end exe
 }end
  
 tst	real_vfork note{ vfork child shares data with parent }end execute{
-	_BEGIN_EXTERNS_
-	extern int	_exit _ARG_((int));
-	extern int	vfork _ARG_((void));
-	_END_EXTERNS_
+	extern int	_exit(int);
+	extern int	vfork(void);
 	int		code;
 	int
 	main()
@@ -251,9 +246,9 @@ tst	lib_posix_spawn unistd.h stdlib.h spawn.h -Dfork=______fork note{ posix_spaw
 	#include <string.h>
 	/* if it uses fork() why bother? */
 	#undef fork
-	pid_t fork _ARG_((void)) { NOTE("uses fork()"); return -1; }
-	pid_t _fork _ARG_((void)) { NOTE("uses _fork()"); return -1; }
-	pid_t __fork _ARG_((void)) { NOTE("uses __fork()"); return -1; }
+	pid_t fork(void)) { NOTE("uses fork()"; return -1; }
+	pid_t _fork(void)) { NOTE("uses _fork()"; return -1; }
+	pid_t __fork(void)) { NOTE("uses __fork()"; return -1; }
 	int
 	main(argc, argv)
 	int	argc;
@@ -433,7 +428,7 @@ tst	socket_peek note{ recv(MSG_PEEK) works on socketpair() }end execute{
 }end
 
 tst	lib_memcmp string.h note{ standard memcmp interface that works }end execute{
-	/* sgi again -- we're sick of being their regression test */
+	/* SGI again -- we're sick of being their regression test */
 	#define L	8
 	char		a[L] = { '0' };
 	char		b[L] = { '1' };
@@ -445,21 +440,16 @@ tst	lib_memcmp string.h note{ standard memcmp interface that works }end execute{
 }end
 
 tst	lib_memccpy string.h unistd.h stdlib.h fcntl.h signal.h sys/types.h sys/stat.h sys/mman.h fcntl.h note{ standard memccpy interface that works }end execute{
-	#if _STD_
-	static void gotcha(int sig)
-	#else
-	static int gotcha(sig) int sig;
+	#ifndef MAP_FAILED
+	#define MAP_FAILED ((void*)-1)	/* introduced in POSIX-1.2017 */
 	#endif
+	static void gotcha(int sig)
 	{
 		exit(1);
 	}
 	#ifdef MAP_PRIVATE
 	static const char x[] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxN";
-	#if _STD_
 	static int indict_sgi_ia64_4Q_2004(int n)
-	#else
-	static int indict_sgi_ia64_4Q_2004(n) int n;
-	#endif
 	{
 		char*		b;
 		char*		s;
@@ -489,7 +479,7 @@ tst	lib_memccpy string.h unistd.h stdlib.h fcntl.h signal.h sys/types.h sys/stat
 			return 1;
 		}
 		m = n * (sizeof(x)-1);
-		if (!(b = mmap((void*)0, m, PROT_READ|PROT_WRITE, MAP_PRIVATE, d, (off_t)0)))
+		if ((b = mmap((void*)0, m, PROT_READ|PROT_WRITE, MAP_PRIVATE, d, (off_t)0)) == MAP_FAILED)
 		{
 			close(d);
 			return 1;
@@ -532,7 +522,7 @@ tst	lib_memccpy string.h unistd.h stdlib.h fcntl.h signal.h sys/types.h sys/stat
 	#endif
 	
 		/*
-		 * early mac osx failed here -- fixed 3Q 2001
+		 * early Mac OS X failed here -- fixed 3Q 2001
 		 */
 
 		if (memccpy(buf, "abc", 0, sizeof(buf)) != (buf + 4))
@@ -543,9 +533,9 @@ tst	lib_memccpy string.h unistd.h stdlib.h fcntl.h signal.h sys/types.h sys/stat
 			return 0;
 		if ((fd = open("/dev/zero", O_RDWR)) < 0)
 			return 0;
-		if (!(srcbuf = (char*)mmap(NULL, siz, PROT_READ|PROT_WRITE, MAP_PRIVATE, fd, 0)))
+		if ((srcbuf = (char*)mmap(NULL, siz, PROT_READ|PROT_WRITE, MAP_PRIVATE, fd, 0)) == MAP_FAILED)
 			return 0;
-		if (!mmap(srcbuf + siz, siz, PROT_NONE, MAP_PRIVATE, fd, 0))
+		if (mmap(srcbuf + siz, siz, PROT_NONE, MAP_PRIVATE, fd, 0) == MAP_FAILED)
 			return 0;
 		for (i = 0; i < siz; i++)
 			srcbuf[i] = 'x';
@@ -555,7 +545,7 @@ tst	lib_memccpy string.h unistd.h stdlib.h fcntl.h signal.h sys/types.h sys/stat
 		signal(SIGBUS, gotcha);
 		signal(SIGALRM, gotcha);
 		/*
-		 * sgi ia64 dumps here as of 3Q 2001
+		 * SGI ia64 dumps here as of 3Q 2001
 		 * bug acknowledged 1Q 2003
 		 */
 		memccpy(dstbuf, srcbuf, 0, siz + 10);
@@ -573,9 +563,7 @@ tst	lib_memccpy string.h unistd.h stdlib.h fcntl.h signal.h sys/types.h sys/stat
 
 tst	lib_utime_now note{ utime works with 0 time vector }end execute{
 	#include <sys/types.h>
-	_BEGIN_EXTERNS_
-	extern int	utime _ARG_((const char*, void*));
-	_END_EXTERNS_
+	extern int	utime(const char*, void*);
 	int
 	main()
 	{
@@ -596,32 +584,22 @@ tst	cross{
 }end
 
 std	cleanup note{ stuck with standard _cleanup }end noexecute{
-	_BEGIN_EXTERNS_
-	extern void exit _ARG_((int));
-	extern void _exit _ARG_((int));
+	extern void exit(int);
+	extern void _exit(int);
 	extern void _cleanup();
 	void _cleanup() { _exit(0); }
-	_END_EXTERNS_
 	int main() { printf("cleanup\n"); exit(1); }
 }end
 
 std	remove note{ stuck with standard remove() }end nostatic{
-	_BEGIN_EXTERNS_
-	extern int unlink _ARG_((const char*));
-	_END_EXTERNS_
-	#if _STD_
+	extern int unlink(const char*);
 	int remove(const char* path) { return 0; }
-	#else
-	int remove(path) char* path; { return 0; }
-	#endif
 	int main() { return unlink("foo"); }
 }end
 
 std	signal note{ stuck with standard signal }end nolink{
-	_BEGIN_EXTERNS_
 	extern int abort();
 	int signal() { return 0; }
-	_END_EXTERNS_
 	int main() { signal(); abort(); return 0; }
 }end
 
@@ -638,37 +616,18 @@ std	strcoll note{ standard strcoll works }end execute{
 }end
 
 std	strtod stdlib.h note{ stuck with standard strtod }end nostatic{
-	_BEGIN_EXTERNS_
-	#if _STD_
 	double strtod(const char* s, char** e) { return 0.0; }
-	#else
-	double strtod(s, e) char* s; char** e; { return 0.0; }
-	#endif
-	_END_EXTERNS_
 	int main() { printf(""); return strtod("1",0) != 0; }
 }end
 
 std	strtold stdlib.h note{ stuck with standard strtold }end nostatic{
-	_BEGIN_EXTERNS_
-	#if _STD_
 	long double strtold(const char* s, char** e) { return 0.0; }
-	#else
-	long double strtold(s, e) char* s; char** e; { return 0.0; }
-	#endif
-	_END_EXTERNS_
 	int main() { printf(""); return strtold("1",0) != 0; }
 }end
 
 std	strtol note{ stuck with standard strtol }end nostatic{
-	_BEGIN_EXTERNS_
-	#if _STD_
 	extern long atol(const char*);
 	long strtol(const char* s, char** e, int b) { return 0; }
-	#else
-	extern long atol();
-	long strtol(s, e, b) char* s; char** e; int b; { return 0; }
-	#endif
-	_END_EXTERNS_
 	int main() { printf(""); return (atol("1") + strtol("1",(char**)0,0)) != 0; }
 }end
 
@@ -678,7 +637,7 @@ tst	- output{
 	{
 	#if _UWIN
 		printf("\n");
-		printf("/* override some uwin feature tests */\n");
+		printf("/* override some UWIN feature tests */\n");
 		printf("#undef	_lib_execlp\n");
 		printf("#undef	_lib_execvp\n");
 		printf("#undef	_lib_execvpe\n");
@@ -700,10 +659,11 @@ tst	- output{
 	}
 
 }end fail{
-	echo '#error The output block in src/lib/libast/features/lib failed to compile. Rebuild with IFFEFLAGS=-d1 to debug.'
+	echo "$0: Output block failed to compile. Export IFFEFLAGS=-d1 to debug." >&2
+	exit 1
 }end
 
-tst	no64 -D_LARGEFILE64_SOURCE note{ largefile 64 broken }end execute{
+tst	no64 note{ largefile 64 broken }end execute{
 	#include <sys/types.h>
 	#include <sys/stat.h>
 	int
@@ -726,7 +686,7 @@ tst	no64 -D_LARGEFILE64_SOURCE note{ largefile 64 broken }end execute{
 	echo "#undef	_lib_truncate64"
 }end
 
-tst	need64 -D_LARGEFILE64_SOURCE note{ off64_t necessary }end nocompile{
+tst	need64 note{ off64_t necessary }end nocompile{
 	#include <sys/types.h>
 	typedef off64_t __ast_off64_t__;
 	typedef off_t __ast_off_t__;

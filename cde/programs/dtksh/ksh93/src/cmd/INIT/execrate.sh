@@ -2,6 +2,7 @@
 #                                                                      #
 #               This software is part of the ast package               #
 #          Copyright (c) 1994-2011 AT&T Intellectual Property          #
+#          Copyright (c) 2020-2021 Contributors to ksh 93u+m           #
 #                      and is licensed under the                       #
 #                 Eclipse Public License, Version 1.0                  #
 #                    by AT&T Intellectual Property                     #
@@ -17,7 +18,7 @@
 #                 Glenn Fowler <gsf@research.att.com>                  #
 #                                                                      #
 ########################################################################
-: wrapper for .exe challenged win32 systems/commands
+: wrapper for .exe challenged Win32 systems/commands
 
 (command set -o posix) 2>/dev/null && set -o posix
 
@@ -37,11 +38,13 @@ case `(getopts '[-][123:xyz]' opt --xyz; echo 0$opt) 2>/dev/null` in
 [-?
 @(#)$Id: execrate (AT&T Labs Research) 2002-02-02 $
 ]
-'$USAGE_LICENSE$'
+[-author?Glenn Fowler <gsf@research.att.com>]
+[-copyright?Copyright (c) 2002-2012 AT&T Intellectual Property]
+[-license?http://www.eclipse.org/org/documents/epl-v10.html]
 [+NAME?execrate - wrapper for .exe challenged commands]
 [+DESCRIPTION?\bexecrate\b runs \acommand\a after checking the \afile\a
-	operands for standard semantics with respect to \bwin32\b \b.exe\b
-	suffix conventions. This command is only needed on \bwin32\b
+	operands for standard semantics with respect to \bWin32\b \b.exe\b
+	suffix conventions. This command is only needed on \bWin32\b
 	systems that inconsistently handle \b.exe\b across library and
 	command interfaces. \acommand\a may be one of \bcat\b(1), \bchmod\b(1),
 	\bcmp\b(1), \bcp\b(1), \bln\b(1), \bmv\b(1), or \brm\b(1).

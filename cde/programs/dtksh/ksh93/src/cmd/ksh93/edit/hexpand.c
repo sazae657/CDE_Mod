@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * bash style history expansion
  *
@@ -73,7 +73,7 @@ static char *parse_subst(const char *s, struct subst *sb)
 	/* init "new" with empty string */
 	if(sb->str[1])
 		free(sb->str[1]);
-	sb->str[1] = strdup("");
+	sb->str[1] = sh_strdup("");
 
 	/* get delimiter */
 	del = *s;
@@ -91,7 +91,7 @@ static char *parse_subst(const char *s, struct subst *sb)
 				stakputc('\0');
 				if(sb->str[n])
 					free(sb->str[n]);
-				sb->str[n] = strdup(stakptr(off));
+				sb->str[n] = sh_strdup(stakptr(off));
 				stakseek(off);
 			}
 			n++;
@@ -241,7 +241,7 @@ int hist_expand(const char *ln, char **xp)
 			cp++;
 			n = staktell(); /* terminate string and dup */
 			stakputc('\0');
-			cc = strdup(stakptr(0));
+			cc = sh_strdup(stakptr(0));
 			stakseek(n); /* remove null byte again */
 			ref = sfopen(ref, cc, "s"); /* open as file */
 			n = 0; /* skip history file referencing */
@@ -250,6 +250,7 @@ int hist_expand(const char *ln, char **xp)
 			if(!isdigit(*(cp+1)))
 				goto string_event;
 			cp++;
+			/* FALLTHROUGH */
 		case '0': /* reference by number */
 		case '1':
 		case '2':
@@ -273,6 +274,7 @@ int hist_expand(const char *ln, char **xp)
 		case '?':
 			cp++;
 			flag |= HIST_QUESTION;
+			/* FALLTHROUGH */
 		string_event:
 		default:
 			/* read until end of string or word designator/modifier */
@@ -376,6 +378,7 @@ getline:
 					sfseek(wm, 0, SEEK_SET);
 					goto skip;
 				}
+				/* FALLTHROUGH */
 			default:
 			skip2:
 				cp--;
@@ -587,7 +590,7 @@ getsel:
 				{
 					/* preset old with match from !?string? */
 					if(!sb.str[0] && wm)
-						sb.str[0] = strdup(sfsetbuf(wm, (Void_t*)1, 0));
+						sb.str[0] = sh_strdup(sfsetbuf(wm, (void*)1, 0));
 					cp = parse_subst(cp, &sb);
 				}
 
@@ -604,7 +607,7 @@ getsel:
 				}
 
 				/* need pointer for strstr() */
-				str = sfsetbuf(tmp, (Void_t*)1, 0);
+				str = sfsetbuf(tmp, (void*)1, 0);
 
 				flag |= HIST_SUBSTITUTE;
 				while(flag & HIST_SUBSTITUTE)
@@ -713,7 +716,7 @@ done:
 
 	/* error? */
 	if(staktell() && !(flag & HIST_ERROR))
-		*xp = strdup(stakfreeze(1));
+		*xp = sh_strdup(stakfreeze(1));
 
 	/* restore shell stack */
 	if(off)

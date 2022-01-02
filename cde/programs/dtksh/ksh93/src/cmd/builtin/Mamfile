@@ -10,50 +10,17 @@ note * http://web.archive.org/web/20041227143022/http://www2.research.att.com/~g
 note *
 setv INSTALLROOT ../../..
 setv PACKAGE_ast_INCLUDE ${INSTALLROOT}/include/ast
-setv PACKAGE_ast_LIB ${INSTALLROOT}/lib
 setv PACKAGE_cmd ${INSTALLROOT}
-setv PACKAGE_cmd_INCLUDE ${PACKAGE_cmd}/include
-setv PACKAGE_cmd_LIB ${PACKAGE_cmd}/lib
 setv PACKAGEROOT ../../../../..
-setv AR ${mam_cc_AR} ${mam_cc_AR_ARFLAGS}
-setv ARFLAGS rc
-setv AS as
-setv ASFLAGS
 setv CC cc
 setv mam_cc_FLAGS
 setv KSH_RELFLAGS
 setv CCFLAGS ${-debug-symbols?1?${mam_cc_DEBUG} -D_BLD_DEBUG?${mam_cc_OPTIMIZE}?}
 setv CCLDFLAGS ${-strip-symbols?1?${mam_cc_LD_STRIP}??}
-setv COTEMP $$
-setv CPIO cpio
-setv CPIOFLAGS
-setv CPP "${CC} -E"
-setv F77 f77
-setv HOSTCC ${CC}
 setv IFFEFLAGS
-setv IGNORE
-setv LD ld
 setv LDFLAGS
-setv LEX lex
-setv LEXFLAGS
-setv LPR lpr
-setv LPRFLAGS
-setv M4FLAGS
-setv NMAKE nmake
-setv NMAKEFLAGS
-setv PR pr
-setv PRFLAGS
-setv SHELL /bin/sh
-setv SILENT
-setv TAR tar
-setv YACC yacc
-setv YACCFLAGS -d
-make ${PACKAGEROOT}/lib/package/ast.lic
-done ${PACKAGEROOT}/lib/package/ast.lic
 make .INIT
 	make ${PACKAGE_ast_INCLUDE}/cmdlist.h
-		make ${PACKAGE_ast_INCLUDE}/prototyped.h implicit
-		done ${PACKAGE_ast_INCLUDE}/prototyped.h dontcare
 	done ${PACKAGE_ast_INCLUDE}/cmdlist.h
 	exec - sed -e '/^CMDLIST(.*)$/!d' -e 's/CMDLIST(\(.*\))/\1/' -e '/^getconf$/d' -e '/^ln$/d' -e '/^mv$/d' -e '/^md5sum$/d' -e '/^sum$/d' ${PACKAGE_ast_INCLUDE}/cmdlist.h
 	bind -lcmd
@@ -66,7 +33,7 @@ make install
 					meta FEATURE/pty features/%>FEATURE/% features/pty pty
 					make features/pty
 					done features/pty
-					exec - iffe ${IFFEFLAGS} -v -c '${CC} ${mam_cc_FLAGS} ${CCFLAGS} ${LDFLAGS} -lm' ref ${mam_cc_L+-L${INSTALLROOT}/lib} -I${PACKAGE_ast_INCLUDE} -I${INSTALLROOT}/include ${mam_libast} ${mam_libcmd} : run features/pty
+					exec - iffe ${IFFEFLAGS} -v -c "${CC} ${mam_cc_FLAGS} ${KSH_RELFLAGS} ${CCFLAGS} ${LDFLAGS}" ref ${mam_cc_L+-L${INSTALLROOT}/lib} -I${PACKAGE_ast_INCLUDE} -I${INSTALLROOT}/include ${mam_libast} ${mam_libcmd} : run features/pty
 				done FEATURE/pty generated
 				make ${PACKAGE_ast_INCLUDE}/ast_time.h implicit
 				done ${PACKAGE_ast_INCLUDE}/ast_time.h
@@ -74,19 +41,15 @@ make install
 				prev ${PACKAGE_ast_INCLUDE}/regex.h implicit
 				make ${PACKAGE_ast_INCLUDE}/proc.h implicit
 					prev ${PACKAGE_ast_INCLUDE}/ast.h implicit
-					prev ${PACKAGE_ast_INCLUDE}/prototyped.h implicit
 				done ${PACKAGE_ast_INCLUDE}/proc.h
 				prev ${PACKAGE_ast_INCLUDE}/error.h implicit
 				prev ${PACKAGE_ast_INCLUDE}/cmd.h implicit
 			done pty.c
 			meta pty.o %.c>%.o pty.c pty
 			prev pty.c
-			setv CMD_STANDALONE -DCMD_STANDALONE="b_pty"
-			setv LICENSE -DLICENSE="since=2001,author=gsf+dgk"
-			exec - ${CC} ${mam_cc_FLAGS} ${KSH_RELFLAGS} ${CCFLAGS} -I. -I${PACKAGE_ast_INCLUDE} -DERROR_CATALOG=\""builtin"\" -D_PACKAGE_ast -DCMD_STANDALONE=b_pty -DUSAGE_LICENSE=\""[-author?Glenn Fowler <gsf@research.att.com>][-author?David Korn <dgk@research.att.com>][-copyright?Copyright (c) 2001-2012 AT&T Intellectual Property][-license?http://www.eclipse.org/org/documents/epl-v10.html][--catalog?builtin]"\" -c pty.c
+			exec - ${CC} ${mam_cc_FLAGS} ${KSH_RELFLAGS} ${CCFLAGS} -I. -I${PACKAGE_ast_INCLUDE} -DERROR_CATALOG=\""builtin"\" -D_PACKAGE_ast -DCMD_STANDALONE=b_pty -c pty.c
 		done pty.o generated
 		bind -lutil dontcare
-		setv CMD_STANDALONE -DCMD_STANDALONE="b_pty"
 		exec - ${CC} ${CCLDFLAGS} ${mam_cc_FLAGS} ${KSH_RELFLAGS} ${CCFLAGS} ${LDFLAGS} -lm ${mam_cc_L+-L.} ${mam_cc_L+-L${INSTALLROOT}/lib} -o pty pty.o ${mam_libutil} ${mam_libast} ${mam_libcmd}
 	done pty generated
 	make ${INSTALLROOT}/bin

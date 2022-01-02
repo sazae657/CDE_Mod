@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 #ifndef PATH_OFFSET
 
 /*
@@ -31,7 +31,7 @@
 #include	"defs.h"
 
 #if !defined(SHOPT_SPAWN)
-#   if _UWIN || _use_spawnveg || !_lib_fork
+#   if _UWIN || _use_spawnveg
 #	define  SHOPT_SPAWN  1
 #   endif
 #endif /* !SHOPT_SPAWN */
@@ -45,7 +45,7 @@
 #define PATH_STD_DIR		0100	/* directory is on  $(getconf PATH) */
 
 #define PATH_OFFSET	2		/* path offset for path_join */
-#define MAXDEPTH	(sizeof(char*)==2?64:1024) /* maximum recursion depth*/
+#define MAXDEPTH	(sizeof(char*)==2?64:1024) /* maximum recursion depth */
 
 /*
  * path component structure for path searching
@@ -82,9 +82,9 @@ extern Pathcomp_t 	*path_absolute(Shell_t*, const char*, Pathcomp_t*, int);
 extern char 		*path_basename(const char*);
 extern char 		*path_fullname(Shell_t*,const char*);
 extern int 		path_expand(Shell_t*,const char*, struct argnod**);
-extern void 		path_exec(Shell_t*,const char*,char*[],struct argnod*);
+extern noreturn void 	path_exec(Shell_t*,const char*,char*[],struct argnod*);
 extern pid_t		path_spawn(Shell_t*,const char*,char*[],char*[],Pathcomp_t*,int);
-#if defined(__EXPORT__) && defined(_BLD_DLL) && defined(_BLD_shell)
+#if defined(__EXPORT__) && defined(_BLD_DLL)
 #   define extern __EXPORT__
 #endif
 extern int		path_open(Shell_t*,const char*,Pathcomp_t*);
@@ -109,7 +109,9 @@ extern const char e_timeformat[];
 extern const char e_badtformat[];
 extern const char e_dot[];
 extern const char e_funload[];
+#if SHOPT_PFSH
 extern const char e_pfsh[];
+#endif
 extern const char e_pwd[];
 extern const char e_logout[];
 extern const char e_alphanum[];

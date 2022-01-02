@@ -2,6 +2,7 @@
 #                                                                      #
 #               This software is part of the ast package               #
 #          Copyright (c) 1994-2012 AT&T Intellectual Property          #
+#          Copyright (c) 2020-2021 Contributors to ksh 93u+m           #
 #                      and is licensed under the                       #
 #                 Eclipse Public License, Version 1.0                  #
 #                    by AT&T Intellectual Property                     #
@@ -25,7 +26,9 @@ case $(getopts '[-][123:xyz]' opt --xyz 2>/dev/null; echo 0$opt) in
 [-?
 @(#)$Id: regress (AT&T Research) 2012-02-02 $
 ]
-'$USAGE_LICENSE$'
+[-author?Glenn Fowler <gsf@research.att.com>]
+[-copyright?Copyright (c) 1995-2012 AT&T Intellectual Property]
+[-license?http://www.eclipse.org/org/documents/epl-v10.html]
 [+NAME?regress - run regression tests]
 [+DESCRIPTION?\bregress\b runs the tests in \aunit\a, or
     \aunit\a\b.tst\b if \aunit\a does not exist. If \acommand\a is omitted
@@ -51,7 +54,7 @@ case $(getopts '[-][123:xyz]' opt --xyz 2>/dev/null; echo 0$opt) in
 [r!:regular?Run each test with the standard input and standard output
     redirected through regular files.]
 [t:test?Run only tests matching \apattern\a. Tests are numbered and
-    consist of at least two digits (0 filled if necessary.) Tests matching
+    consist of at least two digits (0 filled if necessary). Tests matching
     \b+(0)\b are always run.]:[pattern]
 [x:trace?Enable debug tracing.]
 [v:verbose?List differences between actual (<) and expected (>) output,
@@ -171,7 +174,7 @@ unit [ command [ arg ... ] ]
             the next explicit \bSET\b.]
         [+TALLY?Called by \bregress\b display the \bTEST\b results.]
         [+TEST \b\anumber\a [ \adescription\a ... ]]?Define a new test
-            group labelled \anumber\a with optional \adescripion\a.]
+            group labelled \anumber\a with optional \adescription\a.]
         [+TITLE \b[+]] \atext\a?Set the \bTEST\b output title to
             \atext\a. If \b+\b is specified then \atext\a is appended to
             the default title. The default title is the test file base

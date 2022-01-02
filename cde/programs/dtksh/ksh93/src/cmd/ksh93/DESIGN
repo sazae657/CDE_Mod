@@ -46,7 +46,7 @@ Directory layout:
 Include directory:
 	1.	argnod.h contains the type definitions for command
 		nodes, io nodes, argument nodes, and for positional
-		parameters.a  It defines the prototypes for
+		parameters.  It defines the prototypes for
 		all the positional parameters functions.
 	2.	builtins.h contains prototypes for builtins as well
 		as symbolic constants that refer to the name-pairs
@@ -89,7 +89,7 @@ Include directory:
 		functions.
 	19.	terminal.h is a header file that includes the appropriate
 		terminal include.
-	20.	test.h contains the definitions for the test and [[...]]
+	20.	test.h contains the definitions for the test and [[ ... ]]
 		commands.
 	21.	timeout.h contains the define constant for the maximum
 		shell timeout.
@@ -109,7 +109,7 @@ sh directory:
 	5.	deparse.c contains code to generate shell script from
 		a parse tree.
 	6.	expand.c contains code for file name expansion and
-		file name generation.
+		pathname expansion.
 	7.	fault.c contains code for signal processing, trap
 		handling and termination.
 	8.	fcin.c contains code for reading and writing a character

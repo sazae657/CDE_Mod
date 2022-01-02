@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -22,9 +23,9 @@
 #if __sgi && _hdr_locale_attr
 
 /*
- * irix 6.5 introduced __libc_attr referenced by
+ * IRIX 6.5 introduced __libc_attr referenced by
  * ctype and locale macros; this hack lets
- * 6.5 a.outs run on irix < 6.5
+ * 6.5 a.outs run on IRIX < 6.5
  *
  * NOTE: this hack also freezes the US locale
  */

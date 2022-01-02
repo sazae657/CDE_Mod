@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  *   Routines to implement fast character input
  *
@@ -157,7 +157,7 @@ int _fcmbget(short *len)
 	{
 	    case -1:
 		*len = 1;
-		/* fall through */
+		/* FALLTHROUGH */
 	    case 0:
 	    case 1:
 		c=fcget();
@@ -167,4 +167,3 @@ int _fcmbget(short *len)
 	}
 	return(c);
 } 
-

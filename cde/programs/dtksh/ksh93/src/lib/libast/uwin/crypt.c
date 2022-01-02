@@ -279,9 +279,6 @@ typedef union {
 #define	OR(d,d0,d1,bl)			d0 |= (bl).b32.i0, d1 |= (bl).b32.i1
 #define	STORE(s,s0,s1,bl)		(bl).b32.i0 = s0, (bl).b32.i1 = s1
 #define	DCL_BLOCK(d,d0,d1)		long d0, d1
-/* proto(1) workarounds -- barf */
-#define DCL_BLOCK_D			DCL_BLOCK(D,D0,D1)
-#define DCL_BLOCK_K			DCL_BLOCK(K,K0,K1)
 
 #if defined(LARGEDATA)
 	/* Waste memory like crazy.  Also, do permutations in line */
@@ -311,7 +308,7 @@ typedef union {
 	{ C_block tblk; permute(cpp,&tblk,p,4); LOAD (d,d0,d1,tblk); }
 
 static void permute(unsigned char *cp, C_block *out, register C_block *p, int chars_in) {
-	register DCL_BLOCK_D;
+	register DCL_BLOCK(D,D0,D1);
 	register C_block *tp;
 	register int t;
 
@@ -447,14 +444,14 @@ static unsigned char CIFP[] = {		/* compressed/interleaved permutation */
 	45, 46, 47, 48,   61, 62, 63, 64,
 };
 
-static unsigned char itoa64[] =		/* 0..63 => ascii-64 */
+static unsigned char itoa64[] =		/* 0..63 => ASCII-64 */
 	"./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
 
 /* =====  Tables that are initialized at run time  ==================== */
 
 
-static unsigned char a64toi[128];	/* ascii-64 => 0..63 */
+static unsigned char a64toi[128];	/* ASCII-64 => 0..63 */
 
 /* Initial key schedule permutation */
 static C_block	PC1ROT[64/CHUNKBITS][1<<CHUNKBITS];
@@ -465,7 +462,7 @@ static C_block	PC2ROT[2][64/CHUNKBITS][1<<CHUNKBITS];
 /* Initial permutation/expansion table */
 static C_block	IE3264[32/CHUNKBITS][1<<CHUNKBITS];
 
-/* Table that combines the S, P, and E operations.  */
+/* Table that combines the S, P, and E operations. */
 static long SPE[2][8][64];
 
 /* compressed/interleaved => final permutation table */
@@ -650,7 +647,7 @@ static C_block	KS[KS_SIZE];
  * Set up the key schedule from the key.
  */
 static int des_setkey(register const char *key) {
-	register DCL_BLOCK_K;
+	register DCL_BLOCK(K,K0,K1);
 	register C_block *ptabp;
 	register int i;
 	static int des_ready = 0;
@@ -675,7 +672,7 @@ static int des_setkey(register const char *key) {
 
 /*
  * Encrypt (or decrypt if num_iter < 0) the 8 chars at "in" with abs(num_iter)
- * iterations of DES, using the the given 24-bit salt and the pre-computed key
+ * iterations of DES, using the given 24-bit salt and the pre-computed key
  * schedule, and store the resulting 8 chars at "out" (in == out is permitted).
  *
  * NOTE: the performance of this routine is critically dependent on your
@@ -914,7 +911,7 @@ extern char * crypt(register const char *key, register const char *setting) {
 		return (NULL);
 
 	/*
-	 * Encode the 64 cipher bits as 11 ascii characters.
+	 * Encode the 64 cipher bits as 11 ASCII characters.
 	 */
 	i = ((long)((rsltblock.b[0]<<8) | rsltblock.b[1])<<8) | rsltblock.b[2];
 	encp[3] = itoa64[i&0x3f];	i >>= 6;

@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,14 +18,13 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 #include	"shell.h"
 #include	"shlex.h"
 #include	"FEATURE/options"
 
 /*
  * table of reserved words in shell language
- * This list must be in in ascii sorted order
+ * This list must be in ASCII sorted order
  */
 
 const Shtable_t shtab_reserved[] =

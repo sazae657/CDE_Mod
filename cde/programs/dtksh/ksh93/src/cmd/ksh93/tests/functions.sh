@@ -2,6 +2,7 @@
 #                                                                      #
 #               This software is part of the ast package               #
 #          Copyright (c) 1982-2012 AT&T Intellectual Property          #
+#          Copyright (c) 2020-2021 Contributors to ksh 93u+m           #
 #                      and is licensed under the                       #
 #                 Eclipse Public License, Version 1.0                  #
 #                    by AT&T Intellectual Property                     #
@@ -17,18 +18,8 @@
 #                  David Korn <dgk@research.att.com>                   #
 #                                                                      #
 ########################################################################
-function err_exit
-{
-	print -u2 -n "\t"
-	print -u2 -r ${Command}[$1]: "${@:2}"
-	let Errors+=1
-}
-alias err_exit='err_exit $LINENO'
 
-integer Errors=0
-Command=${0##*/}
-
-[[ -d $tmp && -w $tmp && $tmp == "$PWD" ]] || { err\_exit "$LINENO" '$tmp not set; run this from shtests. Aborting.'; exit 1; }
+. "${SHTESTS_COMMON:-${0%/*}/_common}"
 
 compiled=''
 read -n4 c < $0 2> /dev/null
@@ -36,12 +27,29 @@ read -n4 c < $0 2> /dev/null
 
 ulimit -c 0
 
-binecho=$(whence -p echo)
+bin_echo=$(whence -p echo)
 bin_sleep=$(whence -p sleep)
+bin_kill=$(whence -p kill)
 
+# ======
+# In ksh93v- and ksh2020 eval'ing a function definition may dump the function body to stdout.
+# https://github.com/att/ast/issues/1160
+got="$($SHELL -c '
+	for ((i=0; i<1025; i++))
+	do	str="${str}12345678"
+	done
+	eval "foo() { $str; }"
+
+	baz() { eval "bar() { FAILURE; }"; }
+	( baz >&3 ) 3>&1
+')"
+[[ -n "$got" ]] && err_exit "eval'ing function dumps function body to stdout" \
+	"(got $(printf %q "$got"))"
+
+# ======
+# Check for global variables and $0
 integer foo=33
 bar=bye
-# check for global variables and $0
 function foobar
 {
 	case $1 in
@@ -138,7 +146,7 @@ fi
 if	[[ $PWD != "$dir" ]]
 then	err_exit 'cd inside nested subshell changes $PWD'
 fi
-fun() "$binecho" hello
+fun() "$bin_echo" hello
 if	[[ $(fun) != hello ]]
 then	err_exit one line functions not working
 fi
@@ -182,7 +190,7 @@ cat > $tmp/script <<- \EOF
 EOF
 chmod +x $tmp/script
 if	[[ $( $SHELL $tmp/script arg1 arg2) != arg2 ]]
-then	err_exit 'arguments not restored by posix functions'
+then	err_exit 'arguments not restored by POSIX functions'
 fi
 function foo
 {
@@ -294,7 +302,7 @@ bad()
 val=true
 bad
 if	[[ $val != false ]]
-then	err_exit 'set -e not inherited for posix functions'
+then	err_exit 'set -e not inherited for POSIX functions'
 fi
 trap - ERR
 
@@ -1000,7 +1008,7 @@ caller() {
 bar() { caller;}
 set -- $(bar)
 [[ $1 == $2 ]] && err_exit ".sh.inline optimization bug"
-( $SHELL  -c ' function foo { typeset x=$1;print $1;};z=();z=($(foo bar)) ') 2> /dev/null ||  err_exit 'using a function to set an array in a command sub  fails'
+( $SHELL  -c ' function foo { typeset x=$1;print $1;};z=();z=($(foo bar)) ') 2> /dev/null ||  err_exit 'using a function to set an array in a command sub fails'
 
 {
 got=$(
@@ -1126,7 +1134,15 @@ function gosleep
 	"$bin_sleep" 1
 }
 x=$(
-	(sleep .25; pid=; ps | grep sleep | read pid extra; [[ $pid ]] && kill -- "$pid") &
+	ulimit -t unlimited 2>/dev/null 	# fork this subshell
+	mysubpid=${.sh.pid}			# this subshell's new PID (new 93u+m feature)
+	(
+		sleep .25
+		# kill 'gosleep' by getting the PIDs that have $mysubpid as their parent PID
+		# (which includes this background process itself, but that's fine as we're invoking external 'kill')
+		pids=$(UNIX95=1 ps -o ppid= -o pid= 2>/dev/null | awk -v p=$mysubpid '$1==p { print $2 }')
+		[[ -n $pids ]] && "$bin_kill" $pids
+	) &
 	gosleep 2> /dev/null
 	print ok
 )
@@ -1154,7 +1170,7 @@ func2
 	}
 	foo
 EOF
-} 2> /dev/null || err_exit  'problem with unset -f  foo within function foo'
+} 2> /dev/null || err_exit  "problem with 'unset -f foo' within function foo"
 
 val=$($SHELL 2> /dev/null <<- \EOF
 	.sh.fun.set() { set -x; }
@@ -1194,11 +1210,11 @@ function foo
 	let 1
 	return $1
 }
-invals=(135 255 256 267 -1)
-outvals=(135 255 0 267 255)
-for ((i=0; i < ${#invals[@]}; i++))
-do	foo ${invals[i]}
-	[[ $? == "${outvals[i]}" ]] || err_exit "function exit ${invals[i]} should set \$? to ${outvals[i]}"
+# As of ksh 93u+m 2021-12-08, you can use arbitrary signed integer return values in the current (sub)shell.
+vals=(135 255 256 267 -1 1234 -4567)
+for ((i=0; i < ${#vals[@]}; i++))
+do	foo ${vals[i]}
+	[[ $? == "${vals[i]}" ]] || err_exit "function exit ${vals[i]} should set \$? to ${vals[i]}"
 done
 
 function foo
@@ -1246,12 +1262,15 @@ expect_status=0
 
 # ======
 # When a function unsets itself, it should not fail to be unset
-$SHELL -c 'PATH=/dev/null; fn() { unset -f fn; true; }; fn' || err_exit 'unset of POSIX function in the calling stack fails'
-$SHELL -c 'PATH=/dev/null; function ftest { ftest2; }; function ftest2 { unset -f ftest; }; ftest' || err_exit 'unset of ksh function in the calling stack fails'
-$SHELL -c 'PATH=/dev/null; fn() { unset -f fn; true; }; fn; fn' 2> /dev/null
-[[ $? != 127 ]] && err_exit 'unset of POSIX function fails when it is still running'
-$SHELL -c 'PATH=/dev/null; function fn { unset -f fn; true; }; fn; fn' 2> /dev/null
-[[ $? != 127 ]] && err_exit 'unset of ksh function fails when it is still running'
+# https://github.com/ksh93/ksh/issues/21
+got=$( { "$SHELL" -c 'PATH=/dev/null; fn() { unset -f fn; true; }; fn'; } 2>&1 )
+(( (e=$?)==0 )) || err_exit 'unset of POSIX function in the calling stack fails' "(got status $e, $(printf %q "$got"))"
+got=$( { "$SHELL" -c 'PATH=/dev/null; function ftest { ftest2; }; function ftest2 { unset -f ftest; }; ftest'; } 2>&1 )
+(( (e=$?)==0 )) || err_exit 'unset of ksh function in the calling stack fails' "(got status $e, $(printf %q "$got"))"
+got=$( { "$SHELL" -c 'PATH=/dev/null; fn() { unset -f fn; true; }; fn; fn'; } 2>&1 )
+(( (e=$?)==127 )) ||  err_exit 'unset of POSIX function fails when it is still running' "(got status $e, $(printf %q "$got"))"
+got=$( { "$SHELL" -c 'PATH=/dev/null; function fn { unset -f fn; true; }; fn; fn'; } 2>&1 )
+(( (e=$?)==127 )) || err_exit 'unset of ksh function fails when it is still running' "(got status $e, $(printf %q "$got"))"
 
 # ======
 # Check if environment variables passed while invoking a function are exported

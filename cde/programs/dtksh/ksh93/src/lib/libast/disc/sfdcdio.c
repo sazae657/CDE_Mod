@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -42,16 +43,9 @@ typedef struct _direct_s
 /* convert a pointer to an int */
 #define P2I(p)	(Sfulong_t)((char*)(p) - (char*)0)
 
-#if __STD_C
-static ssize_t diordwr(Sfio_t* f, Void_t* buf, size_t n, Direct_t* di, int type)
-#else
-static ssize_t diordwr(f, buf, n, di, type)
-Sfio_t*		f;
-Void_t*		buf;
-size_t		n;
-Direct_t*	di;
-int		type;
-#endif
+#ifdef F_DIOINFO
+
+static ssize_t diordwr(Sfio_t* f, void* buf, size_t n, Direct_t* di, int type)
 {
 	size_t	rw, done;
 	ssize_t	rv;
@@ -59,7 +53,6 @@ int		type;
 	done = 0;	/* amount processed by direct IO */
 	rv = 0;
 
-#ifdef F_DIOINFO
 	if((P2I(buf)%di->dio.d_mem) == 0 &&
 	   (f->here%di->dio.d_miniosz) == 0 && n >= di->dio.d_miniosz )
 	{	/* direct IO ok, make sure we're in the right mode */
@@ -79,7 +72,7 @@ int		type;
 
 			if(rv > 0)
 			{	rw -= rv; done += rv;
-				buf = (Void_t*)((char*)buf + rv);
+				buf = (void*)((char*)buf + rv);
 			}
 
 			if(rv < io || rw < di->dio.d_miniosz)
@@ -88,11 +81,10 @@ int		type;
 	}
 
 	if(done < n && (di->cntl & FDIRECT) )
-	{	/* turn off directIO for remaining IO operation */
+	{	/* turn off direct IO for remaining IO operation */
 		di->cntl &= ~FDIRECT;
 		(void)fcntl(f->file, F_SETFL, di->cntl);
 	}
-#endif /*F_DIOINFO*/
 
 	if((rw = n-done) > 0 &&
 	   (rv = type == SF_READ ? read(f->file,buf,rw) : write(f->file,buf,rw)) > 0 )
@@ -101,72 +93,42 @@ int		type;
 	return done ? done : rv;
 }
 
-#if __STD_C
-static ssize_t dioread(Sfio_t* f, Void_t* buf, size_t n, Sfdisc_t* disc)
-#else
-static ssize_t dioread(f, buf, n, disc)
-Sfio_t*		f;
-Void_t*		buf;
-size_t		n;
-Sfdisc_t*	disc;
-#endif
+static ssize_t dioread(Sfio_t* f, void* buf, size_t n, Sfdisc_t* disc)
 {
 	return diordwr(f, buf, n, (Direct_t*)disc, SF_READ);
 }
 
-#if __STD_C
-static ssize_t diowrite(Sfio_t* f, const Void_t* buf, size_t n, Sfdisc_t* disc)
-#else
-static ssize_t diowrite(f, buf, n, disc)
-Sfio_t*		f;
-Void_t*		buf;
-size_t		n;
-Sfdisc_t*	disc;
-#endif
+static ssize_t diowrite(Sfio_t* f, const void* buf, size_t n, Sfdisc_t* disc)
 {
-	return diordwr(f, (Void_t*)buf, n, (Direct_t*)disc, SF_WRITE);
+	return diordwr(f, (void*)buf, n, (Direct_t*)disc, SF_WRITE);
 }
 
-#if __STD_C
-static int dioexcept(Sfio_t* f, int type, Void_t* data, Sfdisc_t* disc)
-#else
-static int dioexcept(f,type,data,disc)
-Sfio_t*		f;
-int		type;
-Void_t*		data;
-Sfdisc_t*	disc;
-#endif
+static int dioexcept(Sfio_t* f, int type, void* data, Sfdisc_t* disc)
 {
 	Direct_t*	di = (Direct_t*)disc;
 
 	if(type == SF_FINAL || type == SF_DPOP)
 	{
-#ifdef F_DIOINFO
 		if(di->cntl&FDIRECT)
 		{	di->cntl &= ~FDIRECT;
 			(void)fcntl(f->file,F_SETFL,di->cntl);
 		}
-#endif
 		free(disc);
 	}
 
 	return 0;
 }
 
-#if __STD_C
+#endif /* F_DIOINFO */
+
 int sfdcdio(Sfio_t* f, size_t bufsize)
-#else
-int sfdcdio(f, bufsize)
-Sfio_t*	f;
-size_t	bufsize;
-#endif
 {
 #ifndef F_DIOINFO
 	return -1;
 #else
 	int		cntl;
 	struct dioattr	dio;
-	Void_t*		buf;
+	void*		buf;
 	Direct_t*	di;
 
 	if(f->extent < 0 || (f->flags&SF_STRING))
@@ -194,7 +156,7 @@ size_t	bufsize;
 	if(!(di = (Direct_t*)malloc(sizeof(Direct_t))) )
 		goto no_direct;
 
-	if(!(buf = (Void_t*)memalign(dio.d_mem,bufsize)) )
+	if(!(buf = (void*)memalign(dio.d_mem,bufsize)) )
 	{	free(di);
 		goto no_direct;
 	}

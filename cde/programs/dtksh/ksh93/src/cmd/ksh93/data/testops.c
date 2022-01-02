@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,10 +18,9 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 /*
- * tables for the test builin [[...]] and [...]
+ * tables for the test builtin [[ ... ]] and [ ... ]
  */
 
 #include	<ast.h>
@@ -29,7 +29,8 @@
 #include	"test.h"
 
 /*
- * This is the list of binary test and [[...]] operators
+ * This is the list of binary test and [[ ... ]] operators
+ * It must be sorted in ascending ASCII order
  */
 
 const Shtable_t shtab_testops[] =
@@ -46,24 +47,23 @@ const Shtable_t shtab_testops[] =
 		"-nt",		TEST_NT,
 		"-o",		TEST_OR,
 		"-ot",		TEST_OT,
+		"<",		TEST_SLT,
 		"=",		TEST_SEQ,
 		"==",		TEST_SEQ,
 		"=~",           TEST_REP,
-		"<",		TEST_SLT,
 		">",		TEST_SGT,
-		"]]",		TEST_END,
 		"",		0
 };
 
 const char sh_opttest[] =
-"[-1c?\n@(#)$Id: test (AT&T Research/ksh93) 2020-08-31 $\n]"
-USAGE_LICENSE
+"[-1c?\n@(#)$Id: test (ksh 93u+m) 2021-11-14 $\n]"
+"[--catalog?" SH_DICT "]"
 "[+NAME?test, [ - evaluate expression]"
 "[+DESCRIPTION?\btest\b evaluates expressions and returns its result using the "
 	"exit status. Option parsing is not performed; all arguments, "
 	"including \b--\b, are processed as operands. It is essential to quote "
-	"expression arguments to suppress empty removal, field splitting, file "
-	"name generation, and constructs such as redirection. If the command "
+	"expression arguments to suppress empty removal, field splitting, "
+	"pathname expansion, and constructs such as redirection. If the command "
 	"is invoked as \b[\b, a final \b]]\b argument is required and "
 	"discarded. The evaluation of the expression depends on the number of "
 	"operands, as follows:]"
@@ -96,18 +96,14 @@ USAGE_LICENSE
 	"[+?Operators marked with a * are not part of the POSIX standard.]"
 "}"
 "[+UNARY OPERATORS?These evaluate as True if:]{"
-	"[+-a \afile\a *?Same as \b-e\b.]"
+	"[+-a \afile\a *?Deprecated. Same as \b-e\b.]"
 	"[+-b \afile\a?\afile\a is a block special file.]"
 	"[+-c \afile\a?\afile\a is a character special file.]"
 	"[+-d \afile\a?\afile\a is a directory.]"
 	"[+-e \afile\a?\afile\a exists and is not a broken symlink.]"
 	"[+-f \afile\a?\afile\a is a regular file.]"
 	"[+-g \afile\a?\afile\a has its set-group-id bit set.]"
-	"[+-h \afile\a?Same as \b-L\b.]"
 	"[+-k \afile\a *?\afile\a has its sticky bit on.]"
-#if SHOPT_TEST_L
-	"[+-l \afile\a *?Same as \b-L\b.]"
-#endif
 	"[+-n \astring\a?Length of \astring\a is non-zero.]"
 	"[+-o \aoption\a *?Shell option \aoption\a is enabled.]"
 	"[+-p \afile\a?\afile\a is a FIFO.]"
@@ -122,7 +118,11 @@ USAGE_LICENSE
 	"[+-z \astring\a?\astring\a is a zero-length string.]"
 	"[+-G \afile\a *?Group of \afile\a is the effective "
 		"group ID of the current process.]"
-	"[+-L \afile\a?\afile\a is a symbolic link.]"
+#if SHOPT_TEST_L
+	"[+-L|l|h \afile\a?\afile\a is a symbolic link.]"
+#else
+	"[+-L|h \afile\a?\afile\a is a symbolic link.]"
+#endif
 	"[+-N \afile\a *?\afile\a has been modified since it was last read.]"
 	"[+-O \afile\a *?\afile\a exists and owner is the effective "
 		"user ID of the current process.]"
@@ -133,6 +133,9 @@ USAGE_LICENSE
 	"[+\astring1\a = \astring2\a?\astring1\a is equal to \astring2\a.]"
 	"[+\astring1\a == \astring2\a *?Same as \b=\b.]"
 	"[+\astring1\a != \astring2\a?\astring1\a is not equal to \astring2\a.]"
+	"[+\astring1\a =~ \aere\a *?\astring1\a matches the extended regular expression \aere\a.]"
+	"[+\astring1\a \\< \astring2\a *?\astring1\a lexically sorts before \astring2\a.]"
+	"[+\astring1\a \\> \astring2\a *?\astring1\a lexically sorts after \astring2\a.]"
 	"[+\anum1\a -eq \anum2\a?\anum1\a is numerically equal to \anum2\a.]"
 	"[+\anum1\a -ne \anum2\a?\anum1\a is not numerically equal to \anum2\a.]"
 	"[+\anum1\a -lt \anum2\a?\anum1\a is less than \anum2\a.]"

@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 #ifndef NOTSYM
 /*
  *	UNIX shell
@@ -31,7 +31,48 @@
 #include	"shtable.h"
 #include	"lexstates.h"
 
+/*
+ * This structure allows for arbitrary depth nesting of (...), {...}, [...]
+ */
+struct _shlex_pvt_lexstate_
+{
+	char		incase;		/* 1 for case pattern, 2 after case */
+	char		intest;		/* 1 inside [[ ... ]] */
+	char		testop1;	/* 1 when unary test op legal */
+	char		testop2;	/* 1 when binary test op legal */
+	char		reservok;	/* >0 for reserved word legal */
+	char		skipword;	/* next word can't be reserved */
+	char		last_quote;	/* last multi-line quote character */
+	char		nestedbrace;	/* ${var op {...}} */
+};
+struct _shlex_pvt_lexdata_
+{
+	char		nocopy;
+	char		paren;
+	char		dolparen;
+	char		nest;
+	char		docword;
+	char		nested_tilde;
+	char 		*docend;
+	char		noarg;
+	char		warn;
+	char		message;
+	char		arith;
+	char 		*first;
+	int		level;
+	int		lastc;
+	int		lex_max;
+	int		*lex_match;
+	int		lex_state;
+	int		docextra;
+#if SHOPT_KIA
+	off_t		kiaoff;
+#endif
+};
 
+/*
+ * Main lexer struct.
+ */
 typedef struct  _shlex_
 {
 	Shell_t		*sh;		/* pointer to the interpreter */
@@ -44,7 +85,7 @@ typedef struct  _shlex_
 	char		aliasok;	/* on when alias is legal */
 	char		assignok;	/* on when name=value is legal */
 	char		inexec;		/* on when processing exec */
-	char		intypeset;	/* on when processing typeset */
+	char		intypeset;	/* 1 when processing typeset, 2 when processing enum */
 	char		comp_assign;	/* in compound assignment */
 	char		comsub;		/* parsing command substitution */
 	char		noreserv;	/* reserved works not legal */
@@ -61,9 +102,9 @@ typedef struct  _shlex_
 	char		*scriptname;	/* name of script file */
 	Dt_t		*entity_tree;	/* for entity ids */
 #endif /* SHOPT_KIA */
-#ifdef  _SHLEX_PRIVATE
-	_SHLEX_PRIVATE
-#endif
+	/* The following two struct members are considered private to lex.c */
+	struct _shlex_pvt_lexdata_  lexd;
+	struct _shlex_pvt_lexstate_  lex;
 } Lex_t;
 
 /* symbols for parsing */
@@ -113,7 +154,6 @@ typedef struct  _shlex_
 #define IORDWRSYM	(SYMGT|'<')
 #define IORDWRSYMT	(SYMSEMI|'<')
 #define IOCLOBSYM	(SYMPIPE|'>')
-#define PIPESYM2	(SYMPIPE|'&')
 #define IPROCSYM	(SYMLPAR|'<')
 #define OPROCSYM	(SYMLPAR|'>')
 #define EOFSYM		04000	/* end-of-file */
@@ -149,11 +189,10 @@ extern int		sh_lex(Lex_t*);
 extern Shnode_t		*sh_dolparen(Lex_t*);
 extern Lex_t		*sh_lexopen(Lex_t*, Shell_t*, int);
 extern void 		sh_lexskip(Lex_t*,int,int,int);
-extern void 		sh_syntax(Lex_t*);
+extern noreturn void 	sh_syntax(Lex_t*);
 #if SHOPT_KIA
     extern int                  kiaclose(Lex_t *);
     extern unsigned long        kiaentity(Lex_t*, const char*,int,int,int,int,unsigned long,int,int,const char*);
 #endif /* SHOPT_KIA */
-
 
 #endif /* !NOTSYM */

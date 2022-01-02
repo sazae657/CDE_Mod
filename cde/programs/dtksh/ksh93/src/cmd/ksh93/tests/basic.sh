@@ -2,6 +2,7 @@
 #                                                                      #
 #               This software is part of the ast package               #
 #          Copyright (c) 1982-2012 AT&T Intellectual Property          #
+#          Copyright (c) 2020-2021 Contributors to ksh 93u+m           #
 #                      and is licensed under the                       #
 #                 Eclipse Public License, Version 1.0                  #
 #                    by AT&T Intellectual Property                     #
@@ -17,18 +18,8 @@
 #                  David Korn <dgk@research.att.com>                   #
 #                                                                      #
 ########################################################################
-function err_exit
-{
-	print -u2 -n "\t"
-	print -u2 -r ${Command}[$1]: "${@:2}"
-	let Errors+=1
-}
-alias err_exit='err_exit $LINENO'
 
-Command=${0##*/}
-integer Errors=0
-
-[[ -d $tmp && -w $tmp && $tmp == "$PWD" ]] || { err\_exit "$LINENO" '$tmp not set; run this from shtests. Aborting.'; exit 1; }
+. "${SHTESTS_COMMON:-${0%/*}/_common}"
 
 bincat=$(whence -p cat)
 binecho=$(whence -p echo)
@@ -193,25 +184,27 @@ x=$( ("$binecho" foo) ; ("$binecho" bar) )
 if	[[ $x != $'foo\nbar' ]]
 then	err_exit " ( ("$binecho");("$binecho" bar ) failed"
 fi
-cat > $tmp/script <<\!
-if	[[ -p /dev/fd/0 ]]
-then	builtin cat
-	cat - > /dev/null
-	[[ -p /dev/fd/0 ]] && print ok
-else	print no
-fi
+if (builtin cat) 2> /dev/null; then
+	cat > $tmp/script <<\!
+	if	[[ -p /dev/fd/0 ]]
+	then	builtin cat
+		cat - > /dev/null
+		[[ -p /dev/fd/0 ]] && print ok
+	else	print no
+	fi
 !
-chmod +x $tmp/script
-case $( (print) | $tmp/script;:) in
-ok)	;;
-no)	err_exit "[[ -p /dev/fd/0 ]] fails for standard input pipe" ;;
-*)	err_exit "builtin replaces standard input pipe" ;;
-esac
-print 'print $0' > $tmp/script
-print ". $tmp/script" > $tmp/scriptx
-chmod +x $tmp/scriptx
-if	[[ $($tmp/scriptx) != $tmp/scriptx ]]
-then	err_exit '$0 not correct for . script'
+	chmod +x $tmp/script
+	case $( (print) | $tmp/script;:) in
+	ok)	;;
+	no)	err_exit "[[ -p /dev/fd/0 ]] fails for standard input pipe" ;;
+	*)	err_exit "builtin replaces standard input pipe" ;;
+	esac
+	print 'print $0' > $tmp/script
+	print ". $tmp/script" > $tmp/scriptx
+	chmod +x $tmp/scriptx
+	if	[[ $($tmp/scriptx) != $tmp/scriptx ]]
+	then	err_exit '$0 not correct for . script'
+	fi
 fi
 cd $tmp || { err_exit "cd $tmp failed"; exit 1; }
 print ./b > ./a; print ./c > b; print ./d > c; print ./e > d; print "echo \"hello there\"" > e
@@ -225,6 +218,7 @@ if	[[ $x != "hello there" ]]
 then	err_exit "scripts in subshells fail"
 fi
 cd ~- || err_exit "cd back failed"
+cd "$tmp"
 x=$( ("$binecho" foo) 2> /dev/null )
 if	[[ $x != foo ]]
 then	err_exit "subshell in command substitution fails"
@@ -285,7 +279,7 @@ word=$(print $'foo\nbar' | ( read line; "$bincat") )
 if	[[ $word != bar ]]
 then	err_exit "pipe to ( read line; $bincat) not working"
 fi
-if	[[ $(print x{a,b}y) != 'xay xby' ]]
+if	((SHOPT_BRACEPAT)) && [[ $(print x{a,b}y) != 'xay xby' ]]
 then	err_exit 'brace expansion not working'
 fi
 if	[[ $(for i in foo bar
@@ -357,8 +351,8 @@ fi
 print cat >  $tmp/scriptx
 chmod +x $tmp/scriptx
 [[ $($SHELL -c "print foo | $tmp/scriptx ;:" 2> /dev/null ) == foo ]] || err_exit 'piping into script fails'
-[[ $($SHELL -c 'X=1;print -r -- ${X:=$(expr "a(0)" : '"'a*(\([^)]\))')}'" 2> /dev/null) == 1 ]] || err_exit 'x=1;${x:=$(..."...")} failure'
-[[ $($SHELL -c 'print -r -- ${X:=$(expr "a(0)" : '"'a*(\([^)]\))')}'" 2> /dev/null) == 0 ]] || err_exit '${x:=$(..."...")} failure'
+[[ $($SHELL -c 'X=1;print -r -- ${X:=$(expr "a(0)" : '"'a*(\([^)]\))')}" 2> /dev/null) == 1 ]] || err_exit 'x=1;${x:=$(..."...")} failure'
+[[ $($SHELL -c 'print -r -- ${X:=$(expr "a(0)" : '"'a*(\([^)]\))')}" 2> /dev/null) == 0 ]] || err_exit '${x:=$(..."...")} failure'
 if	cat /dev/fd/3 >/dev/null 2>&1  || whence mkfifo > /dev/null
 then	[[ $(cat <(print hello) ) == hello ]] || err_exit "process substitution not working outside for or while loop"
 	$SHELL -c '[[ $(for i in 1;do cat <(print hello);done ) == hello ]]' 2> /dev/null|| err_exit "process substitution not working in for or while loop"
@@ -419,8 +413,16 @@ unset foo
 unset foo
 foo=$(false) > /dev/null && err_exit 'failed command substitution with redirection not returning false'
 expected=foreback
+got=`print -n fore; (sleep 2;print back)&`
+[[ $got == $expected ]] || err_exit "\`\` command substitution background process output error (expected '$expected', got '$got')"
 got=$(print -n fore; (sleep .2;print back)&)
-[[ $got == $expected ]] || err_exit "command substitution background process output error -- got '$got', expected '$expected'"
+[[ $got == $expected ]] || err_exit "\$() command substitution background process output error (expected '$expected', got '$got')"
+got=${ print -n fore; (sleep 2;print back)& }
+[[ $got == $expected ]] || err_exit "\${} shared-state command substitution background process output error (expected '$expected', got '$got')"
+function abc { sleep 2; print back; }
+function abcd { abc & }
+got=$(print -n fore;abcd)
+[[ $got == $expected ]] || err_exit "\$() command substitution background with function process output error (expected '$expected', got '$got')"
 
 for false in false $binfalse
 do	x=$($false) && err_exit "x=\$($false) should fail"
@@ -430,72 +432,6 @@ done
 if	env x-a=y >/dev/null 2>&1
 then	[[ $(env 'x-a=y'  $SHELL -c 'env | grep x-a') == *x-a=y* ]] || err_exit 'invalid environment variables not preserved'
 fi
-
-foo() { return; }
-false
-foo && err_exit "'return' within function does not preserve exit status"
-false
-foo & wait "$!" && err_exit "'return' within function does not preserve exit status (bg job)"
-
-foo() { false; return || :; }
-foo && err_exit "'return ||' does not preserve exit status"
-
-foo() { false; return && :; }
-foo && err_exit "'return &&' does not preserve exit status"
-
-foo() { false; while return; do true; done; }
-foo && err_exit "'while return' does not preserve exit status"
-
-foo() { false; while return; do true; done 2>&1; }
-foo && err_exit "'while return' with redirection does not preserve exit status"
-
-foo() { false; until return; do true; done; }
-foo && err_exit "'until return' does not preserve exit status"
-
-foo() { false; until return; do true; done 2>&1; }
-foo && err_exit "'until return' with redirection does not preserve exit status"
-
-foo() { false; for i in 1; do return; done; }
-foo && err_exit "'return' within 'for' does not preserve exit status"
-
-foo() { false; for i in 1; do return; done 2>&1; }
-foo && err_exit "'return' within 'for' with redirection does not preserve exit status"
-
-foo() { false; { return; } 2>&1; }
-foo && err_exit "'return' within { block; } with redirection does not preserve exit status"
-
-foo() ( exit )
-false
-foo && err_exit "'exit' within function does not preserve exit status"
-false
-foo & wait "$!" && err_exit "'exit' within function does not preserve exit status (bg job)"
-
-foo() ( false; exit || : )
-foo && err_exit "'exit ||' does not preserve exit status"
-
-foo() ( false; exit && : )
-foo && err_exit "'exit &&' does not preserve exit status"
-
-foo() ( false; while exit; do true; done )
-foo && err_exit "'while exit' does not preserve exit status"
-
-foo() ( false; while exit; do true; done 2>&1 )
-foo && err_exit "'while exit' with redirection does not preserve exit status"
-
-foo() ( false; until exit; do true; done )
-foo && err_exit "'until exit' does not preserve exit status"
-
-foo() ( false; until exit; do true; done 2>&1 )
-foo && err_exit "'until exit' with redirection does not preserve exit status"
-
-foo() ( false; for i in 1; do exit; done )
-foo && err_exit "'exit' within 'for' does not preserve exit status"
-
-foo() ( false; for i in 1; do exit; done 2>&1 )
-foo && err_exit "'exit' within 'for' with redirection does not preserve exit status"
-
-foo() ( false; { exit; } 2>&1 )
-foo && err_exit "'exit' within { block; } with redirection does not preserve exit status"
 
 set --
 false
@@ -587,17 +523,18 @@ float sec=SECONDS
 . $tmp/foo.sh  | cat > /dev/null
 (( (SECONDS-sec) < .07 ))  && err_exit '. script does not restore output redirection with eval'
 
-file=$tmp/foobar
-builtin cat
-for ((n=0; n < 1000; n++))
-do
-	> $file
-	{ sleep .001;echo $? >$file;} | cat > /dev/null
-	if	[[ !  -s $file ]]
-	then	err_exit 'output from pipe is lost with pipe to builtin'
-		break;
-	fi
-done
+if builtin cat 2> /dev/null; then
+	file=$tmp/foobar
+	for ((n=0; n < 1000; n++))
+	do
+		> $file
+		{ sleep .001;echo $? >$file;} | cat > /dev/null
+		if	[[ !  -s $file ]]
+		then	err_exit 'output from pipe is lost with pipe to builtin'
+			break;
+		fi
+	done
+fi
 
 $SHELL -c 'kill -0 123456789123456789123456789' 2> /dev/null && err_exit 'kill not catching process id overflows'
 
@@ -667,41 +604,38 @@ eu=$(
 )
 [[ ${us:1:1} == ${eu:1:1} ]] && err_exit "The time keyword ignores the locale's radix point (both are ${eu:1:1})"
 
-# ======
-# Test for bug in ksh binaries that use posix_spawn() while job control is active.
-# See discussion at: https://github.com/ksh93/ksh/issues/79
-if	test -t 1 2>/dev/null 1>/dev/tty	# this test only works if we have a tty
-then	actual=$(
-		"$SHELL" -i <<-\EOF 2>/dev/tty
-		printf '%s\n' 1 2 3 4 5 | while read
-		do	ls /dev/null
-		done 2>&1
-		exit  # suppress extra newline
-		EOF
-	)
-	expect=$'/dev/null\n/dev/null\n/dev/null\n/dev/null\n/dev/null'
-	[[ $actual == "$expect" ]] || err_exit 'Race condition while launching external commands' \
-		"(expected $(printf %q "$expect"), got $(printf %q "$actual"))"
-fi
+# The time keyword should obey the errexit option
+# https://www.illumos.org/issues/7694
+time_errexit="$tmp/time_errexit.sh"
+cat > "$time_errexit" << 'EOF'
+time false
+echo FAILURE
+true
+EOF
+got=$($SHELL -e "$time_errexit" 2>&1)
+(( $? == 0 )) && err_exit "The time keyword ignores the errexit option" \
+	"(got $(printf %q "$got"))"
+[[ -z $got ]] || err_exit "The time keyword produces output when a timed command fails and the errexit option is on" \
+	"(got $(printf %q "$got"))"
 
 # ======
 # Expansion of multibyte characters after expansion of single-character names $1..$9, $?, $!, $-, etc.
-function exptest
-{
-	print -r "$1テスト"
-	print -r "$?テスト"
-	print -r "$#テスト"
-}
-expect=$'fooテスト\n0テスト\n1テスト'
-actual=$(exptest foo)
-[[ $actual == "$expect" ]] || err_exit 'Corruption of multibyte char following expansion of single-char name' \
-	"(expected $(printf %q "$expect"), got $(printf %q "$actual"))"
+case ${LC_ALL:-${LC_CTYPE:-${LANG:-}}} in
+( *[Uu][Tt][Ff]8* | *[Uu][Tt][Ff]-8* )
+	eval 'function exptest { print -r "$1テスト"; print -r "$?テスト" ; print -r "$#テスト"; }'
+	eval 'expect=$'\''fooテスト\n0テスト\n1テスト'\'
+	actual=$(exptest foo)
+	[[ $actual == "$expect" ]] || err_exit 'Corruption of multibyte char following expansion of single-char name' \
+		"(expected $(printf %q "$expect"), got $(printf %q "$actual"))"
+	;;
+esac
 
 # ======
 # ksh didn't rewrite argv correctly (rhbz#1047506)
 # When running a script without a #! hashbang path, ksh attempts to replace argv with the arguments
 # of the script. However, fixargs() didn't wipe out the rest of previous arguments after the last
 # \0. This caused an erroneous record in /proc/<PID>/cmdline and the output of the ps command.
+cd "$tmp"
 getPsOutput() {
 	# UNIX95=1 makes this work on HP-UX.
 	actual=$(UNIX95=1 ps -o args= -p "$1" 2>&1)
@@ -746,10 +680,11 @@ got=$(eval 'x=`for i in test; do case $i in test) true;; esac; done`' 2>&1) \
 
 # ======
 # Various DEBUG trap fixes: https://github.com/ksh93/ksh/issues/155
+#			    https://github.com/ksh93/ksh/issues/187
 
 # Redirecting disabled the DEBUG trap
 exp=$'LINENO: 4\nfoo\nLINENO: 5\nLINENO: 6\nbar\nLINENO: 7\nbaz'
-got=$({ "$SHELL" -c '
+got=$(set +x; { "$SHELL" -c '
 	PATH=/dev/null
 	trap "echo LINENO: \$LINENO >&1" DEBUG	# 3
 	echo foo				# 4
@@ -762,7 +697,7 @@ got=$({ "$SHELL" -c '
 
 # The DEBUG trap crashed when re-trapping inside a subshell
 exp=$'trap -- \': main\' EXIT\ntrap -- \': main\' ERR\ntrap -- \': main\' KEYBD\ntrap -- \': main\' DEBUG'
-got=$({ "$SHELL" -c '
+got=$(set +x; { "$SHELL" -c '
 	PATH=/dev/null
 	for sig in EXIT ERR KEYBD DEBUG
 	do	trap ": main" $sig
@@ -776,7 +711,7 @@ got=$({ "$SHELL" -c '
 
 # Field splitting broke upon evaluating an unquoted expansion in a DEBUG trap
 exp=$'a\nb\nc'
-got=$({ "$SHELL" -c '
+got=$(set +x; { "$SHELL" -c '
 	PATH=/dev/null
 	v=""
 	trap ": \$v" DEBUG
@@ -796,6 +731,19 @@ r=$(exit 123)
 r=`exit 123`
 (((e=$?)==123)) || err_exit "DEBUG trap run in \`comsub\` affects exit status (expected 123, got $e)"
 trap - DEBUG
+
+# After fixing the previous, the DEBUG trap stopped honouring exit status 2 to skip command execution -- whoops
+got=$(
+	myfn()
+	{
+		[[ ${.sh.command} == echo* ]] && return 2
+	}
+	trap 'myfn' DEBUG
+	print end
+	echo "Hi, I'm a bug"
+)
+(((e=$?)==2)) && [[ $got == end ]] || err_exit 'DEBUG trap: next command not skipped upon status 2' \
+	"(got status $e, $(printf %q "$got"))"
 
 # The DEBUG trap was incorrectly inherited by subshells
 exp=$'Subshell\nDebug 1\nParentshell'
@@ -837,6 +785,72 @@ got=$(
 trap - DEBUG  # bug compat
 [[ $got == "$exp" ]] || err_exit "DEBUG trap not inherited by POSIX function" \
 	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+# Make sure the DEBUG trap still exits a POSIX function on exit status 255
+# TODO: same test for ksh function with -o functrace, once we add that option
+exp=$'one\ntwo'
+got=$(
+	myfn()
+	{
+		echo one
+		echo two
+		echo three
+		echo four
+	}
+	set255()
+	{
+		return 255
+	}
+	trap '[[ ${.sh.command} == *three ]] && set255' DEBUG
+	myfn
+)
+trap - DEBUG  # bug compat
+[[ $got == "$exp" ]] || err_exit "DEBUG trap did not trigger return from POSIX function on status 255" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+# ======
+# In ksh93v- and ksh2020 EXIT traps don't work in forked subshells
+# https://github.com/att/ast/issues/1452
+exp="forked subshell EXIT trap okay"
+got="$(ulimit -t unlimited 2> /dev/null; trap 'echo forked subshell EXIT trap okay' EXIT)"
+[[ $got == $exp ]] || err_exit "EXIT trap did not trigger in forked subshell" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+exp="virtual subshell EXIT trap okay"
+got="$(trap 'echo virtual subshell EXIT trap okay' EXIT)"
+[[ $got == $exp ]] || err_exit "EXIT trap did not trigger in virtual subshell" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+# ======
+# Regression test for https://github.com/att/ast/issues/1403
+for t in {A..Z}; do
+	$SHELL -c "trap - $t 2> /dev/null"
+	[[ $? == 1 ]] || err_exit "'trap' throws segfault when given invalid signal name '$t'"
+done
+
+# ======
+# Is an invalid flag handled correctly?
+# ksh2020 regression: https://github.com/att/ast/issues/1284
+actual=$($SHELL --verson 2>&1)
+actual_status=$?
+expect='ksh: verson: bad option(s)'
+expect_status=2
+[[ "$actual" == *${expect}* ]] || err_exit "failed to handle invalid flag" \
+	"(expected $(printf %q ${expect}*), got $(printf %q "$actual"))"
+[[ $actual_status == $expect_status ]] ||
+	err_exit "wrong exit status (expected '$expect_status', got '$actual_status')"
+
+# ======
+# Test for illegal seek error (ksh93v- regression)
+# https://www.mail-archive.com/ast-users@lists.research.att.com/msg00816.html
+if [[ $(uname -s) != SunOS ]]  # Solaris 11.4 join(1) hangs on this test -- not ksh's fault
+then
+exp='1
+2'
+got="$(join <(printf '%d\n' 1 2) <(printf '%d\n' 1 2))"
+[[ $exp == $got ]] || err_exit "pipeline fails with illegal seek error" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+fi  # $(uname -s) != SunOS
 
 # ======
 exit $((Errors<125?Errors:125))

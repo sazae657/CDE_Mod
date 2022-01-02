@@ -1,7 +1,5 @@
 : ksh regression test harness :
 
-USAGE_LICENSE="[-author?David Korn <dgk@research.att.com>][-author?Glenn Fowler <gsf@research.att.com>][-copyright?Copyright (c) 2000-2012 AT&T Intellectual Property][-license?http://www.eclipse.org/org/documents/epl-v10.html]"
-
 command=shtests
 
 setslocale='*@(locale).sh'
@@ -10,14 +8,19 @@ valgrindflags='--xml=yes --log-file=/dev/null --track-origins=yes --read-var-inf
 
 USAGE=$'
 [-s8?
-@(#)$Id: shtests (AT&T Research/ksh93) 2020-09-02 $
+@(#)$Id: shtests (ksh 93u+m) 2021-12-28 $
 ]
-'$USAGE_LICENSE$'
+[-author?David Korn <dgk@research.att.com>]
+[-author?Glenn Fowler <gsf@research.att.com>]
+[-copyright?(c) 2000-2012 AT&T Intellectual Property]
+[-copyright?(c) 2020-2021 Contributors to https://github.com/ksh93/ksh]
+[-license?http://www.eclipse.org/org/documents/epl-v10.html]
 [+NAME?shtests - ksh regression test harness]
 [+DESCRIPTION?\bshtests\b is the \bksh\b(1) regression test harness for
     \b$SHELL\b or \bksh\b if \bSHELL\b is not defined and exported. If
-    none of the \b--posix --utf8 --compile\b options are specified then
-    all three are enabled.]
+    none of the \b--posix\b \b--utf8\b \b--compile\b options are specified then
+    all three are enabled for most tests, whereas only \b--posix\b \b--utf8\b
+    are enabled for the \bpty\b tests for the interactive shell.]
 [+INPUT FILES?\bshtests\b regression test files are shell scripts that
     run in an environment controlled by \bshtests\b. An identification
     message is printed before and after each test on the standard output.
@@ -166,16 +169,10 @@ function valxml
 	return $errors
 }
 
-if	[[ ! -c /dev/tty || ! -w /dev/tty ]]
-then	print "The regression tests require a functioning /dev/tty." >&2
-	print "If not available, try script(1) to simulate a tty." >&2
-	exit 128
-fi
-
 command set +o posix 2>/dev/null
 unset DISPLAY FIGNORE HISTFILE POSIXLY_CORRECT _AST_FEATURES
-export ENV=/./dev/null
-trap + PIPE # unadvertized -- set SIGPIPE to SIG_DFL #
+export ENV=/./dev/null SHTESTS_COMMON=$PWD/_common
+trap + CONT PIPE	# unadvertised -- set SIGCONT and SIGPIPE to SIG_DFL
 
 integer compile=-1 posix=-1 utf8=-1
 integer debug=0 keep=0 locale=0 time=1
@@ -219,6 +216,7 @@ shift $OPTIND-1
 
 if	(( debug )) || [[ $trace ]]
 then	export PS4='+ [${SECONDS:+${SECONDS%????}s|}${.sh.pid:+P${.sh.pid},}${.sh.subshell:+S${.sh.subshell},}${.sh.file:+${.sh.file#${.sh.file%/*/*}/},}${.sh.fun:+${.sh.fun},}${LINENO:+L$LINENO,}e$?] '
+	typeset -F SECONDS  # show fractional seconds in xtrace output
 	if	(( debug ))
 	then	set -x
 	fi
@@ -246,8 +244,7 @@ then	utf8=0
 	if	! let 1.0 2>/dev/null
 	then	export LC_NUMERIC=C
 	fi
-else	unset LANG LC_ALL
-	export LC_NUMERIC=C
+else	unset LANG ${!LC_*}
 fi
 if	[[ $VMALLOC_OPTIONS ]]
 then	vmalloc_options=$VMALLOC_OPTIONS
@@ -268,8 +265,8 @@ case $SHELL in
 *)	SHELL=$(whence $SHELL);;
 esac
 PATH=$(
-	PATH=/run/current-system/sw/bin:/usr/xpg7/bin:/usr/xpg6/bin:/usr/xpg4/bin:/bin:/usr/bin:$PATH
-	getconf PATH 2>/dev/null || { builtin getconf 2>/dev/null && getconf PATH; }
+	builtin getconf 2>/dev/null || PATH=/run/current-system/sw/bin:/usr/xpg7/bin:/usr/xpg6/bin:/usr/xpg4/bin:/bin:/usr/bin:$PATH
+	getconf PATH 2>/dev/null
 ) || PATH=/bin:/usr/bin
 if	[[ -d /usr/ucb ]]
 then	PATH=$PATH:/usr/ucb
@@ -308,6 +305,18 @@ fi
 # (some tests must unset or modify $HISTFILE, so set $HOME instead)
 export HOME=$tmp
 
+# make the SHOPT_* macros available to the tests as environment variables
+SHOPT()
+{
+	[[ $1 == *=* ]] && eval "export SHOPT_${ printf %q "${1%%=*}"; }=${ printf %q "${1#*=}"; }"
+}
+. "${SHOPTFILE:-../SHOPT.sh}"
+unset -f SHOPT
+if	(( !SHOPT_MULTIBYTE && utf8 && !posix && !compile ))
+then	echo "The -u/--utf8 option is unavailable as SHOPT_MULTIBYTE is turned off in ${SHOPTFILE:-SHOPT.sh}." >&2
+	exit 1
+fi
+
 if	(( compile ))
 then	if	whence $SHCOMP > /dev/null
 	then	:
@@ -333,10 +342,12 @@ do	[[ $i == *.sh ]] || i+='.sh'
 		(( ++total_e ))
 		continue
 	fi
-	t=$(grep -c err_exit $i)
-	if	(( t > 2 ))
-	then	(( t = t - 2 ))
-	fi
+	t=$(	case $i in
+		glob.sh)	grep -c '^[[:blank:]]*test_[a-z]\{3,\}' $i ;;
+		leaks.sh)	grep -c ^TEST $i ;;
+		pty.sh)		grep -c 'tst ' $i ;;
+		*)		grep -c err_exit $i ;;
+		esac	)
 	tests[$i]=$t
 	T=test
 	if	(( t != 1 ))
@@ -350,7 +361,7 @@ do	[[ $i == *.sh ]] || i+='.sh'
 	if	(( posix || utf8 ))
 	then	locales=
 		(( posix )) && locales+=" ${LANG:-C}"
-		[[ $utf8 == 0 || $i == $setslocale ]] || locales+=" C.UTF-8"
+		[[ $utf8 == 0 || $i == $setslocale ]] || ((!SHOPT_MULTIBYTE)) || locales+=" C.UTF-8"
 		for lang in $locales
 		do	o=$u
 			tmp_s=$tmp/$u.$lang
@@ -376,7 +387,7 @@ do	[[ $i == *.sh ]] || i+='.sh'
 				(( e += $? ))
 			fi
 			if	(( e > 128 && ++total_e ))
-			then	E="(killed by SIG$(kill -l "$e"))"
+			then	E="(killed by SIG$(kill -l "$e"))"  # report signal if test crashes
 			elif	(( e == 1 && ++total_e ))
 			then	E="1 error"
 			else	E="$e errors"
@@ -391,19 +402,24 @@ do	[[ $i == *.sh ]] || i+='.sh'
 			esac
 		done
 	fi
-	if	(( compile ))
+	# Skip pty tests for shcomp, unless -c was explicitly specified (compile==2)
+	if	[[ compile -gt 0 && ! ($u == pty && compile -lt 2) ]]
 	then	c=$tmp/shcomp-$u.ksh
 		o="$u(shcomp)"
 		echo test $o begins ${time:+"at $(date +%Y-%m-%d+%H:%M:%S)"}
 		tmp_s=$tmp/$u.shcomp
 		mkdir -m700 "$tmp_s" || exit
+		# Must define aliases from _common in script itself so they are expanded at compile time.
+		# Replace the first few lines with those to avoid affecting $LINENO; they are comments anyway.
+		num_alias=$(grep -c '^alias [[:alnum:]_]\{2,\}=' _common)
+		{ grep '^alias [[:alnum:]_]\{2,\}=' _common; sed "1,$num_alias d" "$i"; } >$c.orig
 		cd "$tmp_s" || exit
-		if	$SHCOMP "$OLDPWD/$i" > $c
+		if	"$SHCOMP" "$c.orig" > $c
 		then	if	tmp=$tmp_s $valgrind $SHELL $trace $c
 			then	echo test $o passed ${time:+"at $(date +%Y-%m-%d+%H:%M:%S)"} "[ $t $T 0 errors ]"
 			else	e=$?
 				if	(( e > 128 && ++total_e ))
-				then	E="(killed by SIG$(kill -l "$e"))"
+				then	E="(killed by SIG$(kill -l "$e"))"  # report signal if test crashes
 				elif	(( e == 1 && ++total_e ))
 				then	E="1 error"
 				else	E="$e errors"
@@ -433,7 +449,7 @@ print "Total errors: $total_e"
 # if we have the 'times' builtin and can use process substitution with output redirection.
 # See:	https://github.com/ksh93/ksh/commit/65d363fd
 #	https://github.com/ksh93/ksh/issues/2
-if 	(	ulimit -t unlimited	# fork to circumvent old ksh bugs
+if 	(	ulimit -t unlimited 2> /dev/null  # fork to circumvent old ksh bugs
 		unalias times
 		PATH=/dev/null whence -q times || exit
 		cd "$tmp" || exit

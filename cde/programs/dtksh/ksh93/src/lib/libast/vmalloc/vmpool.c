@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -38,14 +39,7 @@ void _STUB_vmpool(){}
 **	Written by Kiem-Phong Vo, kpv@research.att.com, 01/16/94.
 */
 
-#if __STD_C
-static Void_t* poolalloc(Vmalloc_t* vm, reg size_t size, int local)
-#else
-static Void_t* poolalloc(vm, size, local )
-Vmalloc_t*	vm;
-reg size_t	size;
-int		local;
-#endif
+static void* poolalloc(Vmalloc_t* vm, reg size_t size, int local)
 {
 	reg Block_t	*tp, *next;
 	reg size_t	s;
@@ -53,12 +47,12 @@ int		local;
 	reg Vmdata_t	*vd = vm->data;
 
 	if(size <= 0)
-		return NIL(Void_t*);
+		return NIL(void*);
 
 	if(size != vd->pool)
 	{	if(vd->pool <= 0)
 			vd->pool = size;
-		else	return NIL(Void_t*);
+		else	return NIL(void*);
 	}
 
 	SETLOCK(vm, local);
@@ -107,17 +101,10 @@ done:
 
 	CLRLOCK(vm, local);
 
-	return (Void_t*)tp;
+	return (void*)tp;
 }
 
-#if __STD_C
-static long pooladdr(Vmalloc_t* vm, reg Void_t* addr, int local)
-#else
-static long pooladdr(vm, addr, local)
-Vmalloc_t*	vm;
-reg Void_t*	addr;
-int		local;
-#endif
+static long pooladdr(Vmalloc_t* vm, reg void* addr, int local)
 {
 	Block_t		*bp, *tp;
 	Vmuchar_t	*laddr, *baddr;
@@ -155,14 +142,7 @@ done :
 	return offset;
 }
 
-#if __STD_C
-static int poolfree(reg Vmalloc_t* vm, reg Void_t* data, int local )
-#else
-static int poolfree(vm, data, local)
-Vmalloc_t*	vm;
-Void_t*		data;
-int		local;
-#endif
+static int poolfree(reg Vmalloc_t* vm, reg void* data, int local )
 {
 	Block_t		*bp;
 	Vmdata_t	*vd = vm->data;
@@ -188,16 +168,7 @@ int		local;
 	return 0;
 }
 
-#if __STD_C
-static Void_t* poolresize(Vmalloc_t* vm, Void_t* data, size_t size, int type, int local )
-#else
-static Void_t* poolresize(vm, data, size, type, local )
-Vmalloc_t*	vm;
-Void_t*		data;
-size_t		size;
-int		type;
-int		local;
-#endif
+static void* poolresize(Vmalloc_t* vm, void* data, size_t size, int type, int local )
 {
 	Vmdata_t	*vd = vm->data;
 
@@ -211,10 +182,10 @@ int		local;
 	}
 	if(size == 0)
 	{	(void)poolfree(vm, data, local);
-		return NIL(Void_t*);
+		return NIL(void*);
 	}
 	if(size != vd->pool)
-		return NIL(Void_t*);
+		return NIL(void*);
 
 	SETLOCK(vm, local);
 
@@ -228,25 +199,12 @@ int		local;
 	return data;
 }
 
-#if __STD_C
-static long poolsize(Vmalloc_t* vm, Void_t* addr, int local)
-#else
-static long poolsize(vm, addr, local)
-Vmalloc_t*	vm;
-Void_t*		addr;
-int		local;
-#endif
+static long poolsize(Vmalloc_t* vm, void* addr, int local)
 {
 	return pooladdr(vm, addr, local) == 0 ? (long)vm->data->pool : -1L;
 }
 
-#if __STD_C
 static int poolcompact(Vmalloc_t* vm, int local)
-#else
-static int poolcompact(vm, local)
-Vmalloc_t*	vm;
-int		local;
-#endif
 {
 	ssize_t		s;
 	Block_t		*fp;
@@ -278,20 +236,12 @@ int		local;
 	return 0;
 }
 
-#if __STD_C
-static Void_t* poolalign(Vmalloc_t* vm, size_t size, size_t align, int local)
-#else
-static Void_t* poolalign(vm, size, align, local)
-Vmalloc_t*	vm;
-size_t		size;
-size_t		align;
-int		local;
-#endif
+static void* poolalign(Vmalloc_t* vm, size_t size, size_t align, int local)
 {
 	NOTUSED(vm);
 	NOTUSED(size);
 	NOTUSED(align);
-	return NIL(Void_t*);
+	return NIL(void*);
 }
 
 /* Public interface */

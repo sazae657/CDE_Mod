@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -27,14 +28,9 @@
 **	Written by Kiem-Phong Vo
 */
 
-#if __STD_C
-char* sfgetr(Sfio_t *f, int rc, int type)
-#else
-char* sfgetr(f,rc,type)
-Sfio_t*		f;	/* stream to read from	*/
-int		rc;	/* record separator	*/
-int		type;
-#endif
+char* sfgetr(Sfio_t*	f,	/* stream to read from	*/
+	     int	rc,	/* record separator	*/
+	     int	type)
 {
 	ssize_t		n, un;
 	uchar		*s, *ends, *us;

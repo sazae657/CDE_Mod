@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -26,13 +27,8 @@
 **	Written by Kiem-Phong Vo.
 */
 
-#if __STD_C
-int _sfputu(Sfio_t* f, Sfulong_t v)
-#else
-int _sfputu(f,v)
-Sfio_t*		f;	/* write a portable ulong to this stream */
-Sfulong_t	v;	/* the unsigned value to be written */
-#endif
+int _sfputu(Sfio_t*	f,	/* write a portable ulong to this stream */
+	    Sfulong_t	v)	/* the unsigned value to be written */
 {
 #define N_ARRAY		(2*sizeof(Sfulong_t))
 	reg uchar	*s, *ps;
@@ -54,17 +50,24 @@ Sfulong_t	v;	/* the unsigned value to be written */
 	n = (ps-s)+1;
 
 	if(n > 8 || SFWPEEK(f,ps,p) < n)
-		n = SFWRITE(f,(Void_t*)s,n); /* write the hard way */
+		n = SFWRITE(f,(void*)s,n); /* write the hard way */
 	else
 	{	switch(n)
 		{
 		case 8 : *ps++ = *s++;
+			 /* FALLTHROUGH */
 		case 7 : *ps++ = *s++;
+			 /* FALLTHROUGH */
 		case 6 : *ps++ = *s++;
+			 /* FALLTHROUGH */
 		case 5 : *ps++ = *s++;
+			 /* FALLTHROUGH */
 		case 4 : *ps++ = *s++;
+			 /* FALLTHROUGH */
 		case 3 : *ps++ = *s++;
+			 /* FALLTHROUGH */
 		case 2 : *ps++ = *s++;
+			 /* FALLTHROUGH */
 		case 1 : *ps++ = *s++;
 		}
 		f->next = ps;

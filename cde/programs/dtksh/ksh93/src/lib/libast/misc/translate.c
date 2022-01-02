@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,11 +20,10 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 /*
  * AT&T Research and SCO
- * ast l10n message translation
+ * AST l10n message translation
  */
 
 #include "lclib.h"
@@ -187,7 +187,7 @@ init(register char* s)
 	{
 		/*
 		 * load the default locale messages
-		 * this assumes one message set for ast (AST_MESSAGE_SET or fallback to 1)
+		 * this assumes one message set for AST (AST_MESSAGE_SET or fallback to 1)
 		 * different packages can share the same message catalog
 		 * name by using different message set numbers
 		 * see <mc.h> mcindex()

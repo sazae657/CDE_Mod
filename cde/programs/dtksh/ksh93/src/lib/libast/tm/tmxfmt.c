@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                     Phong Vo <phongvo@gmail.com>                     *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * Glenn Fowler
  * AT&T Research
@@ -177,7 +177,7 @@ tmxfmt(char* buf, size_t len, const char* format, Time_t t)
 					pad = c;
 					continue;
 				}
-				/*FALLTHROUGH*/
+				/* FALLTHROUGH */
 			case '1':
 			case '2':
 			case '3':
@@ -191,7 +191,7 @@ tmxfmt(char* buf, size_t len, const char* format, Time_t t)
 				{
 				case 0:
 					parts++;
-					/*FALLTHROUGH*/
+					/* FALLTHROUGH */
 				case 1:
 					width = width * 10 + (c - '0');
 					break;
@@ -355,10 +355,6 @@ tmxfmt(char* buf, size_t len, const char* format, Time_t t)
 		case 'N':	/* (AST|GNU) nanosecond part */
 			cp = number(cp, ep, (long)tm->tm_nsec, 9, width, pad);
 			continue;
-#if 0
-		case 'o':	/* (UNUSED) */
-			continue;
-#endif
 		case 'p':	/* meridian */
 			n = TM_MERIDIAN + (tm->tm_hour >= 12);
 			goto index;
@@ -573,10 +569,6 @@ tmxfmt(char* buf, size_t len, const char* format, Time_t t)
 		case 'U':	/* week number, Sunday as first day */
 			cp = number(cp, ep, (long)tmweek(tm, 0, -1, -1), 2, width, pad);
 			continue;
-#if 0
-		case 'v':	/* (UNUSED) */
-			continue;
-#endif
 		case 'V':	/* ISO week number */
 			cp = number(cp, ep, (long)tmweek(tm, 2, -1, -1), 2, width, pad);
 			continue;

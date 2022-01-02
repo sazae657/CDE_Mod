@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,8 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
+#pragma clang diagnostic ignored "-Wdeprecated-register"
+#pragma clang diagnostic ignored "-Wparentheses"
 /*
  * Glenn Fowler
  * AT&T Research
@@ -326,7 +328,6 @@ main()
 		mapindex[j] = RANGE_MAX | RANGE_RT | n;
 	}
 #endif
-	printf("#pragma prototyped\n");
 	printf("#define SIG_MAX	%d\n", k);
 	printf("\n");
 	printf("static const char* const	sig_name[] =\n");

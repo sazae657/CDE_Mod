@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 #include "asohdr.h"
 #include "FEATURE/aso"
@@ -31,7 +31,7 @@ NoN(aso)
 #else
 
 /*
- * ast atomic scalar operations
+ * AST atomic scalar operations
  * AT&T Research
  *
  * cas { 8 16 32 [64] } subset snarfed from the work by

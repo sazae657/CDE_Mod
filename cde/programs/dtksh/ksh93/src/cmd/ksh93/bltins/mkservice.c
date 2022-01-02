@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * mkservice varname pathname
  * eloop [-t timeout]
@@ -25,9 +25,11 @@
  * AT&T Labs
  */
 
+#if SHOPT_MKSERVICE
+
 static const char mkservice_usage[] =
 "[-?\n@(#)$Id: mkservice (AT&T Research) 2001-06-13 $\n]"
-USAGE_LICENSE
+"[--catalog?" SH_DICT "]"
 "[+NAME? mkservice - create a shell server ]"
 "[+DESCRIPTION?\bmkservice\b creates a tcp or udp server that is "
 	"implemented by shell functions.]"
@@ -68,7 +70,7 @@ USAGE_LICENSE
 
 static const char eloop_usage[] =
 "[-?\n@(#)$Id: eloop (AT&T Research) 2001-06-13 $\n]"
-USAGE_LICENSE
+"[--catalog?" SH_DICT "]"
 "[+NAME? eloop - process event loop]"
 "[+DESCRIPTION?\beloop\b causes the shell to block waiting for events "
 	"to process.  By default, \beloop\b does not return.]"
@@ -115,7 +117,7 @@ typedef struct Service_s Service_t;
 struct Service_s
 {
 	Namfun_t	fun;
-	short		fd;
+	int		fd;
 	int		refcount;
 	int		(*acceptf)(Service_t*,int);
 	int		(*actionf)(Service_t*,int,int);
@@ -125,7 +127,7 @@ struct Service_s
 	Namval_t*	disc[elementsof(disctab)-1];
 };
 
-static short		*file_list;
+static int		*file_list;
 static Sfio_t		**poll_list;
 static Service_t	**service_list;
 static int		npoll;
@@ -258,9 +260,10 @@ static int waitnotify(int fd, long timeout, int rw)
 
 static int service_init(void)
 {
-	file_list =  newof(NULL,short,n,0);
-	poll_list =  newof(NULL,Sfio_t*,n,0);
-	service_list =  newof(NULL,Service_t*,n,0);
+	int n = 20;
+	file_list = (int*)sh_newof(NULL,short,n,0);
+	poll_list = sh_newof(NULL,Sfio_t*,n,0);
+	service_list = sh_newof(NULL,Service_t*,n,0);
 	covered_fdnotify = sh_fdnotify(fdnotify);
 	sh_waitnotify(waitnotify);
 	return(1);
@@ -377,7 +380,7 @@ static void putval(Namval_t* np, const char* val, int flag, Namfun_t* fp)
 	if (!val)
 	{
 		register int i;
-		for(i=0; i< sh.lim.open_max; i++)
+		for(i=0; i< sh.gd->lim.open_max; i++)
 		{
 			if(service_list[i]==sp)
 			{
@@ -409,7 +412,6 @@ int	b_mkservice(int argc, char** argv, Shbltin_t *context)
 	register int		fd;
 
 	NOT_USED(argc);
-	NOT_USED(context);
 	for (;;)
 	{
 		switch (optget(argv, mkservice_usage))
@@ -421,15 +423,17 @@ int	b_mkservice(int argc, char** argv, Shbltin_t *context)
 			continue;
 		case '?':
 			error(ERROR_usage(2), opt_info.arg);
-			continue;
+			UNREACHABLE();
 		}
 		break;
 	}
 	argv += opt_info.index;
 	if (error_info.errors || !(var = *argv++) || !(path = *argv++) || *argv)
+	{
 		error(ERROR_usage(2), optusage(NiL));
-	if (!(sp = newof(0, Service_t, 1, 0)))
-		error(ERROR_exit(1), "out of space");
+		UNREACHABLE();
+	}
+	sp = sh_newof(0, Service_t, 1, 0);
 	sp->acceptf = Accept;
 	sp->actionf = Action;
 	sp->errorf = Error;
@@ -441,6 +445,7 @@ int	b_mkservice(int argc, char** argv, Shbltin_t *context)
 	{
 		free((void*)sp);
 		error(ERROR_exit(1), "%s: cannot start service", path);
+		UNREACHABLE();
 	}
 	if((sp->fd = fcntl(fd, F_DUPFD, 10))>=10)
 		close(fd);
@@ -473,13 +478,16 @@ int	b_eloop(int argc, char** argv, Shbltin_t *context)
 			continue;
 		case '?':
 			error(ERROR_usage(2), opt_info.arg);
-			continue;
+			UNREACHABLE();
 		}
 		break;
 	}
 	argv += opt_info.index;
 	if (error_info.errors  || *argv)
+	{
 		error(ERROR_usage(2), optusage(NiL));
+		UNREACHABLE();
+	}
 	while(1)
 	{
 		if(waitnotify(-1, timeout, 0)==0)
@@ -488,3 +496,5 @@ int	b_eloop(int argc, char** argv, Shbltin_t *context)
 	}
 	return(errno != 0);
 }
+
+#endif /* SHOPT_MKSERVICE */

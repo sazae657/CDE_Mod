@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * POSIX 1003.2 wordexp implementation
  */ 
@@ -34,8 +34,8 @@ struct list
 };
 
 /*
- * elimnates shell quoting as inserted with sh_fmtq
- * result relaces <string>
+ * eliminates shell quoting as inserted with sh_fmtq
+ * result replaces <string>
  * length of resulting string is returned.
  */
 static int	sh_unquote(char* string)

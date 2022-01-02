@@ -2,6 +2,7 @@
 #                                                                      #
 #               This software is part of the ast package               #
 #          Copyright (c) 1982-2012 AT&T Intellectual Property          #
+#          Copyright (c) 2020-2021 Contributors to ksh 93u+m           #
 #                      and is licensed under the                       #
 #                 Eclipse Public License, Version 1.0                  #
 #                    by AT&T Intellectual Property                     #
@@ -17,18 +18,8 @@
 #                  David Korn <dgk@research.att.com>                   #
 #                                                                      #
 ########################################################################
-function err_exit
-{
-	print -u2 -n "\t"
-	print -u2 -r ${Command}[$1]: "${@:2}"
-	let Errors+=1
-}
-alias err_exit='err_exit $LINENO'
 
-Command=${0##*/}
-integer Errors=0
-
-[[ -d $tmp && -w $tmp && $tmp == "$PWD" ]] || { err\_exit "$LINENO" '$tmp not set; run this from shtests. Aborting.'; exit 1; }
+. "${SHTESTS_COMMON:-${0%/*}/_common}"
 
 # ======
 # as of 93u+, typeset -xu/-xl failed to change case in a value (rhbz#1188377)
@@ -204,7 +195,7 @@ else	b1=iIWTk5ZAppaZk4Q=
 fi
 z=$b1
 typeset -b x=$b1
-[[ $x == "$z" ]] || print -u2 'binary variable not expanding correctly'
+[[ $x == "$z" ]] || err_exit "binary variable not expanding correctly ($(printf %q "$x") != $(printf %q "$z"))"
 [[  $(printf "%B" x) == $t1 ]] || err_exit 'typeset -b not working'
 typeset -b -Z5 a=$b1
 [[  $(printf "%B" a) == $w1 ]] || err_exit 'typeset -b -Z5 not working'
@@ -248,8 +239,8 @@ function fun
 	[[ $foo == hello ]] || err_exit 'export scoping problem in function'
 }
 fun
-[[ $(export | grep foo) == 'foo=hello' ]] || err_exit 'export not working in functions'
-[[ $(export | grep bar) ]] && err_exit 'typeset -x not local'
+[[ $'\n'$(export)$'\n' == *$'\nfoo=hello\n'* ]] || err_exit 'export not working in functions'
+[[ $'\n'$(export) == *$'\nbar='* ]] && err_exit 'typeset -x not local'
 [[ $($SHELL -c 'typeset -r IFS=;print -r $(pwd)' 2> /dev/null) == "$(pwd)" ]] || err_exit 'readonly IFS causes command substitution to fail'
 fred[66]=88
 [[ $(typeset -pa) == *fred* ]] || err_exit 'typeset -pa not working'
@@ -470,7 +461,7 @@ typeset -a x=( a=3 b=4)
 
 unset z
 z='typeset -a q=(a b c)'
-$SHELL -c "$z; [[ \$(typeset -pa) == '$z' ]]" || err_exit 'typeset -pa does not list only index arrays'
+$SHELL -c "$z; [[ \$(typeset -pa) == '$z' ]]" || err_exit 'typeset -pa does not list only indexed arrays'
 z='typeset -C z=(foo=bar)'
 $SHELL -c "$z; [[ \$(typeset -pC) == '$z' ]]" || err_exit 'typeset -pC does not list only compound variables'
 unset y
@@ -513,10 +504,18 @@ typeset -A expect=(
 	[b]='typeset -x -r -b foo'
 	[i]='typeset -x -r -i foo'
 	[i37]='typeset -x -r -i 37 foo'
+	[ils]='typeset -x -r -s -i foo'
+	[isl]='typeset -x -r -l -i foo'
 	[l]='typeset -x -r -l foo'
+	[lF]='typeset -x -r -l -F foo'
+	[lE]='typeset -x -r -l -E foo'
 	[n]='typeset -n -r foo'
-	[s]='typeset -x -r -s -i 0 foo=0'
+	[s]='typeset -x -r foo'
+	[si]='typeset -x -r -s -i foo'
 	[u]='typeset -x -r -u foo'
+	[ui]='typeset -x -r -u -i foo'
+	[usi]='typeset -x -r -s -u -i foo'
+	[uli]='typeset -x -r -l -u -i foo'
 	[A]='typeset -x -r -A foo=()'
 	[C]='typeset -x -r foo=()'
 	[E]='typeset -x -r -E foo'
@@ -525,20 +524,22 @@ typeset -A expect=(
 	[F12]='typeset -x -r -F 12 foo'
 	[H]='typeset -x -r -H foo'
 	[L]='typeset -x -r -L 0 foo'
-#	[L17]='typeset -x -r -L 17 foo'		# TODO: outputs '-L 0'
+	[L17]='typeset -x -r -L 17 foo'
 	[Mtolower]='typeset -x -r -l foo'
 	[Mtoupper]='typeset -x -r -u foo'
 	[R]='typeset -x -r -R 0 foo'
-#	[R17]='typeset -x -r -R 17 foo'		# TODO: outputs '-L 0'
+	[R17]='typeset -x -r -R 17 foo'
 	[X17]='typeset -x -r -X 17 foo'
+	[lX17]='typeset -x -r -l -X 17 foo'
 	[S]='typeset -x -r foo'
 	[T]='typeset -x -r foo'
 	[Z]='typeset -x -r -Z 0 -R 0 foo'
-#	[Z13]='typeset -x -r -Z 13 -R 13 foo'	# TODO: outputs 'typeset -x -r -Z 0 -R 0 foo'
+	[Z13]='typeset -x -r -Z 13 -R 13 foo'
 )
 for flag in "${!expect[@]}"
 do	unset foo
 	actual=$(
+		set +x
 		redirect 2>&1
 		export foo
 		(typeset "-$flag" foo; readonly foo; typeset -p foo)
@@ -590,6 +591,7 @@ got=$(< $tmpfile)
 # ======
 # Combining -u with -F or -E caused an incorrect variable type
 # https://github.com/ksh93/ksh/pull/163
+# Allow the last numeric type to win out
 typeset -A expect=(
 	[uF]='typeset -F a=2.0000000000'
 	[Fu]='typeset -F a=2.0000000000'
@@ -597,10 +599,25 @@ typeset -A expect=(
 	[Ful]='typeset -l -F a=2.0000000000'
 	[Eu]='typeset -E a=2'
 	[Eul]='typeset -l -E a=2'
+	[EF]='typeset -F a=2.0000000000'
+	[XF]='typeset -F a=2.0000000000'
+	[FE]='typeset -E a=2'
+	[XE]='typeset -E a=2'
+	[FX12]='typeset -X 12 a=0x1.000000000000p+1'
+	[EX12]='typeset -X 12 a=0x1.000000000000p+1'
+	[Fi]='typeset -i a=2'
+	[Ei]='typeset -i a=2'
+	[Xi]='typeset -i a=2'
+	[iF]='typeset -F a=2.0000000000'
+	[iFs]='typeset -F a=2.0000000000'
+	[iE]='typeset -E a=2'
+	[iEs]='typeset -E a=2'
+	[iX12]='typeset -X 12 a=0x1.000000000000p+1'
 )
 for flag in "${!expect[@]}"
 do	unset a
 	actual=$(
+		set +x
 		redirect 2>&1
 		(typeset "-$flag" a=2; typeset -p a)
 		leak=${ typeset -p a; }
@@ -612,6 +629,81 @@ do	unset a
 	fi
 done
 unset expect
+
+[[ $(typeset -iX12 -s a=2; typeset -p a) == 'typeset -X 12 a=0x1.000000000000p+1' ]] || err_exit "typeset -iX12 -s failed to become typeset -X 12 a=0x1.000000000000p+1."
+
+# ======
+# Bug introduced in 0e4c4d61: could not alter the size of an existing justified string attribute
+# https://github.com/ksh93/ksh/issues/142#issuecomment-780931533
+got=$(unset s; typeset -L 100 s=h; typeset +p s; typeset -L 5 s; typeset +p s)
+exp=$'typeset -L 100 s\ntypeset -L 5 s'
+[[ $got == "$exp" ]] || err_exit 'cannot alter size of existing justified string attribute' \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+got=$(unset s; typeset -L 100 s=h; typeset +p s; typeset -R 5 s; typeset +p s)
+exp=$'typeset -L 100 s\ntypeset -R 5 s'
+[[ $got == "$exp" ]] || err_exit 'cannot set -R after setting -L' \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+got=$(unset s; typeset -L 100 s=h; typeset +p s; typeset -Z 5 s; typeset +p s)
+exp=$'typeset -L 100 s\ntypeset -Z 5 -R 5 s'
+[[ $got == "$exp" ]] || err_exit 'cannot set -Z after setting -L' \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+# Old bug: zero-filling zero would cause the zero number to disappear
+# https://github.com/ksh93/ksh/issues/142#issuecomment-782013674
+got=$(typeset -i x=0; typeset -Z5 x; echo $x; typeset -Z3 x; echo $x; typeset -Z7 x; echo $x)
+exp=$'00000\n000\n0000000'
+[[ $got == "$exp" ]] || err_exit 'failed to zero-fill zero' \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+# ======
+# Applying the readonly attribute to an existing variable having a non-numeric attribute with a
+# size such as -L, -R, or -Z would be set to 0 when it should have maintained the old size unless
+# -L/R/Z existed as part of the new attributes being applied then its supplied size or default
+# size of 0 should be used.
+[[ $(typeset -L4 x; readonly x; typeset -p x) == 'typeset -r -L 4 x' ]] || err_exit "readonly apply failed to carry oldsize for typeset -r -L 4 x."
+[[ $(typeset -L4 x; typeset -r x; typeset -p x) == 'typeset -r -L 4 x' ]] || err_exit "typeset -r apply failed to carry oldsize for typeset -r -L 4 x."
+
+[[ $(typeset -R4 x; readonly x; typeset -p x) == 'typeset -r -R 4 x' ]] || err_exit "readonly apply failed to carry oldsize for typeset -r -R 4 x."
+[[ $(typeset -R4 x; typeset -r x; typeset -p x) == 'typeset -r -R 4 x' ]] || err_exit "typeset -r apply failed to carry oldsize for typeset -r -R 4 x."
+
+[[ $(typeset -Z4 x; readonly x; typeset -p x) == 'typeset -r -Z 4 -R 4 x' ]] || err_exit "readonly apply failed to carry oldsize for typeset -r -Z 4 -R 4."
+[[ $(typeset -Z4 x; typeset -r x; typeset -p x) == 'typeset -r -Z 4 -R 4 x' ]] || err_exit "typeset -r apply failed to carry oldsize for typeset -r -Z 4 -R 4."
+
+[[ $(typeset -bZ4 x; readonly x; typeset -p x) == 'typeset -r -b -Z 4 -R 4 x' ]] || err_exit "readonly apply failed to carry oldsize for typeset -r -b -Z 4 -R 4."
+[[ $(typeset -bZ4 x; typeset -r x; typeset -p x) == 'typeset -r -b -Z 4 -R 4 x' ]] || err_exit "typeset -r apply failed to carry oldsize for typeset -r -b -Z 4 -R 4."
+
+[[ $(typeset -L4 x; typeset -rL x; typeset -p x) == 'typeset -r -L 0 x' ]] || err_exit "typeset -rL failed to set new size."
+[[ $(typeset -R4 x; typeset -rR x; typeset -p x) == 'typeset -r -R 0 x' ]] || err_exit "typeset -rR failed to set new size."
+[[ $(typeset -Z4 x; typeset -rZ x; typeset -p x) == 'typeset -r -Z 0 -R 0 x' ]] || err_exit "typeset -rZ failed to set new size."
+[[ $(typeset -bZ4 x; typeset -rbZ x; typeset -p x) == 'typeset -r -b -Z 0 -R 0 x' ]] || err_exit "typeset -rbZ failed to set new size."
+
+# ======
+# set/unset tests for numeric types
+for flag in i s si ui us usi uli E F X lX
+do
+	unset var
+	typeset "-$flag" var
+	[[ -v var ]] && err_exit "[[ -v var ]] should return false after typeset -$flag var"
+	[[ -z ${var+s} ]] || err_exit "\${var+s} should be empty after typeset -$flag var (got '${var+s}')"
+	[[ -z ${var:+n} ]] || err_exit "\${var:+n} should be empty after typeset -$flag var (got '${var+n}')"
+	[[ ${var-u} == 'u' ]] || err_exit "\${var-u} should be 'u' after typeset -$flag var (got '${var-u}')"
+	[[ ${var:-e} == 'e' ]] || err_exit "\${var:-e} should be 'e' after typeset -$flag var (got '${var:-e}')"
+	(( ${var=1} == 1 )) || err_exit "\${var=1} should yield 1 after typeset -$flag var (got '$var')"
+	unset var
+	typeset "-$flag" var
+	(( ${var:=1} == 1 )) || err_exit "\${var:=1} should yield 1 after typeset -$flag var (got '$var')"
+	unset var
+	typeset "-$flag" var=0
+	[[ -v var ]] || err_exit "[[ -v var ]] should return true after typeset -$flag var=0"
+	[[ ${var+s} == 's' ]] || err_exit "\${var+s} should be 's' after typeset -$flag var=0"
+	[[ ${var:+n} == 'n' ]] || err_exit "\${var:+n} should be 'n' after typeset -$flag var=0"
+	[[ ${var-u} != 'u' ]] || err_exit "\${var-u} should be 0 after typeset -$flag var (got '${var-u}')"
+	[[ ${var:-e} != 'e' ]] || err_exit "\${var:-e} should be 0 after typeset -$flag var (got '${var:-e}')"
+	(( ${var=1} == 0 )) || err_exit "\${var=1} should yield 0 after typeset -$flag var=0 (got '$var')"
+	unset var
+	typeset "-$flag" var=0
+	(( ${var:=1} == 0 )) || err_exit "\${var:=1} should yield 0 after typeset -$flag var=0 (got '$var')"
+done
 
 # ======
 exit $((Errors<125?Errors:125))

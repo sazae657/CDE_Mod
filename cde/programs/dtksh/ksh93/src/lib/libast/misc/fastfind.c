@@ -1,4 +1,3 @@
-#pragma prototyped
 /*
  * original code
  *
@@ -29,7 +28,7 @@
  *
  * 0-2*FF_OFF	 likeliest differential counts + offset to make nonnegative 
  * FF_ESC	 4 byte big-endian out-of-range count+FF_OFF follows
- * FF_MIN-FF_MAX ascii residue
+ * FF_MIN-FF_MAX ASCII residue
  * >=FF_MAX	 bigram codes
  *
  * a two-tiered string search technique is employed
@@ -159,7 +158,7 @@ findopen(const char* file, const char* pattern, const char* type, Finddisc_t* di
 
 
 	if (!(vm = vmopen(Vmdcheap, Vmbest, 0)))
-		goto nospace;
+		goto nomemory;
 
 	/*
 	 * NOTE: searching for FIND_CODES would be much simpler if we
@@ -173,7 +172,7 @@ findopen(const char* file, const char* pattern, const char* type, Finddisc_t* di
 	if (disc->flags & FIND_GENERATE)
 	{
 		if (!(fp = (Find_t*)vmnewof(vm, 0, Find_t, 1, sizeof(Encode_t) - sizeof(Code_t))))
-			goto nospace;
+			goto nomemory;
 		fp->vm = vm;
 		fp->id = lib;
 		fp->disc = disc;
@@ -519,14 +518,14 @@ findopen(const char* file, const char* pattern, const char* type, Finddisc_t* di
 						if (*(s = disc->dirs[i]) == '/')
 							sfsprintf(b, sizeof(fp->decode.temp) - 1, "%s", s);
 						else if (!p && !(p = getcwd(fp->decode.path, sizeof(fp->decode.path))))
-							goto nospace;
+							goto nomemory;
 						else
 							sfsprintf(b, sizeof(fp->decode.temp) - 1, "%s/%s", p, s);
 						s = pathcanon(b, sizeof(fp->decode.temp), 0);
 						*s = '/';
 						*(s + 1) = 0;
 						if (!(fp->dirs[q] = vmstrdup(fp->vm, b)))
-							goto nospace;
+							goto nomemory;
 						if (j)
 							(fp->dirs[q])[s - b] = 0;
 						q++;
@@ -537,7 +536,7 @@ findopen(const char* file, const char* pattern, const char* type, Finddisc_t* di
 						if (!strneq(b, fp->dirs[q - 1], s - b))
 						{
 							if (!(fp->dirs[q] = vmstrdup(fp->vm, b)))
-								goto nospace;
+								goto nomemory;
 							if (j)
 								(fp->dirs[q])[s - b] = 0;
 							q++;
@@ -647,9 +646,9 @@ findopen(const char* file, const char* pattern, const char* type, Finddisc_t* di
 		}
 	}
 	return fp;
- nospace:
+ nomemory:
 	if (disc->errorf)
-		(*fp->disc->errorf)(fp, fp->disc, 2, "out of space");
+		(*fp->disc->errorf)(fp, fp->disc, 2, "out of memory");
 	if (!vm)
 		return 0;
 	if (!fp)
@@ -1013,7 +1012,7 @@ findwrite(register Find_t* fp, const char* path, size_t len, const char* type)
 		else
 			u = 0;
 		sfputu(fp->fp, u);
-		/*FALLTHROUGH...*/
+		/* FALLTHROUGH */
 	case FF_dir:
 		d = n - fp->encode.prefix;
 		sfputl(fp->fp, d);

@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * Glenn Fowler
  * AT&T Research
@@ -132,13 +132,13 @@ set(register Header_t* hp, const char* fs, const char* dir, const char* type, co
 #if _sys_mount && ( _lib_getfsstat || _lib_getmntinfo )
 
 /*
- * 4.4 bsd getmntinfo
+ * 4.4 BSD getmntinfo
  *
  * what a crappy interface
  * data returned in static buffer -- ok
  * big chunk of allocated memory that cannot be freed -- come on
- * *and* netbsd changed the interface somewhere along the line
- * private interface? my bad -- public interface? par for the bsd course
+ * *and* NetBSD changed the interface somewhere along the line
+ * private interface? my bad -- public interface? par for the BSD course
  *
  * we assume getfsstat may suffer the same statfs/statvfs confusion
  */

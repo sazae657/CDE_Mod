@@ -1,8 +1,7 @@
-set	prototyped
 set	nooptimize
 set	stdio FEATURE/standards
 hdr	float,limits,math,values
-lib,npt	frexp,frexpl,ldexp,ldexpl,finite,finitel,isinfl,isnanl,copysign,copysignl FEATURE/standards math.h -lm
+lib,npt	frexp,frexpl,ldexp,ldexpl,finite,finitel,isinfl,isnanl,copysign,copysignl,powf,pow,powl FEATURE/standards math.h -lm
 lib	fpclassify -lm note{ fpclassify present and works }end link{
 		#include <sys/types.h>
 		#include <sys/stat.h>
@@ -261,11 +260,7 @@ tst	- note{ missing floating point limits }end output{
 	#include <signal.h>
 	#ifdef SIGFPE
 	static int caught = 0;
-	#if _STD_
 	static void catch(int sig)
-	#else
-	static void catch(sig) int sig;
-	#endif
 	{
 		signal(sig, SIG_IGN);
 		caught++;
@@ -895,7 +890,8 @@ tst	- note{ missing floating point limits }end output{
 		return 0;
 	}
 }end fail{
-	echo '#error Output block #1 in src/lib/libast/features/float failed to compile. Rebuild with IFFEFLAGS=-d1 to debug.'
+	echo "$0: Output block failed to compile. Export IFFEFLAGS=-d1 to debug." >&2
+	exit 1
 }end
 
 tst	- note{ double exponent bitfoolery }end output{
@@ -931,7 +927,8 @@ tst	- note{ double exponent bitfoolery }end output{
 		return 0;
 	}
 }end fail{
-	echo '#error Output block #2 in src/lib/libast/features/float failed to compile. Rebuild with IFFEFLAGS=-d1 to debug.'
+	echo "$0: Output block failed to compile. Export IFFEFLAGS=-d1 to debug." >&2
+	exit 1
 }end
 
 tst	- note{ long double exponent bitfoolery }end output{
@@ -967,7 +964,8 @@ tst	- note{ long double exponent bitfoolery }end output{
 		return 0;
 	}
 }end fail{
-	echo '#error Output block #3 in src/lib/libast/features/float failed to compile. Rebuild with IFFEFLAGS=-d1 to debug.'
+	echo "$0: Output block failed to compile. Export IFFEFLAGS=-d1 to debug." >&2
+	exit 1
 }end
 
 tst	- -DN=1 - -DN=2 note{ _ast_fltmax_t maximum integral type }end output{
@@ -1025,15 +1023,7 @@ tst	- -DSCAN=1 - -lm -DSTRTO=1 - -DMAC=1 - -DDIV=1 - -DEXP=1 - -DADD=1 - -DMPY=1
 	#undef	LDBL_MAX
 	#endif
 	static void
-	#if _STD_
 	list(const char* typ, const char* var, void* val, int siz)
-	#else
-	list(typ, var, val, siz)
-	char* typ;
-	char* var;
-	void* val;
-	int siz;
-	#endif
 	{
 		register unsigned char*	u = (unsigned char*)val;
 		register unsigned char*	e = u + siz;
@@ -1230,3 +1220,34 @@ tst	- -DSCAN=1 - -lm -DSTRTO=1 - -DMAC=1 - -DDIV=1 - -DEXP=1 - -DADD=1 - -DMPY=1
 		return 0;
 	}
 }end
+
+if	need_ast_pow_macros -lm note{ are IEEE pow macro replacements needed }end execute{
+	#include <sys/types.h>
+	#include <sys/stat.h>
+	#include <stdlib.h>
+	#include <unistd.h>
+	#include <math.h>
+	int main() { return pow(1.0, 1.0 / 0.0) == 1.0; }
+}end {
+	#define powf(x,y)	(((x)==1.0)?1.0:powf((x),(y)))
+	#define pow(x,y)	(((x)==1.0)?1.0:pow((x),(y)))
+	#define powl(x,y)	(((x)==1.0)?1.0:powl((x),(y)))
+}
+elif	tst need_ast_pow_funs -lm note{ are IEEE pow function replacements needed }end execute{
+	#include <sys/types.h>
+	#include <sys/stat.h>
+	#include <stdlib.h>
+	#include <unistd.h>
+	#include <math.h>
+	/* This bit of obfuscation defeats GCC's code optimizer. */
+	double (*volatile _ast_ppow)(double,double);
+	int main () { _ast_ppow = &pow; return (*_ast_ppow)(1.0, 1.0 / 0.0) == 1.0; }
+}end {
+	float			_ast_powf(float x, float y);
+	double			_ast_pow(double x, double y);
+	long double		_ast_powl(long double x, long double y);
+	#define powf(x,y)	(_ast_powf((x),(y)))
+	#define pow(x,y)	(_ast_pow((x),(y)))
+	#define powl(x,y)	(_ast_powl((x),(y)))
+}
+endif

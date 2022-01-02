@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2013 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,16 +20,16 @@
 *                     Phong Vo <phongvo@gmail.com>                     *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
+#include <assert.h>
 #include <tv.h>
 #include <tm.h>
 #include <error.h>
 
 #include "FEATURE/tvlib"
 
-#if !_lib_nanosleep && !_lib_usleep
-# if _lib_select
+#if !_lib_nanosleep
+# if _lib_select && !_prefer_poll
 #  if _sys_select
 #   include <sys/select.h>
 #  else
@@ -41,6 +42,9 @@
 # endif
 #endif
 
+#define NANOSECONDS  1000000000L
+#define MILLISECONDS 1000
+
 /*
  * sleep for tv
  * non-zero exit if sleep did not complete
@@ -52,15 +56,21 @@
 int
 tvsleep(register const Tv_t* tv, register Tv_t* rv)
 {
+	assert(tv); /* Validate argument */
+
+	/* Return immediately if asked to sleep for no duration. */
+	if (!tv->tv_sec && !tv->tv_nsec)
+		return 0;
+
+	{
 
 #if _lib_nanosleep
 
-	struct timespec	stv;
+	/* PRECISION: nanoseconds */
+	struct timespec	stv = { tv->tv_sec, tv->tv_nsec };
 	struct timespec	srv;
-	int		r;
+	int r;
 
-	stv.tv_sec = tv->tv_sec;
-	stv.tv_nsec = tv->tv_nsec;
 	if ((r = nanosleep(&stv, &srv)) && errno == EINTR && rv)
 	{
 		rv->tv_sec = srv.tv_sec;
@@ -68,22 +78,45 @@ tvsleep(register const Tv_t* tv, register Tv_t* rv)
 	}
 	return r;
 
+	}
+
 #else
 
-	Tv_t		bv;
+	Tv_t tvBefore;
 
-	tvgettime(&bv);
+	tvgettime(&tvBefore);
 	{
 
-#if _lib_select
+#if _lib_select && !_prefer_poll
 
-	struct timeval	stv;
+	/* PRECISION: microseconds */
+	struct timeval tvSleep = { tv->tv_sec, tv->tv_nsec / 1000 };
+	if (tv->tv_nsec % 1000)
+		++tvSleep.tv_usec;
+	(void)select(0, NiL, NiL, NiL, &tvSleep);
 
-	stv.tv_sec = tv->tv_sec;
-	if (!(stv.tv_usec = tv->tv_nsec / 1000))
-		stv.tv_usec = 1;
-	if (select(0, NiL, NiL, NiL, &stv) >= 0)
-		return 0;
+#elif _lib_poll
+
+	/* PRECISION: milliseconds
+	 *
+	 * We can sleep for up to 24 days with a single call to poll
+	 * on systems with 32-bit integers, so calling sleep first
+	 * only worsens precision with little gain. For example, the
+	 * UnixWare manual page for usleep warns that a single call of
+	 * that function requires eight system calls, but poll only
+	 * requires one.
+	 */
+	struct pollfd	dummy;
+	int		timeout = INT_MAX;  /* expose bugs */
+
+	if (tv->tv_sec <= (INT_MAX / MILLISECONDS))
+	{
+		timeout = tv->tv_sec  * MILLISECONDS +
+			  tv->tv_nsec / 1000000;
+		if (timeout < INT_MAX && tv->tv_nsec % 1000000)
+			++timeout;
+	}
+	(void)poll(&dummy, 0, timeout);
 
 #else
 
@@ -155,58 +188,71 @@ tvsleep(register const Tv_t* tv, register Tv_t* rv)
 		}
 	}
 
-#elif _lib_poll
-
-	struct pollfd		pfd;
-	int			t;
-
-	if (!(t = (n + 999999L) / 1000000L))
-		t = 1;
-	if (poll(&pfd, 0, t) >= 0)
-		return 0;
-
 #endif
-
 #endif
 
 	}
- bad:
-	if (errno == EINTR && rv)
+
+/* Unfortunately, some operating systems return success for select
+ * or poll without having slept for the specified duration, so check
+ * the clock.
+ *
+ * Although time discrepancies when sleeping are inevitable, tvsleep
+ * can guarantee that they always lie on or after the time specified,
+ * which is much more useful from the point of view of predictability
+ * than if they could also occur before.
+ */
 	{
-		tvgettime(rv);
-		if (rv->tv_nsec < bv.tv_nsec)
+		Tv_t tvAfter;
+
+		tvgettime(&tvAfter);
+
+		if (tvAfter.tv_nsec < tvBefore.tv_nsec)
 		{
-			rv->tv_nsec += 1000000000L;
-			rv->tv_sec--;
-		}
-		rv->tv_nsec -= bv.tv_nsec;
-		rv->tv_sec -= bv.tv_sec;
-		if (rv->tv_sec > tv->tv_sec)
-		{
-			rv->tv_sec = 0;
-			rv->tv_nsec = 0;
+			if (!tvAfter.tv_sec)
+				return 0;
+			--tvAfter.tv_sec;
+			tvAfter.tv_nsec += (NANOSECONDS - tvBefore.tv_nsec);
 		}
 		else
 		{
-			rv->tv_sec = tv->tv_sec - rv->tv_sec;
-			if (rv->tv_nsec > tv->tv_nsec)
-			{
-				if (!rv->tv_sec)
-				{
-					rv->tv_sec = 0;
-					rv->tv_nsec = 0;
-				}
-				else
-				{
-					rv->tv_sec--;
-					rv->tv_nsec = 1000000000L - rv->tv_nsec + tv->tv_nsec;
-				}
-			}
-			else
-				rv->tv_nsec = tv->tv_nsec - rv->tv_nsec;
+		    tvAfter.tv_nsec -= tvBefore.tv_nsec;
+		}
+		if (tvAfter.tv_sec < tvBefore.tv_sec)
+			return 0;
+		tvAfter.tv_sec -= tvBefore.tv_sec;
+		/* tvAfter now holds the non-negative time slept */
+
+		tvBefore = *tv;
+		/* Normalize the time to sleep so that ns < 10e9 */
+		tvBefore.tv_sec  += tvBefore.tv_nsec / NANOSECONDS;
+		tvBefore.tv_nsec %= NANOSECONDS;
+
+		if (tvBefore.tv_nsec < tvAfter.tv_nsec)
+		{
+			if (!tvBefore.tv_sec)
+				return 0;
+			--tvBefore.tv_sec;
+			tvBefore.tv_nsec += (NANOSECONDS - tvAfter.tv_nsec);
+		}
+		else
+		{
+			tvBefore.tv_nsec -= tvAfter.tv_nsec;
+		}
+		if (tvBefore.tv_sec < tvAfter.tv_sec)
+			return 0;
+		tvBefore.tv_sec -= tvAfter.tv_sec;
+
+		if (tvBefore.tv_sec > 0 || tvBefore.tv_nsec > 0)
+		{
+			if (rv)
+				*rv = tvBefore;
+			return -1;
 		}
 	}
-	return -1;
+	}
+
+	return 0;
 
 #endif
 

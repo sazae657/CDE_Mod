@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1992-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -18,7 +19,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * Glenn Fowler
  * AT&T Research
@@ -28,7 +28,7 @@
 
 static const char usage[] =
 "[-?\n@(#)$Id: sum (AT&T Research) 2012-04-20 $\n]"
-USAGE_LICENSE
+"[--catalog?" ERROR_CATALOG "]"
 "[+NAME?cksum,md5sum,sum - print file checksum and block count]"
 "[+DESCRIPTION?\bsum\b lists the checksum, and for most methods the block"
 "	count, for each file argument. The standard input is read if there are"
@@ -113,7 +113,7 @@ USAGE_LICENSE
 #include <sum.h>
 #include <ls.h>
 #include <modex.h>
-#include <fts_fix.h>
+#include <fts.h>
 #include <error.h>
 
 typedef struct State_s			/* program state		*/
@@ -125,7 +125,7 @@ typedef struct State_s			/* program state		*/
 	int		header;		/* list method on output	*/
 	int		list;		/* list file name too		*/
 	Sum_t*		oldsum;		/* previous sum method		*/
-	int		permissions;	/* include mode,uer,group	*/
+	int		permissions;	/* include mode,user,group	*/
 	int		haveperm;	/* permissions in the input	*/
 	int		recursive;	/* recursively descend dirs	*/
 	size_t		scale;		/* scale override		*/
@@ -307,7 +307,10 @@ verify(State_t* state, register char* s, char* check, Sfio_t* rp)
 		{
 			pr(state, rp, sp, file, -1, NiL, NiL);
 			if (!(t = sfstruse(rp)))
+			{
 				error(ERROR_SYSTEM|3, "out of space");
+				UNREACHABLE();
+			}
 			if (!streq(s, t))
 			{
 				if (state->silent)
@@ -528,8 +531,8 @@ b_cksum(int argc, register char** argv, Shbltin_t* context)
 			state.text = 1;
 			continue;
 		case '?':
-			error(ERROR_USAGE|4, "%s", opt_info.arg);
-			break;
+			error(ERROR_usage(2), "%s", opt_info.arg);
+			UNREACHABLE();
 		case ':':
 			error(2, "%s", opt_info.arg);
 			break;
@@ -538,7 +541,10 @@ b_cksum(int argc, register char** argv, Shbltin_t* context)
 	}
 	argv += opt_info.index;
 	if (error_info.errors)
-		error(ERROR_USAGE|4, "%s", optusage(NiL));
+	{
+		error(ERROR_usage(2), "%s", optusage(NiL));
+		UNREACHABLE();
+	}
 
 	/*
 	 * check the method
@@ -590,7 +596,10 @@ b_cksum(int argc, register char** argv, Shbltin_t* context)
 	else if (!*argv && !state.recursive)
 		pr(&state, sfstdout, sfstdin, "/dev/stdin", state.permissions, NiL, state.check);
 	else if (!(fts = fts_open(argv, flags, state.sort)))
+	{
 		error(ERROR_system(1), "%s: not found", *argv);
+		UNREACHABLE();
+	}
 	else
 	{
 		while (!sh_checksig(context) && (ent = fts_read(fts)))

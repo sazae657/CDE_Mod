@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,10 +20,9 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 /*
- * posix regex executor
+ * POSIX regex executor
  * single unsized-string interface
  */
 
@@ -33,7 +33,7 @@
  */
 
 int
-regexec(const regex_t* p, const char* s, size_t nmatch, regmatch_t* match, regflags_t flags)
+regexec_20120528(const regex_t* p, const char* s, size_t nmatch, regmatch_t* match, regflags_t flags)
 {
 	if (flags & REG_STARTEND)
 	{

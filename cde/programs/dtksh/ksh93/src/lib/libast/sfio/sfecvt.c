@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -21,15 +22,10 @@
 ***********************************************************************/
 #include	"sfhdr.h"
 
-#if __STD_C
-char* sfecvt(double dval, int n_digit, int* decpt, int* sign)
-#else
-char* sfecvt(dval,n_digit,decpt,sign)
-double	dval;		/* value to convert */
-int	n_digit;	/* number of digits wanted */
-int*	decpt;		/* to return decimal point */
-int*	sign;		/* to return sign */
-#endif
+char* sfecvt(double	dval,		/* value to convert */
+	     int	n_digit,	/* number of digits wanted */
+	     int*	decpt,		/* to return decimal point */
+	     int*	sign)		/* to return sign */
 {
 	int		len;
 	static char	buf[SF_MAXDIGITS];

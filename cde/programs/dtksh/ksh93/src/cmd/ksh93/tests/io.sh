@@ -2,6 +2,7 @@
 #                                                                      #
 #               This software is part of the ast package               #
 #          Copyright (c) 1982-2012 AT&T Intellectual Property          #
+#          Copyright (c) 2020-2021 Contributors to ksh 93u+m           #
 #                      and is licensed under the                       #
 #                 Eclipse Public License, Version 1.0                  #
 #                    by AT&T Intellectual Property                     #
@@ -17,18 +18,8 @@
 #                  David Korn <dgk@research.att.com>                   #
 #                                                                      #
 ########################################################################
-function err_exit
-{
-	print -u2 -n "\t"
-	print -u2 -r ${Command}[$1]: "${@:2}"
-	let Errors+=1
-}
-alias err_exit='err_exit $LINENO'
 
-Command=${0##*/}
-integer Errors=0
-
-[[ -d $tmp && -w $tmp && $tmp == "$PWD" ]] || { err\_exit "$LINENO" '$tmp not set; run this from shtests. Aborting.'; exit 1; }
+. "${SHTESTS_COMMON:-${0%/*}/_common}"
 
 unset HISTFILE
 
@@ -250,7 +241,12 @@ then	[[ $(3<#) -eq 0 ]] || err_exit "not at position 0"
 	read -u3 && err_exit "not found pattern not positioning at eof"
 	cat $tmp/seek | read -r <# *WWW*
 	[[ $REPLY == *WWWWW* ]] || err_exit '<# not working for pipes'
-	{ < $tmp/seek <# ((2358336120)) ;} 2> /dev/null || err_exit 'long seek not working'
+	# The next test seeks past a 2 GiB boundary, which may fail on 32-bit systems. To prevent
+	# a test failure, the long seek test is only run on 64-bit systems.
+	# https://github.com/att/ast/commit/a5c692e1bd0d800e3f19be249d3170e69cbe001d
+	if [[ $(builtin getconf 2> /dev/null; getconf LONG_BIT 2>&1) == 64 ]]; then
+		{ < $tmp/seek <# ((2358336120)) ;} 2> /dev/null || err_exit 'long seek not working'
+	fi
 else	err_exit "$tmp/seek: cannot open for reading"
 fi
 redirect 3<&- || 'cannot close 3'
@@ -292,12 +288,22 @@ EOF) == 'hello world' ]] || err_exit 'invalid readahead on stdin'
 $SHELL -c 'exec 3>; /dev/null'  2> /dev/null && err_exit '>; with exec should be an error'
 $SHELL -c ': 3>; /dev/null'  2> /dev/null || err_exit '>; not working with at all'
 print hello > $tmp/1
-if	! $SHELL -c "false >; $tmp/1"  2> /dev/null
-then	let 1;[[ $(<$tmp/1) == hello ]] || err_exit '>; not preserving file on failure'
-fi
-if	! $SHELL -c "sed -e 's/hello/hello world/' $tmp/1" >; $tmp/1  2> /dev/null
-then	[[ $(<$tmp/1) == 'hello world' ]] || err_exit '>; not updating file on success'
-fi
+$SHELL -c "false >; $tmp/1"
+status=$?
+(( status == 1 )) || err_exit "unexpected exit status" \
+	"(expected 1, got $status)"
+exp='hello'
+got=$(<$tmp/1)
+[[ $got == "$exp" ]] || err_exit '>; not preserving file on failure' \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+$SHELL -c "sed -e 's/hello/hello world/' $tmp/1" >; $tmp/1
+status=$?
+(( status == 0 )) || err_exit "unexpected exit status" \
+	"(expected 0, got $status)"
+exp='hello world'
+got="$(<$tmp/1)"
+[[ $got == "$exp" ]] || err_exit '>; not updating file on success' \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
 
 $SHELL -c 'exec 3<>; /dev/null'  2> /dev/null && err_exit '<>; with exec should be an error'
 $SHELL -c ': 3<>; /dev/null'  2> /dev/null || err_exit '<>; not working with at all'
@@ -483,13 +489,6 @@ do      out=$("$binfalse" 2>/dev/null)
 	fi
 done
 
-rm -f $tmp/file1 $tmp/file2
-print foo > $tmp/file3
-ln -s $tmp/file3 $tmp/file2
-ln -s $tmp/file2 $tmp/file1
-print bar >; $tmp/file1
-[[ $(<$tmp/file3) == bar ]] || err_exit '>; not following symlinks'
-
 for i in 1
 do	:
 done	{n}< /dev/null
@@ -501,21 +500,67 @@ n=$( exec {n}< /dev/null; print -r -- $n)
 # ======
 # Truncating a file using <> and >#num
 # https://github.com/att/ast/issues/61
+# The <>; redirection operator didn't work correctly in -c scripts
+# https://github.com/att/ast/issues/9
+# https://github.com/ksh93/ksh/issues/278
 
-for ((i=1; i<=10; i++)) do print "$i"; done | tee "$tmp/nums2" > "$tmp/nums1"
-expect=$'1\n2\n3\n4'
+# the extra '3>&2 3>&-' is to verify it all keeps working with multiple redirections
+typeset -A exp=(
+	['3>&2 3>&- 1<>;nums >#5']=$'1\n2\n3\n4'
+	[': 3>&2 3>&- 1<>;nums >#5']=$'1\n2\n3\n4'
+	['{ :; } 3>&2 3>&- 1<>;nums >#5']=$'1\n2\n3\n4'
+	['(:) 3>&2 3>&- 1<>;nums >#5']=$'1\n2\n3\n4'
+	['while false; do :; done 3>&2 3>&- 1<>;nums >#5']=$'1\n2\n3\n4'
+	['until true; do :; done 3>&2 3>&- 1<>;nums >#5']=$'1\n2\n3\n4'
+	['if false; then :; fi 3>&2 3>&- 1<>;nums >#5']=$'1\n2\n3\n4'
+	['case x in y) :;; esac 3>&2 3>&- 1<>;nums >#5']=$'1\n2\n3\n4'
+	['fn() { :; } 3>&2 3>&- 1<>;nums >#5; fn']=$'1\n2\n3\n4'
+	['echo x 3>&2 3>&- 1<>;nums']=x
+	['{ echo x; } 3>&2 3>&- 1<>;nums']=x
+	['(echo x) 3>&2 3>&- 1<>;nums']=x
+	['while :; do echo x; break; done 3>&2 3>&- 1<>;nums']=x
+	['until ! :; do echo x; break; done 3>&2 3>&- 1<>;nums']=x
+	['if :; then echo x; fi 3>&2 3>&- 1<>;nums']=x
+	['case x in x) echo x;; esac 3>&2 3>&- 1<>;nums']=x
+	['fn() { echo x; } 3>&2 3>&- 1<>;nums; fn']=x
+)
+nums=$'1\n2\n3\n4\n5\n6\n7\n8\n9\n10'
+for script in "${!exp[@]}"
+do
+	echo "$nums" >nums
+	eval "$script"
+	got=$(<nums)
+	[[ $got == "${exp[$script]}" ]] || err_exit "IOREWRITE: '$script' failed in main shell" \
+		"(expected $(printf %q "${exp[$script]}"), got $(printf %q "$got"))"
+	echo "$nums" >nums
+	eval "( $script )"
+	got=$(<nums)
+	[[ $got == "${exp[$script]}" ]] || err_exit "IOREWRITE: '$script' failed in subshell" \
+		"(expected $(printf %q "${exp[$script]}"), got $(printf %q "$got"))"
+	echo "$nums" >nums
+	"$SHELL" -c "$script"
+	got=$(<nums)
+	[[ $got == "${exp[$script]}" ]] || err_exit "IOREWRITE: '$script' failed as -c script" \
+		"(expected $(printf %q "${exp[$script]}"), got $(printf %q "$got"))"
+	echo "$nums" >nums
+	echo "$script" >test.sh
+	"$SHELL" test.sh
+	got=$(<nums)
+	[[ $got == "${exp[$script]}" ]] || err_exit "IOREWRITE: '$script' failed as regular script" \
+		"(expected $(printf %q "${exp[$script]}"), got $(printf %q "$got"))"
+done
+unset exp script
 
-(1<>;"$tmp/nums1" >#5)
-actual=$(cat "$tmp/nums1")
-[[ "$actual" = "$expect" ]] || err_exit "Failed to truncate file in subshell \
-(expected $(printf %q "$expect"), got $(printf %q "$actual"))"
+got=$("$SHELL" -c $'trap "echo bye" 0\n{ echo hi; } >/dev/null' 2>&1)
+exp=bye
+[[ $got == "$exp" ]] || err_exit "redirection in last -c script command persists for trap" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
 
-: <<\INACTIVE	# TODO: the >#5 is optimised away by a '-c' optimisation corner case bug
-"$SHELL" -c '1<>;"$1/nums2" >#5' x "$tmp"
-actual=$(cat "$tmp/nums2")
-[[ "$actual" = "$expect" ]] || err_exit "Failed to truncate file in -c script \
-(expected $(printf %q "$expect"), got $(printf %q "$actual"))"
-INACTIVE
+echo $'trap "echo bye" 0\n{ echo hi; } >/dev/null' >test.sh
+got=$("$SHELL" test.sh 2>&1)
+exp=bye
+[[ $got == "$exp" ]] || err_exit "redirection in last regular script command persists for trap" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
 
 # ======
 # Exit behaviour of 'exec', 'command exec', 'redirect' on redirections
@@ -528,7 +573,7 @@ actual=$(redirect 2>&- 3>&2; echo ok)
 [[ $actual == ok ]] || err_exit "redirection error in 'redirect' causes exit"
 
 # Test that 'redirect' does not accept non-redir args
-expect=$'*: redirect: incorrect syntax\n status = 2'
+expect=$'*: redirect: incorrect syntax: /dev/null/foo\n status = 2'
 actual=$( (redirect /dev/null/foo) 2>&1; echo " status = $?" );
 [[ $actual == $expect ]] || err_exit 'redirect command accepts non-redirection argument' \
 	"(expected $(printf %q "$expect"), got $(printf %q "$actual"))"
@@ -541,14 +586,15 @@ actual=$( (redirect /dev/null/foo >$tmp/wrong_redirect) 2>&1; echo " status = $?
 # Process substitution
 
 # An output process substitution should work when combined with a redirection.
-result=$("$SHELL" -c 'echo ok > >(sed s/ok/good/); wait')
+result=$("$SHELL" -c 'echo ok > >(sed s/ok/good/); wait' 2>&1)
 [[ $result == good ]] || err_exit 'process substitution does not work with redirections' \
 				"(expected 'good', got $(printf %q "$result"))"
 
-# Process substitution in an interactive shell shouldn't print the
-# process ID of the asynchronous process.
-result=$("$SHELL" -ic 'echo >(true) >/dev/null' 2>&1)
-[[ -z $result ]] || err_exit 'interactive shells print a PID during process substitution' \
+# Process substitution in an interactive shell or profile script shouldn't
+# print the process ID of the asynchronous process.
+echo 'false >(false)' > "$tmp/procsub-envtest"
+result=$(set +x; ENV=$tmp/procsub-envtest "$SHELL" -ic 'true >(true)' 2>&1)
+[[ -z $result ]] || err_exit 'interactive shells and/or profile scripts print a PID during process substitution' \
 				"(expected '', got $(printf %q "$result"))"
 
 # ======
@@ -577,6 +623,14 @@ if	[[ -s "$tmp/fdleak.txt" ]]
 then	exec 3>&-
 	err_exit "Open file descriptor leaks out of subshell"
 fi
+# However, it should still survive a shared-state command substitution if it's not 1 (stdout).
+redirect 3>&-  # close FD 3 just in case
+: ${ redirect 3>"$tmp/fdshared.txt"; }
+{ echo good >&3; } 2>/dev/null
+if	[[ ! -s "$tmp/fdshared.txt" ]]
+then	err_exit "Open file descriptor does not survive shared-state command substitution"
+fi
+redirect 3>&-
 
 # ======
 # On unpatched ksh on macOS, 'read' used to block when reading from a FIFO and there was no final newline.
@@ -594,8 +648,8 @@ fi
 
 # ======
 # "&>file" redirection operator, shorthand for ">file 2>&1" (new as of 93u+m; inherited from old SHOPT_BASH)
-if	[[ -o ?posix ]]
-then	set -o posix
+if	[[ -o ?posix ]] && command set -o posix
+then
 	# This should print in a background job, then create an empty file, as '>aha1.txt' is a separate command.
 	eval '	print -u1 bad1 &>aha1.txt
 		print -u2 bad2 &>aha2.txt
@@ -609,11 +663,8 @@ then	set -o posix
 	' >/dev/null 2>&1
 	[[ $(< aha1.txt) == ok1 ]] || err_exit '&> does not redirect stdout'
 	[[ $(< aha2.txt) == ok2 ]] || err_exit '&> does not redirect stderr'
-fi
-
-# In POSIX mode, file descriptors > 2 should remain open when invoking another proram
-if	[[ -o ?posix ]]
-then	(set -o posix; exec 7>ok.txt; "$SHELL" -c 'print ok >&7' 2>/dev/null)
+	# In POSIX mode, file descriptors > 2 should remain open when invoking another program
+	(set -o posix; exec 7>ok.txt; "$SHELL" -c 'print ok >&7' 2>/dev/null)
 	[[ $(<ok.txt) == ok ]] || err_exit 'File descriptors > 2 not inherited in POSIX mode'
 fi
 (exec 7>bad.txt; "$SHELL" -c 'print bad >&7' 2>/dev/null)
@@ -621,6 +672,7 @@ fi
 
 # ======
 # File descriptor leak with process substitution
+# https://github.com/ksh93/ksh/issues/67
 err=$(
 	ulimit -n 15 || exit 0
 	fdUser() {
@@ -633,9 +685,24 @@ err=$(
 ) || err_exit 'Process substitution leaks file descriptors when used as argument to function' \
 	"(got $(printf %q "$err"))"
 
+# File descriptor leak after 'command not found' with process substitution as argument
+err=$(
+	ulimit -n 25 || exit 0
+	set +x
+	PATH=/dev/null
+	for ((i=1; i<10; i++))
+	do	notfound <(:) >(:) 2> /dev/null
+	done 2>&1
+	exit 0
+) || err_exit "Process substitution leaks file descriptors when used as argument to nonexistent command" \
+	"(got $(printf %q "$err"))"
+
+got=$(command -x cat <(command -x echo foo) 2>&1) || err_exit "process substitution doesn't work with 'command'" \
+	"(got $(printf %q "$got"))"
+
 # ======
 # A redirection with a null command could crash under certain circumstances (rhbz#1200534)
-"$SHELL" -i >/dev/null -c '
+"$SHELL" -i >/dev/null 2>&1 -c '
 	function dlog
 	{
 		fc -ln -0
@@ -696,6 +763,147 @@ got=$(export tmp; "$SHELL" -ec \
 [[ $(< $tmp/ast36_b.test.log) == "$exp2" ]] || err_exit 'stdout not correctly redirected to file with EXIT/ERR trap defined (2)' \
 	"(expected $(printf %q "$exp2"), wrote $(printf %q "$(< $tmp/ast36_b.test.log)"))"
 
+# ======
+# Redirections of the form {varname}>file stopped working if brace expansion was turned off
+((SHOPT_BRACEPAT)) && set +B
+{ redirect {v}>$tmp/v.out && echo ok >&$v; } 2>/dev/null && redirect {v}>&-
+((SHOPT_BRACEPAT)) && set -B
+[[ -r $tmp/v.out && $(<$tmp/v.out) == ok ]] || err_exit '{varname}>file not working with brace expansion turned off'
+
+# ...and they didn't work in subshells: https://github.com/ksh93/ksh/issues/167
+(redirect {v}>$tmp/v.out; echo ok2 >&$v) 2>/dev/null
+[[ -r $tmp/v.out && $(<$tmp/v.out) == ok2 ]] || err_exit 'redirect {varname}>file not working in a subshell'
+
+# ======
+# Process substitution hang in ksh93v- 2013-10-10 alpha
+{
+	producer() {
+		for ((i = 0; i < 20000; i++ )) do
+			print xxxxx${i}xxxxx
+		done
+	}
+	consumer() {
+		while read var; do
+			print ${var}
+		done < ${1}
+	}
+	consumer <(producer) > /dev/null
+} & pid=$!
+(sleep 5; kill -HUP $pid) 2> /dev/null &
+wait $pid 2> /dev/null || err_exit "process substitution hangs"
+
+# ======
+# Test for looping or lingering process substitution processes
+# https://github.com/ksh93/ksh/issues/213
+procsub_pid=$(
+	ulimit -t unlimited 2>/dev/null  # fork the subshell
+	true >(true) <(true) >(true) <(true)
+	echo "$!"
+)
+sleep .1
+if kill -0 "$procsub_pid" 2>/dev/null; then
+	kill -TERM "$procsub_pid" # don't leave around what is effectively a zombie process
+	err_exit "process substitutions loop or linger after parent shell finishes"
+fi
+(true <(true) >(true) <(true) >(true); wait) &
+sleep .1
+if kill -0 $! 2> /dev/null; then
+	kill -TERM $!
+	err_exit "process substitutions linger when unused"
+fi
+
+# process substitutions should work correctly with delays
+procsub_delay()
+{
+	sleep .1  # a delay >50ms, the current fifo_check delay in xec.c
+	cat "$@"
+}
+exp=$'hi\nthere\nworld'
+got=$(procsub_delay <(echo hi) <(echo there) <(echo world))
+[[ $got == "$exp" ]] || err_exit "process substitutions passed to function failed" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+# process substitutions should work regardless of umask
+got=$(umask 777; set +x; { cat <(echo ok); } 2>&1)
+[[ $got == ok ]] || err_exit "process substitution failed with umask 777 (got $(printf %q "$got"))"
+
+# ======
+# https://github.com/att/ast/issues/1336
+# Use the /proc pseudo filesystem on Linux as a convenient way to force a write I/O error.
+if [[ -e /proc/self/mem && $(uname) == Linux ]]
+then
+	actual=$(LC_ALL=C "$SHELL" -c 'echo > /proc/self/mem; echo okay' 2>&1)
+	expect='write.*failed.*okay'
+	[[ "$actual" =~ $expect ]] || err_exit "I/O failure not handled" \
+		"(expected $(printf %q "$expect"), got $(printf %q "$actual"))"
+fi
+
+# ======
+# Test for BUG_CSUBSTDO: If stdout is closed before running a command substitution,
+# redirecting any file descriptor in the command substitution would break stdout
+# inside of the command substitution. This only occurred when redirecting any other
+# file descriptor inside of the command substitution.
+exp='Foo bar'
+{ got=$(echo 'Foo bar' 2>/dev/null); } >&-
+[[ $exp == $got ]] || err_exit "BUG_CSUBSTDO: Closing stdout outside of command substitution breaks stdout inside of command substitution" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+# ======
+# In shcomp, process substitution did not work when used as the file name to a redirection.
+# https://github.com/ksh93/ksh/issues/165
+# Note: avoid testing this in a command substitution, as those are always parsed at runtime,
+# meaning shcomp will also include them as literal source text instead of compiling them.
+echo ok > >(cat >out1)
+wait "$!"  # the procsub is run asynchronously, so wait before reading from the file
+cat >out2 < <(case x in x) cat out1;; esac)
+[[ $(<out2) == ok ]] || err_exit "process substitution not working as file name to redirection" \
+	"(expected 'ok', got $(printf %q "$(<out2)"))"
+
+# ======
+# Reading a file through a command substitution
+# https://github.com/att/ast/issues/203
+TMPF=$tmp/tmpf
+echo foo >$TMPF
+export TMPF
+[[ -n "$($SHELL -c 'echo $(<$TMPF)' <&-)" ]] || err_exit "Closing stdin causes failure when reading file through \$(<)"
+[[ -n "$($SHELL -c "$SHELL -c 'echo \$(<$TMPF) >&2' >&-" 2>&1)" ]] || err_exit "Closing stdout causes failure when reading file through \$(<)"
+[[ -n "$($SHELL -c 'echo $(<$TMPF)' 2>&-)" ]]  || err_exit "Closing stderr causes failure when reading file through \$(<)"
+
+# ======
+# Verify that symlinks are correctly canonicalized as part of a conditional redirection.
+# https://github.com/att/ast/issues/492
+mkdir -p dir1/dir2
+ln -s dir1 s1
+cd dir1
+ln -s dir2 s2
+cd ..
+exp=symlinks-resolved
+print wrong-answer > dir1/dir2/x
+print $exp >; s1/s2/x
+got=$(< dir1/dir2/x)
+[[ $got == "$exp" ]] || err_exit "symlink in conditional redirect wrong" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
+
+# ======
+# ksh misbehaved when stdout is closed
+# https://github.com/ksh93/ksh/issues/314
+"$SHELL" -c 'pwd; echo "$?" >&2; echo test; echo "$?" > file' >&- 2>stderr
+exp='1'
+[[ $(<file) == "$exp" ]] || err_exit "ksh misbehaves when stdout is closed (1)" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$(<file)"))"
+exp='0'
+[[ $(<stderr) == "$exp" ]] || err_exit "ksh misbehaves when stdout is closed (2)" \
+	"(expected $(printf %q "$exp"), got $(printf %q "$(<stderr)"))"
+for cmd in echo print printf
+do	"$cmd" hi >&- && err_exit "'$cmd' does not detect closed stdout (simple redirection)"
+	"$SHELL" -c "$cmd hi" >&- && err_exit "'$cmd' does not detect closed stdout (inherited FD)"
+done
+if	[[ -c /dev/full ]]
+then	for cmd in echo print printf
+	do	"$cmd" hi >/dev/full && err_exit "'$cmd' does not detect disk full (simple redirection)"
+		"$SHELL" -c "$cmd hi" >/dev/full && err_exit "'$cmd' does not detect disk full (inherited FD)"
+	done
+fi
 
 # ======
 exit $((Errors<125?Errors:125))

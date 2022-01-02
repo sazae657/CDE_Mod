@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * return pointer to formatted clock() tics t
  * return value length is at most 6
@@ -35,16 +35,16 @@ fmtclock(register Sfulong_t t)
 	char*			buf;
 	int			z;
 
-	static unsigned int	clk_tck;
+	static unsigned long	clk_tck;
 
 	if (!clk_tck)
 	{
 #ifdef CLOCKS_PER_SEC
 		clk_tck = CLOCKS_PER_SEC;
 #else
-		if (!(clk_tck = (unsigned int)strtoul(astconf("CLK_TCK", NiL, NiL), NiL, 10)))
+		if (!(clk_tck = astconf_ulong(CONF_CLK_TCK)))
 			clk_tck = 60;
-#endif
+#endif /* CLOCKS_PER_SEC */
 	}
 	if (t == 0)
 		return "0";

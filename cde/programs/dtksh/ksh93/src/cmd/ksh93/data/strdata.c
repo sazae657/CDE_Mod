@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * data for string evaluator library
  */
@@ -27,7 +27,7 @@
 #include	"streval.h"
 
 const unsigned char strval_precedence[35] =
-	/* opcode	precedence,assignment  */
+	/* opcode	precedence,assignment */
 {
 	/* DEFAULT */		MAXPREC|NOASSIGN,
 	/* DONE */		0|NOASSIGN|RASSOC,
@@ -85,7 +85,6 @@ const char strval_states[64] =
 
 
 const char e_argcount[]		= "%s: function has wrong number of arguments";
-const char e_badnum[]		= "%s: bad number";
 const char e_moretokens[]	= "%s: more tokens expected";
 const char e_paren[]		= "%s: unbalanced parenthesis";
 const char e_badcolon[]		= "%s: invalid use of :";

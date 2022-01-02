@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,9 +18,9 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
-#ifndef SYSDECLARE
+#ifndef __builtins_h_defined
+#define __builtins_h_defined
 
 #include	<option.h>
 #include	"FEATURE/options"
@@ -58,10 +59,11 @@
 #define SYSDOT		(shgd->bltin_cmds+20)	/* . */
 #define SYSSOURCE	(shgd->bltin_cmds+21)	/* source */
 #define SYSRETURN	(shgd->bltin_cmds+22)	/* return */
+#define SYSENUM		(shgd->bltin_cmds+23)	/* enum */
 
 /* entry point for shell special builtins */
 
-#if _BLD_shell && defined(__EXPORT__)
+#if defined(__EXPORT__)
 #	define extern	__EXPORT__
 #endif
 
@@ -72,7 +74,6 @@ extern int b_enum(int, char*[],Shbltin_t*);
 extern int b_exec(int, char*[],Shbltin_t*);
 extern int b_eval(int, char*[],Shbltin_t*);
 extern int b_return(int, char*[],Shbltin_t*);
-extern int B_login(int, char*[],Shbltin_t*);
 extern int b_true(int, char*[],Shbltin_t*);
 extern int b_false(int, char*[],Shbltin_t*);
 extern int b_readonly(int, char*[],Shbltin_t*);
@@ -100,6 +101,10 @@ extern int b_builtin(int, char*[],Shbltin_t*);
 extern int b_cd(int, char*[],Shbltin_t*);
 extern int b_command(int, char*[],Shbltin_t*);
 extern int b_getopts(int, char*[],Shbltin_t*);
+#if SHOPT_MKSERVICE
+extern int b_mkservice(int, char*[],Shbltin_t*);
+extern int b_eloop(int, char*[],Shbltin_t*);
+#endif /* SHOPT_MKSERVICE */
 extern int b_hist(int, char*[],Shbltin_t*);
 extern int b_let(int, char*[],Shbltin_t*);
 extern int b_read(int, char*[],Shbltin_t*);
@@ -121,6 +126,8 @@ extern int b_times(int, char*[],Shbltin_t*);
 #if !SHOPT_ECHOPRINT
     extern int B_echo(int, char*[],Shbltin_t*);
 #endif /* SHOPT_ECHOPRINT */
+
+extern short		b_enum_nelem(Namfun_t*);
 
 #undef	extern
 
@@ -167,6 +174,7 @@ extern const char sh_optdot[];
 #ifndef ECHOPRINT
     extern const char sh_optecho[];
 #endif /* !ECHOPRINT */
+extern const char sh_optenum[];
 extern const char sh_opteval[];
 extern const char sh_optexec[];
 extern const char sh_optredirect[];
@@ -206,8 +214,8 @@ extern const char sh_optwait[];
 #endif /* _cmd_universe */
 extern const char sh_optunset[];
 extern const char sh_optwhence[];
-#endif /* SYSDECLARE */
 extern const char sh_opttimes[];
 
 extern const char e_dict[];
 
+#endif /* __builtins_h_defined */

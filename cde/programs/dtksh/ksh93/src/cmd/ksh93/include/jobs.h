@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 #ifndef JOB_NFLAG
 /*
  *	Interface to job control for shell
@@ -88,7 +88,7 @@ struct jobs
 	unsigned int	in_critical;	/* >0 => in critical region */
 	int		savesig;	/* active signal */
 	int		numpost;	/* number of posted jobs */
-#ifdef SHOPT_BGX
+#if SHOPT_BGX
 	int		numbjob;	/* number of background jobs */
 #endif /* SHOPT_BGX */
 	short		fd;		/* tty descriptor number */
@@ -96,10 +96,9 @@ struct jobs
 	int		suspend;	/* suspend character */
 	int		linedisc;	/* line discipline */
 #endif /* JOBS */
-	char		jobcontrol;	/* turned on for real job control */
+	char		jobcontrol;	/* turned on for interactive shell with control of terminal */
 	char		waitsafe;	/* wait will not block */
 	char		waitall;	/* wait for all jobs in pipe */
-	char		bktick_waitall;	/* wait state for `backtick comsubs` */
 	char		toclear;	/* job table needs clearing */
 	unsigned char	*freejobs;	/* free jobs numbers */
 };
@@ -171,14 +170,13 @@ extern int	job_wait(pid_t);
 extern int	job_post(Shell_t*,pid_t,pid_t);
 extern void	*job_subsave(void);
 extern void	job_subrestore(void*);
-#ifdef SHOPT_BGX
+#if SHOPT_BGX
 extern void	job_chldtrap(Shell_t*, const char*,int);
 #endif /* SHOPT_BGX */
 #ifdef JOBS
 	extern void	job_init(Shell_t*,int);
 	extern int	job_close(Shell_t*);
 	extern int	job_list(struct process*,int);
-	extern int	job_terminate(struct process*,int);
 	extern int	job_hup(struct process *, int);
 	extern int	job_switch(struct process*,int);
 	extern void	job_fork(pid_t);
@@ -188,6 +186,5 @@ extern void	job_chldtrap(Shell_t*, const char*,int);
 #	define job_close(s)	(0)
 #	define job_fork(p)
 #endif	/* JOBS */
-
 
 #endif /* !JOB_NFLAG */

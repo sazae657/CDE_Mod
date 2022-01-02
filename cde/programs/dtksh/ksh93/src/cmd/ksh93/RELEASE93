@@ -1,3 +1,7 @@
+This file is of historic interest. For recent changes in both ksh 93u+m and
+the accompanying libraries, see the file NEWS in the top-level directory.
+____
+
 This is a list of changes that have been made since the 12/28/93 version
 of ksh.
 
@@ -131,7 +135,7 @@ of ksh.
 	    the job list as required by the POSIX standard.
 	l.  The value of OPTARG when an option that required
 	    an argument but didn't have one was incorrect in the
-	    case the the option string began with a :.
+	    case the option string began with a :.
 	m.  A bug which caused the terminal to get into a bad
 	    state with some KEYBD traps in vi-mode has been fixed.
 	n.  A bug which caused an invalid trap to cause a script
@@ -229,7 +233,7 @@ of ksh.
 	c.  A bug in right to left arithmetic assignment for which
 	    the arithmetic expression (( y = x = 1.5 )) did not
 	    yield 1 for y when x was declared typeset -i was fixed.
-	d.  printf has been fixed to handle format  containing \0
+	d.  printf has been fixed to handle format containing \0
 	    and/or \0145 correctly.  In addition, characters following
 	    %b in the format string are no longer displayed when
 	    the operand contains \c.
@@ -265,7 +269,7 @@ of ksh.
 	r.  The error message for ksh -o unknown was incorrect.
 	s.  Functions invoked as name=value name, did not use
 	    values from the calling scope when evaluating value.
-	t.  A bug in which the shell would reexecute previously
+	t.  A bug in which the shell would re-execute previously
 	    executed code when a shell script or coprocess was
 	    run in the background has been fixed.
 	u.  A bug in which an empty here-document would leave
@@ -359,7 +363,7 @@ of ksh.
 	    were split across buffer boundaries has been fixed.
 
 14.	Bugs fixed in 12/28/93h for default OPTIONS
-	a.  I bug in shcomp for compilation of unary operators with [[...]]
+	a.  I bug in shcomp for compilation of unary operators with [[ ... ]]
 	    has been fixed.
 	b.  A bug in which the value of $? was changed when executing
 	    a keyboard trap has been fixed.
@@ -452,4 +456,3 @@ of ksh.
 
 18.	Incompatibilities with 12/28/93 version.
 	None intentional.
-

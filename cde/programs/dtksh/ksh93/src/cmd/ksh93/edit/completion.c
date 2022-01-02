@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  *  completion.c - command and file completion for shell editors
  *
@@ -39,6 +39,7 @@ static char *fmtx(const char *string)
 	int offset = staktell();
 	if(*cp=='#' || *cp=='~')
 		stakputc('\\');
+	mbinit();
 	while((c=mbchar(cp)),(c>UCHAR_MAX)||(n=state[c])==0 || n==S_EPAT);
 	if(n==S_EOF && *string!='#')
 		return((char*)string);
@@ -58,17 +59,29 @@ static char *fmtx(const char *string)
 	return(stakptr(offset));
 }
 
+#if !SHOPT_GLOBCASEDET
+#define charcmp(a,b,dummy) (a==b)
+#else
 static int charcmp(int a, int b, int nocase)
 {
 	if(nocase)
 	{
-		if(isupper(a))
+#if _lib_towlower
+		if(mbwide())
+		{
+			a = (int)towlower((wint_t)a);
+			b = (int)towlower((wint_t)b);
+		}
+		else
+#endif
+		{
 			a = tolower(a);
-		if(isupper(b))
 			b = tolower(b);
+		}
 	}
 	return(a==b);
 }
+#endif /* !SHOPT_GLOBCASEDET */
 
 /*
  *  overwrites <str> to common prefix of <str> and <newstr>
@@ -78,8 +91,10 @@ static int charcmp(int a, int b, int nocase)
 static char *overlaid(register char *str,register const char *newstr,int nocase)
 {
 	register int c,d;
-	while((c= *(unsigned char *)str) && ((d= *(unsigned char*)newstr++),charcmp(c,d,nocase)))
-		str++;
+	char *strnext;
+	mbinit();
+	while((strnext = str, c = mbchar(strnext)) && (d = mbchar(newstr), charcmp(c,d,nocase)))
+		str = strnext;
 	if(*str)
 		*str = 0;
 	else if(*newstr==0)
@@ -98,6 +113,7 @@ static char *find_begin(char outbuff[], char *last, int endchar, int *type)
 	int		mode=*type;
 	bp = outbuff;
 	*type = 0;
+	mbinit();
 	while(cp < last)
 	{
 		xp = cp;
@@ -156,9 +172,15 @@ static char *find_begin(char outbuff[], char *last, int endchar, int *type)
 				xp = find_begin(cp,last,')',type);
 				if(*(cp=xp)!=')')
 					bp = xp;
-				else
-					cp++;
 			}
+			break;
+		    case '`':
+			if(inquote=='\'')
+				break;
+			*type = mode;
+			xp = find_begin(cp,last,'`',type);
+			if(*(cp=xp)!='`')
+				bp = xp;
 			break;
 		    case '=':
 			if(!inquote)
@@ -174,7 +196,7 @@ static char *find_begin(char outbuff[], char *last, int endchar, int *type)
 		    case '~':
 			if(*cp=='(')
 				break;
-			/* fall through */
+			/* FALLTHROUGH */
 		    default:
 			if(c && c==endchar)
 				return(xp);
@@ -240,10 +262,18 @@ int ed_expand(Edit_t *ep, char outbuff[],int *cur,int *eol,int mode, int count)
 		*eol = ed_external((genchar*)outbuff,outbuff);
 	}
 #endif /* SHOPT_MULTIBYTE */
+#if SHOPT_VSH
 	out = outbuff + *cur + (sh_isoption(SH_VI)!=0);
+#else
+	out = outbuff + *cur;
+#endif
 	if(out[-1]=='"' || out[-1]=='\'')
 	{
+#if SHOPT_VSH
 		rval = -(sh_isoption(SH_VI)!=0);
+#else
+		rval = 0;
+#endif
 		goto done;
 	}
 	comptr->comtyp = COMSCAN;
@@ -327,7 +357,7 @@ int ed_expand(Edit_t *ep, char outbuff[],int *cur,int *eol,int mode, int count)
 			rval = -1;
 			goto done;
 		}
-		/*  match? */
+		/* match? */
 		if (*com==0 || (narg <= 1 && (strcmp(ap->argval,*com)==0) || (addstar && com[0][strlen(*com)-1]=='*')))
 		{
 			rval = -1;
@@ -335,6 +365,8 @@ int ed_expand(Edit_t *ep, char outbuff[],int *cur,int *eol,int mode, int count)
 		}
 		if(mode=='\\' && out[-1]=='/'  && narg>1)
 			mode = '=';
+		else if(mode=='=' && narg<2)
+			mode = '\\';  /* no filename menu if there is only one choice */
 		if(mode=='=')
 		{
 			if (strip && !cmd_completion)
@@ -362,8 +394,10 @@ int ed_expand(Edit_t *ep, char outbuff[],int *cur,int *eol,int mode, int count)
 				*dir = 0;
 				saveout = begin;
 			}
-			if(saveout=astconf("PATH_ATTRIBUTES",saveout,(char*)0))
-				nocase = (strchr(saveout,'c')!=0);
+#if SHOPT_GLOBCASEDET
+			if(sh_isoption(SH_GLOBCASEDET))
+				nocase = (pathicase(saveout) > 0);
+#endif
 			if(dir)
 				*dir = c;
 			/* just expand until name is unique */
@@ -418,9 +452,9 @@ int ed_expand(Edit_t *ep, char outbuff[],int *cur,int *eol,int mode, int count)
 					out = overlaid(begin,*com++,nocase);
 			}
 			mode = (out==saveout);
-			if(out[-1]==0)
+			if(out>outbuff && out[-1]==0)
 				out--;
-			if(mode && out[-1]!='/')
+			if(mode && (out==outbuff || out>outbuff && out[-1]!='/'))
 			{
 				if(cmd_completion)
 				{
@@ -490,6 +524,7 @@ int ed_expand(Edit_t *ep, char outbuff[],int *cur,int *eol,int mode, int count)
 		/* first re-adjust cur */
 		c = outbuff[*cur];
 		outbuff[*cur] = 0;
+		mbinit();
 		for(out=outbuff; *out;n++)
 			mbchar(out);
 		outbuff[*cur] = c;
@@ -565,6 +600,10 @@ int ed_fulledit(Edit_t *ep)
 	}
 	cp = strcopy((char*)ep->e_inbuf,e_runvi);
 	cp = strcopy(cp, fmtbase((long)ep->e_hline,10,0));
+#if SHOPT_VSH
 	ep->e_eol = ((unsigned char*)cp - (unsigned char*)ep->e_inbuf)-(sh_isoption(SH_VI)!=0);
+#else
+	ep->e_eol = ((unsigned char*)cp - (unsigned char*)ep->e_inbuf);
+#endif
 	return(0);
 }

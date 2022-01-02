@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,10 +18,10 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * command [-pvVx] name [arg...]
- * whence [-afvp] name...
+ * type [-afpPqt] name...
+ * whence [-afpPqtv] name...
  *
  *   David Korn
  *   AT&T Labs
@@ -35,12 +36,13 @@
 #include	"shlex.h"
 #include	"builtins.h"
 
-#define P_FLAG	1
-#define V_FLAG	2
-#define A_FLAG	4
-#define F_FLAG	010
-#define X_FLAG	020
-#define Q_FLAG	040
+#define P_FLAG	(1 << 0)
+#define V_FLAG	(1 << 1)
+#define A_FLAG	(1 << 2)
+#define F_FLAG	(1 << 3)
+#define X_FLAG	(1 << 4)
+#define Q_FLAG	(1 << 5)
+#define T_FLAG	(1 << 6)
 
 static int whence(Shell_t *,char**, int);
 
@@ -58,7 +60,10 @@ int	b_command(register int argc,char *argv[],Shbltin_t *context)
 	{
 	    case 'p':
 		if(sh_isoption(SH_RESTRICTED))
+		{
 			 errormsg(SH_DICT,ERROR_exit(1),e_restricted,"-p");
+			 UNREACHABLE();
+		}
 		sh_onstate(SH_DEFPATH);
 		break;
 	    case 'v':
@@ -79,24 +84,29 @@ int	b_command(register int argc,char *argv[],Shbltin_t *context)
 		if(argc==0)
 			return(0);
 		errormsg(SH_DICT,ERROR_usage(2), "%s", opt_info.arg);
-		break;
+		UNREACHABLE();
 	}
+	argv += opt_info.index;
 	if(argc==0)
 	{
-		if(flags & (X_FLAG|V_FLAG))
-			return(0);	/* return no offset now; sh_exec() will treat command -v/-V as normal builtin */
+		if((flags & (X_FLAG|V_FLAG)) || !*argv)
+			return(0);	/* return no offset now; sh_exec() will treat command -v/-V/(null) as normal builtin */
 		if(flags & P_FLAG)
 			sh_onstate(SH_XARG);
 		return(opt_info.index); /* offset for sh_exec() to remove 'command' prefix + options */
 	}
-	argv += opt_info.index;
-	if(error_info.errors || !*argv)
+	if(error_info.errors)
+	{
 		errormsg(SH_DICT,ERROR_usage(2),"%s", optusage((char*)0));
+		UNREACHABLE();
+	}
+	if(!*argv)
+		return((flags & (X_FLAG|V_FLAG)) != 0 ? 2 : 0);
 	return(whence(shp,argv, flags));
 }
 
 /*
- *  for the whence command
+ * for the whence and type commands
  */
 int	b_whence(int argc,char *argv[],Shbltin_t *context)
 {
@@ -104,21 +114,24 @@ int	b_whence(int argc,char *argv[],Shbltin_t *context)
 	register Shell_t *shp = context->shp;
 	NOT_USED(argc);
 	if(*argv[0]=='t')
-		flags = V_FLAG;
+		flags = V_FLAG;  /* <t>ype == whence -v */
 	while((n = optget(argv,sh_optwhence))) switch(n)
 	{
 	    case 'a':
 		flags |= A_FLAG;
-		/* FALL THRU */
+		/* FALLTHROUGH */
 	    case 'v':
 		flags |= V_FLAG;
+		break;
+	    case 't':
+		flags |= T_FLAG;
 		break;
 	    case 'f':
 		flags |= F_FLAG;
 		break;
+	    case 'P':
 	    case 'p':
 		flags |= P_FLAG;
-		flags &= ~V_FLAG;
 		break;
 	    case 'q':
 		flags |= Q_FLAG;
@@ -128,11 +141,16 @@ int	b_whence(int argc,char *argv[],Shbltin_t *context)
 		break;
 	    case '?':
 		errormsg(SH_DICT,ERROR_usage(2), "%s", opt_info.arg);
-		break;
+		UNREACHABLE();
 	}
+	if(flags&(P_FLAG|T_FLAG))
+		flags &= ~V_FLAG;
 	argv += opt_info.index;
 	if(error_info.errors || !*argv)
+	{
 		errormsg(SH_DICT,ERROR_usage(2),optusage((char*)0));
+		UNREACHABLE();
+	}
 	return(whence(shp, argv, flags));
 }
 
@@ -160,7 +178,10 @@ static int whence(Shell_t *shp,char **argv, register int flags)
 		/* reserved words first */
 		if(sh_lookup(name,shtab_reserved))
 		{
-			sfprintf(sfstdout,"%s%s\n",name,(flags&V_FLAG)?sh_translate(is_reserved):"");
+			if(flags&T_FLAG)
+				sfprintf(sfstdout,"keyword\n");
+			else
+				sfprintf(sfstdout,"%s%s\n",name,(flags&V_FLAG)?sh_translate(is_reserved):"");
 			if(!aflag)
 				continue;
 			aflag++;
@@ -175,19 +196,23 @@ static int whence(Shell_t *shp,char **argv, register int flags)
 				msg = sh_translate(is_alias);
 				sfprintf(sfstdout,msg,name);
 			}
-			sfputr(sfstdout,sh_fmtq(cp),'\n');
+			if(flags&T_FLAG)
+				sfputr(sfstdout,"alias",'\n');
+			else
+				sfputr(sfstdout,sh_fmtq(cp),'\n');
 			if(!aflag)
 				continue;
 			cp = 0;
 			aflag++;
 		}
-		/* built-ins and functions next */
 	bltins:
-		if(!(flags&F_FLAG) && (np = nv_bfsearch(name, shp->fun_tree, &nq, &notused)) && !is_abuiltin(np))
+		/* functions */
+		if(!(flags&F_FLAG) && (np = nv_bfsearch(name, shp->fun_tree, &nq, &notused)) && is_afunction(np))
 		{
 			if(flags&Q_FLAG)
 				continue;
-			sfputr(sfstdout,name,-1);
+			if(!(flags&T_FLAG))
+				sfputr(sfstdout,name,-1);
 			if(flags&V_FLAG)
 			{
 				if(nv_isnull(np))
@@ -202,11 +227,14 @@ static int whence(Shell_t *shp,char **argv, register int flags)
 				else
 					sfprintf(sfstdout,sh_translate(is_function));
 			}
+			else if(flags&T_FLAG)
+				sfprintf(sfstdout,"function");
 			sfputc(sfstdout,'\n');
 			if(!aflag)
 				continue;
 			aflag++;
 		}
+		/* built-ins */
 		if((np = nv_bfsearch(name, shp->bltin_tree, &nq, &notused)) && !nv_isnull(np))
 		{
 			if(flags&V_FLAG)
@@ -218,7 +246,10 @@ static int whence(Shell_t *shp,char **argv, register int flags)
 				cp = "";
 			if(flags&Q_FLAG)
 				continue;
-			sfprintf(sfstdout,"%s%s\n",name,cp);
+			if(flags&T_FLAG)
+				sfprintf(sfstdout,"builtin\n");
+			else
+				sfprintf(sfstdout,"%s%s\n",name,cp);
 			if(!aflag)
 				continue;
 			aflag++;
@@ -261,7 +292,9 @@ static int whence(Shell_t *shp,char **argv, register int flags)
 				{
 					/* Undefined/autoloadable function on FPATH */
 					sfputr(sfstdout,sh_fmtq(cp),-1);
-					if(flags&V_FLAG)
+					if(flags&T_FLAG)
+						sfprintf(sfstdout,"function");
+					else if(flags&V_FLAG)
 					{
 						sfprintf(sfstdout,sh_translate(is_ufunction));
 						sfprintf(sfstdout,sh_translate(e_autoloadfrom),sh_fmtq(stakptr(PATH_OFFSET)));
@@ -271,13 +304,20 @@ static int whence(Shell_t *shp,char **argv, register int flags)
 			}
 			else if(cp)
 			{
+				int is_pathbound_builtin = 0;
 				cp = path_fullname(shp,cp);  /* resolve '.' & '..' */
-				if(flags&V_FLAG)
+				if(flags&(V_FLAG|T_FLAG))
 				{
-					sfputr(sfstdout,sh_fmtq(name),' ');
+					if(!(flags&T_FLAG))
+						sfputr(sfstdout,sh_fmtq(name),' ');
 					/* built-in version of program */
 					if(nv_search(cp,shp->bltin_tree,0))
-						msg = sh_translate(is_builtver);
+					{
+						if(flags&T_FLAG)
+							is_pathbound_builtin = 1;
+						else
+							msg = sh_translate(is_builtver);
+					}
 					/* tracked aliases next */
 					else if(!sh_isstate(SH_DEFPATH)
 					&& (np = nv_search(name,shp->track_tree,0))
@@ -286,9 +326,13 @@ static int whence(Shell_t *shp,char **argv, register int flags)
 						msg = sh_translate(is_talias);
 					else
 						msg = sh_translate("is");
-					sfputr(sfstdout,msg,' ');
+					if(!(flags&T_FLAG))
+						sfputr(sfstdout,msg,' ');
 				}
-				sfputr(sfstdout,sh_fmtq(cp),'\n');
+				if(flags&T_FLAG)
+					sfputr(sfstdout,is_pathbound_builtin ? "builtin" : "file",'\n');
+				else
+					sfputr(sfstdout,sh_fmtq(cp),'\n');
 				free((char*)cp);
 			}
 			else if(aflag<=1) 
@@ -297,7 +341,7 @@ static int whence(Shell_t *shp,char **argv, register int flags)
 				if(flags&V_FLAG)
 					 errormsg(SH_DICT,ERROR_exit(0),e_found,sh_fmtq(name));
 			}
-			/* If -a given, continue with next result */
+			/* If -a is active, continue to the next result */
 			if(aflag)
 			{
 				if(aflag<=1)
@@ -311,4 +355,3 @@ static int whence(Shell_t *shp,char **argv, register int flags)
 	}
 	return(ret);
 }
-

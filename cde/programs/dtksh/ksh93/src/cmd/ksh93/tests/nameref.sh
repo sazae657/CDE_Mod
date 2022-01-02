@@ -2,6 +2,7 @@
 #                                                                      #
 #               This software is part of the ast package               #
 #          Copyright (c) 1982-2012 AT&T Intellectual Property          #
+#          Copyright (c) 2020-2021 Contributors to ksh 93u+m           #
 #                      and is licensed under the                       #
 #                 Eclipse Public License, Version 1.0                  #
 #                    by AT&T Intellectual Property                     #
@@ -17,18 +18,8 @@
 #                  David Korn <dgk@research.att.com>                   #
 #                                                                      #
 ########################################################################
-function err_exit
-{
-	print -u2 -n "\t"
-	print -u2 -r ${Command}[$1]: "${@:2}"
-	let Errors+=1
-}
-alias err_exit='err_exit $LINENO'
 
-Command=${0##*/}
-integer Errors=0
-
-[[ -d $tmp && -w $tmp && $tmp == "$PWD" ]] || { err\_exit "$LINENO" '$tmp not set; run this from shtests. Aborting.'; exit 1; }
+. "${SHTESTS_COMMON:-${0%/*}/_common}"
 
 function checkref
 {
@@ -91,7 +82,7 @@ function x.set
 	[[ ${.sh.value} ]] && print hello
 }
 if	[[ $(.foo.bar.set) != $(x.set) ]]
-then	err_exit "function references  not working"
+then	err_exit "function references not working"
 fi
 if	[[ $(typeset +n) != x ]]
 then	err_exit "typeset +n doesn't list names of reference variables"
@@ -161,9 +152,10 @@ then 	err_exit 'for loop nameref optimization test2 error'
 fi
 
 unset -n x foo bar
-if	[[ $(nameref x=foo;for x in foo bar;do print ${!x};done) != $'foo\nbar' ]]
-then	err_exit 'for loop optimization with namerefs not working'
-fi
+exp=$'foo\nbar'
+got=$(nameref x=foo;for x in foo bar;do print ${!x};done)
+[[ $got == "$exp" ]] || err_exit 'for loop optimization with namerefs not working' \
+	"(expected $(printf %q "$exp"), got $(printf %q "$got"))"
 if	[[ $(
 	p=(x=(r=3) y=(r=4))
 	for i in x y
@@ -465,9 +457,9 @@ EOF
 } 2> /dev/null #|| print -u2 bad
 exitval=$?
 if	[[ $(kill -l $exitval) == SEGV ]]
-then	print -u2 'name reference to unset type instance causes segmentation violation'
+then	err_exit 'name reference to unset type instance causes segmentation violation'
 else 	if((exitval))
-	then	print -u2 'name reference to unset type instance not redirected to .deleted'
+	then	err_exit 'name reference to unset type instance not redirected to .deleted'
 	fi
 fi
 
@@ -689,8 +681,11 @@ typeset +n ref
 unset ref ar
 typeset -a arr=( 1 2 3 )
 typeset -n ref='arr[2]'
-[[ $(typeset -p ref) == *'arr[2]'* ]] || err_exit 'typeset -p ref when ref is a reference to an index array element is wrong'
+[[ $(typeset -p ref) == *'arr[2]'* ]] || err_exit 'typeset -p ref when ref is a reference to an indexed array element is wrong'
 
 $SHELL  2> /dev/null -c 'function x { nameref lv=gg ; compound -A lv.c=( [4]=( x=1 )) ; } ; compound gg ; x' || err_exit 'compound array assignment with nameref in a function failed'
 
+$SHELL -c 'unset -n KSH_VERSION' 2> /dev/null || err_exit 'Unable to unset nameref KSH_VERSION.'
+
+# ======
 exit $((Errors<125?Errors:125))

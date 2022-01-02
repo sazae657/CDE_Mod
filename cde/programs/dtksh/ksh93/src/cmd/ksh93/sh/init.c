@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  *
  * Shell initialization
@@ -33,6 +33,7 @@
 #include        <pwd.h>
 #include        <tmx.h>
 #include        <regex.h>
+#include	<math.h>
 #include        "variables.h"
 #include        "path.h"
 #include        "fault.h"
@@ -47,6 +48,27 @@
 #include	"FEATURE/externs"
 #include	"lexstates.h"
 #include	"version.h"
+
+#ifdef BUILD_DTKSH
+#include <Dt/DtNlUtils.h>
+#include <Dt/EnvControlP.h>
+#include <X11/X.h>
+#include <X11/Intrinsic.h>
+#include <X11/IntrinsicP.h>
+#include <X11/CoreP.h>
+#include <X11/StringDefs.h>
+#include <Xm/XmStrDefs.h>
+#include <Xm/Xm.h>
+#include <Xm/Protocols.h>
+#include "dtksh.h"
+#include "xmksh.h"
+#include "dtkcmds.h"
+#include "xmcvt.h"
+#include "widget.h"
+#include "extra.h"
+#include "xmwidgets.h"
+#include "msgs.h"
+#endif /* BUILD_DTKSH */
 
 #if _hdr_wctype
 #include	<ast_wchar.h>
@@ -74,6 +96,16 @@ static wctrans_t wctrans(const char *name)
 #define towctrans	sh_towctrans
 static int towctrans(int c, wctrans_t t)
 {
+#if _lib_towupper && _lib_towlower
+	if(mbwide())
+	{
+		if(t==1 && iswupper((wint_t)c))
+			c = (int)towlower((wint_t)c);
+		else if(t==2 && iswlower((wint_t)c))
+			c = (int)towupper((wint_t)c);
+	}
+	else
+#endif
 	if(t==1 && isupper(c))
 		c = tolower(c);
 	else if(t==2 && islower(c))
@@ -132,20 +164,10 @@ char e_version[]	= "\n@(#)$Id: Version "
     extern char	**environ;
 #endif
 
-#undef	getconf
-#define getconf(x)	strtol(astconf(x,NiL,NiL),NiL,0)
-
 struct seconds
 {
 	Namfun_t	hdr;
 	Shell_t		*sh;
-};
-
-struct rand
-{
-	Namfun_t	hdr;
-	Shell_t		*sh;
-	int32_t		rand_last;
 };
 
 struct ifs
@@ -161,7 +183,7 @@ struct match
 	char		*val;
 	char		*rval[2];
 	regoff_t	*match;
-	char		node[NV_MINSZ+sizeof(char*)];
+	char		node[NV_MINSZ+sizeof(char*)+sizeof(Dtlink_t)];
 	regoff_t	first;
 	int		vsize;
 	int		nmatch;
@@ -178,8 +200,10 @@ typedef struct _init_
 	Namfun_t	CDPATH_init;
 	Namfun_t	SHELL_init;
 	Namfun_t	ENV_init;
+#if SHOPT_VSH || SHOPT_ESH
 	Namfun_t	VISUAL_init;
 	Namfun_t	EDITOR_init;
+#endif
 	Namfun_t	HISTFILE_init;
 	Namfun_t	HISTSIZE_init;
 	Namfun_t	OPTINDEX_init;
@@ -192,6 +216,7 @@ typedef struct _init_
 	Namfun_t	SH_MATH_init;
 #ifdef _hdr_locale
 	Namfun_t	LC_TYPE_init;
+	Namfun_t	LC_TIME_init;
 	Namfun_t	LC_NUM_init;
 	Namfun_t	LC_COLL_init;
 	Namfun_t	LC_MSG_init;
@@ -207,26 +232,71 @@ static char		*env_init(Shell_t*);
 static void		env_import_attributes(Shell_t*,char*);
 static Init_t		*nv_init(Shell_t*);
 static int		shlvl;
-
-#ifdef _WINIX
-#   define EXE	"?(.exe)"
-#else
-#   define EXE
-#endif
-
 static int		rand_shift;
-
 
 /*
  * out of memory routine for stak routines
  */
-static char *nospace(int unused)
+static noreturn char *nomemory(int unused)
 {
 	NOT_USED(unused);
-	errormsg(SH_DICT,ERROR_exit(3),e_nospace);
-	return(NIL(char*));
+	errormsg(SH_DICT, ERROR_SYSTEM|ERROR_PANIC, "out of memory");
+	UNREACHABLE();
 }
 
+/*
+ * The following are wrapper functions for memory allocation.
+ * These functions will error out if the allocation fails.
+ */
+void *sh_malloc(size_t size)
+{
+	void *cp = malloc(size);
+	if(!cp)
+		nomemory(0);
+	return(cp);
+}
+
+void *sh_realloc(void *ptr, size_t size)
+{
+	void *cp = realloc(ptr, size);
+	if(!cp)
+		nomemory(0);
+	return(cp);
+}
+
+void *sh_calloc(size_t nmemb, size_t size)
+{
+	void *cp = calloc(nmemb, size);
+	if(!cp)
+		nomemory(0);
+	return(cp);
+}
+
+char *sh_strdup(const char *s)
+{
+	char *dup = strdup(s);
+	if(!dup)
+		nomemory(0);
+	return(dup);
+}
+
+void *sh_memdup(const void *s, size_t n)
+{
+	void *dup = memdup(s, n);
+	if(!dup)
+		nomemory(0);
+	return(dup);
+}
+
+char *sh_getcwd(void)
+{
+	char *cwd = getcwd(NIL(char*), 0);
+	if(!cwd && errno==ENOMEM)
+		nomemory(0);
+	return(cwd);
+}
+
+#if SHOPT_VSH || SHOPT_ESH
 /* Trap for VISUAL and EDITOR variables */
 static void put_ed(register Namval_t* np,const char *val,int flags,Namfun_t *fp)
 {
@@ -237,24 +307,36 @@ static void put_ed(register Namval_t* np,const char *val,int flags,Namfun_t *fp)
 		goto done;
 	if(!(cp=val) && (*name=='E' || !(cp=nv_getval(sh_scoped(shp,EDITNOD)))))
 		goto done;
-	/* turn on vi or emacs option if editor name is either*/
+	/* turn on vi or emacs option if editor name is either */
 	cp = path_basename(cp);
+#if SHOPT_VSH
 	if(strmatch(cp,"*[Vv][Ii]*"))
 		newopt=SH_VI;
-	else if(strmatch(cp,"*gmacs*"))
+#endif
+#if SHOPT_VSH && SHOPT_ESH
+	else
+#endif
+#if SHOPT_ESH
+	     if(strmatch(cp,"*gmacs*"))
 		newopt=SH_GMACS;
 	else if(strmatch(cp,"*macs*"))
 		newopt=SH_EMACS;
+#endif
 	if(newopt)
 	{
+#if SHOPT_VSH
 		sh_offoption(SH_VI);
+#endif
+#if SHOPT_ESH
 		sh_offoption(SH_EMACS);
 		sh_offoption(SH_GMACS);
+#endif
 		sh_onoption(newopt);
 	}
 done:
 	nv_putv(np, val, flags, fp);
 }
+#endif /* SHOPT_VSH || SHOPT_ESH */
 
 /* Trap for HISTFILE and HISTSIZE variables */
 static void put_history(register Namval_t* np,const char *val,int flags,Namfun_t *fp)
@@ -297,7 +379,7 @@ static Sfdouble_t nget_optindex(register Namval_t* np, Namfun_t *fp)
 
 static Namfun_t *clone_optindex(Namval_t* np, Namval_t *mp, int flags, Namfun_t *fp)
 {
-	Namfun_t *dp = (Namfun_t*)malloc(sizeof(Namfun_t));
+	Namfun_t *dp = (Namfun_t*)sh_malloc(sizeof(Namfun_t));
 	memcpy((void*)dp,(void*)fp,sizeof(Namfun_t));
 	mp->nvalue.lp = np->nvalue.lp;
 	dp->nofree = 0;
@@ -313,7 +395,10 @@ static void put_restricted(register Namval_t* np,const char *val,int flags,Namfu
 	Pathcomp_t *pp;
 	char *name = nv_name(np);
 	if(!(flags&NV_RDONLY) && sh_isoption(SH_RESTRICTED))
+	{
 		errormsg(SH_DICT,ERROR_exit(1),e_restricted,nv_name(np));
+		UNREACHABLE();
+	}
 	if(np==PATHNOD	|| (path_scoped=(strcmp(name,PATHNOD->nvname)==0)))		
 	{
 		/* Clear the hash table */
@@ -361,17 +446,7 @@ static void put_cdpath(register Namval_t* np,const char *val,int flags,Namfun_t 
 }
 
 #ifdef _hdr_locale
-    /*
-     * This function needs to be modified to handle international
-     * error message translations
-     */
-    static char* msg_translate(const char* catalog, const char* message)
-    {
-	NOT_USED(catalog);
-	return((char*)message);
-    }
-
-    /* Trap for LC_ALL, LC_CTYPE, LC_MESSAGES, LC_COLLATE and LANG */
+    /* Trap for the LC_* and LANG variables */
     static void put_lang(Namval_t* np,const char *val,int flags,Namfun_t *fp)
     {
 	Shell_t *shp = sh_getinterp();
@@ -387,6 +462,8 @@ static void put_cdpath(register Namval_t* np,const char *val,int flags,Namfun_t 
 		type = LC_COLLATE;
 	else if(name==(LCNUMNOD)->nvname)
 		type = LC_NUMERIC;
+	else if(name==(LCTIMENOD)->nvname)
+		type = LC_TIME;
 #ifdef LC_LANG
 	else if(name==(LANGNOD)->nvname)
 		type = LC_LANG;
@@ -424,7 +501,7 @@ static void put_cdpath(register Namval_t* np,const char *val,int flags,Namfun_t 
 		{
 			register int c;
 			char *state[4];
-			sh_lexstates[ST_BEGIN] = state[0] = (char*)malloc(4*(1<<CHAR_BIT));
+			sh_lexstates[ST_BEGIN] = state[0] = (char*)sh_malloc(4*(1<<CHAR_BIT));
 			memcpy(state[0],sh_lexrstates[ST_BEGIN],(1<<CHAR_BIT));
 			sh_lexstates[ST_NAME] = state[1] = state[0] + (1<<CHAR_BIT);
 			memcpy(state[1],sh_lexrstates[ST_NAME],(1<<CHAR_BIT));
@@ -593,12 +670,13 @@ static Sfdouble_t nget_seconds(register Namval_t* np, Namfun_t *fp)
 }
 
 /*
- * These three functions are used to get and set the RANDOM variable
+ * These four functions are used to get and set the RANDOM variable
  */
 static void put_rand(register Namval_t* np,const char *val,int flags,Namfun_t *fp)
 {
 	struct rand *rp = (struct rand*)fp;
 	register long n;
+	sh_save_rand_seed(rp, 0);
 	if(!val)
 	{
 		fp = nv_stack(np, NIL(Namfun_t*));
@@ -610,8 +688,8 @@ static void put_rand(register Namval_t* np,const char *val,int flags,Namfun_t *f
 	if(flags&NV_INTEGER)
 		n = *(double*)val;
 	else
-		n = sh_arith(rp->sh,val);
-	srand((int)(n&RANDMASK));
+		n = sh_arith(&sh,val);
+	srand(rp->rand_seed = (unsigned int)n);
 	rp->rand_last = -1;
 	if(!np->nvalue.lp)
 		np->nvalue.lp = &rp->rand_last;
@@ -623,10 +701,11 @@ static void put_rand(register Namval_t* np,const char *val,int flags,Namfun_t *f
  */
 static Sfdouble_t nget_rand(register Namval_t* np, Namfun_t *fp)
 {
+	struct rand *rp = (struct rand*)fp;
 	register long cur, last= *np->nvalue.lp;
-	NOT_USED(fp);
+	sh_save_rand_seed(rp, 1);
 	do
-		cur = (rand()>>rand_shift)&RANDMASK;
+		cur = (rand_r(&rp->rand_seed)>>rand_shift)&RANDMASK;
 	while(cur==last);
 	*np->nvalue.lp = cur;
 	return((Sfdouble_t)cur);
@@ -638,24 +717,35 @@ static char* get_rand(register Namval_t* np, Namfun_t *fp)
 	return(fmtbase(n, 10, 0));
 }
 
+void sh_reseed_rand(struct rand *rp)
+{
+	struct tms		tp;
+	unsigned int		time;
+	static unsigned int	seq;
+	timeofday(&tp);
+	time = (unsigned int)remainder(dtime(&tp) * 10000.0, (double)UINT_MAX);
+	srand(rp->rand_seed = shgd->current_pid ^ time ^ ++seq);
+	rp->rand_last = -1;
+}
+
 /*
  * These three routines are for LINENO
  */
 static Sfdouble_t nget_lineno(Namval_t* np, Namfun_t *fp)
 {
-	double d=1;
+	int d = 1;
 	if(error_info.line >0)
 		d = error_info.line;
 	else if(error_info.context && error_info.context->line>0)
 		d = error_info.context->line;
 	NOT_USED(np);
 	NOT_USED(fp);
-	return(d);
+	return((Sfdouble_t)d);
 }
 
 static void put_lineno(Namval_t* np,const char *val,int flags,Namfun_t *fp)
 {
-	register long n;
+	Sfdouble_t n;
 	Shell_t *shp = sh_getinterp();
 	if(!val)
 	{
@@ -666,15 +756,15 @@ static void put_lineno(Namval_t* np,const char *val,int flags,Namfun_t *fp)
 		return;
 	}
 	if(flags&NV_INTEGER)
-		n = *(double*)val;
+		n = (Sfdouble_t)(*(double*)val);
 	else
 		n = sh_arith(shp,val);
-	shp->st.firstline += nget_lineno(np,fp)+1-n;
+	shp->st.firstline += (int)(nget_lineno(np,fp) + 1 - n);
 }
 
 static char* get_lineno(register Namval_t* np, Namfun_t *fp)
 {
-	register long n = nget_lineno(np,fp);
+	long n = (long)nget_lineno(np,fp);
 	return(fmtbase(n, 10, 0));
 }
 
@@ -697,7 +787,7 @@ static void put_lastarg(Namval_t* np,const char *val,int flags,Namfun_t *fp)
 		val = sfstruse(shp->strbuf);
 	}
 	if(val)
-		val = strdup(val);
+		val = sh_strdup(val);
 	if(shp->lastarg && !nv_isattr(np,NV_NOFREE))
 		free((void*)shp->lastarg);
 	else
@@ -707,13 +797,6 @@ static void put_lastarg(Namval_t* np,const char *val,int flags,Namfun_t *fp)
 	np->nvenv = 0;
 }
 
-static int hasgetdisc(register Namfun_t *fp)
-{
-        while(fp && !fp->disc->getnum && !fp->disc->getval)
-                fp = fp->next;
-	return(fp!=0);
-}
-
 /*
  * store the most recent value for use in .sh.match
  * treat .sh.match as a two dimensional array
@@ -721,17 +804,20 @@ static int hasgetdisc(register Namfun_t *fp)
 void sh_setmatch(Shell_t *shp,const char *v, int vsize, int nmatch, regoff_t match[],int index)
 {
 	struct match	*mp = &ip->SH_MATCH_init;
-	Namval_t	*np = nv_namptr(mp->node,0); 
+	Namval_t	*np = (Namval_t*)(&(mp->node[0]));
 	register int	i,n,x;
 	unsigned int	savesub = shp->subshell;
 	Namarr_t	*ap = nv_arrayptr(SH_MATCHNOD);
 	Namarr_t	*ap_save = ap;
+	/* do not crash if .sh.match is unset */
+	if(!ap)
+		return;
 	shp->subshell = 0;
-#ifndef SHOPT_2DMATCH
+#if !SHOPT_2DMATCH
 	index = 0;
 #else
 	if(index==0)
-#endif /* SHOPT_2DMATCH */
+#endif /* !SHOPT_2DMATCH */
 	{
 		if(ap->hdr.next != &mp->hdr)
 		{
@@ -759,7 +845,7 @@ void sh_setmatch(Shell_t *shp,const char *v, int vsize, int nmatch, regoff_t mat
 		mp->v = v;
 		mp->first = match[0];
 	}
-#ifdef SHOPT_2DMATCH
+#if SHOPT_2DMATCH
 	else
 	{
 		if(index==1)
@@ -792,9 +878,9 @@ void sh_setmatch(Shell_t *shp,const char *v, int vsize, int nmatch, regoff_t mat
 		if((i+vsize) >= mp->vsize)
 		{
 			if(mp->vsize)
-				mp->match = (int*)realloc(mp->match,i+vsize+1);
+				mp->match = (int*)sh_realloc(mp->match,i+vsize+1);
 			else
-				mp->match = (int*)malloc(i+vsize+1);
+				mp->match = (int*)sh_malloc(i+vsize+1);
 			mp->vsize = i+vsize+1;
 		}
 		mp->val =  ((char*)mp->match)+i; 
@@ -815,8 +901,6 @@ void sh_setmatch(Shell_t *shp,const char *v, int vsize, int nmatch, regoff_t mat
 		mp->lastsub[0] = mp->lastsub[1] = -1;
 	}
 } 
-
-#define array_scan(np)	((nv_arrayptr(np)->nelem&ARRAY_SCAN))
 
 static char* get_match(register Namval_t* np, Namfun_t *fp)
 {
@@ -846,7 +930,7 @@ static char* get_match(register Namval_t* np, Namfun_t *fp)
 		free((void*)mp->rval[i]);
 		mp->rval[i] = 0;
 	}
-	mp->rval[i] = (char*)malloc(n+1);
+	mp->rval[i] = (char*)sh_malloc(n+1);
 	mp->lastsub[i] = sub;
 	memcpy(mp->rval[i],val,n);
 	mp->rval[i][n] = 0;
@@ -882,7 +966,9 @@ static const Namdisc_t SH_VERSION_disc	= {  0, 0, get_version, nget_version };
 static const Namdisc_t IFS_disc		= {  sizeof(struct ifs), put_ifs, get_ifs };
 const Namdisc_t RESTRICTED_disc	= {  sizeof(Namfun_t), put_restricted };
 static const Namdisc_t CDPATH_disc	= {  sizeof(Namfun_t), put_cdpath }; 
+#if SHOPT_VSH || SHOPT_ESH
 static const Namdisc_t EDITOR_disc	= {  sizeof(Namfun_t), put_ed };
+#endif
 static const Namdisc_t HISTFILE_disc	= {  sizeof(Namfun_t), put_history };
 static const Namdisc_t OPTINDEX_disc	= {  sizeof(Namfun_t), put_optindex, 0, nget_optindex, 0, 0, clone_optindex };
 static const Namdisc_t SECONDS_disc	= {  sizeof(struct seconds), put_seconds, get_seconds, nget_seconds };
@@ -916,7 +1002,7 @@ static void math_init(Shell_t *shp)
 	Namval_t	*np;
 	char		*name;
 	int		i;
-	shp->mathnodes = (char*)calloc(1,MAX_MATH_ARGS*(NV_MINSZ+5));
+	shp->mathnodes = (char*)sh_calloc(1,MAX_MATH_ARGS*(NV_MINSZ+5));
 	name = shp->mathnodes+MAX_MATH_ARGS*NV_MINSZ;
 	for(i=0; i < MAX_MATH_ARGS; i++)
 	{
@@ -994,17 +1080,6 @@ static char *setdisc_any(Namval_t *np, const char *event, Namval_t *action, Namf
 
 static const Namdisc_t SH_MATH_disc  = { 0, 0, get_math, 0, setdisc_any, create_math, };
 
-#if SHOPT_NAMESPACE
-    static char* get_nspace(Namval_t* np, Namfun_t *fp)
-    {
-	if(sh.namespace)
-		return(nv_name(sh.namespace));
-	return((char*)np->nvalue.cp);
-    }
-    static const Namdisc_t NSPACE_disc	= {  0, 0, get_nspace };
-    static Namfun_t NSPACE_init	= {  &NSPACE_disc, 1};
-#endif /* SHOPT_NAMESPACE */
-
 #ifdef _hdr_locale
     static const Namdisc_t LC_disc	= {  sizeof(Namfun_t), put_lang };
 #endif /* _hdr_locale */
@@ -1046,7 +1121,7 @@ static int newconf(const char *name, const char *path, const char *value)
     static void init_ebcdic(void)
     {
 	int i;
-	char *cp = (char*)malloc(ST_NONE*(1<<CHAR_BIT));
+	char *cp = (char*)sh_malloc(ST_NONE*(1<<CHAR_BIT));
 	for(i=0; i < ST_NONE; i++)
 	{
 		a2e(cp,sh_lexrstates[i]);
@@ -1108,16 +1183,16 @@ int sh_type(register const char *path)
 		}
 		break;
 	}
+#if _WINIX
+	if (!(t & SH_TYPE_KSH) && *s == 's' && *(s+1) == 'h' && (!*(s+2) || *(s+2) == '.'))
+#else
+	if (!(t & SH_TYPE_KSH) && *s == 's' && *(s+1) == 'h' && !*(s+2))
+#endif
+		t |= SH_TYPE_POSIX;
 	if (*s++ == 's' && (*s == 'h' || *s == 'u'))
 	{
 		s++;
 		t |= SH_TYPE_SH;
-#if _WINIX
-		if (!(t & SH_TYPE_KSH) && (!*s || *s == '.'))
-#else
-		if (!(t & SH_TYPE_KSH) && !*s)
-#endif
-			t |= SH_TYPE_POSIX;
 		if ((t & SH_TYPE_KSH) && *s == '9' && *(s+1) == '3')
 			s += 2;
 #if _WINIX
@@ -1131,50 +1206,13 @@ int sh_type(register const char *path)
 }
 
 
-static char *get_mode(Namval_t* np, Namfun_t* nfp)
-{
-	mode_t mode = nv_getn(np,nfp);
-	return(fmtperm(mode));
-}
-
-static void put_mode(Namval_t* np, const char* val, int flag, Namfun_t* nfp)
-{
-	if(val)
-	{
-		mode_t mode;
-		char *last=0;
-		if(flag&NV_INTEGER)
-		{
-			if(flag&NV_LONG)
-				mode = *(Sfdouble_t*)val;
-			else
-				mode = *(double*)val;
-		}
-		else
-			mode = strperm(val, &last,0);
-		if(*last)
-			errormsg(SH_DICT,ERROR_exit(1),"%s: invalid mode string",val);
-		nv_putv(np,(char*)&mode,NV_INTEGER,nfp);
-	}
-	else
-		nv_putv(np,val,flag,nfp);
-}
-
-static const Namdisc_t modedisc =
-{
-	0,
-        put_mode,
-        get_mode,
-};
-
-
 /*
  * initialize the shell
  */
 Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 {
 	static int beenhere;
-	Shell_t	*shp;
+	Shell_t *shp = &sh;
 	register int n;
 	int type = 0;
 	char *save_envmarker;
@@ -1191,23 +1229,18 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 	if(!beenhere)
 	{
 		beenhere = 1;
-		shp = &sh;
 #if SHOPT_REGRESS
 		sh_regress_init(shp);
 #endif
-		shgd = newof(0,struct shared,1,0);
 		shgd->current_pid = shgd->pid = getpid();
 		shgd->ppid = getppid();
 		shgd->userid=getuid();
 		shgd->euserid=geteuid();
 		shgd->groupid=getgid();
 		shgd->egroupid=getegid();
-		shgd->lim.clk_tck = getconf("CLK_TCK");
-		shgd->lim.arg_max = getconf("ARG_MAX");
-		shgd->lim.child_max = getconf("CHILD_MAX");
-		shgd->lim.ngroups_max = getconf("NGROUPS_MAX");
-		shgd->lim.posix_version = getconf("VERSION");
-		shgd->lim.posix_jobcontrol = getconf("JOB_CONTROL");
+		shgd->lim.arg_max = astconf_long(CONF_ARG_MAX);
+		shgd->lim.child_max = (int)astconf_long(CONF_CHILD_MAX);
+		shgd->lim.clk_tck = (int)astconf_long(CONF_CLK_TCK);
 		if(shgd->lim.arg_max <=0)
 			shgd->lim.arg_max = ARG_MAX;
 		if(shgd->lim.child_max <=0)
@@ -1215,13 +1248,10 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 		if(shgd->lim.clk_tck <=0)
 			shgd->lim.clk_tck = CLK_TCK;
 		shgd->ed_context = (void*)ed_open(shp);
-		error_info.exit = sh_exit;
 		error_info.id = path_basename(argv[0]);
 	}
-	else
-		shp = newof(0,Shell_t,1,0);
 	umask(shp->mask=umask(0));
-	shp->gd = shgd;
+	sh.gd = &sh;	/* backwards compatibility pointer (there was formerly a separate global data struct) */
 	shp->mac_context = sh_macopen(shp);
 	shp->arg_context = sh_argopen(shp);
 	shp->lex_context = (void*)sh_lexopen(0,shp,1);
@@ -1259,9 +1289,7 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 				break;
 			nopt = optctx(0, 0);
 			oopt = optctx(nopt, 0);
-			error_info.exit = exit;  /* avoid crash on b___regress__ error as shell is not fully initialized */
 			b___regress__(2, regress, &shp->bltindata);
-			error_info.exit = sh_exit;
 			optctx(oopt, nopt);
 		}
 	}
@@ -1280,9 +1308,9 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 	sh_ioinit(shp);
 	/* initialize signal handling */
 	sh_siginit(shp);
-	stakinstall(NIL(Stak_t*),nospace);
+	stakinstall(NIL(Stak_t*),nomemory);
 	/* set up memory for name-value pairs */
-	shp->init_context =  nv_init(shp);
+	shp->init_context = nv_init(shp);
 	/* initialize shell type */
 	if(argc>0)
 	{
@@ -1290,7 +1318,10 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 		if(type&SH_TYPE_LOGIN)
 			shp->login_sh = 2;
 		if(type&SH_TYPE_POSIX)
+		{
 			sh_onoption(SH_POSIX);
+			sh_onoption(SH_LETOCTAL);
+		}
 	}
 	/* read the environment; don't import attributes yet, but save pointer to them */
 	save_envmarker = env_init(shp);
@@ -1311,11 +1342,11 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 		char buff[PATH_MAX+1];
 		shp->gd->shpath = 0;
 		if((n = pathprog(NiL, buff, sizeof(buff))) > 0 && n <= sizeof(buff))
-			shp->gd->shpath = strdup(buff);
+			shp->gd->shpath = sh_strdup(buff);
 		else if((cp && (sh_type(cp)&SH_TYPE_SH)) || (argc>0 && strchr(cp= *argv,'/')))
 		{
 			if(*cp=='/')
-				shp->gd->shpath = strdup(cp);
+				shp->gd->shpath = sh_strdup(cp);
 			else if(cp = nv_getval(PWDNOD))
 			{
 				int offset = staktell();
@@ -1323,7 +1354,7 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 				stakputc('/');
 				stakputs(argv[0]);
 				pathcanon(stakptr(offset),PATH_DOTDOT);
-				shp->gd->shpath = strdup(stakptr(offset));
+				shp->gd->shpath = sh_strdup(stakptr(offset));
 				stakseek(offset);
 			}
 		}
@@ -1379,8 +1410,9 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 #if _lib_pathposix
 					char*	p;
 
-					if((n = pathposix(name, NIL(char*), 0)) > 0 && (p = (char*)malloc(++n)))
+					if((n = pathposix(name, NIL(char*), 0)) > 0)
 					{
+						p = (char*)sh_malloc(++n);
 						pathposix(name, p, n);
 						name = p;
 					}
@@ -1409,7 +1441,7 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 	{
 		struct passwd *pw = getpwuid(shp->gd->userid);
 		if(pw)
-			shp->gd->user = strdup(pw->pw_name);
+			shp->gd->user = sh_strdup(pw->pw_name);
 		
 	}
 #endif
@@ -1429,21 +1461,24 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 #ifdef SHELLMAGIC
 		/* careful of #! setuid scripts with name beginning with - */
 		if(shp->login_sh && argv[1] && strcmp(argv[0],argv[1])==0)
+		{
 			errormsg(SH_DICT,ERROR_exit(1),e_prohibited);
+			UNREACHABLE();
+		}
 #endif /*SHELLMAGIC*/
 	}
 	else
 		sh_offoption(SH_PRIVILEGED);
 	/* shname for $0 in profiles and . scripts */
 	if(sh_isdevfd(argv[1]))
-		shp->shname = strdup(argv[0]);
+		shp->shname = sh_strdup(argv[0]);
 	else
-		shp->shname = strdup(shp->st.dolv[0]);
+		shp->shname = sh_strdup(shp->st.dolv[0]);
 	/*
 	 * return here for shell script execution
 	 * but not for parenthesis subshells
 	 */
-	error_info.id = strdup(shp->st.dolv[0]); /* error_info.id is $0 */
+	error_info.id = sh_strdup(shp->st.dolv[0]); /* error_info.id is $0 */
 	shp->jmpbuffer = (void*)&shp->checkbase;
 	sh_pushcontext(shp,&shp->checkbase,SH_JMPSCRIPT);
 	shp->st.self = &shp->global;
@@ -1460,33 +1495,23 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 	shp->bltindata.shgetenv = sh_getenv;
 	shp->bltindata.shsetenv = sh_setenviron;
 	astintercept(&shp->bltindata,1);
-#if 0
-#define NV_MKINTTYPE(x,y,z)	nv_mkinttype(#x,sizeof(x),(x)-1<0,(y),(Namdisc_t*)z); 
-	NV_MKINTTYPE(pid_t,"process id",0);
-	NV_MKINTTYPE(gid_t,"group id",0);
-	NV_MKINTTYPE(uid_t,"user id",0);
-	NV_MKINTTYPE(size_t,(const char*)0,0);
-	NV_MKINTTYPE(ssize_t,(const char*)0,0);
-	NV_MKINTTYPE(off_t,"offset in bytes",0);
-	NV_MKINTTYPE(ino_t,"\ai-\anode number",0);
-	NV_MKINTTYPE(mode_t,(const char*)0,&modedisc);
-	NV_MKINTTYPE(dev_t,"device id",0);
-	NV_MKINTTYPE(nlink_t,"hard link count",0);
-	NV_MKINTTYPE(blkcnt_t,"block count",0);
-	NV_MKINTTYPE(time_t,"seconds since the epoch",0);
-	nv_mkstat();
-#endif
 	if(shp->userinit=userinit)
 		(*userinit)(shp, 0);
 	shp->exittrap = 0;
 	shp->errtrap = 0;
 	shp->end_fn = 0;
+	error_info.exit = sh_exit;
+#ifdef BUILD_DTKSH
+	{
+		int *lockedFds = LockKshFileDescriptors();
+		(void) XtSetLanguageProc((XtAppContext)NULL, (XtLanguageProc)NULL, (XtPointer)NULL);
+		DtNlInitialize();
+		_DtEnvControl(DT_ENV_SET);
+		UnlockKshFileDescriptors(lockedFds);
+		dtksh_init();
+	}
+#endif /* BUILD_DTKSH */
 	return(shp);
-}
-
-Shell_t *sh_getinterp(void)
-{
-	return(&sh);
 }
 
 /*
@@ -1548,14 +1573,18 @@ int sh_reinit(char *argv[])
 #endif /* SHOPT_NAMESPACE */
 	if(sh_isoption(SH_TRACKALL))
 		on_option(&opt,SH_TRACKALL);
+#if SHOPT_ESH
 	if(sh_isoption(SH_EMACS))
 		on_option(&opt,SH_EMACS);
 	if(sh_isoption(SH_GMACS))
 		on_option(&opt,SH_GMACS);
+#endif
+#if SHOPT_VSH
 	if(sh_isoption(SH_VI))
 		on_option(&opt,SH_VI);
 	if(sh_isoption(SH_VIRAW))
 		on_option(&opt,SH_VIRAW);
+#endif
 	shp->options = opt;
 	/* set up new args */
 	if(argv)
@@ -1564,7 +1593,7 @@ int sh_reinit(char *argv[])
 		sh_argreset(shp,shp->arglist,NIL(struct dolnod*));
 	shp->envlist=0;
 	shp->curenv = 0;
-	shp->shname = error_info.id = strdup(shp->st.dolv[0]);
+	shp->shname = error_info.id = sh_strdup(shp->st.dolv[0]);
 	sh_offstate(SH_FORKED);
 	shp->fn_depth = shp->dot_depth = 0;
 	sh_sigreset(0);
@@ -1576,7 +1605,7 @@ int sh_reinit(char *argv[])
 	}
 	*SHLVL->nvalue.ip +=1;
 	nv_offattr(SHLVL,NV_IMPORT);
-	shp->st.filename = strdup(shp->lastarg);
+	shp->st.filename = sh_strdup(shp->lastarg);
 	nv_delete((Namval_t*)0, (Dt_t*)0, 0);
 	job.exitval = 0;
 	shp->inpipe = shp->outpipe = 0;
@@ -1599,7 +1628,7 @@ Namfun_t *nv_cover(register Namval_t *np)
 	if(np==IFSNOD || np==PATHNOD || np==SHELLNOD || np==FPATHNOD || np==CDPNOD || np==SECONDS || np==ENVNOD || np==LINENO)
 		return(np->nvfun);
 #ifdef _hdr_locale
-	if(np==LCALLNOD || np==LCTYPENOD || np==LCMSGNOD || np==LCCOLLNOD || np==LCNUMNOD || np==LANGNOD)
+	if(np==LCALLNOD || np==LCTYPENOD || np==LCMSGNOD || np==LCCOLLNOD || np==LCNUMNOD || np==LCTIMENOD || np==LANGNOD)
 		return(np->nvfun);
 #endif
 	 return(0);
@@ -1607,7 +1636,7 @@ Namfun_t *nv_cover(register Namval_t *np)
 
 static const char *shdiscnames[] = { "tilde", 0};
 
-#ifdef SHOPT_STATS
+#if SHOPT_STATS
 struct Stats
 {
 	Namfun_t	hdr;
@@ -1641,7 +1670,7 @@ static Namval_t *create_stat(Namval_t *np,const char *name,int flag,Namfun_t *fp
 	for(i=0; i < sp->numnodes; i++)
 	{
 		nq = nv_namptr(sp->nodes,i);
-		if((n==0||memcmp(name,nq->nvname,n)==0) && nq->nvname[n]==0)
+		if((n==0||strncmp(name,nq->nvname,n)==0) && nq->nvname[n]==0)
 			goto found;
 	}
 	nq = 0;
@@ -1652,7 +1681,10 @@ found:
 		shp->last_table = SH_STATS;
 	}
 	else
+	{
 		errormsg(SH_DICT,ERROR_exit(1),e_notelem,n,name,nv_name(np));
+		UNREACHABLE();
+	}
 	return(nq);
 }
 
@@ -1685,11 +1717,11 @@ static Namfun_t	 stat_child_fun =
 static void stat_init(Shell_t *shp)
 {
 	int		i,nstat = STAT_SUBSHELL+1;
-	struct Stats	*sp = newof(0,struct Stats,1,nstat*NV_MINSZ);
+	struct Stats	*sp = sh_newof(0,struct Stats,1,nstat*NV_MINSZ);
 	Namval_t	*np;
 	sp->numnodes = nstat;
 	sp->nodes = (char*)(sp+1);
-	shgd->stats = (int*)calloc(sizeof(int),nstat);
+	shgd->stats = (int*)sh_calloc(sizeof(int),nstat);
 	sp->sh = shp;
 	for(i=0; i < nstat; i++)
 	{
@@ -1716,9 +1748,7 @@ static void stat_init(Shell_t *shp)
 static Init_t *nv_init(Shell_t *shp)
 {
 	double d=0;
-	ip = newof(0,Init_t,1,0);
-	if(!ip)
-		return(0);
+	ip = sh_newof(0,Init_t,1,0);
 	shp->nvfun.last = (char*)shp;
 	shp->nvfun.nofree = 1;
 	ip->sh = shp;
@@ -1735,10 +1765,12 @@ static Init_t *nv_init(Shell_t *shp)
 	ip->SHELL_init.nofree = 1;
 	ip->ENV_init.disc = &RESTRICTED_disc;
 	ip->ENV_init.nofree = 1;
+#if SHOPT_VSH || SHOPT_ESH
 	ip->VISUAL_init.disc = &EDITOR_disc;
 	ip->VISUAL_init.nofree = 1;
 	ip->EDITOR_init.disc = &EDITOR_disc;
 	ip->EDITOR_init.nofree = 1;
+#endif
 	ip->HISTFILE_init.disc = &HISTFILE_disc;
 	ip->HISTFILE_init.nofree = 1;
 	ip->HISTSIZE_init.disc = &HISTFILE_disc;
@@ -1749,7 +1781,6 @@ static Init_t *nv_init(Shell_t *shp)
 	ip->SECONDS_init.hdr.nofree = 1;
 	ip->RAND_init.hdr.disc = &RAND_disc;
 	ip->RAND_init.hdr.nofree = 1;
-	ip->RAND_init.sh = shp;
 	ip->SH_MATCH_init.hdr.disc = &SH_MATCH_disc;
 	ip->SH_MATCH_init.hdr.nofree = 1;
 	ip->SH_MATH_init.disc = &SH_MATH_disc;
@@ -1763,6 +1794,8 @@ static Init_t *nv_init(Shell_t *shp)
 #ifdef _hdr_locale
 	ip->LC_TYPE_init.disc = &LC_disc;
 	ip->LC_TYPE_init.nofree = 1;
+	ip->LC_TIME_init.disc = &LC_disc;
+	ip->LC_TIME_init.nofree = 1;
 	ip->LC_NUM_init.disc = &LC_disc;
 	ip->LC_NUM_init.nofree = 1;
 	ip->LC_COLL_init.disc = &LC_disc;
@@ -1781,8 +1814,10 @@ static Init_t *nv_init(Shell_t *shp)
 	nv_stack(CDPNOD, &ip->CDPATH_init);
 	nv_stack(SHELLNOD, &ip->SHELL_init);
 	nv_stack(ENVNOD, &ip->ENV_init);
+#if SHOPT_VSH || SHOPT_ESH
 	nv_stack(VISINOD, &ip->VISUAL_init);
 	nv_stack(EDITNOD, &ip->EDITOR_init);
+#endif
 	nv_stack(HISTFILE, &ip->HISTFILE_init);
 	nv_stack(HISTSIZE, &ip->HISTSIZE_init);
 	nv_stack(OPTINDNOD, &ip->OPTINDEX_init);
@@ -1790,8 +1825,8 @@ static Init_t *nv_init(Shell_t *shp)
 	nv_stack(L_ARGNOD, &ip->L_ARG_init);
 	nv_putval(SECONDS, (char*)&d, NV_DOUBLE);
 	nv_stack(RANDNOD, &ip->RAND_init.hdr);
-	d = (shp->gd->pid&RANDMASK);
 	nv_putval(RANDNOD, (char*)&d, NV_DOUBLE);
+	sh_reseed_rand((struct rand *)RANDNOD->nvfun);
 	nv_stack(LINENO, &ip->LINENO_init);
 	SH_MATCHNOD->nvfun =  &ip->SH_MATCH_init.hdr;
 	nv_putsub(SH_MATCHNOD,(char*)0,10);
@@ -1803,10 +1838,12 @@ static Init_t *nv_init(Shell_t *shp)
 	nv_stack(LCMSGNOD, &ip->LC_MSG_init);
 	nv_stack(LCCOLLNOD, &ip->LC_COLL_init);
 	nv_stack(LCNUMNOD, &ip->LC_NUM_init);
+	nv_stack(LCTIMENOD, &ip->LC_TIME_init);
 	nv_stack(LANGNOD, &ip->LANG_init);
 #endif /* _hdr_locale */
-	(PPIDNOD)->nvalue.lp = (&shp->gd->ppid);
-	(SH_PIDNOD)->nvalue.lp = (&shp->gd->current_pid);
+	(PPIDNOD)->nvalue.pidp = (&shp->gd->ppid);
+	(SH_PIDNOD)->nvalue.pidp = (&shp->gd->current_pid);
+	(SH_SUBSHELLNOD)->nvalue.ip = (&shp->gd->realsubshell);
 	(TMOUTNOD)->nvalue.lp = (&shp->st.tmout);
 	(MCHKNOD)->nvalue.lp = (&sh_mailchk);
 	(OPTINDNOD)->nvalue.lp = (&shp->st.optindex);
@@ -1817,7 +1854,7 @@ static Init_t *nv_init(Shell_t *shp)
 	dtuserdata(shp->track_tree,shp,1);
 	shp->bltin_tree = sh_inittree(shp,(const struct shtable2*)shtab_builtins);
 	dtuserdata(shp->bltin_tree,shp,1);
-	shp->fun_tree = dtopen(&_Nvdisc,Dtoset);
+	shp->fun_base = shp->fun_tree = dtopen(&_Nvdisc,Dtoset);
 	dtuserdata(shp->fun_tree,shp,1);
 	dtview(shp->fun_tree,shp->bltin_tree);
 	nv_mount(DOTSHNOD, "type", shp->typedict=dtopen(&_Nvdisc,Dtoset));
@@ -1825,7 +1862,7 @@ static Init_t *nv_init(Shell_t *shp)
 	DOTSHNOD->nvalue.cp = Empty;
 	nv_onattr(DOTSHNOD,NV_RDONLY);
 	SH_LINENO->nvalue.ip = &shp->st.lineno;
-	VERSIONNOD->nvalue.nrp = newof(0,struct Namref,1,0);
+	VERSIONNOD->nvalue.nrp = sh_newof(0,struct Namref,1,0);
         VERSIONNOD->nvalue.nrp->np = SH_VERSIONNOD;
         VERSIONNOD->nvalue.nrp->root = nv_dict(DOTSHNOD);
         VERSIONNOD->nvalue.nrp->table = DOTSHNOD;
@@ -1849,12 +1886,9 @@ Dt_t *sh_inittree(Shell_t *shp,const struct shtable2 *name_vals)
 	Dt_t *base_treep, *dict = 0;
 	for(tp=name_vals;*tp->sh_name;tp++)
 		n++;
-	np = (Namval_t*)calloc(n,sizeof(Namval_t));
+	np = (Namval_t*)sh_calloc(n,sizeof(Namval_t));
 	if(!shgd->bltin_nodes)
-	{
 		shgd->bltin_nodes = np;
-		shgd->bltin_nnodes = n;
-	}
 	else if(name_vals==(const struct shtable2*)shtab_builtins)
 	{
 		shgd->bltin_cmds = np;
@@ -1959,7 +1993,7 @@ static void env_import_attributes(Shell_t *shp, char *next)
 			int size = *(unsigned char*)(cp+1)-' ';
 			if((flag&NV_INTEGER) && size==0)
 			{
-				/* check for floating*/
+				/* check for floating */
 				char *dp, *val = nv_getval(np);
 				strtol(val,&dp,10);
 				if(*dp=='.' || *dp=='e' || *dp=='E')
@@ -1982,6 +2016,9 @@ static void env_import_attributes(Shell_t *shp, char *next)
 					size--;
 				}
 			}
+			flag &= ~NV_RDONLY;	/* refuse to import readonly attribute */
+			if(!flag)
+				continue;
 			nv_newattr(np,flag|NV_IMPORT|NV_EXPORT,size);
 		}
 	}
@@ -1989,43 +2026,32 @@ static void env_import_attributes(Shell_t *shp, char *next)
 }
 
 /*
- * terminate shell and free up the space
+ * libshell ABI compatibility functions
  */
-int sh_term(void)
-{
-	sfdisc(sfstdin,SF_POPDISC);
-	free((char*)sh.outbuff);
-	stakset(NIL(char*),0);
-	return(0);
-}
+#define BYPASS_MACRO
 
-/* function versions of these */
-
-#define DISABLE	/* proto workaround */
-
-unsigned long sh_isoption DISABLE (int opt)
+unsigned long sh_isoption BYPASS_MACRO (int opt)
 {
 	return(sh_isoption(opt));
 }
 
-unsigned long sh_onoption DISABLE (int opt)
+unsigned long sh_onoption BYPASS_MACRO (int opt)
 {
 	return(sh_onoption(opt));
 }
 
-unsigned long sh_offoption DISABLE (int opt)
+unsigned long sh_offoption BYPASS_MACRO (int opt)
 {
 	return(sh_offoption(opt));
 }
 
-void	sh_sigcheck DISABLE (Shell_t *shp)
+void	sh_sigcheck BYPASS_MACRO (Shell_t *shp)
 {
-	if(!shp)
-		shp = sh_getinterp();
-	sh_sigcheck(shp);
+	NOT_USED(shp);
+	sh_sigcheck(&sh);
 }
 
-Dt_t*	sh_bltin_tree DISABLE (void)
+Dt_t*	sh_bltin_tree(void)
 {
 	return(sh.bltin_tree);
 }
@@ -2105,7 +2131,7 @@ Namfun_t	*nv_mapchar(Namval_t *np,const char *name)
 		if(!(mp->hdr.nofree&1))
 			free((void*)mp);
 	}
-	mp = newof(0,struct Mapchar,1,n);
+	mp = sh_newof(0,struct Mapchar,1,n);
 	mp->trans = trans;
 	mp->lctype = lctype;
 	if(low==0)
@@ -2119,4 +2145,13 @@ Namfun_t	*nv_mapchar(Namval_t *np,const char *name)
 	}
 	mp->hdr.disc =  &TRANS_disc;
 	return(&mp->hdr);
+}
+
+/*
+ * for libshell ABI compatibility
+ */
+#undef sh_getinterp
+Shell_t *sh_getinterp(void)
+{
+	return(&sh);
 }

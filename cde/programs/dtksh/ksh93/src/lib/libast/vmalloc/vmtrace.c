@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -35,14 +36,7 @@ void _STUB_vmtrace(){}
 static int	Trfile = -1;
 static char	Trbuf[128];
 
-#if __STD_C
 static char* trstrcpy(char* to, const char* from, int endc)
-#else
-static char* trstrcpy(to, from, endc)
-char*		to;
-const char*	from;
-int		endc;
-#endif
 {	reg int	n;
 
 	n = strlen(from);
@@ -53,14 +47,9 @@ int		endc;
 	return to;
 }
 
-/* convert a long value to an ascii representation */
-#if __STD_C
-static char* tritoa(Vmulong_t v, int type)
-#else
-static char* tritoa(v, type)
-Vmulong_t	v;	/* value to convert					*/
-int		type;	/* =0 base-16, >0: unsigned base-10, <0: signed base-10	*/
-#endif
+/* convert a long value to an ASCII representation */
+static char* tritoa(Vmulong_t	v,	/* value to convert					*/
+		    int		type)	/* =0 base-16, >0: unsigned base-10, <0: signed base-10	*/
 {
 	char*	s;
 
@@ -96,17 +85,11 @@ int		type;	/* =0 base-16, >0: unsigned base-10, <0: signed base-10	*/
 }
 
 /* generate a trace of some call */
-#if __STD_C
-static void trtrace(Vmalloc_t* vm,
-		    Vmuchar_t* oldaddr, Vmuchar_t* newaddr, size_t size, size_t align )
-#else
-static void trtrace(vm, oldaddr, newaddr, size, align)
-Vmalloc_t*	vm;		/* region call was made from	*/
-Vmuchar_t*	oldaddr;	/* old data address		*/
-Vmuchar_t*	newaddr;	/* new data address		*/
-size_t		size;		/* size of piece		*/
-size_t		align;		/* alignment			*/
-#endif
+static void trtrace(Vmalloc_t*	vm,		/* region call was made from	*/
+		    Vmuchar_t*	oldaddr,	/* old data address		*/
+		    Vmuchar_t*	newaddr,	/* new data address		*/
+		    size_t	size,		/* size of piece		*/
+		    size_t	align)		/* alignment			*/
 {
 	char		buf[1024], *bufp, *endbuf;
 	Vmdata_t*	vd = vm->data;
@@ -192,15 +175,7 @@ size_t		align;		/* alignment			*/
 	write(Trfile,buf,(bufp-buf));
 }
 
-#if __STD_C
 void _vmmessage(const char* s1, long n1, const char* s2, long n2)
-#else
-void _vmmessage(s1, n1, s2, n2)
-const char*	s1;
-long		n1;
-const char*	s2;
-long		n2;
-#endif
 {
 	char		buf[1024], *bufp;
 
@@ -225,12 +200,7 @@ long		n2;
 	write(2,buf,(bufp-buf));
 }
 
-#if __STD_C
 int vmtrace(int file)
-#else
-int vmtrace(file)
-int	file;
-#endif
 {
 	int	fd;
 
@@ -243,12 +213,7 @@ int	file;
 	return fd;
 }
 
-#if __STD_C
 int vmtrbusy(Vmalloc_t* vm)
-#else
-int vmtrbusy(vm)
-Vmalloc_t*	vm;
-#endif
 {
 	Seg_t*		seg;
 	Vmdata_t*	vd = vm->data;

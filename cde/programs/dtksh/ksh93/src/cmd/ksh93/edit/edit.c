@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  *  edit.c - common routines for vi and emacs one line editors in shell
  *
@@ -30,6 +30,7 @@
 #include	<ast.h>
 #include	<errno.h>
 #include	<ccode.h>
+#include	<fault.h>
 #include	"FEATURE/options"
 #include	"FEATURE/time"
 #include	"FEATURE/cmds"
@@ -38,30 +39,27 @@
 #   include	<ls.h>
 #endif
 
-#if KSHELL
-#   include	"defs.h"
-#   include	"variables.h"
-#else
-#   include	<ctype.h>
-    extern char ed_errbuf[];
-    char e_version[] = "\n@(#)$Id: Editlib version 1993-12-28 r $\0\n";
-#endif	/* KSHELL */
+#include	"defs.h"
+#include	"variables.h"
 #include	"io.h"
 #include	"terminal.h"
 #include	"history.h"
 #include	"edit.h"
+#include	"shlex.h"
 
 static char CURSOR_UP[20] = { ESC, '[', 'A', 0 };
 static char KILL_LINE[20] = { ESC, '[', 'J', 0 };
-
+static Lex_t *savelex;
 
 
 #if SHOPT_MULTIBYTE
 #   define is_cntrl(c)	((c<=STRIP) && iscntrl(c))
 #   define is_print(c)	((c&~STRIP) || isprint(c))
+#   define genlen(str)	ed_genlen(str)
 #else
 #   define is_cntrl(c)	iscntrl(c)
 #   define is_print(c)	isprint(c)
+#   define genlen(str)	strlen(str)
 #endif
 
 #if	(CC_NATIVE == CC_ASCII)
@@ -133,25 +131,15 @@ static char KILL_LINE[20] = { ESC, '[', 'J', 0 };
 #   endif /* TIOCGETP */
 #endif /* _hdr_sgtty */
 
-#if KSHELL
-     static int keytrap(Edit_t *,char*, int, int, int);
-#else
-     Edit_t editb;
-#endif	/* KSHELL */
-
+static int keytrap(Edit_t *,char*, int, int, int);
 
 #ifndef _POSIX_DISABLE
 #   define _POSIX_DISABLE	0
 #endif
 
-#ifdef future
-    static int compare(const char*, const char*, int);
-#endif  /* future */
-#if SHOPT_VSH || SHOPT_ESH
-#   define ttyparm	(ep->e_ttyparm)
-#   define nttyparm	(ep->e_nttyparm)
-    static const char bellchr[] = "\a";	/* bell char */
-#endif /* SHOPT_VSH || SHOPT_ESH */
+#define ttyparm		(ep->e_ttyparm)
+#define nttyparm	(ep->e_nttyparm)
+static const char bellchr[] = "\a";	/* bell char */
 
 
 /*
@@ -162,13 +150,11 @@ int tty_check(int fd)
 {
 	register Edit_t *ep = (Edit_t*)(shgd->ed_context);
 	struct termios tty;
-	/*
-	 * The tty_get check below does not work on 1 (stdout) in command substitutions. But comsubs fork upon redirecting 1,
-	 * and forking resets sh.subshell to 0, so we can safely return false when in a virtual subshell that is a comsub.
-	 */
-	if(fd==1 && sh.subshell && sh.comsub)
-		return(0);
+	Sfio_t *sp;
 	ep->e_savefd = -1;
+	if(fd < 0 || fd > shgd->lim.open_max || sh.fdstatus[fd] == IOCLOSE
+	|| (sp = sh.sftable[fd]) && (sfset(sp,0,0) & SF_STRING))
+		return(0);
 	return(tty_get(fd,&tty)==0);
 }
 
@@ -211,10 +197,6 @@ int tty_set(int fd, int action, struct termios *tty)
 	register Edit_t *ep = (Edit_t*)(shgd->ed_context);
 	if(fd >=0)
 	{
-#ifdef future
-		if(ep->e_savefd>=0 && compare(&ep->e_savetty,tty,sizeof(struct termios)))
-			return(0);
-#endif
 		while(tcsetattr(fd, action, tty) == SYSERR)
 		{
 			if(errno !=EINTR)
@@ -227,7 +209,6 @@ int tty_set(int fd, int action, struct termios *tty)
 	return(0);
 }
 
-#if SHOPT_ESH || SHOPT_VSH
 /*{	TTY_COOKED( fd )
  *
  *	This routine will set the tty in cooked mode.
@@ -238,6 +219,8 @@ int tty_set(int fd, int action, struct termios *tty)
 void tty_cooked(register int fd)
 {
 	register Edit_t *ep = (Edit_t*)(shgd->ed_context);
+	if(ep->sh->st.trap[SH_KEYTRAP] && savelex)
+		memcpy(ep->sh->lex_context,savelex,sizeof(Lex_t));
 	ep->e_keytrap = 0;
 	if(ep->e_raw==0)
 		return;
@@ -312,7 +295,7 @@ int tty_raw(register int fd, int echomode)
 		return(-1);
 	ep->e_ttyspeed = (ttyparm.sg_ospeed>=B1200?FAST:SLOW);
 #   ifdef TIOCGLTC
-	/* try to remove effect of ^V  and ^Y and ^O */
+	/* try to remove effect of ^V and ^Y and ^O */
 	if(ioctl(fd,TIOCGLTC,&l_chars) != SYSERR)
 	{
 		lchars = l_chars;
@@ -561,6 +544,7 @@ void ed_ringbell(void)
 	write(ERRIO,bellchr,1);
 }
 
+#if SHOPT_ESH || SHOPT_VSH
 /*
  * send a carriage return line feed to the terminal
  */
@@ -579,7 +563,9 @@ void ed_crlf(register Edit_t *ep)
 	ed_putchar(ep,'\n');
 	ed_flush(ep);
 }
- 
+#endif /* SHOPT_ESH || SHOPT_VSH */
+
+#if SHOPT_ESH || SHOPT_VSH
 /*	ED_SETUP( max_prompt_size )
  *
  *	This routine sets up the prompt string
@@ -620,15 +606,11 @@ void	ed_setup(register Edit_t *ep, int fd, int reedit)
 	ep->nhlist = 0;
 	ep->hoff = 0;
 #endif /* SHOPT_EDPREDICT */
-#if KSHELL
 	ep->e_stkoff = staktell();
 	ep->e_stkptr = stakfreeze(0);
 	if(!(last = shp->prompt))
 		last = "";
 	shp->prompt = 0;
-#else
-	last = ep->e_prbuff;
-#endif /* KSHELL */
 	if(shp->gd->hist_ptr)
 	{
 		register History_t *hp = shp->gd->hist_ptr;
@@ -640,13 +622,25 @@ void	ed_setup(register Edit_t *ep, int fd, int reedit)
 		ep->e_hismax = ep->e_hismin = ep->e_hloff = 0;
 	}
 	ep->e_hline = ep->e_hismax;
+#if SHOPT_ESH && SHOPT_VSH
 	if(!sh_isoption(SH_VI) && !sh_isoption(SH_EMACS) && !sh_isoption(SH_GMACS))
+#elif SHOPT_ESH
+	if(!sh_isoption(SH_EMACS) && !sh_isoption(SH_GMACS))
+#elif SHOPT_VSH
+	if(!sh_isoption(SH_VI))
+#else
+	if(1)
+#endif /* SHOPT_ESH && SHOPT_VSH */
 		ep->e_wsize = MAXLINE;
 	else
 		ep->e_wsize = ed_window()-2;
 	ep->e_winsz = ep->e_wsize+2;
 	ep->e_crlf = 1;
 	ep->e_plen = 0;
+	/*
+	 * Prepare e_prompt buffer for use when redrawing the command line.
+	 * Use only the last line of the potentially multi-line prompt.
+	 */
 	pp = ep->e_prompt;
 	ppmax = pp+PRSIZE-1;
 	*pp++ = '\r';
@@ -657,9 +651,40 @@ void	ed_setup(register Edit_t *ep, int fd, int reedit)
 			case ESC:
 			{
 				int skip=0;
+				if(*last == ']')
+				{
+					/*
+					 * Cut out dtterm/xterm Operating System Commands that set window/icon title, etc.
+					 * See: https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
+					 */
+					char *cp = last + 1;
+					while(*cp >= '0' && *cp <= '9')
+						cp++;
+					if(*cp++ == ';')
+					{
+						while(c = *cp++)
+						{
+							if(c == '\a')			/* legacy terminator */
+								break;
+							if(c == ESC && *cp == '\\')	/* recommended terminator */
+							{
+								cp++;
+								break;
+							}
+						}
+						if(!c)
+							break;
+						last = cp;
+						continue;
+					}
+				}
+				/*
+				 * Try to add the length of included escape sequences to qlen
+				 * which is subtracted from the physical length of the prompt.
+				 */
 				ep->e_crlf = 0;
 				if(pp<ppmax)
-					*pp++ = c;
+					*pp++ = ESC;
 				for(n=1; c = *last++; n++)
 				{
 					if(pp < ppmax)
@@ -671,9 +696,11 @@ void	ed_setup(register Edit_t *ep, int fd, int reedit)
 						skip = 0;
 						continue;
 					}
-					if(n>1 && c==';')
+					if(n==3 && (c=='?' || c=='!'))
+						continue;
+					else if(n>1 && c==';')
 						skip = 1;
-					else if(n>2 || (c!= '[' &&  c!= ']'))
+					else if(n>2 || (c!='[' && c!=']' && c!='('))
 						break;
 				}
 				if(c==0 || c==ESC || c=='\r')
@@ -688,7 +715,7 @@ void	ed_setup(register Edit_t *ep, int fd, int reedit)
 			case '\r':
 				if(pp == (ep->e_prompt+2)) /* quote char */
 					myquote = *(pp-1);
-				/*FALLTHROUGH*/
+				/* FALLTHROUGH */
 
 			case '\n':
 				/* start again */
@@ -750,7 +777,7 @@ void	ed_setup(register Edit_t *ep, int fd, int reedit)
 		/* can't use output buffer when reading from stderr */
 		static char *buff;
 		if(!buff)
-			buff = (char*)malloc(MAXLINE);
+			buff = (char*)sh_malloc(MAXLINE);
 		ep->e_outbase = ep->e_outptr = buff;
 		ep->e_outlast = ep->e_outptr + MAXLINE;
 		return;
@@ -765,17 +792,33 @@ void	ed_setup(register Edit_t *ep, int fd, int reedit)
 	ep->e_eol = reedit;
 	if(ep->e_multiline)
 	{
-#ifdef _cmd_tput
+#if defined(_pth_tput) && (_tput_terminfo || _tput_termcap)
 		char *term;
 		if(!ep->e_term)
 			ep->e_term = nv_search("TERM",shp->var_tree,0);
 		if(ep->e_term && (term=nv_getval(ep->e_term)) && strlen(term)<sizeof(ep->e_termname) && strcmp(term,ep->e_termname))
 		{
-			sh_trap(".sh.subscript=$(tput cuu1 2>/dev/null)",0);
-			if(pp=nv_getval(SH_SUBSCRNOD))
-				strncpy(CURSOR_UP,pp,sizeof(CURSOR_UP)-1);
+			Shopt_t o = shp->options;
+			sigblock(SIGINT);
+			sh_offoption(SH_RESTRICTED);
+			sh_offoption(SH_VERBOSE);
+			sh_offoption(SH_XTRACE);
+			/* get the cursor up sequence from tput */
+#if _tput_terminfo
+			sh_trap(".sh.subscript=$(" _pth_tput " cuu1 2>/dev/null)",0);
+#elif _tput_termcap
+			sh_trap(".sh.subscript=$(" _pth_tput " up 2>/dev/null)",0);
+#else
+#error no tput method
+#endif
+			if((pp = nv_getval(SH_SUBSCRNOD)) && strlen(pp) < sizeof(CURSOR_UP))
+				strcpy(CURSOR_UP,pp);
+			else
+				CURSOR_UP[0] = '\0';  /* no escape sequence is better than a faulty one */
 			nv_unset(SH_SUBSCRNOD);
 			strcpy(ep->e_termname,term);
+			shp->options = o;
+			sigrelease(SIGINT);
 		}
 #endif
 		ep->e_wsize = MAXLINE - (ep->e_plen+1);
@@ -790,7 +833,14 @@ void	ed_setup(register Edit_t *ep, int fd, int reedit)
 			ep->e_lbuf[n] = *pp++;
 		ep->e_default = 0;
 	}
+	if(ep->sh->st.trap[SH_KEYTRAP])
+	{
+		if(!savelex)
+			savelex = (Lex_t*)sh_malloc(sizeof(Lex_t));
+		memcpy(savelex, ep->sh->lex_context, sizeof(Lex_t));
+	}
 }
+#endif /* SHOPT_ESH || SHOPT_VSH */
 
 static void ed_putstring(register Edit_t *ep, const char *str)
 {
@@ -807,12 +857,14 @@ static void ed_nputchar(register Edit_t *ep, int n, int c)
 
 /*
  * Do read, restart on interrupt unless SH_SIGSET or SH_SIGTRAP is set
- * Use sfpkrd() to poll() or select() to wait for input if possible
+ * Use select(2) (via sfpkrd()) to wait for input if possible
+ *
+ * The return value is the number of bytes read, or < 0 for EOF.
+ *
  * Unfortunately, systems that get interrupted from slow reads update
- * this access time for for the terminal (in violation of POSIX).
- * The fixtime() macro, resets the time to the time at entry in
- * this case.  This is not necessary for systems that can handle
- * sfpkrd() correctly (i,e., those that support poll() or select()
+ * this access time for the terminal (in violation of POSIX).
+ * The fixtime() macro resets the time to the time at entry in
+ * this case.  This is not necessary for systems that have select().
  */
 int ed_read(void *context, int fd, char *buff, int size, int reedit)
 {
@@ -822,11 +874,12 @@ int ed_read(void *context, int fd, char *buff, int size, int reedit)
 	Shell_t *shp = ep->sh;
 	int mode = -1;
 	int (*waitevent)(int,long,int) = shp->gd->waitevent;
+	/* sfpkrd must use select(2) to intercept SIGWINCH for ed_read */
 	if(ep->e_raw==ALTMODE)
-		mode = 1;
+		mode = 2;
 	if(size < 0)
 	{
-		mode = 1;
+		mode = 2;
 		size = -size;
 	}
 	sh_onstate(SH_TTYWAIT);
@@ -836,8 +889,17 @@ int ed_read(void *context, int fd, char *buff, int size, int reedit)
 	{
 		if(shp->trapnote&(SH_SIGSET|SH_SIGTRAP))
 			goto done;
-		if(ep->sh->winch && sh_isstate(SH_INTERACTIVE) && (sh_isoption(SH_VI) || sh_isoption(SH_EMACS)))
+#if SHOPT_ESH && SHOPT_VSH
+		if(shp->winch && sh_isstate(SH_INTERACTIVE) && (sh_isoption(SH_VI) || sh_isoption(SH_EMACS) || sh_isoption(SH_GMACS)))
+#elif SHOPT_ESH
+		if(shp->winch && sh_isstate(SH_INTERACTIVE) && (sh_isoption(SH_EMACS) || sh_isoption(SH_GMACS)))
+#elif SHOPT_VSH
+		if(shp->winch && sh_isstate(SH_INTERACTIVE) && sh_isoption(SH_VI))
+#else
+		if(0)
+#endif
 		{
+			/* redraw the prompt after receiving SIGWINCH */
 			Edpos_t	lastpos;
 			int	n, rows, newsize;
 			/* move cursor to start of first line */
@@ -860,7 +922,6 @@ int ed_read(void *context, int fd, char *buff, int size, int reedit)
 				while(n--)
 					ed_putstring(ep,CURSOR_UP);
 			}
-	                ep->sh->winch = 0;
 			ed_flush(ep);
 			sh_delay(.05,0);
 			astwinsize(2,&rows,&newsize);
@@ -869,20 +930,18 @@ int ed_read(void *context, int fd, char *buff, int size, int reedit)
 				ep->e_winsz = MINWINDOW;
 			if(!ep->e_multiline && ep->e_wsize < MAXLINE)
 				ep->e_wsize = ep->e_winsz-2;
-			ep->e_nocrnl=1;
-			if(*ep->e_vi_insert)
-			{
-				buff[0] = ESC;
-				buff[1] = cntl('L');
-				buff[2] = 'a';
-				return(3);
-			}
-			if(sh_isoption(SH_EMACS) || sh_isoption(SH_VI))
-				buff[0] = cntl('L');
-			return(1);
+#if SHOPT_ESH && SHOPT_VSH
+			if(sh_isoption(SH_VI))
+				vi_redraw(ep->e_vi);
+			else
+				emacs_redraw(ep->e_emacs);
+#elif SHOPT_VSH
+			vi_redraw(ep->e_vi);
+#elif SHOPT_ESH
+			emacs_redraw(ep->e_emacs);
+#endif
 		}
-		else
-			ep->sh->winch = 0;
+		shp->winch = 0;
 		/* an interrupt that should be ignored */
 		errno = 0;
 		if(!waitevent || (rv=(*waitevent)(fd,-1L,0))>=0)
@@ -958,10 +1017,8 @@ static int putstack(Edit_t *ep,char string[], register int nbyte, int type)
 			{
 				/*** user break key ***/
 				ep->e_lookahead = 0;
-#	if KSHELL
 				sh_fault(SIGINT);
 				siglongjmp(ep->e_env, UINTR);
-#	endif   /* KSHELL */
 			}
 #   endif /* CBREAK */
 
@@ -1016,10 +1073,8 @@ static int putstack(Edit_t *ep,char string[], register int nbyte, int type)
 		{
 			/*** user break key ***/
 			ep->e_lookahead = 0;
-#	if KSHELL
 			sh_fault(SIGINT);
 			siglongjmp(ep->e_env, UINTR);
-#	endif	/* KSHELL */
 		}
 #   endif /* CBREAK */
 	}
@@ -1044,7 +1099,6 @@ int ed_getchar(register Edit_t *ep,int mode)
 	{
 		ed_flush(ep);
 		ep->e_inmacro = 0;
-		/* The while is necessary for reads of partial multbyte chars */
 		*ep->e_vi_insert = (mode==-2);
 		if((n=ed_read(ep,ep->e_fd,readin,-LOOKAHEAD,0)) > 0)
 			n = putstack(ep,readin,n,1);
@@ -1111,13 +1165,16 @@ int ed_getchar(register Edit_t *ep,int mode)
 	return(c);
 }
 
+#if SHOPT_ESH || SHOPT_VSH
 void ed_ungetchar(Edit_t *ep,register int c)
 {
 	if (ep->e_lookahead < LOOKAHEAD)
 		ep->e_lbuf[ep->e_lookahead++] = c;
 	return;
 }
+#endif /* SHOPT_ESH || SHOPT_VSH */
 
+#if SHOPT_ESH || SHOPT_VSH
 /*
  * put a character into the output buffer
  */
@@ -1158,10 +1215,12 @@ void	ed_putchar(register Edit_t *ep,register int c)
 	else
 		ep->e_outptr = dp;
 }
+#endif /* SHOPT_ESH || SHOPT_VSH */
 
+#if SHOPT_ESH || SHOPT_VSH
 /*
  * returns the line and column corresponding to offset <off> in the physical buffer
- * if <cur> is non-zero and <= <off>, then correspodning <curpos> will start the search 
+ * if <cur> is non-zero and <= <off>, then corresponding <curpos> will start the search
  */
 Edpos_t ed_curpos(Edit_t *ep,genchar *phys, int off, int cur, Edpos_t curpos)
 {
@@ -1207,7 +1266,9 @@ Edpos_t ed_curpos(Edit_t *ep,genchar *phys, int off, int cur, Edpos_t curpos)
 	pos.col = col;
 	return(pos);
 }
+#endif /* SHOPT_ESH || SHOPT_VSH */
 
+#if SHOPT_ESH || SHOPT_VSH
 int ed_setcursor(register Edit_t *ep,genchar *physical,register int old,register int new,int first)
 {
 	static int oldline;
@@ -1257,7 +1318,7 @@ int ed_setcursor(register Edit_t *ep,genchar *physical,register int old,register
 					int m = ep->e_winsz+1-plen;
 					ed_putchar(ep,'\n');
 					n = plen;
-					if(m < ed_genlen(physical))
+					if(m < genlen(physical))
 					{
 						while(physical[m] && n-->0)
 							ed_putchar(ep,physical[m++]);
@@ -1307,7 +1368,9 @@ int ed_setcursor(register Edit_t *ep,genchar *physical,register int old,register
 		ed_putchar(ep,physical[old++]);
 	return(new);
 }
+#endif /* SHOPT_ESH || SHOPT_VSH */
 
+#if SHOPT_ESH || SHOPT_VSH
 /*
  * copy virtual to physical and return the index for cursor in physical buffer
  */
@@ -1371,8 +1434,9 @@ int ed_virt_to_phys(Edit_t *ep,genchar *virt,genchar *phys,int cur,int voff,int 
 	ep->e_peol = dp-phys;
 	return(r);
 }
+#endif /* SHOPT_ESH || SHOPT_VSH */
 
-#if SHOPT_MULTIBYTE
+#if (SHOPT_ESH || SHOPT_VSH) && SHOPT_MULTIBYTE
 /*
  * convert external representation <src> to an array of genchars <dest>
  * <src> and <dest> can be the same
@@ -1396,7 +1460,9 @@ int	ed_internal(const char *src, genchar *dest)
 	*dp = 0;
 	return(dp-(wchar_t*)dest);
 }
+#endif /* (SHOPT_ESH || SHOPT_VSH) && SHOPT_MULTIBYTE */
 
+#if SHOPT_MULTIBYTE
 /*
  * convert internal representation <src> into character array <dest>.
  * The <src> and <dest> may be the same.
@@ -1435,7 +1501,9 @@ int	ed_external(const genchar *src, char *dest)
 	*dp = 0;
 	return(dp-dest);
 }
+#endif /* SHOPT_MULTIBYTE */
 
+#if (SHOPT_ESH || SHOPT_VSH) && SHOPT_MULTIBYTE
 /*
  * copy <sp> to <dp>
  */
@@ -1446,7 +1514,9 @@ void	ed_gencpy(genchar *dp,const genchar *sp)
 	sp = (const genchar*)roundof((char*)sp-(char*)0,sizeof(genchar));
 	while(*dp++ = *sp++);
 }
+#endif /* (SHOPT_ESH || SHOPT_VSH) && SHOPT_MULTIBYTE */
 
+#if (SHOPT_ESH || SHOPT_VSH) && SHOPT_MULTIBYTE
 /*
  * copy at most <n> items from <sp> to <dp>
  */
@@ -1457,8 +1527,9 @@ void	ed_genncpy(register genchar *dp,register const genchar *sp, int n)
 	sp = (const genchar*)roundof((char*)sp-(char*)0,sizeof(genchar));
 	while(n-->0 && (*dp++ = *sp++));
 }
+#endif /* (SHOPT_ESH || SHOPT_VSH) && SHOPT_MULTIBYTE */
 
-#endif /* SHOPT_MULTIBYTE */
+#if (SHOPT_ESH || SHOPT_VSH) && SHOPT_MULTIBYTE
 /*
  * find the string length of <str>
  */
@@ -1470,22 +1541,7 @@ int	ed_genlen(register const genchar *str)
 	while(*sp++);
 	return(sp-str-1);
 }
-#endif /* SHOPT_ESH || SHOPT_VSH */
-
-#ifdef future
-/*
- * returns 1 when <n> bytes starting at <a> and <b> are equal
- */
-static int compare(register const char *a,register const char *b,register int n)
-{
-	while(n-->0)
-	{
-		if(*a++ != *b++)
-			return(0);
-	}
-	return(1);
-}
-#endif
+#endif /* (SHOPT_ESH || SHOPT_VSH) && SHOPT_MULTIBYTE */
 
 #if SHOPT_OLDTERMIO
 
@@ -1562,7 +1618,6 @@ int tcsetattr(int fd,int mode,struct termios *tt)
 }
 #endif /* SHOPT_OLDTERMIO */
 
-#if KSHELL
 /*
  * Execute keyboard trap on given buffer <inbuff> of given size <isize>
  * <mode> < 0 for vi insert mode
@@ -1607,7 +1662,6 @@ static int keytrap(Edit_t *ep,char *inbuff,register int insize, int bufsize, int
 	nv_unset(ED_TXTNOD);
 	return(insize);
 }
-#endif /* KSHELL */
 
 #if SHOPT_EDPREDICT
 static int ed_sortdata(const char *s1, const char *s2)
@@ -1735,10 +1789,8 @@ int ed_histgen(Edit_t *ep,const char *pattern)
 	{
 		l = ac;
 		argv = av  = (char**)stakalloc((ac+1)*sizeof(char*));
-		for(mplast=0; l>=0 && (*av= (char*)mp); mplast=mp,mp=mp->next,av++)
-		{
+		for(; l>=0 && (*av= (char*)mp); mp=mp->next,av++)
 			l--;
-		}
 		*av = 0;
 		strsort(argv,ac,ed_sortdata);
 		mplast = (Histmatch_t*)argv[0];
@@ -1762,11 +1814,17 @@ int ed_histgen(Edit_t *ep,const char *pattern)
 			mplast->next = mp;
 		mplast->next = 0;
 	}
-	ep->hlist = (Histmatch_t**)argv;
-	ep->hfirst = ep->hlist?ep->hlist[0]:0;
+	if (argv)
+	{
+		ep->hlist = (Histmatch_t**)argv;
+		ep->hfirst = ep->hlist?ep->hlist[0]:0;
+	}
+	else
+		ep->hfirst = 0;
 	return(ep->hmax=ac);
 }
 
+#if SHOPT_ESH || SHOPT_VSH
 void	ed_histlist(Edit_t *ep,int n)
 {
 	Histmatch_t	*mp,**mpp = ep->hlist+ep->hoff;
@@ -1819,11 +1877,13 @@ void	ed_histlist(Edit_t *ep,int n)
 	}
 	ed_flush(ep);
 }
+#endif /* SHOPT_ESH || SHOPT_VSH */
+
 #endif /* SHOPT_EDPREDICT */
 
 void	*ed_open(Shell_t *shp)
 {
-	Edit_t *ed = newof(0,Edit_t,1,0);
+	Edit_t *ed = sh_newof(0,Edit_t,1,0);
 	ed->sh = shp;
 	strcpy(ed->e_macro,"_??");
 	return((void*)ed);

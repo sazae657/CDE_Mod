@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -40,7 +41,7 @@
 #if _PACKAGE_ast
 #include <ccode.h>
 #else
-/* characters when using ebcdic or ascii */
+/* characters when using EBCDIC or ASCII */
 #if _chr_ebcdic
 #define CC_vt			013	/* vertical tab	*/
 #define CC_esc			047	/* escape	*/
@@ -52,13 +53,7 @@
 #endif /* _chr_ebcdic */
 #endif /* _PACKAGE_ast */
 
-#if __STD_C
 static int chr2str(char* buf, int v)
-#else
-static int chr2str(buf, v)
-char*	buf;
-int	v;
-#endif
 {
 	if(isprint(v) && v != '\\')
 	{	*buf++ = v;
@@ -92,14 +87,9 @@ int	v;
 #define _sffmt_small	1
 #endif
 
-#if __STD_C
-int sfvprintf(Sfio_t* f, const char* form, va_list args)
-#else
-int sfvprintf(f,form,args)
-Sfio_t*	f;		/* file to print to	*/
-char*	form;		/* format to use	*/
-va_list	args;		/* arg list if !argf	*/
-#endif
+int sfvprintf(Sfio_t*		f,		/* file to print to	*/
+	      const char*	form,		/* format to use	*/
+	      va_list		args)		/* arg list if !argf	*/
 {
 	int		n, v=0, w, k, n_s, base, fmt, flags;
 	Sflong_t	lv;
@@ -110,7 +100,7 @@ va_list	args;		/* arg list if !argf	*/
 #endif
 	ssize_t		size;
 	Sfdouble_t	dval;
-	Void_t*		valp;
+	void*		valp;
 	char		*tls[2], **ls;	/* for %..[separ]s		*/
 	char*		t_str;		/* stuff between ()		*/
 	ssize_t		n_str;		/* its length			*/
@@ -146,7 +136,7 @@ va_list	args;		/* arg list if !argf	*/
 #define SMnputc(f,c,n)	{ if((o = SFNPUTC(f,c,n)) > 0 ) n_output += 1; \
 			  if(o != n)	{ SFBUF(f); goto done; } \
 			}
-#define SMwrite(f,s,n)	{ if((o = SFWRITE(f,(Void_t*)s,n)) > 0 ) n_output += o; \
+#define SMwrite(f,s,n)	{ if((o = SFWRITE(f,(void*)s,n)) > 0 ) n_output += o; \
 			  if(o != n)	{ SFBUF(f); goto done; } \
 			}
 #if _sffmt_small /* these macros are made smaller at some performance cost */
@@ -247,7 +237,7 @@ loop_fmt :
 			for(v = 1;;)
 			{	switch(*form++)
 				{
-				case 0 :	/* not balancable, retract */
+				case 0 :	/* not balanceable, retract */
 					form = t_str;
 					t_str = NIL(char*);
 					n_str = 0;
@@ -279,7 +269,7 @@ loop_fmt :
 								LEFTP, 0, 0, 0,0,0,
 								NIL(char*),0);
 							n = (*ft->extf)
-							      (f,(Void_t*)&argv,ft);
+							      (f,(void*)&argv,ft);
 							if(n < 0)
 								goto pop_fmt;
 							if(!(ft->flags&SFFMT_VALUE) )
@@ -367,8 +357,9 @@ loop_fmt :
 			}
 			else if(*form != '*')
 				goto loop_flags;
-		do_star:
-			form += 1; /* fall thru for '*' */
+		do_star: /* for '*' */
+			form += 1;
+			/* FALLTHROUGH */
 		case '*' :
 			form = (*_Sffmtintf)(form,&n);
 			if(*form == '$')
@@ -383,7 +374,7 @@ loop_fmt :
 				v = fp[n].argv.i;
 			else if(ft && ft->extf)
 			{	FMTSET(ft, form,args, '.',dot, 0, 0,0,0, NIL(char*), 0);
-				if((*ft->extf)(f, (Void_t*)(&argv), ft) < 0)
+				if((*ft->extf)(f, (void*)(&argv), ft) < 0)
 					goto pop_fmt;
 				fmt = ft->fmt;
 				flags = (flags&~SFFMT_TYPES) | (ft->flags&SFFMT_TYPES);
@@ -441,7 +432,7 @@ loop_fmt :
 				else if(ft && ft->extf)
 				{	FMTSET(ft, form,args, 'I',sizeof(int), 0, 0,0,0,
 						NIL(char*), 0);
-					if((*ft->extf)(f, (Void_t*)(&argv), ft) < 0)
+					if((*ft->extf)(f, (void*)(&argv), ft) < 0)
 						goto pop_fmt;
 					if(ft->flags&SFFMT_VALUE)
 						size = argv.i;
@@ -544,7 +535,7 @@ loop_fmt :
 		{	FMTSET(ft, form,args, fmt, size,flags, width,precis,base,
 				t_str,n_str);
 			SFEND(f); SFOPEN(f,0);
-			v = (*ft->extf)(f, (Void_t*)(&argv), ft);
+			v = (*ft->extf)(f, (void*)(&argv), ft);
 			SFLOCK(f,0); SFBUF(f);
 
 			if(v < 0)	/* no further processing */
@@ -603,7 +594,7 @@ loop_fmt :
 					argv.d  = va_arg(args,double);
 				break;
 			 case SFFMT_POINTER:
-					argv.vp = va_arg(args,Void_t*);
+					argv.vp = va_arg(args,void*);
 				break;
 			 case SFFMT_CHAR:
 				if(base >= 0)
@@ -638,7 +629,7 @@ loop_fmt :
 				goto pop_fmt;
 			if(!argv.ft->form && ft ) /* change extension functions */
 			{	if(ft->eventf &&
-				   (*ft->eventf)(f,SF_DPOP,(Void_t*)form,ft) < 0)
+				   (*ft->eventf)(f,SF_DPOP,(void*)form,ft) < 0)
 					continue;
 				fmstk->ft = ft = argv.ft;
 			}
@@ -674,6 +665,7 @@ loop_fmt :
 
 		case 'S':
 			flags = (flags & ~(SFFMT_TYPES|SFFMT_LDOUBLE)) | SFFMT_LONG;
+			/* FALLTHROUGH */
 		case 's':
 #if _has_multibyte && defined(mbwidth)
 			wc = (flags & SFFMT_LDOUBLE) && mbwide();
@@ -833,6 +825,7 @@ loop_fmt :
 
 		case 'C':
 			flags = (flags & ~(SFFMT_TYPES|SFFMT_LDOUBLE)) | SFFMT_LONG;
+			/* FALLTHROUGH */
 		case 'c':
 #if _has_multibyte && defined(mbwidth)
 			wc = (flags & SFFMT_LDOUBLE) && mbwide();
@@ -959,6 +952,7 @@ loop_fmt :
 			goto int_arg;
 		case 'X':
 			ssp = "0123456789ABCDEF";
+			/* FALLTHROUGH */
 		case 'x':
 			base = 16; n_s = 15; n = 4;
 			flags &= ~(SFFMT_SIGN|SFFMT_BLANK);
@@ -974,6 +968,7 @@ loop_fmt :
 			goto d_format;
 		case 'u':
 			flags &= ~(SFFMT_SIGN|SFFMT_BLANK);
+			/* FALLTHROUGH */
 		case 'd':
 		d_format:
 #if _PACKAGE_ast
@@ -1398,8 +1393,8 @@ pop_fmt:
 	while((fm = fmstk) ) /* pop the format stack and continue */
 	{	if(fm->eventf)
 		{	if(!form || !form[0])
-				(*fm->eventf)(f,SF_FINAL,NIL(Void_t*),ft);
-			else if((*fm->eventf)(f,SF_DPOP,(Void_t*)form,ft) < 0)
+				(*fm->eventf)(f,SF_FINAL,NIL(void*),ft);
+			else if((*fm->eventf)(f,SF_DPOP,(void*)form,ft) < 0)
 				goto loop_fmt;
 		}
 
@@ -1423,7 +1418,7 @@ done:
 		free(fp);
 	while((fm = fmstk) )
 	{	if(fm->eventf)
-			(*fm->eventf)(f,SF_FINAL,NIL(Void_t*),fm->ft);
+			(*fm->eventf)(f,SF_FINAL,NIL(void*),fm->ft);
 		fmstk = fm->next;
 		free(fm);
 	}
@@ -1437,7 +1432,7 @@ done:
 
 	if((((flags = f->flags)&SF_SHARE) && !(flags&SF_PUBLIC) ) ||
 	   (n > 0 && (sp == data || (flags&SF_LINE) ) ) )
-		(void)SFWRITE(f,(Void_t*)sp,n);
+		(void)SFWRITE(f,(void*)sp,n);
 	else	f->next += n;
 
 	SFOPEN(f,0);

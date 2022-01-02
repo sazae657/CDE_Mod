@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 #ifndef S_BREAK
 #define S_BREAK	1	/* end of token */
 #define S_EOF	2	/* end of buffer */
@@ -41,13 +41,13 @@
 #define S_ERR	20	/* invalid character in ${...} */
 #define S_SPC1	21	/* special prefix characters after $ */
 #define S_SPC2	22	/* special characters after $ */
-#define S_DIG	23	/* digit character after $*/
-#define S_ALP	24	/* alpahbetic character after $ */
+#define S_DIG	23	/* digit character after $ */
+#define S_ALP	24	/* alphabetic character after $ */
 #define S_LBRA	25	/* left brace after $ */
 #define S_RBRA	26	/* right brace after $ */
 #define S_PAR	27	/* set for $( */
 #define S_ENDCH	28	/* macro expansion terminator */
-#define S_SLASH	29	/* / character terminates ~ expansion  */
+#define S_SLASH	29	/* / character terminates ~ expansion */
 #define S_COLON	30	/* for character : */
 #define S_LABEL	31	/* for goto label */
 #define S_EDOL	32	/* ends $identifier */
@@ -55,7 +55,7 @@
 #define S_DOT	34	/* . char */
 #define S_META	35	/* | & ; < > inside ${...} reserved for future use */
 #define S_SPACE	S_BREAK	/* IFS space characters */
-#define S_DELIM	S_RES	/* IFS delimter characters */
+#define S_DELIM	S_RES	/* IFS delimiter characters */
 #define S_MBYTE S_NAME	/* IFS first byte of multi-byte char */
 #define S_BLNK	36	/* space or tab */
 /* The following must be the highest numbered states */
@@ -66,6 +66,7 @@
 #define S_ESC2	41	/* escape character inside '...' */
 
 /* These are the lexical state table names */
+/* See lexstates.c  (ST_NONE must be last) */
 #define ST_BEGIN	0
 #define ST_NAME		1
 #define ST_NORM		2
@@ -77,7 +78,8 @@
 #define ST_DOLNAME	8
 #define ST_MACRO	9
 #define ST_QNEST	10
-#define ST_NONE		11
+#define ST_MOD1		11
+#define ST_NONE		12
 
 #include "FEATURE/locale"
 
@@ -135,6 +137,7 @@ extern const char e_lexsyntax3[];
 extern const char e_lexsyntax4[];
 extern const char e_lexsyntax5[];
 extern const char e_lexwarnvar[];
+extern const char e_lexarithwarn[];
 extern const char e_lexobsolete1[];
 extern const char e_lexobsolete2[];
 extern const char e_lexobsolete3[];

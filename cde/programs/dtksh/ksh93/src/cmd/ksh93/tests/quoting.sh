@@ -2,6 +2,7 @@
 #                                                                      #
 #               This software is part of the ast package               #
 #          Copyright (c) 1982-2011 AT&T Intellectual Property          #
+#          Copyright (c) 2020-2021 Contributors to ksh 93u+m           #
 #                      and is licensed under the                       #
 #                 Eclipse Public License, Version 1.0                  #
 #                    by AT&T Intellectual Property                     #
@@ -17,18 +18,8 @@
 #                  David Korn <dgk@research.att.com>                   #
 #                                                                      #
 ########################################################################
-function err_exit
-{
-	print -u2 -n "\t"
-	print -u2 -r ${Command}[$1]: "${@:2}"
-	(( Errors++ ))
-}
-alias err_exit='err_exit $LINENO'
 
-Command=${0##*/}
-integer Errors=0
-
-[[ -d $tmp && -w $tmp && $tmp == "$PWD" ]] || { err\_exit "$LINENO" '$tmp not set; run this from shtests. Aborting.'; exit 1; }
+. "${SHTESTS_COMMON:-${0%/*}/_common}"
 
 binecho=$(whence -p echo)
 
@@ -95,11 +86,11 @@ if	[[ $z != 'a{b}c' ]]
 then	err_exit '"${z="a{b}c"}" not correct'
 fi
 if	[[ $(print -r -- "a\*b") !=  'a\*b' ]]
-then	err_exit '$(print -r -- "a\*b") differs from  a\*b'
+then	err_exit '$(print -r -- "a\*b") differs from a\*b'
 fi
 unset x
 if	[[ $(print -r -- "a\*b$x") !=  'a\*b' ]]
-then	err_exit '$(print -r -- "a\*b$x") differs from  a\*b'
+then	err_exit '$(print -r -- "a\*b$x") differs from a\*b'
 fi
 x=hello
 set -- ${x+foo bar bam}
@@ -247,7 +238,7 @@ if	[[ $(print -r s"!\2${x}\1\a!") != 's!\2\1\a!' ]]
 then	err_exit  'print -r s"!\2${x}\1\a!" not equal s!\2\1\a!'
 fi
 if	[[ $(print -r $'foo\n\n\n') != foo ]]
-then	err_exit 'trailing newlines on comsubstitution not removed'
+then	err_exit 'trailing newlines on command substitution not removed'
 fi
 unset x
 if	[[ ${x:='//'} != '//' ]]
@@ -316,19 +307,19 @@ re='@(?*)/@(?*)/@(?*)'
 string='\3'
 [[ ${subject/${re}/${string}} != words ]] && err_exit 'string replacement with $string not working with string=\3'
 [[ $(print -r "${subject/${re}/${string}}") != words ]] && err_exit 'string replacement with $string not working with string=\3 using print'
-[[ ${subject/${re}/"${string}"} != '\3' ]] && err_exit 'string replacement with "$string" not working with  string=\3'
-[[ $(print -r "${subject/${re}/"${string}"}") != '\3' ]] && err_exit 'string replacement with "$string" not working with  string=\3 using print'
+[[ ${subject/${re}/"${string}"} != '\3' ]] && err_exit 'string replacement with "$string" not working with string=\3'
+[[ $(print -r "${subject/${re}/"${string}"}") != '\3' ]] && err_exit 'string replacement with "$string" not working with string=\3 using print'
 string='\\3'
 [[ ${subject/${re}/${string}} != '\3' ]] && err_exit 'string replacement with $string not working with string=\\3'
-[[ ${subject/${re}/"${string}"} != '\\3' ]] && err_exit 'string replacement with "$string" not working with  string=\\3'
+[[ ${subject/${re}/"${string}"} != '\\3' ]] && err_exit 'string replacement with "$string" not working with string=\\3'
 [[ ${subject/${re}/\4} != '\4' ]] && err_exit 'string replacement with \4 not working'
 [[ ${subject/${re}/'\4'} != '\4' ]] && err_exit 'string replacement with '\4' not working'
 string='\4'
 [[ ${subject/${re}/${string}} != '\4' ]] && err_exit 'string replacement with $string not working with string=\4'
-[[ ${subject/${re}/"${string}"} != '\4' ]] && err_exit 'string replacement with "$string" not working with  string=\4'
+[[ ${subject/${re}/"${string}"} != '\4' ]] && err_exit 'string replacement with "$string" not working with string=\4'
 string='&foo'
 [[ ${subject/${re}/${string}} != '&foo' ]] && err_exit 'string replacement with $string not working with string=&foo'
-[[ ${subject/${re}/"${string}"} != '&foo' ]] && err_exit 'string replacement with "$string" not working with  string=&foo'
+[[ ${subject/${re}/"${string}"} != '&foo' ]] && err_exit 'string replacement with "$string" not working with string=&foo'
 {
 x=x
 x=${x:-`id | sed 's/^[^(]*(\([^)]*\)).*/\1/'`}

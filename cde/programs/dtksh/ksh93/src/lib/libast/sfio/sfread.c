@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -26,14 +27,9 @@
 **	Written by Kiem-Phong Vo.
 */
 
-#if __STD_C
-ssize_t sfread(Sfio_t* f, Void_t* buf, size_t n)
-#else
-ssize_t sfread(f,buf,n)
-Sfio_t*		f;	/* read from this stream. 	*/
-Void_t*		buf;	/* buffer to read into		*/
-size_t		n;	/* number of bytes to be read. 	*/
-#endif
+ssize_t sfread(Sfio_t*	f,	/* read from this stream. 	*/
+	       void*	buf,	/* buffer to read into		*/
+	       size_t	n)	/* number of bytes to be read. 	*/
 {
 	reg uchar	*s, *begs;
 	reg ssize_t	r;

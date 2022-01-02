@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -26,39 +27,17 @@
 **	Written by Kiem-Phong Vo.
 */
 
-#if __STD_C
 int sfscanf(Sfio_t* f, const char* form, ...)
-#else
-int sfscanf(va_alist)
-va_dcl
-#endif
 {
 	va_list	args;
 	reg int	rv;
-
-#if __STD_C
 	va_start(args,form);
-#else
-	reg Sfio_t*	f;
-	reg char*	form;
-	va_start(args);
-	f = va_arg(args,Sfio_t*);
-	form = va_arg(args,char*);
-#endif
-
 	rv = (f && form) ? sfvscanf(f,form,args) : -1;
 	va_end(args);
 	return rv;
 }
 
-#if __STD_C
 int sfvsscanf(const char* s, const char* form, va_list args)
-#else
-int sfvsscanf(s, form, args)
-char*	s;
-char*	form;
-va_list	args;
-#endif
 {
 	Sfio_t	f;
 
@@ -77,25 +56,11 @@ va_list	args;
 	return sfvscanf(&f,form,args);
 }
 
-#if __STD_C
 int sfsscanf(const char* s, const char* form,...)
-#else
-int sfsscanf(va_alist)
-va_dcl
-#endif
 {
 	va_list		args;
 	reg int		rv;
-#if __STD_C
 	va_start(args,form);
-#else
-	reg char*	s;
-	reg char*	form;
-	va_start(args);
-	s = va_arg(args,char*);
-	form = va_arg(args,char*);
-#endif
-
 	rv = (s && form) ? sfvsscanf(s,form,args) : -1;
 	va_end(args);
 	return rv;

@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1992-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -18,7 +19,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * uniq
  *
@@ -27,7 +27,7 @@
 
 static const char usage[] =
 "[-n?\n@(#)$Id: uniq (AT&T Research) 2009-11-28 $\n]"
-USAGE_LICENSE
+"[--catalog?" ERROR_CATALOG "]"
 "[+NAME?uniq - Report or filter out repeated lines in a file]"
 "[+DESCRIPTION?\buniq\b reads the input, compares adjacent lines, and "
 	"writes one copy of each input line on the output.  The second "
@@ -37,7 +37,7 @@ USAGE_LICENSE
 	"to standard output.  If no \ainfile\a is given, or if the \ainfile\a "
 	"is \b-\b, \buniq\b reads from standard input with the start of "
 	"the file defined as the current offset.]"
-"[c:count?Output the number of times each line occurred  along with "
+"[c:count?Output the number of times each line occurred along with "
 	"the line.]"
 "[d:repeated|duplicates?Output the first of each duplicate line.]"
 "[D:all-repeated?Output all duplicate lines as a group with an empty "
@@ -303,7 +303,7 @@ b_uniq(int argc, char** argv, Shbltin_t* context)
 			break;
 		case '?':
 			error(ERROR_usage(2), "%s", opt_info.arg);
-			break;
+			UNREACHABLE();
 		}
 		break;
 	}
@@ -311,11 +311,17 @@ b_uniq(int argc, char** argv, Shbltin_t* context)
 	if(all && (mode&C_FLAG))
 		error(2, "-c and -D are mutually exclusive");
 	if(error_info.errors)
+	{
 		error(ERROR_usage(2), "%s", optusage(NiL));
+		UNREACHABLE();
+	}
 	if((cp = *argv) && (argv++,!streq(cp,"-")))
 	{
 		if(!(fpin = sfopen(NiL,cp,"r")))
+		{
 			error(ERROR_system(1),"%s: cannot open",cp);
+			UNREACHABLE();
+		}
 	}
 	else
 		fpin = sfstdin;
@@ -323,7 +329,10 @@ b_uniq(int argc, char** argv, Shbltin_t* context)
 	{
 		argv++;
 		if(!(fpout = sfopen(NiL,cp,"w")))
+		{
 			error(ERROR_system(1),"%s: cannot create",cp);
+			UNREACHABLE();
+		}
 	}
 	else
 		fpout = sfstdout;
@@ -331,6 +340,7 @@ b_uniq(int argc, char** argv, Shbltin_t* context)
 	{
 		error(2, "too many arguments");
 		error(ERROR_usage(2), "%s", optusage(NiL));
+		UNREACHABLE();
 	}
 	error_info.errors = uniq(fpin,fpout,fields,chars,width,mode,all,compare);
 	if(fpin!=sfstdin)
@@ -339,4 +349,3 @@ b_uniq(int argc, char** argv, Shbltin_t* context)
 		sfclose(fpout);
 	return(error_info.errors);
 }
-

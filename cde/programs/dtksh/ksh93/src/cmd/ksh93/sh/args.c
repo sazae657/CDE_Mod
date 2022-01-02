@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * UNIX shell
  *
@@ -36,17 +36,9 @@
 #include	"FEATURE/poll"
 #if SHOPT_KIA
 #   include	"shlex.h"
-#   include	"io.h"
-#endif /* SHOPT_KIA */
-#if SHOPT_PFSH
-#   define PFSHOPT	"P"
-#else
-#   define PFSHOPT
 #endif
-#if SHOPT_HISTEXPAND
-#   define HFLAG        "H"
-#else
-#   define HFLAG        ""
+#if SHOPT_KIA || SHOPT_DEVFD
+#   include	"io.h"
 #endif
 
 #define SORT		1
@@ -55,7 +47,19 @@
 static	char		*null;
 
 /* The following order is determined by sh_optset */
-static  const char optksh[] =  PFSHOPT "DircabefhkmnpstuvxBCGEl" HFLAG;
+static  const char optksh[] =
+#if SHOPT_PFSH
+	"P"
+#endif
+	"Dircabefhkmnpstuvx"
+#if SHOPT_BRACEPAT
+	"B"
+#endif
+	"CGEl"
+#if SHOPT_HISTEXPAND
+	"H"
+#endif
+	;
 static const int flagval[]  =
 {
 #if SHOPT_PFSH
@@ -64,8 +68,11 @@ static const int flagval[]  =
 	SH_DICTIONARY, SH_INTERACTIVE, SH_RESTRICTED, SH_CFLAG,
 	SH_ALLEXPORT, SH_NOTIFY, SH_ERREXIT, SH_NOGLOB, SH_TRACKALL,
 	SH_KEYWORD, SH_MONITOR, SH_NOEXEC, SH_PRIVILEGED, SH_SFLAG, SH_TFLAG,
-	SH_NOUNSET, SH_VERBOSE,  SH_XTRACE, SH_BRACEEXPAND, SH_NOCLOBBER,
-	SH_GLOBSTARS, SH_RC, SH_LOGIN_SHELL,
+	SH_NOUNSET, SH_VERBOSE,  SH_XTRACE,
+#if SHOPT_BRACEPAT
+	SH_BRACEEXPAND,
+#endif
+	SH_NOCLOBBER, SH_GLOBSTARS, SH_RC, SH_LOGIN_SHELL,
 #if SHOPT_HISTEXPAND
         SH_HISTEXPAND,
 #endif
@@ -93,7 +100,7 @@ static void 		sh_argset(Arg_t*, char *[]);
 
 void *sh_argopen(Shell_t *shp)
 {
-	void *addr = newof(0,Arg_t,1,0);
+	void *addr = sh_newof(0,Arg_t,1,0);
 	Arg_t *ap = (Arg_t*)addr;
 	ap->sh = shp;
 	return(addr);
@@ -121,7 +128,7 @@ int sh_argopts(int argc,register char *argv[], void *context)
 	Lex_t		*lp = (Lex_t*)(shp->lex_context);
 #endif
 	Shopt_t		newflags;
-	int setflag=0, action=0, trace=(int)sh_isoption(SH_XTRACE);
+	int		defaultflag=0, setflag=0, action=0, trace=(int)sh_isoption(SH_XTRACE);
 	Namval_t *np = NIL(Namval_t*);
 	const char *cp;
 	int verbose,f;
@@ -164,17 +171,21 @@ int sh_argopts(int argc,register char *argv[], void *context)
 			}
 			o &= 0xff;
 			if(sh_isoption(SH_RESTRICTED) && !f && o==SH_RESTRICTED)
+			{
 				errormsg(SH_DICT,ERROR_exit(1), e_restricted, opt_info.arg);
+				UNREACHABLE();
+			}
 			break;
 		    case -6:	/* --default */
 			{
 				register const Shtable_t *tp;
 				for(tp=shtab_options; o = tp->sh_number; tp++)
-					if(!(o&SH_COMMANDLINE) && is_option(&newflags,o&0xff))
-						off_option(&newflags,o&0xff);
+					if(!(o&SH_COMMANDLINE) && (o&=0xff)!=SH_RESTRICTED && is_option(&newflags,o))
+						off_option(&newflags,o);
 			}
+			defaultflag++;
 		    	continue;
-	 	    case -7:
+		    case -7:	/* --state */
 			f = 0;
 		    	goto byname;
 	 	    case 'D':
@@ -202,18 +213,19 @@ int sh_argopts(int argc,register char *argv[], void *context)
 				ap->kiafile = opt_info.arg;
 				n = 'n';
 			}
-			/*FALLTHROUGH*/
 #endif /* SHOPT_KIA */
 #if SHOPT_REGRESS
 			goto skip;
 		    case 'I':
 			continue;
 #endif /* SHOPT_REGRESS */
+			/* FALLTHROUGH */
 		    skip:
 		    default:
 			if(cp=strchr(optksh,n))
 				o = flagval[cp-optksh];
 			break;
+		    case -5:	/* --posix must be handled explicitly to stop AST optget(3) overriding it */
 		    case ':':
 			if(opt_info.name[0]=='-'&&opt_info.name[1]=='-')
 			{
@@ -229,11 +241,26 @@ int sh_argopts(int argc,register char *argv[], void *context)
 		}
 		if(f)
 		{
+#if SHOPT_ESH && SHOPT_VSH
 			if(o==SH_VI || o==SH_EMACS || o==SH_GMACS)
 			{
 				off_option(&newflags,SH_VI);
 				off_option(&newflags,SH_EMACS);
 				off_option(&newflags,SH_GMACS);
+			}
+#elif SHOPT_ESH
+			if(o==SH_EMACS || o==SH_GMACS)
+			{
+				off_option(&newflags,SH_EMACS);
+				off_option(&newflags,SH_GMACS);
+			}
+#endif /* SHOPT_ESH && SHOPT_VSH */
+			if(o==SH_POSIX && !defaultflag)
+			{
+#if SHOPT_BRACEPAT
+				off_option(&newflags,SH_BRACEEXPAND);
+#endif
+				on_option(&newflags,SH_LETOCTAL);
 			}
 			on_option(&newflags,o);
 			off_option(&ap->sh->offoptions,o);
@@ -241,7 +268,17 @@ int sh_argopts(int argc,register char *argv[], void *context)
 		else
 		{
 			if ((o == SH_RESTRICTED) && sh_isoption(SH_RESTRICTED))
+			{
 				errormsg(SH_DICT,ERROR_exit(1),e_restricted,"r"); /* set -r cannot be unset */
+				UNREACHABLE();
+			}
+			if(o==SH_POSIX && !defaultflag)
+			{
+#if SHOPT_BRACEPAT
+				on_option(&newflags,SH_BRACEEXPAND);
+#endif
+				off_option(&newflags,SH_LETOCTAL);
+			}
 			if(o==SH_XTRACE)
 				trace = 0;
 			off_option(&newflags,o);
@@ -250,7 +287,10 @@ int sh_argopts(int argc,register char *argv[], void *context)
 		}
 	}
 	if(error_info.errors)
+	{
 		errormsg(SH_DICT,ERROR_usage(2),"%s",optusage(NIL(char*)));
+		UNREACHABLE();
+	}
 	/* check for '-' or '+' argument */
 	if((cp=argv[opt_info.index]) && cp[1]==0 && (*cp=='+' || *cp=='-') &&
 		strcmp(argv[opt_info.index-1],"--"))
@@ -289,6 +329,7 @@ int sh_argopts(int argc,register char *argv[], void *context)
 		{
 			errormsg(SH_DICT,2,e_cneedsarg);
 			errormsg(SH_DICT,ERROR_usage(2),optusage(NIL(char*)));
+			UNREACHABLE();
 		}
 		argc--;
 	}
@@ -298,15 +339,24 @@ int sh_argopts(int argc,register char *argv[], void *context)
 	if(ap->kiafile)
 	{
 		if(!argv[0])
+		{
 			errormsg(SH_DICT,ERROR_usage(2),"-R requires scriptname");
+			UNREACHABLE();
+		}
 		if(!(lp->kiafile=sfopen(NIL(Sfio_t*),ap->kiafile,"w+")))
+		{
 			errormsg(SH_DICT,ERROR_system(3),e_create,ap->kiafile);
+			UNREACHABLE();
+		}
 		if(!(lp->kiatmp=sftmp(2*SF_BUFSIZE)))
+		{
 			errormsg(SH_DICT,ERROR_system(3),e_tmpcreate);
+			UNREACHABLE();
+		}
 		sfputr(lp->kiafile,";vdb;CIAO/ksh",'\n');
 		lp->kiabegin = sftell(lp->kiafile);
 		lp->entity_tree = dtopen(&_Nvdisc,Dtbag);
-		lp->scriptname = strdup(sh_fmtq(argv[0]));
+		lp->scriptname = sh_strdup(sh_fmtq(argv[0]));
 		lp->script=kiaentity(lp,lp->scriptname,-1,'p',-1,0,0,'s',0,"");
 		lp->fscript=kiaentity(lp,lp->scriptname,-1,'f',-1,0,0,'s',0,"");
 		lp->unknown=kiaentity(lp,"<unknown>",-1,'p',-1,0,0,'0',0,"");
@@ -344,21 +394,11 @@ void sh_applyopts(Shell_t* shp,Shopt_t newflags)
 			(shp->gd->userid==shp->gd->euserid && shp->gd->groupid==shp->gd->egroupid))
 				off_option(&newflags,SH_PRIVILEGED);
 	}
-	/* -o posix also switches -o braceexpand and -o letoctal */
-	if(!sh_isoption(SH_POSIX) && is_option(&newflags,SH_POSIX))
-	{
-#if SHOPT_BRACEPAT
-		off_option(&newflags,SH_BRACEEXPAND);
-#endif
-		on_option(&newflags,SH_LETOCTAL);
-	}
-	else if(sh_isoption(SH_POSIX) && !is_option(&newflags,SH_POSIX))
-	{
-#if SHOPT_BRACEPAT
-		on_option(&newflags,SH_BRACEEXPAND);
-#endif
-		off_option(&newflags,SH_LETOCTAL);
-	}
+	/* sync monitor (part of job control) state with -o monitor option change */
+	if(!sh_isoption(SH_MONITOR) && is_option(&newflags,SH_MONITOR))
+		sh_onstate(SH_MONITOR);
+	else if(sh_isoption(SH_MONITOR) && !is_option(&newflags,SH_MONITOR))
+		sh_offstate(SH_MONITOR);
 	shp->options = newflags;
 }
 
@@ -565,7 +605,7 @@ void sh_printopts(Shopt_t oflags,register int mode, Shopt_t *mask)
 			sfputc(sfstdout,'\n');
 		return;
 	}
-#if SHOPT_RAWONLY
+#if SHOPT_VSH && SHOPT_RAWONLY
 	on_option(&oflags,SH_VIRAW);
 #endif
 	if(!(mode&(PRINT_ALL|PRINT_VERBOSE))) /* only print set options */
@@ -585,7 +625,7 @@ void sh_printopts(Shopt_t oflags,register int mode, Shopt_t *mask)
 		{
 			sfputr(sfstdout,name,' ');
 			sfnputc(sfstdout,' ',24-strlen(name));
-			sfputr(sfstdout,on ? sh_translate(e_on) : sh_translate(e_off),'\n');
+			sfputr(sfstdout,on ? "on" : "off",'\n');
 		}
 		else if(mode&PRINT_ALL) /* print unset options also */
 			sfprintf(sfstdout, "set %co %s\n", on?'-':'+', name);
@@ -601,7 +641,7 @@ void sh_printopts(Shopt_t oflags,register int mode, Shopt_t *mask)
  */
 char **sh_argbuild(Shell_t *shp,int *nargs, const struct comnod *comptr,int flag)
 {
-	register struct argnod	*argp;
+	register struct argnod	*argp=0;
 	struct argnod *arghead=0;
 	shp->xargmin = 0;
 	{
@@ -623,8 +663,6 @@ char **sh_argbuild(Shell_t *shp,int *nargs, const struct comnod *comptr,int flag
 		*nargs = 0;
 		if(ac)
 		{
-			if(ac->comnamp == SYSLET)
-				flag |= ARG_LET;
 			argp = ac->comarg;
 			while(argp)
 			{
@@ -694,18 +732,24 @@ struct argnod *sh_argprocsub(Shell_t *shp,struct argnod *argp)
 	ap->argflag &= ~ARG_RAW;
 	fd = argp->argflag&ARG_RAW;
 	if(fd==0 && shp->subshell)
-		sh_subtmpfile(shp->comsub);
+		sh_subtmpfile(shp);
 #if SHOPT_DEVFD
 	sfwrite(shp->stk,e_devfdNN,8);
 	pv[2] = 0;
 	sh_pipe(pv);
 #else
 	pv[0] = -1;
-	while((shp->fifo = pathtemp(0,0,0,"ksh.fifo",0), mkfifo(shp->fifo,0))<0)
+	while(shp->fifo = pathtemp(0,0,0,"ksh.fifo",0), shp->fifo && mkfifo(shp->fifo,0)<0)
 	{
 		if(errno==EEXIST || errno==EACCES || errno==ENOENT || errno==ENOTDIR || errno==EROFS)
 			continue;		/* lost race (name conflict or tmp dir change); try again */
-		errormsg(SH_DICT,ERROR_system(128),"process substitution: FIFO creation failed");
+		shp->fifo = 0;
+		break;
+	}
+	if(!shp->fifo)
+	{
+		errormsg(SH_DICT, ERROR_SYSTEM|ERROR_PANIC, "process substitution: FIFO creation failed");
+		UNREACHABLE();
 	}
 	chmod(shp->fifo,S_IRUSR|S_IWUSR);	/* mkfifo + chmod works regardless of umask */
 	sfputr(shp->stk,shp->fifo,0);
@@ -716,8 +760,9 @@ struct argnod *sh_argprocsub(Shell_t *shp,struct argnod *argp)
 	/* turn off job control */
 	sh_offstate(SH_INTERACTIVE);
 	sh_offstate(SH_MONITOR);
+	sh_offstate(SH_PROFILE);
 	job.jobcontrol = 0;
-	/* do the process substitution */
+	/* run the process substitution */
 	shp->subshell = 0;
 	if(fd)
 		shp->inpipe = pv;
@@ -729,9 +774,13 @@ struct argnod *sh_argprocsub(Shell_t *shp,struct argnod *argp)
 	job.jobcontrol = savejobcontrol;
 	sh_setstate(savestates);
 #if SHOPT_DEVFD
-	close(pv[1-fd]);
+	sh_close(pv[1-fd]);
 	sh_iosave(shp,-pv[fd], shp->topfd, (char*)0);
 #else
+	/* remember the FIFO for cleanup in case the command never opens it (see fifo_cleanup(), xec.c) */
+	if(!shp->fifo_tree)
+		shp->fifo_tree = dtopen(&_Nvdisc,Dtoset);
+	nv_search(shp->fifo,shp->fifo_tree,NV_ADD);
 	free(shp->fifo);
 	shp->fifo = 0;
 #endif /* SHOPT_DEVFD */
@@ -781,4 +830,3 @@ static int arg_expand(Shell_t *shp,register struct argnod *argp, struct argnod *
 	}
 	return(count);
 }
-

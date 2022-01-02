@@ -1,7 +1,8 @@
 /***********************************************************************
 *                                                                      *
 *               This software is part of the ast package               *
-*          Copyright (c) 1992-2012 AT&T Intellectual Property          *
+*          Copyright (c) 1992-2013 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -18,11 +19,14 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 static const char usage[] =
-"[-?\n@(#)pty (AT&T Research) 2012-06-11\n]"
-USAGE_LICENSE
+"[-?\n@(#)pty (AT&T Research) 2013-05-22\n]"
+"[-author?Glenn Fowler <gsf@research.att.com>]"
+"[-author?David Korn <dgk@research.att.com>]"
+"[-copyright?Copyright (c) 2001-2013 AT&T Intellectual Property]"
+"[-license?http://www.eclipse.org/org/documents/epl-v10.html]"
+"[--catalog?builtin]"
 "[+NAME?pty - create pseudo terminal and run command]"
 "[+DESCRIPTION?\bpty\b creates a pseudo pty and then runs \bcommand\b "
     "with arguments given by \aarg\a and the standard input, standard "
@@ -121,6 +125,12 @@ USAGE_LICENSE
 #define CMIN		1
 #endif
 
+static noreturn void outofmemory(void)
+{
+	error(ERROR_SYSTEM|ERROR_PANIC, "out of memory");
+	UNREACHABLE();
+}
+
 #if !_lib_openpty && !_lib__getpty && !defined(_pty_clone)
 # if !_lib_grantpt || !_lib_unlock
 #   if !_lib_ptsname
@@ -212,7 +222,6 @@ static int
 mkpty(int* master, int* minion)
 {
 	struct termios	tty;
-	struct termios	tst;
 	struct termios*	ttyp;
 #ifdef TIOCGWINSZ
 	struct winsize	win;
@@ -247,7 +256,12 @@ mkpty(int* master, int* minion)
 	tty.c_lflag |= ECHOKE;
 #endif
 	tty.c_oflag |= (ONLCR | OPOST);
-	tty.c_oflag &= ~(OCRNL | ONLRET);
+#ifdef OCRNL
+	tty.c_oflag &= ~OCRNL;
+#endif
+#ifdef ONLRET
+	tty.c_oflag &= ~ONLRET;
+#endif
 	tty.c_iflag |= BRKINT;
 	tty.c_iflag &= ~IGNBRK;
 	tty.c_cc[VTIME] = 0;
@@ -307,6 +321,7 @@ mkpty(int* master, int* minion)
 		return -1;
 #endif
 #ifdef I_PUSH
+	struct termios	tst;
 	if (tcgetattr(*minion, &tst) < 0 && (ioctl(*minion, I_PUSH, "ptem") < 0 || ioctl(*minion, I_PUSH, "ldterm") < 0))
 	{
 		close(*minion);
@@ -641,10 +656,7 @@ masterline(Sfio_t* mp, Sfio_t* lp, char* prompt, int must, int timeout, Master_t
 		a = roundof(bp->max - bp->buf + n, SF_BUFSIZE);
 		r = bp->buf;
 		if (!(bp->buf = vmnewof(bp->vm, bp->buf, char, a, 0)))
-		{
-			error(ERROR_SYSTEM|2, "out of space");
-			return 0;
-		}
+			outofmemory();
 		bp->max = bp->buf + a;
 		if (bp->buf != r)
 		{
@@ -780,12 +792,7 @@ dialogue(Sfio_t* mp, Sfio_t* lp, int delay, int timeout)
 	    !(cond = vmnewof(vm, 0, Cond_t, 1, 0)) ||
 	    !(master = vmnewof(vm, 0, Master_t, 1, 0)) ||
 	    !(master->buf = vmnewof(vm, 0, char, 2 * SF_BUFSIZE, 0)))
-	{
-		error(ERROR_SYSTEM|2, "out of space");
-		id = 0;
-		line = 0;
-		goto done;
-	}
+		outofmemory();
 	master->vm = vm;
 	master->cur = master->end = master->buf;
 	master->max = master->buf + 2 * SF_BUFSIZE - 1;
@@ -836,10 +843,7 @@ dialogue(Sfio_t* mp, Sfio_t* lp, int delay, int timeout)
 			break;
 		case 'i':
 			if (!cond->next && !(cond->next = vmnewof(vm, 0, Cond_t, 1, 0)))
-			{
-				error(ERROR_SYSTEM|2, "out of space");
-				goto done;
-			}
+				outofmemory();
 			cond = cond->next;
 			cond->flags = IF;
 			if ((cond->prev->flags & SKIP) && !(cond->text = 0) || !(cond->text = masterline(mp, lp, 0, 0, timeout, master)))
@@ -948,7 +952,7 @@ dialogue(Sfio_t* mp, Sfio_t* lp, int delay, int timeout)
 			}
 			if (*s && !(master->ignore = vmstrdup(vm, s)))
 			{
-				error(ERROR_SYSTEM|2, "out of space");
+				error(ERROR_SYSTEM|2, "out of memory");
 				goto done;
 			}
 			break;
@@ -960,7 +964,7 @@ dialogue(Sfio_t* mp, Sfio_t* lp, int delay, int timeout)
 			}
 			if (*s && !(error_info.id = vmstrdup(vm, s)))
 			{
-				error(ERROR_SYSTEM|2, "out of space");
+				error(ERROR_SYSTEM|2, "out of memory");
 				goto done;
 			}
 			break;
@@ -972,7 +976,7 @@ dialogue(Sfio_t* mp, Sfio_t* lp, int delay, int timeout)
 			}
 			if (*s && !(master->prompt = vmstrdup(vm, s)))
 			{
-				error(ERROR_SYSTEM|2, "out of space");
+				error(ERROR_SYSTEM|2, "out of memory");
 				goto done;
 			}
 			break;
@@ -1039,6 +1043,7 @@ b_pty(int argc, char** argv, Shbltin_t* context)
 			continue;
 		case 'l':
 			log = opt_info.arg;
+			/* FALLTHROUGH */
 		case 'm':
 			messages = opt_info.arg;
 			continue;
@@ -1058,17 +1063,26 @@ b_pty(int argc, char** argv, Shbltin_t* context)
 			break;
 		case '?':
 			error(ERROR_usage(2), "%s", opt_info.arg);
-			break;
+			UNREACHABLE();
 		}
 		break;
 	}
 	argv += opt_info.index;
 	if (!argv[0])
+	{
 		error(ERROR_exit(1), "command must be specified");
+		UNREACHABLE();
+	}
 	if (mkpty(&master, &minion) < 0)
+	{
 		error(ERROR_system(1), "unable to create pty");
+		UNREACHABLE();
+	}
 	if (!(mp = sfnew(NiL, 0, SF_UNBOUND, master, SF_READ|SF_WRITE)))
+	{
 		error(ERROR_system(1), "cannot open master stream");
+		UNREACHABLE();
+	}
 	if (stty)
 	{
 		n = 2;
@@ -1076,7 +1090,7 @@ b_pty(int argc, char** argv, Shbltin_t* context)
 			if (isspace(*s))
 				n++;
 		if (!(ap = newof(0, Argv_t, 1, (n + 2) * sizeof(char*) + (s - stty + 1))))
-			error(ERROR_system(1), "out of space");
+			outofmemory();
 		ap->argc = n + 1;
 		ap->argv = (char**)(ap + 1);
 		ap->args = (char*)(ap->argv + n + 2);
@@ -1096,9 +1110,15 @@ b_pty(int argc, char** argv, Shbltin_t* context)
 	if (!log)
 		lp = 0;
 	else if (!(lp = sfopen(NiL, log, "w")))
+	{
 		error(ERROR_system(1), "%s: cannot write", log);
+		UNREACHABLE();
+	}
 	if (!(proc = runcmd(argv, minion, session)))
+	{
 		error(ERROR_system(1), "unable run %s", argv[0]);
+		UNREACHABLE();
+	}
 	close(minion);
 	if (messages)
 	{
@@ -1110,7 +1130,10 @@ b_pty(int argc, char** argv, Shbltin_t* context)
 		else if ((fd = open(messages, O_CREAT|O_WRONLY, MODE_666)) >= 0)
 			drop = 0;
 		else
+		{
 			error(ERROR_system(1), "%s: cannot redirect messages", messages);
+			UNREACHABLE();
+		}
 		close(2);
 		dup(fd);
 		if (drop)
@@ -1119,6 +1142,9 @@ b_pty(int argc, char** argv, Shbltin_t* context)
 	minion = (*fun)(mp, lp, delay, timeout);
 	master = procclose(proc);
 	if (lp && sfclose(lp))
+	{
 		error(ERROR_system(1), "%s: write error", log);
+		UNREACHABLE();
+	}
 	return minion ? minion : master;
 }

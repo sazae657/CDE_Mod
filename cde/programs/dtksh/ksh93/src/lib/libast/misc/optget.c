@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * Glenn Fowler
  * AT&T Research
@@ -60,7 +60,7 @@
 
 #define OPT_TYPE	(OPT_flag|OPT_number|OPT_string)
 
-#define STYLE_posix	0		/* posix getopt usage		*/
+#define STYLE_posix	0		/* POSIX getopt usage		*/
 #define STYLE_short	1		/* [default] short usage	*/
 #define STYLE_long	2		/* long usage			*/
 #define STYLE_match	3		/* long description of matches	*/
@@ -176,7 +176,7 @@ static unsigned char	map[UCHAR_MAX];
 
 static Optstate_t	state;
 
-#if 0 /* #if !_PACKAGE_astsa  // this somehow corrupts "Or:" usage mesages, e.g. in 'typeset -\?' */
+#if 0 /* #if !_PACKAGE_astsa  // this somehow corrupts "Or:" usage messages, e.g. in 'typeset -\?' */
 
 #define ID		ast.id
 
@@ -217,10 +217,10 @@ static const List_t	help_head[] =
 	'-',	0,
 		0,
 	'+',	C("NAME"),
-		C("options available to all \bast\b commands"),
+		C("options available to all \bAST\b commands"),
 	'+',	C("DESCRIPTION"),
 		C("\b-?\b and \b--?\b* options are the same \
-for all \bast\b commands. For any \aitem\a below, if \b--\b\aitem\a is not \
+for all \bAST\b commands. For any \aitem\a below, if \b--\b\aitem\a is not \
 supported by a given command then it is equivalent to \b--\?\?\b\aitem\a. The \
 \b--\?\?\b form should be used for portability. All output is written to the \
 standard error."),
@@ -229,29 +229,29 @@ standard error."),
 static const Help_t	styles[] =
 {
 	C("about"),	"-",		STYLE_match,
-	Z("List all implementation info."),
+	Z("Show all implementation info."),
 	C("api"),	"?api",		STYLE_api,
-	Z("List detailed info in program readable form."),
+	Z("Output detailed info in program readable form."),
 	C("help"),	"",		-1,
-	Z("List detailed help option info."),
+	Z("Show detailed help option info."),
 	C("html"),	"?html",	STYLE_html,
-	Z("List detailed info in html."),
+	Z("Output detailed info in HTML."),
 	C("keys"),	"?keys",	STYLE_keys,
-	Z("List the usage translation key strings with C style escapes."),
+	Z("Output usage key strings for translation."),
 	C("long"),	"?long",	STYLE_long,
-	Z("List long option usage."),
+	Z("Show brief usage with long options."),
 	C("man"),	"?man",		STYLE_man,
-	Z("List detailed info in displayed man page form."),
+	Z("Show detailed info as a manual page."),
 	C("nroff"),	"?nroff",	STYLE_nroff,
-	Z("List detailed info in nroff."),
+	Z("Output detailed info in nroff format."),
 	C("options"),	"?options",	STYLE_options,
 	Z("List short and long option details."),
 	C("posix"),	"?posix",	STYLE_posix,
-	Z("List posix getopt usage."),
+	Z("Output POSIX-compliant getopt(3) short options string."),
 	C("short"),	"?short",	STYLE_short,
-	Z("List short option usage."),
+	Z("Show brief usage with short options."),
 	C("usage"),	"?usage",	STYLE_usage,
-	Z("List the usage string with C style escapes."),
+	Z("Output the full AST optget(3) usage string."),
 };
 
 static const List_t	help_tail[] =
@@ -296,20 +296,6 @@ static const Attr_t	attrs[] =
 };
 
 static const char	unknown[] = C("unknown option or attribute");
-
-static const char*	heading[] =
-{
-	C("INDEX"),
-	C("USER COMMANDS"),
-	C("SYSTEM LIBRARY"),
-	C("USER LIBRARY"),
-	C("FILE FORMATS"),
-	C("MISCELLANEOUS"),
-	C("GAMES and DEMOS"),
-	C("SPECIAL FILES"),
-	C("ADMINISTRATIVE COMMANDS"),
-	C("GUIs"),
-};
 
 /*
  * list of common man page strings
@@ -1138,7 +1124,7 @@ init(register char* s, Optpass_t* p)
 	if (!p->version && (t = strchr(s, '(')) && strchr(t, ')') && (state.cp || (state.cp = sfstropen())))
 	{
 		/*
-		 * solaris long option compatibility
+		 * Solaris long option compatibility
 		 */
 
 		p->version = 1;
@@ -2530,26 +2516,26 @@ opthelp(const char* oopts, const char* what)
 		for (q = o; q < e; q++)
 			if (!(q->flags & OPT_ignore) && !streq(q->catalog, o->catalog))
 				o = q;
-		/*FALLTHROUGH*/
+		/* FALLTHROUGH */
 	case STYLE_posix:
 		sfputc(mp, '\f');
 		break;
 	default:
-		if (!state.emphasis)
+		state.emphasis = 0;
+		if (x = getenv("ERROR_OPTIONS"))
 		{
-			if (x = getenv("ERROR_OPTIONS"))
+			if (strmatch(x, "*noemphasi*"))
+				break;
+			if (strmatch(x, "*emphasi*"))
 			{
-				if (strmatch(x, "*noemphasi*"))
-					break;
-				if (strmatch(x, "*emphasi*"))
-				{
-					state.emphasis = 1;
-					break;
-				}
-			}
-			if ((x = getenv("TERM")) && strmatch(x, "(ansi|vt100|xterm)*") && isatty(sffileno(sfstderr)))
 				state.emphasis = 1;
+				break;
+			}
 		}
+		if (isatty(sffileno(sfstderr))
+		&& (x = getenv("TERM"))
+		&& strmatch(x, "(ansi|cons|dtterm|linux|screen|sun|vt???|wsvt|xterm)*"))
+			state.emphasis = 1;
 		break;
 	}
 	x = "";
@@ -4118,7 +4104,7 @@ optusage(const char* opts)
  * convert number using strtonll() *except* that
  * 0*[[:digit:]].* is treated as [[:digit:]].*
  * i.e., it looks octal but isn't, to meet
- * posix Utility Argument Syntax -- use
+ * POSIX Utility Argument Syntax -- use
  * 0x.* or <base>#* for alternate bases
  */
 
@@ -4388,9 +4374,9 @@ optget(register char** argv, const char* oopts)
 	 */
 
 	opt_info.assignment = 0;
-	num = 1;
-	w = v = 0;
-	x = 0;
+	nov = no = num = 1;
+	e = w = v = 0;
+	n = x = 0;
 	for (;;)
 	{
 		if (!opt_info.offset)

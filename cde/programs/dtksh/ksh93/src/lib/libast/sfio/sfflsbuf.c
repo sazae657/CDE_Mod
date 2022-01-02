@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -27,13 +28,8 @@
 **	Written by Kiem-Phong Vo
 */
 
-#if __STD_C
-int _sfflsbuf(Sfio_t* f, int c)
-#else
-int _sfflsbuf(f,c)
-Sfio_t*	f;	/* write out the buffered content of this stream */
-int	c;	/* if c>=0, c is also written out */ 
-#endif
+int _sfflsbuf(Sfio_t*	f,	/* write out the buffered content of this stream */
+	      int	c)	/* if c>=0, c is also written out */
 {
 	ssize_t		n, w, written;
 	uchar*		data;

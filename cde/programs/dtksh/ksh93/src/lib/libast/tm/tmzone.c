@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                     Phong Vo <phongvo@gmail.com>                     *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * Glenn Fowler
  * AT&T Research
@@ -92,10 +92,10 @@ tmzone(register const char* name, char** end, const char* type, int* dst)
 		{
 		case 'C':
 			d += 15;
-			/*FALLTHROUGH*/
+			/* FALLTHROUGH */
 		case 'B':
 			d += 15;
-			/*FALLTHROUGH*/
+			/* FALLTHROUGH */
 		case 'A':
 			d += 15;
 			e++;

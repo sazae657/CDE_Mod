@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1982-2012 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -17,7 +18,6 @@
 *                  David Korn <dgk@research.att.com>                   *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 /*
  * Shell macro expander
  * expands ~
@@ -53,7 +53,7 @@
 
 #if _WINIX
     static int Skip;
-#endif /*_WINIX */
+#endif /* _WINIX */
 
 static int	_c_;
 typedef struct  _mac_
@@ -73,8 +73,6 @@ typedef struct  _mac_
 	char		patfound;	/* set if pattern character found */
 	char		assign;		/* set for assignments */
 	char		arith;		/* set for ((...)) */
-	char		let;		/* set when expanding let arguments */
-	char		zeros;		/* strip leading zeros when set */
 	char		arrayok;	/* $x[] ok for arrays */
 	char		subcopy;	/* set when copying subscript */
 	int		dotdot;		/* set for .. in subscript */
@@ -98,6 +96,7 @@ typedef struct  _mac_
 #define M_NAMECOUNT	7	/* ${#var*}	*/
 #define M_TYPE		8	/* ${@var}	*/
 
+static noreturn void	mac_error(Namval_t*);
 static int	substring(const char*, const char*, int[], int);
 static void	copyto(Mac_t*, int, int);
 static void	comsubst(Mac_t*, Shnode_t*, int);
@@ -107,7 +106,6 @@ static void	tilde_expand2(Shell_t*,int);
 static char 	*sh_tilde(Shell_t*,const char*);
 static char	*special(Shell_t *,int);
 static void	endfield(Mac_t*,int);
-static void	mac_error(Namval_t*);
 static char	*mac_getstring(char*);
 static int	charlen(const char*,int);
 #if SHOPT_MULTIBYTE
@@ -118,7 +116,7 @@ static int	charlen(const char*,int);
 
 void *sh_macopen(Shell_t *shp)
 {
-	void *addr = newof(0,Mac_t,1,0);
+	void *addr = sh_newof(0,Mac_t,1,0);
 	Mac_t *mp = (Mac_t*)addr;
 	mp->shp = shp;
 	return(addr);
@@ -126,6 +124,7 @@ void *sh_macopen(Shell_t *shp)
 
 /*
  * perform only parameter substitution and catch failures
+ * (also save lexer state to allow use while in here-docs)
  */
 char *sh_mactry(Shell_t *shp,register char *string)
 {
@@ -134,11 +133,13 @@ char *sh_mactry(Shell_t *shp,register char *string)
 		int		jmp_val;
 		int		savexit = shp->savexit;
 		struct checkpt	buff;
+		Lex_t		*lexp = (Lex_t*)sh.lex_context, savelex = *lexp;
 		sh_pushcontext(shp,&buff,SH_JMPSUB);
 		jmp_val = sigsetjmp(buff.buff,0);
 		if(jmp_val == 0)
 			string = sh_mactrim(shp,string,0);
 		sh_popcontext(shp,&buff);
+		*lexp = savelex;
 		shp->savexit = savexit;
 		return(string);
 	}
@@ -160,7 +161,6 @@ char *sh_mactrim(Shell_t *shp, char *str, register int mode)
 	savemac = *mp;
 	stkseek(stkp,0);
 	mp->arith = (mode==3);
-	mp->let = 0;
 	shp->argaddr = 0;
 	mp->pattern = (mode==1||mode==2);
 	mp->patfound = 0;
@@ -184,7 +184,10 @@ char *sh_mactrim(Shell_t *shp, char *str, register int mode)
 		if((mode=path_expand(shp,str,&arglist))==1)
 			str = arglist->argval;
 		else if(mode>1)
+		{
 			errormsg(SH_DICT,ERROR_exit(1),e_ambiguous,str);
+			UNREACHABLE();
+		}
 		sh_trim(str);
 	}
 	*mp = savemac;
@@ -215,7 +218,6 @@ int sh_macexpand(Shell_t* shp, register struct argnod *argp, struct argnod **arg
 	mp->arghead = arghead;
 	mp->quoted = mp->lit = mp->quote = 0;
 	mp->arith = ((flag&ARG_ARITH)!=0);
-	mp->let = ((flag&ARG_LET)!=0);
 	mp->split = !(flag&ARG_ASSIGN);
 	mp->assign = !mp->split;
 	mp->pattern = mp->split && !(flag&ARG_NOGLOB) && !sh_isoption(SH_NOGLOB);
@@ -275,7 +277,7 @@ void sh_machere(Shell_t *shp,Sfio_t *infile, Sfio_t *outfile, char *string)
 	stkseek(stkp,0);
 	shp->argaddr = 0;
 	mp->sp = outfile;
-	mp->split = mp->assign = mp->pattern = mp->patfound = mp->lit = mp->arith = mp->let = 0;
+	mp->split = mp->assign = mp->pattern = mp->patfound = mp->lit = mp->arith = 0;
 	mp->quote = 1;
 	mp->ifsp = nv_getval(sh_scoped(shp,IFSNOD));
 	mp->ifs = ' ';
@@ -390,7 +392,7 @@ void sh_machere(Shell_t *shp,Sfio_t *infile, Sfio_t *outfile, char *string)
 			    case S_EOF:
 				if((c=fcfill()) > 0)
 					goto again;
-				/* FALL THRU */
+				/* FALLTHROUGH */
 			    default:
 			    regular:
 				sfputc(outfile,'$');
@@ -464,6 +466,7 @@ static void copyto(register Mac_t *mp,int endch, int newquote)
 				    case -1:	/* illegal multi-byte char */
 				    case 0:
 					len = 1;
+					/* FALLTHROUGH */
 				    case 1:
 					n = state[*(unsigned char*)cp++];
 					break;
@@ -486,7 +489,7 @@ static void copyto(register Mac_t *mp,int endch, int newquote)
 		    case S_ESC:
 			if(ansi_c)
 			{
-				/* process ANSI-C escape character */
+				/* process ANSI C escape character */
 				char *addr= --cp;
 				if(c)
 					sfwrite(stkp,first,c);
@@ -508,8 +511,10 @@ static void copyto(register Mac_t *mp,int endch, int newquote)
 					sfputc(stkp,ESCAPE);
 				break;
 			}
+#if SHOPT_BRACEPAT
 			else if(sh_isoption(SH_BRACEEXPAND) && mp->pattern==4 && (*cp==',' || *cp==LBRACE || *cp==RBRACE || *cp=='.'))
 				break;
+#endif
 			else if(mp->split && endch && !mp->quote && !mp->lit)
 			{
 				if(c)
@@ -641,6 +646,7 @@ static void copyto(register Mac_t *mp,int endch, int newquote)
 					goto pattern;
 				continue;
 			}
+			/* FALLTHROUGH */
 		    case S_EOF:
 			if(c)
 			{
@@ -665,6 +671,7 @@ static void copyto(register Mac_t *mp,int endch, int newquote)
 		    case S_QUOTE:
 			if(mp->lit || mp->arith)
 				break;
+			/* FALLTHROUGH */
 		    case S_LIT:
 			if(mp->arith)
 			{
@@ -707,7 +714,10 @@ static void copyto(register Mac_t *mp,int endch, int newquote)
 					if(first[c-2]=='.')
 						offset = stktell(stkp);
 					if(isastchar(*cp) && cp[1]==']')
+					{
 						errormsg(SH_DICT,ERROR_exit(1),e_badsubscript,*cp);
+						UNREACHABLE();
+					}
 				}
 				first = fcseek(c);
 				mp->pattern = 4;
@@ -727,6 +737,7 @@ static void copyto(register Mac_t *mp,int endch, int newquote)
 				cp = first = fcseek(0);
 				break;
 			}
+			/* FALLTHROUGH */
 		    case S_PAT:
 			if(mp->pattern && !(mp->quote || mp->lit))
 			{
@@ -763,15 +774,21 @@ static void copyto(register Mac_t *mp,int endch, int newquote)
 		    case S_BRACE:
 			if(!(mp->quote || mp->lit))
 			{
+#if SHOPT_BRACEPAT
 				mp->patfound = mp->split && sh_isoption(SH_BRACEEXPAND);
+#else
+				mp->patfound = 0;
+#endif
 				brace++;
 			}
 		    pattern:
 			if(!mp->pattern || !(mp->quote || mp->lit))
 			{
 				/* mark beginning of {a,b} */
+#if SHOPT_BRACEPAT
 				if(n==S_BRACE && endch==0 && mp->pattern)
 					mp->pattern=4;
+#endif
 				if(n==S_SLASH && mp->pattern==2)
 					mp->pattern=3;
 				break;
@@ -805,7 +822,7 @@ static void copyto(register Mac_t *mp,int endch, int newquote)
 					first = cp = fcseek(Skip);
 					Skip = 0;
 				}
-#endif /*_WINIX */
+#endif /* _WINIX */
 				tilde = -1;
 				c=0;
 			}
@@ -963,7 +980,7 @@ static char *prefix(Shell_t *shp, char *id)
 				if(sub)
 					nv_putsub(np,sub,0L);
 			}
-			id = (char*)malloc(strlen(cp)+1+(n=strlen(sp=nv_name(np)))+ (sub?strlen(sub)+3:1));
+			id = (char*)sh_malloc(strlen(cp)+1+(n=strlen(sp=nv_name(np)))+ (sub?strlen(sub)+3:1));
 			memcpy(id,sp,n);
 			if(sub)
 			{
@@ -976,7 +993,7 @@ static char *prefix(Shell_t *shp, char *id)
 			return(id);
 		}
 	}
-	return(strdup(id));
+	return(sh_strdup(id));
 }
 
 /*
@@ -1031,7 +1048,7 @@ int sh_macfun(Shell_t *shp, const char *name, int offset)
 		t.node.com.comarg = &d.arg;
 		t.node.com.comline = shp->inlineno;
 		d.dol.dolnum = 1;
-		d.dol.dolval[0] = strdup(name);
+		d.dol.dolval[0] = sh_strdup(name);
 		stkseek(shp->stk,offset);
 		comsubst((Mac_t*)shp->mac_context,&t.node,2);
 		free(d.dol.dolval[0]);
@@ -1064,14 +1081,14 @@ static char *nextname(Mac_t *mp,const char *prefix, int len)
 }
 
 /*
- * This routine handles $param,  ${parm}, and ${param op word}
+ * This routine handles $param, ${param}, and ${param op word}
  * The input stream is assumed to be a string
  */
 static int varsub(Mac_t *mp)
 {
 	register int	c;
 	register int	type=0; /* M_xxx */
-	register char	*v, *new_v=0, *argp=0;
+	register char	*v,*argp=0;
 	register Namval_t	*np = NIL(Namval_t*);
 	register int 	dolg=0, mode=0;
 	Lex_t		*lp = (Lex_t*)mp->shp->lex_context;
@@ -1082,7 +1099,6 @@ static int varsub(Mac_t *mp)
 	int		var=1,addsub=0,oldpat=mp->pattern,idnum=0,flag=0,d;
 	Stk_t		*stkp = mp->shp->stk;
 retry1:
-	mp->zeros = 0;
 	idbuff[0] = 0;
 	idbuff[1] = 0;
 	c = fcmbget(&LEN);
@@ -1094,7 +1110,7 @@ retry1:
 		/* This code handles ${#} */
 		c = mode;
 		mode = type = 0;
-		/* FALL THRU */
+		/* FALLTHROUGH */
 	    case S_SPC1:
 		if(type==M_BRACE)
 		{
@@ -1102,7 +1118,7 @@ retry1:
 			{
 				if(c=='#')
 					type = M_SIZE;
-#ifdef SHOPT_TYPEDEF
+#if SHOPT_TYPEDEF
 				else if(c=='@')
 				{
 					type = M_TYPE;
@@ -1121,7 +1137,7 @@ retry1:
 				goto retry1;
 			}
 		}
-		/* FALL THRU */
+		/* FALLTHROUGH */
 	    case S_SPC2:
 		var = 0;
 		*id = c;
@@ -1186,7 +1202,10 @@ retry1:
 			d=fcget();
 			fcseek(-1);
 			if(!(d && strchr(":+-?=",d)))
+			{
 				errormsg(SH_DICT,ERROR_exit(1),e_notset,ltos(c));
+				UNREACHABLE();
+			}
 		}
 		break;
 	    case S_ALP:
@@ -1301,13 +1320,8 @@ retry1:
 				flag &= ~NV_NOADD;
 			/*
 			 * Get a node pointer (np) to the parameter, if any.
-			 *
-			 * The IFS node always exists, so we must special-case IFS by checking if it has
-			 * a value; otherwise it always follows the code path for a set parameter, so is
-			 * not subject to 'set -u', and may test as set even after 'unset -v IFS'.
 			 */
-			if(!(*id=='I' && strcmp(id,"IFS")==0 && nv_getval(sh_scoped(mp->shp,IFSNOD)) == NULL))
-				np = nv_open(id,mp->shp->var_tree,flag|NV_NOFAIL);
+			np = nv_open(id,mp->shp->var_tree,flag|NV_NOFAIL);
 			if(!np)
 			{
 				sfprintf(mp->shp->strbuf,"%s%c",id,0);
@@ -1353,7 +1367,7 @@ retry1:
 					v = stkptr(stkp,mp->dotdot);
 					dolmax =1;
 					if(array_assoc(ap))
-						arrmax = strdup(v);
+						arrmax = sh_strdup(v);
 					else if((dolmax = (int)sh_arith(mp->shp,v))<0)
 						dolmax += array_maxindex(np);
 					if(type==M_SUBNAME)
@@ -1397,9 +1411,13 @@ retry1:
 		/*
 		 * Check if the parameter is set or unset.
 		 */
-		if(np && (type==M_TREE || !c || !ap))
+#if SHOPT_OPTIMIZE
+		if(np && type==M_BRACE && mp->shp->argaddr)
+			nv_optimize(np);  /* needed before calling nv_isnull() */
+#endif /* SHOPT_OPTIMIZE */
+		if(np && (type==M_BRACE ? (!nv_isnull(np) || np==SH_LEVELNOD) : (type==M_TREE || !c || !ap)))
 		{
-			/* The parameter is set. */
+			/* Either the parameter is set, or it's a special type of expansion where 'unset' doesn't apply. */
 			char *savptr;
 			c = *((unsigned char*)stkptr(stkp,offset-1));
 			savptr = stkfreeze(stkp,0);
@@ -1410,7 +1428,7 @@ retry1:
 				if(ap && !mp->dotdot && !(ap->nelem&ARRAY_UNDEF))
 					addsub = 1;
 			}
-#ifdef SHOPT_TYPEDEF
+#if SHOPT_TYPEDEF
 			else if(type==M_TYPE)
 			{
 				Namval_t *nq = nv_type(np);
@@ -1435,22 +1453,12 @@ retry1:
 					if(ap)
 						v = nv_arrayisset(np,ap)?(char*)"x":0;
 					else
-					{
-#if SHOPT_OPTIMIZE
-						if(mp->shp->argaddr)
-							nv_optimize(np);  /* avoid BUG_ISSETLOOP */
-#endif /* SHOPT_OPTIMIZE */
 						v = nv_isnull(np)?0:(char*)"x";
-					}
 				}
 				else
 					v = nv_getval(np);
 				mp->atmode = (v && mp->quoted && mode=='@');
-				/* special case --- ignore leading zeros */  
-				if((mp->let || (mp->arith&&nv_isattr(np,(NV_LJUST|NV_RJUST|NV_ZFILL)))) && !nv_isattr(np,NV_INTEGER) && (offset==0 || isspace(c) || strchr(",.+-*/=%&|^?!<>",c)))
-					mp->zeros = 1;
 			}
-			new_v = v = strdup(v);
 			if(savptr==stakptr(0))
 				stkseek(stkp,offset);
 			else
@@ -1460,7 +1468,10 @@ retry1:
 		{
 			/* The parameter is unset. */
 			if(sh_isoption(SH_NOUNSET) && !isastchar(mode) && (type==M_VNAME || type==M_SIZE))
+			{
 				errormsg(SH_DICT,ERROR_exit(1),e_notset,id);
+				UNREACHABLE();
+			}
 			v = 0;
 			if(type==M_VNAME)
 			{
@@ -1512,10 +1523,15 @@ retry1:
 			}
 			else
 			{
+				/* M_NAMESCAN: ${!prefix@} or ${!prefix*}. These work like $@, $*. */
 				dolmax = strlen(id);
 				dolg = -1;
 				nextname(mp,id,0);
-				v = nextname(mp,id,dolmax);
+				/* Check if the prefix (id) itself exists. If so, start with that. */
+				if(nv_open(id,mp->shp->var_tree,NV_NOREF|NV_NOADD|NV_VARNAME|NV_NOFAIL))
+					v = id;
+				else
+					v = nextname(mp,id,dolmax);
 			}
 		}
 		else if(type==M_SUBNAME)
@@ -1584,14 +1600,16 @@ retry1:
 			int newops = (c=='#' || c == '%' || c=='/');
 			offset = stktell(stkp);
 			if(newops && sh_isoption(SH_NOUNSET) && *id && id!=idbuff  && (!np || nv_isnull(np)))
+			{
 				errormsg(SH_DICT,ERROR_exit(1),e_notset,id);
+				UNREACHABLE();
+			}
 			if(c=='/' ||c==':' || ((!v || (nulflg && *v==0)) ^ (c=='+'||c=='#'||c=='%')))
 			{
 				int newquote = mp->quote;
 				int split = mp->split;
 				int quoted = mp->quoted;
 				int arith = mp->arith;
-				int zeros = mp->zeros;
 				int assign = mp->assign;
 				if(newops)
 				{
@@ -1608,7 +1626,7 @@ retry1:
 					mp->split = 0;
 					mp->quoted = 0;
 					mp->assign &= ~1;
-					mp->arith = mp->zeros = 0;
+					mp->arith = 0;
 					newquote = 0;
 				}
 				else if(c=='?' || c=='=')
@@ -1620,7 +1638,6 @@ retry1:
 				mp->split = split;
 				mp->quoted = quoted;
 				mp->arith = arith;
-				mp->zeros = zeros;
 				mp->assign = assign;
 				/* add null byte */
 				sfputc(stkp,0);
@@ -1629,7 +1646,12 @@ retry1:
 			}
 			else
 			{
-				sh_lexskip(lp, RBRACE, 0, sh_lexstates[ST_BRACE][c]==S_MOD1 ? ST_QUOTE : ST_NESTED);
+				int state;
+				if(sh_lexstates[ST_BRACE][c]==S_MOD1)
+					state = mp->quote ? ST_QUOTE : ST_MOD1;
+				else
+					state = ST_NESTED;
+				sh_lexskip(lp, RBRACE, 0, state);
 				stkseek(stkp,offset);
 			}
 			argp=stkptr(stkp,offset);
@@ -1773,7 +1795,7 @@ retry1:
 			else
 				type = 0;
 		}
-		pattern = strdup(argp);
+		pattern = sh_strdup(argp);
 		if((type=='/' || c=='/') && (repstr = mac_getstring(pattern)))
 		{
 			Mac_t	savemac;
@@ -1785,7 +1807,7 @@ retry1:
 			mp->split = 0;
 			copyto(mp,0,0);
 			sfputc(stkp,0);
-			repstr = strdup(stkptr(stkp,n));
+			repstr = sh_strdup(stkptr(stkp,n));
 			replen = strlen(repstr);
 			stkseek(stkp,n);
 			*mp = savemac;
@@ -1985,6 +2007,7 @@ retry2:
 				errormsg(SH_DICT,ERROR_exit(1),e_nullset,id);
 			else
 				errormsg(SH_DICT,ERROR_exit(1),e_notset,id);
+			UNREACHABLE();
 		}
 		else if(c=='=')
 		{
@@ -2016,11 +2039,10 @@ retry2:
 			nv_close(np);
 		}
 		errormsg(SH_DICT,ERROR_exit(1),e_notset,id);
+		UNREACHABLE();
 	}
 	if(np)
 		nv_close(np);
-	if(new_v)
-		free(new_v);
 	if(pattern)
 		free(pattern);
 	if(repstr)
@@ -2029,8 +2051,6 @@ retry2:
 		free(idx);
 	return(1);
 nosub:
-	if(new_v)
-		free(new_v);
 	if(type==M_BRACE && sh_lexstates[ST_NORM][c]==S_BREAK)
 	{
 		fcseek(-1);
@@ -2047,6 +2067,7 @@ nosub:
 /*
  * This routine handles command substitution
  * <type> is 0 for older `...` version
+ * 1 for $(...) or 2 for ${ subshare; }
  */
 static void comsubst(Mac_t *mp,register Shnode_t* t, int type)
 {
@@ -2077,7 +2098,6 @@ static void comsubst(Mac_t *mp,register Shnode_t* t, int type)
 			t = sh_dolparen((Lex_t*)mp->shp->lex_context);
 		if(t && t->tre.tretyp==TARITH)
 		{
-			mp->shp->inarith = 1;
 			fcsave(&save);
 			if(t->ar.arcomp)
 				num = arith_exec(t->ar.arcomp);
@@ -2085,7 +2105,6 @@ static void comsubst(Mac_t *mp,register Shnode_t* t, int type)
 				num = sh_arith(mp->shp,t->ar.arexpr->argval);
 			else
 				num = sh_arith(mp->shp,sh_mactrim(mp->shp,t->ar.arexpr->argval,3));
-			mp->shp->inarith = 0;
 		out_offset:
 			stkset(stkp,savptr,savtop);
 			*mp = savemac;
@@ -2115,7 +2134,7 @@ static void comsubst(Mac_t *mp,register Shnode_t* t, int type)
 			}
 			sfputc(stkp,c);
 		}
-		sfputc(stkp,' '); /* rhbz#982142: a=`some_alias` leaked memory, a=`some_alias ` did not! TODO: non-hack fix */
+		sfputc(stkp,'\n');  /* a=`some_alias` leaked memory, a=`some_alias<LF>` did not! TODO: non-hack fix */
 		c = stktell(stkp);
 		str=stkfreeze(stkp,1);
 		/* disable verbose and don't save in history file */
@@ -2130,7 +2149,6 @@ static void comsubst(Mac_t *mp,register Shnode_t* t, int type)
 		mp->shp->inlineno = c;
 		type = 1;
 	}
-#if KSHELL
 	if(t)
 	{
 		fcsave(&save);
@@ -2139,7 +2157,7 @@ static void comsubst(Mac_t *mp,register Shnode_t* t, int type)
 		{
 			/* special case $(<file) and $(<#file) */
 			register int fd;
-			int r;
+			int r=0;
 			struct checkpt buff;
 			struct ionod *ip=0;
 			sh_pushcontext(mp->shp,&buff,SH_JMPIO);
@@ -2159,11 +2177,18 @@ static void comsubst(Mac_t *mp,register Shnode_t* t, int type)
 				goto out_offset;
 			}
 			if(!(sp=mp->shp->sftable[fd]))
-				sp = sfnew(NIL(Sfio_t*),(char*)malloc(IOBSIZE+1),IOBSIZE,fd,SF_READ|SF_MALLOC);
+			{
+				char *cp = (char*)sh_malloc(IOBSIZE+1);
+				sp = sfnew(NIL(Sfio_t*),cp,IOBSIZE,fd,SF_READ|SF_MALLOC);
+			}
 			type = 3;
 		}
 		else
+		{
+			if(type==2 && sh.subshell && !sh.subshare)
+				sh_subfork();	/* subshares within virtual subshells are broken, so fork first */
 			sp = sh_subshell(mp->shp,t,sh_isstate(SH_ERREXIT),type);
+		}
 		fcrestore(&save);
 	}
 	else
@@ -2174,9 +2199,6 @@ static void comsubst(Mac_t *mp,register Shnode_t* t, int type)
 		sh_onstate(SH_HISTORY);
 	if(was_verbose)
 		sh_onstate(SH_VERBOSE);
-#else
-	sp = sfpopen(NIL(Sfio_t*),str,"r");
-#endif
 	*mp = savemac;
 	np = sh_scoped(mp->shp,IFSNOD);
 	nv_putval(np,mp->ifsp,NV_RDONLY);
@@ -2289,18 +2311,6 @@ static void mac_copy(register Mac_t *mp,register const char *str, register int s
 	Stk_t			*stkp=mp->shp->stk;
 	int			oldpat = mp->pattern;
 	nopat = (mp->quote||(mp->assign==1)||mp->arith);
-	if(mp->zeros)
-	{
-		/* prevent leading 0's from becoming octal constants */
-		while(size>1 && *str=='0')
-		{
-			if(str[1]=='x' || str[1]=='X')
-				break;
-			str++,size--;
-		}
-		mp->zeros = 0;
-		cp = str;
-	}
 	if(mp->sp)
 		sfwrite(mp->sp,str,size);
 	else if(mp->pattern>=2 || (mp->pattern && nopat) || mp->assign==3)
@@ -2611,63 +2621,43 @@ static int	charlen(const char *string,int len)
 }
 
 /*
- * This is the default tilde discipline function
- */
-static int sh_btilde(int argc, char *argv[], Shbltin_t *context)
-{
-	Shell_t *shp = context->shp;
-	char *cp = sh_tilde(shp,argv[1]);
-	NOT_USED(argc);
-	if(!cp)
-		cp = argv[1];
-	sfputr(sfstdout, cp, '\n');
-	return(0);
-}
- 
-/*
  * <offset> is byte offset for beginning of tilde string
  */
 static void tilde_expand2(Shell_t *shp, register int offset)
 {
-	char		shtilde[10], *av[3], *ptr=stkfreeze(shp->stk,1);
-	Sfio_t		*iop, *save=sfstdout;
-	Namval_t	*np;
-	static int	beenhere=0;
-	strcpy(shtilde,".sh.tilde");
-	np = nv_open(shtilde,shp->fun_tree, NV_VARNAME|NV_NOARRAY|NV_NOASSIGN|NV_NOFAIL);
-	if(np && !beenhere)
+	char		*cp = NIL(char*);		/* character pointer for tilde expansion result */
+	char		*stakp = stakptr(0);		/* current stack object (&stakp[offset] is tilde string) */
+	int		curoff = staktell();		/* current offset of current stack object */
+	static char	block;				/* for disallowing tilde expansion in .get/.set to change ${.sh.tilde} */
+	/*
+	 * Allow overriding tilde expansion with a .sh.tilde.set or .get discipline function.
+	 */
+	if(!block && SH_TILDENOD->nvfun && SH_TILDENOD->nvfun->disc)
 	{
-		beenhere = 1;
-		sh_addbuiltin(shtilde,sh_btilde,0);
-		nv_onattr(np,NV_EXPORT);
+		stakfreeze(1);				/* terminate current stack object to avoid data corruption */
+		block++;
+		nv_putval(SH_TILDENOD, &stakp[offset], 0);
+		cp = nv_getval(SH_TILDENOD);
+		block--;
+		if(cp[0]=='\0' || cp[0]=='~')
+			cp = NIL(char*);		/* do not use empty or unexpanded result */
+		stakset(stakp,curoff);			/* restore stack to state on function entry */
 	}
-	av[0] = ".sh.tilde";
-	av[1] = &ptr[offset];
-	av[2] = 0;
-	iop = sftmp((IOBSIZE>PATH_MAX?IOBSIZE:PATH_MAX)+1);
-	sfset(iop,SF_READ,0);
-	sfstdout = iop;
-	if(np)
-		sh_fun(np, (Namval_t*)0, av);
-	else
-		sh_btilde(2, av, &shp->bltindata);
-	sfstdout = save;
-	stkset(shp->stk,ptr, offset);
-	sfseek(iop,(Sfoff_t)0,SEEK_SET);
-	sfset(iop,SF_READ,1);
-	if(ptr = sfreserve(iop, SF_UNBOUND, -1))
+	/*
+	 * Perform default tilde expansion unless overridden.
+	 * Write the result to the stack, if any.
+	 */
+	stakputc(0);
+	if(!cp)
+		cp = sh_tilde(shp,&stakp[offset]);
+	if(cp)
 	{
-		Sfoff_t n = sfvalue(iop);
-		while(ptr[n-1]=='\n')
-			n--;
-		if(n==1 && fcpeek(0)=='/' && ptr[n-1])
-			n--;
-		if(n)
-			sfwrite(shp->stk,ptr,n);
+		stakseek(offset);
+		if(!(cp[0]=='/' && !cp[1] && fcpeek(0)=='/'))
+			stakputs(cp);			/* for ~ == /, avoid ~/foo -> //foo */
 	}
 	else
-		sfputr(shp->stk,av[1],0);
-	sfclose(iop);
+		stakseek(curoff);
 }
 
 /*
@@ -2683,7 +2673,7 @@ static char *sh_tilde(Shell_t *shp,register const char *string)
 {
 	register char		*cp;
 	register int		c;
-	register struct passwd	*pw;
+	register struct passwd	*pw = NIL(struct passwd*);
 	register Namval_t *np=0;
 	unsigned int save;
 	static Dt_t *logins_tree;
@@ -2691,9 +2681,13 @@ static char *sh_tilde(Shell_t *shp,register const char *string)
 		return(NIL(char*));
 	if((c = *string)==0)
 	{
-		if(!(cp=nv_getval(sh_scoped(shp,HOME))))
-			cp = getlogin();
-		return(cp);
+		static char	*username;
+		if(cp = nv_getval(sh_scoped(shp, HOME)))
+			return(cp);
+		/* Fallback for unset HOME: get username and treat ~ like ~username */
+		if(!username && !((pw = getpwuid(getuid())) && (username = sh_strdup(pw->pw_name))))
+			return(NIL(char*));
+		string = username;
 	}
 	if((c=='-' || c=='+') && string[1]==0)
 	{
@@ -2732,7 +2726,7 @@ static char *sh_tilde(Shell_t *shp,register const char *string)
 #endif /* _WINIX */
 	if(logins_tree && (np=nv_search(string,logins_tree,0)))
 		return(nv_getval(np));
-	if(!(pw = getpwnam(string)))
+	if(!pw && !(pw = getpwnam(string)))
 		return(NIL(char*));
 #if _WINIX
 skip:
@@ -2802,6 +2796,7 @@ static char *special(Shell_t *shp,register int c)
 			c_str[0]=(char)c;
 			c_str[1]='\0';
 			errormsg(SH_DICT,ERROR_exit(1),e_notset,c_str);
+			UNREACHABLE();
 		}
 	}
 	return(NIL(char*));
@@ -2810,11 +2805,12 @@ static char *special(Shell_t *shp,register int c)
 /*
  * Handle macro expansion errors
  */
-static void mac_error(Namval_t *np)
+static noreturn void mac_error(Namval_t *np)
 {
 	if(np)
 		nv_close(np);
 	errormsg(SH_DICT,ERROR_exit(1),e_subst,fcfirst());
+	UNREACHABLE();
 }
 
 /*

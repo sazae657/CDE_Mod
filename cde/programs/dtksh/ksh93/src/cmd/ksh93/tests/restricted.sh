@@ -2,6 +2,7 @@
 #                                                                      #
 #               This software is part of the ast package               #
 #          Copyright (c) 1982-2011 AT&T Intellectual Property          #
+#          Copyright (c) 2020-2021 Contributors to ksh 93u+m           #
 #                      and is licensed under the                       #
 #                 Eclipse Public License, Version 1.0                  #
 #                    by AT&T Intellectual Property                     #
@@ -17,18 +18,8 @@
 #                  David Korn <dgk@research.att.com>                   #
 #                                                                      #
 ########################################################################
-function err_exit
-{
-	print -u2 -n "\t"
-	print -u2 -r ${Command}[$1]: "${@:2}"
-	let Errors+=1
-}
-alias err_exit='err_exit $LINENO'
 
-Command=${0##*/}
-integer Errors=0
-
-[[ -d $tmp && -w $tmp && $tmp == "$PWD" ]] || { err\_exit "$LINENO" '$tmp not set; run this from shtests. Aborting.'; exit 1; }
+. "${SHTESTS_COMMON:-${0%/*}/_common}"
 
 binecho=$(whence -p echo)
 
@@ -80,9 +71,10 @@ do	check_restricted  "function foo { typeset $i=foobar;};foo" || err_exit "$i ca
 done
 
 # ======
-# `set +r` and `set +o restricted` should not unset the restricted option
-check_restricted 'set +r' 2> /dev/null || err_exit '`set +r` unsets the restricted option'
-check_restricted 'set +o restricted' 2> /dev/null || err_exit '`set +o restricted` unsets the restricted option'
+# The restricted option cannot be unset
+check_restricted 'set +r' || err_exit "'set +r' unsets the restricted option"
+check_restricted 'set +o restricted' || err_exit "'set +o restricted' unsets the restricted option"
+check_restricted 'set --default; $(whence -p true)' || err_exit "'set --default' unsets the restricted option"
 
 # ======
 exit $((Errors<125?Errors:125))

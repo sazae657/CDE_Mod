@@ -2,6 +2,7 @@
 #                                                                      #
 #               This software is part of the ast package               #
 #          Copyright (c) 1985-2011 AT&T Intellectual Property          #
+#          Copyright (c) 2020-2021 Contributors to ksh 93u+m           #
 #                      and is licensed under the                       #
 #                 Eclipse Public License, Version 1.0                  #
 #                    by AT&T Intellectual Property                     #
@@ -242,7 +243,7 @@ case $append$extra in
 						;;
 					*" -$f- "*)
 						;;
-					*)	if	iffe -n - hdr $f | grep _hdr_$f >/dev/null
+					*)	if	iffe -c "$cc" -n - hdr $f | grep _hdr_$f >/dev/null
 						then	hdr="$hdr $f"
 							headers=$headers$nl#include$sp'<'$1'>'
 						else	hdr="$hdr -$f-"
@@ -367,7 +368,7 @@ IFS=$ifs; set +f
 export CONF_getconf CONF_getconf_a
 
 case $verbose in
-1)	echo "$command: check ${CONF_getconf:+$CONF_getconf(1),}confstr(2),pathconf(2),sysconf(2),sysinfo(2) configuration names" >&2 ;;
+1)	echo "$command: check ${CONF_getconf:+$CONF_getconf(1),}confstr(3),pathconf(2),sysconf(3),sysinfo(2) configuration names" >&2 ;;
 esac
 {
 	echo "#include <unistd.h>$systeminfo
@@ -381,8 +382,8 @@ sort -u > $tmp.f
 {
 sed \
 	-e 's/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789]/ /g' \
-	-e 's/[ 	][ 	]*/\n/g' \
-	`cat $tmp.f` 2>/dev/null |
+	-e 's/[ 	][ 	]*/%/g' \
+	`cat $tmp.f` 2>/dev/null | tr '%' '\n' | \
 	egrep '^(SI|_(CS|PC|SC|SI))_.'
 	case $CONF_getconf_a in
 	?*)	$CONF_getconf $CONF_getconf_a | sed 's,[=:    ].*,,'
@@ -1195,7 +1196,7 @@ printf("#endif\n");
 				*:U*)	cat >> $tmp.l <<!
 printf("#ifndef ${conf_name}\n");
 printf("#ifndef ${x}\n");
-printf("#define ${x} %lu\n", ${x});
+printf("#define ${x} %lu\n", (unsigned long)${x});
 printf("#endif\n");
 printf("#define ${conf_name} ${x}\n");
 printf("#endif\n");
@@ -1204,7 +1205,7 @@ printf("#endif\n");
 				*:$sym)	cat >> $tmp.l <<!
 printf("#ifndef ${conf_name}\n");
 printf("#ifndef ${x}\n");
-printf("#define ${x} %ld\n", ${x});
+printf("#define ${x} %ld\n", (long)${x});
 printf("#endif\n");
 printf("#define ${conf_name} ${x}\n");
 printf("#endif\n");
@@ -1465,7 +1466,7 @@ case $verbose in
 1)	echo "$command: generate ${base}.h string table header" >&2 ;;
 esac
 case $shell in
-ksh)	((name_max=name_max+3)); ((name_max=name_max/4*4)) ;; # bsd /bin/sh !
+ksh)	((name_max=name_max+3)); ((name_max=name_max/4*4)) ;; # BSD /bin/sh !
 *)	name_max=`expr \( $name_max + 3 \) / 4 \* 4` ;;
 esac
 {
@@ -1475,10 +1476,6 @@ cat <<!
 $systeminfo
 
 ${generated}
-
-#if !defined(const) && !defined(__STDC__) && !defined(__cplusplus) && !defined(c_plusplus)
-#define const
-#endif
 
 #define conf		_ast_conf_data
 #define conf_elements	_ast_conf_ndata
@@ -1545,7 +1542,7 @@ struct Conf_s
 	short		standard;
 	short		section;
 	short		call;
-	short		op;
+	int		op;
 };
 
 typedef struct Prefix_s

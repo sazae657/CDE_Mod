@@ -2,6 +2,7 @@
 *                                                                      *
 *               This software is part of the ast package               *
 *          Copyright (c) 1985-2011 AT&T Intellectual Property          *
+*          Copyright (c) 2020-2021 Contributors to ksh 93u+m           *
 *                      and is licensed under the                       *
 *                 Eclipse Public License, Version 1.0                  *
 *                    by AT&T Intellectual Property                     *
@@ -19,7 +20,6 @@
 *                   Phong Vo <kpv@research.att.com>                    *
 *                                                                      *
 ***********************************************************************/
-#pragma prototyped
 
 #if _UWIN && __STDPP__
 __STDPP__directive pragma pp:hide getenv
@@ -35,7 +35,7 @@ __STDPP__directive pragma pp:nohide getenv
  * NOTE: the "intercepts" definition is here instead of astintercept.c because some
  *	 static linkers miss lone references to "intercepts" without "astintercept()"
  * ALSO: { 0 } definition required by some dynamic linkers averse to common symbols
- * UWIN: no _ast_getenv macro map to maintain ast54 compatibility
+ * UWIN: no _ast_getenv macro map to maintain AST54 compatibility
  */
 
 Intercepts_t	intercepts
@@ -89,7 +89,7 @@ default_getenv(const char* name)
 extern char*
 getenv(const char* name)
 {
-#if _UWIN && !defined(getenv) /* for ast54 compatibility */
+#if _UWIN && !defined(getenv) /* for AST54 compatibility */
 	HANDLE		dll;
 
 	static char*	(*posix_getenv)(const char*);
