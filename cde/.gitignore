@@ -937,33 +937,6 @@ programs/dtinfo/tools/misc/msgsets
 programs/dtinfo/tools/misc/pmaker
 programs/dtinfo/tools/misc/treeres
 
-# program/dtksh
-programs/dtksh/FEATURE
-programs/dtksh/dtksh
-programs/dtksh/init.c
-programs/dtksh/DtFuncs.dtsh
-programs/dtksh/examples/CallDataTest4
-programs/dtksh/examples/CallbackTest2
-programs/dtksh/examples/DtCursorTest2
-programs/dtksh/examples/DtWsTest1
-programs/dtksh/examples/EventHandlerTest
-programs/dtksh/examples/ListBounds1
-programs/dtksh/examples/ListItemPos1
-programs/dtksh/examples/ListPosSel1
-programs/dtksh/examples/PipeTest
-programs/dtksh/examples/PopupTest
-programs/dtksh/examples/SelBoxResTest
-programs/dtksh/examples/SessionTest
-programs/dtksh/examples/TextCutBuf1
-programs/dtksh/examples/TextDisp1
-programs/dtksh/examples/TextFXYPos1
-programs/dtksh/examples/TransEventTest
-programs/dtksh/examples/TransTest1
-programs/dtksh/examples/WorkProcTest1
-programs/dtksh/examples/XCursorTest1
-programs/dtksh/examples/XdrawTest
-programs/dtksh/examples/crMovesText1
-
 # programs/dtlogin
 programs/dtlogin/config/0015.sun.env
 programs/dtlogin/config/0060.dtsysenv
