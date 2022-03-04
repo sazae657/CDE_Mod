@@ -2117,7 +2117,7 @@ open_user_calendar(Calendar *c, Boolean retry)
 	CSA_attribute_value val;
 	Boolean		viewother;
 
-	c->general->version = 0;
+	c->general->version = c->my_cal_version = DATAVER_ARCHIVE;
 	if ((loc = cm_target2location(c->calname)) == NULL) {
 		error_noloc(c, c->calname);
 		return False;
