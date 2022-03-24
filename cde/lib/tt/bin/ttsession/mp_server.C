@@ -358,6 +358,7 @@ int main(int argc, char **argv)
 	}
 
 	install_signal_handler();
+	signal(SIGCHLD, SIG_DFL);
 
 	// set up a pipe which will be used by the child ttsession to
 	// communicate it's session id to the parent ttsession which

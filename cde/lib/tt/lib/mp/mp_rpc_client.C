@@ -150,7 +150,10 @@ init(_Tt_host_ptr &host, int program, int version,
 	memset(&_server_addr, 0, sizeof(_server_addr));
 	_server_addr.sin_family = AF_INET;
 	_server_addr.sin_port = htons((optval) ? 0 : 4000);
-	_server_addr.sin_addr.s_addr = inet_addr((char *)(_host->stringaddr()));
+
+	if (!inet_aton((char *)(_host->stringaddr()), &_server_addr.sin_addr))
+		return 0;
+
 	_client = clnttcp_create(&_server_addr, _program,
 			         _version, &_socket, 4000, 4000);
 	if (_client == 0) {
@@ -163,7 +166,7 @@ init(_Tt_host_ptr &host, int program, int version,
 	}
 		
 	if (optval) {
-#ifndef linux
+#ifdef SO_USELOOPBACK
 		if (setsockopt(_socket, SOL_SOCKET, SO_USELOOPBACK,
 			       (char *)&optval, sizeof(int)) == -1) {
 			_tt_syslog( 0, LOG_ERR, "_Tt_rpc_client::init(): "
@@ -206,10 +209,6 @@ init(_Tt_host_ptr &host, int program, int version,
 	// Set close-on-exec bit so a libtt client which forks and execs won't
 	// be short some fd's in the child.
 
-#if defined(__linux__)
-        // JET - for linux, we need to do this properly - I don't know
-        // how the original code below can be correct, so we'll do it
-        // differently.
         {
           long flags;
 
@@ -225,13 +224,6 @@ init(_Tt_host_ptr &host, int program, int version,
 			    "fcntl(F_SETFD): %m");
             }
         }
-#else        
-
-	if (-1==fcntl(_socket, F_SETFD, 1)) {
-		_tt_syslog( 0, LOG_ERR, "_Tt_rpc_client::init(): "
-			    "fcntl(F_SETFD): %m");
-	}		
-#endif // linux
 
 	return(1);
 }
