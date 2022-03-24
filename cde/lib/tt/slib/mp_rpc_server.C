@@ -87,9 +87,7 @@ _Tt_rpc_server::
 ~_Tt_rpc_server()
 {
 #ifndef OPT_TLI	
-/* 
- * 	pmap_unset(_program, _version);
- */
+	pmap_unset(_program, _version);
 #else
 	for (int version = _version; version >= 1; version--) {
 		rpcb_unset(_program, version, (netconfig *)0);

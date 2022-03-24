@@ -66,7 +66,7 @@ class _Tt_desktop : public _Tt_object {
 	void			restore_user_handler();
 	static int		io_error_proc(void *);
 	int			*user_io_handler;
-	static jmp_buf		io_exception;
+	static sigjmp_buf	io_exception;
 	_Tt_desktop_private	*priv;
 };
 

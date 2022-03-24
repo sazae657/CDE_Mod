@@ -67,7 +67,7 @@ static int parse_Xdisplay_string(_Tt_string display,
 				 _Tt_string &hostname);
 
 
-jmp_buf _Tt_desktop::io_exception;
+sigjmp_buf _Tt_desktop::io_exception;
 
 // The following private class data is declared and allocated here
 // so that everybody that includes mp_desktop.h doesn't have to
@@ -161,7 +161,7 @@ init(_Tt_string dt_handle, _Tt_dt_type /* t */)
 	ret_val = 1;
 	int retries = 20;
 	set_error_handler(_Tt_desktop::io_error_proc);
-	if (0 == setjmp(io_exception)) {
+	if (0 == sigsetjmp(io_exception, 1)) {
 
 		// now connect to the indicated X11 server
 		while (retries--) {
@@ -185,7 +185,7 @@ init(_Tt_string dt_handle, _Tt_dt_type /* t */)
 int _Tt_desktop::
 io_error_proc(void *)
 {
-	longjmp(io_exception, 1);
+	siglongjmp(io_exception, 1);
 	return(0);
 }
 
@@ -215,7 +215,7 @@ close()
 	int     ret_val = 1;
 
 	set_error_handler(_Tt_desktop::io_error_proc);
-	if (0 == setjmp(io_exception)) {
+	if (0 == sigsetjmp(io_exception, 1)) {
 
 		// delete all properties set and close connection to desktop
 		if (priv->xd != (Display *)0) {
@@ -250,12 +250,23 @@ process_event()
 	XMappingEvent	*xm;
 	int		pending;
 	int		iostat;
+	int		ret_val = 1;
 
 	if (priv->xd == (Display *)0) {
 		return(0);
 	}
 
-	CALLX11(XFlush)(priv->xd);
+	set_error_handler(_Tt_desktop::io_error_proc);
+	if (0 == sigsetjmp(io_exception, 1)) {
+		CALLX11(XFlush)(priv->xd);
+	} else {
+		priv->xd = (Display *)0;
+		ret_val = 0;
+	}
+	restore_user_handler();
+
+	if (!ret_val) return(0);
+
 	xev.type = 0;
 	iostat=ioctl(notify_fd(), FIONREAD, (char *)&pending);
 	if (iostat == -1 || pending == 0) {
