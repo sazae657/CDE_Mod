@@ -86,13 +86,13 @@ _Tt_rpc_server(int program, int version, int Rsocket, _Tt_auth &auth)
 _Tt_rpc_server::
 ~_Tt_rpc_server()
 {
-#ifndef OPT_TLI	
-	pmap_unset(_program, _version);
-#else
 	for (int version = _version; version >= 1; version--) {
+#ifndef OPT_TLI
+		pmap_unset(_program, version);
+#else
 		rpcb_unset(_program, version, (netconfig *)0);
-	}
 #endif				// OPT_TLI
+	}
 }
 
 
