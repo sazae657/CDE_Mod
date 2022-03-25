@@ -38,10 +38,6 @@
 #include <cde_config.h>
 #include "tt_options.h"
 
-#if defined(__OpenBSD__)
-#define XDR __rpc_xdr
-#endif
-
 typedef bool_t (*local_xdrproc_t)(XDR *, caddr_t *);
 
 #ifndef OPT_XDR_LONG_TYPE
