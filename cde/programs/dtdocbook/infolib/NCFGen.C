@@ -71,9 +71,9 @@ writeStyleSheets(BookCaseDB& db)
 
   const char *name;
   const char *online;
-  int len_o;
+  size_t len_o;
   const char *print;
-  int len_p;
+  size_t len_p;
 
   int statusO = 0;
   int statusP = 0;
@@ -98,8 +98,8 @@ writeStyleSheets(BookCaseDB& db)
     }
     
     out->insert(STRING_CODE, name,
-		-STRING_CODE, online, (size_t)len_o,
-		-STRING_CODE, print, (size_t)len_p,
+		-STRING_CODE, online, len_o,
+		-STRING_CODE, print, len_p,
 		NULL);
   }
 

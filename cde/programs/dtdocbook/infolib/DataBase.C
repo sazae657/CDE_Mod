@@ -434,9 +434,9 @@ DBCursor::~DBCursor()
 
 //----------------------------------------------------------
 
-void DBCursor::string_field(FILE *fp, char **out, int *lenOut)
+void DBCursor::string_field(FILE *fp, char **out, size_t *lenOut)
 {
-  int len = 0;
+  size_t len = 0;
   int io;
 
   /* fscanf is weird, so we do it ourselves... */
@@ -568,13 +568,13 @@ int DBCursor::next(int typeCode, ...)
       case STRING_CODE:
 	{
 	  char **data = NULL;
-	  int *len = NULL;
+	  size_t *len = NULL;
 
 	  if (fieldCode == typeCode || (fieldCode + typeCode) == 0) {
 	    data = va_arg(ap, char**);
 
 	    if (fieldCode != typeCode) {
-	      len = va_arg(ap, int*);
+	      len = va_arg(ap, size_t*);
 	    }
 	  }
 	  

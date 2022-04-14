@@ -170,7 +170,7 @@ class DBCursor{
   void seekToRec( int pos ); /* seek directly to pos */
 
  protected:
-  void string_field(FILE *, char **, int *);
+  void string_field(FILE *, char **, size_t *);
   void int_field(FILE *, int *);
   void short_list(FILE *, int *, int, void*);
 
