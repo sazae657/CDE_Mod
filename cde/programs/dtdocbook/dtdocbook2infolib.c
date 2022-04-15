@@ -994,10 +994,7 @@ defaultGlobals(void)
       int maxLen = 0;
       t_entry* iter;
 
-      if ((lang = getenv("LC_ALL")) == NULL)
-	if ((lang = getenv("LC_CTYPE")) == NULL)
-	  if ((lang = getenv("LANG")) == NULL)
-	    lang = LANG_COMMON;
+      if ((lang = getenv("LC_CTYPE")) == NULL) lang = LANG_COMMON;
 
       lang = XtsNewString(lang);
 
