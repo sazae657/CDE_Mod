@@ -167,15 +167,15 @@ _DtShmProtoAddStrtab(DtShmProtoStrtab strlist, const char * string, int * isnew)
 {
   strlist_t * ptr = (strlist_t *) strlist;
 
-  int * bucket = (int *) _DtUtilGetHash(ptr->sl_hash, (const unsigned char *)string);
+  intptr_t * bucket = (intptr_t *) _DtUtilGetHash(ptr->sl_hash, (const unsigned char *)string);
   
-  int ret = *bucket;
+  intptr_t ret = *bucket;
 
   if(*bucket == 0) /* new */ {
     unsigned char ** sptr;
     *isnew = 1;
     *bucket = ret = ptr->sl_charcount;
-    sptr = (unsigned char**)_DtUtilGetHash(ptr->sl_bosons, (const unsigned char *) (intptr_t) ret);
+    sptr = (unsigned char**)_DtUtilGetHash(ptr->sl_bosons, (const unsigned char *)ret);
     *sptr = (unsigned char*)strdup(string);
     ptr->sl_charcount += strlen(string) + 1;
   } 
