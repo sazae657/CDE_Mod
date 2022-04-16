@@ -33,8 +33,8 @@ class FlexBuffer {
 friend ostream &operator<< ( ostream &s, FlexBuffer &);
 
 private:
-  int pos;
-  int maxSize;
+  size_t pos;
+  size_t maxSize;
   char *HeadPtr;
 
   void grow(size_t);

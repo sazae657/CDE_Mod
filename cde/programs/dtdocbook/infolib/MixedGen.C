@@ -735,7 +735,7 @@ writeGraphics(BookCaseDB &db, const char *thisBook, DBCursor &gr_cursor,
   const char *version;
   const char *typeInfo;
   const char *data;
-  int len;
+  size_t len;
   const char *title;
   
   while(gr_cursor.next(STRING_CODE, &aBook,
@@ -765,7 +765,7 @@ writeGraphics(BookCaseDB &db, const char *thisBook, DBCursor &gr_cursor,
 		  STRING_CODE, name,
 		  STRING_CODE, version,
 		  STRING_CODE, typeInfo,
-		  -COMPRESSED_STRING_CODE, comp_agent, data, (size_t)len,
+		  -COMPRESSED_STRING_CODE, comp_agent, data, len,
 		  STRING_CODE, title,
 		  NULL);
     }
@@ -774,7 +774,7 @@ writeGraphics(BookCaseDB &db, const char *thisBook, DBCursor &gr_cursor,
 		  STRING_CODE, name,
 		  STRING_CODE, version,
 		  STRING_CODE, typeInfo,
-		  -STRING_CODE, data, (size_t)len,
+		  -STRING_CODE, data, len,
 		  STRING_CODE, title,
 		  NULL);
     }

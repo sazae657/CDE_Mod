@@ -45,7 +45,7 @@ FlexBuffer::FlexBuffer()
 void
 FlexBuffer::grow(size_t needed)
 {
-  if(needed + 1 > (size_t) maxSize){
+  if(needed + 1 > maxSize){
     char *born = new char[maxSize = needed * 3 / 2 + 10];
     
     if(pos){
@@ -70,7 +70,7 @@ FlexBuffer::write(const char *d, size_t n)
 void
 FlexBuffer::writeStr(const char *str )
 {
-  int n = strlen(str);
+  size_t n = strlen(str);
   grow( pos + n );
   memcpy ( HeadPtr + pos, str, n );
   pos += n;
