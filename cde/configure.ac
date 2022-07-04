@@ -259,6 +259,13 @@ AC_ARG_ENABLE([misc-fixed],
 )
 AM_CONDITIONAL([MISC_FIXED], [test -n "$enable_misc_fixed"])
 
+dnl Build the help and dtinfo docs?
+AC_ARG_ENABLE([docs],
+        AS_HELP_STRING([--disable-docs], [Disable building help/dtinfo docs (default=no)]),
+        [disable_docs="yes"], [disable_docs=""]
+)
+AM_CONDITIONAL([BUILD_DOCS], [test -z "$disable_docs"])
+
 dnl hmmm...
 RM="rm -f"
 AC_SUBST(RM)
