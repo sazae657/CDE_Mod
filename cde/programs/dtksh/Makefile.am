@@ -55,8 +55,27 @@ dtksh_SOURCES = init.c \
                 extra.c \
                 msgs.c
 
+# for the BSD's we do not want to pass CFLAGS since it includes a
+# -I/usr/local/incude directive.  This breaks ksh's iconv
+# detection due to the weird way in which iconv seems to be handled on
+# the BSD's - both a libc impl (preferred), and a possibly external
+# GNU iconv impl installed in /usr/local.
+#
+# /usr/local/include is added to CFLAGS by the X11/Motif detection
+# logic - since that is where all of the needed headers are on the
+# BSDs.
+#
+# So until/unless that is fixed in ksh93, we will avoid sending
+# anything to the ksh build system except for SUIDEXECDEFINES
+
+if BSD
+KSH93_CCFLAGS=$(SUIDEXECDEFINES)
+else
+KSH93_CCFLAGS=$(CFLAGS) $(SUIDEXECDEFINES)
+endif
+
 ksh93/bin/ksh:
-	ksh93/bin/package flat make CCFLAGS='$(CFLAGS) $(SUIDEXECDEFINES)'
+	ksh93/bin/package flat make CCFLAGS='$(KSH93_CCFLAGS)'
 
 init.c: ksh93/bin/ksh
 	$(CP) ksh93/src/cmd/ksh93/sh/init.c ./
