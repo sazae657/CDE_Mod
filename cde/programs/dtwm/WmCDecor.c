@@ -2361,9 +2361,10 @@ void RegenerateClientFrame (ClientData *pcd)
     }
 
     /* resize title bar window */
-    if (decor & MWM_DECOR_TITLE && !pcd->clientTitleWin)
+    if (decor & MWM_DECOR_TITLE)
     {
-	CreateTitleBarWindow (pcd);
+	if (!pcd->clientTitleWin) CreateTitleBarWindow (pcd);
+
 	XResizeWindow (DISPLAY, pcd->clientTitleWin,
 	   pcd->frameInfo.width - 2*pcd->frameInfo.upperBorderWidth,
 	   pcd->frameInfo.titleBarHeight);
