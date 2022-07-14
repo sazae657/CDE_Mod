@@ -76,7 +76,7 @@ static void UpdateNetWmState (ClientData *pCD)
 
     if (pCD->maxConfig)
     {
-	if (pCD->isFullscreen)
+	if (pCD->fullscreen)
 	{
 	    atoms[natoms++] = wmGD.xa__NET_WM_STATE_FULLSCREEN;
 	}
@@ -100,15 +100,15 @@ static void ProcessNetWmStateFullscreen (ClientData *pCD, long action)
     switch (action)
     {
 	case _NET_WM_STATE_REMOVE:
-	    if (!pCD->isFullscreen) return;
-	    pCD->isFullscreen = False;
+	    if (!pCD->fullscreen) return;
+	    pCD->fullscreen = False;
 	    break;
 	case _NET_WM_STATE_ADD:
-	    if (pCD->isFullscreen) return;
-	    pCD->isFullscreen = True;
+	    if (pCD->fullscreen) return;
+	    pCD->fullscreen = True;
 	    break;
 	case _NET_WM_STATE_TOGGLE:
-	    pCD->isFullscreen = !pCD->isFullscreen;
+	    pCD->fullscreen = !pCD->fullscreen;
 	    break;
 	default:
 	    return;
@@ -116,7 +116,7 @@ static void ProcessNetWmStateFullscreen (ClientData *pCD, long action)
 
     SetClientState (pCD, NORMAL_STATE, GetTimestamp ());
 
-    if (pCD->isFullscreen)
+    if (pCD->fullscreen)
 	SetClientState (pCD, MAXIMIZED_STATE, GetTimestamp ());
 }
 

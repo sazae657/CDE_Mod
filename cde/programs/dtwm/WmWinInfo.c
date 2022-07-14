@@ -219,7 +219,7 @@ InitClientData (Window clientWindow)
 
     pCD->smClientID = (String)NULL;
 
-    pCD->isFullscreen = False;
+    pCD->fullscreen = False;
     pCD->monitorSizeIsSet = False;
 
     for (i = 0; i < STRETCH_COUNT; ++i) pCD->clientStretchWin[i] = (Window)0L;

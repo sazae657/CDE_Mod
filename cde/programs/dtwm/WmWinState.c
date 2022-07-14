@@ -604,7 +604,7 @@ static void SetupWindowStateWithEventMask (ClientData *pCD, int newState,
 
 void ConfigureNewState (ClientData *pcd)
 {
-    if (pcd->maxConfig && !pcd->isFullscreen)
+    if (pcd->maxConfig && !pcd->fullscreen)
     {
 	pcd->maxConfig = FALSE;
 	RegenerateClientFrame(pcd);
@@ -614,17 +614,16 @@ void ConfigureNewState (ClientData *pcd)
     }
     else
     {
-	long decor = WM_DECOR_DEFAULT;
+	long decor = pcd->decor;
 	WmHeadInfo_t *WmHI;
 
-	if (pcd->isFullscreen)
+	if (pcd->fullscreen)
 	{
-	    decor = pcd->decor;
 	    pcd->decor = WM_DECOR_NONE;
 	    SetClientOffset (pcd);
 	}
 
-	if (pcd->isFullscreen && pcd->monitorSizeIsSet)
+	if (pcd->fullscreen && pcd->monitorSizeIsSet)
 	{
 	    pcd->maxX = pcd->monitorX;
 	    pcd->maxY = pcd->monitorY;
@@ -654,7 +653,7 @@ void ConfigureNewState (ClientData *pcd)
 	pcd->maxConfig = TRUE;
 	RegenerateClientFrame(pcd);
 
-	if (pcd->isFullscreen)
+	if (pcd->fullscreen)
 	{
 	    pcd->decor = decor;
 	    SetClientOffset (pcd);

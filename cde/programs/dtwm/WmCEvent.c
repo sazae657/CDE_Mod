@@ -611,7 +611,9 @@ Boolean HandleEventsOnSpecialWindows (XEvent *pEvent)
 	    case ClientMessage:
 	    {
 		if (pCD = InitClientData (pEvent->xclient.window)) {
-		    XClientMessageEvent *clientEvent = pEvent;
+		    XClientMessageEvent *clientEvent;
+
+		    clientEvent = (XClientMessageEvent *) pEvent;
 
 		    if (clientEvent->message_type ==
 			wmGD.xa__NET_WM_FULLSCREEN_MONITORS)
