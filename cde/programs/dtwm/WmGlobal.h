@@ -1939,6 +1939,8 @@ typedef struct _WmGlobalData
     Atom	xa_UTF8_STRING;
     Atom	xa__NET_WM_NAME;
     Atom	xa__NET_WM_ICON_NAME;
+    Atom	xa__NET_WM_VISIBLE_NAME;
+    Atom	xa__NET_WM_VISIBLE_ICON_NAME;
     Atom	xa__NET_WM_FULLSCREEN_MONITORS;
     Atom	xa__NET_WM_STATE;
     Atom	xa__NET_WM_STATE_FULLSCREEN;
