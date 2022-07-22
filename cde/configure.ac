@@ -419,10 +419,6 @@ AC_CHECK_PROGS(GENCAT, gencat)
 if test -z "$ac_cv_prog_GENCAT"; then
    MISSING_PROGS="gencat ${MISSING_PROGS}"
 fi
-AC_CHECK_PROGS(PATCH, patch)
-if test -z "$ac_cv_prog_PATCH"; then
-   MISSING_PROGS="patch ${MISSING_PROGS}"
-fi
 AC_CHECK_PROGS(ONSGMLS, onsgmls)
 if test -z "$ac_cv_prog_ONSGMLS"; then
    MISSING_PROGS="ONSGMLS ${MISSING_PROGS}"

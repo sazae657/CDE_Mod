@@ -18,16 +18,16 @@ BUILT_SOURCES = init.c
 
 dtksh_CPPFLAGS = -I$(KSH93SRC)/include/ast -I$(KSH93SRC)/src/cmd/ksh93/include \
 		 -I$(KSH93SRC)/src/cmd/ksh93 -I${srcdir}/lib/DtPrint \
-		 -I${srcdir}/lib/DtHelp '-DAST_VERSION=20111111' \
-		 -DSHOPT_STATS -DSHOPT_NAMESPACE -DSHOPT_2DMATCH \
-		 -DSHOPT_MULTIBYTE -DSHOPT_BGX -DSHOPT_AUDIT -D_PACKAGE_ast \
-		 -DSHOPT_DYNAMIC -D_BLD_shell -DSHOPT_KIA -DKSHELL \
-		 -DSHOPT_HISTEXPAND -DSHOPT_EDPREDICT -DSHOPT_ESH -DSHOPT_VSH \
-		 -DSHOPT_FIXEDARRAY '-DERROR_CONTEXT_T=Error_context_t' \
-		 -DSHOPT_SUID_EXEC -D_API_ast=20100309 -DSHOPT_BRACEPAT \
-		 -DBUILD_DTKSH
+		 -I${srcdir}/lib/DtHelp -Iksh93/src/cmd/ksh93/FEATURE \
+		 '-DAST_VERSION=20111111' -DSHOPT_STATS -DSHOPT_NAMESPACE \
+		 -DSHOPT_2DMATCH -DSHOPT_MULTIBYTE -DSHOPT_BGX -DSHOPT_AUDIT \
+		 -D_PACKAGE_ast -DSHOPT_DYNAMIC -D_BLD_shell -DSHOPT_KIA \
+		 -DKSHELL -DSHOPT_HISTEXPAND -DSHOPT_EDPREDICT -DSHOPT_ESH \
+		 -DSHOPT_VSH -DSHOPT_FIXEDARRAY \
+		 '-DERROR_CONTEXT_T=Error_context_t' -DSHOPT_SUID_EXEC \
+		 -D_API_ast=20100309 -DSHOPT_BRACEPAT -DBUILD_DTKSH
 
-dtksh_LDADD = $(DTCLIENTLIBS) pmain.o $(XTOOLLIB) \
+dtksh_LDADD = $(DTCLIENTLIBS) ksh93/src/cmd/ksh93/pmain.o $(XTOOLLIB) \
 	      libshell.a $(KSH93SRC)/lib/libcmd.a $(KSH93SRC)/lib/libast.a \
 	      $(KSH93SRC)/lib/libdll.a
 
@@ -79,12 +79,6 @@ ksh93/bin/ksh:
 
 init.c: ksh93/bin/ksh
 	$(CP) ksh93/src/cmd/ksh93/sh/init.c ./
-
-pmain.o: ksh93/bin/ksh
-	$(CP) ksh93/src/cmd/ksh93/pmain.o ./
-
-FEATURE: ksh93/bin/ksh
-	$(CP) -R ksh93/src/cmd/ksh93/FEATURE ./
 
 libshell.a: $(KSH93SLIBSHELL) dtksh-init.o
 	$(CP) $(KSH93LIBSHELL) libshell.a; \
