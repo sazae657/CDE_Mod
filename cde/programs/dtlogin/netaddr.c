@@ -190,11 +190,9 @@ int ConvertAddr (XdmcpNetaddr saddr, int *len, char **addr)
 	break;
 #endif
 #ifdef AF_UNIX
-#ifndef hpux
       case AF_UNIX:
         retval = FamilyLocal;
 	break;
-#endif
 #endif
 #ifdef TCPCONN
       case AF_INET:

@@ -44,11 +44,7 @@
 #endif
 #include <limits.h>
 
-#if defined(OPT_BUG_HPUX)
-extern "C" {
-#include <wchar.h>
-};
-#elif defined(OPT_BUG_SUNOS_5)
+#if defined(OPT_BUG_SUNOS_5)
 #include <widec.h>
 #include <wctype.h>
 #elif defined(OPT_BUG_AIX)

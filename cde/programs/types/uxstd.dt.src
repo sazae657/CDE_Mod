@@ -638,20 +638,6 @@ ACTION Spell
 
 XCOMM ######
 
-#ifdef __hpux
-ACTION Df
-{
-	LABEL		%|nls-10070-#Disk Usage#|
-        ARG_COUNT	0
-        TYPE            COMMAND
-        WINDOW_TYPE     PERM_TERMINAL
-        EXEC_STRING     \
-          sh -c ' \
-            bdf 2>&1 | \${PAGER:-more}; \
-	    echo "%|nls-7-#Select#|"'
-	DESCRIPTION	%|nls-10071-#The#|
-}
-#else
 ACTION Df
 {
 	LABEL		%|nls-10070-#Disk Usage#|
@@ -664,7 +650,6 @@ ACTION Df
 	    echo "%|nls-7-#Select#|"'
 	DESCRIPTION	%|nls-10071-#The#|
 }
-#endif
 
 XCOMM ######
 

@@ -49,16 +49,7 @@
 #include <DtMail/DtMailError.hh>
 #include <DtMail/Common.h>
 #include <Dt/MsgCatP.h>
-
 #include <syslog.h>
-
-#if defined(HPUX) && !defined(hpV4)
-// HP-UX 9.* syslog.h does not define these.
-//
-extern "C" int syslog(int, const char *, ...);
-extern "C" int openlog(const char *, int, int);
-#endif
-
 #include <EUSDebug.hh>
 
 // Provide interface to the DtSvc function DtSimpleError

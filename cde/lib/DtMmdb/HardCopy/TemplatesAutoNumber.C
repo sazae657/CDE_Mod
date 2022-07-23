@@ -35,7 +35,7 @@
 
 #endif /* end of CDE_NEXT */
 
-#if defined(sun) || defined(hpux)
+#if defined(sun)
 
 #ifndef CDE_NEXT /* { */
 

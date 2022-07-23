@@ -91,16 +91,6 @@ extern char *_DtGetMessage(char *filename, int set, int n, char *s);
 #endif
 #endif  /* sun */
 
-#ifdef hpux
-#define HIL_PC101_KBD           1
-#define HIL_ITF_KBD             2
-#define SERIAL_PC101_KBD        3
-#define FIRST_HIL_KBD           0xC0
-#define LAST_HIL_KBD            0xDF
-#define LED_BITS                0x30
-#define PS2_DIN_NAME            "PS2_DIN_KEYBOARD"
-#endif
-
 #include <stdlib.h>
 
 #define  MEM	1
@@ -535,9 +525,6 @@ struct calcVars {                     /* Calctool variables and options. */
   int funstate ;      /* whether the last key pressed was a fin. func. key*/
   int defState ;      /* Set when calculator has just been cleared */
 
-#ifdef hpux
-  int keybdID;
-#endif
 };
 
 extern struct calcVars CalcVars;

@@ -72,16 +72,9 @@
 #define	FLAG_REMOTERUN		(1<<9)	/* -remoterun option */
 #define	FLAG_WINDOW		(1<<10)	/* -window option */
 #define	FLAG_DT			(1<<11)	/* -dt option */
-# ifdef	old_hpux
-#define	FLAG_VUE		(1<<12)	/* -vue option */
-# endif	/* old_hpux */
 
 #define	FLAG_DEFAULT		(FLAG_DT)
-# ifdef	old_hpux
-#define	USE_WINDOW_MASK		(FLAG_WINDOW|FLAG_VUE|FLAG_DT)
-# else
 #define	USE_WINDOW_MASK		(FLAG_WINDOW|FLAG_DT)
-# endif	/* old_hpux */
 
 #define	MAXIMSENT		32	/* max # of ims for each locale */
 
@@ -122,12 +115,7 @@
 #define	Proto_XIM		1
 #define	Proto_Ximp		2
 #define	Proto_Xsi		3
-# ifdef	old_hpux
-#define	Proto_Xhp		4
-#define	NUM_PROTOCOLS		5
-# else
 #define	NUM_PROTOCOLS		4
-# endif	/* old_hpux */
     /* protocol flag */
 #define	ProtoBit(i)		(1<<(i))
 
@@ -166,15 +154,6 @@
 #define	HOST_LOCAL		0
 #define	HOST_REMOTE		1
 #define	HOST_UNKNOWN		2
-
-# ifdef	old_hpux
-    /* index for XhpLocale */
-#define	XHP_JPN			0
-#define	XHP_KOR			1
-#define	XHP_CHS			2
-#define	XHP_CHT			3
-#define	XHP_LANG_NUM		4
-# endif	/* old_hpux */
 
     /* message type for put_msg_win() */
 #define	MSGTYP_INFO		0
@@ -243,26 +222,6 @@ typedef struct {
     EnvEnt	*set;
     EnvEnt	*unset;
 } OutEnv;
-
-# ifdef	old_hpux
-typedef struct {
-    char	*name;
-    char	*aliases;
-} LocaleAlias;
-
-typedef struct {
-    char	type;
-    char	*locales;
-} XhpLocale;
-
-typedef struct {
-    char	*confDir;	/* override /etc/vue/config */
-    char	*userDir;	/* override .vue */
-    char	*uselite;	/* $HOME/.vue/sessions/usevuelite */
-    char	*resPath;	/* path of session resource (colon separated) */
-    char	*litePath;
-} VueEnv;
-# endif	/* old_hpux */
 
 typedef struct {
     char	*confDir;	/* override /usr/dt/config */
@@ -391,11 +350,6 @@ typedef struct {
     char	*action[NUM_ACTIONS];	/* actions internally used */
     DtEnv	*dt;
     RemoteEnv	*remote;
-# ifdef	old_hpux
-    VueEnv	*vue;
-    XhpLocale	*xhp;
-    LocaleAlias	**alias;
-# endif	/* old_hpux */
 } CmdConf;
 
 typedef struct {
@@ -447,13 +401,8 @@ Extern int		LastErrMsg;
 
 #undef	Extern
 
-# ifdef	old_hpux
-#define	isXsession()	((OpFlag & (FLAG_VUE|FLAG_DT)) ? True : False)
-#define	isVUE()		((OpFlag & FLAG_VUE) ? True : False)
-# else
 #define	isXsession()	((OpFlag & FLAG_DT) ? True : False)
 #define	isVUE()		(False)
-# endif	/* old_hpux */
 #define	isDT()		((OpFlag & FLAG_DT) ? True : False)
 #define	useWINDOW()	\
 		(((OpFlag & USE_WINDOW_MASK) || window_env_ok()) ? True : False)

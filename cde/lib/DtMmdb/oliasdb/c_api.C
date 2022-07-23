@@ -25,15 +25,6 @@
 #include "oliasdb/DtMmdb.h"
 #include <stdio.h>
 
-#if ( ARCH == hpux)
-extern "C"
-char __pure_virtual_called()
-{
-   return 0;
-}
-#endif
-
-
 #ifdef DEBUG
 
 extern "C"

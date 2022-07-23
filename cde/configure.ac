@@ -61,7 +61,6 @@ build_freebsd=no
 build_openbsd=no
 build_netbsd=no
 build_solaris=no
-build_hpux=no
 build_aix=no
 
 dnl For now, we need to fake the OSMAJORVERSION, OSMINORVERSION.  In Linux
@@ -121,9 +120,6 @@ case "${build_os}" in
 	aix*)
 		build_aix=yes
 		;;
-	hpux*)
-		build_hpux=yes
-		;;
 esac
 
 AM_CONDITIONAL([LINUX], [test "$build_linux" = "yes"])
@@ -133,7 +129,6 @@ AM_CONDITIONAL([OPENBSD], [test "$build_openbsd" = "yes"])
 AM_CONDITIONAL([NETBSD], [test "$build_netbsd" = "yes"])
 AM_CONDITIONAL([SOLARIS], [test "$build_solaris" = "yes"])
 AM_CONDITIONAL([AIX], [test "$build_aix" = "yes"])
-AM_CONDITIONAL([HPUX], [test "$build_hpux" = "yes"])
 
 dnl Add osmajor/minor version to cppflags.
 OSVERSION="-DOSMAJORVERSION=$OSMAJORVERSION -DOSMINORVERSION=$OSMINORVERSION"

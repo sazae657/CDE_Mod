@@ -277,7 +277,7 @@ main( int argc, char **argv )
     ScanServers ();
     StartDisplays ();
     (void) signal (SIGHUP, RescanNotify);
-#if !defined(SYSV) || defined(hpux) || defined(_AIX) || defined(__linux__)
+#if !defined(SYSV) || defined(_AIX) || defined(__linux__)
     (void) signal (SIGCHLD, ChildNotify);
 #endif
     while (AnyWellKnownSockets() || AnyDisplaysLeft ())
@@ -290,7 +290,7 @@ main( int argc, char **argv )
 
 	TrimErrorFile();
 
-#if defined(SYSV) && !defined(hpux) && !defined(_AIX) && !defined(__linux__)
+#if defined(SYSV) && !defined(_AIX) && !defined(__linux__)
 	WaitForChild ();
 #else
 	WaitForSomething ();
@@ -504,7 +504,7 @@ StopAll( int arg )
 
 int	ChildReady = 0;
 
-#if !defined(SYSV) || defined(hpux) || defined(_AIX) || defined(__linux__) || defined(CSRG_BASED)
+#if !defined(SYSV) || defined(_AIX) || defined(__linux__) || defined(CSRG_BASED)
 static SIGVAL
 ChildNotify( int arg )
 {
@@ -533,7 +533,7 @@ WaitForChild( void )
     waitType	status;
     int		mask;
 
-#if defined(SYSV) || defined(SVR4) || defined(hpux) || defined(__linux__)
+#if defined(SYSV) || defined(SVR4) || defined(__linux__)
     if (AnyWellKnownSockets()) {
 	while ( ChildReady ) {
 #if defined(SVR4) || defined(__linux__)

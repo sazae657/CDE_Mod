@@ -70,14 +70,10 @@ extern "C" in_addr_t inet_addr(const char *);
 extern "C" { int rresvport(int *); }
 #endif
 
-#ifdef hpux
-  #define SETEUID(id) setresuid(getuid(), (uid_t)id, (uid_t)0);
-#else
-  #if defined(aix)
-    extern "C" { extern int seteuid(uid_t); }
-  #endif
-  #define SETEUID(id) seteuid((uid_t)id)
+#if defined(aix)
+  extern "C" { extern int seteuid(uid_t); }
 #endif
+#define SETEUID(id) seteuid((uid_t)id)
 
 #include "ParseJobs.h"
 #include "Invoke.h"
@@ -692,106 +688,6 @@ static int SortJobs(const void *_first, const void *_second)
 }
 
 #endif // SUN LOCAL PARSER
-
-#ifdef hpux
-
-/* HP LOCAL PARSER - have to parse the following
-
- Need to parse the following 2 forms of output:
-
- coseps-28           guest          priority 0  Aug  9 12:54 on coseps
-	 test.ps                                  31160 bytes
-
- OR
-
- coseps-29           guest          priority 0  Aug  9 12:56 on hostname
-	 (standard input)                         31160 bytes
-*/
-
-void LocalPrintJobs(char *printer, char **return_job_list, int *return_n_jobs)
-{
-   char *buf = new char[300];
-   char *s, *s1, *c;
-   char *qname;
-   char *jname;
-   char *jnumber;
-   char *owner;
-   char *month;
-   char *day;
-   char *stime;
-   char *jsize;
-   char *hostname;
-   int current_size;
-   int len;
-   char *output;
-
-   static char *job_list = NULL;
-   static int prev_buf_size = 0;
-
-   sprintf(buf, "LANG=C lpstat -i -o%s", printer);
-   Invoke *_thread = new Invoke(buf, &output);
-
-   if (prev_buf_size == 0)
-    {
-      prev_buf_size = BUFSIZ;
-      job_list = (char *)malloc(prev_buf_size);
-    }
-
-   current_size = 0;
-   *job_list = '\0';
-   *return_n_jobs = 0;
-   s = output;
-   if (s1 = strchr(s, '\n'))
-      *s1++ = '\0';
-   while (s && *s)
-    {
-      qname = strtok(s, "-");
-      jnumber = strtok(NULL, " ");
-      owner = strtok(NULL, " ");
-      strtok(NULL, " ");
-      strtok(NULL, " ");
-      month = strtok(NULL, " ");
-      day = strtok(NULL, " ");
-      stime = strtok(NULL, " \n");
-      strtok(NULL, " ");
-      hostname = strtok(NULL, " \n");
-      s = s1;
-      if (s1 = strchr(s, '\n'))
-         *s1++ = '\0';
-      for (jname = s; *jname == '\t' || *jname == ' '; jname++)
-	 ;
-      jsize = strrchr(s, ' ');
-      *jsize = '\0';
-      jsize = strrchr(s, ' ') + 1;
-      for (c = jsize - 1; *c == ' '; c--)
-	 ;
-      *(c + 1) = '\0';
-      if (hostname && strcmp(qname, hostname))
-         sprintf(buf, "%s|%s|%s|%s@%s|%s %s|%s|%s\n", qname, jname, jnumber,
-                 owner, hostname, month, day, stime, jsize);
-      else
-         sprintf(buf, "%s|%s|%s|%s|%s %s|%s|%s\n", qname, jname, jnumber,
-                 owner, month, day, stime, jsize);
-
-      len = strlen(buf);
-      if (prev_buf_size < (current_size + len + 1))
-         job_list = (char *) realloc(job_list, (current_size + len + 1) *
-				   sizeof(char *));
-      memcpy(job_list + current_size, buf, len);
-      current_size += len;
-      (*return_n_jobs)++;
-      s = s1;
-      if (s1 = strchr(s, '\n'))
-         *s1++ = '\0';
-    }
-   *(job_list + current_size) = '\0';
-   prev_buf_size = prev_buf_size > current_size ? prev_buf_size : current_size;
-   *return_job_list = job_list;
-   delete [] buf;
-   delete output;
-   delete _thread;
-}
-#endif // HP LOCAL PARSER
 
 #if defined(__linux__) || defined(CSRG_BASED)
 

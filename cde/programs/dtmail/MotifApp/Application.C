@@ -226,11 +226,7 @@ Application::~Application()
     delete []_windows;
 
 #ifdef CDExc21492
-  #if defined(__hpux)
-    this->BasicComponent::~BasicComponent();
-  #else
     BasicComponent::~BasicComponent();
-  #endif
 #endif
 
     CATCLOSE(catd);

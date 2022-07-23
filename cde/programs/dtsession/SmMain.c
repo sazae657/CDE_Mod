@@ -89,9 +89,6 @@ static int RegisterX11ScreenSaver(Display *display, int *ssEventType);
 /*
  * Internal Defines
  */
-#ifdef __hpux
-#define SECURE_SYS_PATH "/.secure/etc/passwd"
-#endif
 #ifdef _AIX
 #define SECURE_SYS_PATH "/etc/security/passwd"
 #endif
@@ -218,16 +215,12 @@ main (int argc, char **argv)
 	(void) putenv (lang);
     }
 
-#ifdef __hpux
-    setresgid(-1, smGD.runningGID, -1);
-#else  /* _AIX or any other system */
 #ifndef	SVR4
     setregid(smGD.conMgmtGID, smGD.runningGID);
 #else
     setgid(smGD.conMgmtGID);
     setegid(smGD.runningGID);
-#endif
-#endif /* !hpux */
+#endif /* !SVR4 */
 
    /*
     * Set up POSIX sigaction structs

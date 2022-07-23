@@ -78,7 +78,6 @@ extern char	*strdup(const char *);
 typedef enum
 {
     AB_OS_UNDEF = 0,
-    AB_OS_HPUX,
     AB_OS_AIX,
     AB_OS_SUNOS,
     AB_OS_LNX,

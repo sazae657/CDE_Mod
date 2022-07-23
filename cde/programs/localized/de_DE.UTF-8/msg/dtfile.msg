@@ -1059,13 +1059,6 @@ Die ausgewählte Datei ist nicht mehr vorhanden."
 31 "Datei- oder Ordnername:"
 
 32 "Inhalt der Datei:"
-$ Messages 33-35 are used on hpux systems 
-
-33 "Ein"
-
-34 "Aus"
-
-35 "Verweisen folgen: "
 
 36 "Neues Fenster öffnen"
 

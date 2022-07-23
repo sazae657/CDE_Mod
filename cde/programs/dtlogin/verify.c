@@ -569,12 +569,6 @@ systemEnv( struct display *d, char *user, char *home )
 
 #ifdef NGROUPS
 
-#ifndef __hpux
-
-/*
- *  groupMember() not used in HP-UX
- */
- 
 int 
 groupMember(
         char *name,
@@ -587,8 +581,6 @@ groupMember(
 	}
 	return 0;
 }
-#endif /* ! __hpux */
-
 
 void
 getGroups(
@@ -609,7 +601,6 @@ getGroups(
          * this code...
 	 */
 
-#if !(defined(__hpux))
 	while ( (g = getgrent()) != NULL ) {
 		/*
 		 * make the list unique
@@ -628,7 +619,6 @@ getGroups(
 				verify->groups[ngroups++] = g->gr_gid;
 		}
 	}
-#endif
 	verify->ngroups = ngroups;
 	endgrent ();
 }

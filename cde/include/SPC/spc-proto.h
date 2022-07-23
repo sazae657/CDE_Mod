@@ -110,7 +110,6 @@
 
 #define DELETE_LOGFILE     21
 
-#define RESET_TERMIO       22	/* This is obsolete, (hpux binary version) */
 #define RESET_TERMIOS      23
 
 /* New B.00 protocol requests */

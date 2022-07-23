@@ -42,12 +42,6 @@
 #include "util/tt_assert.h"
 #include <string.h>
 
-#if defined (__hpux)
-/*
- * On HP MAXINT is defined in both <values.h> and <sys/param.h>
- */
-#undef MAXINT
-#endif
 #if defined(CSRG_BASED)
 #define MAXINT INT_MAX
 #else

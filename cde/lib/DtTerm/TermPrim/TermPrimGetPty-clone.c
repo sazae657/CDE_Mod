@@ -34,9 +34,6 @@
 #include <errno.h>
 #include <signal.h>
 #include <Xm/Xm.h>
-#ifdef	HP_ARCHITECTURE
-# define X_INCLUDE_GRP_H
-#endif	/* HP_ARCHITECTURE */
 #define X_INCLUDE_UNISTD_H
 #define XOS_USE_XT_LOCKING
 #include <X11/Xos_r.h>
@@ -85,25 +82,8 @@ GetPty(char **ptySlave, char **ptyMaster)
 		(void) close(ttyFd);
 
 		/* fix the owner, mode, and group... */
-#ifdef	HP_ARCHITECTURE
-		{
-		    struct group *grp;
-		    gid_t gid;
-		    _Xgetgrparams grp_buf;
-
-		    if (grp = _XGetgrnam("tty", grp_buf)) {
-			gid = grp->gr_gid;
-		    } else {
-			gid = 0;
-		    }
-		    (void) endgrent();
-		    (void) chown(*ptySlave, getuid(), gid);
-		    (void) chmod(*ptySlave, 0620);
-		}
-#else	/* HP_ARCHITECTURE */
 		(void) chown(*ptySlave, getuid(), getgid());
 		(void) chmod(*ptySlave, 0622);
-#endif	/* HP_ARCHITECTURE */
 
 		/* pty master and slave names are already set.  Return
 		 * the file descriptor...
@@ -142,25 +122,8 @@ _DtTermPrimGetPty(char **ptySlave, char **ptyMaster)
 static int
 SetupPty(char *ptySlave, int ptyFd)
 {
-#ifdef	HP_ARCHITECTURE
-    {
-	struct group *grp;
-	gid_t gid;
-	_Xgetgrparams grp_buf;
-
-	if (grp = _XGetgrnam("tty", grp_buf)) {
-	    gid = grp->gr_gid;
-	} else {
-	    gid = 0;
-	}
-	(void) endgrent();
-	(void) chown(ptySlave, getuid(), gid);
-	(void) chmod(ptySlave, 0620);
-    }
-#else	/* HP_ARCHITECTURE */
     (void) chown(ptySlave, getuid(), getgid());
     (void) chmod(ptySlave, 0622);
-#endif	/* HP_ARCHITECTURE */
 }
     
 int

@@ -62,10 +62,6 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-#ifdef __hpux
-#include <sys/inode.h>
-#endif
-
 #include <ctype.h>
 #include <pwd.h>
 

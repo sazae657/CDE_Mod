@@ -57,9 +57,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 
-#if defined(__hpux)
-# include <wchar.h>
-#elif defined(sun)
+#if defined(sun)
 # if (_XOPEN_VERSION==3)
 #  include <wctype.h>
 # else

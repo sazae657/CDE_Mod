@@ -114,20 +114,6 @@ HelpSearchPath::HelpSearchPath
     NormalizePath();
     TraversePath();
 
-#if defined(hpux)
-    AddToPath ("/etc/vhelp/%T/%L/%H");
-    AddToPath ("/etc/vhelp/%T/%H");
-    AddToPath ("/etc/vhelp/%T/%L/%H.hv");
-    AddToPath ("/etc/vhelp/%T/%H.hv");
-    AddToPath ("/etc/vhelp/%T/C/%H");
-    AddToPath ("/etc/vhelp/%T/C/%H.hv");
-    AddToPath ("/usr/vhelp/%T/%L/%H");
-    AddToPath ("/usr/vhelp/%T/%H");
-    AddToPath ("/usr/vhelp/%T/%L/%H.hv");
-    AddToPath ("/usr/vhelp/%T/%H.hv");
-    AddToPath ("/usr/vhelp/%T/C/%H");
-    AddToPath ("/usr/vhelp/%T/C/%H.hv");
-#endif
 }
 
 

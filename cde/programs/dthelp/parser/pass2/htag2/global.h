@@ -38,7 +38,7 @@
 #include <time.h>
 #include <ctype.h>
 
-#if defined(hpux) || defined(_AIX) || defined(sun) || defined(__linux__) || defined(CSRG_BASED)
+#if defined(_AIX) || defined(sun) || defined(__linux__) || defined(CSRG_BASED)
 #include <unistd.h>
 #include <locale.h>
 #include <fcntl.h>

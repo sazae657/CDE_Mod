@@ -197,7 +197,7 @@ ShowFindDialog(
    XtFree(tempStr);
    file_mgr_rec->findBtn_child=find_rec->shell;
 
-#if defined(__hpux) || defined(sun)
+#if defined(sun)
    if(file_mgr_data->toolbox)
    {
       XtSetArg (args[0], XmNmenuHistory, find_rec->widgArry[ON]);

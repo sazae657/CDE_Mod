@@ -4,10 +4,6 @@ ABINCLUDES = ../include
 
 EXTRA_DEFINES =  -D_POSIX_SOURCE=1
 
-if HPUX
-CCOPTIONS = -Ae
-endif
-
 noinst_LIBRARIES = libABobjXm.a
 
 libABobjXm_a_CFLAGS = $(EXTRA_DEFINES) -I$(ABINCLUDES)

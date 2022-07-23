@@ -154,13 +154,6 @@
 #define UNIX		/* used in vista.h and elsewhere */
 #endif
 
-#ifdef HP_COMPILER
-#define _INCLUDE_HPUX_SOURCE
-#define _INCLUDE_POSIX_SOURCE
-#define _INCLUDE_XOPEN_SOURCE
-#endif
-
-
 /*----------------------- AUSTEXT.H ---------------------
  * DBMS record/key structure and constant declarations.
  * These represent the database schema formerly in austext.h

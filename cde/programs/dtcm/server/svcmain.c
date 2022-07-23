@@ -688,14 +688,12 @@ main(int argc, char **argv)
 		/* don't register unsupported versions: */
 		if (ph->prog[version].nproc == 0) continue;
 
-#ifndef HPUX
 		if (standalone)
-#endif
 			(void) pmap_unset(ph->program_num, version);
 
 		if (udp_transp == (SVCXPRT *)-1) {
 			udp_transp = svcudp_create(standalone ? RPC_ANYSOCK : 0
-#if defined(_AIX) || defined(hpV4) || defined(__linux__) || defined(CSRG_BASED)
+#if defined(_AIX) || defined(__linux__) || defined(CSRG_BASED)
 					);
 #else
 					,0,0);
@@ -707,13 +705,8 @@ main(int argc, char **argv)
                 	}
 		}
 
-#ifndef HPUX
 		if (!svc_register(udp_transp, ph->program_num, version, program,
 				standalone ? IPPROTO_UDP : 0)) {
-#else
-		if (!svc_register(udp_transp, ph->program_num, version, program,
-				IPPROTO_UDP)) {
-#endif
 			(void)fprintf(stderr, "rtable_main.c: unable to register");
 			exit(1);
 		}
@@ -742,17 +735,12 @@ main(int argc, char **argv)
 #endif /* SunOS */
 
 #ifndef AIX
-#ifdef HPUX
-	setgid (daemon_gid);
-	setuid (daemon_uid);
-#else
 	if(-1 == setegid (daemon_gid)) {
 	        perror(strerror(errno));
 	}
 	if(-1 == seteuid (daemon_uid)) {
 	        perror(strerror(errno));
 	}
-#endif /* HPUX */
 #endif /* AIX */
 
 	init_time();

@@ -35,12 +35,6 @@
 #include <dlfcn.h>
 #endif
 
-#ifdef   hpV4
-#include <dl.h>
-#endif
-
-
-
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <string.h>
@@ -76,10 +70,6 @@ static int		load_modules(pam_handle_t *, int, char *);
 #ifdef sun
 static void 		*open_module(char *);
 static int		load_function(void *, char *, int (**func)());
-#endif
-#ifdef hpV4
-static shl_t		open_module(char *);
-static int		load_function(shl_t, char *, int (**func)());
 #endif
 
 /* functions to read and store the pam.conf configuration file */
@@ -1040,10 +1030,6 @@ load_modules(pam_handle_t *pamh, int type, char *function_name)
 	void *mh;
 #endif
 
-#ifdef hpV4
-	shl_t mh;
-#endif
-
 	pamtab *pam_entry;
 	struct auth_module *authp;
 	struct account_module *accountp;
@@ -1234,19 +1220,11 @@ static void *
 open_module(char *module_so)
 {
 #endif
-#ifdef hpV4
-static shl_t
-open_module(char *module_so)
-{
-#endif
 	struct stat	stb;
 	char		*errmsg;
 #ifdef sun
 	void		*lfd;
 #endif /* sun */
-#ifdef hpV4
-	shl_t		lfd;
-#endif /* hpV4 */
 
 	/*
 	 * Stat the file so we can check modes and ownerships
@@ -1289,10 +1267,6 @@ open_module(char *module_so)
 	lfd = (void *) dlopen(module_so, RTLD_LAZY);
 #endif /* sun */
 
-#ifdef hpV4
-	lfd = shl_load(module_so, BIND_DEFERRED, 0L);
-#endif /* hpV4 */
-
 	if (lfd == NULL) {
 		if (pam_debug) {
 			errmsg = (char *) strerror(errno);
@@ -1314,18 +1288,7 @@ static int
 load_function(void *lfd, char *name, int (**func)())
 {
 #endif
-#ifdef hpV4
-static int
-load_function(shl_t lfd, char *name, int (**func)())
-{
-#endif
 	char *errmsg = NULL;
-
-#ifdef hpV4
-void *proc_addr = NULL;
-int stat;
-
-#endif
 
 	if (lfd == NULL)
 		return (PAM_SYMBOL_ERR);
@@ -1347,21 +1310,6 @@ int stat;
 	}
 #endif
 
-#ifdef hpV4
-
-	stat = shl_findsym(&lfd, name, TYPE_PROCEDURE, proc_addr);
-
-	*func = (int (*)())proc_addr;
-
-	if (stat) {
-		if (pam_debug) {
-			strerror_r(errno, errmsg, MAX_ERRMESSAGE_LENGTH);
-			syslog(LOG_DEBUG, "shl_findsym failed %s: error %s",
-				name, errmsg != NULL ? errmsg : "");
-		}
-		return (PAM_SYMBOL_ERR);
-	}
-#endif
 	if (pam_debug) {
 		syslog(LOG_DEBUG,
 			"load_function: successful load of %s", name);

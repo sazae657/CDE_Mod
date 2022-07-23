@@ -242,7 +242,6 @@ programs/dtappbuilder/src/ab/.dtcodegen.log
 programs/dtappbuilder/src/ab/Dtbuilder
 programs/dtappbuilder/src/ab/Dtbuilder.BAK
 programs/dtappbuilder/src/ab/Makefile.aix
-programs/dtappbuilder/src/ab/Makefile.hpux
 programs/dtappbuilder/src/ab/Makefile.sunos
 programs/dtappbuilder/src/ab/Makefile.linux
 programs/dtappbuilder/src/ab/Makefile.freebsd
@@ -2105,7 +2104,6 @@ programs/nsgmls/xentmgr_inst.C
 # programs/ttsnoop
 programs/ttsnoop/.dtcodegen.log
 programs/ttsnoop/Makefile.aix
-programs/ttsnoop/Makefile.hpux
 programs/ttsnoop/Makefile.sunos
 programs/ttsnoop/Makefile.linux
 programs/ttsnoop/Makefile.freebsd

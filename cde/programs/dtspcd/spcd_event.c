@@ -40,11 +40,7 @@
 #include <sys/types.h>   /* for fd_set, FD_SET macros, et. al. */
 #include <errno.h>
 
-#ifndef __hpux
 # define FD_SET_CAST(x) (x)
-#else
-# define FD_SET_CAST(x) ((int *)(x))
-#endif /* __hpux */
 
 struct {SbInputCallbackProc handler; void* data; }
   SPCD_input_handlers [FD_SETSIZE],

@@ -97,22 +97,7 @@ static unsigned int mask[] =
       (bits & (1L << (sizeof(BITS) * 8)-1)) ? putchar('1') : putchar('0'); } \
     putchar ('\n'); } 
 
-#if defined(hpux)
-#include <sys/utsname.h>
-static unsigned int
-gethostid()
-{
-  struct utsname u;
-  int i;
-
-  i=uname(&u);
-  if (i==-1)
-    abort();
-  if (u.idnumber[0])
-    return atoi(u.idnumber);
-  abort();
-}
-#elif defined(SVR4) && !defined(sun)
+#if defined(SVR4) && !defined(sun)
 static unsigned int
 gethostid()
 {

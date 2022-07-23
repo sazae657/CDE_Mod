@@ -57,7 +57,7 @@ char *finalpath;
    strcpy(curpath, pathname);
 
    if (*pathname != '/') {
-#if defined(__STDC__) && defined(hpux)
+#if defined(__STDC__)
       if (!getcwd(workpath)) {
 #else
       if (!getwd(workpath)) {	

@@ -276,7 +276,6 @@ void DtDND::GetDragPixmaps()
       XSetForeground(icon->display, gc_mask, 1);
       if (icon_size == LARGE_ICON)
        {
-#ifndef hpux
          if (tmp_mask && tmp_mask != XmUNSPECIFIED_PIXMAP)
 	  {
             XSetClipOrigin(icon->display, gc_mask, p_x, p_y);
@@ -286,7 +285,6 @@ void DtDND::GetDragPixmaps()
             XSetClipOrigin(icon->display, gc_mask, 0, 0);
 	  }
 	 else
-#endif
             XFillRectangle(icon->display, mask, gc_mask, p_x, p_y, p_w, p_h);
        }
       else

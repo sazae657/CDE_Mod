@@ -36,15 +36,6 @@
 #ifdef aix
 const char *LIST_QUEUES = "lsallq | grep -v '^bsh$' | sort";
 #else
-#ifdef hpux
-const char *LIST_QUEUES = "LANG=C lpstat -v | "
-			    "awk '"
-			    " $2 == \"for\" "
-			    "   { "
-			    "      x = match($3, /:/); "
-			    "      print substr($3, 1, x-1)"
-			    "   }' | sort";
-#else
 const char *LIST_QUEUES = "LANG=C lpstat -v | "
 			    "nawk '"
 			    " $2 == \"for\" "
@@ -52,7 +43,6 @@ const char *LIST_QUEUES = "LANG=C lpstat -v | "
 			    "      x = match($3, /:/); "
 			    "      print substr($3, 1, x-1)"
 			    "   }' | sort";
-#endif
 #endif
 
 // Object Class Name

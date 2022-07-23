@@ -48,9 +48,6 @@
 
 #include <X11/Xos.h>
 #include <sys/ioctl.h>
-#ifdef hpux
-#include <sys/ptyio.h>
-#endif
 
 #ifdef SVR4
 #include <termio.h>

@@ -112,7 +112,7 @@ private _DtHelpCeFindKeyword
 private _DtHelpCeXlateOpToStdLocale
 private _DtHelpCeXlateStdToOpLocale
 private _DtHelpCeGetDocStamp
-#if !defined(sun) && !defined(__hpux)
+#if !defined(sun)
 private _DtHelpCeStrCaseCmp
 #endif
 
@@ -146,28 +146,6 @@ private _DtGrRead
 /**** Additional private symbols ****/
 private _DtHelpCeGetTopTopicId
 private _DtHelpCeIsTopTopic
-
-/*****************************************************************************
- **** Private const structures.
- **** On HP machines, these core dump if compiled +ESlit and not included
- **** in the export list.
- *****************************************************************************/
-#if 0
-#ifdef __hpux
-private  ilBitonal0WhiteImageDes
-private  ilGray256ImageDes
-private  ilRGB256ImageDes
-private  ilPaletteImageDes
-private  ilYCbCrImageDes
-private  ilYCbCr2ImageDes
-
-private  ilBitImageFormat
-private  ilByteImageFormat
-private  il3BytePixelImageFormat
-private  il3BytePlaneImageFormat
-#endif   /* ifdef __hpux */
-#endif
-
 
 /*****************************************************************************
  **** Internal symbols nobody should call from outside DtHelp

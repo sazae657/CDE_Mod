@@ -43,12 +43,8 @@
 
 #include <sys/time.h>
 #include <sys/types.h>
-#ifndef __hpux
 # include <sys/select.h>
 # define FD_SET_CAST(x) (x)
-#else
-# define FD_SET_CAST(x) ((int *)(x))
-#endif
 
 #ifndef OPEN_MAX
 # define OPEN_MAX 128

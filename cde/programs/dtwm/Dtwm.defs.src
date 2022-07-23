@@ -30,9 +30,6 @@ Dtwm*useFrontPanel:			      True
 !###
 Dtwm*Dtmail*iconImage:       DtMail
 Dtwm*Dtterm*iconImage:       Fpterm
-#ifdef __hpux
-Dtwm*HPterm*iconImage:       Fpterm
-#endif /* __hpux */
 
 !# XTerm icon setting commented out - icon does not exist.
 !# Dtwm*XTerm*iconImage:        Dtxterm.l

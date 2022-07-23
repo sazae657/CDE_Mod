@@ -55,7 +55,7 @@ void m_free(void *block, char *msg)
 
     free(block) ;
     if (m_malftrace) {
-#if defined(hpux) || defined(_AIX) || defined(sun)
+#if defined(_AIX) || defined(sun)
       snprintf(buffer, 32, "%5x:%5x",
         (unsigned int) ((unsigned long) block >> 16),
         (unsigned int) block) ;
@@ -84,7 +84,7 @@ void *m_malloc(int size, char *msg)
       m_exit(TRUE) ;
       }
     if (m_malftrace) {
-#if defined(hpux) || defined(_AIX) || defined(sun)
+#if defined(_AIX) || defined(sun)
       snprintf(buffer, 32, "%5x:%5x",
         (unsigned int) ((unsigned long) p >> 16), (unsigned int) p) ;
 #else
@@ -116,7 +116,7 @@ void *m_realloc(void *ptr, int size, char *msg)
       m_exit(TRUE) ;
       }
     if (m_malftrace) {
-#if defined(hpux) || defined(_AIX) || defined(sun)
+#if defined(_AIX) || defined(sun)
       snprintf(buffer, 32, "%5x:%5x",
         (unsigned int) ((unsigned long) p >> 16), (unsigned int) p) ;
 #else

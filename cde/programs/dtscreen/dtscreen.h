@@ -92,7 +92,7 @@ extern void unhide_hft_ring();
 #include <sys/time.h>
 #define passwd spwd
 #define pw_passwd sp_pwdp
-#if defined(AIXV3) || defined(hpux)
+#if defined(AIXV3)
 #undef NULL
 #define NULL 0
 #include <sys/poll.h>
@@ -111,7 +111,7 @@ struct passwd {
 #include <shadow.h>
 #define getpwnam getspnam
 #endif
-#if !(defined(_AIX) || defined(hpux) || defined(sun))
+#if !(defined(_AIX) || defined(sun))
 # define srandom srand
 # define random rand
 # define MAXRAND (32767.0)

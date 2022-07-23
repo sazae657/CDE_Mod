@@ -700,28 +700,6 @@ void	clear_CmdConf(void)
 	    FREE(conf->dt->resPath);
 	    FREE(conf->dt);
 	}
-# ifdef	old_hpux
-	if (conf->vue) {
-	    FREE(conf->vue->confDir);
-	    FREE(conf->vue->userDir);
-	    FREE(conf->vue->uselite);
-	    FREE(conf->vue->resPath);
-	    FREE(conf->vue->litePath);
-	    FREE(conf->vue);
-	}	
-	if (conf->alias) {
-	    for (ap = conf->alias; *ap; ap++) {
-		FREE((*ap)->name);
-		FREE((*ap)->aliases);
-	    }
-	    FREE(conf->alias);
-	}
-	if (conf->xhp) {
-	    for (i = 0; i < XHP_LANG_NUM; i++)
-		FREE(conf->xhp[i].locales);
-	    FREE(conf->xhp);
-	}
-# endif	/* old_hpux */
     }
     CLR(&Conf, CmdConf);
     cmdconf_initialized = False;
@@ -803,11 +781,7 @@ void	pr_ImsConf(ImsConf *conf, char *ims_name)
 		(conf->protocols & ProtoBit(Proto_XIM)) ? "XIM,"  : NULL,
 		(conf->protocols & ProtoBit(Proto_Ximp)) ? "Ximp,"  : NULL,
 		(conf->protocols & ProtoBit(Proto_Xsi)) ? "Xsi,"  : NULL,
-# ifdef	old_hpux
-		(conf->protocols & ProtoBit(Proto_Xhp)) ? "Xhp," : NULL,
-# else
 		NULL,
-# endif	/* old_hpux */
 		(conf->protocols & ProtoBit(Proto_None)) ? "None,"  : NULL);
     fprintf(LogFp, "\tproperty=%s  servername=%s (%s) class=%s\n",
 		conf->property, conf->servername,
@@ -903,9 +877,6 @@ void	pr_CmdConf(void)
 {
     int		i;
     CmdConf	*conf = &Conf;
-# ifdef	old_hpux
-    LocaleAlias	**ap;
-# endif	/* old_hpux */
     char	**p;
 
     fprintf(LogFp, "CmdConf:\n");
@@ -918,21 +889,12 @@ void	pr_CmdConf(void)
     fprintf(LogFp, "\tuserTmpDir=%s\n", conf->userTmpDir);
     fprintf(LogFp, "\tuserAltDir=%s\n", conf->userAltDir);
 
-# ifdef	old_hpux
-    fprintf(LogFp, "\tImXmod:\tXIM=%s  Ximp=%s  Xsi=%s  Xhp=%s  None=%s\n",
-		conf->xmod[Proto_XIM], conf->xmod[Proto_Ximp],
-		conf->xmod[Proto_Xsi], conf->xmod[Proto_Xhp], conf->atom[Proto_None]);
-    fprintf(LogFp, "\tImAtom:\tXIM=%s  Ximp=%s  Xsi=%s  Xhp=%s  None=%s\n",
-		conf->atom[Proto_XIM], conf->atom[Proto_Ximp],
-		conf->atom[Proto_Xsi], conf->atom[Proto_Xhp], conf->atom[Proto_None]);
-# else
     fprintf(LogFp, "\tImXmod:\tXIM=%s  Ximp=%s  Xsi=%s  None=%s\n",
 		conf->xmod[Proto_XIM], conf->xmod[Proto_Ximp],
 		conf->xmod[Proto_Xsi], conf->atom[Proto_None]);
     fprintf(LogFp, "\tImAtom:\tXIM=%s  Ximp=%s  Xsi=%s  None=%s\n",
 		conf->atom[Proto_XIM], conf->atom[Proto_Ximp],
 		conf->atom[Proto_Xsi], conf->atom[Proto_None]);
-# endif	/* old_hpux */
 
     fprintf(LogFp, "\tAction[%d]:\t{ ", NUM_ACTIONS);
 	for (i = 0; i < NUM_ACTIONS; i++)
@@ -952,29 +914,6 @@ void	pr_CmdConf(void)
     } else
 	fprintf(LogFp, "\tDtEnv:\t<None>\n");
 
-# ifdef	old_hpux
-    if (conf->vue) {
-	fprintf(LogFp, "\tVueEnv:\tConfDir=%s  UserDir=%s\n",
-				conf->vue->confDir, conf->vue->userDir);
-	fprintf(LogFp, "\t  uselite=%s\n", conf->vue->uselite);
-	fprintf(LogFp, "\t  resPath=\"%s\"\n", conf->vue->resPath);
-	fprintf(LogFp, "\t  litePath=\"%s\"\n", conf->vue->litePath);
-    } else
-	fprintf(LogFp, "\tVueEnv:\t<None>\n");
-
-    fprintf(LogFp, "\tlocaleAlias:\t%s\n", conf->alias ? NULL : "None");
-    if (conf->alias) {
-	for (ap = conf->alias; *ap; ap++)
-	    fprintf(LogFp, "\t  [%s]\t%s\n", (*ap)->name, (*ap)->aliases);
-    }
-
-    fprintf(LogFp, "\txhp:\t%s\n", conf->xhp ? NULL : "None");
-    if (conf->xhp) {
-	for (i = 0; i < XHP_LANG_NUM; i++)
-	    fprintf(LogFp, "\t  [%c]\t%s\n",
-				conf->xhp[i].type, conf->xhp[i].locales);
-    }
-# endif	/* old_hpux */
 }
 
 void	pr_CmdOpt(void)
@@ -1018,9 +957,6 @@ void	pr_OpModeFlag(void)
 	if (OpFlag & FLAG_REMOTERUN)	fputs("RemoteRun, ", LogFp);
 	if (OpFlag & FLAG_WINDOW)	fputs("Window, ", LogFp);
 	if (OpFlag & FLAG_DT)		fputs("Dt, ", LogFp);
-# ifdef	old_hpux
-	if (OpFlag & FLAG_VUE)		fputs("Vue, ", LogFp);
-# endif	/* old_hpux */
     }
     putc('\n', LogFp);
 }
@@ -1132,11 +1068,7 @@ char	*error_name(ximsError error)
 
 
 static char *_proto_names[NUM_PROTOCOLS] =
-# ifdef	old_hpux
-			{ "None", "XIM", "Ximp", "Xsi", "Xhp" };
-# else
 			{ "None", "XIM", "Ximp", "Xsi" };
-# endif	/* old_hpux */
 
 char	*proto_name(int proto_idx)
 {

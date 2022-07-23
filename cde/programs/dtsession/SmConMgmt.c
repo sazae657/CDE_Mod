@@ -87,13 +87,6 @@
 #ifdef mips
 #define GPGSLIM "gpgslim"
 #define FREEMEM "freemem"
-#else /* not mips */
-# ifdef __hpux
-#  ifdef __hp9000s800
-#   define GPGSLIM "gpgslim"
-#   define FREEMEM "freemem"
-#  endif /* __hp9000s800 */
-# endif /* __hpux */
 #endif /* mips */
 
 #ifndef GPGSLIM
@@ -163,21 +156,17 @@ GetMemoryUtilization(void)
 #if !defined(__linux__)
     static int init = 0;
     static int kmem;
-#if !defined(SVR4) && !defined(hpV4) && !defined(_POWER) && !defined(CSRG_BASED)
+#if !defined(SVR4) && !defined(_AIX) && !defined(CSRG_BASED)
     extern void nlist();
 #endif
     int i;
 
 
-#ifdef __hpux
-    setresgid(-1, smGD.conMgmtGID, -1);
-#else
 #ifndef	SVR4
     setregid(smGD.runningGID, smGD.conMgmtGID);
 #else
     setgid(smGD.runningGID);
     setegid(smGD.conMgmtGID);
-#endif
 #endif
 
     if(!init)
@@ -191,15 +180,11 @@ GetMemoryUtilization(void)
 	    if (namelist[i].n_type == 0 ||
 		namelist[i].n_value == 0)
 	    {
-#ifdef __hpux
-		setresgid(-1, smGD.runningGID, -1);
-#else
 #ifndef	SVR4
 		setregid(smGD.conMgmtGID, smGD.runningGID);
 #else
 		setgid(smGD.conMgmtGID);
 		setegid(smGD.runningGID);
-#endif
 #endif
 		return(MEM_NOT_AVAILABLE);
 	    }
@@ -211,15 +196,11 @@ GetMemoryUtilization(void)
 	kmem = open(KMEM_FILE, O_RDONLY);
 	if (kmem < 0)
 	{
-#ifdef __hpux
-	    setresgid(-1, smGD.runningGID, -1);
-#else
 #ifndef	SVR4
 	    setregid(smGD.conMgmtGID, smGD.runningGID);
 #else
 	    setgid(smGD.conMgmtGID);
 	    setegid(smGD.runningGID);
-#endif
 #endif
 	    return(MEM_NOT_AVAILABLE);
 	}
@@ -247,15 +228,11 @@ GetMemoryUtilization(void)
     (void) read(kmem, (char *)&freemem, sizeof(int));
 #endif /* mips */
 
-#ifdef __hpux
-    setresgid(-1, smGD.runningGID, -1);
-#else
 #ifndef	SVR4
     setregid(smGD.conMgmtGID, smGD.runningGID);
 #else
     setgid(smGD.conMgmtGID);
     setegid(smGD.runningGID);
-#endif
 #endif
 
     if(freemem >= gpgslim)

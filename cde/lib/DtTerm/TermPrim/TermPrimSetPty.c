@@ -36,19 +36,7 @@
 #include "TermPrimDebug.h"
 
 #include <fcntl.h>
-#ifdef  ALPHA_ARCHITECTURE
-#include <sys/ioctl.h>
-#include <sys/ttydev.h>
-#endif /* ALPHA_ARCHITECTURE */
 #include <termios.h>
-#ifdef	USE_PTYS
-#ifdef	HP_ARCHITECTURE
-#include <sys/ptyio.h>
-#endif	/* HP_ARCHITECTURE */
-#endif	/* USE_PTYS */
-#if	defined(HP_ARCHITECTURE) && !(OSMAJORVERSION > 9)
-#include <bsdtty.h>
-#endif	/* defined(HP_ARCHITECTURE) && !(OSMAJORVERSION > 9) */
 
 #if defined (USE_SETCSMAP)
 #include <langinfo.h>
@@ -571,40 +559,7 @@ _DtTermPrimPtyInit
             TMODE (XTTYMODE_eof,   tio.c_cc[VEOF]);
             TMODE (XTTYMODE_eol,   tio.c_cc[VEOL]);
 
-#if	defined(HP_ARCHITECTURE)
-            TMODE (XTTYMODE_swtch, tio.c_cc[VSWTCH]);
-            TMODE (XTTYMODE_susp,  tio.c_cc[VSUSP]);
-#if	OSMAJORVERSION > 9
-	    /* HP-UX 10.0 supports the new, extended c_cc[] array...
-	     */
-            TMODE (XTTYMODE_start, tio.c_cc[VSTART]);
-            TMODE (XTTYMODE_stop,  tio.c_cc[VSTOP]);
-            TMODE (XTTYMODE_dsusp, tio.c_cc[VDSUSP]);
-#ifdef	NOTDEF
-	    /* the following two parameters are not supported by
-	     * HP-UX 10.0.
-	     */
-            TMODE (XTTYMODE_rprnt, tio.c_cc[VREPRINT]);
-            TMODE (XTTYMODE_flush, tio.c_cc[VDISCARD]);
-#endif	/* NOTDEF */
-            TMODE (XTTYMODE_weras, tio.c_cc[VWERASE]);
-            TMODE (XTTYMODE_lnext, tio.c_cc[VLNEXT]);
-#else	/* OSMAJORVERSION > 9 */
-	    {
-		/* With HP-UX 9.0 (and earlier) we need to set dsuspc
-		 * via the ltchars array.  In addition, we have no support
-		 * for rprnt, flush, weras, and lnext...
-		 */
-		struct ltchars ltc;
-
-		if (!ioctl(pty, TIOCGLTC, &ltc)) {
-		    TMODE (XTTYMODE_dsusp, ltc.t_dsuspc);
-		    (void) ioctl(pty, TIOCSLTC, &ltc);
-		}
-	    }
-#endif	/* OSMAJORVERSION > 9 */
-
-#elif	defined(IBM_ARCHITECTURE)
+#if	defined(IBM_ARCHITECTURE)
             TMODE (XTTYMODE_start, tio.c_cc[VSTRT]);
             TMODE (XTTYMODE_stop,  tio.c_cc[VSTOP]);
             TMODE (XTTYMODE_susp,  tio.c_cc[VSUSP]);
@@ -625,15 +580,6 @@ _DtTermPrimPtyInit
             TMODE (XTTYMODE_weras, tio.c_cc[VWERASE]);
             TMODE (XTTYMODE_lnext, tio.c_cc[VLNEXT]);
 
-#elif   defined(ALPHA_ARCHITECTURE)
-	    TMODE (XTTYMODE_start, tio.c_cc[VSTART]);
-	    TMODE (XTTYMODE_stop,  tio.c_cc[VSTOP]);
-	    TMODE (XTTYMODE_susp,  tio.c_cc[VSUSP]);
-	    TMODE (XTTYMODE_dsusp, tio.c_cc[VDSUSP]);
-	    TMODE (XTTYMODE_rprnt, tio.c_cc[VREPRINT]);
-	    TMODE (XTTYMODE_flush, tio.c_cc[VDISCARD]);
-	    TMODE (XTTYMODE_weras, tio.c_cc[VWERASE]);
-	    TMODE (XTTYMODE_lnext, tio.c_cc[VLNEXT]);
 #endif
         }
 #undef TMODE

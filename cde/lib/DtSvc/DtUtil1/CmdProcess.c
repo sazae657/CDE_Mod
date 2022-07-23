@@ -45,10 +45,6 @@
 #include <limits.h>
 #endif 
 
-#if defined(__hpux)
-#include <sys/getaccess.h>
-#endif
-
 #include <sys/socket.h>
 #include <netdb.h>
 #include <netinet/in.h>

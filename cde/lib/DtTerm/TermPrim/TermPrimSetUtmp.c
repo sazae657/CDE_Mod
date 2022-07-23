@@ -69,11 +69,6 @@
 #define	UT_NO_pututline
 #endif	/* sun */
 
-#ifdef	__hpux
-#define	UT_HOST		ut_host
-#define UT_ADDR		ut_addr
-#endif	/* __hpux */
-
 #ifdef	__AIX
 #define	UT_HOST		ut_host
 #define	UT_NO_pututline
@@ -362,24 +357,10 @@ UtmpEntryCreate(Widget w, pid_t pid, char *utmpLine)
     if (NULL == (utPtr = getutline(&ut))) {
 	/* build a base utmp entry... */
 	utPtr = &ut;
-#ifdef	__hpux
-	if (c = strstr(utmpLine, "tty")) {
-	    c += strlen("tty");
-	} else if (c = strstr(utmpLine, "pts")) {
-	    c += strlen("pts");
-	} else {
-	    c = utmpLine;
-	    if (strlen(utmpLine) > sizeof(utPtr->ut_id)) {
-		c += strlen(utmpLine) - sizeof(utPtr->ut_id);
-	    }
-	}
-	(void) strncpy(utPtr->ut_id, c, sizeof(utPtr->ut_id));
-#else	/* __hpux */
 #if defined(__AIX)
 	(void) strncpy(utPtr->ut_id, utmpLine,
 		sizeof(utPtr->ut_id));
-#else	/* __AIX */
-#if defined(__linux__) || defined(sun)
+#elif defined(__linux__) || defined(sun)
 	if (c = strchr(utmpLine, '/')) {
 	    c++;
 	} else {
@@ -389,8 +370,6 @@ UtmpEntryCreate(Widget w, pid_t pid, char *utmpLine)
 #else	/* linux || sun */
 	error out -- missing code for utPtr->ut_id
 #endif	/* sun */
-#endif	/* __AIX */
-#endif	/* __hpux */
     }
 
     /* set up the new entry... */

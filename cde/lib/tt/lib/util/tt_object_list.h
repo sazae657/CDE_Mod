@@ -37,7 +37,7 @@
 #include <rpc/rpc.h>
 #include <util/tt_ptr.h>
 #include <util/tt_object.h>
-#if defined(OPT_BUG_HPUX) || defined(OPT_BUG_AIX)
+#if defined(OPT_BUG_AIX)
 #	undef remove
 #endif
 

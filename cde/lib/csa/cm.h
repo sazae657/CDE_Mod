@@ -33,7 +33,7 @@
 
 #ifndef SunOS
 #include <rpc/types.h>
-#endif /* HPUX */
+#endif /* Sun */
 
 #include <rpc/rpc.h>
 
@@ -703,9 +703,4 @@ extern bool_t xdr_cms_delete_args();
 }
 #endif
 
-#ifdef HPUX
-#undef hpux
-#define hpux
 #endif
-#endif
-

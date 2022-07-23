@@ -284,9 +284,6 @@ Account( struct display *d, char *user, char *line, pid_t pid,
 #ifndef SVR4
  	    snprintf(u->ut_host, sizeof(u->ut_host), "%s", d->name);
 #endif
-#ifdef __hpux
- 	    u->ut_addr = 0;
-#endif
  	}
 
 #ifndef HAS_PAM_LIBRARY

@@ -54,18 +54,11 @@ XCOMM ##########################################################################
 #if defined (_AIX)
 #  define cpp_XINITUSER "$HOME/.xinitrc"
 #  define cpp_MAIL "/var/spool/mail/$USER"
-#elif defined (__hpux)
-#  define cpp_XDMSYS "/usr/lib/X11/xdm/sys.xsession"
 #elif defined (sun)
 #  define cpp_XINITUSER "$HOME/.xinitrc"
 #  define cpp_MAIL "/var/mail/$USER"
 #  undef cpp_HELLO
 #  define cpp_HELLO "$DT_BINPATH/dthello -file $DT_INSTALL/copyright &"
-#endif
-
-#if defined (__hpux) && defined (BLS)
-#  undef cpp_HELLO
-#  define cpp_HELLO "$DT_BINPATH/dthello -file /etc/copyright -file $HOME/.dtlogininfo &"
 #endif
 
 #ifdef linux
@@ -240,29 +233,6 @@ then
 fi
 #endif
  
-#if defined (__hpux)
-  HASH
-  HASH Set the keyboard language if necessary...
-  HASH
-  if [ ! -z "$LANG" ]
-  then
-      case $LANG in
-            bulgarian | czech   | hebrew | hungarian | \
-            japanese  | korean  | polish | rumanian  | \
-            russian   | serbocroatian) 
-                        KBD_LANG=$LANG
-                        export KBD_LANG;;
-           
-             chinese-t) KBD_LANG=t_chinese
-                        export KBD_LANG;;
-             chinese-s) KBD_LANG=s_chinese
-                        export KBD_LANG;;
-            
-             *);; 
-     esac
-  fi
-#endif
-
   HASH
   HASH Locate configuration file directories
   HASH

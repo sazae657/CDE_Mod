@@ -734,13 +734,9 @@ _DtCmsSetFileMode(
 
 	if (changeeuid == B_TRUE) {
 #ifndef AIX
-#ifdef HPUX
-		setuid (0);
-#else
 		if(-1 == seteuid (0)) {
 			perror(strerror(errno));
 		}
-#endif
 #endif
 	}
 
@@ -767,11 +763,7 @@ _DtCmsSetFileMode(
 	}
 
 #ifndef AIX
-#ifdef HPUX
-	if (changeeuid == B_TRUE && setuid (daemon_uid) < 0)
-#else
 	if (changeeuid == B_TRUE && seteuid (daemon_uid) < 0)
-#endif
 	{
 		if (printerr == B_TRUE) {
 			error = errno;

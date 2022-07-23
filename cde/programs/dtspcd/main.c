@@ -91,7 +91,6 @@ int Client_Environ_Reset(protocol_request_ptr prot);
 int Client_Reply_Devices(protocol_request_ptr prot);
 int Client_Reply_Logfile(protocol_request_ptr prot);
 int Client_Delete_Logfile(protocol_request_ptr prot);
-int Client_Reset_Termio(protocol_request_ptr prot);
 int Client_Reset_Termios(protocol_request_ptr prot);
 int Client_Protocol_Version(protocol_request_ptr prot);
 int Client_Reply_Protocol(protocol_request_ptr prot);
@@ -140,7 +139,6 @@ protocol_request_handler spcd_protocol_dispatch_table[NREQS]={
   Client_Reply_Logfile,      /* QUERY_LOGFILE */
   NULL,                      /* LOGFILE_REPLY */
   Client_Delete_Logfile,     /* DELETE_LOGFILE */
-  Client_Reset_Termio,       /* RESET_TERMIO (obsolete) */
   Client_Reset_Termios,      /* RESET_TERMIOS */
   Client_Send_EOF,           /* CHANNEL_SEND_EOF */
   Client_Channel_Termios,    /* CHANNEL_TERMIOS */
@@ -1115,19 +1113,6 @@ int Client_Delete_Logfile(protocol_request_ptr prot)
   print_protocol_request((XeString)"--> DELETE_LOGFILE", prot);
 
   return(XeSPCRemoveLogfile(channel));
-}
-
-/*----------------------------------------------------------------------+*/
-int Client_Reset_Termio(protocol_request_ptr prot)
-/*----------------------------------------------------------------------+*/
-{
-  /* This handles old 1.0 versions of the SPC code.  We used to send */
-  /* an hp-ux version of the termio struct in a non-portable manner  */
-  /* We need to be able to "eat" such an request if we get one.      */
-
-  print_protocol_request((XeString)"--> RESET_TERMIO", prot);
-
-  return(SPC_Get_Termio(prot));
 }
 
 /*----------------------------------------------------------------------+*/

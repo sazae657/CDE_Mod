@@ -422,7 +422,7 @@ typedef CC_TPtrDlist<sr_DtCvSegment> _ccTPtrDLstCvSegmnt_;
 
 #endif
 
-#if defined(sun) | defined(hpux)
+#if defined(sun)
 
 typedef UAS_Pointer<UAS_String>                 _ptrString_;
 typedef UAS_Pointer<UAS_Common>                 _ptrCommon_;

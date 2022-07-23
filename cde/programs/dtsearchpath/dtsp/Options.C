@@ -99,9 +99,6 @@ CString Usage ("Usage: dtsearchpath [ -v | -T | -o | -a | -csh | -ksh ] "
 	    }
 	}
     }
-#if defined(hpux) || defined(hpV4)
-    flags |= 16;
-#endif
 }
 
 

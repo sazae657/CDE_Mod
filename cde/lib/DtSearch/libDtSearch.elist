@@ -416,10 +416,6 @@ internal yylex
 internal yynerrs
 internal yyparse
 
-#if defined(hpux)
-internal yymaxdepth
-#endif
-
 #if defined(sun)
 internal yy_yys
 internal yy_yyv

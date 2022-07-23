@@ -57,7 +57,7 @@ typedef struct
    Dimension     width;
    Dimension     height;
 
-#if defined(__hpux) || defined(sun)
+#if defined(sun)
    Boolean       follow_links;
 #endif
    String        directories;

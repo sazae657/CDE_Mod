@@ -45,12 +45,6 @@ static void	on_sig_chld(/* sig */);
 static bool	is_ims_running(/* renv, ims */);
 static int	settle_ims(/* sel */);
 static Window	property_owner(/* prop_atom, prop_str */);
-# ifdef	old_hpux
-static void	catch_alarm(/* sig */);
-static int	try_connection(/* sel */);
-static int	create_dummy_ic(/* xim */);
-# endif	/* old_hpux */
-
 
 void	ximsStart(void)
 {
@@ -185,12 +179,6 @@ void	ximsWaitDone(void)
 
 	case ErrImsWaitDone:
 		sel->status = NoError;
-# ifdef	old_hpux
-		if ((OpFlag & FLAG_CONNECT)
-				|| (sel->ent->ims->flags & F_TRY_CONNECT)) {
-		    sel->status = try_connection(sel);
-		}
-# endif	/* old_hpux */
 		break;
 
 	case ErrImsConnecting:
@@ -360,11 +348,6 @@ int	load_resources(void)
 	if (isDT()) {
 	    sess_res = find_session_resfile(RES_TYPE_DT);
 	}
-# ifdef	old_hpux
-	else if (isVUE()) {
-	    sess_res = find_session_resfile(RES_TYPE_VUE);
-	}
-# endif	/* old_hpux */
 	if (sess_res && !is_readable(sess_res, False)) {
 	    FREE(sess_res);
 	    sess_res = NULL;
@@ -407,17 +390,6 @@ static char	*find_session_resfile(int res_type)
     if (res_type == RES_TYPE_DT) {	/* DT */
 	res = Conf.dt ? (Conf.dt)->resPath : NULL;
     }
-# ifdef	old_hpux
-    else if (res_type == RES_TYPE_VUE && Conf.vue) {	/* VUE */
-	VueEnv	*vue = Conf.vue;
-	res = vue->resPath;
-	if (vue->uselite) {
-	    expand_string(vue->uselite, path, MAXPATHLEN, (ImsConf *)0);
-	    if (access(path, R_OK) == 0)
-		res = vue->litePath;
-	}
-    }
-# endif	/* old_hpux */
 
     if (!res)	return NULL;
     if (ls = parse_strlist(res, ':')) {
@@ -490,12 +462,6 @@ static int	build_run_env(UserSelection *sel)
 	renv->atom_name = NEWSTR(buf);
     } else {		/* copy im_mod, instead */
 	renv->atom_name = NEWSTR(renv->im_mod);
-# ifdef	old_hpux
-	if ((p = renv->atom_name) && strchr(p, '#')) {
-	    while (p = strchr(p, '#'))		/* replace '#' with '@' */
-		*p++ = '@';
-	}
-# endif	/* old_hpux */
     }
 
 	/* others */
@@ -768,177 +734,3 @@ static Window	property_owner(Atom *prop_atom, char *prop_str)
     }
     return XGetSelectionOwner(Dpy, property);
 }
-
-
-# ifdef	old_hpux
-	/* ***** try_connection ***** */
-
-#define	MAX_RETRY	5
-
-static jmp_buf	jmp_env;
-static Window	dmy_win = 0;	/* temporary window used for XCreateIC() */
-
-static void	catch_alarm(int	sig)
-{
-    signal(SIGALRM, SIG_IGN);
-    alarm(0);
-    longjmp(jmp_env, 1);
-}
-
-static int	try_connection(UserSelection *sel)
-{
-    RunEnv	*renv = sel->renv;
-    ImsConf	*ims = sel->ent->ims;
-    char	envbuf[BUFSIZ], *bp;
-    XIM		xim;
-    int		ic_ok, retry_cnt;
-    static char	*saved_xmod = NULL;
-#ifdef	DEBUG
-    time_t	last_time;
-#endif
-
-    DPR(("try_connection(%s):\n", sel->name));
-
-    if (sel->status != NoError || !renv->im_mod)
-	return sel->status;
-
-    renv->status = ErrImsConnecting;
-    set_sig_chld(True);
-
-	/* set XMODIFIERS */
-    saved_xmod = NULL;
-    bp = strcpyx(envbuf, ENV_MOD_IM);
-    bp = strcpyx(bp, renv->im_mod);
-    saved_xmod = XSetLocaleModifiers(envbuf);
-    DPR(("\tXSetLocaleModifiers(%s)\n", envbuf));
-
-    ic_ok = False;
-    if (setjmp(jmp_env) == 0) {
-	signal(SIGALRM, catch_alarm);
-	alarm(Opt.Timeout);
-
-	for (retry_cnt = 0; !ic_ok && retry_cnt <= MAX_RETRY; retry_cnt++) {
-	    if (retry_cnt)	sleep(retry_cnt * retry_cnt);
-
-#ifdef	DEBUG
-	    last_time = time((time_t)0);
-#endif
-	    xim = XOpenIM(Dpy, (XrmDatabase)0, ims->servername, ims->classname);
-	    if (xim) {
-		DPR(("try_connection(%d): XOpenIM() OK [%d sec.]",
-				retry_cnt, time((time_t)0) - last_time));
-#ifdef	DEBUG
-		last_time = time((time_t)0);
-#endif
-		ic_ok = create_dummy_ic(xim);
-		DPR(("\tXCreateIC() %s [%d sec.]\n",
-			ic_ok ? "OK" : "Failed", time((time_t)0) - last_time));
-		XCloseIM(xim); xim = 0;
-	    } else {
-		DPR(("try_connection(%d): XOpenIM() failed.\n", retry_cnt));
-		ic_ok = False;
-	    }
-	}
-    } else {		/* long_jmp() by alarm [timeout] */
-	alarm(0); signal(SIGALRM, SIG_IGN);
-	DPR(("try_connection(): XOpenIM() & XCreateIC() timed-out.\n"));
-	if (dmy_win) {
-	    XDestroyWindow(Dpy, dmy_win); dmy_win = 0;
-	}
-	    /* neither XDestroyIC() nor XCloseIM() should be called */
-	xim = 0;
-	ic_ok = False;
-    }
-    alarm(0); signal(SIGALRM, SIG_IGN);
-
-	/* restore XMODIFIERS */
-    if (saved_xmod) {
-	DPR2(("\tXSetLocaleModifiers(save='%s')\n", saved_xmod));
-	XSetLocaleModifiers(saved_xmod);
-    }
-
-    set_sig_chld(False);
-    renv->status = ErrImsConnectDone;
-
-    return ic_ok ? NoError : ErrImsTimeout;	/* ErrImsConnect; */
-}
-
-static int	create_dummy_ic(XIM xim)
-{
-    int		scr;
-    XFontSet	fset;
-    XIMStyles	*im_styles;
-    XIMStyle	style;
-    XIC		ic;
-    unsigned long	fg, bg;
-    XRectangle	area;
-    XVaNestedList	status_attr;
-
-    scr = DefaultScreen(Dpy);
-    fg = BlackPixel(Dpy, scr);
-    bg = WhitePixel(Dpy, scr);
-    dmy_win = XCreateSimpleWindow(Dpy, RootWindow(Dpy, scr),
-							0, 0, 1, 1, 0, bg, fg);
-
-	/* search (PreeditNothing | StatusNothing [or StatusArea]) style */
-    ic = 0;
-    style = (XIMStyle) 0;
-    im_styles = (XIMStyles *) 0;
-    if (XGetIMValues(xim, XNQueryInputStyle, &im_styles, NULL)) {
-	DPR(("create_dummy_ic(): XGetIMValues(XNQueryInutStyle) failed.\n"));
-	goto _err;
-    }
-    if (!im_styles || !im_styles->count_styles) {
-	DPR(("create_dummy_ic(): No input styles supported on IMS.\n"));
-	if (im_styles)	XFree(im_styles);
-	goto _err;
-    }
-    if ((int)im_styles->count_styles > 0) {
-	int	i, alt;
-	for (i = 0, alt = -1; i < (int)im_styles->count_styles; i++)
-	    if (im_styles->supported_styles[i] & XIMPreeditNothing) {
-		if (im_styles->supported_styles[i] & XIMStatusNothing) {
-		    style = im_styles->supported_styles[i];
-		    break;
-		} else if (im_styles->supported_styles[i] & XIMStatusArea) {
-		    alt = i;
-		}
-	    }
-	if (!style && alt >= 0)	style = im_styles->supported_styles[alt];
-	XFree(im_styles);
-    }
-    if (!style) {
-	DPR(("create_dummy_ic(): 'PreeditNothing' styles not supported.\n"));
-	goto _err;
-	/* style = XIMPreeditNothing | XIMStatusNothing; */
-    }
-
-    fset = 0;
-    status_attr = (XVaNestedList) 0;
-    if (style & XIMStatusArea) {
-	area.x = area.y = 0; area.width = area.height = 1;
-	status_attr = XVaCreateNestedList(NULL,
-			XNArea, &area,
-			XNForeground, fg,
-			XNBackground, bg,
-			XNFontSet, fset,
-			NULL );
-    }
-
-    ic = XCreateIC(xim,	XNInputStyle, style,
-			XNClientWindow, dmy_win,
-			XNStatusAttributes, status_attr,
-			XNFocusWindow, dmy_win,
-			NULL );
-
-    /* if (fset)	XFreeFontSet(Dpy, fset); */
-    if (ic)	XDestroyIC(ic);
-
-_err:
-    if (dmy_win)	XDestroyWindow(Dpy, dmy_win);
-    dmy_win = 0;
-
-    return ic ? True : False;
-}
-
-# endif	/* old_hpux */

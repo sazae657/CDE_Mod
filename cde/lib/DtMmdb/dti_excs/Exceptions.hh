@@ -66,7 +66,7 @@ extern "C" {
 #endif
 
 #ifndef STRINGIFY
-#if !defined(__STDC__) && !defined(hpux)
+#if !defined(__STDC__)
 #define STRINGIFY(S) "S"
 #else
 #define STRINGIFY(S) #S
@@ -130,13 +130,8 @@ extern "C" {
 
 // This works if OBJ is an object or a pointer since Exception objects
 // overload operator ->.
-#if !defined(hpux)
 #define mthrow(OBJ) \
   (OBJ)->throw_it (__LINE__, __FILE__, DEBUG_THROW_FLAG)
-#else
-#define mthrow(OBJ) \
-  OBJ->throw_it (__LINE__, __FILE__, DEBUG_THROW_FLAG)
-#endif
 
 #define rethrow \
   Exception::current_exception().do_throw (__LINE__, __FILE__)

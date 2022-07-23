@@ -266,13 +266,6 @@ static XtResource saverResources[]=
  machineDefault[] =
  {
    {  0,  20,  60},               /* Machine independent default */
-#ifdef __hpux
-   {300,  10,  60},               /* HP s300                     */
-   {400,  10,  60},               /* HP s400                     */
-   {600,   5,  60},               /* HP s600                     */
-   {700,   5,  60},               /* HP s700                     */
-   {800,   5,  60},               /* HP s800                     */
-#endif /* __hpux */
  };
  #define MACHINEDEFAULTS (sizeof(machineDefault) / sizeof(machineDefault[0]))
 
@@ -419,38 +412,6 @@ InitSMGlobals( void )
     char *keyNum;
 
     smGD.userSetWaitWmTimeout = True; /* assume it is */
-
-#ifdef __hpux
-    if (uname(&nameRec) == 0)
-    {
-        keyNum = nameRec.machine;
-        if (firstSlash = strchr(keyNum, '/'))
-        {
-            keyNum = ++firstSlash;
-
-            if (     keyNum[0] == '3') 
-            {
-                machineType = 300;
-            }
-            else if (keyNum[0] == '4') 
-            {
-                machineType = 400;
-            }
-            else if (keyNum[0] == '6') 
-            {
-                machineType = 600;
-            }
-            else if (keyNum[0] == '7') 
-            {
-                machineType = 700;
-            }
-            else if (keyNum[0] == '8') 
-            {
-                machineType = 800;
-            }
-        }
-    }
-#endif /* __hpux */
 
     /*
      * Get application specific resource values
@@ -1385,13 +1346,11 @@ RemoveFiles(
         /*
          * Set the gid of the process back from bin
          */
-#ifndef __hpux
 #ifndef SVR4
         setregid(smGD.runningGID, smGD.runningGID);
 #else
         setgid(smGD.runningGID);
         setegid(smGD.runningGID);
-#endif
 #endif
 
         _DtEnvControl(DT_ENV_RESTORE_PRE_DT);
@@ -1490,13 +1449,11 @@ MoveDirectory(
         /*
          * Set the gid of the process back from bin
          */
-#ifndef __hpux
 #ifndef SVR4
         setregid(smGD.runningGID, smGD.runningGID);
 #else
         setgid(smGD.runningGID);
         setegid(smGD.runningGID);
-#endif
 #endif
 
         _DtEnvControl(DT_ENV_RESTORE_PRE_DT);

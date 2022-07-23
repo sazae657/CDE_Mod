@@ -57,8 +57,6 @@
 */ 
 #if defined(SunOS)
 #include <stropts.h>
-#elif defined(HPUX)
-#include <sys/poll.h>
 #elif defined(_AIX) || defined(__linux__)
 #define INFTIM (-1)             /* Infinite timeout */
 #endif

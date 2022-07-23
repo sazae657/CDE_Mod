@@ -55,8 +55,7 @@
 #if !defined(__linux__) && !defined(CSRG_BASED) && !defined(sun)
 #include <libc.h>
 #endif
-#if defined(hpux) || defined(sgi) || \
-    defined(__linux__) || defined(CSRG_BASED) || defined(sun)
+#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 #include <unistd.h>
 #else
 #include <sysent.h>

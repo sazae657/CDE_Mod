@@ -44,7 +44,6 @@
   __cplusplus    	- Will be set for C++ compilers
   __STDCPP__		- Will be set for ANSI and C++ compilers
 
- __hpux 		- Will be set for HP-UX systems
  __sun			- Will be set for SUN systems
  __aix                  - Will be set for IBM (AIX) systems
 
@@ -88,26 +87,11 @@
 #   define __sun
 #endif
 
-#if defined(hpux) && !defined(__hpux)
-#   define __hpux
-#endif
-
 #if defined(_AIX) && !defined(__aix)
 #   define __aix
 #   define OSF_MOTIF_1_1_1
 #   define OSF_BUG
 #endif
-
-#ifdef __hpux 
-#   define __sysv
-/* __hp9000s300 or __hp9000s800 is defined by HP-UX cpp */
-#    if !defined (__hpux_8_0)
-#       define __hp_7_0
-#    endif
-#    define __hp_nls_16
-#    define __hp_color_object
-#    define __unsigned_char_ptr_yytext
-#endif  /* __hpux */
 
 #ifdef __sun
 #   if defined(sparc) && !defined(__sparc)
@@ -181,7 +165,7 @@
 /* about above.  So, declare them only if we don't already have them */
 /* ----------------------------------------------------------------- */
 
-#if defined(_HPUX_SOURCE) || defined(__sun) || defined(_INCLUDE_BSD_SOURCE) || defined(__aix) || defined(__linux__)
+#if defined(__sun) || defined(_INCLUDE_BSD_SOURCE) || defined(__aix) || defined(__linux__)
        /* the "u_types" are defined in standard files */
 #      undef _INCLUDE_BSD_SOURCE
 #else

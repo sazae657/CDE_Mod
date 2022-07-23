@@ -151,9 +151,4 @@ extern bool_t xdr_cmcb_update_callback_args();
 }
 #endif
 
-#ifdef HPUX
-#undef hpux
-#define hpux
 #endif
-#endif
-

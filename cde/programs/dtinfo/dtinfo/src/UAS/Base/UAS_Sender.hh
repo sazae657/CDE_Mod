@@ -27,7 +27,7 @@
 # include "UAS_PtrList.hh"
 
 #ifndef CONCAT
-#if defined(__STDC__) || defined(hpux)
+#if defined(__STDC__)
 #define CONCAT(A,B) A##B
 #define CONCAT3(A,B,C) A##B##C
 #else

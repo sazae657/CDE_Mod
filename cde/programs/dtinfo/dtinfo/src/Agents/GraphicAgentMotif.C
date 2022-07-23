@@ -247,16 +247,6 @@ GraphicAgent::create_ui()
 
   DECL  (WXmForm,           form,         f_shell,      "form"         );
   DECLMC(WXmMenuBar,        menu_bar,     form,         "menu_bar"     );
-#ifdef hpux
-  //
-  //  rtp: hard-wire the menu bar's background, since
-  //       it comes up a bogus color. Copied from swm's
-  //       change in NodeWindowAgentMotif.C
-  //
-  Pixel bg = form.Background();
-  menu_bar.Background(bg);
-
-#endif
   DECLM (WXmCascadeButton,  file,         menu_bar,     "file"         );
   DECLMC(WXmPulldownMenu,   file_menu,    menu_bar,     "file_menu"    );
   DECLM (WXmPushButton,     attach,       file_menu,    "attach"       );

@@ -25,19 +25,12 @@ XCOMM ##########################################################################
 #if defined(__aix)
 #define XBIN /usr/lpp/X11/bin
 #define XBIN_CONTRIB /usr/lpp/X11/bin
-#else
-#if defined(__sun)
+#elif defined(__sun)
 #define XBIN /usr/openwin/bin
 #define XBIN_CONTRIB /usr/openwin/bin
 #else
-#if defined(__hpux)
-#define XBIN /usr/bin/X11
-#define XBIN_CONTRIB /usr/contrib/bin/X11
-#else
 #define XBIN /usr/bin/X11
 #define XBIN_CONTRIB /usr/local/bin/X11
-#endif
-#endif
 #endif
 
 ACTION DtTypes
@@ -68,64 +61,6 @@ ACTION Clipboard
 	DESCRIPTION	%|nls-9003-#The#|
 }
 
-#ifdef __hpux
-ACTION DisplayFont
-{
-        LABEL		%|nls-29-#DisplayFont#|
-	TYPE		COMMAND
-	WINDOW_TYPE	NO_STDIO
-	EXEC_STRING	sh -c '/usr/contrib/bin/X11/xfd -fn \
-                `basename "%(File)Arg_1"%|nls-9012-#Font#|"%" | sed /[.].*/s///`;\
-	                if [ \$? -eq 1 ] ; then \
-                                 /usr/dt/bin/dterror.ds \
-                                   "%|nls-9014-#The Font#|" \
-                                   "%|nls-9015-#Invalid#|" \
-                                   "%|nls-21002-#OK#|" ; \
-	                fi'
-	DESCRIPTION	%|nls-9004-#The#|
-}
-
-%|nls-9016-#The ListWinInfo ...#|
-ACTION ListWinInfo
-{
-        LABEL		%|nls-33-#ListWinInfo#|
-        ARG_COUNT	0
-	TYPE		COMMAND
-	WINDOW_TYPE	PERM_TERMINAL
-	EXEC_STRING	\
-	  sh -c ' \
-	    /usr/contrib/bin/X11/xwininfo; \
-	    echo "%|nls-9011-#Select#|"'
-	DESCRIPTION	%|nls-9005-#The#|
-}
-
-ACTION ListWinProps
-{
-        LABEL           %|nls-34-#ListWinProps#|
-        ARG_COUNT	0
-        TYPE            COMMAND
-        WINDOW_TYPE     PERM_TERMINAL
-        EXEC_STRING     \
-          sh -c ' \
-            echo "%|nls-9013-#[When#|"; \
-            /usr/contrib/bin/X11/xprop | \${PAGER:-more}; \
-            echo "%|nls-9011-#Select#|"'
-        DESCRIPTION     %|nls-9006-#The#|
-}
-
-ACTION XserverInfo
-{
-        LABEL           %|nls-35-#XserverInfo#|
-        ARG_COUNT	0
-        TYPE            COMMAND
-        WINDOW_TYPE     PERM_TERMINAL
-        EXEC_STRING     \
-          sh -c ' \
-            /usr/contrib/bin/X11/xdpyinfo | \${PAGER:-more}; \
-            echo "%|nls-9011-#Select#|"'
-        DESCRIPTION     %|nls-9007-#The#|
-}
-#endif
 #ifdef __aix
 ACTION DisplayFont
 {

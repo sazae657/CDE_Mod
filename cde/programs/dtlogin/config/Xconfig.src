@@ -64,7 +64,7 @@ Dtlogin*startup:               Xstartup
 Dtlogin*reset:                 Xreset
 Dtlogin*setup:                 Xsetup
 
-#if defined (__hpux) || defined (_AIX) || defined (sun) || defined(CSRG_BASED) || defined(__linux__)
+#if defined (_AIX) || defined (sun) || defined(CSRG_BASED) || defined(__linux__)
 Dtlogin*failsafeClient:        Xfailsafe
 #else
 Dtlogin*failsafeClient:        /usr/bin/X11/xterm

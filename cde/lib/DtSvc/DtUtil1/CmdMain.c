@@ -73,14 +73,6 @@
  */
 #define COMMAND_CHECK_FAILURE           1
 
-#ifdef __hpux
-#ifdef hpV4
-#define INETD_SECURITY_FILE	"/var/adm/inetd.sec"
-#else /* hpV4 */
-#define INETD_SECURITY_FILE	"/usr/adm/inetd.sec"
-#endif /* hpV4 */
-#endif /* __hpux */
-
 #define Cmd_FreeAllocatedStringVector(sv) \
 		_DtCmdFreeStringVector(sv);\
 		XtFree((char *)sv);
@@ -337,24 +329,11 @@ _DtSPCOpen(
 						SPC_BUFSIZ);
 				break;
 			case SPC_Connection_EOF:
-#ifdef __hpux
-				(void) sprintf (errorMessage, 
-						errorInetSecurity,
-						hostname,
-						_cmdClientHost,
-						SPC_SERVICE,
-						_cmdClientHost,
-						SPC_SERVICE,
-						INETD_SECURITY_FILE,
-						hostname);
-
-#else /* __hpux */
 				(void) sprintf (errorMessage, 
 						errorBadConnect,
 						hostname,
 						SPC_SERVICE,
 						_cmdClientHost);
-#endif /* __hpux */
 				break;
 			default:
 				/*

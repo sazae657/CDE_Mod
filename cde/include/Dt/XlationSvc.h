@@ -123,11 +123,9 @@ platforms as part of a translation.
 #define _DtPLATFORM_UNKNOWN ((const char *)0)
 #define _DtPLATFORM_CURRENT ((const char *)0)
 #define _DtPLATFORM_CDE     "CDE"
-#define _DtPLATFORM_HPUX    "HP-UX"
 #define _DtPLATFORM_AIX     "AIX"
 #define _DtPLATFORM_SUNOS   "SunOS"
 #define _DtPLATFORM_SOLARIS "Solaris"      /* verify */
-#define _DtPLATFORM_XENIX   "Xenix"        /* verify */
 /*$END$*/
 
 

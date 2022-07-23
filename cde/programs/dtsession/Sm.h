@@ -80,17 +80,12 @@
 #define		SM_FREE(PTR)			XtFree(PTR)
 #define		SM_EXIT(STATUS)			SmExit(STATUS)
 
-#ifdef __hpux
-#define		SM_SETEUID(EUID)	setresuid(-1, EUID, -1)
-#define		SM_SETESUID(UID)	setresuid(-1, UID, UID)
-#else
 #ifndef	SVR4
 #define         SM_SETEUID(EUID)        seteuid(EUID)
 #define         SM_SETESUID(UID)        setreuid(UID, UID)
 #else
 #define         SM_SETEUID(EUID)        seteuid(EUID)
 #define         SM_SETESUID(UID)        (setuid(UID), seteuid(UID))
-#endif
 #endif
 
 /*

@@ -63,32 +63,6 @@
 #ifndef	_Dt_TermPrimOSDepI_h
 #define	_Dt_TermPrimOSDepI_h
 
-#ifdef  ALPHA_ARCHITECTURE
-# define USE_TIOCCONS            /* use tioccons for -C          */
-# define HAS_SETEUID             /* seteuid available            */
-# define HAS_SETREUID            /* setreuid available           */
-# define USE_PTYS                /* use ptys                     */
-# define USE_TCSBRK              /* use TCSBRK ioctl()           */
-#endif /* ALPHA_ARCHITECTURE */
-
-#ifdef	HP_ARCHITECTURE
-# define XOR_CAPS_LOCK		/* xor caps lock and shift	*/
-# define USE_TIOCCONS		/* use tioccons for -C		*/
-# define SETENV_LINES_AND_COLS	/* set $LINES and $COLUMNS	*/
-# define HAS_SETRESUID		/* setresuid available		*/
-
-# if OSMAJORVERSION > 9
-#  define USE_STREAMS		/* use streams			    */
-#  define USE_CSWIDTH		/* use the csWidth resource to      */
-			        /* initialize multi-byte processing */
-				/* in ldterm                        */
-#  define USE_TCSENDBREAK	/* use tiocbreak()		*/
-# else	/* OSMAJORVERSION > 9 */
-#  define USE_PTYS		/* use ptys			*/
-#  define USE_TIOCBREAK		/* use TIOCBREAK ioctl()	*/
-# endif	/* OSMAJORVERSION > 9 */
-#endif /* HP_ARCHITECTURE */
-
 #ifdef  LINUX_ARCHITECTURE
 # define USE_TIOCCONS            /* use tioccons for -C          */
 # define HAS_SETEUID             /* seteuid available            */

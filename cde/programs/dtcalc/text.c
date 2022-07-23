@@ -310,14 +310,7 @@ init_text(void)   /* Setup text strings depending upon language. */
   get_key_val(&buttons[i++].value, LGET(GETMESSAGE(3, 467, "\010"))) ;
 
 /* del */
-#ifdef hpux
-  if(v->keybdID == HIL_ITF_KBD)
-     get_key_val(&buttons[i++].value, LGET(GETMESSAGE(3, 513, "\013"))) ;
-  else
-     get_key_val(&buttons[i++].value, LGET(GETMESSAGE(3, 468, "\177"))) ;
-#else
   get_key_val(&buttons[i++].value, LGET(GETMESSAGE(3, 468, "\177"))) ;
-#endif
 
 
   get_key_val(&buttons[i++].value, LGET(GETMESSAGE(3, 469, "d"))) ;

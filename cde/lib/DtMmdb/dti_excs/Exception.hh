@@ -31,10 +31,6 @@ class Exception : public Destructable
 public:
 #ifdef NATIVE_EXCEPTIONS
 
-#if defined(hpux)
-  Exception() { }
-#endif
-
 #else
   Exception();
 
@@ -105,10 +101,6 @@ public:
 protected:
 friend class Jump_Environment;
 friend class Exceptions;
-
-#if defined(hpux)
-#define MakeOperatorNewPublic
-#endif
 
 #ifdef MakeOperatorNewPublic
 // A problem with the HP-UX 3.65 compiler requires us to make this public.

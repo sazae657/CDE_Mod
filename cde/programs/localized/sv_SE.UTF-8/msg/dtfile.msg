@@ -849,11 +849,6 @@ Den markerade filen finns inte längre.
 31 Namn på fil eller mapp:
 32 Filinnehåll:
 
-$ Messages 33-35 are used on hpux systems
-33 På
-34 Av
-35 Följ länkar:
-
 36 Öppna i nytt fönster
 37 Lägg på arbetsytan
 38 Hittade filer (efter Innehåll):

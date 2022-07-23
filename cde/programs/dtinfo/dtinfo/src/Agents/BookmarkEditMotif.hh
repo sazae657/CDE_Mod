@@ -93,9 +93,6 @@ protected: // variables
   WXmPushButtonGadget   f_ok;
   bool            f_modified;
   WCallback      *f_wm_delete_callback;
-#ifndef hpux
   static List     g_editor_list;
-#endif
-
   static int	  g_modified_count;
 };

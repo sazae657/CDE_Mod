@@ -80,11 +80,6 @@ XCOMM endif
 *ttyModes:		erase ^H intr ^C kill ^U start ^Q stop ^S swtch ^@ susp ^Z
 *promptDialog.bboard.frame.form.text.columns: %|nls-3-#45#|
 
-#ifdef __hpux
-Hpterm*backgroundIsSelect:		True
-Hpterm*makeColors:			shadow
-#endif
-
 dtsession*saverTimeout:  10 
 dtsession*lockTimeout:   30
 dtsession*cycleTimeout:  3 
@@ -160,44 +155,6 @@ XCOMM endif
 *enableDragIcon:			True
 *enableCDEColorFactors:			True
 
-#ifdef __hpux
-!#################################################################
-!#
-!#  CDE translations for the text widget and text field widget
-!#
-!#    - provides more intuitive "clear line", "insert line" and
-!#      "delete line" behavior
-!#    - provides basic EMACS editor functionality
-!#
-!#################################################################
-*XmText*Translations:#override\n\
-            <Key>hpClearLine:      delete-to-end-of-line()\n\
-      ~m ~a <Key>osfPrimaryPaste:beginning-of-line()\
-                                 newline-and-backup()\n\
-            <Key>osfQuickPaste:  beginning-of-line()\
-                                 insert-string(\" \")\
-                                 beginning-of-line()\
-                                 delete-to-end-of-line()\
-                                 delete-next-character()\n\
-        Ctrl<Key>u:delete-to-start-of-line()\n\
-        Ctrl<Key>k:delete-to-end-of-line()\n\
-        Ctrl<Key>a:beginning-of-line()\n\
-        Ctrl<Key>e:end-of-line()\n\
-        Ctrl<Key>p:process-up()\n\
-        Ctrl<Key>b:backward-character()\n\
-        Ctrl<Key>n:process-down()\n\
-        Ctrl<Key>f:forward-character()
-*XmTextField*Translations:#override\n\
-            <Key>hpClearLine:      delete-to-end-of-line()\n\
-            <Key>osfQuickPaste:  beginning-of-line()\
-                                 delete-to-end-of-line()\n\
-        Ctrl<Key>u:delete-to-start-of-line()\n\
-        Ctrl<Key>k:delete-to-end-of-line()\n\
-        Ctrl<Key>a:beginning-of-line()\n\
-        Ctrl<Key>e:end-of-line()\n\
-        Ctrl<Key>b:backward-character()\n\
-        Ctrl<Key>f:forward-character()
-#else
 !#################################################################
 !#
 !#  CDE translations for the text widget and text field widget
@@ -221,7 +178,6 @@ XCOMM endif
         Ctrl<Key>e:end-of-line()\n\
         Ctrl<Key>b:backward-character()\n\
         Ctrl<Key>f:forward-character()
-#endif
 
 !#################################################################
 !#

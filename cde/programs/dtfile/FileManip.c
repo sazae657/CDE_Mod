@@ -954,7 +954,7 @@ FileManip(
 #else
 #if defined(SVR4) || defined(_AIX)
            ((s3.st_mode & S_IFMT) == S_IFDIR) )         /* if is a directory */
-#else  /* (__hpux) */
+#else
            (((s3.st_mode & S_IFMT) == S_IFDIR)          /* if is a directory */
            || ((s3.st_mode & S_IFMT) == S_IFNWK)) )     /* or a net special */
 #endif

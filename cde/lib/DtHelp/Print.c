@@ -1303,11 +1303,7 @@ void _DtHelpPrintJob(
    }
 #endif
 
-#ifdef __hpux
-   pid = vfork();
-#else
    pid = fork();
-#endif /* __hpux */
  
    if (pid == 0)
    {

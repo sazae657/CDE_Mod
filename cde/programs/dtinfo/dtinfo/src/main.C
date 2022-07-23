@@ -305,17 +305,3 @@ main(int argc, char **argv)
     
     return (0);
 }
-
-#ifdef hpux
-
-extern "C" {
-void DosClose () { cerr << "DosClose\n"; }
-void DosWrite () { cerr << "DosWrite\n"; }
-void DosPeekNmPipe () { cerr << "DosPeekNmPipe\n"; }
-void DosDisconnectNmPipe () { cerr << "DosDisconnectNmPipe\n"; }
-void DosMakeNmPipe () { cerr << "DosMakeNmPipe\n"; }
-void DosConnectNmPipe () { cerr << "DosConnectNmPipe\n"; }
-void DosRead () { cerr << "DosRead\n"; }
-}
-
-#endif

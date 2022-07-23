@@ -106,7 +106,7 @@ extern int errno;
 #endif
 
 #if !defined(DONT_USE_DES) && !defined(USE_CRYPT)
-# if defined(AIXV3) || defined(hpux) || defined(__FreeBSD__)
+# if defined(AIXV3) || defined(__FreeBSD__)
 #  define USE_CRYPT
 # elif defined(__OpenBSD__)
 #  define DONT_USE_DES

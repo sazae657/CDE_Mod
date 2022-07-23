@@ -603,11 +603,7 @@ int exec_proc_local_channel_object(SPC_Channel_Ptr channel)
 	if(result!=SPC_ERROR) {
 	    /* Execute */
 	    /* Compiler barfs without cast ? */
-#if defined(__hpux_8_0) || defined(__aix)
-            result=execvp(channel->path, channel->argv);
-#else
 	    result=execvp(channel->path, channel->argv);
-#endif
 	    /* If we return from exec, it failed */
 	    SPC_Error(SPC_Cannot_Exec, channel->path);
 	}

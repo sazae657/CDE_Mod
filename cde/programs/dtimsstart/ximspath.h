@@ -101,12 +101,6 @@
 #define	XRDB_PATH		"/usr/bin/X11/xrdb"
 #define	DTSESSION_RES_PATH	"/usr/dt/bin/dtsession_res"
 
-# ifdef	old_hpux
-    /* VUE dirs */
-#define	VUE_CONFDIR		"/etc/vue/config"
-#define	VUE_USERDIR		"%H/.vue"
-# endif	/* old_hpux */
-
     /* DT dirs */
 #define	DT_CONFDIR		"/usr/dt/config"
 #define	DT_USERDIR		"%H/.dt"

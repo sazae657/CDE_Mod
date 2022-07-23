@@ -48,9 +48,7 @@
 
 #include <X11/Xlib.h>
 
-#ifdef __hpux
-#include <ndir.h>               /*   opendir(), directory(3C) */
-#elif defined(SVR4) || defined(CSRG_BASED)
+#if defined(SVR4) || defined(CSRG_BASED)
 #include <dirent.h>             /* opendir(), directory(3C) */
 #else
 #include <sys/dir.h>
@@ -137,11 +135,7 @@ static char *home_palette_dir;
 
 static int loopcount = 0;
 static DIR  *dirp;
-#ifdef __hpux
-static struct direct *file_descpt;
-#else
 static struct dirent *file_descpt;
-#endif /* __hpux */
 static Boolean open_dir = False;
 extern XrmDatabase hm_pl_DB;
 
@@ -761,11 +755,7 @@ AddDirectories( char *text )
  ********************************************************************/
 void
 CheckForDeletedFile(
-#ifdef __hpux
-        struct direct *file_descpt )
-#else
         struct dirent *file_descpt )
-#endif /* __hpux */
 {
    char *filename;
    int i;

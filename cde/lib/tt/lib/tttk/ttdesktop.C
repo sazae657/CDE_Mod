@@ -1765,8 +1765,7 @@ _ttdt_posix_cb(
 		tt_message_arg_val_set( msg, 4, names.machine );
 		// The last 3 are from sysinfo which seems to be SVR4 only.
 		// For platforms without the sysinfo call, we just leave
-		// the values unset for now, except for the serial
-		// number which is available from utsname onHPUX.
+		// the values unset for now
 #if defined(OPT_SYSINFO)		
 		if (sysinfo( SI_ARCHITECTURE, buf, SYS_NMLN ) >= 0) {
 			tt_message_arg_val_set( msg, 5, buf );
@@ -1777,8 +1776,6 @@ _ttdt_posix_cb(
 		if (sysinfo( SI_HW_SERIAL, buf, SYS_NMLN ) >= 0) {
 			tt_message_arg_val_set( msg, 7, buf );
 		}
-#elif defined(__hpux) || defined(hpux)
-		tt_message_arg_val_set( msg, 7, names.idnumber);
 #endif
 		tt_message_reply( msg );
 		tttk_message_destroy( msg );

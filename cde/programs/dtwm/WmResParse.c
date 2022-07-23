@@ -1757,31 +1757,6 @@ void ProcessWmFile (WmScreenData *pSD, Boolean bNested)
 
 static char *ExtractLocaleName(String lang)
 {
-
-#ifdef hpux	 /* hpux-specific parsing of the locale string */
-#define MAXLOCALE       64      /* buffer size of locale name */
-
-    char           *start;
-    char           *end;
-    int             len;
-    static char     buf[MAXLOCALE];
-
-    /*  If lang has a substring ":<category>;", extract <category>
-     *  from the first such occurrence as the locale name.
-     */
-
-    start = lang;
-    if (start = strchr (lang, ':')) {
-        start++;
-        if (end = strchr (start, ';')) {
-            len = end - start;
-            strncpy(buf, start, len);
-            *(buf + len) = '\0';
-            lang = buf;
-      }
-    }
-#endif	/* hpux */
-
     return lang;
 }
 

@@ -74,7 +74,7 @@ class WTopLevelShell;
 #endif
 
 // This belongs in f'ing config.h
-#if defined(SVR4) || defined(hpux)
+#if defined(SVR4)
 #   define pid_type pid_t 
 #else
 #   define pid_type int

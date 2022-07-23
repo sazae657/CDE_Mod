@@ -42,13 +42,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#ifdef hpux
-  #include <time.h>
-#elif defined(__linux__)
+#if defined(__linux__)
   #include <sys/time.h>
 #else
   #include <sys/select.h>
-#endif /* hpux */
+#endif /* linux */
 #ifdef _AIX
 #include <strings.h>            /* need to get bzero defined */
 #endif /* _AIX */

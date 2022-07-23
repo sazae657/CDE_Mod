@@ -35,14 +35,6 @@
 
 #define __need_fd_set
 
-#if  defined(hpux) || defined(_hpux) || defined(__hpux) || defined(hp)
-#define __hpux_pty
-#endif
-
-#ifdef __hpux_pty
-#define __need_timeval  /* need struct timeval */
-#endif
-
 #include <bms/sbport.h> /* NOTE: sbport.h must be the first include. */
 #include <errno.h>
 #include <stdlib.h>
@@ -54,11 +46,6 @@
 #include <sys/filio.h>
 #else
 #include <sys/ioctl.h>
-#endif
-
-#ifdef __hpux_pty
-#include <time.h>
-#include <sys/ptyio.h>
 #endif
 
 #ifdef __bsd
@@ -164,28 +151,6 @@ pty_channel_clasp pty_channel_class = &pty_channel_class_struct;
 
 /* Local variable */
 static XeChar *hexdigits = "0123456789abcdef";
-
-#ifdef __hpux_pty
-/*----------------------------------------------------------------------+*/
-static SPC_Disable_Trapping(int fd)
-/*----------------------------------------------------------------------+*/
-{
-  int flag=0;
-  int disable=0;
-  struct request_info req_info;
-
-  /* Disable trapping */
-  ioctl(fd, TIOCTRAP, &disable);
-
-  /* Just in case, flush any queued requests */
-  
-  while((ioctl(fd, TIOCTRAPSTATUS, &flag) != ERROR) && flag) {
-    ioctl(fd, TIOCREQGET, &req_info);
-    ioctl(fd, TIOCREQSET, &req_info);
-  }
-  return(TRUE);
-}
-#endif /* __hpux_pty */
 
 /*
  * Routines for opening pty master/slave devices
@@ -384,14 +349,6 @@ int master_pty(int fd, struct termios *state)
   if (fd < 0)
     return(TRUE);
   
-#ifdef __hpux_pty
-  /* Enable trapping of ioctl/open/close (we care about close()) */
-  if(ioctl(fd, TIOCTRAP, &enable)==ERROR) {
-    SPC_Error(SPC_Bad_Ioctl);
-    return(SPC_ERROR);
-  }
-#endif /* __hpux_pty */  
-
   set_pty_state(fd, state);
 
 
@@ -510,91 +467,6 @@ int read_pty_channel_object(SPC_Channel_Ptr channel,
 			    XeString buffer,
 			    int nbytes)
 /*----------------------------------------------------------------------+*/
-#ifdef __hpux_pty
-{
-  
-  int result, select_value;
-  struct fd_set read_mask, except_mask;
-  int fd=channel->file_descs[connector];
-  struct request_info req_info;
-  struct timeval timeout, *timeptr;
-  int i;
- 
-  call_parent_method(channel,
-		     read,
-		     (channel, connector, buffer, nbytes),
-		     result);
-  
-  if(result==SPC_ERROR)
-    return(SPC_ERROR);
-
-  if(!IS_SPCIO_DATA(channel->wires[connector]->flags))
-    return(0);
-
-  FD_ZERO(&read_mask);
-  FD_ZERO(&except_mask);
-
-  FD_SET(fd, &read_mask);
-  FD_SET(fd, &except_mask);
-  
-  if(channel->close_timeout) {
-    timeout.tv_sec=channel->close_timeout;
-    timeout.tv_usec=0;
-    timeptr = (&timeout);
-  } else
-    timeptr=NULL;
-
-  do
-    select_value=select(fd+1, &read_mask, NULL, &except_mask, timeptr);
-  while(select_value==ERROR && errno==EINTR);
-  
-  if(select_value==ERROR) {
-    SPC_Error(SPC_Bad_Select);
-    return(SPC_ERROR);
-  }
-
-  /* If there is anything to read, read it & return */
-  IS_FD_SET(&read_mask, result);
-  if(result) {
-    do {
-      result = read(fd, buffer, nbytes);
-    } while (result<0 && errno == EINTR);
-    if(result==ERROR) {
-      SPC_Error(SPC_Reading);
-      return(SPC_ERROR);
-    }
-    return(result);
-  }
-  
-  /* Nothing to read.  We either timed out or got an exception. */
-  
-  if(select_value != 0) {
-
-    /* We got an exception */
-    ioctl(fd, TIOCREQGET, &req_info);
-    
-    /* Clear the request (Not really necessary in the case of a close,
-       but do it anyway) */
-    
-    ioctl(fd, TIOCREQSET, &req_info);
-  }
-
-  if((select_value == 0) || (req_info.request == TIOCCLOSE)) {
-
-    /* Close, disable trapping on this fd & return EOF.  We regard
-       a timeout as being the same as a close. */
-
-    SPC_Disable_Trapping(fd);
-    SPC_Change_State(channel, connector, 0, -1);
-    return(0);
-
-  } else
-
-    /* Otherwise (open or IOCTL), return -1 */
-
-    return(EXCEPT_FLAG);
-}
-#else /* not __hpux_pty */
 {
   int result;
   int fd=channel->file_descs[connector];
@@ -648,7 +520,6 @@ int read_pty_channel_object(SPC_Channel_Ptr channel,
 
   return(result);
 }
-#endif /* __hpux_pty */
 
 /*----------------------------------------------------------------------+*/
 int pre_fork_pty_channel_object(SPC_Channel_Ptr channel)
@@ -671,37 +542,13 @@ int pre_fork_pty_channel_object(SPC_Channel_Ptr channel)
       result=SPC_ERROR;
   }
 
-#ifndef __hpux_pty
   if(pipe(channel->sync_pipe) < 0) {
     SPC_Error(SPC_No_Pipe);
     return(SPC_ERROR);
   }
-#endif /* __hpux_pty */
 
   return(result);
 }
-
-#ifdef __hpux_pty
-/*----------------------------------------------------------------------+*/
-/* clear_trap */
-/*----------------------------------------------------------------------+*/
-
-/* I am not particularly enamored of this macro.  However, the style of
-   the SCANBITS macro kinda forces me to write it this way.  In particular,
-   I am a bit worried about the reference to except_mask, which is a
-   "nonlocal reference" */
-
-#define clear_trap(fd)  {struct request_info req_info;        \
-			 int my_fd=(fd);                      \
-			 ioctl(my_fd, TIOCREQGET, &req_info); \
-			   if(req_info.request != TIOCOPEN) { \
-                             SPC_Error(SPC_Bad_Ioctl);        \
-			     return(SPC_ERROR);               \
-			    }                                 \
-			 ioctl(my_fd, TIOCREQSET, &req_info); \
-                         FD_CLR(my_fd, &except_mask);         \
-			 }
-#endif /* __hpux_pty */
 
 /*----------------------------------------------------------------------+*/
 int post_fork_pty_channel_object(SPC_Channel_Ptr channel,
@@ -714,9 +561,6 @@ int post_fork_pty_channel_object(SPC_Channel_Ptr channel,
   int iomode=channel->IOMode;
   int fd=channel->file_descs[STDIN];
   int stdinfd, stdoutfd, stderrfd;
-#ifdef __hpux_pty
-  struct fd_set except_mask, temp_mask;
-#endif
   int pid;
   char c;
       
@@ -726,40 +570,12 @@ int post_fork_pty_channel_object(SPC_Channel_Ptr channel,
     return(SPC_ERROR);
   
   if (parentp) {		/* Master process */
-#ifdef __hpux_pty
-    { int i;
-      int select_value;
-      
-      stdinfd  = channel->wires[STDIN]->fd[MASTER_SIDE];
-      stdoutfd = channel->wires[STDOUT]->fd[MASTER_SIDE];
-      stderrfd = channel->wires[STDERR]->fd[MASTER_SIDE];
-
-      FD_ZERO(&except_mask);
-      
-      if(stdinfd >= 0)
-	FD_SET(stdinfd, &except_mask);
-      if(stdoutfd >= 0)
-	FD_SET(stdoutfd, &except_mask);
-      if(stderrfd >= 0)
-	FD_SET(stderrfd, &except_mask);
-      
-      IS_FD_SET(&except_mask, result);
-      while (result) {
-	temp_mask = except_mask;
-	select_value=select(max_fds, NULL, NULL, &temp_mask, NULL);
-	SCANBITS(&temp_mask, clear_trap);
-	IS_FD_SET(&except_mask, result);
-      }
-    }
-#else				/* not __hpux_pty */
     close(channel->sync_pipe[WRITE_SIDE]);
     read(channel->sync_pipe[READ_SIDE], &c, 1);
     close(channel->sync_pipe[READ_SIDE]);
     channel->sync_pipe[READ_SIDE] = -1;
     channel->sync_pipe[WRITE_SIDE] = -1;
     XeSPCAddInput(channel, NULL, NULL);    
-#endif				/* __hpux_pty */
-  
   } else {			/* Slave process */
 
     /* Open the slave pty. Do it up to three times to set up
@@ -811,14 +627,12 @@ int post_fork_pty_channel_object(SPC_Channel_Ptr channel,
 	stderrfd=stdoutfd;
     }
 
-#ifndef __hpux_pty
     /* The pty trapping stuff handles EOF for us.  Use the "sync" pipe */
     /* to inform the other side when we don't have that code.          */
     c=040;
     write(channel->sync_pipe[WRITE_SIDE], &c, 1);
     close(channel->sync_pipe[READ_SIDE]);
     close(channel->sync_pipe[WRITE_SIDE]);
-#endif				/* __hpux_pty */
 
     /* Duplicate these file descriptors to 3, 4, 5 so we don't have to
        worry about any of std[in|out|err]fd being 0, 1, or 2. */
@@ -863,15 +677,6 @@ int reset_pty_channel_object(SPC_Channel_Ptr channel)
   
   for(wirelist=channel->wire_list; wirelist; wirelist=wirelist->next) {
     
-#ifdef __hpux_pty
-  {
-    int fd=wirelist->fd[MASTER_SIDE];
-    /* Disable trapping of ioctl/open/close */
-    if(SPC_Disable_Trapping(fd) == SPC_ERROR)
-	result=SPC_ERROR;
-  }
-#endif /* __hpux_pty */    
-
     wirelist->flags &= ~SPCIO_DATA;
   }
 
@@ -925,13 +730,6 @@ int add_input_pty_channel_object(SPC_Channel_Ptr channel,
 		   fd,
 		   channel->class_ptr->input,
 		   SPC_Input);
-#ifdef __hpux_pty
-    SPC_XtAddInput(channel,
-		   &wirelist->except_toolkit_id,
-		   fd,
-		   channel->class_ptr->input,
-		   SPC_Exception);
-#endif /* __hpux_pty */
   }
   
   return(TRUE);

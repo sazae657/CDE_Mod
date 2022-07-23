@@ -26,7 +26,7 @@
 #include "userinc.h"
 #include "globdec.h"
 
-#if defined(hpux) || defined(_AIX) || defined(sun)
+#if defined(_AIX) || defined(sun)
 /* get definition of getenv(3c) for getting of environment variables */
 #include <stdlib.h>
 #endif
@@ -59,7 +59,7 @@ if (optfile = fopen(nameofoptfile, "r"))
     }
 m_free(nameofoptfile, "installation helptag.opt");
 
-#if defined(hpux) || defined(_AIX) || defined(sun)
+#if defined(_AIX) || defined(sun)
 {
 char *opts;
 
@@ -76,7 +76,7 @@ if (opts)
 	}
     }
 }
-#endif /* hpux or _AIX or sun */
+#endif /* _AIX or sun */
 
 /* Check helptag.opt in input directory */
 if (indir)

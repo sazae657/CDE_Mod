@@ -48,7 +48,7 @@
 
 #ifdef DEBUG
 
-#if !defined ( __STDC__) && !defined (hpux)
+#if !defined ( __STDC__)
 #define debug(s, x)  s <<  "x" << " = " << (x) << "\n"
 #else
 #define debug(s, x)  s << #x << " = " << (x) << "\n"

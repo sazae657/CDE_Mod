@@ -177,10 +177,6 @@ static unsigned char anno_double_bits[] = {
 #include <sys/signal.h>
 #endif
 
-#ifdef hpux
-typedef void (*SIG_PF)();
-#endif
-
 #include <unistd.h>
 #include <stdio.h>
 
@@ -1599,7 +1595,7 @@ WindowSystem::interrupt_handler (int /* signal_number */)
       exit(1);
   }
 
-#if defined(SVR4) || defined(hpux) || defined(_IBMR2)
+#if defined(SVR4) || defined(_IBMR2)
   signal (SIGINT, (interrupt_handler_ptr)interrupt_handler);
 #endif
 }

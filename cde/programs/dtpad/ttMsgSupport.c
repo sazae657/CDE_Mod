@@ -871,17 +871,11 @@ TTdesktopOpen( int *ttFd, Editor *pPad, Boolean sendStarted )
 
 #ifdef sun
     vendor = "Sun Microsystems";
-#else
-#ifdef _AIX
+#elif defined(_AIX)
     vendor = "IBM";
 #else
-#ifdef hpux
-    vendor = "Hewlett-Packard";
-#else
     vendor = "Unknown";
-#endif /* hpux */
 #endif /* _AIX */
-#endif /* sun */
 
     procId = ttdt_open( ttFd, "dtpad", vendor, "2.1", sendStarted );
     if ( (status = tt_ptr_error( procId )) != TT_OK )

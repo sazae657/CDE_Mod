@@ -1485,11 +1485,7 @@ StartClient( struct verify_info *verify, struct display *d, int *pidp )
 	 * the "setgroups()" call instead...
 	 */
 	 
-#      if defined(__hpux)
-	initgroups(user, -1);
-#      else
 	setgroups (verify->ngroups, verify->groups);
-#      endif
 
 /* setpenv() will set gid for AIX */
 #if !defined (_AIX)
@@ -1624,8 +1620,6 @@ StartClient( struct verify_info *verify, struct display *d, int *pidp )
 	    failsafeArgv[i++] = "/usr/bin/X11/aixterm";
 #elif defined(sun)
 	    failsafeArgv[i++] = "/usr/openwin/bin/xterm";
-#elif defined(__hpux)
-	    failsafeArgv[i++] = "/usr/bin/X11/hpterm";
 #elif defined(__OpenBSD__)
 	    failsafeArgv[i++] = "/usr/X11R6/bin/xterm";
 #elif defined(__NetBSD__)

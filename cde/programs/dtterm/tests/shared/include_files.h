@@ -25,10 +25,6 @@
 #define DO_NOT_NEED_NOW
 #endif
 
-#ifndef _HPUX_SOURCE
-#define _HPUX_SOURCE
-#endif
-
 #include <stdio.h>
 #include <fcntl.h>
 #include <sys/ioctl.h>

@@ -289,7 +289,7 @@ extern char *fileMgrTitle;
 extern char *fileMgrHelpVol;
 extern int desktopIconType;
 extern Boolean freezeOnConfig;
-#if defined(__hpux) || defined(sun)
+#if defined(sun)
 extern Boolean follow_links;
 #endif
 extern int maxDirectoryProcesses;

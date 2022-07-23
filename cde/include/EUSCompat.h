@@ -52,7 +52,7 @@ extern "C" {
 ** System V R4 based systems define the stuff we need in
 ** sys/types.h. Include that and then we are done.
 */
-#if defined(HPUX) || defined(__linux__) || defined(SunOS) || defined(CSRG_BASED)
+#if defined(__linux__) || defined(SunOS) || defined(CSRG_BASED)
 # include <sys/types.h>
 #endif
 
@@ -69,44 +69,6 @@ extern "C" {
 #endif
 #endif   /* sun && _XOPEN_SOURCE */
 
-/*
-** HPUX defines most of what we need, if we set the right
-** include options before including the system files.
-*/
-#if defined(HPUX)
-
-#ifndef _INCLUDE_POSIX_SOURCE
-#define _INCLUDE_POSIX_SOURCE
-#endif
-
-#ifndef _INCLUDE_XOPEN_SOURCE
-#define _INCLUDE_XOPEN_SOURCE
-#endif
-
-#ifndef _INCLUDE_AES_SOURCE
-#define _INCLUDE_AES_SOURCE
-#endif
-
-#ifndef _INCLUDE_HPUX_SOURCE
-#define _INCLUDE_HPUX_SOURCE
-#endif
-
-#ifndef hpV4
-typedef unsigned long ulong_t;
-#endif /* hpV4 */
-typedef unsigned char uchar_t;
-typedef enum {B_FALSE, B_TRUE} boolean_t;
-
-#define _SC_PAGESIZE	_SC_PAGE_SIZE
-
-#ifndef MAXPATHLEN
-#include <sys/param.h>
-#endif
-
-#define MAXNAMELEN      256
-
-#endif	/* HPUX */
-
 #if defined(__linux__) || defined(CSRG_BASED)
 #include <string.h>  /* memset for libcsa and others */
 typedef enum {B_FALSE, B_TRUE} boolean_t;
@@ -115,7 +77,7 @@ typedef enum {B_FALSE, B_TRUE} boolean_t;
 
 
 /*
-** AIX, like HPUX defines most of what we need.
+** AIX defines
 */
 #if defined(AIX)
 
@@ -130,7 +92,6 @@ typedef enum {B_FALSE, B_TRUE} boolean_t;
 #include <sys/types.h>
 
 #define _SC_PAGESIZE	_SC_PAGE_SIZE
-#define vfork		fork
 
 #ifndef MAXPATHLEN
 #include <sys/param.h>

@@ -99,7 +99,6 @@ static int write_os_params(
 			AbmfLibs	libs
 			);
 static int write_aix_stuff(File makeFile, AbmfLibs libs);
-static int write_hpux_stuff(File makeFile, AbmfLibs libs);
 static int write_sunos_params(File makeFile, AbmfLibs libs);
 static int write_lnx_params(File makeFile, AbmfLibs libs);
 static int write_fbsd_params(File makeFile, AbmfLibs libs);
@@ -107,7 +106,6 @@ static int write_nbsd_params(File makeFile, AbmfLibs libs);
 static int write_obsd_params(File makeFile, AbmfLibs libs);
 
 static int	determine_aix_libs(AbmfLibs libs, ABObj project);
-static int	determine_hpux_libs(AbmfLibs libs, ABObj project);
 static int	determine_sunos_libs(AbmfLibs libs, ABObj project);
 static int      determine_lnx_libs(AbmfLibs libs, ABObj project);
 static int      determine_fbsd_libs(AbmfLibs libs, ABObj project);
@@ -196,11 +194,6 @@ determine_libs(AbmfLibs libs, ABObj project, AB_OS_TYPE osType)
 	lib_add(libs, LibICE, ABMF_LIB_APPEND, ABMF_LIB_REJECT_DUP);
 	lib_add(libs, LibSM, ABMF_LIB_APPEND, ABMF_LIB_REJECT_DUP);
 	lib_add(libs, LibXp, ABMF_LIB_APPEND, ABMF_LIB_REJECT_DUP);
-
-	if (osType == AB_OS_HPUX)
-	{
-	    lib_add(libs, LibTt, ABMF_LIB_APPEND, ABMF_LIB_REJECT_DUP);
-	}
     }
 
     if (projData->has_terminal)
@@ -215,10 +208,6 @@ determine_libs(AbmfLibs libs, ABObj project, AB_OS_TYPE osType)
     {
 	case AB_OS_AIX:
 		return_value = determine_aix_libs(libs, project);
-		break;
-
-	case AB_OS_HPUX:
-		return_value = determine_hpux_libs(libs, project);
 		break;
 
 	case AB_OS_SUNOS:
@@ -246,18 +235,6 @@ determine_aix_libs(AbmfLibs libs, ABObj project)
 {
     return 0;
 }
-
-
-static int
-determine_hpux_libs(AbmfLibs libs, ABObj project)
-{
-    /*
-    lib_add(libs, LibWlarchive, ABMF_LIB_PREPEND, ABMF_LIB_REPLACE_DUP);
-    lib_add(libs, LibWldefault, ABMF_LIB_APPEND, ABMF_LIB_REPLACE_DUP);
-    */
-    return 0;
-}
-
 
 static int
 determine_sunos_libs(AbmfLibs libs, ABObj project)
@@ -476,10 +453,6 @@ write_os_params(
 		return_value = write_aix_stuff(makeFile, libs);
 		break;
 
-	case AB_OS_HPUX:
-		return_value = write_hpux_stuff(makeFile, libs);
-		break;
-
 	case AB_OS_SUNOS:
 		return_value = write_sunos_params(makeFile, libs);
 		break;
@@ -537,52 +510,6 @@ write_aix_stuff(File makeFile, AbmfLibs libs)
 );
 
     write_local_libraries(makeFile, libs, AB_OS_AIX);
-
-    abio_puts(makeFile,
-"\n"
-"        CFLAGS = $(CDEBUGFLAGS) $(INCLUDES) $(STD_DEFINES)"
-            " $(ANSI_DEFINES)\n"
-"        LDLIBS = $(SYS_LIBRARIES)\n"
-"        LDOPTIONS = $(CDE_LDFLAGS) $(ALLX_LDFLAGS)\n"
-"\n"
-);
-
-    return 0;
-}
-
-
-static int
-write_hpux_stuff(File makeFile, AbmfLibs libs)
-{
-    STRING	osName = util_os_type_to_string(AB_OS_HPUX);
-
-    abio_printf(makeFile, 
-"###########################################################################\n"
-"# These are the %s-dependent configuration parameters that must be\n"
-"# set in order for any application to build.\n"
-"###########################################################################\n",
-	osName);
-
-     abio_puts(makeFile, "\n");
-     abio_puts(makeFile,
-"        RM = rm -f\n"
-"        INCLUDES = -I/usr/dt/include -I/X11/include\n"
-"\n"
-"        STD_DEFINES = -DSYSV -DNLS16 -DMALLOC_0_RETURNS_NULL -DMERGE -DNDEBUG"
-        " -D__hpux -Dhpux -DOSMAJORVERSION=9 -DOSMINORVERSION=0 -DSHMLINK"
-        " -D__hp9000s800 -Dhp9000s800 -Dhp9000s700 -DHPPEX\n"
-"        ANSI_DEFINES = -Aa -D_HPUX_SOURCE -DANSICPP\n"
-"\n"
-"        CDEBUGFLAGS = -g -z\n"
-"        COPTFLAGS = -O -z\n"
-"        SYS_LIBRARIES = -lm\n"
-"        CDE_LIBPATH = /usr/dt/lib\n"
-"        CDE_LDFLAGS = -L$(CDE_LIBPATH)\n"
-"        ALLX_LIBPATH = /X11/lib\n"
-"        ALLX_LDFLAGS = -L$(ALLX_LIBPATH)\n"
-);
-
-    write_local_libraries(makeFile, libs, AB_OS_HPUX);
 
     abio_puts(makeFile,
 "\n"
@@ -1159,7 +1086,7 @@ write_targets(
 "\n"
 "scour:\n"
 "	$(RM) $(CLEAN_FILES) $(TARGETS.h.merged) $(TARGETS.c.merged) \\\n"
-"	      Makefile Makefile.aix Makefile.hpux Makefile.sunos \\\n"
+"	      Makefile Makefile.aix Makefile.sunos \\\n"
 "	      Makefile.linux \\\n"
 "	      Makefile.freebsd Makefile.netbsd Makefile.openbsd\n"
 );

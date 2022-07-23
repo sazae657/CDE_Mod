@@ -124,11 +124,11 @@ inline void  strfree(const char *s)
 	{ if (s != NULL) free((char *)s); }
 #else
 inline void  strfree(const char *s)
-#if defined(__hpux) || defined(CSRG_BASED)
+#if defined(CSRG_BASED)
 	{ if (s != NULL) free((void *)s); }
 #else
 	{ if (s != NULL) free((void *)s); }
-#endif /* __hpux */
+#endif /* bsd */
 #endif
 #if defined(bsd)
 inline char *strdup(const char *s)

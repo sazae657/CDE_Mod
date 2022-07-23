@@ -84,9 +84,6 @@
 #include <signal.h>
 
 
-#ifdef __hpux
-#include <sys/getaccess.h>
-#endif /* __hpux */
 #include <stdlib.h>
 
 #include <string.h>
@@ -159,9 +156,9 @@ static char * PRINT_OPTION = " -print ";
 static char * FIND_COMMAND = "find ";
 static char * GREP_COMMAND = "grep -i -l ";
 static char * NAME_OPTION =  " -name ";
-#if defined(__hpux) || defined(sun)
+#if defined(sun)
 static char * FOLLOW_OPTION = " -follow";
-#endif /* __hpux */
+#endif /* sun */
 static char * REDIRECTOR =   " 2>&-";
 static char * TYPEDIR = " -type d";
 static char * FIND_FILE = "FindFile";
@@ -368,7 +365,7 @@ Create(
    Widget newFM, outputSeparator;
    Widget headLabel, contentLabel, contentText;
    Widget filterText, filterLabel, listLabel, scrolledList, dirName, dirLabel;
-#if defined(__hpux) || defined(sun)
+#if defined(sun)
    Widget followLink, followLinkPD;
 #endif
    Widget putOnDT, separator;
@@ -487,7 +484,7 @@ Create(
    XtAddCallback(contentText, XmNhelpCallback, (XtCallbackProc)HelpRequestCB,
                  HELP_FIND_DIALOG_STR);
 
-#if defined(__hpux) || defined(sun)
+#if defined(sun)
    n = 0;
    XtSetArg (args[n], XmNmarginWidth, 1);                               n++;
    XtSetArg (args[n], XmNmarginHeight, 1);                              n++;
@@ -543,7 +540,7 @@ Create(
    XtSetArg (args[n], XmNleftAttachment, XmATTACH_FORM);		n++;
    XtSetArg (args[n], XmNrightAttachment, XmATTACH_FORM);		n++;
    XtSetArg (args[n], XmNtopAttachment, XmATTACH_WIDGET);		n++;
-#if defined(__hpux) || defined(sun)
+#if defined(sun)
    XtSetArg (args[n], XmNtopWidget, form1);		                n++;
 #else
    XtSetArg (args[n], XmNtopWidget, contentText);	                n++;
@@ -797,7 +794,7 @@ Create(
    find_rec->form = form;
    find_rec->fileNameFilter = filterText;
    find_rec->content = contentText;
-#if defined(__hpux) || defined(sun)
+#if defined(sun)
    find_rec->followLink = followLink;
 #else
    find_rec->followLink = NULL;
@@ -979,7 +976,7 @@ GetDefaultValues( void )
    find_data->matches = NULL;
    find_data->num_matches = 0;
    find_data->selected_item = -1;
-#if defined(__hpux) || defined(sun)
+#if defined(sun)
    find_data->follow_links = follow_links;
 #endif
 
@@ -1108,7 +1105,7 @@ SetValues(
       XtSetValues (find_rec->matchList, args, 1);
    }
 
-#if defined(__hpux) || defined(sun)
+#if defined(sun)
    /* Set up the Follow links option menu */
    if(find_data->follow_links)
       XtSetArg(args[0], XmNmenuHistory, find_rec->widgArry[ON]);
@@ -1295,7 +1292,7 @@ GetFindValues(
       }
    }
 
-#if defined(__hpux) || defined(sun)
+#if defined(sun)
    {
       Widget menuHistory;
 
@@ -1883,7 +1880,7 @@ ExecuteFind(
 
    }
 
-#if defined(__hpux) || defined(sun)
+#if defined(sun)
    {
       Widget menuHistory;
 

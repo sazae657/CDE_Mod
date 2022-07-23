@@ -41,7 +41,7 @@
 
 #include "dtscreen.h"
 
-#if !defined(_AIX) && !defined(hpV4) && !defined(__linux__) && !defined(sun) && !defined(CSRG_BASED)
+#if !defined(_AIX) && !defined(__linux__) && !defined(sun) && !defined(CSRG_BASED)
 int
 usleep(unsigned long usec)
 {
@@ -55,7 +55,7 @@ usleep(unsigned long usec)
 #endif
     return 0;
 }
-#endif /* !_AIX && !hpV4*/
+#endif /* !_AIX && */
 
 /*
  * returns the number of seconds since 01-Jan-70.

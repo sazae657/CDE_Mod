@@ -1097,7 +1097,6 @@ ProcessTraversal( Widget w, int direction )
 
     i = XmProcessTraversal(w, direction);
 
-#ifndef __hpux
     /*
      * Versions of Motif other than HP do not support the XmfocusCallback
      * on the TextField widget. We simulate it here by manually invoking the
@@ -1105,7 +1104,6 @@ ProcessTraversal( Widget w, int direction )
      */
 
     TextFocusCB(w, NULL, NULL);
-#endif    
 }
 
 

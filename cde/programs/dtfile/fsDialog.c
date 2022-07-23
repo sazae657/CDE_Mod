@@ -111,10 +111,6 @@
 #include <sys/statvfs.h>
 #endif
 
-#ifdef __hpux
-#include <sys/vfs.h>
-#endif
-
 /*----------------------
  *   global variables
  *----------------------*/
@@ -259,17 +255,6 @@ static void getFSType(const String  path,
       strncpy(fsType,"",MAXLINELENGTH);
 #endif /* sun */
 
-#ifdef __hpux
-#define GETFSTYPE
-   struct statfs buf;
-
-   strncpy(platform,"hpux",MAXLINELENGTH);
-   if (statfs(path, &buf) == 0)
-      sprintf(fsType,"%li",buf.f_fsid[1]);
-   else
-      strncpy(fsType,"",MAXLINELENGTH);
-#endif /* __hpux */
-
 #ifndef GETFSTYPE
    strncpy(platform,"unknown",MAXLINELENGTH);
    strncpy(fsType,  "",MAXLINELENGTH);
@@ -306,7 +291,6 @@ static void getFSType(const String  path,
  *   * sample dtfs configuration file
  *
  *   aix:4=afs
- *   hpux:8=afs
  *   sunos:nfs=nfs
  *   end
  *
@@ -459,7 +443,7 @@ configFileName(void)
  *   get the file-system identifier from the configuration file
  *
  *   fptr refers to an open configuration file
- *   fsType and platform identify the platfrom (aix, hpux, sunos, etc)
+ *   fsType and platform identify the platfrom (aix, sunos, etc)
  *      and file-system type (afs, nfs, dfs, etc.)
  *   fsID is filled by matching platform:fsType with with information in the
  *      file and reading the id; the string comparisons are case insensitive

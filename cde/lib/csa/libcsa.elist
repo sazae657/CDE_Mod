@@ -536,10 +536,6 @@ internal _DtCm_yylval
 internal _DtCm_yynerrs
 internal _DtCm_yytext
 
-#if defined(__hpux)
-internal _DtCm_yymaxdepth
-#endif
-
 #if defined(sun)
 internal _DtCm_yy__DtCm_yys
 internal _DtCm_yy__DtCm_yyv

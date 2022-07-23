@@ -84,7 +84,7 @@
 #include <sys/select.h>
 #endif
 
-#if defined(_AIX)|| defined(hpux)
+#if defined(_AIX)
 #include <sys/dir.h>
 #else
 #ifndef MAXNAMLEN
@@ -2287,11 +2287,7 @@ _FileMoveCopy(
 
       /* do the select */
       FD_SET(fd, &select_fds);
-#if defined(__hpux) && (OSMAJORVERSION <= 10) && (OSMINORVERSION < 2)
-      rc = select(fd + 1, (int *)&select_fds, NULL, NULL, &select_timeout);
-#else
       rc = select(fd + 1, &select_fds, NULL, NULL, &select_timeout);
-#endif
       if (rc < 0 && errno != EINTR)
       {
          perror("select failed in FileMoveCopy");

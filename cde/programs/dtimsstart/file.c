@@ -153,11 +153,6 @@ int	read_cmd_conf(void)
     DtEnv	*dt = NULL;
     RemoteEnv	*remote;
     FILE	*fp;
-# ifdef	old_hpux
-    VueEnv	*vue;
-    LocaleAlias	*tmp_alias[MAXIMSENT], *ap;
-# endif	/* old_hpux */
-
     conf_dir = DTIMS_CONFDIR;
     if (!(path = Opt.ConfPath) || !*path) {
 	if (!(path = getenv("DTIMS_STARTCONF")) || !*path) {
@@ -235,10 +230,6 @@ int	read_cmd_conf(void)
 		RENEWSTR(conf->xmod[Proto_Ximp], valp);
 	    } else if (strncmp(p, "Xsi", 3) == 0) {
 		RENEWSTR(conf->xmod[Proto_Xsi], valp);
-# ifdef	old_hpux
-	    } else if (strncmp(p, "Xhp", 3) == 0) {
-		RENEWSTR(conf->xmod[Proto_Xhp], valp);
-# endif	/* old_hpux */
 	    } else if (strncmp(p, "None", 3) == 0) {
 		RENEWSTR(conf->xmod[Proto_None], valp);
 	    } else
@@ -251,10 +242,6 @@ int	read_cmd_conf(void)
 		RENEWSTR(conf->atom[Proto_Ximp], valp);
 	    } else if (strncmp(p, "Xsi", 3) == 0) {
 		RENEWSTR(conf->atom[Proto_Xsi], valp);
-# ifdef	old_hpux
-	    } else if (strncmp(p, "Xhp", 3) == 0) {
-		RENEWSTR(conf->atom[Proto_Xhp], valp);
-# endif	/* old_hpux */
 	    } else if (strncmp(p, "None", 3) == 0) {
 		RENEWSTR(conf->atom[Proto_None], valp);
 	    } else
@@ -281,62 +268,12 @@ int	read_cmd_conf(void)
 		RENEWSTR(remote->passEnv, valp);
 	    } else
 		goto _inv;
-# ifdef	old_hpux
-	} else if (strncmp(lp, "Vue", 3) == 0) {
-	    p = lp + 3;
-	    if (!conf->vue)	vue = conf->vue = ALLOC(1, VueEnv);
-	    if (strncmp(p, "ConfigDir", 4) == 0) {
-		RENEWSTR(vue->confDir, valp);
-	    } else if (strncmp(p, "UserDir", 5) == 0) {
-		RENEWSTR(vue->userDir, valp);
-	    } else if (strncmp(p, "UseLiteFile", 5) == 0) {
-		RENEWSTR(vue->uselite, valp);
-	    } else if (strncmp(p, "LiteResourcePath", 5) == 0) {
-		RENEWSTR(vue->litePath, valp);
-	    } else if (strncmp(p, "ResourcePath", 5) == 0) {
-		RENEWSTR(vue->resPath, valp);
-	    } else
-		goto _inv;
-	} else if (strncmp(lp, "LocaleAlias", 6) == 0) {
-	    ap = ALLOC(1, LocaleAlias);
-	    p = valp; cut_field(valp);
-	    ap->name = NEWSTR(p);
-	    ap->aliases = NEWSTR(valp);
-	    tmp_alias[num_alias++] = ap;
-	} else if (strncmp(lp, "XhpLocales", 3) == 0) {
-	    int	idx = 0;
-	    p = strrchr(lp, '.');
-	    if (!p)	continue;	/* invalid */
-	    switch (p[1]) {
-		case 'J':	idx = XHP_JPN; break;
-		case 'K':	idx = XHP_KOR; break;
-		case 'C':	idx = XHP_CHS; break;
-		case 'T':	idx = XHP_CHT; break;
-		default:		goto _inv;
-	    }
-	    if (!conf->xhp)
-		conf->xhp = ALLOC(XHP_LANG_NUM, XhpLocale);
-	    else if (conf->xhp[idx].locales) {
-		FREE(conf->xhp[idx].locales);
-	    }
-	    conf->xhp[idx].type = p[1];
-	    conf->xhp[idx].locales = NEWSTR(valp);
-# endif	/* old_hpux */
 	} else {
 	_inv:
 	    DPR(("\t[line=%d] invalid entry '%s'\n", line_num, lp));
 	}
     }
     fclose(fp);
-
-# ifdef	old_hpux
-    if (num_alias > 0) {
-	conf->alias = ALLOC(num_alias + 1, LocaleAlias *);
-	memcpy((void *)conf->alias, (void *)tmp_alias,
-				num_alias*sizeof(LocaleAlias *));
-	conf->alias[num_alias] = (LocaleAlias *)0;
-    }
-# endif	/* old_hpux */
 
     /* if (remote->disabled)	FREE(remote->passEnv); */
 
@@ -353,11 +290,6 @@ _default:
     if (!conf->dt)		conf->dt = ALLOC(1, DtEnv);
     if (!conf->dt->confDir)	conf->dt->confDir = NEWSTR(DT_CONFDIR);
     if (!conf->dt->userDir)	conf->dt->userDir = NEWSTR(DT_USERDIR);
-# ifdef	old_hpux
-    if (!conf->vue)		conf->vue = ALLOC(1, VueEnv);
-    if (!conf->vue->confDir)	conf->vue->confDir = NEWSTR(VUE_CONFDIR);
-    if (!conf->vue->userDir)	conf->vue->userDir = NEWSTR(VUE_USERDIR);
-# endif	/* old_hpux */
     if (!conf->xmod[Proto_XIM])	conf->xmod[Proto_XIM] = NEWSTR(IM_XMOD_XIM);
     if (!conf->xmod[Proto_Ximp]) conf->xmod[Proto_Ximp] = NEWSTR(IM_XMOD_XIMP);
     if (!conf->xmod[Proto_Xsi])	conf->xmod[Proto_Xsi] = NEWSTR(IM_XMOD_XSI);
@@ -401,15 +333,6 @@ int	expand_cmd_conf(void)
 	CHK_ADD(conf->dt->userDir)
 	CHK_ADD(conf->dt->resPath)
     }
-# ifdef	old_hpux
-    if (conf->vue) {
-	CHK_ADD(conf->vue->confDir)
-	CHK_ADD(conf->vue->userDir)
-	CHK_ADD(conf->vue->uselite)
-	CHK_ADD(conf->vue->resPath)
-	CHK_ADD(conf->vue->litePath)
-    }
-# endif	/* old_hpux */
 	/* xmod[] & atom[] must not be expanded, since no ims selected */
 	/* remote->* should be expanded at preparation of remote exec */ 
 
@@ -498,10 +421,6 @@ int	read_imsconf(ImsConf *conf, char *ims_name, char *ims_fname)
 	    SET_FLAG(F_NO_REMOTE);
 	else if (strcmp(lp, "no_option") == 0)
 	    SET_FLAG(F_NO_OPTION);
-# ifdef	old_hpux
-	else if (strcmp(lp, "try_connect") == 0)
-	    SET_FLAG(F_TRY_CONNECT);
-# endif	/* old_hpux */
 	else if (strcmp(lp, "has_window") == 0)
 	    SET_FLAG(F_HAS_WINDOW);
 #undef	SET_FLAG
@@ -1046,48 +965,6 @@ static int	user_selection_fname(char *buf, int buf_len, int dpy_specific)
 	}
 	len = expand_string(dpy_specific ? "%S/%d/" : "%S/", buf, buf_len, 0);
 
-# ifdef	old_hpux
-	if (!real_done && uenv->real_locale) {
-	    real_done = True;
-	    strcpy(buf + len, uenv->real_locale);
-	    if (!is_readable(buf, True)) {
-		bool	rename_done = False;
-		char	buf2[MAXPATHLEN], *bp;
-
-		strncpy(buf2, buf, len);
-		bp = buf2 + len; *bp = 0;
-		if (strcmp(uenv->locale, uenv->real_locale)) {
-		    strcpy(bp, uenv->locale);
-		    if (is_readable(buf2, False)) {
-			rename_done = rename(buf2, buf) == 0;
-			DPR(("user_selection_fname(): rename(%s, %s) %s\n",
-					uenv->locale, uenv->real_locale,
-					rename_done ? "OK" : "Failed"));
-		    }
-		}
-
-		if (uenv->locale_aliases) {
-		    char	**ap;
-		    for (ap = uenv->locale_aliases; *ap; ap++) {
-			strcpy(bp, *ap);
-			if (!is_readable(buf2, False))	continue;
-			if (rename_done) {
-			    (void) unlink(buf2);
-			    DPR(("user_selection_fname(): unlink(%s) %s\n",
-									*ap));
-			} else {
-			    rename_done = rename(buf2, buf) == 0;
-			    DPR(("user_selection_fname(): rename(%s, %s) %s\n",
-				*ap, uenv->real_locale,
-						rename_done ? "OK" : "Failed"));
-			}
-		    }
-		}
-		/* real_done = rename_done; */
-	    }
-	}
-# endif	/* old_hpux */
-
 	/* Add the CDE-generic locale name */
 	strcpy(buf + len, real_done ? uenv->real_locale : uenv->CDE_locale);
 	buf[buf_len-1] = 0;
@@ -1104,9 +981,6 @@ int	parse_protolist(char *valp)
     if (strstr(valp, "XIM"))	proto_bits |= ProtoBit(Proto_XIM);
     if (strstr(valp, "Ximp"))	proto_bits |= ProtoBit(Proto_Ximp);
     if (strstr(valp, "Xsi"))	proto_bits |= ProtoBit(Proto_Xsi);
-# ifdef	old_hpux
-    if (strstr(valp, "Xhp"))	proto_bits |= ProtoBit(Proto_Xhp);
-# endif	/* old_hpux */
     if (strstr(valp, "None"))	proto_bits |= ProtoBit(Proto_None);
     return proto_bits;
 }
@@ -1116,9 +990,6 @@ int	default_protocol(ImsConf *conf)
     if (conf->protocols & ProtoBit(Proto_XIM))		return Proto_XIM;
     else if (conf->protocols & ProtoBit(Proto_Ximp))	return Proto_Ximp;
     else if (conf->protocols & ProtoBit(Proto_Xsi))	return Proto_Xsi;
-# ifdef	old_hpux
-    else if (conf->protocols & ProtoBit(Proto_Xhp))	return Proto_Xhp;
-# endif	/* old_hpux */
     else						return Proto_None;
 }
 

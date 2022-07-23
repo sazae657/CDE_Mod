@@ -51,9 +51,6 @@
 
 #include <unistd.h>
 #include <limits.h>
-#ifdef __hpux
-#include <sys/getaccess.h>
-#endif
 
 #include <Xm/Xm.h>
 

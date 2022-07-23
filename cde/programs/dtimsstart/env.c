@@ -51,14 +51,6 @@ int	set_cmd_env(void)
     if ((ret = read_cmd_conf()) != NoError)
 	return ret;
 
-# ifdef	old_hpux
-    p = get_real_locale(uenv->locale, &aliases);
-    if (p) {
-	uenv->real_locale = NEWSTR(p);
-	uenv->locale_aliases = aliases;
-    }
-# endif	/* old_hpux */
-
     expand_cmd_conf();
 
     return ret;
@@ -170,11 +162,6 @@ int	expand_string(char *in_str, char *out_str, int out_len, ImsConf *ims)
 		case 'A':	ep = conf->userAltDir; break;
 		case 'C':	ep = conf->dt->confDir; break;
 		case 'U':	ep = conf->dt->userDir; break;
-# ifdef	old_hpux
-		case 'V':	ep = conf->vue->confDir; break;
-		case 'X':	ep = conf->vue->userDir; break;
-# endif	/* old_hpux */
-
 		case 'L':	if (ep = uenv->real_locale)	break;
 		case 'l':	ep = uenv->locale; break;
 		case 'H':	ep = uenv->homedir; break;
@@ -264,13 +251,8 @@ int	make_new_environ(OutEnv *oenv, UserSelection *sel)
     ims = sel->ent->ims;
     xmod = ENV_XMODIFIERS;
     xmod_done = False;
-# ifdef	old_hpux
-    xinput = xhp_xinput_name(NULL);
-    xinput_done = (xinput) ? False : True;
-# else
     xinput = NULL;
     xinput_done = True;
-# endif	/* old_hpux */
     proto = renv ? renv->proto : default_protocol(ims);
 
     setp = unsetp = 0;
@@ -295,20 +277,6 @@ int	make_new_environ(OutEnv *oenv, UserSelection *sel)
 	ep++;
 	xmod_done = True;
     }
-# ifdef	old_hpux
-    if (!xinput_done && (proto == Proto_Xhp)) {
-#ifdef	DEBUG
-	if (!ims->servername) {
-	    DPR(("make_new_environ(): '%s' servername not defined\n",
-							sel->name));
-	}
-#endif
-	ep->name = NEWSTR(xinput);
-	ep->value = NEWSTR(ims->servername);
-	ep++;
-	xinput_done = True;
-    }
-# endif	/* old_hpux */
     if (ep == oenv->set) {
 	FREE(oenv->set); oenv->set = (EnvEnt *)0;
     } else
@@ -324,13 +292,6 @@ int	make_new_environ(OutEnv *oenv, UserSelection *sel)
 	ep++;
 	xmod_done = True;
     }
-# ifdef	old_hpux
-    if (!xinput_done) {
-	ep->name = NEWSTR(xinput);
-	ep++;
-	xinput_done = True;
-    }
-# endif	/* old_hpux */
     for (i = 0; i < num && (p = unsetp[i]); i++) {
 	if (strcmp(p, xmod) == 0 || (xinput && (strcmp(p, xinput) == 0)))
 	    continue;
@@ -470,87 +431,3 @@ int	set_remote_env(char *ptr, char *env_pass)
 					Conf.remote->passEnv, env_pass, ptr));
     return bp - ptr;
 }
-
-# ifdef	old_hpux
-char	*xhp_xinput_name(char *locale)
-{
-    char	*xinput_name = "X@INPUT";
-    char	**pp, *p;
-    int		i, len;
-    XhpLocale	*xhp = Conf.xhp;
-    char	**ls;
-    char	typ = 0;
-
-    if (!xhp)		return NULL;
-    if (!locale)	locale = userEnv.locale;
-
-    for (i = 0; !typ && i < XHP_LANG_NUM; i++) {
-	if (!(ls = parse_strlist(xhp[i].locales, ' ')))	continue;
-	for (pp = ls; *pp; pp++) {
-	    if (locale[0] != (*pp)[0])	continue;
-	    len = strlen(p = *pp);
-	    if ((p[len - 1] == '*' && strncmp(locale, p, len - 1) == 0)
-		|| strcmp(locale, p) == 0) {
-		typ = xhp[i].type;
-		break;
-	    }
-	}
-	FREE_LIST(ls);
-    }
-    if (!typ) {
-	DPR2(("xhp_xinput_name(%s): unknown locale\n", locale));
-	return NULL;
-    }
-
-    xinput_name[1] = typ;
-    return NEWSTR(xinput_name);
-}
-
-
-char	*get_real_locale(char *locale, char ***aliases)
-{
-    int		i;
-    int		match_idx = -1;
-    LocaleAlias	**alias = Conf.alias, *ap;
-    char	**ls, **pp;
-    char	*real_locale = NULL;
-
-    if (!locale || !alias)	return NULL;
-
-    for (i = 0; match_idx < 0 && (ap = alias[i]); i++) {
-	if (strcmp(ap->name, locale) == 0) {
-	    match_idx = i;
-	    if (aliases)
-		ls = parse_strlist(ap->aliases, ' ');
-	    break;
-	}
-	if (ls = parse_strlist(ap->aliases, ' ')) {
-	    for (pp = ls; *pp; pp++)
-		if (strcmp(locale, *pp) == 0) {
-		    match_idx = i;
-		    break;
-		}
-	    FREE_LIST(ls);
-	    ls = (char **)NULL;
-	}
-    }
-
-    if (match_idx >= 0) {
-	real_locale = alias[match_idx]->name;
-	if (aliases) {
-	    *aliases = ls;
-	    ls = (char **)NULL;
-	}
-    } else {
-	real_locale = NULL;
-	if (aliases)	*aliases = (char **) NULL;
-    }
-    if (ls)	FREE_LIST(ls);
-
-    DPR(("get_real_locale(%s): real_locale=%s  aliases=%s\n",
-		locale, real_locale, aliases ? *aliases : NULL));
-
-    return real_locale;
-}
-
-# endif	/* old_hpux */

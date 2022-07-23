@@ -59,7 +59,7 @@
 #include <sys/stat.h>
 #include <errno.h>
 
-#if defined(_AIX) || defined(hpux)
+#if defined(_AIX)
 #include <sys/dir.h>
 #else
 #ifndef MAXNAMLEN

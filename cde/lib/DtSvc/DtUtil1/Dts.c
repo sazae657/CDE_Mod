@@ -54,12 +54,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <sys/stat.h>
-#if defined (__hpux)
-/*
- * On HP MAXINT is defined in both <values.h> and <sys/param.h>
- */
-#undef MAXINT
-#elif defined(CSRG_BASED)
+#if defined(CSRG_BASED)
 #define MAXINT INT_MAX
 #else
 #include <values.h>

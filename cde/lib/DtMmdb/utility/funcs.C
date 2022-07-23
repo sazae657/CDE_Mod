@@ -741,7 +741,7 @@ Boolean cc_is_digit(istream& in)
 
 unsigned long disk_space(const char* path)
 {
-#if defined (hpux) || defined (SVR4) || defined(CSRG_BASED)
+#if defined (SVR4) || defined(CSRG_BASED)
    struct statvfs statfs_buf;
 #else
    struct statfs statfs_buf;
@@ -749,7 +749,7 @@ unsigned long disk_space(const char* path)
 
    long free_bytes;
 
-#if defined (hpux) || defined (SVR4) || defined(CSRG_BASED)
+#if defined (SVR4) || defined(CSRG_BASED)
    if ( statvfs(path, &statfs_buf) == 0 ) {
       free_bytes = statfs_buf.f_bavail * statfs_buf.f_frsize ;
 #else

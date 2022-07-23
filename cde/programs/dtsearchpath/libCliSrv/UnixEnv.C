@@ -71,8 +71,6 @@ UnixEnvironment::UnixEnvironment()
 	manpath = "/usr/share/man";
 #elif defined(_AIX)
 	manpath = "/usr/share/man:/usr/lpp/info";
-#elif defined(hpux)
-	manpath = "/usr/man:/usr/contrib/man:/usr/local/man";
 #elif defined(__linux__)
         manpath = "/usr/share/man/%L:/usr/share/man:/usr/contrib/man/%L:/usr/contrib/man:/usr/local/man/%L:/usr/local/man";
 #elif defined(__OpenBSD__)

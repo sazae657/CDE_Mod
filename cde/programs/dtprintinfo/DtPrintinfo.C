@@ -49,25 +49,6 @@ nl_catd dtprintinfo_cat = NULL;
 extern "C" { extern int seteuid(uid_t); }
 #endif
 
-#ifdef hpux
-static char **msg_strings = NULL;
-
-// Cannot use multiple catgets parameter calls in functions because the
-// previous catgets returned value is overwritten by later catgets calls
-// Example: this would fail on HP systems
-//    sprintf(buf, "%s %s" catgets(...), catgets(...))
-
-char *Catgets(nl_catd catd, int set_num, int msg_num, char *s)
-{
-   if (!msg_strings)
-      return s;
-
-   if (!msg_strings[msg_num])
-      msg_strings[msg_num] = strdup(CATGETS(catd, set_num, msg_num, s));
-   return msg_strings[msg_num];
-}
-#endif
-
 int main(int argc, char **argv)
 {
 #ifndef NO_CDE
@@ -75,11 +56,7 @@ int main(int argc, char **argv)
 #endif
 
 // run as user's UID
-#ifdef hpux
-   setresuid(getuid(), getuid(), (uid_t)0);
-#else
    seteuid(getuid());
-#endif
 
    setlocale(LC_ALL, "");
 
@@ -96,10 +73,6 @@ int main(int argc, char **argv)
 
       if ((nl_catd) errno)
          dtprintinfo_cat = (nl_catd) -1;
-#ifdef hpux
-      else
-         msg_strings = (char **)calloc(LAST_MSG_NO, sizeof(char *));
-#endif
     }
 
    if (dtprintinfo_cat == NULL) {

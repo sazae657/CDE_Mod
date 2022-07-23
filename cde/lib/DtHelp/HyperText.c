@@ -49,15 +49,11 @@
 #include <errno.h>
 #include <signal.h>
 #include <stdlib.h>
-#ifdef __hpux
-#include <time.h>
-#else /* SUN and IBM */
 #ifdef	_AIX
 #include <sys/select.h>
 #endif
 #include <sys/time.h>
 #include <sys/types.h>
-#endif
 #include <unistd.h>
 #include <sys/wait.h>
 #include <Xm/DialogS.h>
@@ -233,11 +229,7 @@ _DtHelpExecProcedure (
     /*
      * fork a child process.
      */
-#ifdef __hpux
-    childPid = vfork ();
-#else
     childPid = fork ();
-#endif /* __hpux */
 
     /*
      * If the child, exec the cmd with a shell parent

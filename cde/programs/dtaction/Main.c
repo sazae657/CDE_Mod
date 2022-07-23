@@ -403,10 +403,7 @@ SetGidUid ( unsigned short rgid, unsigned short ruid )
     if(-1 == setregid(rgid, rgid)) {
         fprintf(stderr, "SetGidUid: setregid failed on %d\n", rgid);
     }
-#elif defined(__hpux)
-    setresgid(rgid, rgid, rgid);
-#else
-    setregid(rgid, rgid, rgid);
+    setregid(rgid, rgid);
 #endif
 
 	/* fix process uid */
@@ -416,10 +413,7 @@ SetGidUid ( unsigned short rgid, unsigned short ruid )
     if(-1 == setreuid(ruid, ruid)) {
         fprintf(stderr, "SetGidUid: setreuid failed on %d\n", ruid);
     }
-#elif defined(__hpux)
-    setresuid(ruid, ruid, ruid);
-#else
-    setreuid(ruid, ruid, ruid);
+    setreuid(ruid, ruid);
 #endif
 
 }
@@ -591,13 +585,7 @@ AddSuLog(
     time_t    timenow;
     struct tm  *now;
 
-#ifdef hpV4  /* 10.* versions */
     char * SULog = "/var/adm/sulog";
-#elif  defined( hpux )	/* 9.* versions */
-    char * SULog = "/usr/adm/sulog";
-#else
-    char * SULog = "/var/adm/sulog";
-#endif
 
     if ((f = fopen (SULog, "a")) == NULL)
 	return;

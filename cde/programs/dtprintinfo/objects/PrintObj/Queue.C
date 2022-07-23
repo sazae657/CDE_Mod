@@ -46,21 +46,6 @@ const char *GET_DEVICE_STATUS = "LANG=C enq -As -P%s | "
 const char *START_QUEUE_CMD = "enq -U -P%s";
 const char *STOP_QUEUE_CMD = "enq -D -P%s";
 #else
-#ifdef hpux
-const char *GET_ATTRS = "LANG=C lpstat -v%s 2>&1 | awk '"
-                            "BEGIN { device=\"\"; rhost=\"\"; rp=\"\" } "
-                            "/device for/ { device = $4 } "
-                            "/remote to/ { rhost = $5; rp = $3 } "
-                            "END { print device,rhost,rp }' OFS=:";
-const char *GET_QUEUE_STATUS = "LANG=C lpstat -i -a%s | awk '"
-			       "{if ($2 == \"not\") {exit 1} else {exit 0}}'";
-const char *GET_DEVICE_STATUS = "LANG=C lpstat -i -p%s | "
-			        "awk '/disabled/ {exit 1}'";
-const char *START_QUEUE_CMD = "/usr/lib/accept %s";
-const char *STOP_QUEUE_CMD = "/usr/lib/reject %s";
-const char *START_PRINTING_CMD = "enable %s";
-const char *STOP_PRINTING_CMD = "disable %s";
-#else
 const char *GET_ATTRS = "LANG=C lpstat -v %s 2>&1 | nawk '"
 			    "BEGIN { device=\"\"; rhost=\"\"; rp=\"\" } "
                             "/device for/ { device = $4 } "
@@ -78,7 +63,6 @@ const char *START_QUEUE_CMD = "/usr/sbin/accept %s";
 const char *STOP_QUEUE_CMD = "/usr/sbin/reject %s";
 const char *START_PRINTING_CMD = "enable %s";
 const char *STOP_PRINTING_CMD = "disable %s";
-#endif
 #endif
 
 // Object Class Name

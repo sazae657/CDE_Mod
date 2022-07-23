@@ -263,7 +263,7 @@ typedef struct
    Boolean restrictMode;
    int desktopPlacement;
    Boolean freezeOnConfig;
-#if defined(__hpux) || defined(sun)
+#if defined(sun)
    Boolean follow_links;
 #endif
    char * fileMgrIcon;
@@ -590,7 +590,7 @@ int checkBrokenLink;
 int trashWait;
 int desktopPlacement;
 Boolean freezeOnConfig;
-#if defined(__hpux) || defined(sun)
+#if defined(sun)
 Boolean follow_links;
 #endif
 int treeType;
@@ -949,7 +949,7 @@ static XtResource resources[] =
      (XtPointer)False,
    },
 
-#if defined(__hpux) || defined(sun)
+#if defined(sun)
    { "followLinks", "FollowLinks", XmRBoolean, sizeof(Boolean),
      XtOffset(ApplicationArgsPtr, follow_links), XmRImmediate,
      (XtPointer) False,
@@ -1459,7 +1459,7 @@ _DtPerfChkpntMsgSend("Begin XtInitialize");
    desktopPlacement = application_args.desktopPlacement;
    freezeOnConfig = application_args.freezeOnConfig;
    emptyTrashOnExit = application_args.emptyTrashOnExit;
-#if defined(__hpux) || defined(sun)
+#if defined(sun)
    follow_links = application_args.follow_links;
 #endif
    instanceWidth = application_args.instanceIconWidth;

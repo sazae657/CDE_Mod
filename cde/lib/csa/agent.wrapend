@@ -1,5 +1,1 @@
-#ifdef HPUX
-#undef hpux
-#define hpux
-#endif
 #endif

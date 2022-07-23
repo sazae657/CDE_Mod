@@ -890,7 +890,6 @@ RestoreResources( Boolean errorHandlerInstalled, ... )
     {
         SetSIGPIPEToDefault ();
 
-#ifndef __hpux
 	/*
 	 * Set the gid of the process back from bin
 	 */
@@ -900,7 +899,7 @@ RestoreResources( Boolean errorHandlerInstalled, ... )
 	setgid(smGD.runningGID);
 	setegid(smGD.runningGID);
 #endif
-#endif
+
 #if defined(CSRG_BASED)
         setsid();
 #else
@@ -3611,7 +3610,6 @@ StartLocalClient (
 	        putenv (strdup (*ppchar));
 	}
 
-#ifndef __hpux
 	/*
 	 * Set the gid of the process back from bin
 	 */
@@ -3620,7 +3618,6 @@ StartLocalClient (
 #else
 	setgid(smGD.runningGID);
 	setegid(smGD.runningGID);
-#endif
 #endif
 
 	_DtEnvControl(DT_ENV_RESTORE_PRE_DT);
@@ -3765,67 +3762,7 @@ ForkWM( void )
     pid_t  clientFork;
     int	   execStatus, i;
 
-#ifdef __hpux
-    /* 
-     * These lines were added to support the builtin
-     * panacomm dtwm.
-     */
-    char   *homeDir;
-    char   *hostName;
-    char   *displayName,*dpy;
-
-    hostName = SM_MALLOC(MAXPATHSM);
-    displayName = SM_MALLOC(MAXPATHSM);
-
-    if( gethostname(hostName, (sizeof(hostName) - 1) ) == 0)
-    {
-	hostName[MAXPATHSM - 1] = '\0';
-	dpy = getenv(DISPLAY_NAME);
-	homeDir = getenv("HOME");
-	if (dpy && homeDir)
-	{
-	    strcpy(displayName, dpy);
-	    dpy = strchr(displayName, ':');
-	    if (dpy)
-	    {
-		*dpy = '\0';
-	    }
-	    sprintf(tmpExecWmFile, "%s/.dt/bin/%s/%s/dtwm", homeDir,
-		    hostName,displayName);
-	    if (access(tmpExecWmFile,X_OK) != 0)
-	    {
-		strcpy(tmpExecWmFile,CDE_INSTALLATION_TOP "/bin/dtwm");
-	    }
-	    else
-	    {
-		localWmLaunched = True;
-		if (!smGD.userSetWaitWmTimeout)
-		{
-		    smRes.waitWmTimeout = 60000;
-		}
-	    }
-	}
-        else
-        {
-          strcpy(tmpExecWmFile,CDE_INSTALLATION_TOP "/bin/dtwm");
-        }
-    }
-    else
-    {
-        strcpy(tmpExecWmFile,CDE_INSTALLATION_TOP "/bin/dtwm");
-    }
-
-    SM_FREE(hostName);
-    SM_FREE(displayName);
-    /* 
-     *     ^^^^^  ^^^^^  ^^^^^  ^^^^^  ^^^^^  ^^^^^  
-     * End of  lines were added to support the builtin
-     * panacomm dtwm.
-     */
-#else
      strcpy(tmpExecWmFile,CDE_INSTALLATION_TOP "/bin/dtwm");
-#endif /* __hpux */
-
 
     /*
      * Fork and exec the client process
@@ -3848,7 +3785,6 @@ ForkWM( void )
     {
         SetSIGPIPEToDefault ();
 
-#ifndef __hpux
 	/*
 	 * Set the gid of the process back from bin
 	 */
@@ -3857,7 +3793,6 @@ ForkWM( void )
 #else
 	setgid(smGD.runningGID);
 	setegid(smGD.runningGID);
-#endif
 #endif
 	_DtEnvControl(DT_ENV_RESTORE_PRE_DT);
 

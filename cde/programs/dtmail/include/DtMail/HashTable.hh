@@ -55,16 +55,10 @@ class HashTableImpl : public DtCPlusPlusAllocator {
     virtual void set(ObjectKey & key, void * value);
     virtual void * remove(ObjectKey & key);
 
-// HP can not support this construct.
-//
-#if !defined(HPUX)
-//
 #define HASHTABLE_HASFOREACH
 
     typedef int (*HashImplIterator)(ObjectKey &, void * value, void * client_data);
     virtual void forEach(HashImplIterator, void * client_data);
-
-#endif
 
   protected:
     struct HashEntry : public DtCPlusPlusAllocator {
@@ -90,12 +84,10 @@ class HashTable : public DtCPlusPlusAllocator {
 
     Object remove(ObjectKey & key) { return( (Object)((long)_table.remove(key)) ); }
 
-#if !defined(HPUX)
     typedef int (*HashIterator)(ObjectKey &, Object, void * client_data);
     void forEach(HashTableImpl::HashImplIterator iterator, void * client_data) {
 	_table.forEach((HashTableImpl::HashImplIterator)iterator, client_data);
     }
-#endif
 
   protected:
     HashTableImpl	_table;

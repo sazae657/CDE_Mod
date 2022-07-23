@@ -172,7 +172,7 @@ static struct _pty_dirs {
     {PTY_null,    PTY_null,     PTY_null,   PTY_null,   PTY_null, False},
 };
 
-#if defined(ALPHA_ARCHITECTURE) || defined(CSRG_BASED)
+#if defined(CSRG_BASED)
 /* Use openpty() to open Master/Slave pseudo-terminal pair */
 /* Current version of openpty() uses non-STREAM device. BSD name space */
 #define TTYNAMELEN      25
@@ -273,25 +273,8 @@ GetPty(char **ptySlave, char **ptyMaster)
 			     * This allows us to access the pty when we
 			     * are no longer suid root...
 			     */
-#ifdef	HP_ARCHITECTURE
-			    {
-				struct group *grp;
-				gid_t gid;
-				_Xgetgrparams grp_buf;
-
-				if (grp = _XGetgrnam("tty", grp_buf)) {
-				    gid = grp->gr_gid;
-				} else {
-				    gid = 0;
-				}
-				(void) endgrent();
-				(void) chown(ttyDev, getuid(), gid);
-				(void) chmod(ttyDev, 0620);
-			    }
-#else	/* HP_ARCHITECTURE */
 			    (void) chown(ttyDev, getuid(), getgid());
 			    (void) chmod(ttyDev, 0622);
-#endif	/* HP_ARCHITECTURE */
 
 			    /* close off the pty slave... */
 			    (void) close(ttyFd);
@@ -336,7 +319,7 @@ GetPty(char **ptySlave, char **ptyMaster)
 
     return(-1);
 }
-#endif /* ALPHA_ARCHITECTURE */
+#endif /* BSD */
 
 /* this is a public wrapper around the previous function that runs the
  * previous function setuid root...
@@ -358,45 +341,8 @@ _DtTermPrimGetPty(char **ptySlave, char **ptyMaster)
 static int
 SetupPty(char *ptySlave, int ptyFd)
 {
-#ifdef	HP_ARCHITECTURE
-    {
-	struct group *grp;
-	gid_t gid;
-	_Xgetgrparams grp_buf;
-
-	if (grp = _XGetgrnam("tty", grp_buf)) {
-	    gid = grp->gr_gid;
-	} else {
-	    gid = 0;
-	}
-	(void) endgrent();
-	(void) chown(ptySlave, getuid(), gid);
-	(void) chmod(ptySlave, 0620);
-    }
-#else	/* HP_ARCHITECTURE */
-#ifdef ALPHA_ARCHITECTURE
-    /* code from xterm to setup ownership and permission */
-    {
-        struct group *ttygrp;
-	_Xgetgrparams grp_buf;
-
-        if (ttygrp = _XGetgrnam("tty", grp_buf)) {
-           /* change ownership of tty to real uid, "tty" gid */
-           chown (ptySlave, getuid(), ttygrp->gr_gid);
-           chmod (ptySlave, 0620);
-        }
-        else {
-           /* change ownership of tty to real group and user id */
-           chown (ptySlave, getuid(), getgid());
-           chmod (ptySlave, 0622);
-        }
-        endgrent();
-    }
-#else	/* ALPHA_ARCHITECTURE */
     (void) chown(ptySlave, getuid(), getgid());
     (void) chmod(ptySlave, 0622);
-#endif /* ALPHA_ARCHITECTURE */
-#endif	/* HP_ARCHITECTURE */
     return 0;
 }
     

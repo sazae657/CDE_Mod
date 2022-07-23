@@ -331,11 +331,7 @@ DtMailServer::do_send(char *fmt, ... )
 //
 // Assemble command in printf(3) style, send to server, accept a response.
 //
-#if defined(__hpux)
-#define DTMAS_COMMAND_TERMINATOR	"\n"
-#else
 #define DTMAS_COMMAND_TERMINATOR	"\r\n"
-#endif
 DTMailError_t
 DtMailServer::do_transaction(char *fmt, ... )
 {
@@ -829,11 +825,7 @@ restoreSignal:
 //
 // Reset the nonresponse-timeout
 //
-#if defined(__hpux)
-#define TV_USEC_TYPE	long
-#else
 #define TV_USEC_TYPE	int
-#endif
 void
 DtMailServer::vtalarm_setitimer(int timeout_seconds)
 {

@@ -808,11 +808,6 @@ The selected file no longer exists.
 31 File or Folder Name:
 32 File Contents:
 
-$ Messages 33-35 are used on hpux systems
-33 On
-34 Off
-35 Follow Links:
-
 36 Open New View
 37 Put In Workspace
 38 Files Found (by Contents):

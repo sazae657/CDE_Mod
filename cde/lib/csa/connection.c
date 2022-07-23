@@ -39,9 +39,6 @@
 #include <time.h>
 #include <unistd.h>
 #include <fcntl.h>
-#ifdef HPUX
-#include <sys/resource.h>
-#endif
 #include "connection.h"
 #include "rtable2.h"
 #include "rtable3.h"
@@ -53,11 +50,7 @@
 #include "convert3-4.h"
 #include "rpccalls.h"
 
-#ifdef HPUX
-#define MAX_COUNT	10
-#else
 #define MAX_COUNT	40
-#endif
 
 static struct timeval timeout_tv;
 static struct timeval retry_tv;
@@ -636,17 +629,12 @@ cleanup_some_connection(_DtCm_Client_Info *dontclose)
 	for (ci = client_cache_head; ci != NULL; )
 	{
 		total++;
-#ifdef HPUX
-		/* clean up whole list */
-		if (ci != dontclose && ci->nregistered == 0) {
-#else
 
 		if (ci != dontclose && ci->nregistered == 0 &&
 		    (ci->tcpcl || (!done && ci->tcpcl == NULL) ||
 		     (ci->tcpcl==NULL && (time(NULL) - ci->last_used)>DAYSEC)))
 		{
 			if (!done) done = 1;
-#endif
 
 			deleted++;
 			oldci = ci;
@@ -829,31 +817,13 @@ get_client_handle(
 	struct timeval tv;
 	enum clnt_stat status;
 
-#ifdef HPUX
-	static int bumped = 0;
-	struct rlimit rl;
-
-	if (bumped == 0) {
-		bumped = 1;
-
-		/* raise the soft limit of number of file descriptor */
-		getrlimit(RLIMIT_NOFILE, &rl);
-		rl.rlim_cur = rl.rlim_max;
-		setrlimit(RLIMIT_NOFILE, &rl);
-	}
-#endif
-
 	tv.tv_sec = 1;
 	tv.tv_usec = 0;
 
 	*clnt = NULL;
 	for (vers = vers_high; vers >= vers_low; vers--) {
-#if defined(__hpux)
-	        if ((cl = clnt_create((char *)host, prognum, vers, nettype)) != NULL) {
-#else
 
 		if ((cl = clnt_create(host, prognum, vers, nettype)) != NULL) {
-#endif
 			clnt_control(cl, CLSET_TIMEOUT, (char *)&tv);
 			status = clnt_call(cl, 0, (xdrproc_t) xdr_void, 
 					   (char *)NULL, (xdrproc_t) xdr_void,

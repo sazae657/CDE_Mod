@@ -319,35 +319,6 @@ loadDatabase(void)
 
   lang = setlocale (LC_CTYPE,NULL);
 
-#ifdef hpux      /* hpux-specific parsing of the locale string */
-	         /* The following code is identical to the 
-                    ExtractLocaleName function in WmResParse.c
-                    from dtwm
-		 */
-#define MAXLOCALE       64      /* buffer size of locale name */
-
-{   char           *start;
-    char           *end;
-    int             len;
-    static char     buf[MAXLOCALE];
-
-    /*  If lang has a substring ":<category>;", extract <category>
-     *  from the first such occurrence as the locale name.
-     */
-
-    start = lang;
-    if (start = strchr (lang, ':')) {
-        start++;
-        if (end = strchr (start, ';')) {
-            len = end - start;
-            strncpy(buf, start, len);
-            *(buf + len) = '\0';
-            lang = buf;
-      }
-    }
-}
-#endif  /* hpux */
-
   pl_desc = (char *)XtMalloc(strlen("/usr/dt/palettes/desc.") + strlen(lang) + 1);
   strcpy (pl_desc,"/usr/dt/palettes/desc.");
   strcat (pl_desc, lang);

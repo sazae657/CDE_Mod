@@ -40,10 +40,6 @@
 /* If the following heuristic fails, compile -DBSD=0 for non-BSD systems,
    or -DBSD=1 for BSD systems. */
 
-#ifdef M_XENIX
-# define BSD 0
-#endif
-
 #ifdef FILE       /* a #define in BSD, a typedef in SYSV (hp-ux, at least) */
 # ifndef BSD	  /*  (a convenient, but horrible kludge!) */
 #  define BSD 1
@@ -113,12 +109,6 @@ typedef struct __p2c_jmp_buf {
 # define ENDTRY(x)      } while (0)
 #endif
 
-
-
-#ifdef M_XENIX  /* avoid compiler bug */
-# define SHORT_MAX  (32767)
-# define SHORT_MIN  (-32768)
-#endif
 
 
 /* The following definitions work only on twos-complement machines */

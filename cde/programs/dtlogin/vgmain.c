@@ -454,14 +454,10 @@ main( int argc, char **argv )
     vg_TRACE_EXECUTION("main: after options.");
 #endif /* VG_TRACE */
 #ifdef VG_DEBUG
-  #ifdef __hpux
-    while (1) {}
-  #else
     LogError((unsigned char *) "main:  sleeping %d seconds.\n", debug);
     if (debug) {
 	sleep(debug);
     }
-  #endif /* __hpux */
 #endif /* VG_DEBUG */
 
     /*
@@ -477,15 +473,6 @@ main( int argc, char **argv )
         XtSetErrorHandler(xtErrorHandler);
         XtSetWarningHandler(xtWarningHandler);
     }
-
-#ifdef __hpux
-    /*
-     * prevent the toolkit from starting the NLIO server...
-     */
-#ifdef VG_TRACE
-    vg_TRACE_EXECUTION("main:  exited _XHPNlioctl ...");
-#endif /* VG_TRACE */
-#endif
 
     /*
      * get information about the display...
@@ -1740,9 +1727,6 @@ MakeLogin( void )
 				   Ctrl <Key>Tab: next-tab-group() "));
 
     XtManageChild(login_text);
-#ifdef __hpux
-    XtAddCallback(login_text, XmNfocusCallback, TextFocusCB, NULL);
-#endif
 
 
     XtAddActions(textActions, 2);
@@ -1761,9 +1745,6 @@ MakeLogin( void )
     textdata->text[1] = login_text;
 
     XtManageChild(passwd_text);
-#ifdef __hpux
-    XtAddCallback(passwd_text, XmNfocusCallback, TextFocusCB, NULL);
-#endif
     XtAddCallback(passwd_text, XmNmodifyVerifyCallback, EditPasswdCB, NULL);
 
    /*

@@ -597,9 +597,4 @@ extern bool_t _DtCm_xdr_Registration_Status_4();
 }
 #endif
 
-#ifdef HPUX
-#undef hpux
-#define hpux
 #endif
-#endif
-

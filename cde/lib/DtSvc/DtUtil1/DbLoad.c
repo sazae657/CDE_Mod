@@ -49,17 +49,11 @@
 #include <stdio.h>
 #include <sys/types.h>
 
-#ifdef __hpux
-#include <ndir.h>
-#else
-
 #if defined(sun) || defined(CSRG_BASED)
 #include <dirent.h>
 #else
 #include <sys/dir.h>
 #endif				/* sun || CSRD_BASED */
-
-#endif				/* __hpux */
 
 #include <ctype.h>
 #include <string.h>

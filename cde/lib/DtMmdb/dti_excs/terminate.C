@@ -63,11 +63,4 @@ terminate()
   abort();
 }
 #else
-
-#ifdef hpux
-// HPUX doesn't define the set_terminate function from the ARM. 
-typedef void (*PFV)();
-PFV set_terminate (PFV) { return (0); }
-#endif
-
 #endif /* NATIVE_EXCEPTIONS */

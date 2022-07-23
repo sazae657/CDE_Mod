@@ -38,7 +38,7 @@
 #include <time.h>
 #include <ctype.h>
 
-#if defined(hpux) || defined(_AIX) || defined(sun) || defined(__linux__) || defined(CSRG_BASED)
+#if defined(_AIX) || defined(sun) || defined(__linux__) || defined(CSRG_BASED)
 #include <unistd.h>
 #include <locale.h>
 #include <fcntl.h>
@@ -170,14 +170,14 @@ struct search {
 EXTERN SEARCH *path INIT(NULL) ;
 EXTERN SEARCH **endpath INIT(&path) ;
 EXTERN char dirsep
-#if defined(hpux) || defined(_AIX) || defined(sun) || defined(__linux__) || defined(CSRG_BASED)
+#if defined(_AIX) || defined(sun) || defined(__linux__) || defined(CSRG_BASED)
 INIT('/')
 #else
 ****define directory separator here****
 #endif
   ;
 
-#if defined(hpux) || defined(_AIX) || defined(sun) || defined(__linux__) || defined(CSRG_BASED)
+#if defined(_AIX) || defined(sun) || defined(__linux__) || defined(CSRG_BASED)
 #define CSEP '/'
 #define SSEP "/"
 #else

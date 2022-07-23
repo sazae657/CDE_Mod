@@ -981,11 +981,7 @@ void RoamApp::initialize(int *argcp, char **argv)
     int	opt;
     char *helpId;
 
-#ifdef hpV4
-    signal(SIGUSR1, (void(*)(int ...))SigUsr1);
-#else
     signal(SIGUSR1, SigUsr1);
-#endif
 
 #ifdef _AIX
     (void)signal( SIGDANGER, pspace_signal );

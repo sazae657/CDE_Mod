@@ -32,26 +32,16 @@
 # define size_t		unsigned long
 # define pid_t		int
 # define uid_t		unsigned long
-#elif defined(hpV4)
-# define size_t		unsigned int
-# define pid_t		int
-# define uid_t		int
 #else
 # define size_t		unsigned int
 # define pid_t		long
 # define uid_t		long
 #endif
 
-#if defined(hpV4)
-# define xdrproc_t	int (*)(...)
-#else
 # define xdrproc_t	int (*)(void)
-#endif
 
 #if defined(_AIX)
 # define va_list	char*
-#elif defined(hpV4)
-# define va_list	double*
 #else
 # define va_list	void*
 #endif
@@ -828,36 +818,6 @@ privateC++ _Tt_patlist_table::__vtbl
 privateC++ _Tt_context_list::__vtbl
 privateC++ _Tt_message_list::__vtbl
 privateC++ _Tt_procid_list::__vtbl
-#endif
-
-#ifdef hpV4
-/* If debugging is enabled the tt clients require these symbols on HP. */
-privateC++ _Tt_arg::__vtbl
-privateC++ _Tt_context::__vtbl
-privateC++ _Tt_db_access::__vtbl
-privateC++ _Tt_db_client::__vtbl
-privateC++ _Tt_db_hostname_redirection_map::__vtbl
-privateC++ _Tt_db_key::__vtbl
-privateC++ _Tt_db_object::__vtbl
-privateC++ _Tt_db_property::__vtbl
-privateC++ _Tt_desktop_lock::__vtbl
-privateC++ _Tt_file_system_entry::__vtbl
-privateC++ _Tt_global::__vtbl
-privateC++ _Tt_int_rec::__vtbl
-privateC++ _Tt_message::__vtbl
-privateC++ _Tt_mp::__vtbl
-privateC++ _Tt_msg_context::__vtbl
-privateC++ _Tt_object_list::__vtbl
-privateC++ _Tt_object_table::__vtbl
-privateC++ _Tt_pat_context::__vtbl
-privateC++ _Tt_patlist::__vtbl
-privateC++ _Tt_pattern::__vtbl
-privateC++ _Tt_procid::__vtbl
-privateC++ _Tt_session::__vtbl
-privateC++ _Tt_session_prop::__vtbl
-privateC++ _Tt_string_buf::__vtbl
-privateC++ _Tt_string_buf_list::__vtbl
-privateC++ _Tt_string_list::__vtbl
 #endif
 
 #ifdef OPT_BUG_SUNOS_5

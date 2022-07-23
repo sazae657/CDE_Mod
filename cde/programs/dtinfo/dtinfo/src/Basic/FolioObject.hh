@@ -54,7 +54,7 @@ typedef void (FolioObject::* notify_handler_t)
   (FolioObject *object, u_int notify_type,
    void *call_data, void *client_data);
 
-#if defined(__STDC__) || defined(hpux)
+#if defined(__STDC__)
 #define DEF_CLASS(C) \
   virtual ClassType type() const; \
   static ClassType C##Class

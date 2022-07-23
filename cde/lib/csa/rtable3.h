@@ -46,7 +46,7 @@
 
 #ifndef SunOS
 #include <rpc/types.h>
-#endif /* HPUX */
+#endif /* Sun */
 
 
 #include <rpc/rpc.h>
@@ -533,9 +533,4 @@ extern bool_t _DtCm_xdr_Registration_Status_3();
 }
 #endif
 
-#ifdef HPUX
-#undef hpux
-#define hpux
 #endif
-#endif
-

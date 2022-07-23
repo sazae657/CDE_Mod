@@ -309,9 +309,6 @@ Initialize1(
     time_t	tnow;
     struct tm	*nowtm;
     char	*cp, buf[100];
-#if HPUX
-    extern	int gethostname(char *, int);	/* not in a system .h file... */
-#endif
 
     /* where we try to find data/library files */
     if (!(tpt_lib=getenv(TPT_LIB))) tpt_lib = DEF_TPT_LIB;
@@ -330,11 +327,7 @@ Initialize1(
     nowtm = localtime(&tnow);
     strftime(buf, 100, "%a %d %b %Y, %R", nowtm);
     SetMappingNV(Variables, "date", buf);
-#if HPUX
-    if (gethostname(buf, 100) < 0) strcpy(buf, "unknown-host");
-#else
     strcpy(buf, "unknown-host");
-#endif
     SetMappingNV(Variables, "host", buf);
     SetMappingNV(Variables, "transpec", tranfile ? tranfile : "??");
 }

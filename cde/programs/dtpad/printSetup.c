@@ -421,9 +421,6 @@ _psGetResourceFileName(PrintSetup *pSetup)
     static char	*dtpadrc = NULL;
     char	*savePath, *saveFile;
 
-#ifdef hpV4
-    return XtNewString("/tmp/dtpadrc");
-#else
     if (dtpadrc != NULL) return XtNewString(dtpadrc);
 
     savePath = NULL;
@@ -440,7 +437,6 @@ _psGetResourceFileName(PrintSetup *pSetup)
     dtpadrc = XtNewString(savePath);
 
     return XtNewString(dtpadrc);
-#endif
 }
 
 /************************************************************************

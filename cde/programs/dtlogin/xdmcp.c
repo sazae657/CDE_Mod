@@ -394,11 +394,7 @@ void WaitForSomething (void)
 	else
 	    ptimeout = NULL;
 
-#ifdef __hpux
-	nready = select (WellKnownSocketsMax + 1, (int *) &reads, 0, 0, ptimeout);
-#else
 	nready = select (WellKnownSocketsMax + 1, &reads, 0, 0, ptimeout);
-#endif
 	Debug ("select returns %d.  Rescan: %d  ChildReady: %d\n",
 		nready, Rescan, ChildReady);
 	if (nready > 0)

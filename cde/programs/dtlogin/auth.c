@@ -113,7 +113,7 @@ extern int errno;
 # include <netdnet/dnetdb.h>
 #endif
 
-#if (defined(_POSIX_SOURCE) && !defined(AIXV3)) || defined(hpux) || defined(USG) || defined(SVR4)
+#if (defined(_POSIX_SOURCE) && !defined(AIXV3)) || defined(SVR4)
 #define NEED_UTSNAME
 #include <sys/utsname.h>
 #endif
@@ -747,7 +747,7 @@ DefineLocal (FILE *file, Xauth *auth)
 
 #ifdef NEED_UTSNAME
 
-	/* hpux:
+	/*
 	 * Why not use gethostname()?  Well, at least on my system, I've had to
 	 * make an ugly kernel patch to get a name longer than 8 characters, and
 	 * uname() lets me access to the whole string (it smashes release, you
@@ -760,9 +760,7 @@ DefineLocal (FILE *file, Xauth *auth)
 	strcpy(displayname, name.nodename);
 	}
 	writeAddr (FamilyLocal, strlen (displayname), displayname, file, auth);
-#endif
-
-#if (!defined(NEED_UTSNAME) || defined (hpux))
+#else
         /* AIXV3:
 	 * In AIXV3, _POSIX_SOURCE is defined, but uname gives only first
 	 * field of hostname. Thus, we use gethostname instead.
@@ -952,7 +950,7 @@ DefineSelf (int fd, int file, int auth)
 	
     struct	sockaddr_in	*inetaddr;
 
-    /* hpux:
+    /*
      * Why not use gethostname()?  Well, at least on my system, I've had to
      * make an ugly kernel patch to get a name longer than 8 characters, and
      * uname() lets me access to the whole string (it smashes release, you

@@ -54,12 +54,6 @@
 #include <sys/dir.h>
 #endif
 
-#ifdef hpux
-#ifndef _XPG2
-#define _XPG2
-#endif
-#endif
-
 #include <limits.h>
 #include <string.h>
 

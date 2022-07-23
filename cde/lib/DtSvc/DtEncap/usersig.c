@@ -90,55 +90,55 @@ static void Xe_init_sig_table(void)
     /* Now add signals that may or may not be around on a given platform */    
 
 #   ifdef SIGIO    
-    Xe_addsig((XeString)"SIGIO", SIGIO);  		/*  hpux sun */
+    Xe_addsig((XeString)"SIGIO", SIGIO);  		/*   sun */
 #   else
 #       ifdef SIGPOLL
-           Xe_addsig((XeString)"SIGIO", SIGPOLL);  	/*  hpux sun */
+           Xe_addsig((XeString)"SIGIO", SIGPOLL);  	/*   sun */
 #       endif
 #    endif
 
 #   ifdef SIGPOLL    
-    Xe_addsig((XeString)"SIGPOLL", SIGPOLL);  		/*  hpux sun */
+    Xe_addsig((XeString)"SIGPOLL", SIGPOLL);  		/*   sun */
 #   else
 #       ifdef SIGIO
-           Xe_addsig((XeString)"SIGPOLL", SIGIO);  	/*  hpux sun */
+           Xe_addsig((XeString)"SIGPOLL", SIGIO);  	/*   sun */
 #       endif
 #   endif
 
 #   ifdef SIGEMT    
-    Xe_addsig((XeString)"SIGEMT", SIGEMT);  		/*  hpux sun */
+    Xe_addsig((XeString)"SIGEMT", SIGEMT);  		/*   sun */
 #   endif
 
 #   ifdef SIGBUS    
-    Xe_addsig((XeString)"SIGBUS", SIGBUS);  		/*  hpux sun */
+    Xe_addsig((XeString)"SIGBUS", SIGBUS);  		/*   sun */
 #   endif
 
 #   ifdef SIGIOT    
-    Xe_addsig((XeString)"SIGIOT", SIGIOT);  		/*  hpux sun */
+    Xe_addsig((XeString)"SIGIOT", SIGIOT);  		/*   sun */
 #   endif
 
 #   ifdef SIGURG    
-    Xe_addsig((XeString)"SIGURG", SIGURG);  		/*  hpux sun */
+    Xe_addsig((XeString)"SIGURG", SIGURG);  		/*   sun */
 #   endif
 
 #   ifdef SIGSYS    
-    Xe_addsig((XeString)"SIGSYS", SIGSYS);  		/*  hpux sun */
+    Xe_addsig((XeString)"SIGSYS", SIGSYS);  		/*   sun */
 #   endif
 
 #   ifdef SIGTRAP    
-    Xe_addsig((XeString)"SIGTRAP", SIGTRAP);  		/*  hpux sun */
+    Xe_addsig((XeString)"SIGTRAP", SIGTRAP);  		/*   sun */
 #   endif
 
 #   ifdef SIGPROF    
-    Xe_addsig((XeString)"SIGPROF", SIGPROF);  		/*  hpux sun */
+    Xe_addsig((XeString)"SIGPROF", SIGPROF);  		/*   sun */
 #   endif
 
 #   ifdef SIGCLD    
-    Xe_addsig((XeString)"SIGCLD", SIGCLD);  		/*  hpux sun */
+    Xe_addsig((XeString)"SIGCLD", SIGCLD);  		/*   sun */
 #   endif
 
 #   ifdef SIGVTALRM    
-    Xe_addsig((XeString)"SIGVTALRM", SIGVTALRM);  	/*  hpux sun */
+    Xe_addsig((XeString)"SIGVTALRM", SIGVTALRM);  	/*   sun */
 #   endif
 
 #   ifdef SIGWINCH
@@ -204,56 +204,56 @@ XeString XeSignalToName(int sig)
     /*       code to the stuff in Xe_init_sig_table() above, you see a one   */
     /*       to one correspondance.					     */
      
-#   ifdef SIGIO    		 		/*  hpux sun */
+#   ifdef SIGIO    		 		/*   sun */
 	                                        /*  (SIGPOLL, SIGTINT are aliases) */
     case SIGIO:		return (XeString)"SIGIO"; 
 #   endif
 
-#   ifdef SIGPOLL    				/*  hpux sun */
+#   ifdef SIGPOLL    				/*   sun */
 /*  ----> Duplicated by SIGIO above
     case SIGPOLL:	return (XeString)"SIGPOLL";  	
 */
 #   endif
 
 
-#   ifdef SIGEMT    				/*  hpux sun */
+#   ifdef SIGEMT    				/*   sun */
     case SIGEMT:	return (XeString)"SIGEMT";  	
 #   endif
 
-#   ifdef SIGBUS    				/*  hpux sun */
+#   ifdef SIGBUS    				/*   sun */
     case SIGBUS:	return (XeString)"SIGBUS";  	
 #   endif
 
-#   ifdef SIGIOT    				/*  hpux sun */
+#   ifdef SIGIOT    				/*   sun */
 /*  ----> Duplicated by SIGABRT above
 
     case SIGIOT:	return (XeString)"SIGIOT";  	
 */
 #   endif
 
-#   ifdef SIGURG    				/*  hpux sun */
+#   ifdef SIGURG    				/*   sun */
     case SIGURG:	return (XeString)"SIGURG";  	
 #   endif
 
-#   ifdef SIGSYS    				/*  hpux sun */
+#   ifdef SIGSYS    				/*   sun */
     case SIGSYS:	return (XeString)"SIGSYS";  	
 #   endif
 
-#   ifdef SIGTRAP    				/*  hpux sun */
+#   ifdef SIGTRAP    				/*   sun */
     case SIGTRAP:	return (XeString)"SIGTRAP";  	
 #   endif
 
-#   ifdef SIGPROF    				/*  hpux sun */
+#   ifdef SIGPROF    				/*   sun */
     case SIGPROF:	return (XeString)"SIGPROF";  	
 #   endif
 
-#   ifdef SIGCLD    				/*  hpux sun */
+#   ifdef SIGCLD    				/*   sun */
 /*  ----> Duplicated by SIGCHLD above
     case SIGCLD:	return (XeString)"SIGCLD";  	
 */
 #   endif
 
-#   ifdef SIGVTALRM    				/*  hpux sun */
+#   ifdef SIGVTALRM    				/*   sun */
     case SIGVTALRM:	return (XeString)"SIGVTALRM";  	
 #   endif
 

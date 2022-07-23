@@ -143,13 +143,9 @@ _falsetlocale(int category, const char *name)
 char *
 _fallcMapOSLocaleName(char *osname, char *siname)
 {
-#if defined(hpux) || defined(CSRG_BASED) || defined(sun) || defined(SVR4)
+#if defined(CSRG_BASED) || defined(sun) || defined(SVR4)
 
-#ifdef hpux
-#define SKIPCOUNT 2
-#define STARTCHAR ':'
-#define ENDCHAR ';'
-#elif !defined(sun) || defined(SVR4)
+#if !defined(sun) || defined(SVR4)
 #define STARTCHAR '/'
 #define ENDCHAR '/'
 #endif

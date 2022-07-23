@@ -29,7 +29,6 @@ endif
 
 AB_MAKEFILES = \
         Makefile.aix \
-        Makefile.hpux \
         Makefile.sunos \
         Makefile.linux \
         Makefile.freebsd \

@@ -115,8 +115,6 @@
  */
 #if defined(_AIX)
   #define DEF_NLS_DIR	"/usr/lib/nls/loc"
-#elif defined(hpV4)
-  #define DEF_NLS_DIR	"/usr/lib/nls/msg"
 #else
   #define DEF_NLS_DIR	CDE_INSTALLATION_TOP "/lib/nls/msg"
 #endif
@@ -195,14 +193,13 @@
  *
  ***************************************************************************/
 
-/*#if defined(SYSV) && !defined(hpux)*/
 #if defined(SYSV) || defined(SVR4) || defined(__linux__) || defined(CSRG_BASED)
 #   include	<sys/wait.h>
 # define waitCode(w)	WEXITSTATUS(w)
 # define waitSig(w)	WTERMSIG(w)
 #if defined(_AIX)
     /*
-     * hpux has a "WCOREDUMP" macro which is undefined in AIX.
+     * "WCOREDUMP" is undefined in AIX.
      * For AIX, the macro from hpux's <sys/wait.h> is used.
      */
 # define waitCore(w)    ( ((int)(w)&0200) == 0 ? 0 : 1 )

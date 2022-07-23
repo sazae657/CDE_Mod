@@ -124,18 +124,12 @@ extern XtPointer _XmStringUngenerate (
 #define ishexdigit(c)	(isdigit(c) || 'a' <= (c) && (c) <= 'f')
 #endif
 
-#ifdef hpux
-# include <sys/utsname.h>
-# ifdef HAS_IFREQ
-#  include <net/if.h>
-# endif
-#else
 #ifdef __convex__
 # include <sync/queue.h>
 # include <sync/sema.h>
 #endif
-# include <net/if.h>
-#endif /* hpux */
+
+#include <net/if.h>
 
 #include    <netdb.h>
 

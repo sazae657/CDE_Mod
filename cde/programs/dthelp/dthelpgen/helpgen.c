@@ -1317,11 +1317,7 @@ main(
      * telling the user that we're building help browser
      * information.
      */
-#ifdef	__hpux
-    childPid = vfork();
-#else
     childPid = fork();
-#endif
     /*
      * if this is the child, exec the dthelpgen.ds script.
      */

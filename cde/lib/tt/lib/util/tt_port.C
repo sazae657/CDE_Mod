@@ -45,12 +45,6 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <syslog.h>
-#if defined(OPT_BUG_HPUX) && !defined(hpV4)
-extern "C" {
-	int syslog(int priority, const char *message, ...);
-	int openlog(const char *ident, int logopt, int facility);
-}
-#endif
 #if defined(sun)
 #include <sys/utsname.h>
 #endif
@@ -200,15 +194,11 @@ _tt_gethostid(void)
 			sscanf(serial_num, "%12lx", &_hostid);
 		}
 	}
-#elif defined(hpux) || defined(_AIX)
+#elif defined(_AIX)
 	struct utsname uts_name;
 	
 	uname(&uts_name);
-#	if defined(_AIX)
-		_hostid = atol(uts_name.machine);
-#	else
-		_hostid = atol(uts_name.idnumber);
-#	endif
+	_hostid = atol(uts_name.machine);
 #else
 	_hostid = gethostid();
 #endif
@@ -365,7 +355,7 @@ _tt_vsyslog(
 		return;
 	}
 
-#if defined(OPT_BUG_AIX) || defined(OPT_BUG_HPUX)
+#if defined(OPT_BUG_AIX)
 	char buf[5000];
 	vsprintf( buf, _format, args );
 	syslog( priority, buf );

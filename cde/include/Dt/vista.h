@@ -302,9 +302,6 @@ typedef struct {DB_ADDR *ptr; LOCK_DESC} DB_ADDR_P;
 #ifdef ANSI
 #define Piv(t)	,...	/* begining of variable number of parameters */
 #define Pv(t)	/**/	/* function has 0 or more parameters */
-#else
-#define Piv(t)	,	/* [XENIX] begining of variable number of parameters */
-#define Pv(t)	,	/* [XENIX] function has 0 or more parameters */
 #endif
 #else
 #define P0	/**/

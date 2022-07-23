@@ -845,12 +845,6 @@ static int	parse_options(int argc, char **argv)
 	    SET_FLAG(FLAG_CONNECT);
 	} else if (optname_match("dt", opt, 2)) {
 	    SET_FLAG(FLAG_DT);
-# ifdef	old_hpux
-	    CLR_FLAG(FLAG_VUE);
-	} else if (optname_match("vue", opt, 2)) {
-	    SET_FLAG(FLAG_VUE);
-	    CLR_FLAG(FLAG_DT);
-# endif	/* old_hpux */
 	} else if (optname_match("window", opt, 2)) {
 	    SET_FLAG(FLAG_WINDOW);
 	} else if (optname_match("nowindow", opt, 4)) {
@@ -1062,10 +1056,6 @@ static OptDesc	opts_internal[] = {
     { "-notimeout", 	"do not timeout" },
     { "-noremote", 	"disable remote execution" },
     { "-notify",	"print error code to stderr" },
-# ifdef	old_hpux
-    { "-vue",		"in VUE environment" },
-    { "-connect", 	"enable try_connect" },
-# endif	/* old_hpux */
 #ifdef	SelectMode_ONCE
     { "-once",		"auto-selection once selected" },
 #endif	/* SelectMode_ONCE */

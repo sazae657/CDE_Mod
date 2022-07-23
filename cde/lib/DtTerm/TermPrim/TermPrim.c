@@ -75,7 +75,7 @@ extern char * _DtTermPrimGetMessage( char *filename, int set, int n, char *s );
 #include <ctype.h>
 #include <Dt/MsgCatP.h>
 #include <wchar.h>
-#if defined(__linux__) || defined(hpV4)
+#if defined(__linux__)
 # include <sys/types.h> /* For FD_* macros. */
 # include <sys/time.h> /* For select() prototype. */
 #else
@@ -246,21 +246,12 @@ static XtResource resources[] =
 	XtOffsetOf(struct _DtTermPrimitiveRec, term.columns),
 	XmRImmediate, (XtPointer) defaultColumns
     },
-#ifdef	HPVUE
-    {
-	DtNbackgroundIsSelect, DtCBackgroundIsSelect, XmRBoolean,
-	sizeof(Boolean),
-	XtOffsetOf(struct _DtTermPrimitiveRec, term.backgroundIsSelect),
-	XtRImmediate, (XtPointer) True
-    },
-#else	/* HPVUE */
     {
 	DtNbackgroundIsSelect, DtCBackgroundIsSelect, XmRBoolean,
 	sizeof(Boolean),
 	XtOffsetOf(struct _DtTermPrimitiveRec, term.backgroundIsSelect),
 	XtRImmediate, (XtPointer) False
     },
-#endif	/* HPVUE */
     {
 	XmNtraversalOn, XmCTraversalOn, XmRBoolean, sizeof(Boolean),
 	XtOffsetOf(struct _DtTermPrimitiveRec, primitive.traversal_on),

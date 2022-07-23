@@ -8,10 +8,6 @@ BUILT_SOURCES = bil_parse.h bil_parse.c
 CLEANFILES = bil_parse.h bil_parse.c
 AM_YFLAGS = -d
 
-if HPUX
-CCOPTIONS = -Ae
-endif
-
 noinst_LIBRARIES = libABil.a
 
 #noinst_PROGRAMS = bil_test

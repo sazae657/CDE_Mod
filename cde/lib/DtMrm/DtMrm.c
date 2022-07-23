@@ -85,10 +85,6 @@ static char rcsid[] = "$TOG: DtMrm.c /main/4 1999/10/14 13:35:44 mgreess $"
  *  INCLUDE FILES
  *
  */
-#if defined(__hpux)
-#include <sys/param.h>
-#endif
-
 #include <X11/IntrinsicP.h>
 #include <Xm/Xm.h>
 #include <Mrm/MrmPublic.h>

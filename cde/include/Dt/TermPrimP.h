@@ -51,13 +51,8 @@
 **  (is it worth making resources for defaultShell
 **  and defaultShellArgv0?)  JRM
 */
-#ifdef    hpV4
-#   define DEFAULT_SHELL        "/usr/bin/sh"
-#   define DEFAULT_SHELL_ARGV0  "sh"
-#else  /* hpV4 */
-#   define DEFAULT_SHELL        "/bin/sh"
-#   define DEFAULT_SHELL_ARGV0  "sh"
-#endif /* hpV4 */
+#define DEFAULT_SHELL        "/bin/sh"
+#define DEFAULT_SHELL_ARGV0  "sh"
 
 #ifdef	__cplusplus
 extern "C" {

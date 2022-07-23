@@ -60,9 +60,7 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <unistd.h>
-#ifndef hpux
 #include <sysent.h>
-#endif
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <assert.h>

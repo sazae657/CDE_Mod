@@ -31,14 +31,14 @@
    or invoke function pointers should be in tex.c.
 */
 
-#if defined(hpux) || defined(_AIX) || defined(sun)
+#if defined(_AIX) || defined(sun)
 #include <sys/types.h>
 #include <sys/stat.h>
 #endif
 
 #include <math.h>
 
-#if defined(hpux) || defined(_AIX) || defined(sun)
+#if defined(_AIX) || defined(sun)
 #undef M_PI  /* M_PI is used by markup, we don't need the math PI */
 #endif
 

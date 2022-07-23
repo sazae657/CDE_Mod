@@ -32,10 +32,10 @@
 
 #include "TermHeader.h"
 #include <fcntl.h>
-#if defined(ALPHA_ARCHITECTURE) || defined(CSRG_BASED) || defined(LINUX_ARCHITECTURE)
+#if defined(CSRG_BASED) || defined(LINUX_ARCHITECTURE)
 /* For TIOCSTTY definitions */
 #include <sys/ioctl.h>
-#endif /* ALPHA_ARCHITECTURE */
+#endif /* BSD || Linux */
 #include <sys/wait.h>
 
 #include <signal.h>
@@ -301,11 +301,6 @@ _DtTermPrimSubprocExec(Widget		  w,
     _Xgetpwparams pw_buf;
     _Xgetloginparams login_buf;
 
-#ifdef  ALPHA_ARCHITECTURE
-    /* merge code from xterm, ignore so that TIOCSWINSZ doesn't block */
-    signal(SIGTTOU, SIG_IGN);
-#endif /* ALPHA_ARCHITECTURE */
-
     /* build a default exec command and argv list if one wasn't supplied...
      */
     /* cmd... */
@@ -456,13 +451,13 @@ _DtTermPrimSubprocExec(Widget		  w,
 	/* child...
 	 */
         _DtTermProcessUnlock();
-#if defined(ALPHA_ARCHITECTURE) || defined(CSRG_BASED) || defined(LINUX_ARCHITECTURE)
+#if defined(CSRG_BASED) || defined(LINUX_ARCHITECTURE)
         /* establish a new session for child */
         setsid();
 #else
 	/* do a setpgrp() so that we can... */
 	(void) setpgrp();
-#endif /* ALPHA_ARCHITECTURE */
+#endif /* Linux || BSD */
 
 #if defined(LINUX_ARCHITECTURE)
 	/* set the ownership and mode of the pty... */
@@ -477,7 +472,7 @@ _DtTermPrimSubprocExec(Widget		  w,
 	    (void) _exit(1);
 	}
 
-#if defined(ALPHA_ARCHITECTURE) || defined(CSRG_BASED) || defined(LINUX_ARCHITECTURE)
+#if defined(CSRG_BASED) || defined(LINUX_ARCHITECTURE)
         /* BSD needs to do this to acquire pty as controlling terminal */
         if (ioctl(pty, TIOCSCTTY, (char *)NULL) < 0) {
 	    (void) close(pty);
@@ -488,7 +483,7 @@ _DtTermPrimSubprocExec(Widget		  w,
 
         /* Do it when no controlling terminal doesn't work for OSF/1 */
         _DtTermPrimPtyGetDefaultModes();
-#endif /* ALPHA_ARCHITECTURE */
+#endif /* Linux || BSD */
 
 #if !defined(LINUX_ARCHITECTURE)
 	/* set the ownership and mode of the pty... */

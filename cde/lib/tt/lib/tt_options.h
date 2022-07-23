@@ -71,15 +71,9 @@
  * OPT_BUG_SUNOS_5 -- used to flag special hacks only needed because
  *   of bugs or quirks in SunOS 5.x.
  * 
- * OPT_BUG_HPUX -- used to flag special hacks only needed because
- *   of bugs or quirks in HP-UX.
- * 
  * OPT_BUG_RPCINTR -- used to flag that RPC_INTR is not defined
  *   in enum clnt_stat.
  * 
- * OPT_BUG_SGI -- used to flag special hacks only needed because of
- *   bugs or quirks in SGI IRIX.
- *
  * OPT_XDR_LONG_TYPE -- used for (64-bit) architectures where
  *   <rcp/xdr.h> defines x_putlong and x_getlong to not take "long*".
  *
@@ -336,58 +330,6 @@
 #  define OPT_GARBAGE_IN_PARALLEL	0	/* used as a const */
 #  undef  OPT_GARBAGE_THREADS
 # endif
-
-#elif defined(sgi)
-/* these are probably way obsolete now that irix is svr4 based */
-# define OPT_UNIX_SOCKET_RPC 
-# undef  OPT_TLI 
-# undef  OPT_DLOPEN_X11 
-# undef  OPT_DLOPEN_CE 
-# undef  OPT_ADDMSG_DIRECT 
-# undef  OPT_SECURE_RPC 
-# undef  OPT_CLASSING_ENGINE 
-# define OPT_TAR_HAS_EXCLUDE_OPTION
-
-#elif defined(__hpux) || defined(hpux)
-
-# undef  OPT_UNIX_SOCKET_RPC 
-# undef  OPT_TLI 
-# undef  OPT_DLOPEN_X11 
-# undef  OPT_DLOPEN_CE 
-# undef  OPT_ADDMSG_DIRECT
-# define OPT_BUG_HPUX
-# undef  OPT_SECURE_RPC 
-# undef  OPT_CLASSING_ENGINE 
-# undef  OPT_BSD_SIGNAL
-# define OPT_POSIX_SIGNAL
-# undef  OPT_BSD_WAIT
-# undef  OPT_DGETTEXT
-# define OPT_CATGETS
-# undef  OPT_GETDTABLESIZE
-# undef  OPT_SYSINFO
-# define OPT_HAS_REALPATH
-# define OPT_AUTOMOUNT_PATH_FIX
-/*
- * re-define these. HP-UX does not seem to want to wake up a swapped
- * process. The timeouts have to be increased so that HP-UX has time
- * to swap in ttsession (if it is out).
- */
-# undef  OPT_PING_TRIES
-# define OPT_PING_TRIES		10
-# undef  OPT_PING_SLEEP
-# define OPT_PING_SLEEP		2
-# if OSMAJORVERSION < 10
-#  define OPT_CPP_PATH		"/lib/cpp"
-# else
-#  define OPT_CPP_PATH		"/opt/langtools/lbin/cpp"
-# endif
-# define OPT_CPP_OPTIONS	""
-# undef  OPT_SVR4_GETMNTENT
-# undef  OPT_LOCKF_MNTENT
-# define OPT_LOCAL_MOUNT_TYPE	MNTTYPE_HFS
-# define OPT_DEFINE_SIG_PF
-# undef  OPT_TAR_HAS_EXCLUDE_OPTION
-# define OPT_BUG_RPCINTR
 
 #elif defined(__linux__)
 

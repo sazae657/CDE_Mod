@@ -201,11 +201,7 @@ static	char	AppName[16] = DTLOGIN;
 #define DEF_TIMEZONE	"MST7MDT"
 #endif
 #ifndef DEF_SYS_PARMS_FILE
-#  if defined( __hpux )
-#    define DEF_SYS_PARMS_FILE	"/etc/src.sh"
-#  else
-#    define DEF_SYS_PARMS_FILE	"/etc/TIMEZONE"
-#  endif
+#  define DEF_SYS_PARMS_FILE	"/etc/TIMEZONE"
 #endif
 #define DEF_UDP_PORT	"177"	    /* registered XDMCP port, don't change */
 

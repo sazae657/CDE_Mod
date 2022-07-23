@@ -90,7 +90,7 @@ static char sopt[] =
 static char name[] = "m_name = '%s'\n" ;
 static char literal[] = "m_literal = '%s'\n" ;
 
-#if defined(hpux) || defined(_AIX) || defined(sun) || defined(__linux__)
+#if defined(_AIX) || defined(sun) || defined(__linux__)
 char buffer[M_LITLEN + 80] ;
 #else
 #define max4(a,b,c,d) (a>b&&a>c&&a>d) ? a : ((b>c&&b>d) ? b : (c>d ? c : d))

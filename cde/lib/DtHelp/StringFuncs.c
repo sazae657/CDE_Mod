@@ -528,11 +528,7 @@ int _DtHelpCeStrHashToKey(
    _CEStrcollProc _DtHelpCeGetStrcollProc(void)
 {
    int Clang = 0;
-#if defined(__hpux)
-   struct locale_data * li;
-#else
    char * locale;
-#endif
 
    extern int strcoll(const char *,const char *);
 #if defined(_AIX)
@@ -544,15 +540,9 @@ int _DtHelpCeStrHashToKey(
 #define C_LANG  "C"
 
    /* if locale is C, use the explicit case insensitive compare */
-#if defined(__hpux)
-   li = getlocale(LOCALE_STATUS);
-   if ( NULL == li->LC_COLLATE_D || strcmp(C_LANG,li->LC_COLLATE_D) == 0 )
-     Clang = 1;
-#else
    locale = setlocale(LC_COLLATE,NULL); /* put locale in buf */
    if (strcmp(locale,C_LANG) == 0)
      Clang = 1;
-#endif
 
    if (Clang)
 #if defined(_AIX)

@@ -1106,10 +1106,7 @@ internalC++ xalloc::xalloc(const char*,unsigned int)
 #endif
 
 /* This symbol does not get mangled consistently across platforms.
-#ifdef hpV4
-internalC++ shellscan_C_000046c7_parsemeta_:__std
-internal __link__std__shellscan_C_000046c7_parsemeta_
-#elif defined(sun)
+#if defined(sun)
 internalC++ shellscan_C:__std
 #elif defined(_AIX)
 internalC++ __sterm80000000_x_2fproj_2fcde_2flib_2fDtSvc_2fDtCodelibs_2fshellscan_2eC()

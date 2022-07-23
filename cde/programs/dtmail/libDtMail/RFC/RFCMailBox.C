@@ -63,7 +63,7 @@
 #include <sys/stat.h>
 #include <sys/param.h>
 #include <sys/uio.h>
-#if !defined(__aix) && !defined(__hpux) && !defined(__linux__) && !defined(CSRG_BASED)
+#if !defined(__aix) && !defined(__linux__) && !defined(CSRG_BASED)
 #include <sys/systeminfo.h>
 #endif
 #include <sys/wait.h>
@@ -95,9 +95,7 @@ extern "C" {
 
 #if defined(sun)
 #define	LCL_SIG_HANDLER_SIGNATURE	
-#elif defined(__hpux)
-#define	LCL_SIG_HANDLER_SIGNATURE	__harg
-#elif defined(__aix) || defined(__alpha) || defined(__linux__) || defined(CSRG_BASED)
+#elif defined(__aix) || defined(__linux__) || defined(CSRG_BASED)
 #define	LCL_SIG_HANDLER_SIGNATURE	int
 #endif
 

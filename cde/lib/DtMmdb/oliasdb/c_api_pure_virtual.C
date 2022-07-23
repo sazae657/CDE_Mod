@@ -28,22 +28,13 @@
 
 extern "C" {
 
-#if defined(hpux)
-char __pure_virtual_called()
-{
-   fprintf(stderr, "DtMmdb: pure virtual called\n");
-   exit (-1);
-   return 0;
-}
-#else
 #if defined(SVR4) && defined(SC3)
 void _pure_error_()
 {
    fprintf(stderr, "DtMmdb: pure virtual called\n");
    exit (-1);
 }
-#else
-#ifdef _AIX
+#elif _AIX
 void __PureVirtualCalled()
 {
    fprintf(stderr, "DtMmdb: pure virtual called\n");
@@ -57,8 +48,6 @@ void __pure_virtual_called()
    exit (-1);
 }
 
-#endif
-#endif
 #endif
 
 }
