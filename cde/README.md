@@ -38,8 +38,8 @@ Please go there and read the appropriate section(s) for your OS (Linux
 or FreeBSD/OpenBSD/NetBSD currently) prior to attmpting to build it.
 
 There are a variety of dependencies that must be met, as well as
-specific set up steps required to build, especially relating localization
-and locales.
+specific set up steps required to build, especially relating to
+localization and locales.
 
 Do not expect to just type 'make' and have it actually work without
 meeting the prerequisites and following the correct steps as spelled
@@ -68,6 +68,9 @@ $ ./configure --with-tcl=/usr/local/lib/tcl8.6 MAKE="gmake"
 $ gmake
 $ sudo gmake install
 ```
+
+Of course change to location of your TCL directory as needed for your
+system.
 
 # Support
 
