@@ -128,8 +128,6 @@ int gettoken(int *c, int context);
 
 TREE *gettreenode(void);
 
-void m_initctype(void);
-
 void initialize(void);
 
 LOGICAL litproc(int delim);

@@ -90,8 +90,6 @@ void getname(int first);
 
 int gettoken(int *c, int context);
 
-void m_initctype(void);
-
 void initialize(void);
 
 LOGICAL m_letter(M_WCHAR c);

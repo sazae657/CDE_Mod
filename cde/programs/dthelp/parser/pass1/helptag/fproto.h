@@ -149,8 +149,6 @@ void strcode(M_WCHAR *string, FILE *outfile);
 
 void mb_strcode(char *string, FILE *outfile);
 
-char *strstr(const char *s1, const char *s2);
-
 void svhdstring(M_WCHAR *string);
 
 void svtcstring(M_WCHAR *string);

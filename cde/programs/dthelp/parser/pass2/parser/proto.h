@@ -153,8 +153,6 @@ void m_holdproc(void);
 
 void m_inctest(int *count, int limit, char *message);
 
-void m_initctype(void);
-
 void m_initialize(void);
 
 void m_lastchars(void);

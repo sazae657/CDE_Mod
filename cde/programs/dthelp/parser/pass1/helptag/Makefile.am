@@ -28,5 +28,5 @@ AM_CPPFLAGS = -I. -I$(HELPPARSERSRC) -I$(HELPUTILSRC) \
 
 # needed by parser/
 noinst_LIBRARIES = libhelptag.a
-libhelptag_a_SOURCES = custom.c default.c help.c make.c option.c \
+libhelptag_a_SOURCES = custom.c default.c help.c option.c \
 		      special.c out.c xref.c global.c ../parser/delim.h
