@@ -5,7 +5,7 @@ bin_PROGRAMS = dthello
 dthello_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
 if SOLARIS
-dthello_LDADD += -ldl -lgen
+dthello_LDADD += -lgen
 endif
 
 if LINUX

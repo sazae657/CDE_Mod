@@ -9,7 +9,7 @@ dtspcd_CFLAGS = -DCDE_CONFIGURATION_TOP=\"${prefix}\" \
 dtspcd_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
 if SOLARIS
-dtspcd_LDADD += -ldl -lgen
+dtspcd_LDADD += -lgen
 endif
 
 cfgdir = $(CDE_INSTALLATION_TOP)/config

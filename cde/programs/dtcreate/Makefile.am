@@ -4,10 +4,6 @@ bin_PROGRAMS = dtcreate
 
 dtcreate_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
-if SOLARIS
-dtcreate_LDADD += -ldl
-endif
-
 dtcreate_SOURCES = main.c AddFiletype.c Confirmed.c			\
         CreateActionAppShell.c FileCharacteristics.c OpenFile.c		\
         UxXt.c ca_aux.c cmncbs.c cmnutils.c cmnrtns.c ErrorDialog.c	\

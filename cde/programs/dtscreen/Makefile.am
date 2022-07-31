@@ -5,7 +5,7 @@ bin_PROGRAMS = dtscreen
 dtscreen_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
 if SOLARIS
-dtscreen_LDADD += -ldl -lgen
+dtscreen_LDADD += -lgen
 endif
 
 dtscreen_SOURCES = blank.c dtscreen.c flame.c hopalong.c hsbramp.c	\

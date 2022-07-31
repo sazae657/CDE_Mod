@@ -30,12 +30,12 @@ dtsession_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB) $(DTPAMSVCLIB)
 
 if SOLARIS
 dtsession_SOURCES += OWsync.c
-dtsession_LDADD += -lelf -ldl
+dtsession_LDADD += -lelf
 endif
 
 if LINUX
 dtsession_CFLAGS += -DUSE_X11SSEXT
-dtsession_LDADD += $(TIRPCLIB) -lXss -ldl
+dtsession_LDADD += $(TIRPCLIB) -lXss
 endif
 
 if BSD

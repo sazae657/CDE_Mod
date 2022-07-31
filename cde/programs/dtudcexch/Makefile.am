@@ -11,7 +11,7 @@ dtudcexch_LDADD = $(LIBSVC) $(LIBTT) $(XTOOLLIB) ${X_LIBS} \
                 $(FONTEDT_PATH1)/libfal/libfal.a
 
 if SOLARIS
-dtudcexch_LDADD += -ldl -lgen
+dtudcexch_LDADD += -lgen
 endif
 
 if FREEBSD

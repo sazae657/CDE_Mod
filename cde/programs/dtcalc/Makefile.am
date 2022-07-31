@@ -7,7 +7,7 @@ dtcalc_CPPFLAGS = -DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\"
 dtcalc_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
 if SOLARIS
-dtcalc_LDADD += -lintl -ldl
+dtcalc_LDADD += -lintl
 endif
 
 

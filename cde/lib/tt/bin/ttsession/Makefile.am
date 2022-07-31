@@ -14,7 +14,7 @@ ttsession_LDADD += $(TIRPCLIB) $(XTOOLLIB)
 endif
 
 if SOLARIS
-ttsession_LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
+ttsession_LDADD += $(XTOOLLIB) -lintl -lsocket -lnsl
 endif
 
 if BSD

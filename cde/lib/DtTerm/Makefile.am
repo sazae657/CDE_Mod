@@ -18,7 +18,7 @@ libDtTerm_la_LIBADD += -lutil
 endif
 
 if SOLARIS
-libDtTerm_la_LIBADD += -ldl -lgen
+libDtTerm_la_LIBADD += -lgen
 endif
 
 if HAS_UTEMPTER_LIBRARY

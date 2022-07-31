@@ -21,7 +21,7 @@ tt_type_comp_SOURCES = mp_type_comp.C        mp_types_table.C \
 tt_type_comp_LDADD = ../../slib/libstt.a $(LIBTT) $(TIRPCLIB) $(XTOOLLIB)
 
 if SOLARIS
-tt_type_comp_LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
+tt_type_comp_LDADD += $(XTOOLLIB) -lintl -lsocket -lnsl
 endif
 
 frozen.mp_types_lex.o: frozen.mp_types_gram.h

@@ -18,7 +18,7 @@ libtt_la_LIBADD = api/c/libapi.la api/dnd/libdnd.la db/libdb.la mp/libmp.la \
 
 if SOLARIS
 # This stuff should be figured out by configure
-libtt_la_LIBADD += -lnsl -lsocket -lintl -ldl -lc -lw
+libtt_la_LIBADD += -lnsl -lsocket -lintl -lc -lw
 endif
 
 if LINUX

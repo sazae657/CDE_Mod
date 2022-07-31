@@ -7,7 +7,7 @@ dtpdm_CFLAGS = -DI18N_MSG -DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\"
 dtpdm_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
 if SOLARIS
-dtpdm_LDADD += -lintl -lgen -ldl -lresolv
+dtpdm_LDADD += -lintl -lgen -lresolv
 endif
 
 dtpdm_SOURCES = JobBox.c Main.c MainWindow.c PdmMsgs.c PdmOid.c		\

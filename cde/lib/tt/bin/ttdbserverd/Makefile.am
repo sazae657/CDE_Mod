@@ -16,7 +16,7 @@ rpc_ttdbserver_LDADD += $(TIRPCLIB) $(XTOOLLIB)
 endif
 
 if SOLARIS
-rpc_ttdbserver_LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
+rpc_ttdbserver_LDADD += $(XTOOLLIB) -lintl -lsocket -lnsl
 endif
 
 if BSD

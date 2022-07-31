@@ -88,9 +88,9 @@ endif
 
 if SOLARIS
 XBINDIR = /usr/bin/X11
-dtlogin_LDADD += -ldl -lgen -lresolv -lbsm -lcmd
-dtgreet_LDADD += -ldl -lgen -lresolv -lbsm -lcmd
-dtchooser_LDADD += -ldl -lgen -lresolv -lbsm -lcmd
+dtlogin_LDADD += -lgen -lresolv -lbsm -lcmd
+dtgreet_LDADD += -lgen -lresolv -lbsm -lcmd
+dtchooser_LDADD += -lgen -lresolv -lbsm -lcmd
 dtlogin_SOURCES += solaris.c
 endif
 

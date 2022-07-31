@@ -6,10 +6,6 @@ dticon_CFLAGS = -D__TOOLTALK
 
 dticon_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
-if SOLARIS
-dticon_LDADD += -ldl
-endif
-
 dticon_SOURCES = dtIconShell.c event.c event.h fileIO.c fileIO.h	\
                  fileIODialog.c globals.c graphics.c graphics.h		\
                  help.c image.c image.h main.c newIconDialog.c		\

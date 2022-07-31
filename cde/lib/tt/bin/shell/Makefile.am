@@ -10,7 +10,7 @@ AM_CXXFLAGS = -I../../lib $(TT_VERSION_DEFINE)
 LDADD = $(LIBTT) $(TIRPCLIB) $(XTOOLLIB)
 
 if SOLARIS
-LDADD += -ldl -lintl -lsocket -lnsl
+LDADD += -lintl -lsocket -lnsl
 endif
 
 ttmv_SOURCES = ttmv.C mover.C

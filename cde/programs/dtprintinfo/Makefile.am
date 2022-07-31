@@ -51,10 +51,6 @@ UI_SRC = UI/DtActions.C UI/DtFindD.h UI/DtProps.C UI/DtSetModList.h	\
 dtprintinfo_SOURCES = $(UTIL_SRC) $(LIBUI_SRC) $(OBJ_SRC) $(UI_SRC)	\
 	DtPrintinfo.C dtprintinfomsg.h
 
-if SOLARIS
-dtprintinfo_LDADD += -ldl
-endif
-
 # special processing for message files
 SYM2NUM_CMD = CPP=$(GENCPP) $(KSH) sym2num
 

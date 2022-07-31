@@ -10,7 +10,7 @@ dthelpprint_CPPFLAGS = -I.. -I ../../../lib/DtHelp \
 dthelpprint_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
 if SOLARIS
-dthelpprint_LDADD += -lw -ldl -lgen -lm
+dthelpprint_LDADD += -lw -lgen -lm
 endif
 
 dthelpprint_SOURCES = Main.c Initialize.c PrintUtil.c PrintTopics.c \

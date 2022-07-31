@@ -11,7 +11,7 @@ tttar_LDADD = ../../slib/libstt.a ../../mini_isam/libisam.a \
 	$(LIBTT) $(TIRPCLIB) $(XTOOLLIB)
 
 if SOLARIS
-tttar_LDADD += -ldl -lintl -lsocket -lnsl
+tttar_LDADD += -lintl -lsocket -lnsl
 endif
 
 tttar_SOURCES = tttar.C \

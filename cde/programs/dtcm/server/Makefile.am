@@ -7,7 +7,7 @@ rpc_cmsd_CFLAGS = -I../../../lib/csa $(DT_INCDIR) $(CSA_INCDIR)
 rpc_cmsd_LDADD = $(LIBCSA) $(DTCLIENTLIBS) $(TIRPCLIB) $(XTOOLLIB)
 
 if SOLARIS
-rpc_cmsd_LDADD += -lsocket -lnsl -lintl -lm -ldl
+rpc_cmsd_LDADD += -lsocket -lnsl -lintl -lm
 endif
 
 rpc_cmsd_SOURCES = parser.c access.c callback.c cmscalendar.c		\

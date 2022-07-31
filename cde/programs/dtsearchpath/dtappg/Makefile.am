@@ -7,7 +7,7 @@ dtappgather_CXXFLAGS = -I../libCliSrv $(DT_INCDIR)
 dtappgather_LDADD = ../libCliSrv/libCliSrv.a $(DTCLIENTLIBS) $(XTOOLLIB)
 
 if SOLARIS
-dtappgather_LDADD += -ldl -lintl
+dtappgather_LDADD += -lintl
 endif
 
 dtappgather_SOURCES = Options.C dtappgather.C dtappgather.h Options.h

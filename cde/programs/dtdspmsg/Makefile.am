@@ -15,6 +15,6 @@ dtdspmsg_LDADD =
 dtdspmsg_CFLAGS = -DNO_XLIB
 
 if SOLARIS
-dtdspmsg_LDADD += -ldl -lgen
+dtdspmsg_LDADD += -lgen
 endif
 
