@@ -44,7 +44,7 @@ dtcodegen_SOURCES = abmf.c                  args.c \
 		    utils_header_file.c     write_c.c \
 		    write_code.c
 
-#ab_func_strings_LDADD = -lm ../libAButil/libAButil.a
+#ab_func_strings_LDADD = ../libAButil/libAButil.a
 
 #ab_func_strings_SOURCES = ab_func_strings.c
 

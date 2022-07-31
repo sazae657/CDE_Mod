@@ -506,6 +506,9 @@ AC_CHECK_LIB(Xdmcp, XdmcpFlush, [XDMCPLIB="-lXdmcp"], [XDMCPLIB=""],
                  [${EXTRA_INCS} ${EXTRA_LIBS}])
 AC_SUBST(XDMCPLIB)
 
+AC_SEARCH_LIBS(cos, m, [], [
+	AC_MSG_ERROR([cos not found, your system probably doesn't obey posix])])
+
 AC_SEARCH_LIBS(dlopen, [dl dld], [], [
 	AC_MSG_ERROR([dlopen not found, your system probably doesn't obey posix]
 	)])

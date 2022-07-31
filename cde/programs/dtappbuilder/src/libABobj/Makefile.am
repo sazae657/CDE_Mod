@@ -4,10 +4,8 @@ ABINCLUDES = ../include
 
 EXTRA_DEFINES =  -D_POSIX_SOURCE=1
 
-EXTRALIBS = -lm
-
 if SOLARIS
-EXTRALIBS += -lgen
+EXTRALIBS = -lgen
 endif
 
 noinst_LIBRARIES = libABobj.a

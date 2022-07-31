@@ -21,13 +21,13 @@ libAButil_a_SOURCES = abio.c          \
 		      util_file.c     \
 		      util_string.c
 
-#util_test_LDADD = libAButil.a -lm
+#util_test_LDADD = libAButil.a
 
 #util_test_CFLAGS = $(EXTRA_DEFINES) -I$(ABINCLUDES)
 
 #util_test_SOURCES = util_test.c
 
-#istr_test_LDADD = libAButil.a -lm
+#istr_test_LDADD = libAButil.a
 
 #istr_test_CFLAGS = $(EXTRA_DEFINES) -I$(ABINCLUDES)
 

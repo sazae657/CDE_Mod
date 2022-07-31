@@ -22,7 +22,7 @@ endif
 libDtSearch_la_LIBADD = raima/libraima.la
 
 if SOLARIS
-libDtSearch_la_LIBADD += -lm -lc
+libDtSearch_la_LIBADD += -lc
 endif
 
 libDtSearch_la_SOURCES = apndext.c	ausdopen.c	ausexit.c \

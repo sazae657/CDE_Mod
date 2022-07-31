@@ -47,7 +47,7 @@ dtbuilder_LDADD = ../libABil/libABil.a  ../libABobjXm/libABobjXm.a  \
         ../libABobj/libABobj.a ../libAButil/libAButil.a \
         $(LIBWIDGET) $(LIBTERM) $(LIBHELP) $(LIBSVC) \
         $(LIBTT) $(LIBXIN) -lUil $(MRESOURCELIB) $(XTOOLLIB) ${X_LIB} \
-        $(UTILLIB) -lm
+	$(UTILLIB)
 
 dtbuilder_CFLAGS = -DPIXMAP_WORKAROUND $(ABINCLUDES)
 
