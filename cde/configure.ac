@@ -431,6 +431,8 @@ AC_CHECK_HEADERS([X11/extensions/Xrender.h], [],
 
 dnl libraries
 AC_CHECK_LIB(m, cosf)
+AC_SEARCH_LIBS(dlopen, [dl dld], [], [])
+
 AC_CHECK_LIB(crypt, crypt)
 dnl this should be configurable, for now it is required
 AC_CHECK_LIB(Xinerama, XineramaQueryScreens,
@@ -505,13 +507,6 @@ dnl only needed by dtlogin
 AC_CHECK_LIB(Xdmcp, XdmcpFlush, [XDMCPLIB="-lXdmcp"], [XDMCPLIB=""],
                  [${EXTRA_INCS} ${EXTRA_LIBS}])
 AC_SUBST(XDMCPLIB)
-
-AC_SEARCH_LIBS(cos, m, [], [
-	AC_MSG_ERROR([cos not found, your system probably doesn't obey posix])])
-
-AC_SEARCH_LIBS(dlopen, [dl dld], [], [
-	AC_MSG_ERROR([dlopen not found, your system probably doesn't obey posix]
-	)])
 
 dnl iconv
 AM_ICONV
