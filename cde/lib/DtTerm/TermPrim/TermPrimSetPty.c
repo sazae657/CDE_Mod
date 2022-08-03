@@ -55,9 +55,9 @@
 #include <sys/stat.h>
 #endif	/* USE_TIOCCONS */
 
-#if defined(LINUX_ARCHITECTURE) || defined(CSRG_BASED)
+#if defined(__linux__) || defined(CSRG_BASED)
 #include <sys/ioctl.h>
-#endif /* LINUX_ARCHITECTURE */
+#endif /* LINUX */
 
 #ifdef	USE_STREAMS
 #include <sys/types.h>
@@ -569,7 +569,7 @@ _DtTermPrimPtyInit
             TMODE (XTTYMODE_weras, tio.c_cc[VWERSE]);
             TMODE (XTTYMODE_lnext, tio.c_cc[VLNEXT]);
 
-#elif	defined(SUN_ARCHITECTURE)
+#elif	defined(sun)
             TMODE (XTTYMODE_swtch, tio.c_cc[VSWTCH]);
             TMODE (XTTYMODE_start, tio.c_cc[VSTART]);
             TMODE (XTTYMODE_stop,  tio.c_cc[VSTOP]);

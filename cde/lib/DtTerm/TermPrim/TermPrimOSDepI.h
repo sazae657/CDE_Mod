@@ -63,12 +63,12 @@
 #ifndef	_Dt_TermPrimOSDepI_h
 #define	_Dt_TermPrimOSDepI_h
 
-#ifdef  LINUX_ARCHITECTURE
+#ifdef  __linux__
 # define USE_TIOCCONS            /* use tioccons for -C          */
 # define HAS_SETEUID             /* seteuid available            */
 # define HAS_SETREUID            /* setreuid available           */
 # define USE_TCSENDBREAK	/* use tiocbreak()		*/
-#endif /* LINUX_ARCHITECTURE */
+#endif /* LINUX */
 
 #ifdef  CSRG_BASED
 # define HAS_SETEUID             /* seteuid available            */
@@ -76,7 +76,7 @@
 # define USE_TCSENDBREAK	/* use tiocbreak()		*/
 #endif /* CSRG_BASED */
 
-#ifdef	SUN_ARCHITECTURE
+#ifdef	sun
 # define XOR_CAPS_LOCK		/* xor caps lock and shift	*/
 # define USE_SRIOCSREDIR	/* use SRIOCSREDIR ioctl for -C	*/
 # define USE_STREAMS		/* use streams			*/
@@ -87,7 +87,7 @@
 #  define USE_SUN_WCWIDTH_PATCH
 #  define wcwidth(w)  sun_wcwidth(w)
 # endif /* (_XOPEN_VERSION == 3) */
-#endif /* SUN_ARCHITECTURE */
+#endif /* SUN */
 
 #ifdef	IBM_ARCHITECTURE
 /* this seems to be #define'ed in the world of imake... */

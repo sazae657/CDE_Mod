@@ -32,7 +32,7 @@
 
 #include "TermHeader.h"
 #include <fcntl.h>
-#if defined(CSRG_BASED) || defined(LINUX_ARCHITECTURE)
+#if defined(CSRG_BASED) || defined(__linux__)
 /* For TIOCSTTY definitions */
 #include <sys/ioctl.h>
 #endif /* BSD || Linux */
@@ -47,11 +47,7 @@
 #include <X11/Xos_r.h>
 
 #include <Xm/Xm.h>
-#if defined(HPVUE)
-#include <Xv/EnvControl.h>
-#else    /* HPVUE */
 #include <Dt/EnvControlP.h>
-#endif   /* HPVUE */
 
 #include "TermPrimP.h"
 #include "TermPrimI.h"
@@ -451,7 +447,7 @@ _DtTermPrimSubprocExec(Widget		  w,
 	/* child...
 	 */
         _DtTermProcessUnlock();
-#if defined(CSRG_BASED) || defined(LINUX_ARCHITECTURE)
+#if defined(CSRG_BASED) || defined(__linux__)
         /* establish a new session for child */
         setsid();
 #else
@@ -459,7 +455,7 @@ _DtTermPrimSubprocExec(Widget		  w,
 	(void) setpgrp();
 #endif /* Linux || BSD */
 
-#if defined(LINUX_ARCHITECTURE)
+#if defined(__linux__)
 	/* set the ownership and mode of the pty... */
 	(void) _DtTermPrimSetupPty(ptyName, pty);
 #endif
@@ -472,7 +468,7 @@ _DtTermPrimSubprocExec(Widget		  w,
 	    (void) _exit(1);
 	}
 
-#if defined(CSRG_BASED) || defined(LINUX_ARCHITECTURE)
+#if defined(CSRG_BASED) || defined(__linux__)
         /* BSD needs to do this to acquire pty as controlling terminal */
         if (ioctl(pty, TIOCSCTTY, (char *)NULL) < 0) {
 	    (void) close(pty);
@@ -485,10 +481,10 @@ _DtTermPrimSubprocExec(Widget		  w,
         _DtTermPrimPtyGetDefaultModes();
 #endif /* Linux || BSD */
 
-#if !defined(LINUX_ARCHITECTURE)
+#if !defined(__linux__)
 	/* set the ownership and mode of the pty... */
 	(void) _DtTermPrimSetupPty(ptyName, pty);
-#endif /* LINUX_ARCHITECTURE */
+#endif /* LINUX */
 
 	/* apply the ttyModes... */
 	_DtTermPrimPtyInit(pty, tw->term.ttyModes, tw->term.csWidth);

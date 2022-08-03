@@ -35,24 +35,6 @@ libTermPrim_la_SOURCES = TermPrim.c \
 
 if SOLARIS
 libTermPrim_la_SOURCES += TermPrimGetPty-svr4.c
-AM_CPPFLAGS += -DSUN_ARCHITECTURE
-endif
-
-# Use the posix pts api, like linux
-if BSD
+else
 libTermPrim_la_SOURCES += TermPrimGetPty-pts.c
-# uses CSRG_BASED global define
-endif
-
-if FREEBSD
-AM_CPPFLAGS += -DFREEBSD_ARCHITECTURE
-endif
-
-if OPENBSD
-AM_CPPFLAGS += -DOPENBSD_ARCHITECTURE
-endif
-
-if LINUX
-libTermPrim_la_SOURCES += TermPrimGetPty-pts.c
-AM_CPPFLAGS += -DLINUX_ARCHITECTURE
 endif
