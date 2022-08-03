@@ -17,7 +17,7 @@ endif
 
 if SOLARIS
 libDtWidget_la_CFLAGS += -DNO_REGCOMP
-libDtWidget_la_LIBADD = -lc -lw -lintl
+libDtWidget_la_LIBADD = -lw -lintl
 endif
 
 

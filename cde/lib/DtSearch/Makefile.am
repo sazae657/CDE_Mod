@@ -21,10 +21,6 @@ endif
 
 libDtSearch_la_LIBADD = raima/libraima.la
 
-if SOLARIS
-libDtSearch_la_LIBADD += -lc
-endif
-
 libDtSearch_la_SOURCES = apndext.c	ausdopen.c	ausexit.c \
 			 bmstrstr.c	boolpars.c	boolsrch.c \
 			 boolyac.y	cuslang.c	dbchange.c \
@@ -39,5 +35,3 @@ libDtSearch_la_SOURCES = apndext.c	ausdopen.c	ausexit.c \
 			 ocf.c		opendblk.c	ophuf.c \
 			 readchar.c	strupr.c	userint.c \
 			 vedelete.c	vestatis.c	vstfunct.c
-
-
