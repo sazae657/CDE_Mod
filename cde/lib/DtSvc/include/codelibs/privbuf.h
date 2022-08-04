@@ -41,14 +41,6 @@ typedef void (*privbuf_func)(void *v);
 #include <stddef.h>
 #include <stdlib.h>
 
-#if defined(sun) || defined(__linux__) || defined(CSRG_BASED)
-// Rejects valid inline declarations, claiming they have both internal and
-// external linkage.
-#else
-inline static void *operator new(size_t size) { return malloc((unsigned)size); }
-inline static void operator delete(void *p) { if (p) free((char*)p); }
-#endif
-
 #include <codelibs/dynarray.h>
 declare_array(privbuf_charbuf, char, 128)
 declare_array(privbuf_strvec, char*, 128)

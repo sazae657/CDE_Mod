@@ -52,9 +52,7 @@ extern "C" {
 ** System V R4 based systems define the stuff we need in
 ** sys/types.h. Include that and then we are done.
 */
-#if defined(__linux__) || defined(SunOS) || defined(CSRG_BASED)
-# include <sys/types.h>
-#endif
+#include <sys/types.h>
 
 #if defined(CSRG_BASED) || defined(__linux__)
 # include <sys/socket.h>

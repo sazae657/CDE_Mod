@@ -350,9 +350,7 @@ m_free(string, "GetDefaultHeaderString return");
 /* construct a qualified file name */
 static int mb_getqualified(char *qualname, char *unqualname)
 {
-#if defined(_AIX) || defined(sun) || defined(__linux__) || defined(CSRG_BASED)
 FILE *f;
-#endif
 char fn[FNAMELEN];
 char tokstr [ 20 ], *gp, *p, *pp, *fnp, curdir[FNAMELEN-1];
 int roomleft = FNAMELEN - 1;
@@ -374,7 +372,6 @@ else
 
 fnp = fn;
 
-#if defined(_AIX) || defined(sun) || defined(__linux__) || defined(CSRG_BASED)
 qualname[0] = '\0';
 gp = qualname + strlen(qualname);
 roomleft = roomleft - strlen(qualname);
@@ -402,49 +399,6 @@ else
     strcat(qualname,SSEP);
     roomleft--;
     }
-#else
-/* if MS-DOS, force to upper case, then get drive spec */
-strupr ( fn );
-if ( fn[1] == ':' ) {
-strncpy ( qualname, fn, 2 );
-fnp += 2;
-}
-else {
-getcwd(qualname, roomleft);
-}
-qualname[2] = '\0';
-gp = qualname + strlen ( qualname );
-roomleft = roomleft - strlen ( qualname );
-/* if path is from root, tack that on, else tack on the current
- directory (for the referenced drive, if MS-DOS) */
-if ( *fnp == CSEP ) {
-strcat ( qualname, SSEP );
-roomleft--;
-++fnp;
-}
-else {
-/* assume current directory always !!! */
-*gp = CSEP;
-getcwd(curdir, FNAMELEN-1);
-if (*curdir != *qualname) {
-  m_err1("Relative directory %s for non-current drive, can't qualify",
-	  unqualname);
-  return (-1);
-  }
-if (strlen(curdir) > 3) {
-  if ((strlen(curdir+3)+1) < roomleft) {  /* "1" for SSEP */
-    strcpy( gp+1, curdir+3 );
-    strcat ( qualname, SSEP );
-    roomleft = roomleft - strlen(curdir+3) - 1;  /* "1" for SSEP */
-    }
-  else {
-    m_err1("Internal error. File name too long for qualifying: %s",
-      unqualname);
-    return (-1);
-    }
-  }
-}
-#endif
 
 strcpy(tokstr, " \r\n\t");
 strcat(tokstr, SSEP);
@@ -487,11 +441,6 @@ do  {
     }
 while (1);
 *strrchr(qualname, CSEP) = '\0';
-
-#if defined(_AIX) || defined(sun) || defined(__linux__) || defined(CSRG_BASED)
-#else
-strupr ( qualname );
-#endif
 
 return ( 0 );
 }  /* end mb_getqualified */

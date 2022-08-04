@@ -45,19 +45,10 @@
 #define wwl_h
 
 // Widget Wrapper Library by:
-//
-//    ___    0  Jean-Daniel Fekete            uucp  : jdf@lri.lri.fr
-//   /   \  /   LRI - Bat 490                 bitnet: jdf@FRLRI61.bitnet
-//  /   _/ /    Universite de Paris-Sud       voice : +33 (1) 69 41 65 91
-// /__   \/     F-91405 ORSAY Cedex                   +33 (1) 69 41 66 29
 
 #include <X11/Intrinsic.h>
-#if !defined(__linux__) && !defined(CSRG_BASED) && !defined(sun)
-#include <generic.h>
-#else
 #define name2(__n1,__n2)	__paste2(__n1,__n2)
 #define __paste2(__p1,__p2)	__p1##__p2
-#endif
 
 #include <Xm/Xm.h>
 #include "WXmString.h"
@@ -78,13 +69,8 @@ class WComposite;
  typedef void	(* XtProc)();
 #endif
 
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 #define CASTRNAM (char*)
 #define CASTVAL  (void*)(size_t)
-#else
-#define CASTRNAM
-#define CASTVAL
-#endif
 
 #define	DEFINE_GETTER(rsc,typ,rnam) \
 inline typ rsc() const \

@@ -65,7 +65,6 @@ endif
 
 if FREEBSD
 LOCAL_CPP_DEFINES += -DFREEBSD -D__FreeBSD__
-SUBDIRS += config
 endif
 
 if SOLARIS
@@ -78,7 +77,6 @@ endif
 
 if NETBSD
 LOCAL_CPP_DEFINES += -D__NetBSD__
-SUBDIRS += config
 endif
 
 if BSD

@@ -38,11 +38,9 @@
 #include <time.h>
 #include <ctype.h>
 
-#if defined(_AIX) || defined(sun) || defined(__linux__) || defined(CSRG_BASED)
 #include <unistd.h>
 #include <locale.h>
 #include <fcntl.h>
-#endif
 
 #define MAXHEADLINES 3
 #define FNAMELEN 513
@@ -170,19 +168,11 @@ struct search {
 EXTERN SEARCH *path INIT(NULL) ;
 EXTERN SEARCH **endpath INIT(&path) ;
 EXTERN char dirsep
-#if defined(_AIX) || defined(sun) || defined(__linux__) || defined(CSRG_BASED)
 INIT('/')
-#else
-****define directory separator here****
-#endif
   ;
 
-#if defined(_AIX) || defined(sun) || defined(__linux__) || defined(CSRG_BASED)
 #define CSEP '/'
 #define SSEP "/"
-#else
-****define directory separator here****
-#endif
 
 /* Location in .TEX file of two \wlog messages */
 EXTERN long wlog ;

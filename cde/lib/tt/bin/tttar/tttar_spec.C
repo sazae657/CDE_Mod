@@ -32,11 +32,7 @@
  *
  */
 
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 #include <unistd.h>
-#else
-#include <osfcn.h>
-#endif
 #include "Tt/tt_c.h"
 #include "util/tt_iostream.h"
 #include "tttar_utils.h"

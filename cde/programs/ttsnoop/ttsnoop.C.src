@@ -190,11 +190,9 @@ signalHandler(
 	}
 }
 
-#if defined(SVR4) || defined(aix) || defined(__linux__) || defined(CSRG_BASED)
 #if !defined(SIG_PF)
 typedef void (*sig_pf_t)(int);
 #define SIG_PF sig_pf_t
-#endif
 #endif
 
 int

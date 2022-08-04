@@ -33,11 +33,7 @@
  */
 
 #include <errno.h>
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 #include <unistd.h>
-#else
-#include <osfcn.h>
-#endif
 #include <sys/param.h>
 #include "api/c/api_api.h"
 #include "Tt/tt_c.h"

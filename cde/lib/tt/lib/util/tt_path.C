@@ -59,23 +59,10 @@
 #undef rindex
 #endif
 
-// Not everybody has realpath() in libc, sometimes we have to define
-// it ourselves, see realpath*.c in tt/lib
-
-#if !defined(OPT_HAS_REALPATH)
-	extern "C" { char *_tt_internal_realpath(char*, char*); }
-#endif
-
-// Use the system realpath on OS's that have it, otherwise
-// use the ToolTalk implementation of it.
 char *
 _tt_get_realpath(char  *pathname, char  *finalpath)
 {
-#ifdef OPT_HAS_REALPATH
 	return realpath(pathname, finalpath);
-#else
-	return _tt_internal_realpath(pathname, finalpath);
-#endif
 }
 
 /*

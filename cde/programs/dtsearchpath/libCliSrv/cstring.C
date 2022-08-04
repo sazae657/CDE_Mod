@@ -566,19 +566,11 @@ int i;
     }
 }
 
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 std::ostream & operator<<
 	(
 	std::ostream &       os,
 	const CString & s
 	)
-#else
-ostream & operator<<
-	(
-	ostream &       os,
-	const CString & s
-	)
-#endif
 {
     if (s.isNull())
 	return os << "(null)";

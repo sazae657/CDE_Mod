@@ -95,32 +95,15 @@ TTFile & TTFile::operator=
     return *this;
 }
 
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 std::ostream & operator<<
 	(
 	std::ostream & os,
 	TTFile &  file
 	)
-#else
-ostream & operator<<
-	(
-	ostream & os,
-	TTFile &  file
-	)
-#endif
 {
     if (file.ttFileOpFailed())
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 	return os << "Error in filename mapping; status = " 
 		  << file.getStatus() << std::endl;
-#else
-	return os << "Error in filename mapping; status = " 
-		  << file.getStatus() << endl;
-#endif
     else
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 	return os << file.data() << std::endl;
-#else
-	return os << file.data() << endl;
-#endif
 }

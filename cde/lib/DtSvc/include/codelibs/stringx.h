@@ -66,27 +66,10 @@ extern "C"
 
 #ifdef __cplusplus
     char *strtokx(char *&ptr, const char *sep);
-# if !defined(__linux__) && !defined(sun) && !defined(CSRG_BASED)
-    char **strsep(const char *str, const char *sep,
-	boolean whsp = TRUE, int *num = NULL);
-    const char *strcmbn(const char **vec, const char *sep = " ");
-# endif
-
 #else /* __STDC__ */
     char *strtokx(char **ptr, const char *sep);
-# if !defined(__linux__) && !defined(sun) && !defined(CSRG_BASED)
-    char **strsep(const char *str, const char *sep,
-	boolean whsp, int *num);
-#endif
     const char *strcmbn(const char **vec, const char *sep);
-
 #endif /* __STDC__ */
-
-
-#ifdef __OBSOLETE
-    size_t nl_strlen(const char *str);	/* __OBSOLETE */
-    int strcharsize(const char *str);	/* __OBSOLETE */
-#endif /* __OBSOLETE */
 
 #else /* C */
 
@@ -101,12 +84,6 @@ extern unsigned   strhash();
 extern unsigned   strhashi();
 
 extern char      *strupper(), *strlower();
-
-
-#ifdef __OBSOLETE
-extern int        strcharsize();	/* __OBSOLETE */
-extern size_t     nl_strlen();		/* __OBSOLETE */
-#endif /* __OBSOLETE */
 
 #endif /* C */
 #if defined(__cplusplus)
@@ -144,12 +121,6 @@ inline char *strdup(const char *s)
 #define strbld strblds
 
 /* macros for funcs that work on top of privbuf versions */
-
-/* for backward compatibility only - __OBSOLETE */
-#ifdef __OBSOLETE
-#define strpos strstrx /* __OBSOLETE */
-#define strrpos strrstrx /* __OBSOLETE */
-#endif /* __OBSOLETE */
 
 #endif /* C || __STDC__ */
 

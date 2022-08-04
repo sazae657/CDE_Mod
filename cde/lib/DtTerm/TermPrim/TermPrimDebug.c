@@ -33,11 +33,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
-# include <stdarg.h>
-#else
-# include <varargs.h>
-#endif
+#include <stdarg.h>
 #include "TermHeader.h"
 #include "TermPrimDebug.h"
 #include <signal.h>

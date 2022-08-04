@@ -3,12 +3,6 @@
 
 if SOLARIS
 LANG=de
-endif
-
-if LINUX
-LANG=de_DE.UTF-8
-endif
-
-if BSD
+else
 LANG=de_DE.UTF-8
 endif

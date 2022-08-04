@@ -86,14 +86,6 @@ typedef unsigned int	sigset_t;
 #endif
 
 /*
- * If your system's vsnprintf returns a char *, not an int,
- * change the 0 to a 1.
- */
-#if !defined(_AIX) && !defined(__linux__) && !defined(CSRG_BASED) && !defined(sun)
-#define	VSPRINTF_CHARSTAR
-#endif
-
-/*
  * If you don't have POSIX 1003.1 signals, the signal code surrounding the 
  * temporary file creation is intended to block all of the possible signals
  * long enough to create the file and unlink it.  All of this stuff is

@@ -63,9 +63,6 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <unistd.h>
-#if !defined(__linux__) && !defined(CSRG_BASED) && !defined(sun)
-#include <sysent.h>
-#endif
 #include <sys/types.h>
 #include <sys/stat.h>
 

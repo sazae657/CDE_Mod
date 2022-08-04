@@ -36,15 +36,7 @@
 #ifndef __DYNARRAY_H_
 #define __DYNARRAY_H_
 
-#if !defined(__linux__) && !defined(CSRG_BASED) && !defined(sun)
-#include <generic.h>
-#endif
-#if defined(sun) || defined(__linux__) || defined(CSRG_BASED)
 #define _DELETE_ARRAY(sz) delete[]
-#else
-#define _DELETE_ARRAY(sz) delete[(sz)]
-#endif
-
 
 // this is used to create an ARRAY of a TYPE
 #define declare_array(ARRAY, TYPE, BUMP) \

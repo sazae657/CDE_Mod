@@ -22,12 +22,7 @@
  */
 /* $XConsortium: streambuf.C /main/8 1996/08/21 15:55:14 drk $ */
 #include "utility/c_streambuf.h"
-
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 #include <stdlib.h>
-#else
-#include <libc.h>
-#endif
 
 #define DEF_BUF_SIZ 4096
 

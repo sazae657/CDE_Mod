@@ -51,9 +51,7 @@
 #include <memory.h>
 #include <stdlib.h>
 #include <ctype.h>
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 #include <wctype.h>
-#endif
 #include "util/tt_string.h"
 #include "util/tt_assert.h"
 #include "util/tt_xdr_utils.h"

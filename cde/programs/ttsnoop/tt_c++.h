@@ -29,12 +29,8 @@
 #ifndef TT_CXX_H
 #define TT_CXX_H
 
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 #include <iostream>
 using namespace std;
-#else
-#include <iostream.h>
-#endif
 
 #include <Tt/tt_c.h>
 

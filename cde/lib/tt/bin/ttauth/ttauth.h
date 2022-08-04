@@ -58,9 +58,6 @@ typedef int Bool;
 
 extern char *ProgramName;
 
-#if !defined(__linux__) && !defined(CSRG_BASED) && !defined(sun)
-extern char *malloc(), *realloc();
-#endif
 int process_command(), auth_initialize(), auth_finalize();
 extern int print_help();
 extern int verbose;

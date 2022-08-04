@@ -136,25 +136,13 @@ void ManSearchPath::Print()
     }
 }
 
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 std::ostream & operator<< 
 	(
 	std::ostream & os, 
 	const ManSearchPath & sp
 	)
-#else
-ostream & operator<< 
-	(
-	ostream & os, 
-	const ManSearchPath & sp
-	)
-#endif
 {
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
     os << sp.GetEnvVar() << std::endl;
-#else
-    os << sp.GetEnvVar() << endl;
-#endif
     sp.PrettyPrint(os);
     return os;
 }

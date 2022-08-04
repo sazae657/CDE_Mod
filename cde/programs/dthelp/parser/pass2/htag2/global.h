@@ -38,11 +38,9 @@
 #include <time.h>
 #include <ctype.h>
 
-#if defined(_AIX) || defined(sun) || defined(__linux__) || defined(CSRG_BASED)
 #include <unistd.h>
 #include <locale.h>
 #include <fcntl.h>
-#endif
 
 #ifndef MB_MAX_LEN
 #define MB_MAX_LEN 4

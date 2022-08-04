@@ -41,22 +41,6 @@
 
 #include "dtscreen.h"
 
-#if !defined(_AIX) && !defined(__linux__) && !defined(sun) && !defined(CSRG_BASED)
-int
-usleep(unsigned long usec)
-{
-#ifdef SYSV
-    poll((struct poll *) 0, (size_t) 0, usec / 1000);	/* ms resolution */
-#else
-    struct timeval timeout;
-    timeout.tv_usec = usec % (unsigned long) 1000000;
-    timeout.tv_sec = usec / (unsigned long) 1000000;
-    select(0, (void *) 0, (void *) 0, (void *) 0, &timeout);
-#endif
-    return 0;
-}
-#endif /* !_AIX && */
-
 /*
  * returns the number of seconds since 01-Jan-70.
  * This is used to control rate and timeout in many of the animations.

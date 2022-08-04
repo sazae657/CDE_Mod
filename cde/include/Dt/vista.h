@@ -86,7 +86,6 @@
 # define __SVR4_I386_ABI_L1__
 #endif
 #include <limits.h>	/* pickup WORD_BIT, LONG_BIT */
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 # undef __SVR4_I386_ABI_L1__
 # ifndef WORD_BIT
 # define WORD_BIT 32
@@ -94,7 +93,6 @@
 # ifndef LONG_BIT
 # define LONG_BIT 32
 # endif
-#endif
 
 #define db_VERSION "3.dt"	/* was "3.10" */
 #define dbd_VERSION "V3.dt\032"	/* was "V3.00\032" */

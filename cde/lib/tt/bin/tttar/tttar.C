@@ -37,13 +37,7 @@
 #include <stdlib.h>
 #include <sys/param.h>
 #include <sys/stat.h>
-#if defined(__linux__) || defined(sun) || defined(CSRG_BASED)
 #include <unistd.h>
-#else
-#if !defined(sun)
-#include <osfcn.h>
-#endif
-#endif
 #include <netdb.h>
 #include <locale.h>
 #include <errno.h>

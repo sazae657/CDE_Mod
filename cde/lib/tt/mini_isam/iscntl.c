@@ -36,11 +36,7 @@
  *	Generic control function
  */
 
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 #include <stdarg.h>
-#else
-#include <varargs.h>
-#endif
 #include "isam_impl.h"
 
 
@@ -76,25 +72,13 @@
 
 typedef int (* intfunc)();
 
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 int 
 iscntl(int isfd, int func, ...)
-#else
-int 
-iscntl(isfd, func, va_alist)
-    int			isfd;
-    int			func;
-    va_dcl
-#endif
 {
     va_list		pvar;
     int			ret;
 
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
     va_start(pvar, func);
-#else
-    va_start(pvar);
-#endif
     switch (func) {
 
 	  case ISCNTL_MASKSIGNALS:

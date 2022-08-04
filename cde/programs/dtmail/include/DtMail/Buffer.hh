@@ -125,9 +125,6 @@ class BufferMemory : public Buffer {
 	virtual int getSize(void);      // get total size of the buffer
 
     private:
-#if !defined(__linux__) && !defined(CSRG_BASED) && !defined(sun)
-	class Chunk;
-#endif
 
 	BufferMemory(const Buffer&);	// try and avoid copies
 	void initBuffer(int size);	// common constructor

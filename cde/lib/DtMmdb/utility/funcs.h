@@ -52,14 +52,7 @@
 #ifndef _funcs_h
 #define _funcs_h 1
 
-#if !defined(__linux__) && !defined(CSRG_BASED) && !defined(sun)
-#include <libc.h>
-#endif
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 #include <unistd.h>
-#else
-#include <sysent.h>
-#endif
 #include <time.h>
 #include <errno.h>
 #include <string.h>

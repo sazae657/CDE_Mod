@@ -45,13 +45,8 @@
 #define WArgList_h
 
 // Allow setting of resources by name in arg list
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 #define CASTRNAM (char*)
 #define CASTVAL  (void*)(size_t)
-#else
-#define CASTRNAM
-#define CASTVAL
-#endif
 
 #define RSRC_SET(RSC,TYP,RNAM) \
    inline WArgList& RSC(TYP val) { return Add(CASTRNAM RNAM, CASTVAL val); }

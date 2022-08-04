@@ -63,11 +63,7 @@
 # include	<time.h>
 # include	<utime.h>
 # include	<pwd.h>
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 # include	<stdarg.h>
-#else
-# include	<varargs.h>
-#endif
 
 #if defined(SYSV) || defined(SVR4) || defined(__linux__)
 #ifndef F_TLOCK

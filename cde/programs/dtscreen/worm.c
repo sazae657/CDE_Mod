@@ -88,15 +88,6 @@ typedef struct {
     int         size[MAXCOLORS];
 }           wormstruct;
 
-#if !defined(CSRG_BASED) && !defined(sun) && !defined(__linux__)
-int
-round(float x)
-{
-    return ((int) floor((double) x));
-}
-#endif
-
-
 void
 worm_doit(perwindow *pwin, wormstruct *wp, int which, unsigned long color)
 {

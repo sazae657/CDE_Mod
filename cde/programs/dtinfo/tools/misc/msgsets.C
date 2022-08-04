@@ -42,11 +42,7 @@
 #ifdef __cplusplus
 
 #include <stdlib.h>
-#if !defined(__DECCXX) && !defined(__linux__) && !defined(CSRG_BASED) && !defined(sun)
-#include <osfcn.h>
-#else
 #include <unistd.h>
-#endif
 
 /* use prototypes in function declarations */
 #define YY_USE_PROTOS

@@ -64,11 +64,7 @@ Dtlogin*startup:               Xstartup
 Dtlogin*reset:                 Xreset
 Dtlogin*setup:                 Xsetup
 
-#if defined (_AIX) || defined (sun) || defined(CSRG_BASED) || defined(__linux__)
 Dtlogin*failsafeClient:        Xfailsafe
-#else
-Dtlogin*failsafeClient:        /usr/bin/X11/xterm
-#endif
 
 XCOMM #########################################################################
 XCOMM To specify the system env vars to be exported to the users session

@@ -975,14 +975,7 @@ RFCTransport::signalRegister(void)
     if (initialized) return;
     initialized = 1;
 
-#if defined(_aix) || defined(__linux__) || \
-    (defined(sun) && OSMAJORVERSION>=5 && OSMINORVERSION>4) || defined(CSRG_BASED)
-    // SunOS 5.5 and above defined prototype for signal handler
     act.sa_handler = (void (*)(int))&RFCTransport::childHandler;
-#else
-    // SunOS 5.4 and before defined prototype signal handler
-    act.sa_handler = (void (*)())&RFCTransport::childHandler;
-#endif
     sigemptyset(&act.sa_mask);
     sigaddset(&act.sa_mask, SIGCHLD);
     act.sa_flags = 0;

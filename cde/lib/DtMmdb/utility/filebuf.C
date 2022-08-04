@@ -26,10 +26,6 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#if !defined(__linux__) && !defined(CSRG_BASED) && !defined(sun)
-#include <sysent.h>
-#endif
-
 #include <fcntl.h>
 #include <string.h>
 

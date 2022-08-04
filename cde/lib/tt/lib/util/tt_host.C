@@ -45,9 +45,6 @@ extern "C" in_addr_t inet_addr(const char *);
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <string.h>
-#if !defined(__linux__) && !defined(CSRG_BASED) && !defined(sun)
-#include <osfcn.h>
-#endif
 
 #define X_INCLUDE_NETDB_H
 #define XOS_USE_XT_LOCKING

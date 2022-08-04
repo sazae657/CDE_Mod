@@ -98,7 +98,7 @@ extern XmMenuState _XmGetMenuState();
 
 static unsigned int GetEventInverseMask(XEvent *event);
 
-#if (defined(__linux__) || defined(sun) || defined(CSRG_BASED)) && !defined(_NFILE)
+#if !defined(_NFILE)
 #define _NFILE FOPEN_MAX
 #endif
 

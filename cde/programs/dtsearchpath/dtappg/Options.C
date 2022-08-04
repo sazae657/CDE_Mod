@@ -31,11 +31,7 @@
 
 #include "Options.h"
 #include <stdlib.h>
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 #include <iostream>
-#else
-#include <iostream.h>
-#endif
 #include <stdio.h>
 #include <pwd.h>
 

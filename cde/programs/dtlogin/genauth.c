@@ -213,7 +213,6 @@ bitsToBytes (unsigned long bits[2], char bytes[64])
  *  the OS's random number device.
  */
 
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 #define READ_LIMIT (sizeof (long) * 2)
 
 static int
@@ -253,45 +252,6 @@ sumFile (char *name, long sum[2])
 }
 
 #undef READ_LIMIT
-
-#else /* linux || CSRG_BASED */
-
-static int
-sumFile (char *name, long sum[2])
-{
-    long    buf[1024*2];
-    int	    cnt;
-    int	    fd;
-    int	    loops;
-    int	    reads;
-    int	    i;
-    int     ret_status = 0;
-
-    fd = open (name, 0);
-    if (fd < 0) {
-	LogError((unsigned char *) "Cannot open randomFile \"%s\", errno = %d\n", name, errno);
-	return 0;
-    }
-#ifdef FRAGILE_DEV_MEM
-    if (strcmp(name, "/dev/mem") == 0) lseek (fd, (off_t) 0x100000, SEEK_SET);
-#endif
-    reads = FILE_LIMIT;
-    sum[0] = 0;
-    sum[1] = 0;
-    while ((cnt = read (fd, (char *) buf, sizeof (buf))) > 0 && --reads > 0) {
-	loops = cnt / (2 * sizeof (long));
-	for (i = 0; i < loops; i+= 2) {
-	    sum[0] += buf[i];
-	    sum[1] += buf[i+1];
-	    ret_status = 1;
-	}
-    }
-    if (cnt < 0)
-	LogError((unsigned char *) "Cannot read randomFile \"%s\", errno = %d\n", name, errno);
-    close (fd);
-    return ret_status;
-}
-#endif /* linux || CSRG_BASED */
 
 void
 GenerateAuthData (char *auth, int len)

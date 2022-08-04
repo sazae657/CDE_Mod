@@ -214,11 +214,7 @@ main(int argc, char** argv, char **envp)
 	void install_signal_handler();
 	SVCXPRT *transp;
 	struct sockaddr_in saddr;
-# if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 	socklen_t asize = sizeof(saddr);
-# else
-	size_t asize = sizeof(saddr);
-# endif
 	int is_aix = 0;
 
 	int do_garbage_collect = 0;

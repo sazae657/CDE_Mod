@@ -75,11 +75,7 @@
 #include "dtappgather.h"
 #include "DirIterator.h"
 #include <stdlib.h>
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 #include <iostream>
-#else
-#include <iostream.h>
-#endif
 
 Options * options;
 
@@ -88,7 +84,7 @@ void LegacyCleanUp
 	CDEEnvironment * user
 	)
 {
-
+    //XXX:
     // For now, remove the old ApplicationManager subdirectory
     // so that we don't leave old CDE users with extra baggage
     // under $HOME.

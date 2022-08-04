@@ -77,9 +77,7 @@
 #include <WWL/WXmPushButton.h>
 
 #include <stdlib.h>
-#if defined(SVR4) || defined(SYSV) || defined(__linux__) || defined(CSRG_BASED)
 #include <limits.h>
-#endif
 
 #define CLASS QueryTermView
 

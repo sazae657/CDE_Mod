@@ -34,11 +34,7 @@
 #include <sys/stat.h>
 #include <stdlib.h>
 #include <string.h>
-#if defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 #include <iostream>
-#else
-#include <iostream.h>
-#endif
 #include <stdio.h>
 #include <unistd.h>
 #include <grp.h>
@@ -50,10 +46,8 @@
 #endif
 #include <errno.h>
 
-#if defined(sun) || defined(_AIX) || defined(__linux__) || defined(CSRG_BASED)
 #define UID_NO_CHANGE ((uid_t) -1)
 #define GID_NO_CHANGE ((gid_t) -1)
-#endif
 
 UnixEnvironment::UnixEnvironment()
 {

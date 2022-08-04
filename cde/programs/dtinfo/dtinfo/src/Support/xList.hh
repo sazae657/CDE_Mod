@@ -71,20 +71,12 @@ private:
 };
 
 template <class T>
-#if defined(_IBMR2) || defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 class xList : public List_base
-#else
-class xList : private List_base
-#endif
 {
 // NOTE: This friend declaration is too general because cfront
 // barfs when I do it the correct way.  22:05 22-Jul-93 DJB
 #ifdef SC3
 friend class List_Iterator<T>;
-#else
-#if !defined(_IBMR2) && !defined(__linux__) && !defined(CSRG_BASED) && !defined(sun)
-template <class T> friend class List_Iterator;
-#endif
 #endif
 public:
   xList() { } 
@@ -118,11 +110,7 @@ public:
 
 
 template <class T>
-#if defined(_IBMR2) || defined(__linux__) || defined(CSRG_BASED) || defined(sun)
 class List_Iterator : public List_Iterator_base
-#else
-class List_Iterator : private List_Iterator_base
-#endif
 {
 friend class xList<T>;
 public:
