@@ -103,8 +103,6 @@
  * OPT_LOCKF_MNTTAB - set to hold a lockf lock on MNTTAB while doing
  *	getmntents.
  *
- * OPT_LOCAL_MOUNT_TYPE -- mount type in mntent for local disks.
- *
  * OPT_DEFINE_SIG_PF - define if SIG_PF (=type of pointer to signal
  *			handler function) isn't defined in system includes
  *
@@ -197,25 +195,18 @@
 #define OPT_DEFINE_SIG_PF
 #endif
 
-#ifdef __linux__
-#define OPT_LOCAL_MOUNT_TYPE   "ext2fs"
-#else
-#define OPT_LOCAL_MOUNT_TYPE   MNTTYPE_UFS
-#endif
-
 #define OPT_POSIX_SIGNAL
 #define OPT_CATGETS
 #define OPT_TAR_HAS_EXCLUDE_OPTION
 
 #if defined(_AIX)
 # undef OPT_BUG_RPCINTR
-# undef OPT_LOCAL_MOUNT_TYPE
 # undef OPT_TAR_HAS_EXCLUDE_OPTION
 # define OPT_BUG_AIX
 # define OPT_GETDTABLESIZE
 /* # define OPT_XTHREADS   	1 */	/* Defaulted by -DXTHREADS */
 
-#elif defined(sun) && (OS_VERSION >= 5)
+#elif defined(sun)
 # define OPT_TLI 
 # define OPT_SECURE_RPC 
 # define OPT_SYSINFO
