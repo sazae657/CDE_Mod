@@ -230,17 +230,6 @@ util_vfork(void)
 /*
  * putenv() is non-POSIX, so the parameter types can vary a bit...
  */
-#ifdef __cplusplus
-extern "C" {
-#endif
-#if (defined(sun) && OSMAJORVERSION >= 5 && OSMINORVERSION >= 4 && OSMINORVERSION <=10 )
-    extern int putenv(const char *string);
-#elif !(defined(__aix) || defined(__NetBSD__))
-    extern int putenv(char *string);
-#endif
-#ifdef __cplusplus
-} // extern "C"
-#endif
 int
 util_putenv(STRING string)
 {

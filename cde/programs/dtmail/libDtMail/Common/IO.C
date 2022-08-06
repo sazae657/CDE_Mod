@@ -91,10 +91,6 @@ extern "C"
           mntctl(int, int, char *);
   ssize_t writev(int, const struct iovec *, int);
 }
-#if (OSMAJORVERSION==4) && (OSMINORVERSION==2)
-/* Temporary hack till the /usr/lpp/xlC/include/unistd.h file is fixed. */
-extern "C" { int lockf(int, int, off_t); }
-#endif
 #endif /* _AIX */
 
 #include <DtMail/DtMail.hh>

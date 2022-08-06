@@ -209,12 +209,7 @@ init(int init_as_source)
 			return(0);
 		}
 		len = sizeof(sockaddr_in);
-#if defined(_AIX) && (OSMAJORVERSION==4) && (OSMINORVERSION==2)
-		if (getsockname(_sock, (sockaddr *)&_hostaddr, (size_t *)&len)
-							< 0) {
-#else
 		if (getsockname(_sock, (sockaddr *)&_hostaddr, &len) < 0) {
-#endif
 			return(0);
 		}
 		return(listen(_sock,5) == 0);
@@ -440,13 +435,9 @@ accept()
 #endif
 		sockaddr_in		saddr;
 
-#if defined(_AIX) && (OSMAJORVERSION==4) && (OSMINORVERSION==2)
-		_msgsock = ::accept(_sock, (struct sockaddr *)&saddr,
-				    (size_t *)&addrlen);
-#else
 		_msgsock = ::accept(_sock, (struct sockaddr *)&saddr,
 				    &addrlen);
-#endif
+
 		if (_msgsock < 0) {
 			_tt_syslog( 0, LOG_ERR, "_Tt_stream_socket::accept(): "
 				    "accept(): %m" );

@@ -36,26 +36,17 @@
 
 #ifndef _BOOLEAN_
 #define _BOOLEAN_
-#if (defined(sun) && OSMAJORVERSION <= 5 && OSMINORVERSION <= 3)
+#if defined(sun)
   #include <sys/types.h>
   #define boolean boolean_t
-  #define true B_TRUE
-  #define false B_FALSE
-#elif defined(sun)
-  #include <sys/types.h>
-  #define boolean boolean_t
-#if defined(__XOPEN_OR_POSIX)
-  #define true _B_TRUE
-  #define false _B_FALSE
-#else
-  #define true B_TRUE
-  #define false B_FALSE
-#endif
-#elif defined(__linux__)
-  #define false 0
-  #define true 1
-  #define boolean int
-#elif defined(CSRG_BASED)
+# if defined(__XOPEN_OR_POSIX)
+   #define true _B_TRUE
+   #define false _B_FALSE
+# else
+   #define true B_TRUE
+   #define false B_FALSE
+# endif
+#elif defined(__linux__) || defined(CSRG_BASED)
 #include <stdbool.h>
 #define boolean bool
 #else

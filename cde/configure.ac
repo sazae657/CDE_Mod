@@ -63,15 +63,6 @@ build_netbsd=no
 build_solaris=no
 build_aix=no
 
-dnl For now, we need to fake the OSMAJORVERSION, OSMINORVERSION.  In Linux
-dnl this never mattered anyway as it was always the kernel version.  We will
-dnl choose defaults here.  These need to be removed in the code in favor
-dnl of actual checks for functionality. So this should be considered
-dnl temporary.
-
-OSMAJORVERSION=4
-OSMINORVERSION=15
-
 dnl locations of libs/includes if not in 'standard' places like on
 dnl linux (/usr/...).  We build these up based on where X11 is, and
 dnl other things as we go along.
@@ -84,8 +75,6 @@ supports_pam=no
 case "${build_os}" in
 	linux*)
 		build_linux=yes
-                OSMAJORVERSION=4
-                OSMINORVERSION=15
                 SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -D_POSIX_SOURCE \
 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_SVID_SOURCE"
                 supports_pam=yes
@@ -93,8 +82,6 @@ case "${build_os}" in
 	freebsd*)
 		build_freebsd=yes
 		bsd=yes
-                OSMAJORVERSION=10
-                OSMINORVERSION=0
                 # fbsd needs the iconv plug to avoid conflict with libiconv
                 # and libc implementations.  We prefer the libc impl.
                 SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -DLIBICONV_PLUG"
@@ -102,20 +89,14 @@ case "${build_os}" in
 	openbsd*)
 		build_openbsd=yes
 		bsd=yes
-                OSMAJORVERSION=6
-                OSMINORVERSION=2
 		;;
 	netbsd*)
 		build_netbsd=yes
 		bsd=yes
-                OSMAJORVERSION=8
-                OSMINORVERSION=0
                 supports_pam=yes
 		;;
 	solaris*|sun*)
 		build_solaris=yes
-                OSMAJORVERSION=5
-                OSMINORVERSION=10
 		;;
 	aix*)
 		build_aix=yes
@@ -129,9 +110,6 @@ AM_CONDITIONAL([OPENBSD], [test "$build_openbsd" = "yes"])
 AM_CONDITIONAL([NETBSD], [test "$build_netbsd" = "yes"])
 AM_CONDITIONAL([SOLARIS], [test "$build_solaris" = "yes"])
 AM_CONDITIONAL([AIX], [test "$build_aix" = "yes"])
-
-dnl Add osmajor/minor version to cppflags.
-OSVERSION="-DOSMAJORVERSION=$OSMAJORVERSION -DOSMINORVERSION=$OSMINORVERSION"
 
 dnl set CSRG_BASED define for the BSD's.
 if test "$bsd" = "yes"
@@ -547,7 +525,7 @@ dnl shouldn't be modified.  It suggests that you create a special
 dnl variable and presumably add those to your Makefile.am files.  We
 dnl have 192 of these currently, so... The user will just have to
 dnl deal, or modify them here directly.
-CPPFLAGS="${CPPFLAGS} ${SOURCE_CPP_DEFINES} ${CPP_COMPILER_FLAGS} ${OSVERSION}"
+CPPFLAGS="${CPPFLAGS} ${SOURCE_CPP_DEFINES} ${CPP_COMPILER_FLAGS}"
 CFLAGS="${CFLAGS} ${C_COMPILER_FLAGS} ${EXTRA_INCS} ${PTHREAD_CFLAGS}"
 CXXFLAGS="${CXXFLAGS} ${CXX_COMPILER_FLAGS} ${EXTRA_INCS} ${PTHREAD_CFLAGS}"
 LIBS="${EXTRA_LIBS} ${LIBS} ${PTHREAD_LIBS}"

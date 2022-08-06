@@ -165,11 +165,7 @@ GetChooserAddr (char *addr, int *lenp)
     int			len;
 
     len = sizeof in_addr;
-#if defined (_AIX) && (OSMAJORVERSION==4) && (OSMINORVERSION==2)
-    if (getsockname (chooserFd, (struct sockaddr *)&in_addr, (size_t *)&len) < 0)
-#else
     if (getsockname (chooserFd, (struct sockaddr *)&in_addr, &len) < 0)
-#endif
 	return -1;
     Debug ("Chooser socket port: %d\n", ntohs(in_addr.sin_port));
     memmove( addr, (char *) &in_addr, len);

@@ -410,11 +410,7 @@ gettransient(int proto, int vers, int *sockp)
 		_tt_syslog(0, LOG_ERR, "bind(): %m");
 		return(0);
 	}
-#if defined (_AIX) && (OSMAJORVERSION==4) && (OSMINORVERSION==2)
-	if (getsockname(s, (sockaddr *)&addr, (size_t *)&len) < 0) {
-#else
 	if (getsockname(s, (sockaddr *)&addr, &len) < 0) {
-#endif
 		_tt_syslog(0, LOG_ERR, "getsockname(): %m");
 		return(0);
 	}

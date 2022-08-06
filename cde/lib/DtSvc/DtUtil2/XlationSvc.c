@@ -2245,8 +2245,10 @@ int _DtXlateGetXlateEnv(
              809 = (int) (100.0 * atof("8.09"));
        ===========================*/
 
-#if !defined(OSMAJORVERSION) || !defined(OSMINORVERSION) || OSMAJORVERSION == 0
-#error OSMAJORVERSION and/or OSMINORVERSION not defined
+#if !defined(OSMAJORVERSION) && !defined(OSMINORVERSION)
+#warning "OSMAJORVERSION and OSMINORVERSION not defined, assuming 99.0:
+#define OSMAJORVERSION 99
+#define OSMINORVERSION 0
 #endif
 
 #if defined(__linux__) || defined(CSRG_BASED)

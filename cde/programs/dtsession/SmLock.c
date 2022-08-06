@@ -1827,7 +1827,7 @@ localAuthenticate(
    /*
     * Get password entry for 'name' or 'uid'.
     */
-#if defined(__OpenBSD__) && OSMAJORVERSION > 5
+#if defined(__OpenBSD__)
     if ((pwent = (name == NULL ?
             getpwuid_shadow(uid) : getpwnam_shadow(name))) == NULL)
 #else

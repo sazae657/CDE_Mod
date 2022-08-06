@@ -19,6 +19,35 @@ if SOLARIS
 libDtSvc_la_CPPFLAGS += -DNO_REGCOMP
 endif
 
+# OSVERSION hackery. This database works by comparing a number
+# computed with the OS major/minor versions to determine appropriate
+# entries in the Xlocale DB.  These are currently hardcoded per OS in
+# configure.ac.  Well, no more.  Now they will be hardcoded per OS
+# here - the only place where they are really needed currently, until
+# some time in the future when old and irrelevant entries are removed
+# from the DB and we won't need this at all.
+
+if LINUX
+libDtSvc_la_CPPFLAGS += -DOSMAJORVERSION=4 -DOSMINORVERSION=15
+endif
+
+if FREEBSD
+libDtSvc_la_CPPFLAGS += -DOSMAJORVERSION=10 -DOSMINORVERSION=0
+endif
+
+if OPENBSD
+libDtSvc_la_CPPFLAGS += -DOSMAJORVERSION=6 -DOSMINORVERSION=2
+endif
+
+if NETBSD
+libDtSvc_la_CPPFLAGS += -DOSMAJORVERSION=8 -DOSMINORVERSION=0
+endif
+
+if SOLARIS
+libDtSvc_la_CPPFLAGS += -DOSMAJORVERSION=5 -DOSMINORVERSION=10
+endif
+
+
 libDtSvc_la_SOURCES = 	DtCodelibs/buf.C \
 	DtCodelibs/buf.h \
 	DtCodelibs/filegen.C \

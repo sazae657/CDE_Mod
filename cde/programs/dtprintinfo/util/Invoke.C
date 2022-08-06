@@ -114,11 +114,7 @@ Invoke::Invoke(const char *command,   // Command to Run
    memset(&oldsigquit_act, '\0', sizeof (struct sigaction));
    memset(&oldsigint_act, '\0', sizeof (struct sigaction));
 
-#if (defined(sun) && OSMAJORVERSION == 5 && OSMINORVERSION <= 4)
-   action.sa_handler = (void (*)())SIG_IGN;
-#else
    action.sa_handler = SIG_IGN;
-#endif
 
    sigaction(SIGINT, &action, &oldsigint_act);
    sigaction(SIGQUIT, &action, &oldsigquit_act);

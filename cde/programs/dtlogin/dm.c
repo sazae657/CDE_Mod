@@ -54,7 +54,7 @@
 # include	<sys/types.h>
 # include	<sys/signal.h>
 # include	<sys/stat.h>
-#if defined(__FreeBSD__) && OSMAJORVERSION > 8
+#if defined(__FreeBSD__)
 # include	<utmpx.h>
 #else
 # include	<utmp.h>
@@ -1646,7 +1646,7 @@ GettyMessage( struct display *d, int msgnum )
 int 
 GettyRunning( struct display *d )
 {
-#if defined(__FreeBSD__) && OSMAJORVERSION > 8
+#if defined(__FreeBSD__)
     struct utmpx utmp;		/* local struct for new entry		   */
     struct utmpx *u;		/* pointer to entry in utmp file	   */
 #else
@@ -1671,7 +1671,7 @@ GettyRunning( struct display *d )
         return FALSE;
 
 
-#if defined(__FreeBSD__) && OSMAJORVERSION > 8
+#if defined(__FreeBSD__)
     bzero(&utmp, sizeof(struct utmpx));
 #else
     bzero(&utmp, sizeof(struct utmp));

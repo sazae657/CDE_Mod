@@ -45,10 +45,6 @@
  **
  **	Conditional compiles for HPUX:
  **
- **     OSMAJORVERSION < 8
- **     	    HP-UX 7.0/7.03 restricted license counting algorithms
- **		    are used. Otherwise HP-UX 8.0 and beyond is used
- **
  **	AUDIT       HP C2 security enhancements; checks for existence of
  **                 SECUREPASSWD file and authenticates user against
  **                 password contained in that file. Also performs
@@ -1022,7 +1018,7 @@ Authenticate( struct display *d, char *name, char *passwd, char **msg )
     }
 #endif
 
-#if defined(__OpenBSD__) && OSMAJORVERSION > 5
+#if defined(__OpenBSD__)
     /*
      * Use the OpenBSD getpwnam_shadow function to get the crypt()ed password
      */

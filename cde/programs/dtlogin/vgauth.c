@@ -45,10 +45,6 @@
  **
  **	Conditional compiles for HPUX:
  **
- **     OSMAJORVERSION < 8
- **     	    HP-UX 7.0/7.03 restricted license counting algorithms
- **		    are used. Otherwise HP-UX 8.0 and beyond is used
- **
  **	AUDIT       HP C2 security enhancements; checks for existence of
  **                 SECUREPASSWD file and authenticates user against
  **                 password contained in that file. Also performs

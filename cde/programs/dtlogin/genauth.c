@@ -112,10 +112,6 @@ extern int errno;
 #  define DONT_USE_DES
 # elif defined(sun)
 #  define USE_CRYPT
-#  if (OSMAJORVERSION >= 4)
-    /* avoid strange sun crypt hackery */
-#   define crypt _crypt
-#  endif
 # endif
 # define USE_ENCRYPT
 #endif

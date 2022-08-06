@@ -51,7 +51,7 @@
 #endif
 
 #include	<fcntl.h>
-#if defined(__FreeBSD__) && OSMAJORVERSION > 8 || defined(HAS_PAM_LIBRARY)
+#if defined (__FreeBSD__) || defined(HAS_PAM_LIBRARY)
 #include	<utmpx.h>
 #else
 #include	<utmp.h>

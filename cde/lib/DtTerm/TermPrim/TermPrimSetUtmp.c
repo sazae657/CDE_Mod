@@ -55,9 +55,7 @@
 #endif	/* sun */
 
 #ifdef	__FreeBSD__
-#if OSMAJORVERSION > 8
 #define	UT_UTMPX
-#endif
 #define	UT_HOST		ut_host
 #define	UT_NO_pututline
 #endif
