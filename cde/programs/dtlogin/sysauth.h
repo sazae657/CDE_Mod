@@ -74,10 +74,6 @@
 #define VF_CHALLENGE            12
 #define VF_MESSAGE              13
 
-#ifdef BLS
-#define VF_BAD_SEN_LEVEL	14
-#endif
- 
 /****************************************************************************
  *
  *  External procedure declarations

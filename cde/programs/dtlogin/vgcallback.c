@@ -110,11 +110,6 @@ static void ProcessTraversal( Widget w, int direction) ;
 static void _DtShowDialog(DialogType dtype, XmString msg);
 static void TellRequester(char * buf, size_t nbytes);
 
-#  ifdef BLS
-static	void PromptSensitivityLevel(void); /* prompt for B1 Sen. Level	   */
-	int  VerifySensitivityLevel(void); /* verify B1 Sensitivity Level  */
-#  endif
-
 static int session_selected = False;
 static Widget default_dt = NULL;
 
@@ -130,11 +125,6 @@ static Widget default_dt = NULL;
 char	*userName = "\0";
 struct passwd *user_p;
 
-
-#ifdef BLS
-static  int	normalPasswordWidget = True;
-	char	*sensitivityLevel = NULL;
-#endif
 
 #ifndef SVR4
 	long	groups[NGROUPS];
@@ -1875,67 +1865,6 @@ GetLoginTextPtr( Widget w )
 
   return(textdata);
 }
-
-
-#ifdef BLS
-/***************************************************************************
- *
- *  PromptSensitivityLevel
- *
- *  Prompt for B1 Sensitivity Level. The password widget set is reused for
- *  this purpose rather than creating another complete widget set. It already
- *  has most of the proper size and alignment specifications needed. Using
- *  the password set also allows the B1 code changes to be more localized.
- *
- ***************************************************************************/
-
-static void 
-PromptSensitivityLevel( void)
-{
-
-    Dimension	width;
-    int		i, width1, width2;
-
-    /*
-     *  Use the password widget set to prompt for the B1 Sensitivity Level.
-     *  Remember to put it back to normal if the user presses [Clear].
-     */
-     
-    normalPasswordWidget = False;
-    
-    XtRemoveAllCallbacks(_text, XmNmodifyVerifyCallback);
-    XmTextFieldSetString(_text,"");
-
-
-    /*
-     *  Change the label and resize the password form...
-     */
-     
-    i = 0;
-    XtSetArg(argt[i], XmNresizable,		True			); i++;
-    XtSetArg(argt[i], XmNresizePolicy,		XmRESIZE_ANY		); i++;
-    XtSetValues(_form, argt, i);
-
-    i = 0;
-    xmstr = ReadCatalogXms(MC_LABEL_SET, -1, "Sensitivity Level:");
-    XtSetArg(argt[i], XmNrecomputeSize,		True			); i++;
-    XtSetArg(argt[i], XmNlabelString,		xmstr			); i++;
-    XtSetValues(_label, argt, i);
-
-    XmStringFree(xmstr);
-    
-    /*
-     *  Center the form horizontally in the login_matte...
-     *
-     */
-
-    CenterForm(matte1, _form);
-    
-    ProcessTraversal(_text, XmTRAVERSE_CURRENT);
-
-}
-
-#endif /* BLS */
 
 
 static void

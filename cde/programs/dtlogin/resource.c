@@ -110,12 +110,6 @@ static	char	AppName[16] = DTLOGIN;
 # define DM_BOOL	2
 # define DM_ARGV	3
 
-#ifdef BLS
-#  define DEF_XDM_CONFIG CDE_INSTALLATION_TOP "/lib/X11/Dtlogin/Xconfig"
-#  define DEF_AUTH_DIR   CDE_INSTALLATION_TOP "/lib/X11/Dtlogin"
-#  define DEF_KEY_FILE	 CDE_INSTALLATION_TOP "/lib/X11/Dtlogin/Xkeys"
-#endif
-
 
 /*
  * the following constants are supposed to be set in the makefile from

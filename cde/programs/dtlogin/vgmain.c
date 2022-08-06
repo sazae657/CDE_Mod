@@ -371,31 +371,6 @@ main( int argc, char **argv )
      
      (void) signal(SIGTERM, Terminate);
 
-    
-#ifdef BLS
-# ifndef NDEBUG
-    {
-	extern SIGVAL BLS_ToggleDebug( int arg );
-
-	    /*
-	     * Allow debug output to be turned on for dtgreet.
-	     */
-
-	     (void) signal(SIGHUP, BLS_ToggleDebug);
-
-    }
-#   endif	/* NDEBUG */
-    /*
-     *  set up authorization parameters, see the identity(3) man page...
-     */
-
-    if (ISSECURE) {
-	set_auth_parameters(1, argv);
-	init_security();
-    }
-#endif /* BLS */
-
-         
     /*
      *  check some environment variables...
      */

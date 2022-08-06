@@ -95,11 +95,6 @@
 # include "solaris.h"
 #endif
 
-#ifdef BLS
-# include <sys/security.h>
-# include <prot.h>
-#endif
-
 #ifdef __KERBEROS
 # include <krb.h>
 #endif /*  __KERBEROS  */
@@ -240,10 +235,6 @@ static struct verify_info	verify;
 static char			*defaultLanguage = NULL;
 
 static sigjmp_buf	abortSession;
-
-#ifdef BLS
-  static char *sensitivityLevel;
-#endif
 
 #ifdef __KERBEROS
   static char krb_ticket_string[MAXPATHLEN];
@@ -1189,10 +1180,6 @@ StartClient( struct verify_info *verify, struct display *d, int *pidp )
     FILE	*lastsession;
     char 	lastsessfile[MAXPATHLEN];
 
-#ifdef BLS
-   struct pr_passwd	*b1_pwd;
-#endif
-
 #ifdef __AFS
 #define NOPAG 0xffffffff
     long	pagval, j;
@@ -1387,63 +1374,6 @@ StartClient( struct verify_info *verify, struct display *d, int *pidp )
 
 #ifndef sun
 
-#ifdef BLS
-    /*
-     *  HP BLS B1 session setup...
-     *
-     *   1. look up user's protected account information.
-     *   2. set the session sensitivity/clearance levels 
-     *   3. set the logical UID (LUID)
-     */
-
-    if ( ISSECURE ) {
-	Debug("BLS - Setting user's clearance, security level and luid.\n");
-	set_auth_parameters(1, verify->argv);
-	init_security();
-
-	verify->user_name = user;
-	strncpy(verify->terminal,d->name,15);
-	verify->terminal[15]='\0';
-	verify->pwd = getpwnam(user);
-
-	if ( verify->pwd == NULL || strlen(user) == 0 ) {
-	    LogError(ReadCatalog(
-		MC_LOG_SET,MC_LOG_NO_BLSACCT,MC_DEF_LOG_NO_BLSACCT));
-	    exit (1);
-	}
-	verify->prpwd= b1_pwd = getprpwnam(user);
-        verify->uid = b1_pwd->ufld.fd_uid;
-    
-	if ( b1_pwd == NULL || strlen(user) == 0 ) {
-	    LogError(ReadCatalog(
-		MC_LOG_SET,MC_LOG_NO_BLSPACCT,MC_DEF_LOG_NO_BLSPACCT));
-	    exit (1);
-	}
-
-	/*
-	 * This has already been done successfully by dtgreet
-	 * but we need to get all the information again for the
-	 * dtlogin process.
-	 */
-	if ( verify_user_seclevel(verify,sensitivityLevel) != 1 ) {
-	    Debug("BLS - Could not verify sensitivity level.\n");
-	    LogError(ReadCatalog(
-		MC_LOG_SET,MC_LOG_NO_VFYLVL,MC_DEF_LOG_NO_VFYLVL));
-            exit (1);
-	}
-
-	if ( change_to_user(verify) != 1 ) {
-	    Debug("BLS - Could not change to user: %s.\n",verify->user_name);
-	    LogError(ReadCatalog(
-		MC_LOG_SET,MC_LOG_NO_BLSUSR,MC_DEF_LOG_NO_BLSUSR),
-		verify->user_name);
-            exit (1);
-	}
-
-	Debug("BLS - Session setup complete.\n");
-    } else {
-#endif /* BLS */
-
 #  ifdef __AFS
 	if ( IsVerifyName(VN_AFS) ) {
 	    pagval = get_pag_from_groups(verify->groups[0], verify->groups[1]);
@@ -1522,10 +1452,6 @@ StartClient( struct verify_info *verify, struct display *d, int *pidp )
 	}
 #endif
 
-#ifdef BLS
-    }  /* ends the else clause of if ( ISSECURE ) */
-#endif /* BLS */
-
 #endif /* ! sun */
 		    
 	/*
@@ -1568,23 +1494,6 @@ StartClient( struct verify_info *verify, struct display *d, int *pidp )
 	 */
 	if (greet.password)
 	    bzero(greet.password, strlen(greet.password));
-
-#ifdef	BLS
-	/*
-	 * Write login information to a file
-	 * The file name should really be settable by some kind of resource
-	 * but time is short so we hard-wire it to ".dtlogininfo".
-	 */
-	if ( ! writeLoginInfo( ".dtlogininfo" , verify ) )
-		Debug("Unable to write \".dtlogininfo\"\n");
-#  ifndef NDEBUG
-	/* extra debugging */
-	if(!dump_sec_debug_info(verify)) {
-	    Debug("Something wrong with environment\n");
-	    exit(1);
-	}
-#  endif  /* ! NDEBUG */
-#endif	/* BLS */
 
 	/*
 	 *  exec session...
@@ -2268,11 +2177,7 @@ RunGreeter( struct display *d, struct greet_info *greet,
 	     */
      
 	    if (d->authorizations && d->authFile &&
-	        waitVal(status) != NOTIFY_LANG_CHANGE
-#ifdef BLS
-		&& waitVal(status) != NOTIFY_BAD_SECLEVEL
-#endif
-	       ) {
+	        waitVal(status) != NOTIFY_LANG_CHANGE) {
 
 /***
 	    	Debug ("Done with authorization file %s, removing\n",
@@ -2351,13 +2256,6 @@ RunGreeter( struct display *d, struct greet_info *greet,
 		}
 #endif
 		    
-#ifdef BLS
-               /*
-                * sensitivityLevel set in BLS_Verify()
-                */
-		greet->b1security = sensitivityLevel;
-#endif
-
 		Verify(d, greet, verify);
 		return;
 
@@ -2405,14 +2303,10 @@ RunGreeter( struct display *d, struct greet_info *greet,
 			LANGUAGESIZE) = '\0';
 
 		return;
-#ifdef	BLS
-	    case NOTIFY_BAD_SECLEVEL:
-		return;
-#endif
 	    case waitCompose (SIGTERM,0,0):
 		Debug ("Greeter exited on SIGTERM\n");
 		SessionExit(d, OPENFAILED_DISPLAY);
-		
+
 	    default:
 		Debug ("Greeter returned unknown status %d\n", 
 			waitVal(status));
@@ -2769,9 +2663,6 @@ ManageGreeter( struct display *d, struct greet_info *greet,
           case VF_BAD_AID:       SETMC(msg, BAD_AID); break;
           case VF_BAD_AFLAG:     SETMC(msg, BAD_AFLAG); break;
           case VF_NO_LOGIN:      SETMC(msg, NO_LOGIN); break;
-#ifdef BLS
-          case VF_BAD_SEN_LEVEL: SETMC(msg, BAD_SEN_LEVEL); break;
-#endif
           case VF_MESSAGE: msg.id=0; msg.def=state->msg; break;
           default: msg.id=0; msg.def=""; break;
         }

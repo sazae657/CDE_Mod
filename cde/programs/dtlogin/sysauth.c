@@ -55,8 +55,6 @@
  **                 self-auditing of login actions.  Incompatible with 
  **                 #ifdef SecureWare
  **
- **     BLS	    HP BLS B1 simple authentication.
- **
  **     __AFS        AFS 3 authentication mechanism
  **     __KERBEROS   Kerberos authentication mechanism
  **     __PASSWD_ETC Domain/OS Registry from HP-UX authentication mechanism

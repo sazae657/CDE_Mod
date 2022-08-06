@@ -404,9 +404,6 @@ struct protoDisplay {
 struct greet_info {
 	char            *name;          /* user name */
 	char            *password;      /* user password */
-#ifdef BLS
-	char            *b1security;    /* user's b1 security */
-#endif
 	char            *string;        /* random string */
 #ifdef __PASSWD_ETC
         char            *name_full;	/* full SID */
@@ -427,15 +424,6 @@ struct verify_info {
 #ifdef AUDIT
 	long            audid;          /* audit id */
 	int             audflg;         /* audit flag */
-#endif
-#ifdef BLS
-	char *user_name;
-	struct mand_ir_t *sec_label_ir;
-	struct mand_ir_t *clearance_ir;
-	/* save these for logout time */
-	struct pr_passwd *prpwd;
-	struct passwd *pwd;
-	char terminal[16];
 #endif
 };
 

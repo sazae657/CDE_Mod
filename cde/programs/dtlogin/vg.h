@@ -62,10 +62,6 @@ extern int errno;
 #include	<Xm/Xm.h>
 #include	"vgproto.h"
 
-#ifdef BLS
-#    include <sys/security.h>
-#endif
-
 #ifdef USE_XINERAMA
 # include <Dt/DtXinerama.h>
 #endif
