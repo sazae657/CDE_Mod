@@ -73,5 +73,5 @@ CLEANFILES += $(cdedti_DATA) $(cdedtidoc_DATA) $(cdedtidocsearch_DATA)
 
 # link the en_US.UTF-8 version to C
 install-data-hook:
-	$(RM) $(DESTDIR)$(CDE_INSTALLATION_TOP)/infolib/C
+	$(RM) -rf $(DESTDIR)$(CDE_INSTALLATION_TOP)/infolib/C
 	cd $(DESTDIR)$(CDE_INSTALLATION_TOP)/infolib && $(LN_S) en_US.UTF-8 C
