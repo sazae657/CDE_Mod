@@ -1293,17 +1293,7 @@ _ListCalendarNames(uint *num_names, char ***names)
 	if ((dirp = opendir(".")) == NULL)
 		return (CSA_E_FAILURE);
 
-#ifdef SunOS
-	if ((dp = (struct dirent *)malloc(sizeof(struct dirent) + FILENAME_MAX))
-	    == NULL) {
-		closedir(dirp);
-		return (CSA_E_INSUFFICIENT_MEMORY);
-	}
-
-	while (dp = readdir_r(dirp, dp)) {
-#else
 	while (dp = readdir(dirp)) {
-#endif
 		if (strncmp(dp->d_name, "callog.", strlen("callog.")) == 0) {
 			if (count == num) {
 				count += _NAME_INCREMENT;
