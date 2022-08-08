@@ -1,6 +1,9 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-DBTOMAN = $(top_srcdir)/programs/dtdocbook/doc_utils/dtdocbook2man
+# this sets the LANG variables
+include $(top_srcdir)/programs/localized/templates/English.am
+
+DBTOMAN = $(top_srcdir)/programs/dtdocbook/doc_utils/dtdocbook2man $(LANG)
 
 # first, the man pages broken down by sections
 MANSEC1 = man1/tttrace.1 man1/tttar.1 man1/ttsession.1 man1/ttrmdir.1	\

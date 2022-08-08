@@ -9,8 +9,8 @@ INFOLIBNAME = -n cde
 # orig: INFOLIBDESC = -d InfoLibDesc
 
 SSENTS = -m common/catalog
-DGENV = LC_CTYPE=$(LANG) SGML_SEARCH_PATH=".:.."
-DTINFOGENOPTIONS = $(SSENTS) $(INFOLIBNAME) -d $(INFOLIBDESC)
+DGENV = SGML_SEARCH_PATH=".:.."
+DTINFOGENOPTIONS = -L $(LANG) $(SSENTS) $(INFOLIBNAME) -d $(INFOLIBDESC)
 
 # Note the quad-dollar sign - this escapes $$ (pid) for the tmp
 # dir. This is required for multi-core builds to work.
