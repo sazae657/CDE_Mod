@@ -103,6 +103,7 @@ static char	*tranfile;
 static char	**cmapfile, **sdatafile;
 static char	*start_id;
 static char	*last_file;
+static char	*locale;
 static int	last_lineno;
 
 /* forward references */
@@ -132,16 +133,33 @@ main(
     char	 *av[]
 )
 {
-    char        **thisopt;
+    char **thisopt;
+    char *s, *lc_all;
+
     Initialize1(av[0]);
     HandleArgs(ac, av);
     Initialize2();
 
-    /* use the current locale for all text but use American English ... */
-    setlocale(LC_ALL, "");
+    if (!(locale && *locale)) {
+	fprintf(stderr, "Error: No locale specified.\n");
+	return 1;
+    }
 
-    /* ... in expressions (e.g., leave "." as the radix operator) */
-    setlocale(LC_NUMERIC, "C.UTF-8");
+    lc_all = strdup(locale);
+    lc_all = realloc(lc_all, 7 + strlen(locale));
+
+    s = strchr(lc_all, '.'); if (s) *s = 0;
+
+    strcat(lc_all, ".UTF-8");
+
+    setlocale(LC_ALL, lc_all);
+
+    if (setenv("LC_ALL", lc_all, 1) == -1) {
+	fprintf(stderr, "Error: Can not set locale.\n");
+	return 1;
+    }
+
+    free(lc_all);
 
     /* Create a Tcl interpreter. */
     interpreter = Tcl_CreateInterp();
@@ -439,13 +457,13 @@ HandleArgs(
     char       **thisopt;
     int          count;
 
-    while ((c=getopt(ac, av, "t:vc:s:o:huSxIl:bHVWi:D:Z")) != EOF) {
+    while ((c=getopt(ac, av, "t:vc:s:o:L:huSxIl:bHVWi:D:Z")) != EOF) {
 	switch (c) {
 	    case 't': tranfile		= optarg;	break;
 	    case 'v': do_validate	= 1;		break;
 	    case 's':
 		{
-		if (thisopt = sdatafile)
+		if ((thisopt = sdatafile))
 		    {
 		    count = 0;
 		    while (*thisopt++)
@@ -465,7 +483,7 @@ HandleArgs(
 	        }
 	    case 'c': 
 		{
-		if (thisopt = cmapfile)
+		if ((thisopt = cmapfile))
 		    {
 		    count = 0;
 		    while (*thisopt++)
@@ -491,6 +509,7 @@ HandleArgs(
 	    case 'l': tpt_lib		= optarg;	break;
 	    case 'i': start_id		= optarg;	break;
 	    case 'o': out_file		= optarg;	break;
+	    case 'L': locale		= optarg;	break;
 	    case 'b': interactive	= 1;		break;
 	    case 'W': warnings		= 0;		break;
 	    case 'V': verbose		= 1;		break;
@@ -534,6 +553,7 @@ static char *help_msg[] = {
   "  -h        Print document hierarchy as a tree",
   "  -o file   Write output to <file>.  Default is standard output.",
   "  -l dir    Set library directory to <dir>. (or env. variable TPT_LIB)",
+  "  -L locale Set the current locale to <locale>",
   "  -I        List all IDs used in the instance",
   "  -W        Do not print warning messages",
   "  -H        Print this help message",

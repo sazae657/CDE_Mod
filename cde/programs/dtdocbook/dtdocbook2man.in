@@ -63,11 +63,12 @@ then
 	nroff="| tbl | nroff -man"
 	shift
 fi
-if [ $# -eq 3 ]
-then	dclfile=$1
-	reffile=$2
-	manfile=$3
-else	echo "usage:  dtdocbook2man [-c] dcl-file ref-src-file man-dst-file"
+if [ $# -eq 4 ]
+then	locale=$1
+	dclfile=$2
+	reffile=$3
+	manfile=$4
+else	echo "usage:  dtdocbook2man [-c] locale dcl-file ref-src-file man-dst-file"
 	exit 1
 fi
 
@@ -129,6 +130,6 @@ cat >> /tmp/dtm.$$.psinc <<\!
 cat $decl $dclfile $reffile | \
 sed -e 's/<\!\[[ ]*\%CDE\.C\.CDE;[ ]*\[<[rR]ef[eE]ntry [iI]d="[^"]*">\]\]>/<refentry>/g' | \
 $parser $parser_opts | \
-$instant $INSTANT_OPT -croff.cmap -sroff.sdata -tdocbook-to-man.ts > \
+$instant -L$locale -croff.cmap -sroff.sdata -tdocbook-to-man.ts > \
 /tmp/dtm.$$.out1 && eval cat /tmp/dtm.$$.psinc /tmp/dtm.$$.out1 $nroff > \
 /tmp/dtm.$$.out2 && cp /tmp/dtm.$$.out2 $manfile

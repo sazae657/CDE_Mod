@@ -38,6 +38,7 @@
 #include <string.h>
 #include <errno.h>
 #include <unistd.h>
+#include <locale.h>
 #include <libgen.h> /* for dirname() */
 #include <ctype.h>
 #include <signal.h>
@@ -169,13 +170,17 @@ t_entry langtbl[] =
 
 static char *usageMsg1 = "USAGE:\n\
   " EXEC_NAME " -h\n\
-  " EXEC_NAME " admin\n\
-  " EXEC_NAME " build [-h] [-T <tmpdir>] [-m <catalog>] [-d <library description>]\n\
-           [-n <library short name>] -l <library> <bookcase-doc>...\n\
-  " EXEC_NAME " tocgen [-h] [-T <tmpdir>] [-m <catalog>] -f <tocfile> [-id <tocid>]\n\
-            [-title <toctitle>] <document>...\n\
-  " EXEC_NAME " update [-h] [-m <catalog>] -l <library> -b <bookcase> <stylesheet>\n\
-  " EXEC_NAME " validate [-h] [-T <tmpdir>] [-m <catalog>] <document>...\n"
+  " EXEC_NAME " admin -L <locale>\n\
+  " EXEC_NAME " build [-h] -L <locale> [-T <tmpdir>] [-m <catalog>]\n\
+                          [-d <library description>] [-n <library short name>]\n\
+		          -l <library> <bookcase-doc>...\n\
+  " EXEC_NAME " tocgen [-h] -L <locale> [-T <tmpdir>] [-m <catalog>]\n\
+                           -f <tocfile> [-id <tocid>] [-title <toctitle>]\n\
+		           <document>...\n\
+  " EXEC_NAME " update [-h] -L <locale> [-m <catalog>] -l <library>\n\
+                           -b <bookcase> <stylesheet>\n\
+  " EXEC_NAME " validate [-h] -L <locale> [-T <tmpdir>] [-m <catalog>]\n\
+                             <document>...\n"
   "\n"
   "options:\n";
 
@@ -215,6 +220,7 @@ static char *buildStyleProlog(void);
 static char *buildSpec(void);
 static void defaultGlobals(void);
 static void checkGlobals(void);
+static void setLangIndex(const char * const locale);
 static int parseArgs(int argc, char *argv[]);
 static char *parseDocument(int runCmd, ...);
 static void buildBookcase(char *cmdSrc, char *dirName);
@@ -986,45 +992,6 @@ defaultGlobals(void)
     gStruct->sgmlCatFilesLen = 0;
     gStruct->sgmlCatFilesMaxLen = 0;
 
-    { /* resolve lang from env variable */
-      char* lang;
-      char *s = NULL;
-      char* code = NULL;
-      int curLen;
-      int maxLen = 0;
-      t_entry* iter;
-
-      if ((lang = getenv("LC_CTYPE")) == NULL) lang = LANG_COMMON;
-
-      lang = XtsNewString(lang);
-
-      s = strchr(lang, '.'); if (s) *s = 0;
-
-      curLen = strlen(lang);
-
-      appendStr(&lang, &curLen, &maxLen, ".UTF-8");
-
-      /* resolve dtsearch language based on canonical lang */
-
-      for (iter = langtbl; iter->name; ++iter) {
-        if (strcmp(lang, iter->name) == 0) {
-          code = lang;
-	  break;
-	}
-      }
-
-      if (!code) code = LANG_COMMON;
-
-      for (iter = langtbl; iter->name; ++iter) {
-	if (strcmp(iter->name, code) == 0) {
-	  gStruct->dtsridx = iter - langtbl;
-	  break;
-	}
-      }
-
-      free(lang);
-    }
-
     if ((gStruct->sgml = buildSGML()) == NULL) {
 	die(-1, "%s: Cannot find SGML files\n", EXEC_NAME);
     }
@@ -1093,6 +1060,45 @@ checkGlobals(void)
 	gStruct->keytypes = "Default Head Graphics Example Index Table";
     }
     checkExec("validator");
+}
+
+static void
+setLangIndex(const char * const locale)
+{
+    char* lang;
+    char *s = NULL;
+    char* code = NULL;
+    int curLen;
+    int maxLen = 0;
+    t_entry* iter;
+
+    lang = XtsNewString(locale);
+
+    s = strchr(lang, '.'); if (s) *s = 0;
+
+    curLen = strlen(lang);
+
+    appendStr(&lang, &curLen, &maxLen, ".UTF-8");
+
+    /* resolve dtsearch language based on canonical lang */
+
+    for (iter = langtbl; iter->name; ++iter) {
+	if (strcmp(lang, iter->name) == 0) {
+	    code = lang;
+	    break;
+	}
+    }
+
+    if (!code) code = LANG_COMMON;
+
+    for (iter = langtbl; iter->name; ++iter) {
+	if (strcmp(iter->name, code) == 0) {
+	    gStruct->dtsridx = iter - langtbl;
+	    break;
+	}
+    }
+
+    free(lang);
 }
 
 static void
@@ -2278,19 +2284,53 @@ int
 main(int argc, char *argv[])
 {
     GlobalsStruct globalsStruct;
-
-    if (!addToEnv("PATH", STR(INFOLIB_LIBEXECDIR), true))
-	die(-1, "%s: could not set PATH\n", EXEC_NAME);
-
-    gStruct = &globalsStruct;
+    char *pm;
+    const char *lc_all;
+    int ec;
+    int il = 0;
 
     if (argc < 2)
-	printUsage((char *)NULL, -1);
+    {
+	pm = NULL;
+	ec = -1;
+	goto usage;
+    }
 
-    defaultGlobals();
+    gStruct = &globalsStruct; defaultGlobals();
 
-    if (setenv("LC_CTYPE", STR(langtbl[gStruct->dtsridx].name), 1) == -1)
-	die(-1, "%s: LC_CTYPE: %s\n", EXEC_NAME, strerror(errno));
+    for (int i = 0; i < argc; ++i)
+    {
+	if (strcmp(argv[i], "-h") == 0)
+	{
+	    pm = NULL;
+	    ec = 0;
+	    goto usage;
+	}
+	else if (strcmp(argv[i], "-L") == 0)
+	{
+	    il = 1 + i;
+	}
+    }
+
+    if (!(il > 2 && il < argc && isalpha(argv[il][0])))
+    {
+	pm = NULL;
+	ec = -1;
+	goto usage;
+    }
+
+    setLangIndex(argv[il]);
+
+    for (int i = 1 + il; i < argc; ++i) argv[i - 2] = argv[i];
+
+    argc -= 2;
+
+    lc_all = STR(langtbl[gStruct->dtsridx].name);
+
+    setlocale(LC_ALL, lc_all);
+
+    if (setenv("LC_ALL", lc_all, 1) == -1)
+	die(-1, "%s: LC_ALL: %s\n", EXEC_NAME, strerror(errno));
 
     if (setenv("SP_CHARSET_FIXED", "1", 1) == -1)
 	die(-1, "%s: SP_CHARSET_FIXED: %s\n", EXEC_NAME, strerror(errno));
@@ -2298,13 +2338,23 @@ main(int argc, char *argv[])
     if (setenv("SP_ENCODING", "UTF-8", 1) == -1)
 	die(-1, "%s: SP_ENCODING: %s\n", EXEC_NAME, strerror(errno));
 
+    if (!addToEnv("PATH", STR(INFOLIB_LIBEXECDIR), true))
+	die(-1, "%s: could not set PATH\n", EXEC_NAME);
+
     if (!doAdmin(argc, argv) &&
 	!doBuild(argc, argv) &&
 	!doTocgen(argc, argv) &&
 	!doUpdate(argc, argv) &&
 	!doValidate(argc, argv) &&
 	!doHelp(argc, argv))
-	printUsage(EXEC_NAME ": unrecognized subcommand `%s'\n", -1);
+    {
+	pm = EXEC_NAME ": unrecognized subcommand\n";
+	ec = -1;
+	goto usage;
+    }
 
     return 0;
+
+usage:
+    printUsage(pm, ec);
 }
