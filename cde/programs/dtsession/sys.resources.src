@@ -186,4 +186,20 @@ XCOMM endif
 !#################################################################
 *dtEnvMapForRemote:	DTAPPSEARCHPATH:DTHELPSEARCHPATH:DTDATABASESEARCHPATH:XMICONSEARCHPATH:XMICONBMSEARCHPATH
 
+!#################################################################
+!#
+!#  "international"
+!#
+!#   This resource is not for CDE. Some applications (eg.
+!#   xfontsel) need it to enable the international feature. For
+!#   a better UX, CDE sets it for users. However, CDE can't
+!#   foreknow what applications will be installed by a user or
+!#   what resources will be defined by an application. In
+!#   extreme cases, an application may define "international"
+!#   as other meanings. In other words, users may need tweaking
+!#   the resources for individual applictions in some scenarios.
+!#
+!#################################################################
+*international: True
+
 !################             eof          #######################
