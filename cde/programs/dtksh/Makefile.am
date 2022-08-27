@@ -16,16 +16,23 @@ bin_PROGRAMS = dtksh
 
 BUILT_SOURCES = init.c
 
+# Put all SHOPT definitions here.  It is vital that dtksh and ksh93
+# are built with the same options.  We pass this list to both the
+# dtksh components and to the ksh93 build as well.  They must be
+# specifically assigned a 1 or various preprocessor checks (#if SHOPT
+# ...) in ksh93 will fail.
+KSH93_SHOPTS = -DSHOPT_DYNAMIC=1 -DSHOPT_NAMESPACE=1 -DSHOPT_MULTIBYTE=1 \
+	-DSHOPT_STATS=1 -DSHOPT_BGX=1 -DSHOPT_AUDIT=1 \
+	-DSHOPT_KIA=1 -DSHOPT_HISTEXPAND=1 -DSHOPT_EDPREDICT=1 \
+	-DSHOPT_ESH=1 -DSHOPT_VSH=1 -DSHOPT_FIXEDARRAY=1 -DSHOPT_SUID_EXEC=1 \
+	-DSHOPT_BRACEPAT=1
+
 dtksh_CPPFLAGS = -I$(KSH93SRC)/include/ast -I$(KSH93SRC)/src/cmd/ksh93/include \
 		 -I$(KSH93SRC)/src/cmd/ksh93 -I${srcdir}/lib/DtPrint \
-		 -I${srcdir}/lib/DtHelp -Iksh93/src/cmd/ksh93/FEATURE \
-		 '-DAST_VERSION=20111111' -DSHOPT_STATS -DSHOPT_NAMESPACE \
-		 -DSHOPT_2DMATCH -DSHOPT_MULTIBYTE -DSHOPT_BGX -DSHOPT_AUDIT \
-		 -D_PACKAGE_ast -DSHOPT_DYNAMIC -D_BLD_shell -DSHOPT_KIA \
-		 -DKSHELL -DSHOPT_HISTEXPAND -DSHOPT_EDPREDICT -DSHOPT_ESH \
-		 -DSHOPT_VSH -DSHOPT_FIXEDARRAY \
-		 '-DERROR_CONTEXT_T=Error_context_t' -DSHOPT_SUID_EXEC \
-		 -D_API_ast=20100309 -DSHOPT_BRACEPAT -DBUILD_DTKSH
+		 -I${srcdir}/lib/DtHelp $(KSH93_SHOPTS) \
+		 -D_PACKAGE_ast -DKSHELL \
+		 '-DERROR_CONTEXT_T=Error_context_t' \
+		 -D_API_ast=20100309 -DBUILD_DTKSH
 
 dtksh_LDADD = $(DTCLIENTLIBS) ksh93/src/cmd/ksh93/pmain.o $(XTOOLLIB) \
 	      libshell.a $(KSH93SRC)/lib/libcmd.a $(KSH93SRC)/lib/libast.a \
@@ -51,27 +58,8 @@ dtksh_SOURCES = init.c \
                 extra.c \
                 msgs.c
 
-# for the BSD's we do not want to pass CFLAGS since it includes a
-# -I/usr/local/incude directive.  This breaks ksh's iconv
-# detection due to the weird way in which iconv seems to be handled on
-# the BSD's - both a libc impl (preferred), and a possibly external
-# GNU iconv impl installed in /usr/local.
-#
-# /usr/local/include is added to CFLAGS by the X11/Motif detection
-# logic - since that is where all of the needed headers are on the
-# BSDs.
-#
-# So until/unless that is fixed in ksh93, we will avoid sending
-# anything to the ksh build system except for SUIDEXECDEFINES
-
-if BSD
-KSH93_CCFLAGS=$(SUIDEXECDEFINES)
-else
-KSH93_CCFLAGS=$(CFLAGS) $(SUIDEXECDEFINES)
-endif
-
 ksh93/bin/ksh:
-	ksh93/bin/package flat make CCFLAGS='$(KSH93_CCFLAGS)'
+	ksh93/bin/package flat make CCFLAGS='$(KSH93_SHOPTS)'
 
 init.c: ksh93/bin/ksh
 	$(CP) ksh93/src/cmd/ksh93/sh/init.c ./
@@ -82,7 +70,7 @@ libshell.a: $(KSH93SLIBSHELL) dtksh-init.o
 	$(AR) cq libshell.a dtksh-init.o
 
 check-local:
-	./dtksh -c true && ksh93/bin/shtests --posix --utf8 SHELL=.libs/lt-dtksh
+	./dtksh -c true && ksh93/bin/shtests --posix --utf8 SHELL=.libs/dtksh
 
 clean-local:
 	ksh93/bin/package clean

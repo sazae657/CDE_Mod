@@ -71,8 +71,6 @@
 #include "xmcmds.h"
 #include <locale.h>
 
-extern Namval_t *sh_assignok(Namval_t *np,int add);
-
 
 static void PendingDestroy( 
                         Widget w,
@@ -7120,7 +7118,7 @@ GetNameValuePair(
        * As long as we clean up the original, I don't think we leak here.
        */
       if(sh.subshell)
-         np2 = sh_assignok(np2, 1);
+         sh_assignok(np2, 1);
    }
    return(np2);
 }

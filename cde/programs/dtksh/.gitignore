@@ -47,6 +47,7 @@ ksh93/src/cmd/INIT/w.req
 ksh93/src/cmd/builtin/FEATURE/
 ksh93/src/cmd/builtin/pty
 ksh93/src/cmd/ksh93/FEATURE/
+ksh93/src/cmd/ksh93/shopt.h
 ksh93/src/cmd/ksh93/ksh
 ksh93/src/cmd/ksh93/shcomp
 ksh93/src/cmd/ksh93/shell.req
