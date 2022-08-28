@@ -186,6 +186,8 @@ XCOMM endif
 !#################################################################
 *dtEnvMapForRemote:	DTAPPSEARCHPATH:DTHELPSEARCHPATH:DTDATABASESEARCHPATH:XMICONSEARCHPATH:XMICONBMSEARCHPATH
 
+!##########    Resources for Applications (stopgap)    ###########
+
 !#################################################################
 !#
 !#  "international"
@@ -201,5 +203,20 @@ XCOMM endif
 !#
 !#################################################################
 *international: True
+
+!#################################################################
+!#
+!#  display dependent resources for applications
+!#
+!#################################################################
+XCOMM if WIDTH > 1175
+  xterm*Font: -dt-interface user-medium-r-normal-m*-*-*-*-*-*-*-iso8859-*
+XCOMM else
+XCOMM if WIDTH < 851
+  xterm*Font: -dt-interface user-medium-r-normal-xs*-*-*-*-*-*-*-iso8859-*
+XCOMM else
+  xterm*Font: -dt-interface user-medium-r-normal-s*-*-*-*-*-*-*-iso8859-*
+XCOMM endif
+XCOMM endif
 
 !################             eof          #######################
