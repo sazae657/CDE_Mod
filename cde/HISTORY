@@ -5,6 +5,52 @@ use 'git log', or peruse the commit history at:
 
 https://sourceforge.net/p/cdesktopenv/code/commit_browser
 
+
+#######################################################################
+### 2.5.1 (stable) 10/1/2022
+
+This release fixes up some issues with the 2.5.0 release and removes
+some more cruft.  In addition, it upgrades ksh93 from 1.0.0beta to
+1.0.3.
+
+Shortlog:
+
+Chase (9):
+      configure.ac: remove patch requirement
+      dtfile/dtcopy: remove duplicate icons
+      Discontinue HPUX support
+      dthelp: remove obsolete and non-compiled code
+      configure: detect libdl
+      configure: detect libm
+      Remove detected -lcrypt flag
+      lib/DtTerm/TermPrim: clean up defines
+      Generify source code
+
+Jon Trulson (14):
+      configure.ac: bump version to 2.5.0a
+      configure.ac: remove extra -lm check, move dl check to after libm check
+      C locales: recursively delete C locale directories on make install
+      doc: re-enable building the dtinfo guides on netbsd
+      libtt: remove OPT_LOCAL_MOUNT_TYPE, OS_VERSION - never used anywhere
+      dtlogin: remove HP BLS B1 simple authentication support (BLS)
+      Kill off OSMAJORVERSION and OSMINORVERSION defines/cpp flags
+      Delete all unused/obsolete .elist files
+      #127: dtcm: solaris - use readdir instead of readdir_r
+      #130: Xserver.src: fix sun X server path
+      Remove ksh 1.0.0beta
+      Squashed 'cde/programs/dtksh/ksh93/' content from commit b16c91f01
+      Merge commit '97ef0077f06cef6f6bb93b0dae22441078647486' as 'cde/programs/dtksh/ksh93'
+      Upgrade ksh93 to 1.0.3
+
+Liang Chang (5):
+      fontaliases: install to DESTDIR correctly.
+      dtdocbook: set locale explicitly.
+      doc: set locale explicitly for building doc.
+      dtsession: help applications enable "international".
+      dtsession: help xterm load the appropriate font.
+
+
+
 #######################################################################
 ### 2.5.0 (stable) 7/23/2022
 
