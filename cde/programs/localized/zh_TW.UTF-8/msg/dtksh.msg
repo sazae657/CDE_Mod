@@ -1,187 +1,187 @@
 $ $XConsortium: dtksh.msg /main/3 1996/07/24 19:02:59 drk $
 $set 1
-1 DtkshCvtStringToPixel”⺪痝 '%s' ゝ泂氂
+1 DtkshCvtStringToPixel：色彩 '%s' 未定義
 
 $set 5
-1 挴泂藹霽ロ罶鳲棤禨“聧蝝 '%s'
-2 罶鳲斒眭諟“眭冈鶈珜 'name:value'”%s
-3 罶鳲禳觰蠣珜 ':'﹜ɪ睎囷え '='”%s
-4 齡怞嗢儸媊沓暋泂
-5 え恄”XtInitialize variable applicationName applicationClass [args ...]
-6 え恄”%s variable name class parent [arg:val ...]
-7 え恄”XtCreateApplicationShell variable name class [arg:val ...]
-8 え恄”XtPopup widget GrabNone|GrabNonexclusive|GrabExclusive
-9 隓恄藑籫庉抻麷倛 '%s'“モ囷え 'GrabNone'
-10 え恄”XtIsShell widget
-11 え恄”XtMapWidget widget
-12 え恄”XtUnmapWidget widget
-13 え恄”%s variable widget
-14 え恄”XtScreen variable widget
-15 え恄”XtWindow variable widget
-16 え恄”XtCallCallbacks widget callbackName
-17 え恄”XtHasCallbacks variable widget callbackName
-18 え恄”XtAddCallback widget callbackName ksh-command
-19 え恄”XtRemoveCallback widget callbackName ksh-command
-20 髓譯旂隓淩柁ャⅰ搢隉蹌磍”%s
-21 挴泂柁ャⅰ搢隉ゝ漶癱
-22 え恄”XtAddEventHandler widget mask nonMaskable ksh-command
-23 え恄”XtRemoveEventHandler widget mask nonMaskable ksh-command
-24 挴泂柁呦ス搢隉搢隉蟟ゝ蹌磍
-25 え恄”XtGetValues widget resource:variable ...
-26 髓譯柁罶鳲棤禨眭冈蠆諟”%s
-27 え恄”XtSetValues widget arg:val ...
-28 え恄”XtAddWorkProc variable command
-29 え恄”XtRemoveWorkProc workProcId
-30 workProcId 棤禨⽁禕珜觸蠟瑱⻏禨”%s
-31 え恄”XtAddTimeOut variable milliseconds command
-32 袹秮棤禨⽁禕騰卼誻
-33 え恄”XtRemoveTimeOut intervalId
-34 intervalId 棤禨⽁禕珜觸蠟瑱⻏禨”%s
-35 え恄”%s widget ...
-36 え恄”XBell display volume
-37 え恄”%s variable screen
-38 糬魦棤禨隓淩”%s
-39 え恄”XDefineCursor display window cursorId
-40 cursorId 棤禨隓淩”%s
-41 え恄”XUndefineCursor display window
-42 え恄”XtRemoveAllCallbacks widget callbackName
-43 え恄”XTextWidth variable fontName  string
-44 え恄”%s display drawable [args ...]
-45 drawable 棤禨隓淩”%s
-46 destination 棤禨隓淩”%s
-47 頝夆怐禨ボ磝隓恄藑籫”%s
-48 轃蛨穔冈隓恄藑籫”%s
-49 鸁頝藞禋隓恄藑籫”%s
-50 纂咍瑀瀦柁鷁揧芩靬
-51 え恄”XCopyArea display source dest sourceX sourceY width height destX destY [args ...]
-52 隓恄渿罶鳲麷倛 '%s' 鼲葎 'String'
-53 隓恄渿罶鳲麷倛 'String' 鼲葎 '%s' 麷倛
-54 え恄”XtAddInput variable [-r] fileDescriptor kshCommand
-56 え恄”XtRemoveInput inputId
-57 inputId 棤禨⽁禕珜觸蠟瑱⻏禨”%s
-59 え恄”XFlush display
-60 え恄”XSync display discard
-61 え恄”XRaiseWindow display window
-62 え恄”%s widget [True|False]
-63 え恄”%s widget translations
-64 え恄”XtUninstallTranslations widget
-65 え恄”XtParent variable widget
-66 え恄”XtLastTimestampProcessed variable display
-67 え恄”DtSessionRestorePath widget pathVariable saveFile
-68 え恄”DtSessionSavePath widget pathVariable fileVariable
-69 え恄”DtShellIsIconified widget
-70 え恄”DtSetStartupCommand widget command
-71 え恄”DtSetIconifyHint widget boolean
-73 rootWindow 棤禨隓淩”%s
-74 え恄”DtWsmSetCurrentWorkspace widget atom
-75 齡汃洠睮蠣袓隓淩”%s
-78 え恄”DtWsmSetWorkspacesOccupied display window workspaceList
-79 え恄”DtGetHourGlassCursor variable display
-80 え恄”DtWsmAddCurrentWorkspaceCallback variable widget ksh-command
-81 え恄”DtWsmRemoveWorkspaceCallback handle
-82 え恄”XtNameToWidget variable referenceWidget names
-83 え恄”DtDbLoad
-84 え恄”DtDbReloadNotify ksh-command
-85 え恄”DtActionExists actionName
-86 え恄”DtActionLabel variable actionName
-87 え恄”DtActionDescription variable actionName
-88 え恄”DtActionInvoke widget actionName termParms execHost contextDir useIndicator ksh-command ["FILE" fileName] ...
-89 え恄”DtDtsLoadDataTypes
-90 え恄”DtDtsFileToDataType variable fileName
-91 え恄”DtDtsFileToAttributeValue variable fileName attrName
-92 え恄”DtDtsFileToAttributeList variable fileName
-93 え恄”DtDtsDataTypeToAttributeValue variable dataType attrName optName
-94 え恄”DtDtsDataTypeToAttributeList variable dataType optName
-95 え恄”DtDtsFindAttribute variable name value
-96 え恄”DtDtsDataTypeNames variable
-97 え恄”DtDtsSetDataType variable fileName dataType override
-98 え恄”DtDtsDataTypeIsAction dataType
-99 え恄”ttdt_open variable status variable2 toolname vendor version sendStarted
-100 え恄”tttk_Xt_input_handler procId source id
-101 罶鳲棤禨⽁禕珜謽禨”%s
-102 id 棤禨⽁禕珜觸蠟瑱⻏禨”%s
-103 え恄”ttdt_close status procId newProcId sendStopped
-104 え恄”ttdt_session_join variable status sessId shellWidgetHandle join
-105 え恄”ttdt_session_quit status sessId sessPatterns quit
-106 sessPatterns 棤禨隓淩”%s
-107 え恄”ttdt_file_event status op patterns send
-108 え恄”ttdt_file_quit status patterns quit
-109 え恄”ttdt_Get_Modified pathName scope timeout
-110 え恄”%s status pathName scope timeout
-112 え恄”tt_error_pointer variable ttStatus
-113 え恄”%s status msg
-114 え恄”%s status msg msgStatus msgStatusString destroy
-115 え恄”ttdt_file_join variable status pathName scope join ksh-command
-116 え恄”tt_file_netfile variable status filename
-117 え恄”tt_netfile_file variable status netfilename
-118 え恄”tt_host_file_netfile variable status host filename
-119 え恄”tt_host_netfile_file variable status host netfilename
-120 え恄”XtIsSubclass widget class
-121 %s 攜旂淩柁 widget 麷伀ボ磝
-122 え恄”XtClass variable widget
+1 指定了太多資源參數；跳過 '%s'
+2 資源規格有誤；格式應為 'name:value'：%s
+3 資源分隔元為 ':'，但您使用 '='：%s
+4 工具組已起始設定
+5 用法：XtInitialize variable applicationName applicationClass [args ...]
+6 用法：%s variable name class parent [arg:val ...]
+7 用法：XtCreateApplicationShell variable name class [arg:val ...]
+8 用法：XtPopup widget GrabNone|GrabNonexclusive|GrabExclusive
+9 無法辨識抓取類型 '%s'；因此使用 'GrabNone'
+10 用法：XtIsShell widget
+11 用法：XtMapWidget widget
+12 用法：XtUnmapWidget widget
+13 用法：%s variable widget
+14 用法：XtScreen variable widget
+15 用法：XtWindow variable widget
+16 用法：XtCallCallbacks widget callbackName
+17 用法：XtHasCallbacks variable widget callbackName
+18 用法：XtAddCallback widget callbackName ksh-command
+19 用法：XtRemoveCallback widget callbackName ksh-command
+20 以下是無效的回叫處理編號：%s
+21 指定的回叫處理未註冊
+22 用法：XtAddEventHandler widget mask nonMaskable ksh-command
+23 用法：XtRemoveEventHandler widget mask nonMaskable ksh-command
+24 指定的事件處理處理器未編號
+25 用法：XtGetValues widget resource:variable ...
+26 以下的資源參數格式錯誤：%s
+27 用法：XtSetValues widget arg:val ...
+28 用法：XtAddWorkProc variable command
+29 用法：XtRemoveWorkProc workProcId
+30 workProcId 參數必須為十六進位數：%s
+31 用法：XtAddTimeOut variable milliseconds command
+32 毫秒參數必須大於零
+33 用法：XtRemoveTimeOut intervalId
+34 intervalId 參數必須為十六進位數：%s
+35 用法：%s widget ...
+36 用法：XBell display volume
+37 用法：%s variable screen
+38 螢幕參數無效：%s
+39 用法：XDefineCursor display window cursorId
+40 cursorId 參數無效：%s
+41 用法：XUndefineCursor display window
+42 用法：XtRemoveAllCallbacks widget callbackName
+43 用法：XTextWidth variable fontName  string
+44 用法：%s display drawable [args ...]
+45 drawable 參數無效：%s
+46 destination 參數無效：%s
+47 圖形函數名稱無法辨識：%s
+48 線條樣式無法辨識：%s
+49 繪圖選項無法辨識：%s
+50 有一些剩餘的點被忽略
+51 用法：XCopyArea display source dest sourceX sourceY width height destX destY [args ...]
+52 無法將資源類型 '%s' 轉換成 'String'
+53 無法將資源類型 'String' 轉換成 '%s' 類型
+54 用法：XtAddInput variable [-r] fileDescriptor kshCommand
+56 用法：XtRemoveInput inputId
+57 inputId 參數必須為十六進位數：%s
+59 用法：XFlush display
+60 用法：XSync display discard
+61 用法：XRaiseWindow display window
+62 用法：%s widget [True|False]
+63 用法：%s widget translations
+64 用法：XtUninstallTranslations widget
+65 用法：XtParent variable widget
+66 用法：XtLastTimestampProcessed variable display
+67 用法：DtSessionRestorePath widget pathVariable saveFile
+68 用法：DtSessionSavePath widget pathVariable fileVariable
+69 用法：DtShellIsIconified widget
+70 用法：DtSetStartupCommand widget command
+71 用法：DtSetIconifyHint widget boolean
+73 rootWindow 參數無效：%s
+74 用法：DtWsmSetCurrentWorkspace widget atom
+75 工作空間元素無效：%s
+78 用法：DtWsmSetWorkspacesOccupied display window workspaceList
+79 用法：DtGetHourGlassCursor variable display
+80 用法：DtWsmAddCurrentWorkspaceCallback variable widget ksh-command
+81 用法：DtWsmRemoveWorkspaceCallback handle
+82 用法：XtNameToWidget variable referenceWidget names
+83 用法：DtDbLoad
+84 用法：DtDbReloadNotify ksh-command
+85 用法：DtActionExists actionName
+86 用法：DtActionLabel variable actionName
+87 用法：DtActionDescription variable actionName
+88 用法：DtActionInvoke widget actionName termParms execHost contextDir useIndicator ksh-command ["FILE" fileName] ...
+89 用法：DtDtsLoadDataTypes
+90 用法：DtDtsFileToDataType variable fileName
+91 用法：DtDtsFileToAttributeValue variable fileName attrName
+92 用法：DtDtsFileToAttributeList variable fileName
+93 用法：DtDtsDataTypeToAttributeValue variable dataType attrName optName
+94 用法：DtDtsDataTypeToAttributeList variable dataType optName
+95 用法：DtDtsFindAttribute variable name value
+96 用法：DtDtsDataTypeNames variable
+97 用法：DtDtsSetDataType variable fileName dataType override
+98 用法：DtDtsDataTypeIsAction dataType
+99 用法：ttdt_open variable status variable2 toolname vendor version sendStarted
+100 用法：tttk_Xt_input_handler procId source id
+101 資源參數必須為整數：%s
+102 id 參數必須為十六進位數：%s
+103 用法：ttdt_close status procId newProcId sendStopped
+104 用法：ttdt_session_join variable status sessId shellWidgetHandle join
+105 用法：ttdt_session_quit status sessId sessPatterns quit
+106 sessPatterns 參數無效：%s
+107 用法：ttdt_file_event status op patterns send
+108 用法：ttdt_file_quit status patterns quit
+109 用法：ttdt_Get_Modified pathName scope timeout
+110 用法：%s status pathName scope timeout
+112 用法：tt_error_pointer variable ttStatus
+113 用法：%s status msg
+114 用法：%s status msg msgStatus msgStatusString destroy
+115 用法：ttdt_file_join variable status pathName scope join ksh-command
+116 用法：tt_file_netfile variable status filename
+117 用法：tt_netfile_file variable status netfilename
+118 用法：tt_host_file_netfile variable status host filename
+119 用法：tt_host_netfile_file variable status host netfilename
+120 用法：XtIsSubclass widget class
+121 %s 不是有效的 widget 類別名稱
+122 用法：XtClass variable widget
 
 $set 6
-1 DtkshCvtWindowToString”'from' 圊柁騰麵隓淩
-2 DtkshCvtHexIntToString”'from' 圊柁騰麵隓淩
-3 DtkshCvtIntToString”'from' 圊柁騰麵隓淩
-4 DtkshCvtBooleanToString”'from' 圊柁騰麵隓淩
-5 DtkshCvtStringToWidget”'from' 圊柁騰麵隓淩
-6 DtkshCvtStringToWidget”Unable to find a widget named '%s'
-7 DtkshCvtStringToCallback”'from' 圊柁騰麵隓淩
-8 DtkshCvtCallbackToString”'from' 圊柁騰麵隓淩
-9 DtkshCvtWidgetToString”'from' 圊柁騰麵隓淩
-10 DtkshCvtWidgetToString”隓恄岊怉 widget 柁ボ磝
-11 DtkshCvtWidgetClassToString”'from' 圊柁騰麵隓淩
-12 DtkshCvtWidgetClassToString”ゝ洁柁 widget 麷伀
-13 DtkshCvtStringToWidgetClass”ゝ洁柁 widget 麷伀ボ磝
-14 DtkshCvtScreenToString”'from' 圊柁騰麵隓淩
+1 DtkshCvtWindowToString：'from' 值的大小無效
+2 DtkshCvtHexIntToString：'from' 值的大小無效
+3 DtkshCvtIntToString：'from' 值的大小無效
+4 DtkshCvtBooleanToString：'from' 值的大小無效
+5 DtkshCvtStringToWidget：'from' 值的大小無效
+6 DtkshCvtStringToWidget：Unable to find a widget named '%s'
+7 DtkshCvtStringToCallback：'from' 值的大小無效
+8 DtkshCvtCallbackToString：'from' 值的大小無效
+9 DtkshCvtWidgetToString：'from' 值的大小無效
+10 DtkshCvtWidgetToString：無法找到 widget 的名稱
+11 DtkshCvtWidgetClassToString：'from' 值的大小無效
+12 DtkshCvtWidgetClassToString：未知的 widget 類別
+13 DtkshCvtStringToWidgetClass：未知的 widget 類別名稱
+14 DtkshCvtScreenToString：'from' 值的大小無效
 
 $set 11
-1 隓恄岊怉唫⻏ボ磝 '%s' ョ '%s' 廎擛斕
-2 DtkshCvtCallbackToString”蠡楶鼲葎邅鍙棷鬿⻏
-3 罶鳲 '%s' 捋鈺 (Hashing) ⼇絫﹜ョ widget 麷伀 '%s' 斕
-4 ゝ菙坯衢逑ボ磝
-5 杬麟隓恄欹⺼“齡怞嗢泲ゝ媊沓暋泂
-6 widget '%s' 唈ゥ⼇絫
-7 䬷ざ棤禨隓淩”%s
-8 髓譯笱迒蠣袓隓淩”%s
-9 widget '%s' ゝ泂氂髓譯罶鳲”%s
-10 挴泂柁⻏殦隓淩”%s
-11 挴泂柁А夆隓淩”%s
-12 widget 搢隉蹌磍 '%s' ゝ棤嘵怉隃Б柁 widget
-13 widget ⽁禕旂纂堈 'command' widget
-14 widget ⽁禕旂纂堈 'mainWindow' widget
-15 widget ⽁禕旂纂堈 'scale' widget
-16 widget ⽁禕旂纂堈 'scrollBar' widget
-17 widget ⽁禕旂纂堈 'toggleButton' widget 迖 gadget
-18 槉嵺棤禨隓淩”%s
-19 隓恄崷殦⽁衭柁奡襉忟﹜廎忒斕
-20 隓恄岊怉々 widget
-21 隓恄岊怉嗃磍 '%s'
-22 隓恄岊怉麷倛 '%s'
-23 隓恄箾庰剚夼 '%s'“モ囷え 'unsigned long'
-24 ゝ洁柁騵麷倛”%s
-25 藞禋憿簅隓恄藑籫”%s
-26 え恄”%s widget position
-27 え恄”%s widget time
-28 え恄”%s widget
-29 dtksh 蠆諟
-30 dtksh 滙夼
-31 え恄”%s display window
-32 え恄”%s display window variable
-33 え恄”%s display rootWindow variable
-34 timeout 棤禨隓淩”%s
-35 msg 棤禨隓淩”%s
-36 patterns 棤禨隓淩”%s
+1 無法找到欄位名稱 '%s' 在 '%s' 結構中
+2 DtkshCvtCallbackToString：內部轉換緩衝區溢位
+3 資源 '%s' 拼湊 (Hashing) 失敗，在 widget 類別 '%s' 中
+4 未提供功能名稱
+5 命令無法執行；工具組尚未起始設定
+6 widget '%s' 建立失敗
+7 顯示參數無效：%s
+8 以下特性元素無效：%s
+9 widget '%s' 未定義以下資源：%s
+10 指定的位置無效：%s
+11 指定的字形無效：%s
+12 widget 處理編號 '%s' 未參照到現存的 widget
+13 widget 必須是一個 'command' widget
+14 widget 必須是一個 'mainWindow' widget
+15 widget 必須是一個 'scale' widget
+16 widget 必須是一個 'scrollBar' widget
+17 widget 必須是一個 'toggleButton' widget 或 gadget
+18 視窗參數無效：%s
+19 無法配置必要的記憶體，結束中
+20 無法找到母 widget
+21 無法找到符號 '%s'
+22 無法找到類型 '%s'
+23 無法解析宣告 '%s'；因此使用 'unsigned long'
+24 未知的子類型：%s
+25 選項旗標無法辨識：%s
+26 用法：%s widget position
+27 用法：%s widget time
+28 用法：%s widget
+29 dtksh 錯誤
+30 dtksh 警告
+31 用法：%s display window
+32 用法：%s display window variable
+33 用法：%s display rootWindow variable
+34 timeout 參數無效：%s
+35 msg 參數無效：%s
+36 patterns 參數無效：%s
 
 $set 14
-1 widget 媊沓暋泂渀﹜蠡楶捋鈺玿⼇絫“廎忒斕
-2 隓恄岊怉ボ珜 '%s' 柁 widget 麷伀
-3 籫伀А '%s' 攜旂淩柁 widget 搢隉蹌磍
-4 隓恄岊怉 widget 麷伀
-5 え恄”DtLoadWidget widgetClassName widgetClassRecordName
-6 隓恄岊怉ボ珜 '%s' 柁 widget 麷伀奡蠊
-7 widget 麷伀 '%s' 媊沓暋泂渀﹜蠡楶捋鈺玿⼇絫
+1 widget 起始設定時，內部拼湊表失敗；結束中
+2 無法找到名為 '%s' 的 widget 類別
+3 識別字 '%s' 不是有效的 widget 處理編號
+4 無法找到 widget 類別
+5 用法：DtLoadWidget widgetClassName widgetClassRecordName
+6 無法找到名為 '%s' 的 widget 類別記錄
+7 widget 類別 '%s' 起始設定時，內部拼湊表失敗
 8 \n%sRESOURCES FOR %s%s%s:\n
 9 CONSTRAINT 
 10 R
@@ -189,116 +189,116 @@ $set 14
 12 S
 13 %-15s %-6s %-6s %-18s %-6s %s\n
 14 ENV VARIABLE    HANDLE PARENT CLASS              STATUS NAME\n
-15 \nえ恄”\tDtWidgetInfo [widgetHandle]\n\tDtWidgetInfo -r <widgetHandle|className>\n\tDtWidgetInfo -R <widgetHandle|className>\n\tDtWidgetInfo -c [className]\n\tDtWidgetInfo -h [widgetHandle]
+15 \n用法：\tDtWidgetInfo [widgetHandle]\n\tDtWidgetInfo -r <widgetHandle|className>\n\tDtWidgetInfo -R <widgetHandle|className>\n\tDtWidgetInfo -c [className]\n\tDtWidgetInfo -h [widgetHandle]
 
 $set 15
-1 隓恄媊沓暋泂 Toolkit
-2 髓譯罶鳲隓恄ョ唈ゥ widget\n渀暋泂﹞霘ョ唈ゥ悒囷え XtSetValues 暋泂”%s
-3 え恄”%s variable parent name [argument:value ...]
-4 え恄”DtHelpReturnSelectedWidgetId variable widget variable
-5 え恄”DtHelpSetCatalogName catalogName
-6 え恄”DtHelpQuickDialogGetChild variable quickHelpWidget child
-7 widget ⽁禕旂纂堈 'quickHelp' widget
-8 widget ⽁禕旂纂堈 'list' widget
-9 え恄”%s widget position item
-10 え恄”%s widget position itemList
-11 え恄”%s widget item
-12 え恄”XmListDeleteItemsPos widget count position
-13 え恄”XmListDeleteItems widget itemList
-14 え恄”XmListDeletePositions widget positionList
-15 え恄”XmListGetKbdItemPos variable widget
-16 え恄”XmListItemExists widget item
-17 え恄”XmListItemPos variable widget item
-18 え恄”XmListPosSelected widget position
-19 え恄”XmListPosToBounds widget position variable variable variable variable
-20 え恄”%s widget position notifyFlag
-21 え恄”%s widget item notifyFlag
-22 え恄”XmListSetAddMode widget boolean
-23 え恄”XmListSetKbdItemPos widget position
-24 え恄”XmMainWindowSetAreas mainwindow menu command hscroll vscroll work
-25 'mainWindow' 搢隉蹌磍旂 NULL
-26 え恄”%s variable mainwindow
-27 え恄”XmProcessTraversal widget direction
-28 ゝ洁柁傶棬巖ホ”%s
-29 え恄”XmInternAtom variable display name onlyIfExists
-30 え恄”XmGetAtomName variable display atom
-31 挴泂柁蠣袓隓淩”%s
-32 え恄”XmGetColors widget background foreground topshadow bottomshadow select
-33 茯葔頝踛痼蠣隓淩”%s
-34 え恄”XmUpdateDisplay widget
-35 え恄”%s widget protocol [protocol ...]
-36 挴泂柁蠣袓隓淩”%s
-37 え恄”XmAddWMProtocolCallback widget protocol ksh-command
-38 え恄”XmRemoveWMProtocolCallback widget protocol ksh-command
-39 え恄”XmMenuPosition menu event
-40 挴泂柁呦ス隓淩”%s
-41 え恄”XmCommandAppendValue commandWidget string
-42 え恄”XmCommandError commandWidget errorMessage
-43 え恄”XmCommandSetValue commandWidget command
-44 え恄”XmCommandGetChild variable commandWidget child
-45 え恄”XmMessageBoxGetChild variable commandWidget child
-46 widget ⽁禕旂纂堈 'messageBox' widget
-47 え恄”XmFileSelectionBoxGetChild variable widget child
-48 widget ⽁禕旂纂堈 'file selection box' widget
-49 え恄”XmSelectionBoxGetChild variable widget child
-50 widget ⽁禕旂纂堈 'selection box' widget
-51 え恄”XmScaleGetValue scaleWidget variable
-52 え恄”XmScaleSetValue scaleWidget value
-53 挴泂柁籤坲饕圊隓淩”%s
-54 え恄”XmScrollBarGetValues scrollbar variable variable variable variable
-55 え恄”XmScrollBarSetValues scrollbar value sliderSize increment pageIncrement notify
-56 挴泂柁圊隓淩”%s
-57 挴泂柁僶棬蟟騰麵隓淩”%s
-58 挴泂柁嚌蠹畽隓淩”%s
-59 挴泂柁郟謑嚌蠹畽隓淩”%s
-60 え恄”XmScrollVisible scrolledWin widget leftRightMargin topBottomMargin
-61 widget ⽁禕旂纂堈 'scrolledWindow' widget
-62 衭䬷ざ柁 widget 攜Бョ﹞
-63 挴泂柁⼢/⑶饡盉隓淩”%s
-64 挴泂柁譫/譯饡盉隓淩”%s
-65 え恄”%s widget state notify
-66 え恄”catopen variable catName
-67 え恄”catclose catId
-68 え恄”catgets variable catId setNum msgNum dftMsg
-69 widget ⽁禕旂纂堈 'text' 迖 'textField' widget
-70 え恄”%s variable widget
-71 え恄”%s widget boolean
-72 挴泂柁棤禨隓淩”%s
-73 え恄”%s widget lines
-74 え恄”%s widget maxLength
-75 え恄”%s widget string
-76 え恄”%s widget variable variable
-77 え恄”%s widget position string
-78 え恄”%s widget position variable variable
-79 え恄”%s widget fromPosition toPosition string
-80 挴泂柁 'from' ⻏殦隓淩”%s
-81 挴泂柁 'to' ⻏殦隓淩”%s
-82 え恄”%s widget firstPosition lastPosition time
-83 挴泂柁剼纂堈⻏殦隓淩”%s
-84 挴泂柁瑊悒纂堈⻏殦隓淩”%s
-85 挴泂柁渀睮隓淩”%s
-86 え恄”%s variable widget x y
-87 挴泂柁 x ⻏殦隓淩”%s
-88 挴泂柁 y ⻏殦隓淩”%s
-89 え恄”%s widget left right mode
-90 挴泂柁⼢饡⻏殦隓淩”%s
-91 挴泂柁⑶饡⻏殦隓淩”%s
-92 え恄”%s widget start string direction variable
-93 挴泂柁媊沓⻏殦隓淩”%s
-94 え恄”XmListGetSelectedPos variable widget
-95 え恄”XmListGetMatchPos variable widget item
-96 え恄”XmOptionLabelGadget variable widget
-97 え恄”XmOptionButtonGadget variable widget
-98 え恄”XmGetVisibility variable widget
-99 え恄”XmGetTearOffControl variable widget
-100 え恄”XmGetTabGroup variable widget
-101 え恄”XmGetPostedFromWidget variable widget
-102 え恄”XmGetFocusWidget variable widget
-103 え恄”XmFileSelectionDoSearch widget directoryMask
+1 無法起始設定 Toolkit
+2 以下資源無法在建立 widget\n時設定。請在建立後使用 XtSetValues 設定：%s
+3 用法：%s variable parent name [argument:value ...]
+4 用法：DtHelpReturnSelectedWidgetId variable widget variable
+5 用法：DtHelpSetCatalogName catalogName
+6 用法：DtHelpQuickDialogGetChild variable quickHelpWidget child
+7 widget 必須是一個 'quickHelp' widget
+8 widget 必須是一個 'list' widget
+9 用法：%s widget position item
+10 用法：%s widget position itemList
+11 用法：%s widget item
+12 用法：XmListDeleteItemsPos widget count position
+13 用法：XmListDeleteItems widget itemList
+14 用法：XmListDeletePositions widget positionList
+15 用法：XmListGetKbdItemPos variable widget
+16 用法：XmListItemExists widget item
+17 用法：XmListItemPos variable widget item
+18 用法：XmListPosSelected widget position
+19 用法：XmListPosToBounds widget position variable variable variable variable
+20 用法：%s widget position notifyFlag
+21 用法：%s widget item notifyFlag
+22 用法：XmListSetAddMode widget boolean
+23 用法：XmListSetKbdItemPos widget position
+24 用法：XmMainWindowSetAreas mainwindow menu command hscroll vscroll work
+25 'mainWindow' 處理編號是 NULL
+26 用法：%s variable mainwindow
+27 用法：XmProcessTraversal widget direction
+28 未知的移動方向：%s
+29 用法：XmInternAtom variable display name onlyIfExists
+30 用法：XmGetAtomName variable display atom
+31 指定的元素無效：%s
+32 用法：XmGetColors widget background foreground topshadow bottomshadow select
+33 背景圖像單元無效：%s
+34 用法：XmUpdateDisplay widget
+35 用法：%s widget protocol [protocol ...]
+36 指定的元素無效：%s
+37 用法：XmAddWMProtocolCallback widget protocol ksh-command
+38 用法：XmRemoveWMProtocolCallback widget protocol ksh-command
+39 用法：XmMenuPosition menu event
+40 指定的事件無效：%s
+41 用法：XmCommandAppendValue commandWidget string
+42 用法：XmCommandError commandWidget errorMessage
+43 用法：XmCommandSetValue commandWidget command
+44 用法：XmCommandGetChild variable commandWidget child
+45 用法：XmMessageBoxGetChild variable commandWidget child
+46 widget 必須是一個 'messageBox' widget
+47 用法：XmFileSelectionBoxGetChild variable widget child
+48 widget 必須是一個 'file selection box' widget
+49 用法：XmSelectionBoxGetChild variable widget child
+50 widget 必須是一個 'selection box' widget
+51 用法：XmScaleGetValue scaleWidget variable
+52 用法：XmScaleSetValue scaleWidget value
+53 指定的比例尺值無效：%s
+54 用法：XmScrollBarGetValues scrollbar variable variable variable variable
+55 用法：XmScrollBarSetValues scrollbar value sliderSize increment pageIncrement notify
+56 指定的值無效：%s
+57 指定的滑動器大小無效：%s
+58 指定的增加量無效：%s
+59 指定的頁碼增加量無效：%s
+60 用法：XmScrollVisible scrolledWin widget leftRightMargin topBottomMargin
+61 widget 必須是一個 'scrolledWindow' widget
+62 要顯示的 widget 不存在。
+63 指定的左/右邊界無效：%s
+64 指定的上/下邊界無效：%s
+65 用法：%s widget state notify
+66 用法：catopen variable catName
+67 用法：catclose catId
+68 用法：catgets variable catId setNum msgNum dftMsg
+69 widget 必須是一個 'text' 或 'textField' widget
+70 用法：%s variable widget
+71 用法：%s widget boolean
+72 指定的參數無效：%s
+73 用法：%s widget lines
+74 用法：%s widget maxLength
+75 用法：%s widget string
+76 用法：%s widget variable variable
+77 用法：%s widget position string
+78 用法：%s widget position variable variable
+79 用法：%s widget fromPosition toPosition string
+80 指定的 'from' 位置無效：%s
+81 指定的 'to' 位置無效：%s
+82 用法：%s widget firstPosition lastPosition time
+83 指定的第一個位置無效：%s
+84 指定的最後一個位置無效：%s
+85 指定的時間無效：%s
+86 用法：%s variable widget x y
+87 指定的 x 位置無效：%s
+88 指定的 y 位置無效：%s
+89 用法：%s widget left right mode
+90 指定的左邊位置無效：%s
+91 指定的右邊位置無效：%s
+92 用法：%s widget start string direction variable
+93 指定的起始位置無效：%s
+94 用法：XmListGetSelectedPos variable widget
+95 用法：XmListGetMatchPos variable widget item
+96 用法：XmOptionLabelGadget variable widget
+97 用法：XmOptionButtonGadget variable widget
+98 用法：XmGetVisibility variable widget
+99 用法：XmGetTearOffControl variable widget
+100 用法：XmGetTabGroup variable widget
+101 用法：XmGetPostedFromWidget variable widget
+102 用法：XmGetFocusWidget variable widget
+103 用法：XmFileSelectionDoSearch widget directoryMask
 
 $set 16
-1 DtkshCvtNamedValueToString”岊攜怉嗃ポ炟
-2 DtkshCvtStringToNamedValue”隓恄鼲葎А⻌ '%s'
+1 DtkshCvtNamedValueToString：找不到符合者
+2 DtkshCvtStringToNamedValue：無法轉換字串 '%s'
 
 
 $ The following messages are for ksh93 itself.  The message numbers must
@@ -306,8 +306,8 @@ $ match those specified in the MsgStr array allmsgs in
 $ ksh93/src/cmd/ksh93/sh/init.c, as must the set number.
 $set 25
 
-1  汒
-3  欹⺼斕
+1  完成
+3  執行中
 4  [-n] [arg...]
 5  [arg...]
 6  [dir] [list]
@@ -318,222 +318,222 @@ $set 25
 11  [top] [base]
 12  expr...
 13  format [arg...]
-14  旂纂堈怐禨
-15  旂纂堈驨耰А
-16  旂纂堈蠡唈 shell
-17  旂纂堈鼲Б怐禨
-18  旂纂堈ゝ泂氂柁怐禨
+14  是一個函數
+15  是一個關鍵字
+16  是一個內建 shell
+17  是一個轉存函數
+18  是一個未定義的函數
 19  name [arg...]
 20  optstring name [args...]
-21  秮
+21  秒
 23 ${HOME:-.}/.profile
-24 %c”ョ玿ざ冈斕隓淩柁А蠣 - %s
-25 %c”ゝ洁柁眭冈挴泂蠣
-26 %d-%d”隓淩柁謓睕
-27 %d”隓淩柁蘑蠣杬麟碬斿ヾ
-28 %s 旂纂堈伀ボ﹜㪫卼 
-29 %s 旂纂堈藣罐柁伀ボ﹜㪫卼
-30 谹韁 %s
-31 %s ゝ洁柁椕芚
-32 %s”'?' 蝒磭騵鶈囷え ':'
-33 %s”徆氂
-34 %s”鰱禨鶈珜 %job 迖搢隉 ids
-35 %s”岊攜怉伀ボ\n
-36 %s”磭禨諴恄蠆諟
-37 %s”挴泂錛衭 lvalue
-38 %s”麔淰痼蠣磍謑蠆諟
-39 %s”眭冈蠆諟
-40 %s”磍謑蠆諟
-41 %s”藞禋蠆諟
-42 %s”鷥葎蠆諟
-43 %s”暋歂蠆諟
-44 %s”隓恄唈ゥ
-45 %s”隓恄欹⺼
-46 %s”隓恄瞅絒
-47 %s”崽禨珜誻
-48 %s”錭棦坲⼃
-49 %s”隓恄欹⺼汒 %s
-50 %s”麔淰儸Бョ
-51 %s”攜ポ恄柁怐禨ボ磝
-52 %s”隓淩柁伀ボ
-53 %s”隓淩柁斒衧 (discipline) 怐禨
-54 %s”隓淩柁鼲Бボ磝
-55 %s”隓淩柁怐禨ボ磝
-56 %s”隓淩柁ボ磝
-57 %s”隓淩柁纂郫玿ざ冈
-58 %s”隓淩柁⺌宎棤嘵
-59 %s”隓淩柁囷え”
-60 %s”隓淩柁䨣禨ボ磝
-61 %s”攜旂纂堈籫伀А
-62 %s”ⅲ逑幺抻
-63 %s”簅圝泲ゝ蕍汃
-64 %s”熅罐迻戔
-65 %s”鶈彶ロ嗃奡
-66 %s”扽譫嬬樄鷁
-67 %s”扽棤嘵ボ磝
-68 %s”隓恄岊怉
-69 %s”ゝ蕍汃
-70 %s”蝒磭蠣麷倛攜砨晥
-71 %s”鬿⻏坲⼃
-72 %s”ゝ暋泂棤禨
-73 %s”棤禨洠く迖ゝ暋泂
-74 %s”踽媝霽豟
-75 %s”棤嘵䨣禨攜逑旂嵕ト
-76 %s”錛衭聤梏ボ磝鰱禨
-77 %s”迻戔
-78 %s”痼禨坲⼃
-79 %s”漶簅熅罐謓睕
-80 %s”挭芧攜髱磝
-81 %s”ゝ洁柁怐禨
-82 %s”ゝ洁柁諴侔伀
-83 %s”ゝ洁柁蝒磭騵
-84 %s”ゝ洁柁媢磍ボ磝
-85 %s”渿鰱媊媝聤
-86 (瀄幰蒺罐)
-87 -c 錛衭鰱禨
-88 -e - 錛衭痼纂鰱禨
+24 %c：在表示式中有無效的字元 - %s
+25 %c：未知的格式指定元
+26 %d-%d：無效的範圍
+27 %d：無效的二元命令集版本
+28 %s 是一個別名，屬於 
+29 %s 是一個輸出的別名，屬於
+30 缺少 %s
+31 %s 未知的基底
+32 %s：'?' 運算子應使用 ':'
+33 %s：有歧義
+34 %s：引數應為 %job 或處理 ids
+35 %s：找不到別名\n
+36 %s：算數語法錯誤
+37 %s：指定需要 lvalue
+38 %s：檔案單元號碼錯誤
+39 %s：格式錯誤
+40 %s：號碼錯誤
+41 %s：選項錯誤
+42 %s：代換錯誤
+43 %s：設陷錯誤
+44 %s：無法建立
+45 %s：無法執行
+46 %s：無法開啟
+47 %s：除數為零
+48 %s：領域例外
+49 %s：無法執行完成 %s
+50 %s：檔案已存在
+51 %s：不合法的函數名稱
+52 %s：無效的別名
+53 %s：無效的規則 (discipline) 函數
+54 %s：無效的轉存名稱
+55 %s：無效的函數名稱
+56 %s：無效的名稱
+57 %s：無效的一般表示式
+58 %s：無效的自我參照
+59 %s：無效的使用：
+60 %s：無效的變數名稱
+61 %s：不是一個識別字
+62 %s：只能讀取
+63 %s：標籤尚未製作
+64 %s：超出限制
+65 %s：應有更多符記
+66 %s：沒有上層節點
+67 %s：沒有參照名稱
+68 %s：無法找到
+69 %s：未製作
+70 %s：運算元類型不相容
+71 %s：溢位例外
+72 %s：未設定參數
+73 %s：參數空白或未設定
+74 %s：遞迴太深
+75 %s：參照變數不能是陣列
+76 %s：需要路徑名稱引數
+77 %s：有限制
+78 %s：單數例外
+79 %s：註標超出範圍
+80 %s：括弧不對稱
+81 %s：未知的函數
+82 %s：未知的語言別
+83 %s：未知的運算子
+84 %s：未知的訊號名稱
+85 %s：將引起迴路
+86 (磁蕊傾出)
+87 -c 需要引數
+88 -e - 需要單一引數
 89 /vpix
-90 <ゝ洁柁杬麟>
+90 <未知的命令>
 91 ACE#?F#?H:[name]L#?R#?Z#?fi#?[base]lnprtux [name=[value]...]
 92 AE#?F#?HL#?R#?Z#?fi#?[base]lnprtux [name=[value]...]
-93 斕黫
+93 中斷
 94 Ad:[delim]prst#[timeout]u#[filenum] [name...]
-95 滙夼昋ⅰ
-96 淂樄鷁斒眭蠆諟
-97 侇嗄昋ⅰ蠆諟
-98 磣蝚斕栠
-99 蒝殈粡蠆諟
-100 隓恄絒棬齡汃祰戔
-101 隃⺼藞禋暋泂
-102 DIL 媢磍
-103 騵樄鷁彘欐蝒汃
+95 警告呼叫
+96 根節點規格錯誤
+97 系統呼叫錯誤
+98 管道中段
+99 匯流排錯誤
+100 無法啟動工作控制
+101 現行選項設定
+102 DIL 訊號
+103 子節點停止運作
 104 DircabefhkmnpstuvxCI:[file]o:?[option]A:[name] [arg...]
 105 DircabefhkmnpstuvxCo:?[option]A:[name] [arg...]
-106 EMT 暋歂
-107 熅罐 CPU 渀睮迻戔
-108 熅峈麔淰騰麵迻戔
-109 秸棬坲⼃
+106 EMT 設陷
+107 超出 CPU 時間限制
+108 超果檔案大小限制
+109 浮動例外
 110 HSacdfmnstv [limit]
-111 斕欐
-112 IO 媢磍
-113 攜ポ恄柁挴麟
-114 吤黫
-115 覗崽
+111 中止
+112 IO 訊號
+113 不合法的指令
+114 岔斷
+115 清除
 116 LP [dir] [change]
-117 奡襉忟蠆諟
-118 傶鼲搢隉
-119 扽齡汃祰戔
-120 諔緷吤黫
-121 懘緧滙夼
-122 諔鳲斕黫
-123 渀睮滙夼晼蠊
-124 廎忒
-125 罶鳲蟺⼇
-126 ャ艀鰹柁 tty 勐棬蟟...
+117 記憶體錯誤
+118 移轉處理
+119 沒有工作控制
+120 電話岔斷
+121 輪詢警告
+122 電源中斷
+123 時間警告側錄
+124 結束
+125 資源遺失
+126 回復成舊的 tty 驅動器...
 127 S [mask]
-129 Еツ簅圝儸庍䨣
-130 葅桵吤黫
-131 鐖郣汒
-132 彘欐 (媢磍)
-133 彘欐 (tty 藣蘋)
-134 儸彘欐柁搢隉隃ョ凭㶴
-135 彘欐
-136 彘欐 (tty 藣罐)
-137 鼲葎隞柁 tty 勐棬蟟...
-138 侇嗄伒渿撋筄
-139 嗈欐
-140 寍麶/BPT 暋歂
-141 隓恄藰籫柁斿ヾ
-142 霘囷え 'exit' 坭彘欐楙堈 shell
-143 囷え炟媢磍 1
-144 囷え炟媢磍 2
-145 斿ヾゝ泂氂
-146 摫鶅渀睮滙夼
-147 槉嵺騰麵庍䨣
-148 睎齡汃ョ欹⺼
-149 睎斕欐柁齡汃
+129 安全標籤已改變
+130 插座岔斷
+131 聲音完成
+132 停止 (訊號)
+133 停止 (tty 輸入)
+134 已停止的處理現在繼續
+135 停止
+136 停止 (tty 輸出)
+137 轉換成新的 tty 驅動器...
+138 系統即將當掉
+139 終止
+140 追蹤/BPT 設陷
+141 無法辦識的版本
+142 請使用 'exit' 來停止這個 shell
+143 使用者訊號 1
+144 使用者訊號 2
+145 版本未定義
+146 虛擬時間警告
+147 視窗大小改變
+148 您有工作正在執行
+149 您有中止的工作
 150 [_[:alpha:]]*([_[:alnum:]])
 151 \n@(#)Version 12/28/93\0\n
 152 \n@(#)Version M-12/28/93\0\n
-153 \n翍骳
-154 \r\n\007か卼ゝ汃え﹜shell 渿ョ 60 秮蠡蝺渀
+153 \n真實
+154 \r\n\007由於未作用，shell 將在 60 秒內逾時
 155 a name...
 156 a:c [command [args...] ]
 157 afpv name...
-158 滙夼 %s %.3f\n
+158 警告 %s %.3f\n
 159 alarm -r %s +%.3g\n
-160 鶈鰱禨
-161 げ蠊蠆諟
-162 麔淰痼蠣磍謑蠆諟
-163 鷥葎蠆諟
-164 隓恄Б抻々げ蠊
-165 隓恄唈ゥ磣蝚
-166 隓恄唈ゥ穛渀麔淰
-167 隓恄雰ぇ騵嶂囥
-168 隓恄抻痤 %s
-169 隓恄暋泂 %s
-170 隓恄暋泂滙夼鐖
-171 錛衭蛨ス
+160 應有引數
+161 目錄錯誤
+162 檔案單元號碼錯誤
+163 代換錯誤
+164 無法存取母目錄
+165 無法建立管道
+166 無法建立暫時檔案
+167 無法產生子程序
+168 無法取得 %s
+169 無法設定 %s
+170 無法設定警告聲
+171 需要條件
 172 dsf:[library] [name...]
 173 e:[editor]lnrsN# [first] [last]
-174 麔淰廎忒
+174 檔案結束
 175 f:[format]nprsu:[filenum] [arg...]
 176 fnv name...
 177 hist -e "${VISUAL:-${EDITOR:-vi}}" 
-178 奡蠊麔淰ゝ瞅絒
-179 諴恄蠆諟
-180 麷倛 %c 柁鰱禨隓淩
-181 旂纂堈 shell 蠡唈斿ヾ﹜㪫卼
-182 旂纂堈寍麶伀ボ﹜㪫卼
-183 覗崽
-184 剼 %d ⺼”$ 虳郖攜旂 \\
-185 剼 %d ⺼”${} 蠡柁 %c 鶈篎蠹鰱磍
-186 剼 %d ⺼”%s 旂ゝ洁柁簅圝
-187 剼 %d ⺼”[[...]] 斕柁 %s 隃儸寲蛫攜え﹜庍え ((...))
-188 剼 %d ⺼”'=' 隃儸寲蛫攜え﹜庍え '=='
-189 剼 %d ⺼”-a 隃儸寲蛫攜え﹜庍え -e
-190 剼 %d ⺼”%c 虳郖柁 \\ 砉絅髓猻渿坭囷え
-191 剼 %d ⺼”`...` 隃儸寲蛫攜え﹜庍え $(...)
-192 剼 %d ⺼”%c 鼲氂髓礱伬雰ぇ徆氂
-193 剼 %d ⺼”芩靬簅圝 %s
-194 剼 %d ⺼”霘渿 %c 蠹譫鰱磍﹜髓礱伬雰ぇ徆氂
-195 剼 %d ⺼”set %s 隃儸寲蛫攜え
-196 剼 %d ⺼”禂孲 shell 錛蠹蘋洠眭
-197 剼 %d ⺼”囷え騰挭芧挭⻖﹜髓伬 $id[...] 雰ぇ徆氂
-198 剼 %d ⺼”囷え洠眭迖聧眭坭禳觰蝒磭騵 %c 縋 %c
+178 記錄檔案未開啟
+179 語法錯誤
+180 類型 %c 的引數無效
+181 是一個 shell 內建版本，屬於
+182 是一個追蹤別名，屬於
+183 清除
+184 第 %d 行：$ 前面不是 \\
+185 第 %d 行：${} 內的 %c 應該加引號
+186 第 %d 行：%s 是未知的標籤
+187 第 %d 行：[[...]] 中的 %s 現已廢棄不用，改用 ((...))
+188 第 %d 行：'=' 現已廢棄不用，改用 '=='
+189 第 %d 行：-a 現已廢棄不用，改用 -e
+190 第 %d 行：%c 前面的 \\ 保留以備將來使用
+191 第 %d 行：`...` 現已廢棄不用，改用 $(...)
+192 第 %d 行：%c 轉義以避免產生歧義
+193 第 %d 行：忽略標籤 %s
+194 第 %d 行：請將 %c 加上引號，以避免產生歧義
+195 第 %d 行：set %s 現已廢棄不用
+196 第 %d 行：嵌套次 shell 需加入空格
+197 第 %d 行：使用大括弧括住，以免 $id[...] 產生歧義
+198 第 %d 行：使用空格或跳格來分隔運算子 %c 與 %c
 199 ln#[signum]s:[signame] sig...
-200 槮欐僳蘋 setuid/setgid shell
-201 髱鶈
-202 隞⺼
+200 禁止登入 setuid/setgid shell
+201 對應
+202 新行
 203 nlp [job...]
-204 扽奡蠊麔
-205 扽栯緧搢隉
-206 扽楙堈齡汃
-207 扽楙堈搢隉
-208 ゝ齬葰
-209 驨椲
-210 瞅絒
-211 熅罐瞅絒麔淰迻戔
-212 奡襉忟跂潞
+204 沒有記錄檔
+205 沒有查詢處理
+206 沒有這個工作
+207 沒有這個處理
+208 未支援
+209 關閉
+210 開啟
+211 超出開啟檔案限制
+212 記憶體耗盡
 213 p [action condition...]
 214 p [name[=value]...]
-215 棤禨ゝ暋泂
-216 攜怞暐⑴ḷ
-217 搢隉儸Бョ
+215 參數未設定
+216 不具許可權
+217 此處理已存在
 218 ptx [name=[value]...]
 219 pvV name [arg]...
 220 r [varname seconds]
-221 剼 %d ⺼諴恄蠆諟”`%s' %s
-222 剼 %d ⺼諴恄蠆諟”簅圝 %s 适闀
-223 諴恄蠆諟”`%s' %s
+221 第 %d 行語法錯誤：`%s' %s
+222 第 %d 行語法錯誤：標籤 %s 重複
+223 語法錯誤：`%s' %s
 224 sys
-225 嶉恁藣蘋蝺渀
-226 盻蛺恁斕
-227 錭棦隓恄Б抻
-228 ゝ迻戔
-229 攜嗃ポ
-230 囷え炟
-231 斿ヾ
-232 嬣蘋 %d ⼇絫
-233 ョ $_ 睎柁瑧ス
-234 誻⻏蠣嗢
+225 等待輸入逾時
+226 非期待中
+227 領域無法存取
+228 未限制
+229 不符合
+230 使用者
+231 版本
+232 寫入 %d 失敗
+233 在 $_ 有您的郵件
+234 零位元組

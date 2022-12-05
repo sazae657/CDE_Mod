@@ -86,7 +86,7 @@ $ YOU DON'T NEED TO LOCALIZE THIS MESSAGE
 
 $    This is the message in the confirm dialog for restarting mwm
 $ Do not localize "Mwm"
-3 衭适隞絒棬 Mwm 蓇?
+3 要重新啟動 Mwm 嗎?
 
 $    This message goes to an error file.
 $ YOU DON'T NEED TO LOCALIZE THIS MESSAGE
@@ -94,7 +94,7 @@ $ YOU DON'T NEED TO LOCALIZE THIS MESSAGE
 
 $    This is the message in the confirm dialog for quitting mwm
 $ Do not localize "Mwm"
-6 衭廎忒 Mwm 蓇?
+6 要結束 Mwm 嗎?
 
 $    This message goes to an error file.
 $ YOU DON'T NEED TO LOCALIZE THIS MESSAGE
@@ -102,21 +102,21 @@ $ YOU DON'T NEED TO LOCALIZE THIS MESSAGE
 
 $    This is the message in the confirm dialog for logging out of DT Lite
 $  You'll see it when pressing the Exit button from DT lite
-9 衭僳罐蓇?
+9 要登出嗎?
 
 $    This is the message in the confirm dialog for restarting dtwm
-10 衭适隞絒棬齡汃洠睮磣隉炟蓇?
+10 要重新啟動工作空間管理者嗎?
 
 $    This is the message in the confirm dialog for quitting dtwm
-11 衭廎忒齡汃洠睮磣隉炟蓇?
+11 要結束工作空間管理者嗎?
 
 $    This is the message in the confirm dialog for toggling to standard
 $         PM (Presentation Manager) behavior from custom behavior
-12 衭鼲葎蠡泂柁槉嵺⺼珜蓇?
+12 要轉換成內定的視窗行為嗎?
 
 $    This is the message in the confirm dialog for toggling back from
 $         PM (Presentation Manager) behavior to custom behavior
-13 衭鼲葎⺌衲柁槉嵺⺼珜蓇?
+13 要轉換成自訂的視窗行為嗎?
 
 
 $set 26
@@ -146,12 +146,12 @@ $ YOU DON'T NEED TO LOCALIZE MESSAGES 1-2
 
 $ Message 3 is an error message that appears when you are using Item Help
 $ and select on something outside of the Workspace Manager
-3 睎⽁禕藞抻纂堈齡汃洠睮磣隉炟髱緷﹝\n\
-ョ＞虳巖郖帣＝斕藞謥纂堈禋げ﹝迖ョ\n\
-郖帣斕藞謥纂堈禋げ﹞
+3 您必須選取一個工作空間管理者對話、\n\
+在「前方面板」中選擇一個項目、或在\n\
+次面板中選擇一個項目。
 
 $ Message 4 is the title of the Help On Item Error dialog
-4 齡汃洠睮磣隉炟 - 驨卼禋げ赮伢諰咭蠆諟
+4 工作空間管理者 - 關於項目輔助說明錯誤
 
 $set 30
 $    THIS COMMENT FOR DTWM TEAM ONLY -- WmIDecor.c --
@@ -208,7 +208,7 @@ $
 $   The mnemonic should also be chosen such such that it does not 
 $        conflict with another mnemonic in the menu.
 
-3 "适粡頝踛(P)" _P  Alt Shift<Key>F7 f.pack_icons\n
+3 "重排圖像(P)" _P  Alt Shift<Key>F7 f.pack_icons\n
 
 $    This message goes to an error file.
 $ YOU DON'T NEED TO LOCALIZE THIS MESSAGE
@@ -252,7 +252,7 @@ $ DO NOT LOCALIZE MESSAGES 1 THROUGH 13.
 13 Insufficient memory for screen names
 
 $     This is the default title for the icon box
-14 頝踛
+14 圖像
 
 $    Message 15 goes to an error file.
 $ YOU DON'T NEED TO LOCALIZE THIS MESSAGE
@@ -275,13 +275,13 @@ $ YOU DON'T NEED TO LOCALIZE THIS MESSAGE
 21 %1$s: %2$s on line %3$d of specification string\n
 
 $     This is the default title for the version dialog
-22 驨卼齡汃洠睮磣隉炟
+22 關於工作空間管理者
 
 $     This is the default title for the Dtwm help dialog
-23 齡汃洠睮磣隉炟 - 赮伢諰咭
+23 工作空間管理者 - 輔助說明
 
 $     This is the default title for the Generic help dialog
-24 齡汃洠睮磣隉炟 - 赮伢諰咭
+24 工作空間管理者 - 輔助說明
 
 
 $set 44
@@ -322,21 +322,21 @@ $ YOU DON'T NEED TO LOCALIZE THIS MESSAGE.
 1 Unable to create Occupy Workspace dialog.
 
 $    This tells what window the occupy workspace dialog is operating on.
-2 槉嵺”
+2 視窗：
 
 $    This is the label for the workspace list in the occupy workspace dialog
-3 齡汃洠睮”
+3 工作空間：
 
 $    This is the label for the button to put a window in all workspaces
 $        from the occupy workspace dialog
-4 邴柁齡汃洠睮
+4 所有的工作空間
 
 $    This message goes to an error file.
 $ YOU DON'T NEED TO LOCALIZE THIS MESSAGE.
 5 Insufficient memory to create occupy workspace dialog.
 
 $    This tells what window the occupy workspace dialog is operating on.
-6 頝踛”
+6 圖像：
 
 
 
@@ -518,7 +518,7 @@ $ YOU DON'T NEED TO LOCALIZE THIS MESSAGE.
 31 Insufficient memory for local message string
 
 $    This is the default title of the "Rename Workspace" dialog
-32 齡汃洠睮庍ボ
+32 工作空間改名
 
 $    Messages 33 to 38 go to an error file.
 $ YOU DON'T NEED TO LOCALIZE MESSAGES 33 TO 38.
@@ -548,55 +548,55 @@ $ The name of the function (e.g. f.normalize) should not change
 
 $    This item will "close" the window.  This usually results in the
 $    window being withdrawn.
-48 驨椲(C) _C Alt<Key>F4 f.kill
+48 關閉(C) _C Alt<Key>F4 f.kill
 
 $    This item normalizes a window
-49 ャ艀(R) _R  f.restore
+49 回復(R) _R  f.restore
 
 $    This item moves a window
-50 傶棬(M) _M  f.move
+50 移動(M) _M  f.move
 
 $    This item resizes a window
-51 騰麵(S) _S  f.resize
+51 大小(S) _S  f.resize
 
 $    This item changes a window into an icon
-52 醷⺍瑊麵(n) _n  f.minimize
+52 縮至最小(n) _n  f.minimize
 
 $    This item makes a window as large as allowed (determined by a number
 $         of factors)
-53 勂⺍瑊騰(x) _x  f.maximize
+53 放至最大(x) _x  f.maximize
 
 $    This item lowers a window below other windows
-54 傶⺍芚嬬(L) _L  f.lower
+54 移至底層(L) _L  f.lower
 
 $    This item brings up the occupy workspace dialog.  The character
 $    sequence  "\\.\\.\\."  will appear as "..." in the menu . DO NOT CHANGE 
 $    THE  "\\.\\.\\."  CHARACTERS
-55 ŋ謾\\齡汃洠睮(O)\\.\\.\\. _O  f.workspace_presence
+55 佔據\\工作空間(O)\\.\\.\\. _O  f.workspace_presence
 
 $    This item puts a window into all workspaces.  The character sequence
 $    "\\" provides a space between "Occupy" and "all"  Use this sequence
 $    to provide spaces in item titles.
-56 ŋ謾\\邴\\齡汃洠睮(A) _A  f.occupy_all
+56 佔據\\所有\\工作空間(A) _A  f.occupy_all
 
 $    This item removes a window from a workspace.  This item will appear in
 $    in the menu as  "Unoccupy Workspace"  with the first e in the title underlined
 $    to indicate this is a mnemonic for this item.
-57 抻祤ŋ謾\\齡汃洠睮(U) _U  f.remove
+57 取消佔據\\工作空間(U) _U  f.remove
 
 $    This is the default title of the "occupy workspace" dialog
-59 ŋ謾齡汃洠睮
+59 佔據工作空間
 
 $    The following 6 items are Sun-specific.  The only difference being
 $    that these items have accelerators.  They should be localized
 $    similarly to their corresponding item above.
 
-60 ャ艀(R) _R Alt<Key>F5 f.restore
-61 傶棬(M) _M  Alt<Key>F7   f.move
-62 騰麵(S) _S  Alt<Key>F8   f.resize
-63 瑊麵襲(n) _n  Alt<Key>F9 f.minimize
-64 瑊騰襲(x) _x  Alt<Key>F10 f.maximize
-65 傶⺍芚嬬(L)_L  Alt<Key>F3   f.lower
+60 回復(R) _R Alt<Key>F5 f.restore
+61 移動(M) _M  Alt<Key>F7   f.move
+62 大小(S) _S  Alt<Key>F8   f.resize
+63 最小化(n) _n  Alt<Key>F9 f.minimize
+64 最大化(x) _x  Alt<Key>F10 f.maximize
+65 移至底層(L)_L  Alt<Key>F3   f.lower
 
 $    Messages 66 to 68 go to an error file.
 $ YOU DON'T NEED TO LOCALIZE MESSAGES 66 TO 68.
@@ -643,33 +643,33 @@ $    THIS COMMENT FOR DTWM TEAM ONLY -- PopupMenu.c --
 $    This entire set should be localized.
 
 $ Message 1 is the title of the Delete Locked Control Error dialog
-1 齡汃洠睮磣隉炟 - 伝崽孍泂祰戔蠆諟
+1 工作空間管理者 - 刪除鎖定控制錯誤
 
 $ Message 2 is the title of the Delete Control dialog
-2 齡汃洠睮磣隉炟 - 伝崽祰戔
+2 工作空間管理者 - 刪除控制
 
 $ Message 3 is the title of the Delete Locked Subpanel Error dialog
-3 齡汃洠睮磣隉炟 - 伝崽孍泂郖帣蠆諟
+3 工作空間管理者 - 刪除鎖定次面板錯誤
 
 $ Message 4 is the title of the Delete Subpanel dialog
-4 齡汃洠睮磣隉炟 - 伝崽郖帣
+4 工作空間管理者 - 刪除次面板
 
 $ Message 5 is the message in the Delete Locked Control Error dialog
-5 隓恄伝崽楙堈祰戔﹜モ珜⼓儸揧孍泂﹞
+5 無法刪除這個控制，因為它已被鎖定。
 
 $ Message 6 is the message in the Delete Control dialog
-6 睎薚泂衭伝崽楙堈祰戔蓇?
+6 您確定要刪除這個控制嗎?
 
 $ Message 7 is the message in the Delete Locked Subpanel Error dialog
-7 隓恄伝崽楙堈郖帣﹜モ珜⼓儸揧孍泂﹞
+7 無法刪除這個次面板，因為它已被鎖定。
 
 $ Message 8 is the message in the Delete Control dialog when more than
 $ exits in the subpanel to be deleted.
-8 楙堈郖帣讓屼纂堈髓譫柁祰戔﹞\n睎薚泂衭伝崽楙堈郖帣蓇?
+8 這個次面板包含一個以上的控制。\n您確定要刪除這個次面板嗎?
 
 $ Message 9 is the message in the Delete Control dialog when only the
 $ copy of the main panel control exists in the subpanel.
-9 睎薚泂衭伝崽楙堈郖帣蓇?
+9 您確定要刪除這個次面板嗎?
 
 $ Message 10 - 19 are the menu title, menu items, and mnemonics in the
 $ Main/Subpanel Menu.
@@ -681,22 +681,22 @@ $
 $ The mnemonic must be a character in the label. Each mnemonic must be 
 $ unique within this particular menu.
 $ 
-10 嚌蠹郖帣(A)
+10 增加次面板(A)
 11 A
-12 伝崽郖帣(D)
+12 刪除次面板(D)
 13 D
-14 闀蕍怉饜郖帣(C)
+14 複製到主面板(C)
 15 C
-16 伝崽(D)
+16 刪除(D)
 17 D
-18 赮伢諰咭(H)
+18 輔助說明(H)
 19 H
 
 $ Message 20 - 21 are used in the menu title for the workspace button
 $ menus.  20 is used for the format "Workspace <Name>".  21 is the first
 $ arg in the format.
 20 %1$s %2$s
-21 齡汃洠睮
+21 工作空間
 
 $ Message 22 - 30 are the menu title, menu items, and mnemonics in the
 $ Switch Menu.
@@ -708,27 +708,27 @@ $
 $ The mnemonic must be a character in the label. Each mnemonic must be 
 $ unique within this particular menu.
 $ 
-22 籠葎棷棦
-23 嚌蠹齡汃洠睮(A)
+22 切換區域
+23 增加工作空間(A)
 24 A
-25 伝崽(D)
+25 刪除(D)
 26 D
-27 庍ボ(R)
+27 改名(R)
 28 R
-29 赮伢諰咭(H)
+29 輔助說明(H)
 30 H
 
 $ Message 31 - 40 are the pieces for the deletion dialogs
-31 伝崽祰戔”
-32 ヵ峈睎伝崽藹楙堈祰戔﹜祼隓恄髓\＞Е稹頝踛\＝\n泂⻏棷ャ艀﹞\n\n睎寣悒⑴髓囷え鶈え嶂冈磣隉炟柁\＞ャ艀郖帣\＝\n坭ャ艀祰戔﹞\n\n睎薚泂衭伝崽楙堈祰戔蓇?
-33 伝崽郖帣”
-34 ヵ峈睎伝崽藹楙堈郖帣﹜祼隓恄囷え\n\＞Е稹頝踛\＝泂⻏棷ャ艀楙堈郖帣邴讓屼柁\n邴祰戔﹞\n\n睎寣悒⑴髓囷え鶈え嶂冈磣隉炟柁\＞ャ艀郖帣\＝\n坭ャ艀楙堈郖帣昑怬祰戔﹞\n\n睎薚泂衭伝崽楙堈郖帣蓇?
+31 刪除控制：
+32 如果您刪除了這個控制，就無法以\「安裝圖像\」\n定位區回復。\n\n您稍後可以使用應用程式管理者的\「回復面板\」\n來回復控制。\n\n您確定要刪除這個控制嗎?
+33 刪除次面板：
+34 如果您刪除了這個次面板，就無法使用\n\「安裝圖像\」定位區回復這個次面板所包含的\n所有控制。\n\n您稍後可以使用應用程式管理者的\「回復面板\」\n來回復這個次面板和其控制。\n\n您確定要刪除這個次面板嗎?
 
 $ Used for the name of a newly created workspace.
-35 隞齡汃洠睮
+35 新工作空間
 
 $ Used for Install Icon title in Install Icon popup menu.
-36 Е稹頝踛
+36 安裝圖像
 
 
 $set 84
@@ -736,7 +736,7 @@ $    THIS COMMENT FOR DTWM TEAM ONLY -- UI.c --
 $    This entire set should be localized.
 $ 
 $ Message used for the label of the dynamic install area.
-1 Е稹頝踛
+1 安裝圖像
 
 
 $set 86
@@ -744,20 +744,20 @@ $    THIS COMMENT FOR DTWM TEAM ONLY -- Callback.c --
 $    This entire set should be localized.
 
 $ The next two messages are used for workspace naming errors
-1 齡汃洠睮磣隉炟 - 庍ボ蠆諟
-2 齡汃洠睮ボ磝隓淩迖适闀
+1 工作空間管理者 - 改名錯誤
+2 工作空間名稱無效或重複
 
 $ The next three messages are used for the dynamical install error dialog.
-3 齡汃洠睮磣隉炟 - Е稹頝踛蠆諟
-4 Е稹頝踛”
+3 工作空間管理者 - 安裝圖像錯誤
+4 安裝圖像：
 
 $ Messages 5 and 6 are old. They are replaced by messaged 8 and 9.
 5 There is already a icon of this name.
 6 Control Action Error
 
-7 隓恄岊怉篎麔淰
-8 儸頝踛囷え篎ボ磝﹞
-9 齡汃洠睮磣隉炟 - 頝踛棬汃蠆諟
+7 無法找到該檔案
+8 已有圖像使用該名稱。
+9 工作空間管理者 - 圖像動作錯誤
 
 
 $set 99

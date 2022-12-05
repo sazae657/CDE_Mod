@@ -68,31 +68,31 @@ $ Messages 1 - 4 are used by the "numeric base" option button.  Bin is
 $  short for Binary, Oct is short for Octal, Dec is short for Decimal and 
 $  Hex is short for Hexidecimal.  Keep these to 3 to 4 characters!
 $ 
-1 蘑瑱⻏
-2 蘇瑱⻏
-3 觸瑱⻏
-4 觸蠟瑱⻏
+1 二進位
+2 八進位
+3 十進位
+4 十六進位
 $ 
 $ Messages 5 - 7 are used by the "display mode" option button. Eng is an
 $  abbreviation for Engineering, Fix is an abbreviation for Fixed, and
 $  Sci is an abbreviation for Scientific.  Keep these to 3 characters.
 $ 
-5 齡嶂冈
-6 枒泂冈
-7 秠蟨冈
+5 工程式
+6 固定式
+7 科學式
 $ 
 $ NOTE: no message 8
 $ 
 $ Messages 9 - 11 refer to the three modes the Calculator can operate in.
 $  They are listed in the "Mode" option button.
 $ 
-9 娷棜篲冈
-10 敭藟篲冈
-11 秠蟨篲冈
+9 財務模式
+10 邏輯模式
+11 科學模式
 $ 
 $ Message 12 - This is the title to the Calculator.
 $ 
-12 衶磭鞥
+12 計算機
 $ 
 $ Messages 13 - 30 are the labels in the menubar pulldown menus and the
 $  mnemonic's (the letter that gets underlined for keyboard access) that 
@@ -101,73 +101,73 @@ $
 $ Message 13 is the mnemonic for Message 14
 $ 
 13 O
-14 藞禋(O)
-15 奡襉穛Б蟟(R)
-16 ASCII 鼲葎(A)
+14 選項(O)
+15 記憶暫存器(R)
+16 ASCII 轉換(A)
 $ 
 $ Message 17 is the mnemonic for Message 18
 $ 
 17 H
-18 赮伢諰咭(H)
+18 輔助說明(H)
 $ 
 $ Message 19 is the mnemonic for Message 20
 $ 
 19 v
-20 颮羏(v)
+20 概觀(v)
 $ 
 $ Message 21 is the mnemonic for Message 22
 $ 
 21 T
-22 齡汃(T)
+22 工作(T)
 $ 
 $ Message 23 is the mnemonic for Message 24
 $ 
 23 R
-24 棤℡罶涷(R)
+24 參考資料(R)
 $ 
 $ Message 25 is the mnemonic for Message 26
 $ 
 25 O
-26 驨卼禋げ(O)
+26 關於項目(O)
 $ 
 $ Message 27 is the mnemonic for Message 28
 $ 
 27 U
-28 囷え赮伢諰咭(U)
+28 使用輔助說明(U)
 $ 
 $ Message 29 is the mnemonic for Message 30
 $ 
 29 A
-30 驨卼衶磭鞥(A)
+30 關於計算機(A)
 $ 
 $ Message 31 is an simple error message.
 $ 
-31 隓恄瞅絒䬷ざ蟟﹞\n
+31 無法開啟顯示器。\n
 $ 
 $ Messages 32 and 33 are button labels for dialog boxes.
 $ 
-32 驨椲
-33 伒怮鶈え
+32 關閉
+33 即刻應用
 $ 
 $ Message 34 is an simple error message.
 $ 
-34 隓恄瞅絒瞃栠汃鞄麔淰
+34 無法開啟階段作業檔案
 $ 
 $ Message 35 - Gets put in the "Functions" popup when no functions have been
 $  defined by the users.
 $ 
-35 ゝ泂氂怐禨
+35 未定義函數
 $ 
 $ Message 36 and 37 are titles to two types of dialogs.
 $ 
-36 凭㶴謦汃楈夼
-37 薚諝楈夼
+36 繼續操作通告
+37 確認通告
 $ 
 $ Message 38 and 39 are another label for the Help pulldown menu.
 $ Message 38 is the mnemonic for Message 39
 $ 
 38 C
-39 蠡晥玿眭(C)
+39 內容表格(C)
 $ 
 $ 40 -  This is the mnemonic for the 'Memory Registers...'  option on 
 $  the Option menu pulldown.  (message 15 set 2)
@@ -201,12 +201,12 @@ $
 $ 
 $ 46 - This is the title for the popup menu.
 $ 
-46 伒怮䬷ざ衶磭鞥
+46 即刻顯示計算機
 $ 
 $ Used as the title, In Asian languages labels need to be different
 $  from the menu label.
 $ 
-47 赮伢諰咭
+47 輔助說明
 $ 
 $set 3
 $ ****** Module: text.c ****(developer comment only)********
@@ -215,29 +215,29 @@ $ NOTE: there is no Message 1 - 4.
 $ 
 $ Messages 5-47 are what gets displayed on each of the calculator keys.
 $ 
-5 怐禨
-6 琣禨
-7 挹耰
+5 函數
+6 常數
+7 按鍵
 $ 
 $ Message 8 - Int is short for integer.
 $ 
-8 謽禨
+8 整數
 $ 
 $ Message 9 - Frac is short for fraction.
 $ 
-9 麵禨
+9 小數
 $ 
 $ Message 10 - Abs is short for absolute value.
 $ 
-10 廕髱圊
+10 絕對值
 $ 
 $ Message 11 - Exp is short for exponent.
 $ 
-11 挴禨
-12 窵薚圊
-13 鬊Б
-14 痻ャ
-15 ガ葎
+11 指數
+12 精確值
+13 儲存
+14 喚回
+15 交換
 16 1/x
 17 x^2
 18 %
@@ -292,19 +292,19 @@ $  key.  These are the keyboard keys which provide the given function. These are
 $  also known as keyboard accelerators.  These keys directly correspond to
 $  Messages 5-47. (i.e 5 maps to 52, 6 maps to 53, etc.).
 $ 
-52 F - 怐禨
-53 # - 琣禨
-54 k - 挹耰
-55 I - 謽禨
+52 F - 函數
+53 # - 常數
+54 k - 按鍵
+55 I - 整數
 $ Message 56 is "Control f" 
-56 ^f - 麵禨
+56 ^f - 小數
 $ Message 57 is "Control u"
-57 ^u 廕髱圊
-58 E - 挴禨
-59 A - 窵薚圊
-60 S - 鬊Б
-61 R - 痻ャ
-62 X - ガ葎
+57 ^u 絕對值
+58 E - 指數
+59 A - 精確值
+60 S - 儲存
+61 R - 喚回
+62 X - 交換
 63 r - 1/x
 64 @ - x^2
 65 %
@@ -342,7 +342,7 @@ $
 91 0
 92 .
 93 =
-94 q - 廎忒
+94 q - 結束
 $ Messages 95-98 are keyboard acclerators for Messages 48-51 
 95 B
 96 D
@@ -353,46 +353,46 @@ $ NOTE: Messages 99 - 106 aren't used.
 $ 
 $ Messages 107-118 are dialog/popup titles.
 $ 
-107 窵薚圊
-108 禨圊椕禨
-109 琣禨
-110 ガ葎
-111 怐禨
-113 篲冈
-114 䬷ざ麷伀
-115 抻ャ
-116 ⑶傶
-117 鬊Б
-118 警侜怐禨倛鳷
+107 精確值
+108 數值基數
+109 常數
+110 交換
+111 函數
+113 模式
+114 顯示類別
+115 取回
+116 右移
+117 儲存
+118 三角函數型態
 $ 
 $ Messages 119-128 are the messages describing the Constants listed when the
 $ Constant popup is brought up.  NOTE: don't translate <=>
 $ 
-119 襬咑/麵渀 <=> 蚆婗/麵渀﹞
-120 2 柁⼳巖淂﹞
-121 e﹞
-122 pi﹞
-123 襬禳 <=> 蚆ベ﹞
-124 芧唄﹞
-125 2 ^ 20﹞
-126 襬优 <=> 翊⑼﹞
-127 霰閛⺀ <=> 蚆戔逑畽痼⻏(BTU)﹞
-128 ゥ巖襬禳 <=> ゥ巖蚆ベ﹞
+119 公里/小時 <=> 英哩/小時。
+120 2 的平方根。
+121 e。
+122 pi。
+123 公分 <=> 英吋。
+124 弧度。
+125 2 ^ 20。
+126 公克 <=> 盎司。
+127 千焦耳 <=> 英制能量單位(BTU)。
+128 立方公分 <=> 立方英吋。
 $ 
 $ Messages 132-143 are labels in the dialogs.
 $ 
-132 琣禨蹌磍”
-133 怐禨蹌磍”
-134 衶磭鞥
-135 隞琣禨
-136 隞怐禨
-137 奡襉穛Б蟟
-138 娷棜穛Б蟟(g)
-139 衶磭鞥笱迒
-140 絩訒”
-141 禨圊”
-142 耰蘋琣禨(C)
-143 耰蘋怐禨(F)
+132 常數編號：
+133 函數編號：
+134 計算機
+135 新常數
+136 新函數
+137 記憶暫存器
+138 財務暫存器(g)
+139 計算機特性
+140 敘述：
+141 數值：
+142 鍵入常數(C)
+143 鍵入函數(F)
 $ 
 $ NOTE: Message 144 - 147 aren't used.
 $ 
@@ -406,105 +406,105 @@ $  word "Constant" and %1d is a number 0-9.  This message gets put in a
 $  dialog when the user defines a new Function or Constant that already 
 $  exists and the dialog asks the user wheither to overwrite it. (Message 380)
 $ 
-149 %s %1d 儸槴Бョ
+149 %s %1d 已經存在
 $ 
 $ Messages 153-162 are in the accuracy popup menu for the level of accuracy.
 $ 
-153 0 ⻏窵薚禨А
-154 1 ⻏窵薚禨А
-155 2 ⻏窵薚禨А
-156 3 ⻏窵薚禨А
-157 4 ⻏窵薚禨А
-158 5 ⻏窵薚禨А
-159 6 ⻏窵薚禨А
-160 7 ⻏窵薚禨А
-161 8 ⻏窵薚禨А
-162 9 ⻏窵薚禨А
+153 0 位精確數字
+154 1 位精確數字
+155 2 位精確數字
+156 3 位精確數字
+157 4 位精確數字
+158 5 位精確數字
+159 6 位精確數字
+160 7 位精確數字
+161 8 位精確數字
+162 9 位精確數字
 $ 
 $ Messages 163-172 are in the Sto, Rcl, Exch popup menu's listing the registers.
 $ 
-163 穛Б蟟 0
-164 穛Б蟟 1
-165 穛Б蟟 2
-166 穛Б蟟 3
-167 穛Б蟟 4
-168 穛Б蟟 5
-169 穛Б蟟 6
-170 穛Б蟟 7
-171 穛Б蟟 8
-172 穛Б蟟 9
+163 暫存器 0
+164 暫存器 1
+165 暫存器 2
+166 暫存器 3
+167 暫存器 4
+168 暫存器 5
+169 暫存器 6
+170 暫存器 7
+171 暫存器 8
+172 暫存器 9
 $ 
 $ Messages 188-191 are the numeric base types of operation.
 $ 
-188 蘑瑱⻏
-189 蘇瑱⻏
-190 觸瑱⻏
-191 觸蠟瑱⻏
+188 二進位
+189 八進位
+190 十進位
+191 十六進位
 $ 
 $ Messages 192-194 are the display types.
 $ 
-192 齡嶂冈
-193 枒泂冈
-194 秠蟨冈
+192 工程式
+193 固定式
+194 科學式
 $ 
 $ Messages 195-197 are the trig. types.
 $ 
-195 唄 
-196 侜唄
-197 芧唄
+195 度 
+196 角度
+197 弧度
 $ 
 $ Messages 198-201 are the modes of operation of the calculator.
 $ 
-198 椕ヾ篲冈
-199 娷棜篲冈
-200 敭藟篲冈
-201 秠蟨篲冈
+198 基本模式
+199 財務模式
+200 邏輯模式
+201 科學模式
 $ 
 $ Messages 203-207 are the labels in the Financial Registers dialog.
 $ 
-203 蛺禨:
-204 龰伈跅 %:
-205 隃圊:
-206 蛺體畇籧:
-207 嗈圊:
+203 期數:
+204 年利率 %:
+205 現值:
+206 期付金額:
+207 終值:
 $ 
 $ Messages 208-217 are the button labels of the financial portion of the
 $ Calculator when it is in Financial mode.
 $ 
-208 蛺禨(Term)
-209 龰伈跅,%(i%Yr)
+208 期數(Term)
+209 年利率,%(i%Yr)
 $ 
 $ Message 210 - Pv stands for Present Value.
 $ 
-210 隃圊(Pv)
+210 現值(Pv)
 $ 
 $ Message 211 - Pmt stands for Payment
 $ 
-211 蛺體畇籧(Pmt)
+211 期付金額(Pmt)
 $ 
 $ Message 212 - Fv stands for Future Value.
 $ 
-212 嗈圊(Fv)
+212 終值(Fv)
 $ 
 $ Message 213 means clear financial registers
 $ 
-213 覗崽娷棜穛Б蟟
+213 清除財務暫存器
 $ 
 $ Message 214 means Compounding term
 $ 
-214 闀伈蛺禨(Ctrm)
+214 複利期數(Ctrm)
 $ 
 $ Message 215 means double-declining depreciation
 $ 
-215 灛唲蠹楬帊鰹恄(Ddb)
+215 雙倍加速折舊法(Ddb)
 $ 
 $ Message 216 means Straight-line depreciation
 $ 
-216 枺轃帊鰹恄(Sln)
+216 直線折舊法(Sln)
 $ 
 $ Message 217 means Sum-of-the-years-digits depreciation
 $ 
-217 龰禨ポ衶帊鰹恄(Syd)
+217 年數合計折舊法(Syd)
 $ 
 $ Messages 218-226 are the button labels of the logical portion of the
 $ Calculator when it is in Logical mode.
@@ -574,21 +574,21 @@ $ Messages 239-248 are the button labels of the financial portion of the
 $ Calculator when it is in Financial mode when in "keys" mode. (i.e. button
 $ acclerators).
 $ 
-239 T - 蛺禨(Term)
+239 T - 期數(Term)
 $ Message 240 is 'Control r'
-240 ^r - 龰伈跅,%(i%Yr)
-241 p - 隃圊(Pv)
-242 P - 蛺體畇籧(Pmt)
-243 v - 嗈圊(Fv)
-244 L - 覗崽娷棜穛Б蟟
+240 ^r - 年利率,%(i%Yr)
+241 p - 現值(Pv)
+242 P - 期付金額(Pmt)
+243 v - 終值(Fv)
+244 L - 清除財務暫存器
 $ Message 245 is 'Control t'
-245 ^t - 闀伈蛺禨(Ctrm)
+245 ^t - 複利期數(Ctrm)
 $ Message 246 is 'Control d'
-246 ^d - 灛唲蠹楬帊鰹恄(Ddb)
+246 ^d - 雙倍加速折舊法(Ddb)
 $ Message 247 is 'Control s'
-247 ^s - 枺轃帊鰹恄(Sln)
+247 ^s - 直線折舊法(Sln)
 $ Message 248 is 'Control y'
-248 ^y - 龰禨ポ衶帊鰹恄(Syd)
+248 ^y - 年數合計折舊法(Syd)
 $ 
 $ Messages 249-257 are the button labels of the logical portion of the
 $ Calculator when it is in Logical mode when in "keys" mode. (i.e. button
@@ -626,9 +626,9 @@ $ Message 266 is 'Control t'
 $ 
 $ Messages 270-272 are capitalized versions of the calculator MODES.
 $ 
-270 娷棜篲冈
-271 敭藟篲冈
-272 秠蟨篲冈
+270 財務模式
+271 邏輯模式
+272 科學模式
 $ 
 $ Messages 273-336 are error messages which will go into $HOME/.errorlog. They
 $ are all math errors. Localization of these are optional.
@@ -698,61 +698,61 @@ $
 $ Messages 337-343 are error messages from the command line options.
 $ They also will only show up in the errorlog.
 $ 
-337 衶磭鞥” -a 錛衭 0-9 欄窵薚圊﹞\n
+337 計算機： -a 需要 0-9 之精確值。\n
 $ 
 $ Message 338 only goes to the errorlog file 
 $ 
-338 衶磭鞥” 窵薚圊鶈ョ 0-9 欄謓睕蠡\n窵薚唄渿暋珜蠡暋圊” 2﹞\n
-339 衶磭鞥” 椕禨鶈珜蘑瑱⻏﹜蘇瑱⻏﹜觸瑱⻏迖觸蠟瑱⻏﹞\n椕禨渿暋珜蠡暋圊”觸瑱⻏﹞\n
+338 計算機： 精確值應在 0-9 之範圍內\n精確度將設為內設值： 2。\n
+339 計算機： 基數應為二進位，八進位，十進位或十六進位。\n基數將設為內設值：十進位。\n
 $ 
 $ Message 340 - %s is the invalid display mode the user supplied.
 $   This goes to $HOME/.dt/errorlog only.
 $ 
-340 衶磭鞥”䬷ざ篲冈 [%s] 攜髱\n
+340 計算機：顯示模式 [%s] 不對\n
 $ 
 $ Message 341 - %s is the invalid mode the user supplied.
 $   This goes to $HOME/.dt/errorlog only.
 $ 
-341 衶磭鞥”篲冈 [%s] 攜髱\n篲冈渿暋泂蠡泂圊”秠蟨篲冈\n
+341 計算機：模式 [%s] 不對\n模式將設定成內定值：科學模式\n
 $ 
 $ Message 342 - %s is the invalid trig. mode the user supplied.
 $   This goes to $HOME/.dt/errorlog only.
 $ 
-342 衶磭鞥”警侜怐禨篲冈 [%s] 攜髱﹞\n
-343 衶磭鞥”瞃栠麔淰攜髱﹞\n
+342 計算機：三角函數模式 [%s] 不對。\n
+343 計算機：階段檔案不對。\n
 $ 
 $ NOTE: no Messages 344 through 350
 $ 
 $ Message 351 is a label in the ASCII convert dialog.
 $ 
-351 А蠣”
+351 字元：
 $ 
 $ Message 352 is the title of the ASCII convert dialog.
 $ 
-352 抻痤 ASCII А謑
+352 取得 ASCII 字碼
 $ 
 $ Messages 353-355 are the Trigonometric types (abbreviations).
 $ 
-353 唄
-354 侜唄
-355 芧唄
+353 度
+354 角度
+355 弧度
 $ 
 $ Messages 356-358 are the usage messages.
 $    Don't translate dtcalc, -a, -m, -b, -no_menu_bar -? -notation -trig or
 $     -session.
 $ 
-356 衶磭鞥 (dtcalc) 斿ヾ丐﹞%1d\n\n
-357 え恄”dtcalc [-a accuracy] [-m mode] [-b base] [-no_menu_bar] [-?]\n
+356 計算機 (dtcalc) 版本１。%1d\n\n
+357 用法：dtcalc [-a accuracy] [-m mode] [-b base] [-no_menu_bar] [-?]\n
 358 \t [-notation display_notation] [-trig trignometric_type] [-session session_file]\n
 $ 
 $ Messages 359 and 360 not used
 $ 
 $ Messages 361 - 363 are button labels
 $ 
-361 抻祤
-362 薚諝
-363 凭㶴
-364 蠆諟
+361 取消
+362 確認
+363 繼續
+364 錯誤
 $ 
 $ Message 365 - 369 not used
 $ 
@@ -763,27 +763,27 @@ $
 370 CLR
 371 HYP
 372 INV
-373 琣禨圊攜髱﹞
-374 琣禨蹌磍攜髱﹞
-375 怐禨蹌磍攜髱﹞
+373 常數值不對。
+374 常數編號不對。
+375 函數編號不對。
 $ 
 $ Message 376 not used.
 $ 
-377 琣禨ゝ庍䨣﹞
-378 禨圊椆巗蠆諟﹞
-379 蝒磭蠣椆巗蠆諟﹞
-380 薚泂衭适嬣蓇?
-381 ⽁禕ョ 0-9 柁謓睕蠡﹞
+377 常數未改變。
+378 數值堆疊錯誤。
+379 運算元堆疊錯誤。
+380 確定要重寫嗎?
+381 必須在 0-9 的範圍內。
 $ 
 $ Message 382 not used.
 $ 
-383 琣禨
-384 怐禨
-385 隓恄鬊Б蠡泂圊﹞\n
+383 常數
+384 函數
+385 無法儲存內定值。\n
 $ 
 $ NOTE: Messages 386 - 402 are not used.
 $ 
-403 廎忒(x)
+403 結束(x)
 $ 
 $ Messages 452-478 are the actual characters that the keyboard accelerators
 $  map to.  These are the keyboard keys which provide the given function. 
@@ -1052,7 +1052,7 @@ $
 $ added now capability to Financial regs: change the payment per year
 $ The following messages (514 - 517) refect this new button.
 $ 
-514 體遄畇籧/龰:
+514 付款金額/年:
 515 P/YR 
 516 y - P/YR
 517 y
@@ -1060,26 +1060,26 @@ $
 $ Used as the title, In Asian languages the dialog title needs to be different
 $  from the menu label.
 $ 
-518 娷棜穛Б蟟
+518 財務暫存器
 $ 
 $set 4
 $ ****** Module: help.c ****(developer comment only)********
 $ Message 1 is the title for the calculator help dialogs.
-1 衶磭鞥--赮伢諰咭
-2 睎⽁禕ョ"衶磭鞥"斕藞謥纂堈禋げ﹞
-3 蠆諟
-4 薚泂
+1 計算機--輔助說明
+2 您必須在"計算機"中選擇一個項目。
+3 錯誤
+4 確定
 
 $set 5
 $ ****** Module: functions.c ****(developer comment only)********
 $ 
-1 蠆諟”衶磭⼇絫
-2 蠆諟”隓箾
-3 蠆諟”ロ适箾
-4 蠆諟”Term<= 0
-5 蠆諟”痼瑢蛺圊攜髱
-6 蠆諟”禨げ霽騰
-7 隓恄髓盻誻欄伈跅﹜\n盻誻欄隃圊﹜\n縋盻誻欄嗈圊\n衶磭 "闀伈蛺禨"﹞\n
+1 錯誤：計算失敗
+2 錯誤：無解
+3 錯誤：多重解
+4 錯誤：Term<= 0
+5 錯誤：單週期值不對
+6 錯誤：數目太大
+7 無法以非零之利率，\n非零之現值，\n與非零之終值\n計算 "複利期數"。\n
 
 $set 99
 $ ****** Version Information ********

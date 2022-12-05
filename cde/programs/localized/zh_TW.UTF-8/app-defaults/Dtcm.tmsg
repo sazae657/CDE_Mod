@@ -232,7 +232,7 @@ $
 $ Messages 52 and 53 are programable date formats
 $ 
 $ 52 %B %Y
-52 %Y龰 %b
+52 %Y年 %b
 53 %B
 $ 
 $ Messages 54 through 59 are location specific pixmaps.  These could

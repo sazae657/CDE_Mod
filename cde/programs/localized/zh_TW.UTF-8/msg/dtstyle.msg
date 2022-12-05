@@ -63,9 +63,9 @@ $set 2
 $ Message 1 from set 2 was deleted from the message catalog
 
 $ _DtMessage 2 is the title of all Information dialog boxes
-2 楈夼
+2 通告
 $ _DtMessage 3 is the title of all Error dialog boxes
-3 蠆諟
+3 錯誤
 $ _DtMessage 4 WILL ONLY APPEAR IN THE DT ERRORLOG FILE
 4 Cannot communicate with the session\n\
 manager... Exiting.
@@ -77,12 +77,12 @@ second attempt aborted.
 Exiting.
 
 $ _DtMessage 7 is the title of all Help dialog boxes
-7 ⼃倛冈穔磣隉炟 - 赮伢諰咭
+7 外型式樣管理者 - 輔助說明
 
 $ _DtMessage 8 is an error message that appears when you are using Itemh Help
 $ and select on something outside of the Style Manager
-8 睎⽁禕ョ⼃倛冈穔磣隉炟\n\
-斕藞謥纂堈禋げ﹞
+8 您必須在外型式樣管理者\n\
+中選擇一個項目。
 
 $ _DtMessage 9 WILL ONLY APPEAR IN THE DT ERRORLOG FILE
 9 Could not obtain screen saver information\n\
@@ -95,37 +95,37 @@ $ _DtMessage set 4 is for the Style Manager main window
 $ Messages 6,8-26,34,39 from set 4 were deleted from the message catalog
 
 $ _DtMessage 1 is the title of the main dtstyle window
-1 ⼃倛冈穔磣隉炟
+1 外型式樣管理者
 
 $ mnemonic and label for the File menubar item.
 2 F
-3 麔淰(F)
+3 檔案(F)
 $ mnemonic and label for the Help menubar item.
 4 H
-5 赮伢諰咭(H)
+5 輔助說明(H)
 
 $ _DtMessage 7 is the label for the Exit button in the File pulldown
 $ the mnenomic for the Exit button is set 4 _DtMessage 40
-7 廎忒
+7 結束
 
 $ Messages 27-33,35  are the labels on the buttons in the dtstyle main window.
-27 籦⺪
-28 А夆
-29 茯葔泂⻏
-30 耰薏
-31 僶趡
-32 韏鐖
-33 糬魦
-35 絒棬
+27 顏色
+28 字形
+29 背景定位
+30 鍵盤
+31 滑鼠
+32 嗶聲
+33 螢幕
+35 啟動
 
 $  MESSAGE 36 IN SET 4 WILL ONLY APPEAR IN THE DT ERRORLOG FILE
 36 No Dtstyle restore information available for current session
 
 $ _DtMessage 37 is the label on the dtstyle icon
-37 ⼃倛冈穔 
+37 外型式樣 
 
 $ Message 38 is the label on the Window button in the dtstyle main window.
-38 槉嵺
+38 視窗
 
 $ _DtMessage 40 is replaced with message 53
 $ 40 E
@@ -152,7 +152,7 @@ $ 46 Reference...
 $ On Item menu item
 $ Keybaord menu item
 47 O
-48 驨卼禋げ(O)
+48 關於項目(O)
 
 $ Using Help... menu item
 49 U
@@ -169,40 +169,40 @@ $ Message 53 is replaced with message 40
 
 $ Messages 54-55 are replacements for messages 41-42
 54 v
-55 颮羏(v)
+55 概觀(v)
 
 $ Message 56 is a replacement for messages 44
-56 齡汃(T)
+56 工作(T)
 
 $ Message 57 is a replacement for messages 46
-57 棤℡(R)
+57 參考(R)
 
 $ Message 58 is a replacement for messages 50
-58 囷え赮伢諰咭(U)
+58 使用輔助說明(U)
 
 $ Messages 59-60 are replacements for messages 51-52
 59 A
-60 驨卼⼃倛冈穔磣隉炟(A)
+60 關於外型式樣管理者(A)
 
 $set 5
 $ _DtMessage set 5 is for the Font dialog
 $ Messages 1-6, 7-16 from set 5 were deleted from the message catalog
 
 $ _DtMessage 17 is the label of the titlebox of the preview font area
-17 諅ៜ
+17 預覽
 
 $ _DtMessage 18 appears in a Notice dialog after the user selects a new font
 $ and presses Ok - when the resource *WriteXrdbImmediate is True
-18 А夆柁庍䨣ョ譯絒棬栲咍鶈え嶂\n\
-冈渀鞂䬷隃罐坭﹞怬瀦柁鶈え嶂冈﹜\n\
-坲ヵ麔淰磣隉炟昑鶈え嶂冈磣隉炟﹜\n\
-崽盻睎廎忒痐譫磣隉侇嗄呥テ适隞僳\n\
-蘋﹜匢衧攜鞂ゥ伒酈旃罐坭﹞
+18 字形的改變在下次啟動某些應用程\n\
+式時會顯現出來。其餘的應用程式，\n\
+例如檔案管理者和應用程式管理者，\n\
+除非您結束桌上管理系統並再重新登\n\
+入，否則不會立即反映出來。
 
 $ _DtMessage 19 appears in a Notice dialog after the user selects a new font
 $ and presses Ok - when the resource *WriteXrdbImmediate is False
-19 适隞絒棬楙堈瞃栠汃鞄欄悒﹜\n\
-藞泂柁А夆祼鞂揧囷え﹞
+19 重新啟動這個階段作業之後，\n\
+選定的字形就會被使用。
 
 $ _DtMessage 20 and 21 is the text that initially appears in the Font Preview 
 $ area displaying sample user and system fonts.
@@ -210,30 +210,30 @@ $ area displaying sample user and system fonts.
 21 AaBbCcDdEeFfGg0123456789
 
 $ _DtMessage 22 is the label of the titlebox containing the list of font sizes
-22 騰麵
+22 大小
 
 $ _DtMessage 23 is the title of the Fonts dialog
-23 ⼃倛冈穔磣隉炟 - А夆
+23 外型式樣管理者 - 字形
 
 $ _DtMessage 24 is an informative message used by the Fonts dialog 
 
-24 騰麵ト玿斕扽睎げ虳痐郖譫囷え\n\
-柁А倛. ヵ峈藞抻呥鶈え隞А倛,\n\
-伒囷え⼃倛冈穔磣隉炟 - А倛髱緷,\n\
-躂隓恄ャ怉げ虳柁А倛.
+24 大小列表中沒有您目前桌面上使用\n\
+的字型. 如果選取並應用新字型,\n\
+即使用外型式樣管理者 - 字型對話,\n\
+也無法回到目前的字型.
 
 $set 6
 $ _DtMessage set 6 is for the Beep dialog
 $ _DtMessage 1,6 from set 6 have been deleted from the message catalog
 
 $ Messages 2 through 5 are the default buttons and labels of the scales.  
-2 蠡泂圊
-3 郣畽
-4 郣鞜
-5 蛺睮
+2 內定值
+3 音量
+4 音調
+5 期間
 
 $ _DtMessage 7 is the title of the Beep dialog box
-7 ⼃倛冈穔磣隉炟 - 韏鐖  
+7 外型式樣管理者 - 嗶聲  
 
 
 $set 7
@@ -242,36 +242,36 @@ $ Messages 1-2 from set 7 have been deleted from the message catalog
 
 $ Messages 3 through 9 are labels of the buttons and text visible in the 
 $ Session Startup dialog box. 
-3 ョ僳蘋渀”
-4 凭㶴隃⺼瞃栠汃鞄
-5 珃ャ媊沓瞃栠汃鞄
-6 僳罐渀緧棯
-7 僳罐薚諝髱緷”
-8 瞅絒
-9 驨椲
-10 暋泂媊沓瞃栠汃鞄...
+3 在登入時：
+4 繼續現行階段作業
+5 返回起始階段作業
+6 登出時詢問
+7 登出確認對話：
+8 開啟
+9 關閉
+10 設定起始階段作業...
 
 $ _DtMessage 11 is a warning message when the user pushes Set Home Session...
 $ Notice the spaces before Continue .. the spaces make it centered.
-11 ヵ睎柁媊沓瞃栠汃鞄渿鞂髓\n\
-隃⺼瞃栠汃鞄抻鷥﹞\n\n\
-                 衭凭㶴蓇?
+11 如此您的起始階段作業將會以\n\
+現行階段作業取代。\n\n\
+                 要繼續嗎?
 
 $ _DtMessage 12 is the title of the warning dialog box when Set Home Session is 
 $ pushed. 
-12 滙夼
+12 警告
 
 $ _DtMessage 13 is an error message
-13 楙堈瞃栠汃鞄旂か纂堈 X 槉嵺侇嗄\n\
-絒棬杬麟碬邴絒棬﹞ɪ絒棬暋泂隓淩﹜\n\
-モ珜楙堈瞃栠汃鞄隓恄ャ艀﹞
+13 這個階段作業是由一個 X 視窗系統\n\
+啟動命令集所啟動。但啟動設定無效，\n\
+因為這個階段作業無法回復。
 
 $ _DtMessage 14 is the title of the Session Startup dialog box.
-14 ⼃倛冈穔磣隉炟 - 絒棬
+14 外型式樣管理者 - 啟動
 
 $ _DtMessage 15 is an error message
-15 瞃栠汃鞄磣隉炟扽ョ欹⺼﹞\n\
-絒棬暋泂隓淩﹞
+15 階段作業管理者沒有在執行。\n\
+啟動設定無效。
 
 
 $set 8
@@ -283,59 +283,59 @@ $ _DtMessage set 9 is for the Mouse dialog
 $ Message 7 from set 9 have been deleted from the message catalog
 
 $ Messages 1-4 are labels of toggle buttons in the Mouse Dialog. 
-1 ⼢
-2 ⑶
-3 え鷗塤鳹”
-4 挹瘖 2”
+1 左
+2 右
+3 用手習慣：
+4 按鈕 2：
 $ _DtMessage 5 is the label of default button.
-5 蠡泂圊
+5 內定值
 
 $ Messages 6,8,9 are labels of the scales.
-6 椵挹怚譯
-8 蠹楬
-9 鶚盉圊
+6 連按兩下
+8 加速
+9 臨界值
 
 $  MESSAGE 10 IN SET 9 WILL ONLY APPEAR IN THE DT ERRORLOG FILE
-10 蠆諟”暋泂挴簅髱鶈\n
+10 錯誤：設定指標對應\n
 
-11 蒡婽
-12 鞜謽
+11 傳送
+12 調整
 
 $ _DtMessage 13 appears in a Notice dialog after the user selects the 
 $ left-handed or right-handed toggle
-13 睎挹纂譯＞薚泂＝欄悒﹜⑶饡縋⼢饡\n\
-僶㪫挹瘖柁衢逑ゥ伒ガ葎﹞皕僶趡槉嵺\n\
-＞鉡箹椵挹怚譯＝頝夆柁挹瘖 1 縋挹瘖 3\n\
-柁⻏殦﹜伒⑴痤洁げ虳え鷗塤鳹柁暋泂﹞\n\
+13 您按一下「確定」之後，右邊與左邊\n\
+滑屬按鈕的功能立即交換。從滑鼠視窗\n\
+「測試連按兩下」圖形的按鈕 1 與按鈕 3\n\
+的位置，即可得知目前用手習慣的設定。\n\
 
 $ _DtMessage 14 appears in a Notice dialog after the user selects the 
 $ transfer toggle to change the function of the middle mouse button.
-14 ヵ峈睎挹纂譯＞薚泂＝﹜ョ譯纂堈瞃栠汃鞄斕﹜\n\
-僶趡挹瘖 2 祼鞂揧暋泂＞鼲葎＝(侹)﹞
+14 如果您按一下「確定」，在下一個階段作業中，\n\
+滑鼠按鈕 2 就會被設定成「轉換」(拖曳)。
 
 $ double-click time and presses Ok (and the resource 
 $ *WriteXrdbImmediate is True)
-15 鶈え嶂冈适隞絒棬欄悒﹜隞柁椵挹\n\
-怚譯楬唄祼鞂ぇ淩﹞
+15 應用程式重新啟動之後，新的連按\n\
+兩下速度就會生效。
 
 $ _DtMessage 16 appears in a Notice dialog after the user selects a new 
 $ double-click time and presses Ok (and the resource 
 $ *WriteXrdbImmediate is False)
-16 ョ譯纂堈瞃栠汃鞄斕﹜隞柁椵挹怚譯楬唄\n\
-伒⑴ぇ淩﹞
+16 在下一個階段作業中，新的連按兩下速度\n\
+即可生效。
 
 $ _DtMessage 17 is the text below the mouse icon. Notice the two lines.
-17 鉡箹\n椵挹怚譯
+17 測試\n連按兩下
 
 $ _DtMessage 18 is the Mouse Dialog title
-18 ⼃倛冈穔磣隉炟 - 僶趡
+18 外型式樣管理者 - 滑鼠
 
 $ _DtMessage 19 appears in a Notice dialog after the user selects the 
 $ adjust toggle to change the function of the middle mouse button.
-19 ヵ峈睎挹纂譯＞薚泂＝﹜ョ譯纂堈瞃栠汃\n\
-鞄斕﹜僶趡挹瘖 2 祼鞂揧暋泂＞鞜謽＝﹞\n\
-挹瘖 2 ⑴髓え坭鞜謽齪А縋トざ藞謥﹞齪А\n\
-縋トざ柁柁蒡婽棬汃 (侹) 衧禕囷え挹瘖 1﹞\n\
+19 如果您按一下「確定」，在下一個階段作\n\
+業中，滑鼠按鈕 2 就會被設定成「調整」。\n\
+按鈕 2 可以用來調整文字與列示選擇。文字\n\
+與列示的的傳送動作 (拖曳) 則須使用按鈕 1。\n\
 
 $set 10
 $ _DtMessage set 10 is for the SaveRestore functionality
@@ -344,8 +344,8 @@ $ Messages 2,4 from set 10 have been deleted from the message catalog
 $  MESSAGE 1,3 IN SET 10 WILL ONLY APPEAR IN THE DT ERRORLOG FILE
 $ Messages 1,3 make up one error message.  Put together, they say 
 $ "<filename> <_DtMessage 2> <_DtMessage 1>
-1 黀栯麔淰暐⑴ḷ﹞
-3 %s 旂え坭鬊Б睎柁瞃栠汃鞄柁麔淰\n
+1 檢查檔案許可權。
+3 %s 是用來儲存您的階段作業的檔案\n
 
 
 $set 11
@@ -354,15 +354,15 @@ $ _DtMessage set 11 is for the Backdrop dialog
 $  MESSAGE 1 IN SET 11 WILL ONLY APPEAR IN THE DT ERRORLOG FILE
 
 $ _DtMessage 1 - could not open a backdrop directory
-1 隓恄瞅絒げ蠊 %s﹞
+1 無法開啟目錄 %s。
 $ _DtMessage 2 - error opening the backdrop files
-2 ⼃倛冈穔磣隉炟柁茯葔泂⻏楶禳\n\
-隓恄蝒汃﹜モ珜扽茯葔泂⻏麔⑴\n\
-え﹞霘黀栯 $HOME/.dt/errorlog﹞
+2 外型式樣管理者的背景定位部分\n\
+無法運作，因為沒有背景定位檔可\n\
+用。請檢查 $HOME/.dt/errorlog。
 
 
 $ _DtMessage 12 is the title of the Backdrop dialog box
-12 ⼃倛冈穔磣隉炟 - 茯葔泂⻏
+12 外型式樣管理者 - 背景定位
 
 
 $set 12
@@ -370,31 +370,31 @@ $ _DtMessage set 12 is for the Screen dialog
 $ Message 2 from set 12 has been deleted from the message catalog
 
 $ _DtMessage 1 is the title of the Screen dialog box. 
-1 ⼃倛冈穔磣隉炟 - 糬魦
+1 外型式樣管理者 - 螢幕
 
 $ Messages 3-14 are the labels and buttons for the Screen dialog
-3 蠡泂圊
-4 糬魦砵諔稹殦
-5 絒棬砵諔稹殦
-6 ペ伀砵諔稹殦渀睮暋泂
-7 禳㺪
-8 糬魦孍泂
+3 內定值
+4 螢幕省電裝置
+5 啟動省電裝置
+6 各別省電裝置時間設定
+7 分鐘
+8 螢幕鎖定
 $ Message 9 has been removed 
-10 瞅絒
-11 驨椲
-12 糬魦砵諔稹殦”
-13 糬魦孍泂”
-14 絒棬孍泂
-15 糬懞⺌棬彘馽
-16 糬懞⺌棬彘馽嶂冈
-17 絒棬糬懞彘馽嶂冈
-18 虳巖郖帣孍泂
+10 開啟
+11 關閉
+12 螢幕省電裝置：
+13 螢幕鎖定：
+14 啟動鎖定
+15 螢慕自動停歇
+16 螢慕自動停歇程式
+17 啟動螢慕停歇程式
+18 前方面板鎖定
 $ Message 19 has been replaced by message 21
-19 囷え孍泂茯葔
-20 ペ伀茯葔渀睮暋泂
+19 使用鎖定背景
+20 各別背景時間設定
 $ Message 21 is a replacement for message 19
-21 囷え茯葔孍泂
-22 椴咭孍泂
+21 使用背景鎖定
+22 透明鎖定
 
 $set 13
 $ _DtMessage set 13 is for the Keyboard dialog
@@ -402,12 +402,12 @@ $ _DtMessage 1,5 from set 13 have been deleted from the message catalog
 
 $ _DtMessage 2 through 4 are labels of scales, buttons, and text visible in the
 $ Keyboard dialog box.
-2 蠡泂圊
-3 ⺌棬适闀
-4 挹耰郣畽
+2 內定值
+3 自動重複
+4 按鍵音量
 
 $ _DtMessage 6 is the title of the Keyboard dialog box
-6 ⼃倛冈穔磣隉炟 - 耰薏
+6 外型式樣管理者 - 鍵盤
 
 
 $set 14
@@ -415,71 +415,71 @@ $ _DtMessage set 14 is for the Color dialog
 $ _DtMessage 1-4,9,14-15,17,19,20,22,24 from set 14 have been deleted from the message catalog
 
 $ Messages 5 through 8 are labels and buttons visible in the Color dialog
-5 鞜⺪薏
-6 嚌蠹...
-7 伝崽...
-8 埏庍...
+5 調色盤
+6 增加...
+7 刪除...
+8 修改...
 
 $ _DtMessage 10 is the title above the text area in the Add Palette dialog box
-10 隞柁鞜⺪薏ボ磝”
+10 新的調色盤名稱：
 
 $ _DtMessage 11 is the title of the Add Palette dialog box.
-11 嚌蠹鞜⺪薏
+11 增加調色盤
 
 $ Messages 12 through 14 are error messages.
-12 鞜⺪薏ボ磝攜逑讓屼\n\
-譯トА蠣”\n\n\
+12 調色盤名稱不能包含\n\
+下列字元：\n\n\
 <space> * : ( ) [ ] { } < > ! | " / \\
 $ LOCALIZERS: FOR 8 AND 16 BIT LANGUAGES YOU MAY WANT TO CHANGE THE MESSAGE 
 $ TO SAY THE PALETTE NAME MUST BE 10 BYTES OR LESS
-13 鞜⺪薏ボ磝⽁禕ョ 10 堈А蠣髓蠡﹞\n
+13 調色盤名稱必須在 10 個字元以內。\n
 
 $ _DtMessage 16 is the title of the Delete Palette dialog box.  See screen 4a (2).
-16 伝崽鞜⺪薏
+16 刪除調色盤
 
 $ _DtMessage 18 appears in an information dialog.
-18 隓恄伝崽瑊悒纂堈鞜⺪薏﹞\n
+18 無法刪除最後一個調色盤。\n
 
 $ _DtMessage 21 is an error message
-21 滙夼
+21 警告
 
 $ _DtMessage 23 appears in an information dialog
-23 衭伝崽鞜⺪薏 '%s' 蓇?\n
+23 要刪除調色盤 '%s' 嗎?\n
 
 $ _DtMessage 25 is an error message that appears when you press the color
 $ button and the color server is not running for some reason.
-25 ⼃倛冈穔磣隉炟柁籦⺪楶禳隓恄\n\
-蝒汃﹜モ珜籦⺪ɵ峇蟟扽ョ欹⺼﹞\n\
-霘黀栯 $HOME/.dt/errorlog﹞
+25 外型式樣管理者的顏色部分無法\n\
+運作，因為顏色伺服器沒有在執行。\n\
+請檢查 $HOME/.dt/errorlog。
 
 $ _DtMessage 26 can be caused by setting the resource *useColorObj to False
 $ and then running dtstyle and trying to post the Color Dialog.
-26 ⼃倛冈穔磣隉炟柁籦⺪楶禳隓恄\n\
-蝒汃﹜モ珜罶鳲 'useColorObj' 暋泂珜\n\
-False﹞
+26 外型式樣管理者的顏色部分無法\n\
+運作，因為資源 'useColorObj' 設定為\n\
+False。
 
 $ _DtMessage 27 is for the new ColorUse dialog when you press ok.
-27 隞柁＞籦⺪囷え＝圊ョ睎譯纂堈瞃栠\n\
-汃鞄渀伒鞂ぇ淩﹞
+27 新的「顏色使用」值在您下一個階段\n\
+作業時即會生效。
 
 $ _DtMessage 28 is a warning message that appears on Black and White systems
-28 藞抻柁鞜⺪帣ョ睎譯纂堈瞃栠\n\
-汃鞄渀伒鞂ぇ淩﹞
+28 選取的調色板在您下一個階段\n\
+作業時即會生效。
 
 $ _DtMessage 29 appears in a warning dialog
-29 ボ珜 '%s' 柁鞜⺪薏儸槴Бョ﹞\n\
-楙堈隞鞜⺪薏渿鞂适嬣鰹鞜⺪薏﹞\n\
-睎裱楙穔惉蓇?
+29 名為 '%s' 的調色盤已經存在。\n\
+這個新調色盤將會重寫舊調色盤。\n\
+您想這樣做嗎?
 
 $ _DtMessage 30 is the title of the Color dialog box.
-30 ⼃倛冈穔磣隉炟 - 籦⺪
+30 外型式樣管理者 - 顏色
 
 $ _DtMessage 31-33 are the ColorUse options
 $ 31 High Color
 $ 32 Medium Color
 $ 33 Low Color
-34 膌く
-35 蠡泂圊
+34 黑白
+35 內定值
 
 $ Dt Message 36 has been replaced by message 39
 $ _DtMessage 36 is the title of the Color Use dialog
@@ -491,23 +491,23 @@ $ 37 DT Color Use...
 
 $ _DtMessage 38 is an error message that appears when you press the color
 $ button and there are no palette files to be found
-38 ⼃倛冈穔磣隉炟柁籦⺪楶禳隓恄\n\
-蝒汃﹜モ珜扽鞜⺪薏麔淰⑴え﹞\n\
-霘黀栯 $HOME/.dt/errorlog﹞
+38 外型式樣管理者的顏色部分無法\n\
+運作，因為沒有調色盤檔案可用。\n\
+請檢查 $HOME/.dt/errorlog。
 
 $ DtMessage 39 is a replacement for DtMessage 36
 $ DtMessage 39 is the title of the Color Use dialog
-39 衭囷え柁籦⺪禨げ”
+39 要使用的顏色數目：
 
 $ DtMessage 40 is a replacement for DtMessage 37
 $ DtMessage 40 is the title of the Color Use dialog
-40 籦⺪禨げ...
+40 顏色數目...
 
 $ _DtMessages 41-43 are replacements for Dtmessages 31-33
 $ _DtMessage 41-43 are the ColorUse options
-41 彶ロ柁痐譫磣隉侇嗄籦⺪
-42 彶ロ柁鶈え嶂冈籦⺪
-43 彶ロ柁鶈え嶂冈籦⺪
+41 更多的桌上管理系統顏色
+42 更多的應用程式顏色
+43 更多的應用程式顏色
 
 $set 15
 $ All of the messages from set 15 have been deleted from the message catalog
@@ -518,8 +518,8 @@ $ _DtMessage set 16 is for the Color dialog
 $ _DtMessage 1-10,13-17 from set 16 have been deleted from the message catalog
 
 $ _DtMessage 11-12 form one error message that appears in an error dialog
-11 隓恄伝崽 '%s'﹞\n
-12 霘黀栯 $HOME/.dt/errorlog﹜睎⑴皕斕痤怉菙ざ﹞
+11 無法刪除 '%s'。\n
+12 請檢查 $HOME/.dt/errorlog，您可從中得到提示。
 
 $  MESSAGE 18-21 IN SET 16 WILL ONLY APPEAR IN THE DT ERRORLOG FILE
 18 Warning, Too many directories listed in the resource paletteDirectories,\n\
@@ -538,52 +538,52 @@ $ Messages 1-3,13,16 from set 17 have been deleted from the message catalog
 
 $ Messages 4 through 12 are labels, buttons, and text visible in the
 $ Modify Color dialog box
-4 籦⺪謓坲
-5 鰹
-6 隞
-7 庉抻籦⺪
-8 籦⺪蹌藟蟟
-9 ⺪唄
+4 顏色範例
+5 舊
+6 新
+7 抓取顏色
+8 顏色編輯器
+9 色度
 $ We recommend that you don't translate R,G,B which stands for Red, Green,
 $ Blue unless there are standard single letter acronyms in your language.
-10 窅
-11 篝
-12 鰼
+10 紅
+11 綠
+12 藍
 
 $  MESSAGE 14-15 IN SET 17 WILL ONLY APPEAR IN THE DT ERRORLOG FILE
 14 Warning, couldn't grab pointer.\n
 15 Warning, couldn't grab Keyboard.\n
 
 $ _DtMessage 16 is the title of the Modify Color dialog box.
-16 ⼃倛冈穔磣隉炟 - 埏庍籦⺪
+16 外型式樣管理者 - 修改顏色
 
 
 $set 18
 $ _DtMessage set 18 is for the Window dialog
 $ _DtMessage 1 is the title of the Window dialog box
-1 ⼃倛冈穔磣隉炟 - 槉嵺
+1 外型式樣管理者 - 視窗
 
 $ Messages 2 through 5 are labels on the Window dialog.
-2 蠡泂圊
-3 槉嵺⺼珜
-4 槉嵺頝踛
+2 內定值
+3 視窗行為
+4 視窗圖像
 $ Messages 5-8 have been replaced by messages 13-16 
 $ 5 Focus Follows Mouse
 $ 6 Click In Window For Focus
 $ 7 Raise Window With Focus
 $ 8 Opaque Move
-9 囷え頝踛巖涺
-10 殦卼齡汃洠睮斕
-11 蠢暐饜衭槉嵺殦卼煄嬬
-12 齡汃洠睮磣隉炟⽁禕适隞絒棬﹜睎\n\
-邴汃柁䨣彶懼鞂ぇ淩﹞挹＞薚泂＝⑴髓\n\
-适隞絒棬齡汃洠睮磣隉炟﹜挹＞抻祤＝\n\
-衧⑴适暋楙咍䨣彶﹞
+9 使用圖像方框
+10 置於工作空間中
+11 允許主要視窗置於頂層
+12 工作空間管理者必須重新啟動，您\n\
+所作的變更才會生效。按「確定」可以\n\
+重新啟動工作空間管理者，按「取消」\n\
+則可重設這些變更。
 $ Messages 13-16 are replacements for messages 5-8
-13 霘挴怉槉嵺斕囷怬珜隃⺼槉嵺
-14 霘挹纂譯槉嵺囷怬珜隃⺼槉嵺
-15 珜隃⺼槉嵺悒菙⺍虳磞
-16 傶棬渀䬷ざ蠡晥
+13 請指到視窗中使其成為現行視窗
+14 請按一下視窗使其成為現行視窗
+15 成為現行視窗後提至前端
+16 移動時顯示內容
 
 $set 99
 $    DO NOT TRANSLATE THESE MESSAGES

@@ -9,10 +9,10 @@ $quote "
 
 $ The set number set below must be syncronized with the #define in utilP.h
 $set 202
-1 "ISTR”崷殦怉謽禨嵕ト渀僛ぇ蠆諟\n"
-2 "ISTR”珜А⻌崷殦洠睮渀僛ぇ蠆諟\n"
-3 "ISTR”崷殦奡襉忟渀僛ぇ蠆諟"
-4 "蠡楶蠆諟"
-5 "踽媝冈怐冈昋ⅰ"
-6 "攜揧暐⑴"
-7 "隓恄瞅絒"
+1 "ISTR：配置到整數陣列時發生錯誤\n"
+2 "ISTR：為字串配置空間時發生錯誤\n"
+3 "ISTR：配置記憶體時發生錯誤"
+4 "內部錯誤"
+5 "遞迴式函式呼叫"
+6 "不被許可"
+7 "無法開啟"

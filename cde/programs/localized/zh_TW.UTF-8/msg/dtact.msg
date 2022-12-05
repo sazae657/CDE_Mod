@@ -54,40 +54,40 @@ $ file /usr/adm/sulog; it is written to the sulog file anytime the '-user'
 $ option is used.  The fields are:
 $  <appl Name> <month>/<day> <hour>:<min> <success> <tty> <old Name> <new Name>
 $ The only fields which need to be customized are the date and time fields.
-1 dtaction %1$﹜2d/%2$﹜2d %3$﹜2d”%4$﹜2d %5$1﹜1s %6$s %7$s--%8$s\n
+1 dtaction %1$，2d/%2$，2d %3$，2d：%4$，2d %5$1，1s %6$s %7$s--%8$s\n
 
 $ This is the label for the Ok button in the dialogs which collect
 $ the user's password, the invalid password dialog, and the unknown user
 $ error dialog.
-2 薚泂
+2 確定
 
 $ This is the label for the error dialog which occurs when the user enters
 $ and invalid password into the password dialog.
-3 睎耰蘋柁湅謑縋囷え炟柁湅謑攜砨嗃﹞%s.\n\n霘适隞耰蘋湅謑﹜迖藞謥\n"抻祤"耰髓廎忒謦汃﹞
+3 您鍵入的密碼與使用者的密碼不相符。%s.\n\n請重新鍵入密碼，或選擇\n"取消"鍵以結束操作。
 
 $ This is the title for the password error dialog
-4 棬汃鞜え蟟 -- 湅謑蠆諟
+4 動作調用器 -- 密碼錯誤
 
 $ This is the label displayed in the prompt dialog, used to collect the
 $ user's password.
-5 霘耰蘋囷え炟湅謑 %s”
+5 請鍵入使用者密碼 %s：
 
 $ This is the title for the prompt dialog collecting the user's password.
-6 棬汃鞜え蟟 -- 湅謑
+6 動作調用器 -- 密碼
 
 $ This is the label for the Cancel button in the dialog which is used to
 $ collect the user's password.
-7 抻祤
+7 取消
 
 $ This is the message displayed in the 'unknown user' dialog
-8 囷え炟 '%s' 珜纂堈攜咭柁囷え炟ボ磝﹞\n\n揧衭忴柁棬汃渿攜鞂揧欹⺼﹞
+8 使用者 '%s' 為一個不明的使用者名稱。\n\n被要求的動作將不會被執行。
 
 $ This is the title for the 'unknown user' dialog
-9 棬汃鞜え蟟 -- 攜咭柁囷え炟
+9 動作調用器 -- 不明的使用者
 
 $ This is for when the user has failed to supply an action name
-10 ゝ挴泂棬汃ボ磝﹞\n
+10 未指定動作名稱。\n
 $ This is for when we are unable to open the display
-11 隓恄瞅絒䬷ざ蟟﹞
+11 無法開啟顯示器。
 
 

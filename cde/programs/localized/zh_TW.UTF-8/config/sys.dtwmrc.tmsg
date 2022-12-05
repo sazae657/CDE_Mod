@@ -51,15 +51,15 @@ $ * Translate all labels (first column) except no-label. Do not remove ".    *
 $ * Functions (second column) should not be changed unless it is required in *
 $ * your language.                                                           *
 $ *--------------------------------------------------------------------------*
-6 "齡汃洠睮衢逑玿"			f.title\n\
-    "ホ譫懘葎"				f.circle_up\n\
-    "ホ譯懘葎"				f.circle_down\n\
-    "怑隞"				f.refresh\n\
-    "醷⺍瑊麵/ャ艀虳巖郖帣"		f.toggle_frontpanel\n\
+6 "工作空間功能表"			f.title\n\
+    "向上輪換"				f.circle_up\n\
+    "向下輪換"				f.circle_down\n\
+    "刷新"				f.refresh\n\
+    "縮至最小/回復前方面板"		f.toggle_frontpanel\n\
      no-label				f.separator\n\
-    "适隞絒棬齡汃洠睮磣隉炟..."		f.restart\n\
+    "重新啟動工作空間管理者..."		f.restart\n\
      no-label				f.separator\n\
-    "僳罐..."				f.action ExitSession
+    "登出..."				f.action ExitSession
 $ *
 $ * #DtPanelMenu#
 $ *
@@ -71,13 +71,13 @@ $ * Translate all labels (first column) except no-label.                     *
 $ * Functions (second column) should not be changed unless it is required in *
 $ * your language.                                                           *
 $ *--------------------------------------------------------------------------*
-7 ャ艀				_R	f.normalize\n\
-    傶棬			_M	f.move\n\
-    醷⺍瑊麵			_n	f.minimize\n\
-    傶⺍芚嬬			_L	f.lower\n\
-    怑隞			_f	f.refresh\n\
+7 回復				_R	f.normalize\n\
+    移動			_M	f.move\n\
+    縮至最小			_n	f.minimize\n\
+    移至底層			_L	f.lower\n\
+    刷新			_f	f.refresh\n\
      no-label				f.separator\n\
-    "僳罐..."			_o	f.action ExitSession
+    "登出..."			_o	f.action ExitSession
 $ *
 $ * #SampleWindowMenu#
 $ *
@@ -87,18 +87,18 @@ $ * no-label. Do not remove ".                                               *
 $ * Accelerator (third column) and functions (forth column) should not be    *
 $ * changed unless it is required in your language.                          *
 $ *--------------------------------------------------------------------------*
-8 "ャ艀"			_R			f.normalize\n\
-    "傶棬"			_M			f.move\n\
-    "騰麵"			_S			f.resize\n\
-    "醷⺍瑊麵"			_n			f.minimize\n\
-    "勂⺍瑊騰"			_x			f.maximize\n\
-    "傶⺍芚嬬"			_L			f.lower\n\
+8 "回復"			_R			f.normalize\n\
+    "移動"			_M			f.move\n\
+    "大小"			_S			f.resize\n\
+    "縮至最小"			_n			f.minimize\n\
+    "放至最大"			_x			f.maximize\n\
+    "移至底層"			_L			f.lower\n\
      no-label						f.separator\n\
-    "ŋ謾齡汃洠睮..."		_O			f.workspace_presence\n\
-    "ŋ謾邴齡汃洠睮"		_A			f.occupy_all\n\
-    "抻祤ŋ謾齡汃洠睮"		_U			f.remove\n\
+    "佔據工作空間..."		_O			f.workspace_presence\n\
+    "佔據所有工作空間"		_A			f.occupy_all\n\
+    "取消佔據工作空間"		_U			f.remove\n\
      no-label						f.separator\n\
-    "驨椲"			_C	Alt<Key>F4	f.kill
+    "關閉"			_C	Alt<Key>F4	f.kill
 $ *
 $ * #NoAcceleratorWindowMenu#
 $ *
@@ -108,18 +108,18 @@ $ * no-label. Do not remove ".                                               *
 $ * Functionns (third column) should not be changed unless it is required in *
 $ * your language.                                                           *
 $ *--------------------------------------------------------------------------*
-9 "ャ艀"			_R	f.normalize\n\
-    "傶棬"			_M	f.move\n\
-    "騰麵"			_S	f.resize\n\
-    "醷⺍瑊麵"			_n	f.minimize\n\
-    "勂⺍瑊騰"			_x	f.maximize\n\
-    "傶⺍芚嬬"			_L	f.lower\n\
+9 "回復"			_R	f.normalize\n\
+    "移動"			_M	f.move\n\
+    "大小"			_S	f.resize\n\
+    "縮至最小"			_n	f.minimize\n\
+    "放至最大"			_x	f.maximize\n\
+    "移至底層"			_L	f.lower\n\
      no-label				f.separator\n\
-    "ŋ謾齡汃洠睮..."		_O	f.workspace_presence\n\
-    "ŋ謾齡汃洠睮"		_A	f.occupy_all\n\
-    "抻祤ŋ謾齡汃洠睮"		_U	f.remove\n\
+    "佔據工作空間..."		_O	f.workspace_presence\n\
+    "佔據工作空間"		_A	f.occupy_all\n\
+    "取消佔據工作空間"		_U	f.remove\n\
      no-label				f.separator\n\
-    "驨椲"			_C	f.kill
+    "關閉"			_C	f.kill
 $ *
 $ * #DefaultWindowMenu#
 $ *
@@ -129,14 +129,14 @@ $ * no-label. Do not remove ".                                               *
 $ * Accelerator (third column) and functions (forth column) should not be    *
 $ * changed unless it is required in your language.                          *
 $ *--------------------------------------------------------------------------*
-10 "ャ艀"	_R	Alt<Key>F5	f.normalize\n\
-    "傶棬"	_M	Alt<Key>F7	f.move\n\
-    "騰麵"	_S	Alt<Key>F8	f.resize\n\
-    "醷⺍瑊麵"	_n	Alt<Key>F9	f.minimize\n\
-    "勂⺍瑊騰"	_x	Alt<Key>F10	f.maximize\n\
-    "傶⺍芚嬬"	_L	Alt<Key>F3	f.lower\n\
+10 "回復"	_R	Alt<Key>F5	f.normalize\n\
+    "移動"	_M	Alt<Key>F7	f.move\n\
+    "大小"	_S	Alt<Key>F8	f.resize\n\
+    "縮至最小"	_n	Alt<Key>F9	f.minimize\n\
+    "放至最大"	_x	Alt<Key>F10	f.maximize\n\
+    "移至底層"	_L	Alt<Key>F3	f.lower\n\
     no-label				f.separator\n\
-    "驨椲"	_C	Alt<Key>F4	f.kill
+    "關閉"	_C	Alt<Key>F4	f.kill
 $ *
 $ * Key And Button Bindings Descriptions
 $ *

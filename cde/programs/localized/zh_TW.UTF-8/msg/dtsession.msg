@@ -198,7 +198,7 @@ keyboard grabbed.
 $ The next message is added to the error log if a required temporary     
 $ file can not be created by the session manager.     
 $ The insert is the name of the temporary file.     
-11 "隓恄唈ゥ穛Б麔: %s. 霘薚泂髱麔淰嬣蘋ḷ﹞⺌瞃栠汃鞄磣隉炟廎忒﹞"
+11 "無法建立暫存檔: %s. 請確定對此檔案有寫入權。自階段作業管理者結束。"
 
 $set 6
 $    THIS COMMENT FOR DTSESSION TEAM ONLY -- SmMsgSrv.c --
@@ -266,45 +266,45 @@ $ Deleted Messages:  13, 14, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
 $						29, 30, 31, 32, 33
 
 $ _DtMessage 1 tells the user who currently has the display locked.
-1 䬷ざ蟟揧囷え炟 %s 孍泂﹞
+1 顯示器被使用者 %s 鎖定。
 
 $ _DtMessage 2 tells the user to enter the password for the above user to unlock
 $ the display.
-2 霘藣蘋湅謑髓箾崽孍泂﹞
+2 請輸入密碼以解除鎖定。
 
 $ _DtMessage 3 is a prompt for the user to enter a password.
-3 湅謑”
+3 密碼：
 
 $ _DtMessage 4 is the logout message that appears when dtsession is going
 $ to save the current session information. 
 $ Access this message by pressing the logout button.
-4 瞅沓僳罐搢隉...\n\n\
-邴ゝ鬊Б柁隞罶涷⑴逑楁鞂蟺⼇﹞\n\n\
-睎げ虳柁瞃栠汃鞄鞂揧鬊Б“隑゛咍鶈え嶂冈\n\n\
-⑴逑錛衭ョ譯僳蘋渀テ适隞絒棬﹞
+4 開始登出處理...\n\n\
+所有未儲存的新資料可能都會遺失。\n\n\
+您目前的階段作業會被儲存；然而有些應用程式\n\n\
+可能需要在下次登入時再重新啟動。
 
 $ _DtMessage 5,6 is the logout message that appears when dtsession is not going
 $ to save the current session information - but return to the home session info
-5 瞅沓僳罐搢隉...\n\n\
-邴ゝ鬊Б柁隞罶涷⑴逑楁鞂蟺⼇﹞\n\n\
-楙堈瞃栠汃鞄攜鞂揧鬊Б﹞ɪ睎柁媊沓瞃栠汃鞄\n\n\
-ョ睎譯僳蘋渀鞂ャ艀﹞
+5 開始登出處理...\n\n\
+所有未儲存的新資料可能都會遺失。\n\n\
+這個階段作業不會被儲存。但您的起始階段作業\n\n\
+在您下次登入時會回復。
 $ _DtMessage 6 is the title of the logout dialog box.
-6 僳罐薚諝
+6 登出確認
 
 $ _DtMessage 7,8,9,10 are all part of the logout dialog that appears when
 $ the user has requested to have the choice
 $ to either save the current session or return to the home session.
-7 瞅沓僳罐搢隉...\n\n\
-譯睎僳蘋渀﹜怚堈藞謥⑴髓粡ト痐譫磣隉侇嗄”\n\n\
-睎⑴髓鬊Б隃⺼瞃栠汃鞄﹜譯伒⑴髓婘穔适隞絒棬﹞\n\n\
-迖炟or\n\n\
-睎⑴髓勂蛫隃⺼瞃栠汃鞄﹜ヵ睎柁媊沓瞃栠汃鞄祼⑴髓ャ艀﹞\n\n\
-ɪ攜磣囷え瞗巖冈﹜ゝ鬊Б柁隞罶涷楁鞂蟺⼇﹞
-8 僳罐”\n鬊Б隃⺼瞃栠汃鞄
-9 僳罐”\nャ艀媊沓瞃栠汃鞄
+7 開始登出處理...\n\n\
+下次您登入時，有兩個選擇可以排列桌上管理系統：\n\n\
+您可以儲存現行階段作業，下次即可以原樣重新啟動。\n\n\
+或者or\n\n\
+您可以放棄現行階段作業，如此您的起始階段作業就可以回復。\n\n\
+但不管使用何種方式，未儲存的新資料都會遺失。
+8 登出：\n儲存現行階段作業
+9 登出：\n回復起始階段作業
 $ _DtMessage 10 is the title of the logout dialog box.
-10 僳罐薚諝
+10 登出確認
 
 $ _DtMessage 11,12 are part of the error dialog that appears when the DT
 $ messaging system dies.
@@ -321,58 +321,58 @@ $ Note: The current session will not be saved.\n\n\
 $ When you are ready to begin the restart process, click [OK] and\n\
 $ proceed to save your files.
 
-12 _DtMessage ⼇絫
+12 _DtMessage 失敗
 
 $ Messages 15, 16, 17 are used for identical purpose as messages 1, 2,3
 $ in this set.
-15 䬷ざ蟟揧囷え炟 %s 孍泂﹞
-16 霘藣蘋湅謑髓箾崽孍泂﹞
-17 湅謑”
+15 顯示器被使用者 %s 鎖定。
+16 請輸入密碼以解除鎖定。
+17 密碼：
 
 $ _DtMessage 34, 35 are messages that appear when the user started up in 
 $ compatibility mode, and tries to log out.  You can only exit out of 
 $ compatibility mode by using the reset key sequence.
 $ To generate this message, start in x11 (not DT) and then run dtsession.
 $ Refer to the dtsession manpage.  Then try to log out.
-34 楙堈瞃栠汃鞄旂髓纂堈 X 槉嵺侇嗄絒棬杬麟碬邴絒棬﹞\n\n\
-攜鞂鬊Бズ瞃栠汃鞄罶媢﹞\n\n霘囷え适暋挹耰囥ト僳罐﹞
-35 僳罐 _DtMessage
+34 這個階段作業是以一個 X 視窗系統啟動命令集所啟動。\n\n\
+不會儲存任何階段作業資訊。\n\n請使用重設按鍵序列登出。
+35 登出 _DtMessage
 
 $ Messages 36,37 are part of the error dialog that appears when dtsession is
 $ unable to start the DT messaging system, and therefore not able to bring
 $ up the system at all.
 $ To generate this, move the message server from
 $ /usr/softbench/bin/softmsgsrv to some other directory, then start Dt.
-36 DT 媢桾侇嗄隓恄絒棬﹞\n\n\
-衭箾扻楙堈棯纕”\n\n\
-1.  霘藞謥 [薚泂] 珃ャ僳蘋糬魦﹞\n\n\
-2.  皕僳蘋糬魦柁藞禋衢逑玿斕藞抻＞瞃栠汃鞄\n\
-捗錏⺌棬砉覈＝欄悒僳蘋﹞\n\n\
-3.  黀栯髓譯⻏殦柁饜鞥ボ磝旂匢薚”\n\
+36 DT 訊息系統無法啟動。\n\n\
+要解決這個問題：\n\n\
+1.  請選擇 [確定] 返回登入螢幕。\n\n\
+2.  從登入螢幕的選項功能表中選取「階段作業\n\
+故障自動保險」之後登入。\n\n\
+3.  檢查以下位置的主機名稱是否正確：\n\
      /etc/src.sh\n\
      /etc/hosts\n\
      /usr/adm/inetd.sec\n\n\
-ヵ錛籧⼃柁罶媢﹜霘棤櫇＞DT 囷え鷗癱＝﹞
-37 ⽁衭柁棬汃
+如需額外的資訊，請參閱「DT 使用手冊」。
+37 必要的動作
 
 $ _DtMessage 38 is part of the error dialog that appears when the DT
 $ messaging system dies.
 $ This messages are generated when you kill the BMS (broadcast _DtMessage
 $ Server), which is /usr/softbench/bin/softmsgsrv.
 
-38 媢桾侇嗄隓恄囷え\n\n\
-蚍衭适隞絒棬”\n\n\
-1) 鬊Б邴儸瞅絒柁罶涷麔﹞\n\
-2) 僳罐﹞\n\
-3) 适隞僳蘋﹞\n\n\
-恞蜑”隃⺼瞃栠汃鞄攜鞂揧鬊Б﹞\n\n\
-撋睎僾猻ン衭适隞絒棬搢隉渀﹜霘挹纂譯 [薚泂] 隑悒\n\
-鬊Б睎柁麔淰﹞
+38 訊息系統無法使用\n\n\
+若要重新啟動：\n\n\
+1) 儲存所有已開啟的資料檔。\n\
+2) 登出。\n\
+3) 重新登入。\n\n\
+注意：現行階段作業不會被儲存。\n\n\
+當您準備好要重新啟動處理時，請按一下 [確定] 然後\n\
+儲存您的檔案。
 
 $ Messages 39 and 40 are displayed on the logout confirmation dialogs
 
-39 凭㶴僳罐
-40 抻祤僳罐
+39 繼續登出
+40 取消登出
 
 $set 20
 $    THIS COMMENT FOR DTSESSION TEAM ONLY -- SmWindow.c --
@@ -431,7 +431,7 @@ a palette.\n
 $set 29
 $    THIS COMMENT FOR DTSESSION TEAM ONLY -- SmHelp.c -- 
 $ LOCALIZE Set 29
-1 瞃栠汃鞄磣隉炟赮伢諰咭
+1 階段作業管理者輔助說明
 
 $set 99
 $    DO NOT TRANSLATE THESE MESSAGES

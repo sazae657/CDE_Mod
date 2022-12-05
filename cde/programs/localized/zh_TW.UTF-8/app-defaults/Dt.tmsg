@@ -100,10 +100,10 @@ $ NOTE: These messages used to be in sys.resources.tmsg message 5-8.
 $ Messages 14-17 are labels for the file selection box.  They need to be
 $ set globally for Cde. Don't translate the ':'.
 $ 
-14 藣蘋聤梏迖麔淰扢ボ磝:
-15 彶隞
-16 藣蘋麔淰ボ磝:
-17 麔淰扢
+14 輸入路徑或檔案夾名稱:
+15 更新
+16 輸入檔案名稱:
+17 檔案夾
 $ 
 $ Message 21 and 23 can be translated. These are shown on the menu.
 $ Message 22 and 24 should not be changed unless accelerator keys need to

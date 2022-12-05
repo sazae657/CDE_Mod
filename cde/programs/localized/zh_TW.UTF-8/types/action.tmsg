@@ -31,17 +31,17 @@ $ Messages 1 - 11 are 1 continuous comment, make sure you put the "#" at the
 $ start of each new line.  Use all 1 - 11 to translate if needed.  Leave
 $ any line empty with a '#' if the message is not needed.
 $ 
-1 # 楙堈麔淰鷥玿纂堈＞纂郫痐譫磣隉侇嗄蘄頨＝(CDE; 
-2 # Common Desktop Environment) 柁棬汃﹞楙堈麔淰柁蠡晥隓驨篕衭“
-3 # 伒囷楙堈麔淰旂洠柁﹜嶂冈楁⑴髓欹⺼﹞ヵ峈楙堈麔淰旂纂堈⑴
-4 # 欹⺼麔﹜靨麔ボ昑棬汃罶涷梬斕ズ纂禋げ (*.dt 麔淰) 柁ボ磝砨嗃﹜
-5 # CDE 麔淰磣隉炟祼鞂渿楙堈麔淰槉珜纂堈棬汃﹞
+1 # 這個檔案代表一個「一般桌上管理系統環境」(CDE; 
+2 # Common Desktop Environment) 的動作。這個檔案的內容無關緊要；
+3 # 即使這個檔案是空的，程式都可以執行。如果這個檔案是一個可
+4 # 執行檔，且檔名和動作資料庫中任一項目 (*.dt 檔案) 的名稱相符，
+5 # CDE 檔案管理者就會將這個檔案視為一個動作。
 6 #
-7 # ヵ錛驨棬汃柁箯嗏罶媢﹜霘棤櫇 CDE 鷗癱﹞
+7 # 如需有關動作的詳細資訊，請參閱 CDE 手冊。
 8 #
 9 #
 10 #
 11 #
 $ 
 $ 
-12 纂郫痐譫磣隉侇嗄蘄頨 (CDE) 棬汃﹞霘囷え麔淰磣隉炟鞜え﹞
+12 一般桌上管理系統環境 (CDE) 動作。請使用檔案管理者調用。

@@ -48,50 +48,50 @@ $ They come in pairs where the first is the menu name (e.g. 1 Print...) and the
 $ second is the mnemonic (e.g. 2 P).  
 $ 
 $ Messages 1 through 6 are the pulldown menus for the File menu.
-1 トパ(P)...
+1 列印(P)...
 2 P
-3 驨椲(C)
+3 關閉(C)
 4 C
-5 瞅隞槉嵺(W)...
+5 開新視窗(W)...
 6 W
 $ Messages 7 through 8 are the pulldown menus for the Edit menu.
-7 闀蕍(C)
+7 複製(C)
 8 C 
 $ Messages 9 through 10 are the pulldown menus for the Search menu.
-9 袎鰱(I)...
+9 索引(I)...
 10 I
 $ Messages 11 through 16 are the pulldown menus for the Navigate menu.
-11 媊沓饜纕(T)
+11 起始主題(T)
 12 T
-13 酈ホ銌硻(B)
+13 反向搜尋(B)
 14 B
-15 奡蠊(H)...
+15 記錄(H)...
 16 H
 $ Messages 17 through 28 are the pulldown menus for the Help menu.
-17 颮羏(v) - 囷え赮伢諰咭
+17 概觀(v) - 使用輔助說明
 18 v
-19 げ蠊(C)
+19 目錄(C)
 20 C
-21 齡汃(T)
+21 工作(T)
 22 T
-23 棤嘵(R)
+23 參照(R)
 24 R
-25 僶趡昑耰薏(M)
+25 滑鼠和鍵盤(M)
 26 M
-27 驨卼赮伢諰咭(A)
+27 關於輔助說明(A)
 28 A
 $ 
 $ Messages 29 through 36 are the menu labels and mnemonics for for the 
 $ Help Dialog.
-29 麔淰(F)
+29 檔案(F)
 30 F
-31 銌硻(S)
+31 搜尋(S)
 32 S
-33 硻郲(N)
+33 尋航(N)
 34 N
-35 赮伢諰咭(H)
+35 輔助說明(H)
 36 H
-37 蹌藟(E)
+37 編輯(E)
 38 E
 $ 
 $ 
@@ -100,92 +100,92 @@ $
 $ Messages 50 through 55 are used to display formatting errors within the
 $ helps dialog and quick help dialog widgets.
 $ 
-50 А⻌罶涷隓恄眭冈襲﹞
-51 棬鳷⺌⻌罶涷隓恄眭冈襲﹞
-52 轃譫葰伢郟隓恄眭冈襲﹞睎邴錛衭柁轃譫葰伢郟⑴逑攜Бョ﹜迖旂\
-儸銧骱﹞
-53 齪А麔淰罶涷隓恄眭冈襲﹞睎邴錛衭柁轃譫葰伢郟⑴逑攜Бョ﹜迖\
-旂儸銧骱﹞
-54 赮伢諰咭饜纕隓恄眭冈襲﹞
-55 ⑶ト ID ⻏殦攜Бョ”
+50 字串資料無法格式化。
+51 動態自串資料無法格式化。
+52 線上援助頁無法格式化。您所需要的線上援助頁可能不存在，或是\
+已損毀。
+53 文字檔案資料無法格式化。您所需要的線上援助頁可能不存在，或\
+是已損毀。
+54 輔助說明主題無法格式化。
+55 右列 ID 位置不存在：
 $ 
 $ Messages 56 and 67 are displayed when a hypertext link type is selected but
 $ not supported within the current application.
 $ 
-56 楙堈鶈え嶂冈攜齬葰睎邴藞抻柁熅齪А椵廎﹞
-57 楙堈鶈え嶂冈攜齬葰椵廎轃譫葰伢郟衢逑﹞
+56 這個應用程式不支援您所選取的超文字連結。
+57 這個應用程式不支援連結線上援助頁功能。
 $ 
 $ Messages 58 through 62  are used when bad or null help volumes or 
 $ locationId's are used.
 $ 
-58 睎錛衭柁轃譫赮伢諰咭⑴逑扽Е稹﹜迖ゝ⻏卼懱撋柁銌硻聤梏譫﹞驨Е稹轃譫赮伢諰咭柁罶媢﹜霘棤℡雰陔柁諰咭齪ス﹞\n
-59 ゝ挴泂 ID ⻏殦﹞
-60 ゝ挴泂赮伢諰咭晥忟﹞
-61 赮伢諰咭晥忟”
-62 ID ⻏殦”
+58 您需要的線上輔助說明可能沒有安裝，或未位於適當的搜尋路徑上。有關安裝線上輔助說明的資訊，請參考產品的說明文件。\n
+59 未指定 ID 位置。
+60 未指定輔助說明容體。
+61 輔助說明容體：
+62 ID 位置：
 $ 
 $ >>>>> Skip #63 through #69
 $ 
 $ 
 $ Message 70 is used when a null value for DtNtopicTitle is used.
 $ 
-70 饜纕簅纕攜Бョ﹞
+70 此主題標題不存在。
 $ 
 $ $ New messages added after early msg cat freeze; not in order
-80 挴泂柁赮伢諰咭麷倛隓淩﹞
+80 指定的輔助說明類型無效。
 
 
 
 $set 3
 $ ****  Module: History.c ****
 $ These messages are used as labels for the History Dialog.
-1 赮伢諰咭 - 奡蠊廲ៜ嶂冈
-2 廲ៜ蝝柁赮伢諰咭晥忟”
-3 驨椲
-4 赮伢諰咭
-5 赮伢諰咭麔淰
-6 轃譫葰伢郟
-7 赮伢諰咭媢桾
-8 廲ៜ蝝柁赮伢諰咭饜纕”
-9 廲ៜ蝝柁赮伢諰咭麔淰”
-10 廲ៜ蝝柁轃譫葰伢郟”
-11 廲ៜ蝝柁赮伢諰咭媢桾饜纕”
+1 輔助說明 - 記錄瀏覽程式
+2 瀏覽過的輔助說明容體：
+3 關閉
+4 輔助說明
+5 輔助說明檔案
+6 線上援助頁
+7 輔助說明訊息
+8 瀏覽過的輔助說明主題：
+9 瀏覽過的輔助說明檔案：
+10 瀏覽過的線上援助頁：
+11 瀏覽過的輔助說明訊息主題：
 
 
 $set 4
 $ *****  Module: Print.c  *****
 $ These messages are used as labels for the Print Dialog.
 $ 1: dialog title
-1 赮伢諰咭 - トパ
+1 輔助說明 - 列印
 $ 10-12: standard printer dialog labels
-10 パ玿鞥”
-11 ソ禨”
-12 玿韝簅纕郟簅纕”
+10 印表機：
+11 份數：
+12 表頭標題頁標題：
 $ 20-25: paper size label and sizes
-20 訬痧騰麵”
+20 紙張大小：
 21 Letter 8.5 x 11 in
 22 Legal 8.5 x 14 in
 23 Executive 7.25 x 10.5 in
 24 A4 210 x 297 mm
 25 B5 182 x 257 mm
 $ 30-33: help volume-specific printing options
-30 衭トパ柁饜纕
-31 隃⺼饜纕
-32 隃⺼饜纕縋嬬饜纕
-33 げ蠊縋袎鰱
-34 晥忟斕柁邴饜纕
+30 要列印的主題
+31 現行主題
+32 現行主題與次層主題
+33 目錄與索引
+34 容體中的所有主題
 $ 40-42: buttons at bottom of dialog
-40 トパ
-41 抻祤
-42 赮伢諰咭
+40 列印
+41 取消
+42 輔助說明
 $ These messages are used to describe the kind of content to be printed
 $ 50 "Help Volume: "
-50 赮伢諰咭晥忟”
-51 赮伢諰咭媢桾”
-52 赮伢諰咭麔淰
+50 輔助說明容體：
+51 輔助說明訊息：
+52 輔助說明檔案
 $ 53 "Manual Page: "
-53 轃譫葰伢郟”
-54 蠆諟媢桾
+53 線上援助頁：
+54 錯誤訊息
 $ Don't translate message 60 unless it is not an empty string
 $ This is the default value that goes in the Printer field
 $ 60 " "
@@ -201,31 +201,31 @@ $ This is the default value that goes in the Copies field
 $set 5 
 $ *****  Module: GlobSearch.c  *****
 $ Message 1 is the label used to label the dialog
-1 赮伢諰咭 - 袎鰱銌硻
-2 銌硻
-3 隃⺼晥忟
+1 輔助說明 - 索引搜尋
+2 搜尋
+3 現行容體
 $ DO NOT TRANSLATE MESSAGE 4; it is no longer used
 $ " (%s)"
 4  (%s)
-5 邴晥忟
-6 藞抻柁晥忟
-7 藞抻晥忟...
-8 䬷ざ
-9 汒謽袎鰱
-10 藣蘋罶涷”
-11 虳芼
-12 瞅沓銌硻
-13 凭㶴銌硻
-14 彘欐銌硻
-15 驨椲
-16 赮伢諰咭
-17 筈萺晥忟... 岊怉 %d 堈
-18 銌硻斕... 瑀瀦晥忟”%d 堈
-19 岊攜怉袎鰱禋げ
-20 汒謽袎鰱
-21 藣蘋罶涷 "%s"
-22 ゝ藞抻晥忟
-23 皕譫巖藞抻銌硻藞禋
+5 所有容體
+6 選取的容體
+7 選取容體...
+8 顯示
+9 完整索引
+10 輸入資料：
+11 前往
+12 開始搜尋
+13 繼續搜尋
+14 停止搜尋
+15 關閉
+16 輔助說明
+17 掃描容體... 找到 %d 個
+18 搜尋中... 剩餘容體：%d 個
+19 找不到索引項目
+20 完整索引
+21 輸入資料 "%s"
+22 未選取容體
+23 從上方選取搜尋選項
 $ Do NOT translate messages 25-31
 $quote "
 $ " "
@@ -244,14 +244,14 @@ $quote
 $ DO translate messages 32 and above
 $ kind of topic messages
 32 Help Message
-33 赮伢諰咭麔淰
-34 葰伢諰咭郟
-35 攜咭柁眭冈
+33 輔助說明檔案
+34 援助說明頁
+35 不明的格式
 $ specialized title of Search Volume Selection dialog
-40 赮伢諰咭 - 銌硻晥忟藞謥
+40 輔助說明 - 搜尋容體選擇
 $ additional messages (late addition caused this ordering)
-50 岊攜怉袎鰱禋げ﹞霘閰箹銌硻邴晥忟﹞
-51 岊攜怉袎鰱禋げ﹞霘閰箹囷え怬鱗驨耰А﹞
+50 找不到索引項目。請嘗試搜尋所有容體。
+51 找不到索引項目。請嘗試使用其他關鍵字。
 $ additional messages (later addition caused this ordering)
 $ These messages are the braces that go around the current volume name
 $ in the index search dialog.  They are kept in the message catalog
@@ -263,12 +263,12 @@ $ in case they need to be localized.
 $set 6
 $ *****  Module: HelpAccess.c  *****
 $ These messages are used for the Help on Help dialog in Cde Help widgets.
-1 驨赮伢諰咭柁赮伢諰咭 
-2 トパ ...
-3 驨椲
-4 楙堈鶈え嶂冈攜齬葰＞驨赮伢諰咭柁赮伢諰咭＝衢逑!
-5 酈ホ銌硻
-6 赮伢諰咭 ...
+1 有關輔助說明的輔助說明 
+2 列印 ...
+3 關閉
+4 這個應用程式不支援「有關輔助說明的輔助說明」功能!
+5 反向搜尋
+6 輔助說明 ...
 
 
 $set 7
@@ -278,39 +278,39 @@ $ localized for dthelpview, however, they are not directly used by libDtHelp
 $ Messages 1 through 7 are command line usage response messages.
 $ Do NOT translate the option name (e.g. -helpVolume).  DO translate
 $ the argument descriptor name (e.g. <Help Volume File>)
-1 え恄”%s...\n
+1 用法：%s...\n
 2 \t-helpVolume <Help Volume File>\n
 3 \t-locationId  <ID>\n
 5 \t-file  <ASCII Text File>\n
 6 \t-man\n
 7 \t-manPage <Unix Man Page>\n\n\n
 $ man page dialog
-11 轃譫葰伢郟
-12 轃譫葰伢郟”
-13 䬷ざ轃譫葰伢郟
+11 線上援助頁
+12 線上援助頁：
+13 顯示線上援助頁
 $ button labels
-16 廎忒
-17 驨椲
-18 酈ホ銌硻
-19 トパ ...
+16 結束
+17 關閉
+18 反向搜尋
+19 列印 ...
 $ title of helpview window
-20 赮伢諰咭髲砫蟟
+20 輔助說明察看器
 
 
 $set 8
 $ *****  Module: HelpUtil.c  *****
 $ Message 1 is the label used in the definition link dialog box 
 $ (e.g. Quick help close button)
-2 驨椲
-3 蠡楶蠆諟”隓恄庉抻僶趡\nDtHelpReturnSelectedWidget 斕黫﹞\n
-4 蠡楶蠆諟”隓恄庉抻耰薏\nDtHelpReturnSelectedWidget() 斕黫﹞\n
-5 赮伢諰咭蠆諟 
+2 關閉
+3 內部錯誤：無法抓取滑鼠\nDtHelpReturnSelectedWidget 中斷。\n
+4 內部錯誤：無法抓取鍵盤\nDtHelpReturnSelectedWidget() 中斷。\n
+5 輔助說明錯誤 
 $ Messages 10 and up were added after message catalogs were taken
 $ for translation.  They are not in any order or chosen location.
-10 羼鰹欹⺼
-11 攜衭欹⺼
-12 赮伢諰咭晥忟裱欹⺼纂堈杬麟伀ボ﹞\n伀ボ '%s' ゝ泂氂﹞
-13 赮伢諰咭晥忟裱欹⺼纂堈杬麟伀ボ﹞\n珜藹Еツ摽裱﹜⺌棬欹⺼杬麟柁衢逑揧驨椲﹞\n杬麟珜” %s
+10 仍舊執行
+11 不要執行
+12 輔助說明容體想執行一個命令別名。\n別名 '%s' 未定義。
+13 輔助說明容體想執行一個命令別名。\n為了安全著想，自動執行命令的功能被關閉。\n命令為： %s
 $ End Message set 8
 
 
@@ -318,33 +318,33 @@ $set 9
 $ *****  Module: PathArea.c  *****
 $ These messages are used in the general Help Dialog Widget.
 $ Message 1 is the label used to label Topic Tree Area  
-1 晥忟”
+1 容體：
 $ Messages 2 though 5 are used in the Button Box area of our general 
 $ help dialog.
-2 酈ホ銌硻
-3 奡蠊...
-4 袎鰱...
-5 煄嬬
+2 反向搜尋
+3 記錄...
+4 索引...
+5 頂層
 
 
 $set 10 
 $ *****  Module: VolSelect.c  *****
 $ Message 1 is the default label used to label the volume selection dialog.
-1 赮伢諰咭 - 晥忟藞謥
-2 赮伢諰咭晥忟
-3 霘藞謥纂堈迖ロ堈赮伢諰咭晥忟
-4 驨椲
-5 赮伢諰咭
+1 輔助說明 - 容體選擇
+2 輔助說明容體
+3 請選擇一個或多個輔助說明容體
+4 關閉
+5 輔助說明
 
 
 $set 11
 $ *****  Module: HelpQuickD.c  *****
 $ These messages are used as labels for the quick help dialog.
-1 驨椲
-2 彶ロ ...
-3 酈ホ銌硻
-4 トパ ...
-5 赮伢諰咭 ...
+1 關閉
+2 更多 ...
+3 反向搜尋
+4 列印 ...
+5 輔助說明 ...
 
 $set 99
 $    DO NOT TRANSLATE THESE MESSAGES

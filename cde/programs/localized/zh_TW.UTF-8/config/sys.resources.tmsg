@@ -56,10 +56,10 @@ $
 $ Messages 5-9 are labels for the file selection box.  They need to be 
 $ set globally for CDE. Don't translate the ':'.
 $ 
-5 藣蘋聤梏迖麔淰扢ボ磝:
-6 彶隞 
-7 藣蘋麔淰ボ磝:
-8 麔淰扢
+5 輸入路徑或檔案夾名稱:
+6 更新 
+7 輸入檔案名稱:
+8 檔案夾
 $ 
 $ *XmFileSelectionBox*XmLabelGadget.fontList     
 $ This is not a message, but locale dependent values. See sys.font.tmsg...

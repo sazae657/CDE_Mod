@@ -75,88 +75,88 @@ $ Message 2 is an error message
 
 1 \
 	Sep             f.separator\n\
-	籠葎\\衢逑\\犓  f.send_msg %d\
+	切換\\功能\\軸  f.send_msg %d\
 	
-2 %s”-S 藞禋攜逑昑 -server 迖 -serverid 藞禋崷ポ囷え\n
-3 嗈磞鞥
+2 %s：-S 選項不能和 -server 或 -serverid 選項配合使用\n
+3 終端機
 
 $set 2
 $ ****** Module: DtTermSyntax.c 
 $ These are the usage messages. 
 $ DO NOT TRANSLATE Messages 37 or 41 ("End-of-list")
 
-1 -/+132				絒棬/抻祤 80<->132 ⺼鼲葎
-2 -/+aw				絒棬/抻祤⺌棬葎⺼
-3 -bg color			茯葔籦⺪
-4 -/+bs				驨椲/瞅絒嗈磞鞥茯葔藞抻柁籦⺪
-5 -display displayname		衭椵稌柁 X ɵ峇蟟
-6 -e command args		衭欹⺼柁杬麟
-7 -fb fontset			嗊忟А夆
-8 -fg color			虳葔籦⺪
-9 -fn fontset			琣А夆
-10 -geometry geom			槉嵺柁騰麵 (髓А蠣珜痼⻏) 縋⻏殦
-11 -help				䬷ざヾ衧媢桾
-12 -/+iconic			絒棬/攜絒棬頝踛
-13 -/+j				絒棬/抻祤聧葎稂棬鳪郖
-14 -/+kshMode			絒棬/抻祤 ksh 篲鳷
-15 -/+l				絒棬/抻祤戀諲
-16 -lf filename			戀諲麔ボ
-17 -/+ls				絒棬/抻祤僳蘋 shell
-18 -/+map				絒棬/抻祤 pty 藣罐柁髱鶈槉嵺
-19 -/+mb				絒棬/抻祤饡盉褆
-20 -ms color			挴簅籦⺪
-21 -n string			挴泂頝踛ボ磝
-22 -name string			剟鷓鞥骳坲﹝頝踛縋簅纕А⻌
-23 -nb distance			挴泂⑶饡盉褆柁煻欏
-24 -/+rw				絒棬/抻祤酈ホ葎⺼
-25 -/+sb				絒棬/抻祤稂棬犓
-26 -/+sf				絒棬/抻祤 SUN 衢逑耰
-27 -sl number[s]			衭鬊Б柁稂棬⺼禨[糬魦禨]
-28 -ti name			汃珜嶂冈籫伀え柁А⻌
-29 -title string			槉嵺柁簅纕А⻌
-30 -tm string			嗈磞鞥篲鳷驨耰А縋А蠣
-31 -tn name			TERM 蘄頨䨣禨ボ磝
-32 -/+vb				絒棬/抻祤槉欓褆
-33 -xrm resourcestring		怬鱗柁罶鳲斒眭
-34 -C				饜祰ⅵ篲鳷
-35 -Sxxd				ョ皕㪫篲鳷 "ttyxx" 柁麔淰萺訒蠣 "d" 
-36 -Sxxx.d			ョ皕㪫篲鳷 "ttyxxx" 柁麔淰萺訒蠣 "d" 
+1 -/+132				啟動/取消 80<->132 行轉換
+2 -/+aw				啟動/取消自動換行
+3 -bg color			背景顏色
+4 -/+bs				關閉/開啟終端機背景成選取的顏色
+5 -display displayname		要連接的 X 伺服器
+6 -e command args		要執行的命令
+7 -fb fontset			粗體字形
+8 -fg color			前景顏色
+9 -fn fontset			正常字形
+10 -geometry geom			視窗的大小 (以字元為單位) 與位置
+11 -help				顯示本則訊息
+12 -/+iconic			啟動/不啟動圖像
+13 -/+j				啟動/取消跳換捲動畫面
+14 -/+kshMode			啟動/取消 ksh 模態
+15 -/+l				啟動/取消日誌
+16 -lf filename			日誌檔名
+17 -/+ls				啟動/取消登入 shell
+18 -/+map				啟動/取消 pty 輸出的對應視窗
+19 -/+mb				啟動/取消邊界鈴
+20 -ms color			指標顏色
+21 -n string			指定圖像名稱
+22 -name string			客戶機實例、圖像與標題字串
+23 -nb distance			指定右邊界鈴的距離
+24 -/+rw				啟動/取消反向換行
+25 -/+sb				啟動/取消捲動軸
+26 -/+sf				啟動/取消 SUN 功能鍵
+27 -sl number[s]			要儲存的捲動行數[螢幕數]
+28 -ti name			作為程式識別用的字串
+29 -title string			視窗的標題字串
+30 -tm string			終端機模態關鍵字與字元
+31 -tn name			TERM 環境變數名稱
+32 -/+vb				啟動/取消視覺鈴
+33 -xrm resourcestring		其他的資源規格
+34 -C				主控台模態
+35 -Sxxd				在從屬模態 "ttyxx" 的檔案描述元 "d" 
+36 -Sxxx.d			在從屬模態 "ttyxxx" 的檔案描述元 "d" 
 37 End-Of-List
-38 ヵ峈衭挴泂 -e 藞禋﹜⼓⽁禕罐隃ョ杬麟⺼廎呏﹜
-39 匢衧囷え炟蠡泂柁 shell 鞂絒棬﹞虳郖蠹蠹磍 (+)
-40 柁藞禋﹜⑴髓ャ艀蠡泂圊﹞
+38 如果要指定 -e 選項，它必須出現在命令行結尾，
+39 否則使用者內定的 shell 會啟動。前面加有加號 (+)
+40 的選項，可以回復內定值。
 41 End-Of-List
-47 %s”杬麟⺼藞禋蠆諟 "%s"\r\n\n
-48 え恄”%s
+47 %s：命令行選項錯誤 "%s"\r\n\n
+48 用法：%s
 49 \r\n   
 50  [%s]
-51 \r\n\n耰蘋 "%s -help" 伒⑴痤怉汒謽柁諰咭﹞\r\n\n
-52 え恄”\n
+51 \r\n\n鍵入 "%s -help" 即可得到完整的說明。\r\n\n
+52 用法：\n
 53 \t%s [-options ...] [-e command args]\n\n
-54 藞禋讓挭”\n
+54 選項包括：\n
 
 $set 3
 $ ****** Module: TermFunction.c
 $ This is a warning message dialog box
-1 奡襉忟儸橛\n挹＞薚泂＝伒⑴覗崽
+1 記憶體已滿\n按「確定」即可清除
 
 $set 4
 $ ****** Module: TermPrim.c
 $ This is the title of a dialog box
-2 嗈磞鞥 - 滙夼
+2 終端機 - 警告
 
 $set 5
 $ ****** Module: TermFunction.c
 $ This is a warning message dialog box
-1 奡襉忟儸橛\n挹＞薚泂＝伒⑴覗崽
+1 記憶體已滿\n按「確定」即可清除
 
 $set 6
 $ ****** Module: TermView.c
 $ DO NOT TRANSLATE Message 1
 $ Messages 2 and 3 are titles for dialog boxes.
 1 80x24 132x24
-4 嗈磞鞥 - Man Page
-5 嗈磞鞥 - 赮伢諰咭
+4 終端機 - Man Page
+5 終端機 - 輔助說明
 
 $set 7
 $ ****** Module: TermViewGlobalDialog.c
@@ -167,39 +167,39 @@ $ documentation for full specs.
 $ 
 $ DO NOT TRANSLATE MESSAGE 15
 $ 
-2 薚泂
-3 抻祤
-4 赮伢諰咭
-5 謽忟
-6 酮簅祰戔
-7 巖蜞
-8 芚轃
-9 酮簅穔冈
-10 絒棬
-11 抻祤
-12 嵑醽酮簅
-13 嵑醽跅 (袹秮)
-14 騿鰳
+2 確定
+3 取消
+4 輔助說明
+5 整體
+6 游標控制
+7 方塊
+8 底線
+9 游標樣式
+10 啟動
+11 取消
+12 閃爍游標
+13 閃爍率 (毫秒)
+14 隱藏
 15 blinkRate
-16 籦⺪祰戔
-17 酈く
-18 琣
-19 槉嵺茯葔
-20 稂棬巖冈
-21 抻祤
-22 絒棬
-23 ⼳僶稂棬
-24 褆鐖祰戔
-25 鐖郣 
-26 槉欓
-27 褆鐖麷倛 
-28 絒棬
-29 抻祤
-30 饡盉滙夼
-31 饡盉煻欏 
-32 伒怮鶈え
-33 适暋
-34 嗈磞鞥 - 謽忟柁藞禋
+16 顏色控制
+17 反白
+18 正常
+19 視窗背景
+20 捲動方式
+21 取消
+22 啟動
+23 平滑捲動
+24 鈴聲控制
+25 聲音 
+26 視覺
+27 鈴聲類型 
+28 啟動
+29 取消
+30 邊界警告
+31 邊界距離 
+32 即刻應用
+33 重設
+34 終端機 - 整體的選項
 $set 8
 $ ****** Module: TermViewMenu.c
 $ These are the menu bar entries and menu pane choices.
@@ -210,75 +210,75 @@ $ The items with a "+" in them are the accellerators for an item.
 $ The single-character items are the mnemonics for a menu item, where the
 $ text of the menu item is specified in the previous message
 $ Do not translate messages 24 and 28.
-1 蠡泂圊
-2 槉嵺騰麵(W)
+1 內定值
+2 視窗大小(W)
 3 W
 4 -iso8859-1
-5 %d 鷁
-6 %.1f 鷁
-7 %.1f 鷁
-8 %.2f 鷁
-9 蠡泂圊
-10 А夆騰麵(F)
+5 %d 點
+6 %.1f 點
+7 %.1f 點
+8 %.2f 點
+9 內定值
+10 字形大小(F)
 11 F
 
 $   Window menu
-12 瞅隞槉嵺(N)
+12 開新視窗(N)
 13 N
-14 トパ(P)
+14 列印(P)
 15 P
-16 トパ(r)...
+16 列印(r)...
 17 r
-18 驨椲(C)
+18 關閉(C)
 19 C
-20 槉嵺(W)
+20 視窗(W)
 21 W
 
 $   Edit menu
-22 闀蕍(C)
+22 複製(C)
 23 C
 24 Ctrl osfInsert
 25 Ctrl+Insert
-26 鶼漜(P)
+26 黏貼(P)
 27 P
 28 Shift osfInsert
 29 Shift+Insert
-30 蹌藟(E)
+30 編輯(E)
 31 E
 
 $   Option menu
 
-32 衢逑犓(M) 
+32 功能軸(M) 
 33 M 
-34 稂棬犓(S)
+34 捲動軸(S)
 35 S
-36 謽忟(G)...
+36 整體(G)...
 37 G
-38 嗈磞鞥(T)...
+38 終端機(T)...
 39 T
-40 楗冈适暋(S)
+40 軟式重設(S)
 41 S
-42 僣冈适暋(H)
+42 硬式重設(H)
 43 H
-44 适暋(R)
+44 重設(R)
 45 R
-46 藞禋(O)
+46 選項(O)
 47 O
 
 $ Old Help menu (no longer used for CDE)
 
-48 颮羏(O)
+48 概觀(O)
 49 O
-50 齡汃(T)
+50 工作(T)
 51 T
-52 棤℡罶涷(R)
+52 參考資料(R)
 53 R
-54 驨卼禋げ(O)
+54 關於項目(O)
 55 O
-56 囷え赮伢諰咭(U)
+56 使用輔助說明(U)
 57 U
 59 A
-60 赮伢諰咭(H)
+60 輔助說明(H)
 61 H
 
 62 Alt+F4
@@ -287,51 +287,51 @@ $ Old Help menu (no longer used for CDE)
 
 $ Current CDE Help menu
 
-64 颮羏(v)
+64 概觀(v)
 65 v
-66 袎鰱(I)
+66 索引(I)
 67 I
-68 げ蠊(C)
+68 目錄(C)
 69 C
-70 齡汃(T)
+70 工作(T)
 71 T
-72 棤℡罶涷(R)
+72 參考資料(R)
 73 R
-74 耰薏(K)
+74 鍵盤(K)
 75 K
-76 囷え赮伢諰咭(U)
+76 使用輔助說明(U)
 77 U
 79 A
-80 赮伢諰咭(H)
+80 輔助說明(H)
 81 H
-82 驨卼嗈磞鞥
-83 驨卼嗈磞鞥
+82 關於終端機
+83 關於終端機
 
 $set 9
 $ ****** Module: TermTerminalDialog.c
 $ These are the messages for the terminal options dialog
-2 薚泂
-3 抻祤
-4 赮伢諰咭
-5 耰薏祰戔
-6 琣
-7 鶈え嶂冈
-8 酮簅耰篲鳷
-9 禨圊
-10 鶈え嶂冈
-11 赮伢耰嗢篲鳷
-12 囆⻏
-13 囆⻏/葎⺼
-14 葎⺼禖囥
-15 孍泂
-16 箾崽孍泂
-17 囷え炟衢逑耰
-18 糬魦祰戔
-19 絒棬
-20 抻祤
-21 鼲葎 132 ⺼
-22 ⺼廎呏葎⺼
-23 酈ホ⺼廎呏葎⺼
-24 伒怮鶈え
-25 适暋
-26 嗈磞鞥 - 嗈磞鞥藞禋
+2 確定
+3 取消
+4 輔助說明
+5 鍵盤控制
+6 正常
+7 應用程式
+8 游標鍵模態
+9 數值
+10 應用程式
+11 輔助鍵組模態
+12 歸位
+13 歸位/換行
+14 換行順序
+15 鎖定
+16 解除鎖定
+17 使用者功能鍵
+18 螢幕控制
+19 啟動
+20 取消
+21 轉換成 132 行
+22 行結尾換行
+23 反向行結尾換行
+24 即刻應用
+25 重設
+26 終端機 - 終端機選項

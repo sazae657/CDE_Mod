@@ -217,35 +217,35 @@ $ ----------------------------------------------------------------------------
 $ LANG=C
 200 C -------- POSIX
 $ LANG=de
-201 de ------- 憼齪
+201 de ------- 德文
 $ LANG=fr
-202 fr ------- 恄齪
+202 fr ------- 法文
 $ LANG=it
-203 it ------- 氂騰伈齪
+203 it ------- 義大利文
 $ LANG=sv
-204 sv ------- 撖怢齪
+204 sv ------- 瑞典文
 $ LANG=es
-205 es ------- 邳耀⻆笣蠱齪
+205 es ------- 拉丁西班牙文
 $ LANG=en_US
-206 en_US ---- 蚆齪
+206 en_US ---- 英文
 $ LANG=ja
-207 ja ------- 戀ヾ齪
+207 ja ------- 日本文
 $ LANG=japanese
-208 japanese - 戀ヾ齪
+208 japanese - 日本文
 $ LANG=ko
-209 ko ------- 鬺齪
+209 ko ------- 韓文
 $ LANG=korean
-210 korean --- 鬺齪
+210 korean --- 韓文
 $ LANG=zh
-211 zh ------- 斕齪/籙忟
+211 zh ------- 中文/簡體
 $ LANG=chinese
-212 chinese -- 斕齪/籙忟
+212 chinese -- 中文/簡體
 $ LANG=zh_TW
-213 zh_TW ---- 斕齪/鏾忟
+213 zh_TW ---- 中文/繁體
 $ LANG=tchinese
-214 tchinese - 斕齪/鏾忟
+214 tchinese - 中文/繁體
 $ LANG=ca
-215 ca ------- 蠹砦碭⼖呯
+215 ca ------- 加泰隆尼亞
 $ "NEW-"
 216 en_AU ---- Australia
 $ "NEW-"
@@ -314,7 +314,7 @@ $ Sun Desktop Names
 $ 
 $ Names are used on the dtlogin Options->Session menu
 $ 
-290 纂郫痐譫磣隉侇嗄 (CDE)
+290 一般桌上管理系統 (CDE)
 
 $ ----------------------------------------------------------------------------
 $ Login screen language list translations for HP-UX (HP)

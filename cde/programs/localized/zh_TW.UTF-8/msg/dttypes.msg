@@ -8,8 +8,8 @@ $set 1
 $ Do not Translate
 2	"Dttype"
 $ Do not Translate
-3	"隓恄渿ズ昡ス媊沓暋泂\n"
-4	"洠А⻌"
+3	"無法將任何物件起始設定\n"
+4	"空字串"
 $ this should mean a "Empty string".
 5	"=============== %s ===============\n"
 $ Do not Translate
@@ -19,13 +19,13 @@ $ Do not Translate
 $ Do not Translate
 8	""
 $ Do not Translate
-9	"⺌ %s蟡蘋\n"
-10	"攜咭柁"
+9	"自 %s載入\n"
+10	"不明的"
 11	"\t%s"
 $ Do not Translate
 12	"\0"
 $ Do not Translate
-13	" ”\t%s"
+13	" ：\t%s"
 $ Do not Translate
 14	"\0"
 $ Do not Translate
@@ -47,25 +47,25 @@ $ Do not Translate
 $ Do not Translate
 23	"all"
 $ Do not Translate
-24	"蠆諟 = %o, %s\n"
+24	"錯誤 = %o, %s\n"
 $ Translate "error" only
-25	"え恄:  dttypes [-help]\n\tdttypes [-type filename]\n\tdttypes [-db database] [-w [rec_name regexp] [fld_name regexp]\n\t\t\t[fld_value regexp]]\n\t\t[-l [rec_name] [rec_info] [fld_name regexp] [fld_value]]\n"
-$ Translate only the following” "filename" "database" "regexp"
+25	"用法:  dttypes [-help]\n\tdttypes [-type filename]\n\tdttypes [-db database] [-w [rec_name regexp] [fld_name regexp]\n\t\t\t[fld_value regexp]]\n\t\t[-l [rec_name] [rec_info] [fld_name regexp] [fld_value]]\n"
+$ Translate only the following： "filename" "database" "regexp"
 26	"-type"
 $ Do not Translate
-27	"%s 柁麷伀旂 %s\n"
+27	"%s 的類別是 %s\n"
 28	"$"
 $ Do not Translate
 29	"--------------------- %s ----------------\n"
 $ Do not Translate
-30	"隓淩柁罶涷梬\n"
-31	"攜旂淩柁鰱禨\n"
-32	"隓淩柁 rec_info 唫⻏ョ  -w 藞禋斕\n"
+30	"無效的資料庫\n"
+31	"不是有效的引數\n"
+32	"無效的 rec_info 欄位在  -w 選項中\n"
 $ do not translate "rec_info" or "-w"
-33	"攜ョ -w 迖 -l 藞禋斕\n"
+33	"不在 -w 或 -l 選項中\n"
 $ do not translate "-w" or "-l"
-34	"攜咭柁藞禋\n"
+34	"不明的選項\n"
 35	"-help"
 $ Do not Translate
-36	"纂郫玿ざ冈 %s 斕蠆諟\n"
+36	"一般表示式 %s 中有錯誤\n"
 

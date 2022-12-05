@@ -17,13 +17,13 @@ $
 $ message #1 indicates the list of 2byte punctuation, special characters
 $ and double consonants that cannot start a line.
 $ 
-1 ﹛渿ト玿殦卼搢>
+1 　將列表置於此處>
 
 $ 
 $ message #2 indicates the list of 2byte punctuation, special characters
 $ and double consonants that cannot end a line.
 $ 
-2 ﹛渿ト玿殦卼搢>
+2 　將列表置於此處>
 
 $ 
 $ message #3 indicates whether the language wants all end-of-lines in
