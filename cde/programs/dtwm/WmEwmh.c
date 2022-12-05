@@ -145,30 +145,6 @@ static void ProcessNetWmStateMaximized (ClientData *pCD, long action)
     SetClientState (pCD, newState, GetTimestamp ());
 }
 
-static void ProcessNetWmNameNetWmIconName (ClientData *pCD, Atom name)
-{
-    unsigned long nitems;
-    unsigned char *netNameProp;
-    XTextProperty nameProp = {0};
-
-    nitems = GetWindowProperty(pCD->client, name, wmGD.xa_UTF8_STRING,
-		    &netNameProp);
-
-    if (!nitems) goto done;
-
-    if (Xutf8TextListToTextProperty (DISPLAY, (char **) &netNameProp, 1,
-			    XUTF8StringStyle, &nameProp) != Success) goto done;
-
-    if (name == wmGD.xa__NET_WM_NAME)
-	XSetWMName (DISPLAY, pCD->client, &nameProp);
-    else if (name == wmGD.xa__NET_WM_ICON_NAME)
-	XSetWMIconName (DISPLAY, pCD->client, &nameProp);
-
-done:
-    XFree (netNameProp);
-    XFree ((char*) nameProp.value);
-}
-
 /**
 * @brief Processes the _NET_WM_FULLSCREEN_MONITORS protocol.
 *
@@ -247,26 +223,6 @@ void ProcessNetWmState (ClientData *pCD, long action,
 }
 
 /**
-* @brief Processes the _NET_WM_NAME property.
-*
-* @param pCD
-*/
-void ProcessNetWmName (ClientData *pCD)
-{
-    ProcessNetWmNameNetWmIconName (pCD, wmGD.xa__NET_WM_NAME);
-}
-
-/**
-* @brief Processes the _NET_WM_ICON_NAME property.
-*
-* @param pCD
-*/
-void ProcessNetWmIconName (ClientData *pCD)
-{
-    ProcessNetWmNameNetWmIconName (pCD, wmGD.xa__NET_WM_ICON_NAME);
-}
-
-/**
 * @brief Sets up the window manager handling of the EWMH.
 */
 void SetupWmEwmh (void)
@@ -326,7 +282,7 @@ void SetupWmEwmh (void)
 
 	XChangeProperty(DISPLAY, childWindow, atoms[XA__NET_WM_NAME],
 			atoms[XA_UTF8_STRING], 8, PropModeReplace,
-			DT_WM_RESOURCE_NAME, 5);
+			(unsigned char *)DT_WM_RESOURCE_NAME, 5);
 
 	XChangeProperty(DISPLAY, childWindow,
 			atoms[XA__NET_SUPPORTING_WM_CHECK], XA_WINDOW, 32,

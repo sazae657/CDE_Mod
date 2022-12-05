@@ -748,18 +748,6 @@ void HandleCPropertyNotify (ClientData *pCD, XPropertyEvent *propertyEvent)
 	    break;
 	}
 	
-        case XA_WM_NAME:
-	{
-	    ProcessWmWindowTitle (pCD, FALSE /*not first time*/);
-	    break;
-	}
-	
-        case XA_WM_ICON_NAME:
-	{
-	    ProcessWmIconTitle (pCD, FALSE /*not first time*/);
-	    break;
-	}
-	
         case XA_WM_CLASS:
 	{
 
@@ -868,13 +856,15 @@ void HandleCPropertyNotify (ClientData *pCD, XPropertyEvent *propertyEvent)
 		ProcessMwmHints (pCD);
 		SetClientOffset (pCD);
 	    }
-	    else if (propertyEvent->atom == wmGD.xa__NET_WM_NAME)
+	    else if (propertyEvent->atom == XA_WM_NAME ||
+		     propertyEvent->atom == wmGD.xa__NET_WM_NAME)
 	    {
-		ProcessNetWmName (pCD);
+		ProcessWmWindowTitle (pCD, FALSE /*not first time*/);
 	    }
-	    else if (propertyEvent->atom == wmGD.xa__NET_WM_ICON_NAME)
+	    else if (propertyEvent->atom == XA_WM_ICON_NAME ||
+		     propertyEvent->atom == wmGD.xa__NET_WM_ICON_NAME)
 	    {
-		ProcessNetWmIconName (pCD);
+		ProcessWmIconTitle (pCD, FALSE /*not first time*/);
 	    }
 	    break;
 	}

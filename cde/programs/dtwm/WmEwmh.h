@@ -23,8 +23,8 @@
  * Floor, Boston, MA 02110-1301 USA
  */
 
-#ifndef _Dt_WmEwmh_h_
-#define _Dt_WmEwmh_h_
+#ifndef WMEWMH_H
+#define WMEWMH_H
 
 #define _NET_WM_STATE_REMOVE 0
 #define _NET_WM_STATE_ADD 1
@@ -46,8 +46,6 @@ void ProcessNetWmFullscreenMonitors (ClientData *pCD,
     long top, long bottom, long left, long right);
 void ProcessNetWmState (ClientData *pCD, long action,
     long firstProperty, long secondProperty);
-void ProcessNetWmName (ClientData *pCD);
-void ProcessNetWmIconName (ClientData *pCD);
 void SetupWmEwmh (void);
 
-#endif /* _Dt_WmEwmh_h_ */
+#endif

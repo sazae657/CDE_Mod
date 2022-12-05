@@ -56,7 +56,6 @@
 #include "WmCDecor.h"
 #include "WmCPlace.h"
 #include "WmError.h"
-#include "WmEwmh.h"
 #include "WmIDecor.h"
 #include "WmIPlace.h"
 #include "WmIconBox.h"
@@ -420,7 +419,6 @@ GetClientInfo (WmScreenData *pSD, Window clientWindow, long manageFlags)
      */
 
     ProcessWmWindowTitle (pCD, TRUE);
-    ProcessNetWmName (pCD);
 
 
     /*
@@ -428,7 +426,6 @@ GetClientInfo (WmScreenData *pSD, Window clientWindow, long manageFlags)
      */
 
     ProcessWmIconTitle (pCD, TRUE);
-    ProcessNetWmIconName (pCD);
 
 
     /*
@@ -2204,16 +2201,35 @@ WmICCCMToXmString (XTextProperty *wmNameProp)
 void 
 ProcessWmWindowTitle (ClientData *pCD, Boolean firstTime)
 {
+    Atom actualType;
+    int actualFormat;
+    unsigned long nitems;
+    unsigned long leftover;
+    char *netWmNameProp;
     XTextProperty wmNameProp;
     XmString title_xms = NULL;
+    Window win = pCD->client;
+    Boolean hasWmName = HasProperty (pCD, XA_WM_NAME);
+    Boolean hasNetWmName = HasProperty (pCD, wmGD.xa__NET_WM_NAME);
 
     if ((pCD->clientDecoration & MWM_DECOR_TITLE) &&
-	(!firstTime || HasProperty (pCD, XA_WM_NAME)) &&
-	XGetWMName(DISPLAY, pCD->client, &wmNameProp))
+	(!firstTime || hasWmName || hasNetWmName))
     {
-      title_xms = WmICCCMToXmString(&wmNameProp);
-      if (wmNameProp.value)
-	XFree ((char*)wmNameProp.value);
+	if ((!firstTime || hasNetWmName) &&
+	    XGetWindowProperty (DISPLAY, win, wmGD.xa__NET_WM_NAME, 0L,
+				1000000L, False, wmGD.xa_UTF8_STRING,
+				&actualType, &actualFormat, &nitems, &leftover,
+				(unsigned char **) &netWmNameProp) == Success)
+	{
+	    title_xms = XmStringCreateLocalized (netWmNameProp);
+	    XFree (netWmNameProp);
+	}
+	else if ((!firstTime || hasWmName) &&
+		 XGetWMName(DISPLAY, win, &wmNameProp))
+	{
+	    title_xms = WmICCCMToXmString(&wmNameProp);
+	    if (wmNameProp.value) XFree ((char*)wmNameProp.value);
+	}
     }
 
     if (title_xms)
@@ -2418,17 +2434,36 @@ FixSubpanelEmbeddedClientGeometry (ClientData *pCD)
 void 
 ProcessWmIconTitle (ClientData *pCD, Boolean firstTime)
 {
+  Atom actualType;
+  int actualFormat;
+  unsigned long nitems;
+  unsigned long leftover;
+  char *netWmIconNameProp;
   XTextProperty wmIconNameProp;
   XmString icon_xms = NULL;
+  Window win = pCD->client;
+  Boolean hasWmIconName = HasProperty (pCD, XA_WM_ICON_NAME);
+  Boolean hasNetWmIconName = HasProperty (pCD, wmGD.xa__NET_WM_ICON_NAME);
 
   if ((pCD->clientFunctions & MWM_FUNC_MINIMIZE) &&
       (pCD->transientLeader == NULL) &&
-      (!firstTime || HasProperty(pCD, XA_WM_ICON_NAME)) &&
-      XGetWMIconName (DISPLAY, pCD->client, &wmIconNameProp))
+      (!firstTime || hasWmIconName || hasNetWmIconName))
   {
-    icon_xms = WmICCCMToXmString(&wmIconNameProp);
-    if (wmIconNameProp.value)
-      XFree ((char*)wmIconNameProp.value);
+    if ((!firstTime || hasNetWmIconName) &&
+	XGetWindowProperty (DISPLAY, win, wmGD.xa__NET_WM_ICON_NAME, 0L,
+			    1000000L, False, wmGD.xa_UTF8_STRING, &actualType,
+			    &actualFormat, &nitems, &leftover,
+			    (unsigned char **) &netWmIconNameProp) == Success)
+    {
+      icon_xms = XmStringCreateLocalized (netWmIconNameProp);
+      XFree (netWmIconNameProp);
+    }
+    else if ((!firstTime || hasWmIconName) &&
+	     XGetWMIconName (DISPLAY, win, &wmIconNameProp))
+    {
+      icon_xms = WmICCCMToXmString(&wmIconNameProp);
+      if (wmIconNameProp.value) XFree ((char*)wmIconNameProp.value);
+    }
   }
 
   if (icon_xms)
