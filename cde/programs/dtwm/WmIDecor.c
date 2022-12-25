@@ -868,7 +868,7 @@ void DrawIconTitle (ClientData *pcd)
 
     /* paint the text */
     WmDrawXmString(DISPLAY, ICON_FRAME_WIN(pcd), ICON_APPEARANCE(pcd).fontList,
-		   pcd->iconTitle, iconGC, 
+		   ICON_DISPLAY_TITLE(pcd), iconGC,
 		   textBox.x, textBox.y, textBox.width, &textBox, True);
 
 } /* END OF FUNCTION DrawIconTitle */
@@ -950,7 +950,7 @@ void RedisplayIconTitle (ClientData *pcd)
 	/* in with the new */
 	WmDrawXmString(DISPLAY, ICON_FRAME_WIN(pcd), 
 		       ICON_APPEARANCE(pcd).fontList,
-		       pcd->iconTitle, iconGC, 
+		       ICON_DISPLAY_TITLE(pcd), iconGC,
 		       textBox.x, textBox.y, textBox.width, &textBox,
 		       True);
 
@@ -1768,7 +1768,7 @@ void PaintActiveIconText (ClientData *pcd, Boolean erase)
 
     WmDrawXmString(DISPLAY, pcd->pSD->activeIconTextWin, 
 		   ICON_APPEARANCE(pcd).fontList,
-		   pcd->iconTitle, iconGC, 
+		   ICON_DISPLAY_TITLE(pcd), iconGC,
 		   textBox.x, textBox.y, textBox.width, &textBox, True);
 
 
@@ -1821,7 +1821,7 @@ void ShowActiveIconText (ClientData *pcd)
 
 	/* set up geometry for the window */
 
-	XmStringExtent (ICON_APPEARANCE(pcd).fontList, pcd->iconTitle,
+	XmStringExtent (ICON_APPEARANCE(pcd).fontList, ICON_DISPLAY_TITLE(pcd),
 			&dWidth, &dHeight);
 
 	activeIconTextHeight =  (unsigned int) dHeight + 
@@ -2004,7 +2004,7 @@ void MoveActiveIconText (ClientData *pcd)
     if (pcd->pSD->activeIconTextWin && wmGD.activeIconTextDisplayed) {
 	/* set up geometry for the window */
 
-	XmStringExtent (ICON_APPEARANCE(pcd).fontList, pcd->iconTitle,
+	XmStringExtent (ICON_APPEARANCE(pcd).fontList, ICON_DISPLAY_TITLE(pcd),
 			&dWidth, &dHeight);
 
 	activeIconTextHeight =  (unsigned int) dHeight +

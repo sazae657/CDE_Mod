@@ -731,6 +731,40 @@ session initiale dans la boîte de dialogue Lancement du Gestionnaire
 de configuration.</para>
 <!-- MODULE SEConfirmLogoutWithChoiceDE SElogch.DEa -->
 </sect2>
+<Sect2 Id="WMWindowRenameDialogDE">
+<Title>Boîte de dialogue Renommer la fenêtre</Title>
+<Para><Anchor Id="WindowRename">
+</Para>
+<Para>
+Tapez le nouveau nom dans le champ de texte (laissez-le vide pour
+restaurer le titre de fenêtre par défaut).
+</Para>
+<VariableList>
+<VarListEntry>
+<Term>OK</Term>
+<ListItem>
+<Para>
+Renommez la fenêtre et fermez la boîte de dialogue de renommage.
+</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Annuler</Term>
+<ListItem>
+<Para>
+Annuler le changement de nom et fermez la boîte de dialogue de
+changement de nom.
+</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Aide</Term>
+<ListItem>
+<Para>Affiche l'aide.</Para>
+</ListItem>
+</VarListEntry>
+</VariableList>
+</Sect2>
 </sect1>
 <sect1 id="ConfirmSessionCreateDE">
 <title>Confirmation de création de session<anchor id="ConfirmSessionCreation"></title>

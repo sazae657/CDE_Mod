@@ -1106,6 +1106,19 @@ typedef struct _FrameInfo
 
 } FrameInfo;
 
+/**
+ * @brief Specific data for instant title dialog
+ */
+typedef struct _InstantTitleData
+{
+    Boolean		widgetsInitialized;
+    struct _ClientData	*pCDforClient;
+    Context		contextForClient;
+    Widget		dialogShellW;
+    Widget		dialogBoxW;
+    Widget		formW;
+    Widget		textFieldW;
+} InstantTitleData, *PtrInstantTitleData;
 
 
 /*************************************<->*************************************
@@ -1132,6 +1145,7 @@ typedef struct _WmScreenData
     Widget      confirmboxW[4];
     Widget	wPanelist;		/* panel object */
     WsPresenceData	presence;	/* workspace presence dialog*/
+    InstantTitleData instantTitleData;	/* instant title dialog */
     Widget	switcherW;		/* workspace switcher */
     Widget	switcherShellW;		/* shell for ws switcher */
     Window	wmWorkspaceWin;		/* holds wm properties */
@@ -1310,6 +1324,8 @@ typedef struct _WmScreenData *PtrScreenData;
 /*
 #define ICON_DEFAULT_TITLE(pcd) ((pcd)->iconDefaultTitle)
 */
+#define ICON_DISPLAY_TITLE(pcd) \
+	((pcd)->instantTitle ? (pcd)->instantTitle : (pcd)->iconTitle)
 #define ICON_DECORATION(pcd) ((pcd)->pSD->iconDecoration)
 #define ICON_HEIGHT(pcd) ((pcd)->pSD->iconHeight)
 #define ICON_WIDTH(pcd) ((pcd)->pSD->iconWidth)
@@ -1465,6 +1481,8 @@ typedef struct _WmWorkspaceData *PtrWorkspaceData;
 /*
 #define CLIENT_DEFAULT_TITLE(pcd) ((pcd)->pSD->clientDefaultTitle)
 */
+#define CLIENT_DISPLAY_TITLE(pcd) \
+	((pcd)->instantTitle ? (pcd)->instantTitle : (pcd)->clientTitle)
 #define MAX_MAX_SIZE(pcd) ((pcd)->pSD->maximumMaximumSize)
 #define SHOW_RESIZE_CURSORS(pcd) ((pcd)->pSD->resizeCursors)
 #define JOIN_BEVEL(pcd) ((pcd)->pSD->joinBevel)
@@ -1636,6 +1654,7 @@ typedef struct _ClientData
     int		monitorY;			/* monitor Y loc */
     int		monitorWidth;			/* monitor width */
     int		monitorHeight;			/* monitor height */
+    XmString	instantTitle;			/* instant title */
 
     /* client window frame graphic data: */
 

@@ -36,6 +36,7 @@
 
 #include "WmGlobal.h"
 #include "WmICCC.h"
+#include <limits.h>
 #include <stdio.h>
 #include <Dt/WsmP.h>
 #include <X11/Xatom.h>
@@ -1887,6 +1888,55 @@ HasProperty (
 
 } /* END OF FUNCTION HasProperty */
 
+/**
+ * @brief This function calls XGetWindowProperty to get the UTF8_STRING
+ *        property.
+ *
+ * @param display
+ * @param w
+ * @param property
+ *
+ * @return A string or NULL.
+ */
+char *GetUtf8String (Display *display, Window w, Atom property)
+{
+    int actualFormat;
+    char *propReturn;
+    unsigned long nitems, leftover;
+    Atom actualType;
+    Atom reqType = wmGD.xa_UTF8_STRING;
 
+    if (XGetWindowProperty (display, w, property, 0L, USHRT_MAX, False, reqType,
+			    &actualType, &actualFormat, &nitems, &leftover,
+			    (unsigned char **) &propReturn) != Success)
+	goto err;
 
+    if (!nitems) goto err;
+    if (actualType != reqType) goto err;
 
+    return propReturn;
+
+err:
+    if (propReturn) XFree (propReturn);
+    return NULL;
+}
+
+/**
+ * @brief This function calls XChangeProperty to set the UTF8_STRING property.
+ *
+ * @param display
+ * @param w
+ * @param property
+ * @param s
+ */
+void SetUtf8String (Display *display, Window w, Atom property, const char *s)
+{
+    size_t len;
+
+    if (!(s && s[0])) return;
+
+    len = strnlen (s, USHRT_MAX);
+
+    XChangeProperty (display, w, property, wmGD.xa_UTF8_STRING, 8,
+		     PropModeReplace, (unsigned char *)s, len);
+}

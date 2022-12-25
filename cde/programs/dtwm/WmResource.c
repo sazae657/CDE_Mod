@@ -164,6 +164,7 @@ char *builtinSystemMenu = BUILTINSYSTEMMENU;
 	Maximize	_x	f.maximize\n\
 	Lower		_L	f.lower\n\
 	no-label		f.separator\n\
+      \"Rename...\"		_a	f.rename\n\
       \"Occupy Workspace...\"	_O	f.workspace_presence\n\
       \"Occupy All Workspaces\"	_A	f.occupy_all\n\
       \"Unoccupy Workspace\"	_U	f.remove\n\
@@ -180,6 +181,7 @@ void InitBuiltinSystemMenu(void)
     char *MinString = NULL;
     char *MaxString = NULL;
     char *LowString = NULL;
+    char *RenString = NULL;
     char *OcpString = NULL;
     char *OcaString = NULL;
     char *RemString = NULL;
@@ -301,6 +303,21 @@ void InitBuiltinSystemMenu(void)
     {
 	if(gotItAll)
 	{
+	    tmpString = ((char *)GETMESSAGE(62, 70, "Rename\\.\\.\\. _a  f.rename"));
+	    if ((RenString =
+		 (char *)XtMalloc ((unsigned int)
+				 (strlen(tmpString) + 1))) == NULL)
+	    {
+		Warning (((char *)GETMESSAGE(62, 14, "Insufficient memory for local default menu.")));
+		gotItAll = False;
+	    }
+	    else
+	    {
+		strcpy(RenString, tmpString);
+	    }
+	}
+	if(gotItAll)
+	{
 	    tmpString = ((char *)GETMESSAGE(62, 55, "Occupy\\ Workspace\\.\\.\\. _O  f.workspace_presence"));
 	    if ((OcpString =
 		 (char *)XtMalloc ((unsigned int) 
@@ -382,8 +399,8 @@ void InitBuiltinSystemMenu(void)
                  SizString, MinString, MaxString, LowString);
 	if (DtwmBehavior)
 	{
-	    snprintf(dsmtemp, sizeof(dsmtemp), "%s%s\n%s\n%s\n no-label  f.separator\n",
-	             dsm, OcpString, OcaString, RemString);
+	    snprintf(dsmtemp, sizeof(dsmtemp), "%s%s\n%s\n%s\n%s\n no-label  f.separator\n",
+	             dsm, RenString, OcpString, OcaString, RemString);
 	    strcpy(dsm, dsmtemp);
 	}
         snprintf(dsmtemp, sizeof(dsmtemp), "%s%s\n}", dsm, CloString);
@@ -422,6 +439,8 @@ void InitBuiltinSystemMenu(void)
        XtFree(MaxString);
     if (LowString != NULL)
        XtFree(LowString);
+    if (RenString != NULL)
+       XtFree(RenString);
     if (OcpString != NULL)
        XtFree(OcpString);
     if (OcaString != NULL)

@@ -221,6 +221,8 @@ InitClientData (Window clientWindow)
     pCD->fullscreen = False;
     pCD->monitorSizeIsSet = False;
 
+    pCD->instantTitle = NULL;
+
     for (i = 0; i < STRETCH_COUNT; ++i) pCD->clientStretchWin[i] = (Window)0L;
 
     return (pCD);
@@ -2201,11 +2203,7 @@ WmICCCMToXmString (XTextProperty *wmNameProp)
 void 
 ProcessWmWindowTitle (ClientData *pCD, Boolean firstTime)
 {
-    Atom actualType;
-    int actualFormat;
-    unsigned long nitems;
-    unsigned long leftover;
-    char *netWmNameProp;
+    char *netStr;
     XTextProperty wmNameProp;
     XmString title_xms = NULL;
     Window win = pCD->client;
@@ -2216,13 +2214,10 @@ ProcessWmWindowTitle (ClientData *pCD, Boolean firstTime)
 	(!firstTime || hasWmName || hasNetWmName))
     {
 	if ((!firstTime || hasNetWmName) &&
-	    XGetWindowProperty (DISPLAY, win, wmGD.xa__NET_WM_NAME, 0L,
-				1000000L, False, wmGD.xa_UTF8_STRING,
-				&actualType, &actualFormat, &nitems, &leftover,
-				(unsigned char **) &netWmNameProp) == Success)
+	    (netStr = GetUtf8String (DISPLAY, win, wmGD.xa__NET_WM_NAME)))
 	{
-	    title_xms = XmStringCreateLocalized (netWmNameProp);
-	    XFree (netWmNameProp);
+	    title_xms = XmStringCreateLocalized (netStr);
+	    XFree (netStr);
 	}
 	else if ((!firstTime || hasWmName) &&
 		 XGetWMName(DISPLAY, win, &wmNameProp))
@@ -2275,6 +2270,14 @@ ProcessWmWindowTitle (ClientData *pCD, Boolean firstTime)
         }
     }
 
+    if (firstTime && pCD->instantTitle == NULL &&
+	HasProperty (pCD, wmGD.xa__NET_WM_VISIBLE_NAME) &&
+	(netStr = GetUtf8String (DISPLAY, win, wmGD.xa__NET_WM_VISIBLE_NAME)))
+    {
+	pCD->instantTitle = XmStringCreateLocalized (netStr);
+	XFree (netStr);
+    }
+
     /*
      * If this is a tear-off menu, then make sure title text is not clipped
      */
@@ -2295,7 +2298,7 @@ ProcessWmWindowTitle (ClientData *pCD, Boolean firstTime)
 	/*
 	 * Calculations derived from GetTextBox() and GetFramePartInfo()
 	 */
-	minWidth = XmStringWidth(fontList, pCD->clientTitle) +
+	minWidth = XmStringWidth(fontList, CLIENT_DISPLAY_TITLE(pCD)) +
 	    ((pCD->dtwmBehaviors & DtWM_BEHAVIOR_SUBPANEL) ? 4 : 0) +
 			    ((decor & MWM_DECOR_MENU) ? boxdim : 0) +
 			    ((decor & MWM_DECOR_MINIMIZE) ? boxdim : 0) +
@@ -2434,11 +2437,7 @@ FixSubpanelEmbeddedClientGeometry (ClientData *pCD)
 void 
 ProcessWmIconTitle (ClientData *pCD, Boolean firstTime)
 {
-  Atom actualType;
-  int actualFormat;
-  unsigned long nitems;
-  unsigned long leftover;
-  char *netWmIconNameProp;
+  char *netStr;
   XTextProperty wmIconNameProp;
   XmString icon_xms = NULL;
   Window win = pCD->client;
@@ -2450,13 +2449,10 @@ ProcessWmIconTitle (ClientData *pCD, Boolean firstTime)
       (!firstTime || hasWmIconName || hasNetWmIconName))
   {
     if ((!firstTime || hasNetWmIconName) &&
-	XGetWindowProperty (DISPLAY, win, wmGD.xa__NET_WM_ICON_NAME, 0L,
-			    1000000L, False, wmGD.xa_UTF8_STRING, &actualType,
-			    &actualFormat, &nitems, &leftover,
-			    (unsigned char **) &netWmIconNameProp) == Success)
+	(netStr = GetUtf8String (DISPLAY, win, wmGD.xa__NET_WM_ICON_NAME)))
     {
-      icon_xms = XmStringCreateLocalized (netWmIconNameProp);
-      XFree (netWmIconNameProp);
+      icon_xms = XmStringCreateLocalized (netStr);
+      XFree (netStr);
     }
     else if ((!firstTime || hasWmIconName) &&
 	     XGetWMIconName (DISPLAY, win, &wmIconNameProp))
@@ -2498,6 +2494,14 @@ ProcessWmIconTitle (ClientData *pCD, Boolean firstTime)
     }
   }
 
+  if (firstTime && pCD->instantTitle == NULL &&
+      HasProperty (pCD, wmGD.xa__NET_WM_VISIBLE_ICON_NAME) &&
+      (netStr = GetUtf8String (DISPLAY, win,
+			       wmGD.xa__NET_WM_VISIBLE_ICON_NAME)))
+  {
+    pCD->instantTitle = XmStringCreateLocalized (netStr);
+    XFree (netStr);
+  }
 } /* END OF FUNCTION ProcessWmIconTitle */
 
 

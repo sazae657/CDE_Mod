@@ -44,6 +44,9 @@
 #include "WmWrkspace.h"
 #include <Dt/Session.h>
 
+extern XtPointer _XmStringUngenerate(XmString, XmStringTag,
+				     XmTextType, XmTextType);
+
 typedef struct _ProxyClientInfo
 {
     int screen;
@@ -72,6 +75,7 @@ static char *screenStr = "%s.screen";
 static char *workspacesStr = "%s.workspaces";
 static char *iconXPosStr = "%s.iconPos.x.%s";
 static char *iconYPosStr = "%s.iconPos.y.%s";
+static char *instantTitleStr = "%s.instantTitle";
 
 /* Header for private database. */
 static char *dbHeader = "\
@@ -108,6 +112,9 @@ static void buildDBFileName(char [MAXPATHLEN], Boolean);
 
 /* Get string of client's workspaces. */
 static char *getClientWorkspaces(ClientData *);
+
+/* Get string of client's instant title. */
+static char *getClientInstantTitle(ClientData *);
 
 /* List-of-clients utilities. */
 static Boolean addClientToList(ClientData ***, int *, ClientData *);
@@ -292,6 +299,15 @@ getClientWorkspaces(ClientData *pCD)
     return cwsP;
 }
 
+static char *
+getClientInstantTitle(ClientData *pCD)
+{
+    if (!pCD->instantTitle) return NULL;
+
+    return _XmStringUngenerate(pCD->instantTitle, NULL, XmCHARSET_TEXT,
+			       XmCHARSET_TEXT);
+}
+
 static Boolean
 addClientToList(ClientData ***cdList, int *nClients, ClientData *pCD)
 {
@@ -420,6 +436,13 @@ findXSMPClientDBMatch(ClientData *pCD, char **workSpaceNamesP)
 		 != (char *)NULL))
 	    {
 		*workSpaceNamesP = XtNewString(resourcePtr);
+	    }
+
+	    if ((resourcePtr = getXSMPResource(pCD, WMSAVE_INSTANT_TITLE,
+					       instantTitleStr))
+		!= (char *)NULL)
+	    {
+		pCD->instantTitle = XmStringCreateLocalized(resourcePtr);
 	    }
 	}
 
@@ -611,6 +634,13 @@ findProxyClientDBMatch(ClientData *pCD, char **workSpaceNamesP)
 		*workSpaceNamesP = XtNewString(resourcePtr);
 	    }
 
+	    if ((resourcePtr =
+		 getClientResource(proxyClientID, instantTitleStr))
+		!= (char *)NULL)
+	    {
+		pCD->instantTitle = XmStringCreateLocalized(resourcePtr);
+	    }
+
 	    return True;
 	}
     }
@@ -722,6 +752,18 @@ saveXSMPClient(FILE *fp, ClientData *pCD)
 	}
     }
 
+    if (SAVE_RESOURCE(pCD, WMSAVE_INSTANT_TITLE))
+    {
+	char *title = getClientInstantTitle(pCD);
+
+	if (title)
+	{
+	    fprintf(fp, instantTitleStr, clientID);
+	    fprintf(fp, strArg, title);
+	    XtFree(title);
+	}
+    }
+
     return True;
 }
 
@@ -737,6 +779,7 @@ saveProxyClient(FILE *fp, ClientData *pCD, int clientIDNum)
     int clientX, clientY;
     unsigned int clientWd, clientHt;
     char *clientWorkspaces;
+    char *instantTitle;
 
     if (!getProxyClientInfo(pCD, &proxyClientInfo))
 	return False;
@@ -804,6 +847,14 @@ saveProxyClient(FILE *fp, ClientData *pCD, int clientIDNum)
 	fprintf(fp, workspacesStr, clientID);
 	fprintf(fp, strArg, clientWorkspaces);
 	XtFree(clientWorkspaces);
+    }
+
+    instantTitle = getClientInstantTitle(pCD);
+    if (instantTitle)
+    {
+	fprintf(fp, instantTitleStr, clientID);
+	fprintf(fp, strArg, instantTitle);
+	XtFree(instantTitle);
     }
 
     return True;

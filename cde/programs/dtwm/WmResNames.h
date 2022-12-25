@@ -194,6 +194,7 @@
 #define WmNworkspaceController		"workspaceController"
 #define WmNworkspacePresence		"workspacePresence"
 #define WmNworkspaceSwitch		"workspaceSwitch"
+#define WmNinstantTitle			"instantTitle"
 
 /* window manager client resource names: */
 
@@ -356,6 +357,7 @@
 #define WmCWorkspaceController		"WorkspaceController"
 #define WmCWorkspacePresence		"WorkspacePresence"
 #define WmCWorkspaceSwitch		"WorkspaceSwitch"
+#define WmCInstantTitle			"InstantTitle"
 
 /* window manager client resource names: */
 

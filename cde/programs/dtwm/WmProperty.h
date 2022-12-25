@@ -58,4 +58,6 @@ extern void SetCurrentWorkspaceProperty (WmScreenData *pSD);
 extern void SetWorkspaceInfoProperty (WmWorkspaceData *pWS);
 extern void DeleteWorkspaceInfoProperty (WmWorkspaceData *pWS);
 extern char *WorkspacePropertyName (WmWorkspaceData *pWS);
-
+extern char *GetUtf8String (Display *display, Window w, Atom property);
+extern void SetUtf8String (Display *display, Window w, Atom property,
+			   const char *s);

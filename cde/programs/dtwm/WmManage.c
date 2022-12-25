@@ -50,6 +50,7 @@
 #include "WmIDecor.h"
 #include "WmIconBox.h"
 #include "WmImage.h"
+#include "WmInstantTitle.h"
 #include "WmKeyFocus.h"
 #include "WmPanelP.h"	/* typedef needed in WmManage.h */
 #include <Dt/Message.h>
@@ -957,6 +958,8 @@ void WithdrawWindow (ClientData *pCD)
 	pCD->pSD->presence.pCDforClient = NULL;
     }
 
+    InstantTitleHideDialog (pCD);
+
     /*
      * Check to see if the window is being unmanaged because the window
      * was destroyed.
@@ -1134,6 +1137,11 @@ void WithdrawWindow (ClientData *pCD)
     if ((pCD->iconFlags & ICON_HINTS_TITLE) && pCD->iconTitle)
     {
 	XmStringFree (pCD->iconTitle);
+    }
+
+    if (pCD->instantTitle)
+    {
+	XmStringFree (pCD->instantTitle);
     }
 
     if (pCD->clientCmapCount > 0)

@@ -246,6 +246,12 @@ Dtwm*iconPlacement:	                      Top Left
 Dtwm*iconBoxGeometry:			      1x4+16+20
 Dtwm*iconBoxSBDisplayPolicy:        	      horizontal
 
+!####
+!#
+!# Specify the title for instant title dialog.
+!#
+!####
+Dtwm*instantTitleDialogShell.title: %|nls-21-#Rename#|
 
 !####
 !#

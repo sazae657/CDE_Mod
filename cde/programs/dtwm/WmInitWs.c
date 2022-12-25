@@ -1240,6 +1240,7 @@ InitWmScreen (WmScreenData *pSD, int sNum)
     pSD->presence.shellW = NULL;
     pSD->presence.onScreen = False;
     pSD->presence.userDismissed = True;
+    pSD->instantTitleData.widgetsInitialized = False;
     pSD->workspaceList = NULL;
     pSD->numWorkspaces = 0;
     pSD->numWsDataAllocated = 0;

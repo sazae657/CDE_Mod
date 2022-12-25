@@ -492,6 +492,11 @@ FunctionTableEntry functionTable[] = {
 			DtWM_FUNC_OCCUPY_WS,
 			F_Remove,
 			ParseWmFuncNoArg},
+    {"f.rename",	F_CONTEXT_ROOT|F_CONTEXT_ICONBOX|F_SUBCONTEXT_IB_WICON,
+			CRS_ANY,
+			DtWM_FUNC_OCCUPY_WS,
+			F_Rename,
+			ParseWmFuncNoArg},
     {"f.resize",	F_CONTEXT_ICON|F_CONTEXT_ROOT|
                                  F_SUBCONTEXT_IB_IICON|F_SUBCONTEXT_IB_WICON,
 			CRS_ANY,

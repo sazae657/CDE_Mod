@@ -49,6 +49,7 @@
 #define WMSAVE_WORKSPACES	(1L << 5)
 #define WMSAVE_ICON_X		(1L << 6)
 #define WMSAVE_ICON_Y		(1L << 7)
+#define WMSAVE_INSTANT_TITLE	(1L << 8)
 
 extern void AddSMCallbacks(void);
 extern void ResignFromSM(void);

@@ -93,6 +93,7 @@ extern Boolean F_Next_Workspace (String args, ClientData *pCD, XEvent *event);
 extern Boolean F_Prev_Workspace (String args, ClientData *pCD, XEvent *event);
 extern Boolean F_Workspace_Presence (String args, ClientData *pCD, 
 				     XEvent *event);
+extern Boolean F_Rename (String args, ClientData *pCD, XEvent *event);
 #if defined(DEBUG)
 extern Boolean F_ZZ_Debug (String, ClientData *, XEvent *);
 #endif /* DEBUG */

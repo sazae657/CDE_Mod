@@ -670,6 +670,41 @@ Establecer sesión de inicio en el cuadro de diálogo Arranque
 del Gestor de estilos.</para>
 <!-- MODULE SEConfirmLogoutWithChoiceDE SElogch.DEa -->
 </sect2>
+<Sect2 Id="WMWindowRenameDialogDE">
+<Title>Cuadro de diálogo Cambiar nombre de ventana</Title>
+<Para><Anchor Id="WindowRename">
+</Para>
+<Para>
+Escriba el nuevo nombre en el campo de texto (déjalo en blanco para
+restaurar el título de ventana predeterminado).
+</Para>
+<VariableList>
+<VarListEntry>
+<Term>OK</Term>
+<ListItem>
+<Para>
+Cambie el nombre de la ventana y cierre el cuadro de diálogo de
+cambio de nombre.
+</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Cancelar</Term>
+<ListItem>
+<Para>
+Cancele el cambio de nombre y cierre el cuadro de diálogo de cambio
+de nombre.
+</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Ayuda</Term>
+<ListItem>
+<Para>Muestra este tema de ayuda.</Para>
+</ListItem>
+</VarListEntry>
+</VariableList>
+</Sect2>
 </sect1>
 <sect1 id="ConfirmSessionCreateDE">
 <title>Confirmación de la creación de una sesión <anchor

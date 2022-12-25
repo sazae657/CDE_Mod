@@ -96,3 +96,6 @@ $ 19 -hp-batang-medium-r-normal--16-*-c-*:
 $ Dtwm*icon*fontList
 $ 20 -hp-batang-medium-r-normal--16-*-c-*:
 20 -dt-interface system-medium-r-normal-s*-*-*-*-*-*-*-*-*:
+
+$ Dtwm*instantTitleDialogShell.title
+21 이름 바꾸기

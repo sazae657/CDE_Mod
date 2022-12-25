@@ -664,6 +664,40 @@ scegliere Impostare sessione iniziale nel riquadro di dialogo Avvio della
 Gestione degli stili.</para>
 <!-- MODULE SEConfirmLogoutWithChoiceDE SElogch.DEa -->
 </sect2>
+<Sect2 Id="WMWindowRenameDialogDE">
+<Title>Finestra di dialogo Rinomina finestra</Title>
+<Para><Anchor Id="WindowRename">
+</Para>
+<Para>
+Digitare il nuovo nome nel campo di testo (lasciarlo vuoto per
+ripristinare il titolo predefinito della finestra).
+</Para>
+<VariableList>
+<VarListEntry>
+<Term>OK</Term>
+<ListItem>
+<Para>
+Rinominare la finestra e chiudere la finestra di dialogo Rinomina.
+</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Annullare</Term>
+<ListItem>
+<Para>
+Annulla la ridenominazione e chiudi la finestra di dialogo per la
+ridenominazione.
+</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Aiuto</Term>
+<ListItem>
+<Para>Visualizza queste informazioni di aiuto.</Para>
+</ListItem>
+</VarListEntry>
+</VariableList>
+</Sect2>
 </sect1>
 <sect1 id="confirmsessioncreatede">
 <title>Conferma della creazione di una sessione<anchor id="confirmsessioncreation"></title>

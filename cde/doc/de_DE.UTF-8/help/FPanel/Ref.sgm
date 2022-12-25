@@ -700,6 +700,39 @@ indem im Dialogfenster 'Neustart' des Umgebungsmanagers die Option 'Standardsitz
 festlegen' ausgewählt wird.</para>
 <!-- MODULE SEConfirmLogoutWithChoiceDE SElogch.DEa -->
 </sect2>
+<Sect2 Id="WMWindowRenameDialogDE">
+<Title>Dialogfeld zum Umbenennen von Fenstern</Title>
+<Para><Anchor Id="WindowRename">
+</Para>
+<Para>
+Geben Sie den neuen Namen in das Textfeld ein (lassen Sie es leer, um
+den Standardfenstertitel wiederherzustellen).
+</Para>
+<VariableList>
+<VarListEntry>
+<Term>OK</Term>
+<ListItem>
+<Para>
+Benennen Sie das Fenster um und schließen Sie den Umbenennen Dialog.
+</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Abbrechen</Term>
+<ListItem>
+<Para>
+Brechen Sie das Umbenennen ab und schließen Sie den Umbenennen Dialog.
+</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Hilfe</Term>
+<ListItem>
+<Para>Zeigt dieses Hilfethema an.</Para>
+</ListItem>
+</VarListEntry>
+</VariableList>
+</Sect2>
 </sect1>
 <sect1 id="ConfirmSessionCreateDE">
 <title>Bestätigung der Sitzungserstellung<anchor id="ConfirmSessionCreation"></title>

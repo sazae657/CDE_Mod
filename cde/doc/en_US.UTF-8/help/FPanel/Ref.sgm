@@ -814,6 +814,35 @@ to keep returning. Save a home session by choosing
 Set Home Session in Style Manager's Startup dialog box.</Para>
 <!-- MODULE SEConfirmLogoutWithChoiceDE SElogch.DEa -->
 </Sect2>
+<Sect2 Id="WMWindowRenameDialogDE">
+<Title>Window Rename Dialog</Title>
+<Para><Anchor Id="WindowRename">
+</Para>
+<Para>
+Type the new name in the text field (leave it blank to restore the
+default window title).
+</Para>
+<VariableList>
+<VarListEntry>
+<Term>OK</Term>
+<ListItem>
+<Para>Rename the window and close the rename dialog.</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Cancel</Term>
+<ListItem>
+<Para>Cancel renaming and close the rename dialog.</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>Help</Term>
+<ListItem>
+<Para>Displays this help topic.</Para>
+</ListItem>
+</VarListEntry>
+</VariableList>
+</Sect2>
 </Sect1>
 
 <Sect1 Id="ConfirmSessionCreateDE">

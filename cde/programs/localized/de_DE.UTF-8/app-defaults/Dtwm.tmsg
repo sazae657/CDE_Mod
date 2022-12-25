@@ -114,3 +114,6 @@ $ Dtwm*FrontPanel*lowResFontList
 $ Dtwm*icon*fontList 
 
 20 "-dt-interface system-medium-r-normal-s*-*-*-*-*-*-*-*-*:"
+
+$ Dtwm*instantTitleDialogShell.title
+21 Umbenennen

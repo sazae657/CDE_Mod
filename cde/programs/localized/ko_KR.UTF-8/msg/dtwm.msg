@@ -1,4 +1,3 @@
-
 $ "$XConsortium: dtwm.msg /main/3 1995/11/08 13:19:16 rswiston $";
 
 $ *************************************<+>*************************************
@@ -462,6 +461,7 @@ $ Messages 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 to 29, 31, 33 to 38, 66-68,
 $          go to an errorlog and do NOT need to be localized.
 $ Messages 30 and 39-47 are not used.
 $ Only messages 32, 48-57 and 59 need to be localized.
+$ Only messages 32, 48-57, 59 and 70 need to be localized.
 
 $    This message goes to an error file.
 $ YOU DON'T NEED TO LOCALIZE THIS MESSAGE.
@@ -602,6 +602,9 @@ $ YOU DON'T NEED TO LOCALIZE MESSAGES 66 TO 68.
 66 자동 화면 떠오름 지연 자원값이 범위를 넘었습니다. 음수가 아니여야 합니다.
 67 키 묶기 %s을(를) 찾을 수 없습니다. 내장된 키 묶기를 사용합니다.
 68 단추 묶기 %s을(를) 찾을 수 없습니다. 내장된 단추 묶기를 사용합니다.
+
+$    This item renames the title of a window
+70 이름\\ 바꾸기\\.\\.\\. _a  f.rename
 
 $set 70
 $    THIS COMMENT FOR DTWM TEAM ONLY -- WmWinInfo.c --
@@ -758,6 +761,11 @@ $ Messages 5 and 6 are old. They are replaced by messaged 8 and 9.
 8 이 이름의 아이콘이 이미 있습니다.
 9 작업장 관리자 - 아이콘 활동 오류
 
+$set 88
+$    THIS COMMENT FOR DTWM TEAM ONLY -- WmInstantTitle.c --
+$    This message goes to an error file.
+$ YOU DON'T NEED TO LOCALIZE THIS MESSAGE.
+1 Unable to create instant title dialog.
 
 $set 99
 $    DO NOT TRANSLATE THESE MESSAGES
@@ -767,4 +775,3 @@ $    These messages are used for the version information.
 $quote "
 1 "@(#)version_goes_here"
 2 "\n@(#)_DtMessage catalog source $XConsortium: dtwm.msg /main/3 1995/11/08 13:19:16 rswiston $"
-

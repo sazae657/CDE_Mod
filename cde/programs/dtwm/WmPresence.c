@@ -323,14 +323,14 @@ wspSetWindowName(
     if (pPres->contextForClient == F_CONTEXT_ICON)
     {
 	XtSetArg (nameArgs[nameN], XmNlabelString, 
-		  pPres->pCDforClient->iconTitle);	nameN++;
+		  ICON_DISPLAY_TITLE(pPres->pCDforClient));	nameN++;
 	XtSetArg (labelArgs[labelN], XmNlabelString, 
 		  iconLabelString);	                labelN++;
     }
     else
     {
 	XtSetArg (nameArgs[nameN], XmNlabelString, 
-		  pPres->pCDforClient->clientTitle);	nameN++;
+		  CLIENT_DISPLAY_TITLE(pPres->pCDforClient));	nameN++;
 	XtSetArg (labelArgs[labelN], XmNlabelString, 
 		  windowLabelString);	                labelN++;
     }

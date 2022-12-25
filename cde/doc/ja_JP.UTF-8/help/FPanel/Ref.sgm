@@ -764,6 +764,35 @@
 [スタイル・マネージャの起動] ダイアログ・ボックスの [ホームセッションを設定] を選択して、ホーム・セッションを保存してください。</Para>
 <!-- MODULE SEConfirmLogoutWithChoiceDE SElogch.DEa -->
 </Sect2>
+<Sect2 Id="WMWindowRenameDialogDE">
+<Title>ウィンドウの名前の変更・ダイアログ</Title>
+<Para><Anchor Id="WindowRename">
+</Para>
+<Para>
+テキストフィールドに新しい名前を入力します（空白のままにすると、
+デフォルトのウィンドウ タイトルが復元されます）。
+</Para>
+<VariableList>
+<VarListEntry>
+<Term>了解</Term>
+<ListItem>
+<Para>ウィンドウの名前を変更し、名前の変更ダイアログを閉じます。</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>取消し</Term>
+<ListItem>
+<Para>名前の変更をキャンセルし、名前の変更ダイアログを閉じます。</Para>
+</ListItem>
+</VarListEntry>
+<VarListEntry>
+<Term>ヘルプ</Term>
+<ListItem>
+<Para>ヘルプ・トピックを表示します。</Para>
+</ListItem>
+</VarListEntry>
+</VariableList>
+</Sect2>
 </Sect1>
 
 <Sect1 Id="ConfirmSessionCreateDE">

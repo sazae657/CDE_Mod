@@ -1,4 +1,3 @@
-
 $ "$TOG: dtwm.msg /main/6 1999/09/20 15:20:44 mgreess $";
 
 $ *************************************<+>*************************************
@@ -487,7 +486,7 @@ $ Messages 1, 3, 5, 7, 9, 11, 13, 15, 17 and 19 are not used.
 $ Messages 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 to 29, 31, 33 to 38, 66-68,
 $          go to an errorlog and do NOT need to be localized.
 $ Messages 30 and 39-47 are not used.
-$ Only messages 32, 48-57 and 59 need to be localized.
+$ Only messages 32, 48-57, 59 and 70 need to be localized.
 
 $    This message goes to an error file.
 $ YOU DON'T NEED TO LOCALIZE THIS MESSAGE.
@@ -628,6 +627,9 @@ $ YOU DON'T NEED TO LOCALIZE MESSAGES 66 TO 68.
 66 Out of range autoRaiseDelay resource value. Must be non-negative
 67 Key bindings %s not found, using builtin key bindings\n
 68 Button bindings %s not found, using builtin button bindings\n
+
+$    This item renames the title of a window
+70 Cambiare\\ nome\\.\\.\\. _a  f.rename
 
 $set 70
 $    THIS COMMENT FOR DTWM TEAM ONLY -- WmWinInfo.c --
@@ -784,6 +786,11 @@ $ Messages 5 and 6 are old. They are replaced by messaged 8 and 9.
 8 Esiste già un'icona con il nome specificato.
 9 Gestione dello spazio di lavoro - Errore nell'azione sull'icona
 
+$set 88
+$    THIS COMMENT FOR DTWM TEAM ONLY -- WmInstantTitle.c --
+$    This message goes to an error file.
+$ YOU DON'T NEED TO LOCALIZE THIS MESSAGE.
+1 Unable to create instant title dialog.
 
 $set 99
 $    DO NOT TRANSLATE THESE MESSAGES
@@ -793,4 +800,3 @@ $    These messages are used for the version information.
 $quote "
 1 "@(#)version_goes_here"
 2 "\n@(#)_DtMessage catalog source $TOG: dtwm.msg /main/6 1999/09/20 15:20:44 mgreess $"
-

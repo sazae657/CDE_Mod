@@ -66,6 +66,7 @@
 #include "WmIPC.h"
 #include "WmIPlace.h"
 #include "WmIconBox.h"
+#include "WmInstantTitle.h"
 #include "WmKeyFocus.h"
 #include "WmMenu.h"
 #include "WmPresence.h"
@@ -4513,6 +4514,25 @@ Boolean F_Workspace_Presence (String args, ClientData *pCD, XEvent *event)
     return (False);
 
 } /* END OF FUNCTION F_Workspace_Presence */
+
+/**
+* @brief This function pops up the instant title dialog.
+*
+* @param args
+* @param pCD
+* @param event
+*
+* @return False
+*/
+Boolean F_Rename (String args, ClientData *pCD, XEvent *event)
+{
+    if (pCD && (pCD->dtwmFunctions & DtWM_FUNCTION_OCCUPY_WS))
+    {
+	InstantTitleShowDialog (pCD);
+    }
+
+    return False;
+}
 
 #ifdef DEBUG
 void

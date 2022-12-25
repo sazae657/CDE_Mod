@@ -34,9 +34,9 @@ dtwm_SOURCES = WmCDInfo.c      WmCDecor.c      WmCEvent.c \
                Clock.c         DataBaseLoad.c  PanelS.c \
                Parse.c         PopupMenu.c     Session.c \
                UI.c            WmBackdrop.c    WmFP.c \
-               WmHelp.c        WmIPC.c         WmOL.c \
-               WmParse.c       WmParseP.c      WmPresence.c \
-               WmWrkspace.c    WmXSMP.c
+               WmHelp.c        WmIPC.c         WmInstantTitle.c \
+               WmOL.c          WmParse.c       WmParseP.c \
+               WmPresence.c    WmWrkspace.c    WmXSMP.c
 
 dtfplist_SOURCES = Print.c Parse.c DataBaseLoad.c WmParse.c Session.c
 

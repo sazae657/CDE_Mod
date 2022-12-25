@@ -1159,7 +1159,7 @@ void GetTextBox (ClientData *pcd, XRectangle *pBox)
 	    fontList = CLIENT_TITLE_APPEARANCE(pcd).fontList;
 	else
 	    fontList = CLIENT_APPEARANCE(pcd).fontList;
-	textWidth = XmStringWidth(fontList, pcd->clientTitle);
+	textWidth = XmStringWidth(fontList, CLIENT_DISPLAY_TITLE(pcd));
 
 	offset = TitleBarHeight(pcd)/2;
 
@@ -1227,6 +1227,7 @@ void DrawWindowTitle (ClientData *pcd, Boolean eraseFirst)
     XRectangle textBox;
     Window win;
     XmFontList  fontList;
+    XmString title = CLIENT_DISPLAY_TITLE(pcd);
 
     /* make sure there is a title bar first */
     if (!(decoration & MWM_DECOR_TITLE))
@@ -1276,11 +1277,11 @@ void DrawWindowTitle (ClientData *pcd, Boolean eraseFirst)
     }
 
 #ifdef  DT_LEFT_JUSTIFIED_TITLE
-    WmDrawXmString(DISPLAY, win, fontList, pcd->clientTitle, clientGC,
+    WmDrawXmString(DISPLAY, win, fontList, title, clientGC,
 		   textBox.x, textBox.y, textBox.width, &textBox,
 		   ((wmGD.frameStyle == WmSLAB) ? False : True));
 #else /* DT_LEFT_JUSTIFIED_TITLE */
-    WmDrawXmString(DISPLAY, win, fontList, pcd->clientTitle, clientGC,
+    WmDrawXmString(DISPLAY, win, fontList, title, clientGC,
 		   textBox.x, textBox.y, textBox.width, &textBox,
 		   True);
 #endif /* DT_LEFT_JUSTIFIED_TITLE */
