@@ -1091,11 +1091,28 @@ Initialize(Widget ref_w, Widget w, Arg *args, Cardinal *num_args)
 		&tw->term.boldFontSet, &tw->term.boldFont);
     } else {
 	/* let's try and build a bold fontlist off of the base fontlist... */
+	int num_fonts;
+	char **fontNames;
+	char *boldFontNames = NULL;
+	const char *bold = "bold";
+	size_t boldLen = strlen(bold);
+
 	if (tw->term.fontSet) {
-	    int num_fonts;
+	    int i;
 	    XFontStruct **fonts;
-	    char **fontNames;
-	    char boldFontNames[BUFSIZ];
+	    size_t len = 1; /* 1: NUL */
+
+	    Debug('f', fprintf(stderr, ">>generating bold fontset\n"));
+	    num_fonts = XFontsOfFontSet(tw->term.fontSet, &fonts, &fontNames);
+
+	    for (i = 0; i < num_fonts; ++i)
+		/* 2: COMMA and SPACE */
+		len += strlen(fontNames[i]) + boldLen + 2;
+
+	    boldFontNames = malloc(len);
+	}
+
+	if (boldFontNames) {
 	    char *c1;
 	    char *c2;
 	    int i1;
@@ -1103,8 +1120,6 @@ Initialize(Widget ref_w, Widget w, Arg *args, Cardinal *num_args)
 	    char **missingCharsetList;
 	    int missingCharsetCount;
 
-	    Debug('f', fprintf(stderr, ">>generating bold fontset\n"));
-	    num_fonts = XFontsOfFontSet(tw->term.fontSet, &fonts, &fontNames);
 	    for (i1 = 0, c2 = boldFontNames; i1 < num_fonts; i1++) {
 		/* if this is not the first name we need a comma to
 		 * separate the names...
@@ -1128,8 +1143,8 @@ Initialize(Widget ref_w, Widget w, Arg *args, Cardinal *num_args)
 		/* make boldFont bold by swapping the bold in for the
 		 * weight...
 		 */
-		(void) strcpy(c2, "bold");
-		c2 += strlen("bold");
+		(void) strcpy(c2, bold);
+		c2 += boldLen;
 
 		/* skip over the weight in the source... */
 		while (*c1 && (*c1 != '-')) {
@@ -1151,6 +1166,9 @@ Initialize(Widget ref_w, Widget w, Arg *args, Cardinal *num_args)
 		    &missingCharsetList,
 		    &missingCharsetCount,
 		    (char **) 0);
+
+	    free(boldFontNames);
+
 	    if (missingCharsetCount > 0) {
 		int i;
 
@@ -1196,8 +1214,8 @@ Initialize(Widget ref_w, Widget w, Arg *args, Cardinal *num_args)
 		/* make boldFont bold by swapping the bold in for the
 		 * weight...
 		 */
-		(void) strcpy(c2, "bold");
-		c2 += strlen("bold");
+		(void) strcpy(c2, bold);
+		c2 += boldLen;
 
 		/* skip over the weight in the source... */
 		while (*c1 && (*c1 != '-')) {
