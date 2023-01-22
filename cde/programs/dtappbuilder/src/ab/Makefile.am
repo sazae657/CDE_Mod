@@ -2,7 +2,7 @@ MAINTAINERCLEANFILES = Makefile.in
 
 .NOTPARALLEL:
 
-appdefaultsdir = ${prefix}/app-defaults/C
+appdefaultsdir = $(CDE_INSTALLATION_TOP)/app-defaults/C
 
 ABINCLUDES = -I../include -I../include/ab_private -I../libABil
 

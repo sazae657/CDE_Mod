@@ -44,7 +44,7 @@ dtfile_SOURCES = ChangeDir.c     ChangeDirP.c    Command.c       Common.c \
 
 # Mind the quoting here...
 SCRIPTFLAGS = -DSHAPE -D_ILS_MACROS -DSUN_PERF \
-	-DCDE_INSTALLATION_TOP="${prefix}" \
+	-DCDE_INSTALLATION_TOP="$(CDE_CONFIGURATION_TOP)" \
 	-DCDE_CONFIGURATION_TOP="$(CDE_CONFIGURATION_TOP)" \
 	-DKORNSHELL="$(KSH)"
 
