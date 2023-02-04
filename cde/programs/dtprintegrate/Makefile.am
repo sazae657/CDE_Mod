@@ -4,7 +4,7 @@ bin_SCRIPTS = dtprintegrate dtlp dtlpsetup
 
 LOCAL_CPP_DEFINES = -DCDE_INSTALLATION_TOP=$(CDE_INSTALLATION_TOP) \
 		-DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP)   \
-		-DDTKORNSHELL="$(CDE_INSTALLATION_TOP)/bin/dtksh"  \
+		-DDTKORNSHELL="$(bindir)/dtksh"  \
 		-DKORNSHELL=$(KSH)
 
 BUILT_SOURCES = dtprintegrate dtlp dtlpsetup

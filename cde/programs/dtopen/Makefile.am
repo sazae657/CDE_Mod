@@ -14,8 +14,8 @@ dtopen: dtopen.src
 	$(GENCPP) -P -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
 
 install-data-hook:
-	$(RM) $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin/dtopen_*
-	cd $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin && $(LN_S) dtopen dtopen_video
-	cd $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin && $(LN_S) dtopen dtopen_image
-	cd $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin && $(LN_S) dtopen dtopen_ps
-	cd $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin && $(LN_S) dtopen dtopen_pdf
+	$(RM) $(DESTDIR)$(bindir)/dtopen_*
+	cd $(DESTDIR)$(bindir) && $(LN_S) dtopen dtopen_video
+	cd $(DESTDIR)$(bindir) && $(LN_S) dtopen dtopen_image
+	cd $(DESTDIR)$(bindir) && $(LN_S) dtopen dtopen_ps
+	cd $(DESTDIR)$(bindir) && $(LN_S) dtopen dtopen_pdf

@@ -7,3 +7,7 @@ SUBDIRS = backdrops icons dsdm dtmail dtpad dtfile dtwm dtlogin		\
         dtcreate dtprintinfo fontaliases dtdspmsg ttsnoop dtimsstart	\
         dtpdm dtsr dtpdmd dtinfo types tttypes util dtopen localized	\
         dthelp dtdocbook
+
+install-data-hook:
+	-if [ $(CDE_INSTALLATION_TOP)/bin != $(bindir) ];then \
+		cd $(DESTDIR)$(CDE_INSTALLATION_TOP) && $(LN_S) $(bindir) bin ; fi
