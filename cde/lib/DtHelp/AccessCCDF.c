@@ -59,6 +59,8 @@
 extern int errno;
 #endif
 
+extern char *_DtHelpGetLocale(void);
+
 /*
  * Canvas Engine includes
  */
