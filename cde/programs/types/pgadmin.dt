@@ -27,7 +27,7 @@ ACTION pgadmin
      LABEL         pgadmin
      TYPE          COMMAND
      EXEC_STRING   pgadmin %Arg_1%
-     ICON          pgadmin
+     ICON          pgadmin3
      WINDOW_TYPE   NO_STDIO
 }
 
