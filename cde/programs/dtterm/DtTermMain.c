@@ -1583,9 +1583,13 @@ SaveTerm(
     height = XtHeight(XtParent(dtvw));
 
     sprintf(bufr, "*dtterm_%d.x: %d\n", cloneNum, x);
-    sprintf(bufr, "%s*dtterm_%d.y: %d\n", bufr, cloneNum, y);
-    sprintf(bufr, "%s*dtterm_%d.width: %d\n", bufr, cloneNum, width);
-    sprintf(bufr, "%s*dtterm_%d.height: %d\n", bufr, cloneNum, height);
+    write (fd, bufr, strlen(bufr));
+    sprintf(bufr, "*dtterm_%d.y: %d\n", cloneNum, y);
+    write (fd, bufr, strlen(bufr));
+    sprintf(bufr, "*dtterm_%d.width: %d\n", cloneNum, width);
+    write (fd, bufr, strlen(bufr));
+    sprintf(bufr, "*dtterm_%d.height: %d\n", cloneNum, height);
+    write (fd, bufr, strlen(bufr));
 
     /* Write out iconic state...
      */
@@ -1607,12 +1611,11 @@ SaveTerm(
 	    &bytesAfter,
 	    (unsigned char **) &prop))) {
 	if (prop->state == IconicState) {
-	    sprintf(bufr, "%s*dtterm_%d.iconify: %s\n", bufr, cloneNum,
-		    "True");
+	    sprintf(bufr, "*dtterm_%d.iconify: %s\n", cloneNum, "True");
 	} else {
-	    sprintf(bufr, "%s*dtterm_%d.iconify: %s\n", bufr, cloneNum,
-		    "False");
+	    sprintf(bufr, "*dtterm_%d.iconify: %s\n", cloneNum, "False");
 	}
+	write (fd, bufr, strlen(bufr));
     }
 	
     if(DtWsmGetWorkspacesOccupied(XtDisplay(dtvw), 
@@ -1620,19 +1623,20 @@ SaveTerm(
 				  &numInfo) == Success)
     {
 	int i;
-	sprintf(bufr, "%s*dtterm_%d.workspaceList: ", bufr, cloneNum);
+	sprintf(bufr, "*dtterm_%d.workspaceList: ", cloneNum);
+	write (fd, bufr, strlen(bufr));
 	for(i = 0; i < numInfo; i++)
 	{
 	    char *name =  XGetAtomName(XtDisplay(dtvw),
 				       pWsPresence[i]);
-	    sprintf(bufr, "%s %s", bufr, name);
+	    sprintf(bufr, " %s", name);
+	    write (fd, bufr, strlen(bufr));
 	    XtFree(name);
 	}
-	sprintf(bufr, "%s\n", bufr);
+	sprintf(bufr, "\n");
+	write (fd, bufr, strlen(bufr));
 	XtFree((char *)pWsPresence);
     }
-
-    write (fd, bufr, strlen(bufr));
 
     sprintf(bufr, "*dtterm_%d.userFontListIndex: %d\n", cloneNum,
 	    _DtTermViewGetUserFontListIndex((Widget )dtvw));

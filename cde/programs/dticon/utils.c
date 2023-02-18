@@ -2321,6 +2321,7 @@ SaveSession( void )
         sprintf(bufr, "*iconic: True\n");
     else
         sprintf(bufr, "*iconic: False\n");
+    write (fd, bufr, strlen(bufr));
 
     /*** Get and write out the geometry info for our Window ***/
 
@@ -2337,12 +2338,18 @@ SaveSession( void )
     x -= vendorExt->vendor.xOffset;
     y -= vendorExt->vendor.yOffset;
 
-    snprintf(bufr, sizeof(bufr), "%s*x: %d\n", bufr, x);
-    snprintf(bufr, sizeof(bufr), "%s*y: %d\n", bufr, y);
-    snprintf(bufr, sizeof(bufr), "%s*width: %d\n", bufr, width);
-    snprintf(bufr, sizeof(bufr), "%s*height: %d\n", bufr, height);
+    snprintf(bufr, sizeof(bufr), "*x: %d\n", x);
+    write (fd, bufr, strlen(bufr));
+    snprintf(bufr, sizeof(bufr), "*y: %d\n", y);
+    write (fd, bufr, strlen(bufr));
+    snprintf(bufr, sizeof(bufr), "*width: %d\n", width);
+    write (fd, bufr, strlen(bufr));
+    snprintf(bufr, sizeof(bufr), "*height: %d\n", height);
     if (last_fname[0] != '\0')
-        snprintf(bufr, sizeof(bufr), "%s*file: %s\n", bufr, last_fname);
+    {
+        write (fd, bufr, strlen(bufr));
+        snprintf(bufr, sizeof(bufr), "*file: %s\n", last_fname);
+    }
 
     if(-1 == write (fd, bufr, strlen(bufr))) {
 	fprintf(stderr, "write() to session failed\n");

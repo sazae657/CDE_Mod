@@ -113,7 +113,10 @@ SaveMain(
         XmWidgetExtData        extData;
 
         if(XtIsRealized(pPad->mainWindow))
+        {
 	    sprintf(bufr,"*mainWindow%d.ismapped: True\n", padNum);
+	    write (fd, bufr, strlen(bufr));
+        }
 
         /* Get and write out the geometry info for our Window */
         x = XtX(XtParent(pPad->mainWindow));
@@ -131,10 +134,14 @@ SaveMain(
 	width = XtWidth(XtParent(pPad->mainWindow));
 	height = XtHeight(XtParent(pPad->mainWindow));
 
-        snprintf(bufr, sizeof(bufr), "%s*mainWindow%d.x: %d\n", bufr, padNum, x);
-        snprintf(bufr, sizeof(bufr), "%s*mainWindow%d.y: %d\n", bufr, padNum, y);
-        snprintf(bufr, sizeof(bufr), "%s*mainWindow%d.width: %d\n", bufr, padNum, width);
-        snprintf(bufr, sizeof(bufr), "%s*mainWindow%d.height: %d\n", bufr, padNum, height);
+        snprintf(bufr, sizeof(bufr), "*mainWindow%d.x: %d\n", padNum, x);
+        write (fd, bufr, strlen(bufr));
+        snprintf(bufr, sizeof(bufr), "*mainWindow%d.y: %d\n", padNum, y);
+        write (fd, bufr, strlen(bufr));
+        snprintf(bufr, sizeof(bufr), "*mainWindow%d.width: %d\n", padNum, width);
+        write (fd, bufr, strlen(bufr));
+        snprintf(bufr, sizeof(bufr), "*mainWindow%d.height: %d\n", padNum, height);
+        write (fd, bufr, strlen(bufr));
 
         wm_state_atom = XmInternAtom (XtDisplay(pPad->app_shell), "WM_STATE", 
                                       False);
@@ -146,27 +153,32 @@ SaveMain(
                             &nitems, &leftover, (unsigned char **) &wm_state);
 
         /* Write out if iconified our not */
-        snprintf(bufr, sizeof(bufr), "%s*mainWindow%d.iconify: ", bufr, padNum);
+        snprintf(bufr, sizeof(bufr), "*mainWindow%d.iconify: ", padNum);
+        write (fd, bufr, strlen(bufr));
 
         if (wm_state->state == IconicState)
-          snprintf(bufr, sizeof(bufr), "%sTrue\n", bufr);
+          snprintf(bufr, sizeof(bufr), "True\n");
         else
-          snprintf(bufr, sizeof(bufr), "%sFalse\n", bufr);
+          snprintf(bufr, sizeof(bufr), "False\n");
+        write (fd, bufr, strlen(bufr));
 
 	if(DtWsmGetWorkspacesOccupied(XtDisplay(pPad->app_shell), 
 				  XtWindow(pPad->app_shell), &pWsPresence,
 				  &numInfo) == Success)
 	{
 	    int i;
-	    snprintf(bufr, sizeof(bufr), "%s*mainWindow%d.workspaceList: ", bufr, padNum);
+	    snprintf(bufr, sizeof(bufr), "*mainWindow%d.workspaceList: ", padNum);
+	    write (fd, bufr, strlen(bufr));
 	    for(i = 0; i < numInfo; i++)
 	    {
 	        char *name =  XGetAtomName(XtDisplay(pPad->app_shell),
 					   pWsPresence[i]);
-		snprintf(bufr, sizeof(bufr), "%s %s", bufr, name);
+		snprintf(bufr, sizeof(bufr), " %s", name);
+		write (fd, bufr, strlen(bufr));
 		XtFree(name);
 	    }
-	    snprintf(bufr, sizeof(bufr), "%s\n", bufr);
+	    snprintf(bufr, sizeof(bufr), "\n");
+	    write (fd, bufr, strlen(bufr));
 	    XtFree((char *)pWsPresence);
 	}
 
