@@ -4366,7 +4366,7 @@ FindSnbEntry(
  * but safe for overlapping regions.
  */
 static void *strmove(void *dest, const void *src) {
-    memmove(dest, src, strlen(src) + 1);
+    return memmove(dest, src, strlen(src) + 1);
 }
 
 /******************************************************************************
