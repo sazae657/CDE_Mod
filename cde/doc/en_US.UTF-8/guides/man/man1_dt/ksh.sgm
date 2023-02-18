@@ -32,7 +32,7 @@ Inc.--><refsynopsisdiv>
 </cmdsynopsis>
 </refsynopsisdiv><refsect1>
 <title>DESCRIPTION</title>
-<para>The <command>dtksh</command> utility is a version of the <![ %CDE.C.XO; [ <command>sh</command> utility (defined in the &str-ZC;) ]]><![ %CDE.C.CDE; [KornShell ]]>extended
+<para>The <command>dtksh</command> utility is a version of the <![ %CDE.C.XO; [ <command>ksh-cde</command> utility (defined in the &str-ZC;) ]]><![ %CDE.C.CDE; [KornShell ]]>extended
 to support:</para>
 <itemizedlist>
 <listitem>
@@ -68,10 +68,10 @@ using the &str-XZ; customization tool</para>
 </itemizedlist>
 </refsect1><refsect1>
 <title>OPTIONS</title>
-<para>See <![ %CDE.C.CDE; [<command>sh</command>(1). ]]><![ %CDE.C.XO; [ <command>sh</command> in the &str-ZC;. ]]></para>
+<para>See <![ %CDE.C.CDE; [<command>ksh-cde</command>(1). ]]><![ %CDE.C.XO; [ <command>ksh-cde</command> in the &str-ZC;. ]]></para>
 </refsect1><refsect1>
 <title>OPERANDS</title>
-<para>See <![ %CDE.C.CDE; [<command>sh</command>(1). ]]><![ %CDE.C.XO; [ <command>sh</command> in the &str-ZC;. ]]></para>
+<para>See <![ %CDE.C.CDE; [<command>ksh-cde</command>(1). ]]><![ %CDE.C.XO; [ <command>ksh-cde</command> in the &str-ZC;. ]]></para>
 </refsect1><refsect1>
 <title>RESOURCES</title>
 <para>The <command>dtksh</command> interpreter has no relevant resources outside
@@ -80,14 +80,14 @@ a <command>dtksh</command> script. Refer to the manual page of the relevant
 widget for information on the resources that apply to that widget.</para>
 </refsect1><refsect1>
 <title>STDIN</title>
-<para>See <![ %CDE.C.CDE; [<command>sh</command>(1). ]]><![ %CDE.C.XO; [ <command>sh</command> in the &str-ZC;. ]]></para>
+<para>See <![ %CDE.C.CDE; [<command>ksh-cde</command>(1). ]]><![ %CDE.C.XO; [ <command>ksh-cde</command> in the &str-ZC;. ]]></para>
 </refsect1><refsect1>
 <title>INPUT FILES</title>
-<para>See <![ %CDE.C.CDE; [<command>sh</command>(1). ]]><![ %CDE.C.XO; [ <command>sh</command> in the &str-ZC;. ]]></para>
+<para>See <![ %CDE.C.CDE; [<command>ksh-cde</command>(1). ]]><![ %CDE.C.XO; [ <command>ksh-cde</command> in the &str-ZC;. ]]></para>
 </refsect1><refsect1>
 <title>ENVIRONMENT VARIABLES</title>
 <para>The following information describes the environment variables that <command>dtksh</command> uses that are in addition to those documented in the manual
-page for the <command>sh</command> command language interpreter.</para>
+page for the <command>ksh-cde</command> command language interpreter.</para>
 <refsect2>
 <title>Immediate Return Value (-)</title>
 <para>Many of the category 3 commands (as described in <![ %CDE.C.CDE; [the <literal>Return Values From Built-in Commands</literal> section) ]]><![ %CDE.C.XO; [<xref
@@ -406,18 +406,18 @@ to remove the input source using <command>XtRemoveInput</command>.</para>
 <para>Default.</para>
 </refsect1><refsect1>
 <title>STDOUT</title>
-<para>See <![ %CDE.C.CDE; [<command>sh</command>(1). ]]><![ %CDE.C.XO; [ <command>sh</command> in the &str-ZC;. ]]></para>
+<para>See <![ %CDE.C.CDE; [<command>ksh-cde</command>(1). ]]><![ %CDE.C.XO; [ <command>ksh-cde</command> in the &str-ZC;. ]]></para>
 </refsect1><refsect1>
 <title>STDERR</title>
-<para>See <![ %CDE.C.CDE; [<command>sh</command>(1). ]]><![ %CDE.C.XO; [ <command>sh</command> in the &str-ZC;. ]]></para>
+<para>See <![ %CDE.C.CDE; [<command>ksh-cde</command>(1). ]]><![ %CDE.C.XO; [ <command>ksh-cde</command> in the &str-ZC;. ]]></para>
 </refsect1><refsect1>
 <title>OUTPUT FILES</title>
 <para>None.</para>
 </refsect1><refsect1>
 <title>EXTENDED DESCRIPTION</title>
-<para>The capabilities described here are extensions to those of the <command>sh</command> command language interpreter. See <![ %CDE.C.CDE; [ <command>sh</command>(1). ]]><![ %CDE.C.XO; [<command>sh</command> in the &str-ZC;. ]]>The
+<para>The capabilities described here are extensions to those of the <command>ksh-cde</command> command language interpreter. See <![ %CDE.C.CDE; [ <command>ksh-cde</command>(1). ]]><![ %CDE.C.XO; [<command>ksh-cde</command> in the &str-ZC;. ]]>The
 following subsections give a synopsis of each of the built-in commands added
-by <command>dtksh</command> to <command>sh</command>. In general, argument
+by <command>dtksh</command> to <command>ksh-cde</command>. In general, argument
 ordering and types are the same as for corresponding C procedures, with exceptions
 noted. For more detail on the functionality and arguments of a command, see
 the standard documentation for the corresponding X11, Xt, Motif or Desktop
@@ -2970,10 +2970,10 @@ the resource name.</para>
 </refsect2>
 </refsect1><refsect1>
 <title>EXIT STATUS</title>
-<para>See <![ %CDE.C.CDE; [<command>sh</command>(1). ]]><![ %CDE.C.XO; [ <command>sh</command> in the &str-ZC;. ]]></para>
+<para>See <![ %CDE.C.CDE; [<command>ksh-cde</command>(1). ]]><![ %CDE.C.XO; [ <command>ksh-cde</command> in the &str-ZC;. ]]></para>
 </refsect1><refsect1>
 <title>CONSEQUENCES OF ERRORS</title>
-<para>See <![ %CDE.C.CDE; [<command>sh</command>(1). ]]><![ %CDE.C.XO; [ <command>sh</command> in the &str-ZC;. ]]></para>
+<para>See <![ %CDE.C.CDE; [<command>ksh-cde</command>(1). ]]><![ %CDE.C.XO; [ <command>ksh-cde</command> in the &str-ZC;. ]]></para>
 </refsect1><refsect1>
 <title>APPLICATION USAGE</title>
 <refsect2>
@@ -3229,7 +3229,7 @@ labelString:$(catgets $MSG_CAT_ID 1 3 "Cancel")
 catclose $MSG_CAT_ID</programlisting>
 </informalexample>
 <para>The file descriptor returned by <command>catopen</command> must be closed
-using <command>catclose</command>, and not using the <command>sh</command> <command>exec</command> command.</para>
+using <command>catclose</command>, and not using the <command>ksh-cde</command> <command>exec</command> command.</para>
 </refsect2>
 <refsect2>
 <title>Using the dtksh Utility to Access X Drawing Functions</title>
@@ -3322,6 +3322,6 @@ XtOverrideTranslations $BUTTON2
 <title>EXAMPLES</title>
 <para>None.</para>
 </refsect1><refsect1>
-<title>SEE ALSO<?Pub Caret></title><![ %CDE.C.CDE; [<para><command>sh</command>(1).</para>]]><![ %CDE.C.XO; [<para><command>sh</command> in the &str-ZC;.</para>]]></refsect1></refentry>
+<title>SEE ALSO<?Pub Caret></title><![ %CDE.C.CDE; [<para><command>ksh-cde</command>(1).</para>]]><![ %CDE.C.XO; [<para><command>ksh-cde</command> in the &str-ZC;.</para>]]></refsect1></refentry>
 <!--fickle 1.12 mancsf-to-docbook 1.2 08/07/95 23:40:24-->
 <?Pub *0000198752>

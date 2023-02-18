@@ -8,7 +8,7 @@ DBTOMAN = $(top_srcdir)/programs/dtdocbook/doc_utils/dtdocbook2man $(LANG)
 # first, the man pages broken down by sections
 MANSEC1 = man1/tttrace.1 man1/tttar.1 man1/ttsession.1 man1/ttrmdir.1	\
     man1/ttrm.1 man1/ttmv.1 man1/ttcp.1 man1/tt_type_comp.1		\
-    man1/huffcode.1 man1/dtwm.1 man1/dtudcfonted.1		\
+    man1/ksh-cde.1 man1/huffcode.1 man1/dtwm.1 man1/dtudcfonted.1		\
     man1/dtudcexch.1 man1/dttypes.1 man1/dtterm.1 man1/dtstyle.1	\
     man1/dtsrload.1 man1/dtsrkdump.1 man1/dtsrindex.1 man1/dtsrhan.1	\
     man1/dtsrdbrec.1 man1/dtsrcreate.1 man1/dtsession_res.1		\
@@ -523,7 +523,7 @@ man1/dtwm.1: ../guides/man/man1_dt/wm.sgm $(MANDEPS)
 man1/huffcode.1: ../guides/man/man1_dt/huffcode.sgm $(MANDEPS)
 	$(DBTOMAN) cdedecl.sgm $< $@
 
-man1/ksh.1: ../guides/man/man1/ksh93.sgm $(MANDEPS)
+man1/ksh-cde.1: ../guides/man/man1/ksh93.sgm $(MANDEPS)
 	$(DBTOMAN) cdedecl.sgm $< $@
 
 man1/tt_type_comp.1: ../guides/man/man1/tt_typ_c.sgm $(MANDEPS)
