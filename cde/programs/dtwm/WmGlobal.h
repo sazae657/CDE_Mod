@@ -109,6 +109,9 @@ extern Pixel		FPselectcolor;
 
 /* ICCC atom names: */
 
+#define _XA_PREMATURE_XCLIENTMESSAGEEVENT_LIST \
+	"PREMATURE_XCLIENTMESSAGEEVENT_LIST"
+
 #define _XA_WM_STATE		"WM_STATE"
 #define _XA_WM_PROTOCOLS	"WM_PROTOCOLS"
 #define _XA_WM_CHANGE_STATE	"WM_CHANGE_STATE"
@@ -116,6 +119,24 @@ extern Pixel		FPselectcolor;
 #define _XA_WM_DELETE_WINDOW	"WM_DELETE_WINDOW"
 #define _XA_WM_TAKE_FOCUS	"WM_TAKE_FOCUS"
 #define _XA_WM_COLORMAP_WINDOWS	"WM_COLORMAP_WINDOWS"
+
+/* EWMH atom names: */
+
+#define _NET_WM_STATE_REMOVE 0
+#define _NET_WM_STATE_ADD 1
+#define _NET_WM_STATE_TOGGLE 2
+
+#define _XA__NET_SUPPORTED "_NET_SUPPORTED"
+#define _XA__NET_SUPPORTING_WM_CHECK "_NET_SUPPORTING_WM_CHECK"
+#define _XA__NET_WM_NAME "_NET_WM_NAME"
+#define _XA__NET_WM_ICON_NAME "_NET_WM_ICON_NAME"
+#define _XA__NET_WM_VISIBLE_NAME "_NET_WM_VISIBLE_NAME"
+#define _XA__NET_WM_VISIBLE_ICON_NAME "_NET_WM_VISIBLE_ICON_NAME"
+#define _XA__NET_WM_FULLSCREEN_MONITORS "_NET_WM_FULLSCREEN_MONITORS"
+#define _XA__NET_WM_STATE "_NET_WM_STATE"
+#define _XA__NET_WM_STATE_FULLSCREEN "_NET_WM_STATE_FULLSCREEN"
+#define _XA__NET_WM_STATE_MAXIMIZED_VERT "_NET_WM_STATE_MAXIMIZED_VERT"
+#define _XA__NET_WM_STATE_MAXIMIZED_HORZ "_NET_WM_STATE_MAXIMIZED_HORZ"
 
 /* window manager exit value on fatal errors: */
 #define WM_ERROR_EXIT_VALUE	1
@@ -1649,11 +1670,11 @@ typedef struct _ClientData
     int		xBorderWidth;			/* original X border width */
     FrameInfo	frameInfo;			/* frame geometry data */
     Boolean	fullscreen;			/* fullscreen flag */
-    Boolean	monitorSizeIsSet;		/* True => X, Y, W, H is set */
-    int		monitorX;			/* monitor X loc */
-    int		monitorY;			/* monitor Y loc */
-    int		monitorWidth;			/* monitor width */
-    int		monitorHeight;			/* monitor height */
+    Boolean	fullscreenAuto;			/* False => set by client */
+    int		fullscreenX;			/* fullscreen X loc */
+    int		fullscreenY;			/* fullscreen Y loc */
+    int		fullscreenWidth;		/* fullscreen width */
+    int		fullscreenHeight;		/* fullscreen height */
     XmString	instantTitle;			/* instant title */
 
     /* client window frame graphic data: */
@@ -1853,7 +1874,6 @@ typedef struct _WmGlobalData
     Widget	topLevelW1;             /* from which WM components hang */
     Boolean     confirmDialogMapped;    /* confirm dialog is mapped */
     XtAppContext	mwmAppContext;	/* application context for mwm */
-    XContext	tmpWindowContextType;	/* temporary window context */
     XContext	windowContextType;	/* window context for XSaveContext */
     XContext	screenContextType;	/* screen context for XSaveContext */
 #ifndef	IBM_169380
@@ -1936,6 +1956,8 @@ typedef struct _WmGlobalData
     XrmDatabase clientResourceDB;
 
     /* atoms used in inter-client communication: */
+
+    Atom	xa_PREMATURE_XCLIENTMESSAGEEVENT_LIST;
 
     Atom	xa_WM_STATE;
     Atom	xa_WM_PROTOCOLS;

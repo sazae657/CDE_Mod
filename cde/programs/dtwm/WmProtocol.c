@@ -99,7 +99,8 @@ int curXids = 0;
 
 void SetupWmICCC (void)
 {
-    enum { 
+    enum {
+	   XA_PREMATURE_XCLIENTMESSAGEEVENT_LIST,
 	   XA_WM_STATE, XA_WM_PROTOCOLS, XA_WM_CHANGE_STATE,
 	   XA_WM_SAVE_YOURSELF, XA_WM_DELETE_WINDOW,
 	   XA_WM_COLORMAP_WINDOWS, XA_WM_TAKE_FOCUS, XA_MWM_HINTS,
@@ -109,6 +110,7 @@ void SetupWmICCC (void)
 	   XA_COMPOUND_TEXT, NUM_ATOMS };
 
     static char *atom_names[] = {
+	   _XA_PREMATURE_XCLIENTMESSAGEEVENT_LIST,
 	   _XA_WM_STATE, _XA_WM_PROTOCOLS, _XA_WM_CHANGE_STATE,
 	   _XA_WM_SAVE_YOURSELF, _XA_WM_DELETE_WINDOW,
 	   _XA_WM_COLORMAP_WINDOWS, _XA_WM_TAKE_FOCUS, _XA_MWM_HINTS,
@@ -132,6 +134,9 @@ void SetupWmICCC (void)
      * _MOTIF_WM_INFO is intern'ed in ProcessMotifWmInfo.
      */
     XInternAtoms(DISPLAY, atom_names, XtNumber(atom_names), False, atoms);
+
+    wmGD.xa_PREMATURE_XCLIENTMESSAGEEVENT_LIST =
+	atoms[XA_PREMATURE_XCLIENTMESSAGEEVENT_LIST];
 
     wmGD.xa_WM_STATE			= atoms[XA_WM_STATE];
     wmGD.xa_WM_PROTOCOLS		= atoms[XA_WM_PROTOCOLS];

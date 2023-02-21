@@ -70,6 +70,17 @@
 
 extern unsigned int buttonModifierMasks[];
 
+
+static void AcceptPrematureClientMessage (XClientMessageEvent *clientEvent)
+{
+    XChangeProperty (DISPLAY, clientEvent->window,
+		     wmGD.xa_PREMATURE_XCLIENTMESSAGEEVENT_LIST,
+		     wmGD.xa_PREMATURE_XCLIENTMESSAGEEVENT_LIST, 8,
+		     PropModeAppend, (unsigned char *) clientEvent,
+		     sizeof(XClientMessageEvent));
+}
+
+
 
 /*************************************<->*************************************
  *
@@ -510,7 +521,6 @@ Boolean HandleEventsOnSpecialWindows (XEvent *pEvent)
 {
     Boolean dispatchEvent = True;
     WmScreenData *pSD;
-    ClientData *pCD;
 
 
     /*
@@ -610,21 +620,7 @@ Boolean HandleEventsOnSpecialWindows (XEvent *pEvent)
 
 	    case ClientMessage:
 	    {
-		if (pCD = InitClientData (pEvent->xclient.window)) {
-		    XClientMessageEvent *clientEvent;
-
-		    clientEvent = (XClientMessageEvent *) pEvent;
-
-		    if (clientEvent->message_type ==
-			wmGD.xa__NET_WM_FULLSCREEN_MONITORS)
-		    {
-			ProcessNetWmFullscreenMonitors (pCD,
-			    clientEvent->data.l[0], clientEvent->data.l[1],
-			    clientEvent->data.l[2], clientEvent->data.l[3]);
-
-			dispatchEvent = False;
-		    }
-		}
+		AcceptPrematureClientMessage ((XClientMessageEvent *)pEvent);
 		break;
 	    }
 	}
@@ -2600,6 +2596,13 @@ void HandleClientMessage (ClientData *pCD, XClientMessageEvent *clientEvent)
 	ProcessNetWmFullscreenMonitors (pCD,
 	    clientEvent->data.l[0], clientEvent->data.l[1],
 	    clientEvent->data.l[2], clientEvent->data.l[3]);
+
+	if (pCD->fullscreenAuto)
+	    XDeleteProperty (DISPLAY, pCD->client, clientEvent->message_type);
+	else
+	    XChangeProperty (DISPLAY, pCD->client, clientEvent->message_type,
+			     XA_CARDINAL, 32, PropModeReplace,
+			     (unsigned char *) clientEvent->data.l, 4);
     }
     else if (clientEvent->message_type == wmGD.xa__NET_WM_STATE)
     {

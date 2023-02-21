@@ -39,7 +39,6 @@ extern void FixWindowConfiguration (ClientData *pCD, unsigned int *pWidth,
 extern void FixWindowSize (ClientData *pCD, unsigned int *pWidth, 
 			   unsigned int *pHeight, unsigned int widthInc, 
 			   unsigned int heightInc);
-extern ClientData *InitClientData (Window clientWindow);
 extern ClientData *GetClientInfo (WmScreenData *pSD, Window clientWindow, 
 				  long manageFlags);
 extern ClientData *GetWmClientInfo (WmWorkspaceData *pWS, ClientData *pCD, 
@@ -63,3 +62,5 @@ extern Boolean SetupClientIconWindow (ClientData *pCD, Window window);
 extern Boolean WmGetWindowAttributes (Window window);
 extern void ProcessSmClientID (ClientData *pCD);
 extern void ProcessWmSaveHint (ClientData *pCD);
+extern void GetMaxInfo (ClientData *pCD, int *pX, int *pY, int *pWidth,
+			int *pHeight);

@@ -604,6 +604,12 @@ static void SetupWindowStateWithEventMask (ClientData *pCD, int newState,
 
 void ConfigureNewState (ClientData *pcd)
 {
+    Atom hints[3] = {
+	wmGD.xa__NET_WM_STATE_FULLSCREEN,
+	wmGD.xa__NET_WM_STATE_MAXIMIZED_VERT,
+	wmGD.xa__NET_WM_STATE_MAXIMIZED_HORZ
+    };
+
     if (pcd->maxConfig && !pcd->fullscreen)
     {
 	pcd->maxConfig = FALSE;
@@ -615,7 +621,6 @@ void ConfigureNewState (ClientData *pcd)
     else
     {
 	long decor = pcd->decor;
-	WmHeadInfo_t *WmHI;
 
 	if (pcd->fullscreen)
 	{
@@ -623,29 +628,8 @@ void ConfigureNewState (ClientData *pcd)
 	    SetClientOffset (pcd);
 	}
 
-	if (pcd->fullscreen && pcd->monitorSizeIsSet)
-	{
-	    pcd->maxX = pcd->monitorX;
-	    pcd->maxY = pcd->monitorY;
-	    pcd->maxWidth = pcd->monitorWidth;
-	    pcd->maxHeight = pcd->monitorHeight;
-
-	    FrameToClient(pcd, &pcd->maxX, &pcd->maxY, &pcd->maxWidth,
-			    &pcd->maxHeight);
-	}
-	else if (WmHI = GetHeadInfo(pcd)) {
-	    /*
-	     * Update client config to reflect underlying head, if MultiHead is
-	     * active
-	     */
-	    FrameToClient(pcd, &WmHI->x_org, &WmHI->y_org,
-			  &WmHI->width, &WmHI->height);
-	    pcd->maxX = WmHI->x_org;
-	    pcd->maxY = WmHI->y_org;
-	    pcd->maxWidth = WmHI->width;
-	    pcd->maxHeight = WmHI->height;
-	    free(WmHI);
-	}
+	GetMaxInfo (pcd, &pcd->maxX, &pcd->maxY, &pcd->maxWidth,
+		    &pcd->maxHeight);
 
 	XResizeWindow (DISPLAY, pcd->client,
 			   (unsigned int) pcd->maxWidth, 
@@ -658,6 +642,28 @@ void ConfigureNewState (ClientData *pcd)
 	    pcd->decor = decor;
 	    SetClientOffset (pcd);
 	}
+    }
+
+    UpdateNetWmState (pcd->client, hints, sizeof(hints) / sizeof(hints[0]),
+		      _NET_WM_STATE_REMOVE);
+
+    if (pcd->maxConfig)
+    {
+	unsigned long offset, nhints;
+
+	if (pcd->fullscreen)
+	{
+	    offset = 0;
+	    nhints = 1;
+	}
+	else
+	{
+	    offset = 1;
+	    nhints = 2;
+	}
+
+	UpdateNetWmState (pcd->client, &hints[offset], nhints,
+			  _NET_WM_STATE_ADD);
     }
 
     SendConfigureNotify (pcd);

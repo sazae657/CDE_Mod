@@ -98,6 +98,34 @@ static void CheckPushRecallClient (ClientData *pCD);
  */
 
 
+static void ApplyPrematureClientMessages (ClientData *pCD)
+{
+    unsigned long i, nitems, leftover;
+    int actualFormat;
+    Atom actualType;
+    Atom property = wmGD.xa_PREMATURE_XCLIENTMESSAGEEVENT_LIST;
+    XClientMessageEvent *messages = NULL;
+
+    if (!HasProperty (pCD, property)) goto err;
+
+    if (XGetWindowProperty (DISPLAY, pCD->client, property, 0L, 1000000L, True,
+			    property, &actualType, &actualFormat, &nitems,
+			    &leftover, (unsigned char **)&messages) != Success)
+	goto err;
+
+    if (actualType != property) goto err;
+
+    nitems /= sizeof (XClientMessageEvent);
+
+    if (!nitems) goto err;
+
+    for (i = 0; i < nitems; ++i) HandleClientMessage (pCD, &messages[i]);
+
+err:
+    if (messages) XFree (messages);
+}
+
+
 
 /*************************************<->*************************************
  *
@@ -414,6 +442,11 @@ ManageWindow (WmScreenData *pSD, Window clientWindow, long manageFlags)
 	UnManageWindow (pCD);
 	return;
     }
+
+    ApplyPrematureClientMessages (pCD);
+
+    if (!HasProperty (pCD, wmGD.xa__NET_WM_STATE))
+	UpdateNetWmState (pCD->client, NULL, 0, _NET_WM_STATE_REMOVE);
 
     /*
      * Send config notify if the client's been moved/resized
@@ -1012,6 +1045,8 @@ void WithdrawWindow (ClientData *pCD)
 	}
 
 	XDeleteProperty (DISPLAY, pCD->client, wmGD.xa__NET_WM_STATE);
+	XDeleteProperty (DISPLAY, pCD->client,
+			 wmGD.xa_PREMATURE_XCLIENTMESSAGEEVENT_LIST);
 	XUnmapWindow (DISPLAY, pCD->client);
 	XReparentWindow (DISPLAY, pCD->client, ROOT_FOR_CLIENT(pCD), x, y);
 

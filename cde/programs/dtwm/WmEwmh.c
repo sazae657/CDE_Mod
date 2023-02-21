@@ -27,97 +27,39 @@
 
 #include "WmGlobal.h"
 #include "WmEvent.h"
-#include "WmEwmh.h"
 #include "WmMultiHead.h"
 #include "WmProperty.h"
 #include "WmWinState.h"
 #include "WmWrkspace.h"
 
-static unsigned long GetWindowProperty (Window w, Atom property, Atom reqType,
-    unsigned char **propReturn)
-{
-    Atom actualType;
-    int actualFormat;
-    unsigned long nitems;
-    unsigned long leftover;
-
-    if (XGetWindowProperty (DISPLAY, w, property, 0L, 1000000L, False, reqType,
-			    &actualType, &actualFormat, &nitems, &leftover,
-			    propReturn) != Success) goto err;
-
-    if (actualType != reqType) goto err;
-
-    return nitems;
-
-err:
-    XFree (*propReturn);
-    return 0;
-}
-
-static void UpdateNetWmState (ClientData *pCD)
-{
-    unsigned long nitems;
-    unsigned long natoms = 0;
-    Atom *netWmState;
-    Atom *atoms;
-
-    nitems = GetWindowProperty (pCD->client, wmGD.xa__NET_WM_STATE, XA_ATOM,
-		    (unsigned char **) &netWmState);
-
-    atoms = malloc ((nitems + 2) * sizeof (Atom)); if (!atoms) goto done;
-
-    for (int i = 0; i < nitems; ++i)
-	if (netWmState[i] == wmGD.xa__NET_WM_STATE_FULLSCREEN ||
-	    netWmState[i] == wmGD.xa__NET_WM_STATE_MAXIMIZED_VERT ||
-	    netWmState[i] == wmGD.xa__NET_WM_STATE_MAXIMIZED_HORZ)
-	    continue;
-	else
-	    atoms[natoms++] = netWmState[i];
-
-    if (pCD->maxConfig)
-    {
-	if (pCD->fullscreen)
-	{
-	    atoms[natoms++] = wmGD.xa__NET_WM_STATE_FULLSCREEN;
-	}
-	else
-	{
-	    atoms[natoms++] = wmGD.xa__NET_WM_STATE_MAXIMIZED_VERT;
-	    atoms[natoms++] = wmGD.xa__NET_WM_STATE_MAXIMIZED_HORZ;
-	}
-    }
-
-    XChangeProperty (DISPLAY, pCD->client, wmGD.xa__NET_WM_STATE, XA_ATOM, 32,
-		    PropModeReplace, (unsigned char *) atoms, natoms);
-
-done:
-    XFree (netWmState);
-    XFree (atoms);
-}
-
 static void ProcessNetWmStateFullscreen (ClientData *pCD, long action)
 {
+    Boolean fullscreen = pCD->fullscreen;
+
     switch (action)
     {
 	case _NET_WM_STATE_REMOVE:
-	    if (!pCD->fullscreen) return;
-	    pCD->fullscreen = False;
+	    if (!fullscreen) return;
+	    fullscreen = False;
 	    break;
 	case _NET_WM_STATE_ADD:
-	    if (pCD->fullscreen) return;
-	    pCD->fullscreen = True;
+	    if (fullscreen) return;
+	    fullscreen = True;
 	    break;
 	case _NET_WM_STATE_TOGGLE:
-	    pCD->fullscreen = !pCD->fullscreen;
+	    fullscreen = !fullscreen;
 	    break;
 	default:
 	    return;
     }
 
+    pCD->fullscreen = False;
     SetClientState (pCD, NORMAL_STATE, GetTimestamp ());
 
-    if (pCD->fullscreen)
+    if (fullscreen) {
+	pCD->fullscreen = True;
 	SetClientState (pCD, MAXIMIZED_STATE, GetTimestamp ());
+    }
 }
 
 static void ProcessNetWmStateMaximized (ClientData *pCD, long action)
@@ -146,64 +88,52 @@ static void ProcessNetWmStateMaximized (ClientData *pCD, long action)
 }
 
 /**
-* @brief Processes the _NET_WM_FULLSCREEN_MONITORS protocol.
-*
-* @param pCD
-* @param top
-* @param bottom
-* @param left
-* @param right
-*/
+ * @brief Processes the _NET_WM_FULLSCREEN_MONITORS protocol.
+ *
+ * @param pCD
+ * @param top
+ * @param bottom
+ * @param left
+ * @param right
+ */
 void ProcessNetWmFullscreenMonitors (ClientData *pCD,
-    long top, long bottom, long left, long right)
+    int top, int bottom, int left, int right)
 {
     WmHeadInfo_t *pHeadInfo;
 
-    pCD->monitorSizeIsSet = False;
+    pCD->fullscreenAuto = True;
 
-    pHeadInfo = GetHeadInfoById (top);
-
-    if (!pHeadInfo) return;
-
-    pCD->monitorY = pHeadInfo->y_org;
+    if (!(pHeadInfo = GetHeadInfoById (top))) return;
+    pCD->fullscreenY = pHeadInfo->y_org;
     free(pHeadInfo);
 
-    pHeadInfo = GetHeadInfoById (bottom);
-
-    if (!pHeadInfo) return;
-
-    pCD->monitorHeight = top == bottom ? pHeadInfo->height :
+    if (!(pHeadInfo = GetHeadInfoById (bottom))) return;
+    pCD->fullscreenHeight = top == bottom ? pHeadInfo->height :
 	    pHeadInfo->y_org + pHeadInfo->height;
     free(pHeadInfo);
 
-    pHeadInfo = GetHeadInfoById (left);
-
-    if (!pHeadInfo) return;
-
-    pCD->monitorX = pHeadInfo->x_org;
+    if (!(pHeadInfo = GetHeadInfoById (left))) return;
+    pCD->fullscreenX = pHeadInfo->x_org;
     free(pHeadInfo);
 
-    pHeadInfo = GetHeadInfoById (right);
-
-    if (!pHeadInfo) return;
-
-    pCD->monitorWidth = left == right ? pHeadInfo->width :
+    if (!(pHeadInfo = GetHeadInfoById (right))) return;
+    pCD->fullscreenWidth = left == right ? pHeadInfo->width :
 	    pHeadInfo->x_org + pHeadInfo->width;
     free(pHeadInfo);
 
-    pCD->monitorSizeIsSet = True;
+    pCD->fullscreenAuto = False;
 }
 
 /**
-* @brief Processes the _NET_WM_STATE client message.
-*
-* @param pCD
-* @param action
-* @param firstProperty
-* @param secondProperty
-*/
+ * @brief Processes the _NET_WM_STATE client message.
+ *
+ * @param pCD
+ * @param action
+ * @param firstProperty
+ * @param secondProperty
+ */
 void ProcessNetWmState (ClientData *pCD, long action,
-    long firstProperty, long secondProperty)
+    Atom firstProperty, Atom secondProperty)
 {
     if (pCD->clientState & UNSEEN_STATE) return;
 
@@ -218,8 +148,6 @@ void ProcessNetWmState (ClientData *pCD, long action,
 
     if (!ClientInWorkspace (ACTIVE_WS, pCD))
 	SetClientState (pCD, pCD->clientState | UNSEEN_STATE, GetTimestamp ());
-
-    UpdateNetWmState (pCD);
 }
 
 /**
@@ -227,6 +155,8 @@ void ProcessNetWmState (ClientData *pCD, long action,
 */
 void SetupWmEwmh (void)
 {
+    int scr;
+
     enum {
 	XA_UTF8_STRING,
 	XA__NET_SUPPORTED,
@@ -257,7 +187,6 @@ void SetupWmEwmh (void)
 	_XA__NET_WM_STATE_MAXIMIZED_HORZ
     };
 
-    Window childWindow;
     Atom atoms[XtNumber(atom_names) + 1];
 
     XInternAtoms(DISPLAY, atom_names, XtNumber(atom_names), False, atoms);
@@ -275,10 +204,16 @@ void SetupWmEwmh (void)
     wmGD.xa__NET_WM_STATE_MAXIMIZED_HORZ =
 	atoms[XA__NET_WM_STATE_MAXIMIZED_HORZ];
 
-    for (int scr = 0; scr < wmGD.numScreens; ++scr)
+    for (scr = 0; scr < wmGD.numScreens; ++scr)
     {
-	childWindow = XCreateSimpleWindow(DISPLAY, wmGD.Screens[scr].rootWindow,
-			-1, -1, 1, 1, 0, 0, 0);
+	Window childWindow;
+	WmScreenData *pSD;
+
+	pSD = &(wmGD.Screens[scr]);
+
+	if (!pSD->managed) continue;
+
+	childWindow = pSD->wmWorkspaceWin;
 
 	XChangeProperty(DISPLAY, childWindow, atoms[XA__NET_WM_NAME],
 			atoms[XA_UTF8_STRING], 8, PropModeReplace,

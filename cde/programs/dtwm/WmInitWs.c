@@ -411,7 +411,6 @@ void InitWmGlobal (int argc, char *argv [], char *environ [])
      * Do (pre-toolkit) initialization:
      */
 
-    wmGD.tmpWindowContextType = XUniqueContext ();
     wmGD.windowContextType = XUniqueContext ();
     wmGD.screenContextType = XUniqueContext ();
 #ifndef	IBM_169380

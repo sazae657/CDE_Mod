@@ -61,3 +61,5 @@ extern char *WorkspacePropertyName (WmWorkspaceData *pWS);
 extern char *GetUtf8String (Display *display, Window w, Atom property);
 extern void SetUtf8String (Display *display, Window w, Atom property,
 			   const char *s);
+extern void UpdateNetWmState (Window window, Atom *states,
+			      unsigned long nstates, long action);

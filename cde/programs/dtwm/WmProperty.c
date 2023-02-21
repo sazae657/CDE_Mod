@@ -1940,3 +1940,60 @@ void SetUtf8String (Display *display, Window w, Atom property, const char *s)
     XChangeProperty (display, w, property, wmGD.xa_UTF8_STRING, 8,
 		     PropModeReplace, (unsigned char *)s, len);
 }
+
+/**
+ * @brief This function updates _NET_WM_STATE property.
+ *
+ * @param window
+ * @param states
+ * @param nstates
+ * @param action
+ */
+void UpdateNetWmState (Window window, Atom *states, unsigned long nstates,
+		       long action)
+{
+    int i, j, actualFormat;
+    unsigned long nold, leftover;
+    Atom actualType, *oldStates, *newStates;
+    unsigned long nnew = 0;
+    Atom type = wmGD.xa__NET_WM_STATE;
+
+    if (!(XGetWindowProperty (DISPLAY, window, type, 0L, 1000000L, False,
+			      XA_ATOM, &actualType, &actualFormat, &nold,
+			      &leftover, (unsigned char **) &oldStates)
+	== Success && actualType == XA_ATOM)) nold = 0;
+
+    if (!(states && nstates) && nold) goto done;
+
+    newStates = malloc ((nstates + nold) * sizeof (Atom));
+
+    if (!newStates) goto done;
+
+    for (i = 0; i < nold; ++i)
+    {
+	Atom oldState = oldStates[i];
+	for (j = 0; j < nstates; ++j) if (oldState == states[j]) break;
+	if (j >= nstates) newStates[nnew++] = oldState;
+    }
+
+    if (action == _NET_WM_STATE_ADD)
+    {
+	for (i = 0; i < nstates; ++i) newStates[nnew++] = states[i];
+    }
+    else if (action == _NET_WM_STATE_TOGGLE)
+    {
+	for (i = 0; i < nstates; ++i)
+	{
+	    Atom state = states[i];
+	    for (j = 0; j < nold; ++j) if (state == oldStates[j]) break;
+	    if (j >= nold) newStates[nnew++] = state;
+	}
+    }
+
+    XChangeProperty (DISPLAY, window, type, XA_ATOM, 32, PropModeReplace,
+		     (unsigned char *) newStates, nnew);
+
+done:
+    if (oldStates) XFree (oldStates);
+    if (newStates) free (newStates);
+}

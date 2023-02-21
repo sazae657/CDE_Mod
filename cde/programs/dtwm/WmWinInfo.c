@@ -89,7 +89,7 @@ WmWorkspaceData *pIconBoxInitialWS;
 
 /*************************************<->*************************************
  *
- *  InitClientData (clientWindow)
+ *  GetClientInfo (pSD, clientWindow, manageFlags)
  *
  *
  *  Description:
@@ -100,7 +100,11 @@ WmWorkspaceData *pIconBoxInitialWS;
  *
  *  Inputs:
  *  ------
+ *  pSD = pointer to screen data for screen that client lives in
+ *
  *  clientWindow = window id for the client window that is to be managed
+ *
+ *  manageFlags = flags that indicate wm state info
  *
  *
  *  Outputs:
@@ -111,23 +115,13 @@ WmWorkspaceData *pIconBoxInitialWS;
  *************************************<->***********************************/
 
 ClientData *
-InitClientData (Window clientWindow)
+GetClientInfo (WmScreenData *pSD, Window clientWindow, long manageFlags)
+
 {
     int i;
     ClientData *pCD;
+    XSetWindowAttributes sAttributes;
 
-    if (!XFindContext (DISPLAY, clientWindow, wmGD.windowContextType,
-			    (caddr_t *)&pCD))
-    {
-	XDeleteContext(DISPLAY, clientWindow, wmGD.tmpWindowContextType);
-	return (pCD);
-    }
-
-    if (!XFindContext (DISPLAY, clientWindow, wmGD.tmpWindowContextType,
-			    (caddr_t *)&pCD))
-    {
-	return (pCD);
-    }
 
     /*
      * Allocate and initialize a client data structure:
@@ -140,15 +134,13 @@ InitClientData (Window clientWindow)
 	return (NULL);
     }
 
-    XSaveContext (DISPLAY, clientWindow, wmGD.tmpWindowContextType,
-		    (caddr_t)pCD);
-
 
     /*
      * Initialize the data structure:
      */
 
     pCD->client = clientWindow;
+    pCD->clientID = ++(pSD->clientCounter);
     pCD->clientFlags = WM_INITIALIZATION;
     pCD->iconFlags = 0;
     pCD->thisIconBox = NULL;
@@ -209,6 +201,7 @@ InitClientData (Window clientWindow)
     pCD->maxWidth = pCD->maxWidthLimit = BIGSIZE;
     pCD->maxHeight = pCD->maxHeightLimit = BIGSIZE;
     pCD->maxConfig = FALSE;
+    pCD->pSD = pSD;
     pCD->dataType = CLIENT_DATA_TYPE;
     pCD->window_status = 0L;
 
@@ -219,60 +212,11 @@ InitClientData (Window clientWindow)
     pCD->smClientID = (String)NULL;
 
     pCD->fullscreen = False;
-    pCD->monitorSizeIsSet = False;
+    pCD->fullscreenAuto = True;
 
     pCD->instantTitle = NULL;
 
     for (i = 0; i < STRETCH_COUNT; ++i) pCD->clientStretchWin[i] = (Window)0L;
-
-    return (pCD);
-} /* END OF FUNCTION InitClientData */
-
-
-
-/*************************************<->*************************************
- *
- *  GetClientInfo (pSD, clientWindow, manageFlags)
- *
- *
- *  Description:
- *  -----------
- *  This function is used to get client window data.
- *
- *
- *  Inputs:
- *  ------
- *  pSD = pointer to screen data for screen that client lives in
- *
- *  clientWindow = window id for the client window that is to be managed
- *
- *  manageFlags = flags that indicate wm state info
- *
- *
- *  Outputs:
- *  -------
- *  Return = pointer to an initialized client data structure for the
- *           specified client window
- *
- *************************************<->***********************************/
-
-ClientData *
-GetClientInfo (WmScreenData *pSD, Window clientWindow, long manageFlags)
-
-{
-    ClientData *pCD;
-    XSetWindowAttributes sAttributes;
-
-    if (!(pCD = InitClientData (clientWindow)))
-    {
-	return (NULL);
-    }
-
-    XDeleteContext(DISPLAY, clientWindow, wmGD.tmpWindowContextType);
-
-    pCD->clientID = ++(pSD->clientCounter);
-    pCD->pSD = pSD;
-
 
      /*
      * Do special processing for client windows that are controlled by
@@ -1410,7 +1354,7 @@ ProcessWmNormalHints (ClientData *pCD, Boolean firstTime, long manageFlags)
 {
     SizeHints *pNormalHints;
     long       flags;
-    int                 diff;
+    int                 diff, maxWidth, maxHeight;
     unsigned long       decoration;
     unsigned int        boxdim, tmpMin;
     unsigned int	oldWidthInc = 0, oldHeightInc = 0;
@@ -1631,6 +1575,8 @@ ProcessWmNormalHints (ClientData *pCD, Boolean firstTime, long manageFlags)
      * maximumClientSize is either set to 'horizontal' or 'vertical'.
      */
 
+    GetMaxInfo (pCD, NULL, NULL, &maxWidth, &maxHeight);
+
     pCD->oldMaxWidth = pCD->maxWidth;
     if (pCD->maximumClientSize.width)
     {
@@ -1638,8 +1584,7 @@ ProcessWmNormalHints (ClientData *pCD, Boolean firstTime, long manageFlags)
 	if (IS_MAXIMIZE_HORIZONTAL(pCD))
 	{
 	    /* go to min (full screen width, max maximum width) */
-	    pCD->maxWidth = DisplayWidth (DISPLAY, SCREEN_FOR_CLIENT(pCD)) -
-				          (2 * pCD->clientOffset.x);
+	    pCD->maxWidth = maxWidth;
 
 	    /*
 	     * Hack to set max client to the current client height, maxHeight
@@ -1661,8 +1606,7 @@ ProcessWmNormalHints (ClientData *pCD, Boolean firstTime, long manageFlags)
 	    if (pNormalHints->max_width < 0)
 	    {
 	        /* go to min (full screen width, max maximum width) */
-		pCD->maxWidth = DisplayWidth (DISPLAY, SCREEN_FOR_CLIENT(pCD)) -
-				          (2 * pCD->clientOffset.x);
+		pCD->maxWidth = maxWidth;
 	    }
 	    else
 	    {
@@ -1675,9 +1619,7 @@ ProcessWmNormalHints (ClientData *pCD, Boolean firstTime, long manageFlags)
 	    if (firstTime)
 	    {
 		/* go to min (full screen width, max maximum width) */
-		pCD->maxWidth = DisplayWidth (DISPLAY,
-					      SCREEN_FOR_CLIENT(pCD)) -
-						(2 * pCD->clientOffset.x);
+		pCD->maxWidth = maxWidth;
 	    }
 	    else
 	    {
@@ -1724,9 +1666,7 @@ ProcessWmNormalHints (ClientData *pCD, Boolean firstTime, long manageFlags)
 	if (IS_MAXIMIZE_VERTICAL(pCD))
 	{
 	    /* go to min (full screen height, max maximum height) */
-	    pCD->maxHeight = DisplayHeight (DISPLAY, SCREEN_FOR_CLIENT(pCD)) -
-			     (pCD->clientOffset.x +
-			      pCD->clientOffset.y);
+	    pCD->maxHeight = maxHeight;
 	    /*
 	     * Hack to set max client to the current client width, maxWidth
 	     * will be kept up to date whenever the window is reconfigured
@@ -1747,10 +1687,7 @@ ProcessWmNormalHints (ClientData *pCD, Boolean firstTime, long manageFlags)
 	    if (pNormalHints->max_height < 0)
 	    {
 	        /* go to min (full screen height, max maximum height) */
-	        pCD->maxHeight = DisplayHeight (
-				 DISPLAY, SCREEN_FOR_CLIENT(pCD)) -
-				 (pCD->clientOffset.x +
-				  pCD->clientOffset.y);
+	        pCD->maxHeight = maxHeight;
 	    }
 	    else
 	    {
@@ -1763,10 +1700,7 @@ ProcessWmNormalHints (ClientData *pCD, Boolean firstTime, long manageFlags)
 	    if (firstTime)
 	    {
 		/* go to min (full screen height, max maximum height) */
-		pCD->maxHeight = DisplayHeight (DISPLAY,
-						SCREEN_FOR_CLIENT(pCD)) -
-						  (pCD->clientOffset.x +
-						   pCD->clientOffset.y);
+		pCD->maxHeight = maxHeight;
 	    }
 	    else
 	    {
@@ -1955,8 +1889,7 @@ ProcessWmNormalHints (ClientData *pCD, Boolean firstTime, long manageFlags)
     if (IS_MAXIMIZE_VERTICAL(pCD))
     {
 	/* go to min (full screen width, max maximum width) */
-	pCD->maxWidthLimit = DisplayWidth (DISPLAY, SCREEN_FOR_CLIENT(pCD)) -
-			    (2 * pCD->clientOffset.x);
+	pCD->maxWidthLimit = maxWidth;
     }
     else
     {
@@ -1982,9 +1915,7 @@ ProcessWmNormalHints (ClientData *pCD, Boolean firstTime, long manageFlags)
     if (IS_MAXIMIZE_HORIZONTAL(pCD))
     {
 	/* go to min (full screen height, max maximum height) */
-	pCD->maxHeightLimit = DisplayHeight (DISPLAY, SCREEN_FOR_CLIENT(pCD)) -
-			     (pCD->clientOffset.x +
-			      pCD->clientOffset.y);
+	pCD->maxHeightLimit = maxHeight;
     }
     else
     {
@@ -4053,3 +3984,57 @@ ProcessMwmHints (ClientData *pCD)
 
 
 } /* END OF ProcessMwmHints */
+
+
+/**
+ * @brief Get the position and size for the maximized window.
+ *
+ * @param pCD
+ * @param pX
+ * @param pY
+ * @param pWidth
+ * @param pHeight
+ */
+void GetMaxInfo (ClientData *pCD, int *pX, int *pY, int *pWidth, int *pHeight)
+{
+    int x, y, width, height;
+    WmHeadInfo_t *WmHI;
+
+    if (pCD->maxConfig)
+    {
+	x      = pCD->maxX;
+	y      = pCD->maxY;
+	width  = pCD->maxWidth;
+	height = pCD->maxHeight;
+    }
+    else if (pCD->fullscreen && !pCD->fullscreenAuto)
+    {
+	x      = pCD->fullscreenX;
+	y      = pCD->fullscreenY;
+	width  = pCD->fullscreenWidth;
+	height = pCD->fullscreenHeight;
+    }
+    else if (WmHI = GetHeadInfo (pCD))
+    {
+	x      = WmHI->x_org;
+	y      = WmHI->y_org;
+	width  = WmHI->width;
+	height = WmHI->height;
+
+	free(WmHI);
+    }
+    else
+    {
+	x      = 0;
+	y      = 0;
+	width  = DisplayWidth (DISPLAY, SCREEN_FOR_CLIENT (pCD));
+	height = DisplayHeight (DISPLAY, SCREEN_FOR_CLIENT (pCD));
+    }
+
+    FrameToClient (pCD, &x, &y, &width, &height);
+
+    if (pX)      *pX      = x;
+    if (pY)      *pY      = y;
+    if (pWidth)  *pWidth  = width;
+    if (pHeight) *pHeight = height;
+}
