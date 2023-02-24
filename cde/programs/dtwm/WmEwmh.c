@@ -27,10 +27,39 @@
 
 #include "WmGlobal.h"
 #include "WmEvent.h"
+#include "WmFunction.h"
 #include "WmMultiHead.h"
 #include "WmProperty.h"
 #include "WmWinState.h"
 #include "WmWrkspace.h"
+
+static void ProcessNetWmStateAbove (ClientData *pCD, long action);
+static void ProcessNetWmStateBelow (ClientData *pCD, long action);
+
+static void ProcessNetWmStateMaximized (ClientData *pCD, long action)
+{
+    int newState;
+
+    switch (action)
+    {
+	case _NET_WM_STATE_REMOVE:
+	    if (pCD->clientState != MAXIMIZED_STATE) return;
+	    newState = NORMAL_STATE;
+	    break;
+	case _NET_WM_STATE_ADD:
+	    if (pCD->clientState == MAXIMIZED_STATE) return;
+	    newState = MAXIMIZED_STATE;
+	    break;
+	case _NET_WM_STATE_TOGGLE:
+	    newState = pCD->clientState == MAXIMIZED_STATE ?
+		NORMAL_STATE : MAXIMIZED_STATE;
+	    break;
+	default:
+	    return;
+    }
+
+    SetClientState (pCD, newState, GetTimestamp ());
+}
 
 static void ProcessNetWmStateFullscreen (ClientData *pCD, long action)
 {
@@ -62,29 +91,50 @@ static void ProcessNetWmStateFullscreen (ClientData *pCD, long action)
     }
 }
 
-static void ProcessNetWmStateMaximized (ClientData *pCD, long action)
+static void ProcessNetWmStateAbove (ClientData *pCD, long action)
 {
-    int newState;
+    if (action == _NET_WM_STATE_TOGGLE)
+	action = pCD == pCD->pSD->topClient ? _NET_WM_STATE_REMOVE :
+					      _NET_WM_STATE_ADD;
 
     switch (action)
     {
 	case _NET_WM_STATE_REMOVE:
-	    if (pCD->clientState != MAXIMIZED_STATE) return;
-	    newState = NORMAL_STATE;
+	    if (pCD->pSD->topClient == pCD) pCD->pSD->topClient = NULL;
 	    break;
 	case _NET_WM_STATE_ADD:
-	    if (pCD->clientState == MAXIMIZED_STATE) return;
-	    newState = MAXIMIZED_STATE;
-	    break;
-	case _NET_WM_STATE_TOGGLE:
-	    newState = pCD->clientState == MAXIMIZED_STATE ?
-		NORMAL_STATE : MAXIMIZED_STATE;
+	    pCD->pSD->topClient = pCD;
+	    ProcessNetWmStateBelow (pCD, _NET_WM_STATE_REMOVE);
+	    Do_Raise (pCD, NULL, STACK_NORMAL);
 	    break;
 	default:
 	    return;
     }
 
-    SetClientState (pCD, newState, GetTimestamp ());
+    UpdateNetWmState (pCD->client, &wmGD.xa__NET_WM_STATE_ABOVE, 1, action);
+}
+
+static void ProcessNetWmStateBelow (ClientData *pCD, long action)
+{
+    if (action == _NET_WM_STATE_TOGGLE)
+	action = pCD == pCD->pSD->bottomClient ? _NET_WM_STATE_REMOVE :
+						 _NET_WM_STATE_ADD;
+
+    switch (action)
+    {
+	case _NET_WM_STATE_REMOVE:
+	    if (pCD->pSD->bottomClient == pCD) pCD->pSD->bottomClient = NULL;
+	    break;
+	case _NET_WM_STATE_ADD:
+	    pCD->pSD->bottomClient = pCD;
+	    ProcessNetWmStateAbove (pCD, _NET_WM_STATE_REMOVE);
+	    Do_Lower (pCD, NULL, STACK_NORMAL);
+	    break;
+	default:
+	    return;
+    }
+
+    UpdateNetWmState (pCD->client, &wmGD.xa__NET_WM_STATE_BELOW, 1, action);
 }
 
 /**
@@ -145,6 +195,12 @@ void ProcessNetWmState (ClientData *pCD, long action,
     else if (firstProperty  == wmGD.xa__NET_WM_STATE_FULLSCREEN ||
 	     secondProperty == wmGD.xa__NET_WM_STATE_FULLSCREEN)
 	ProcessNetWmStateFullscreen (pCD, action);
+    else if (firstProperty  == wmGD.xa__NET_WM_STATE_ABOVE ||
+	     secondProperty == wmGD.xa__NET_WM_STATE_ABOVE)
+	ProcessNetWmStateAbove (pCD, action);
+    else if (firstProperty  == wmGD.xa__NET_WM_STATE_BELOW ||
+	     secondProperty == wmGD.xa__NET_WM_STATE_BELOW)
+	ProcessNetWmStateBelow (pCD, action);
 
     if (!ClientInWorkspace (ACTIVE_WS, pCD))
 	SetClientState (pCD, pCD->clientState | UNSEEN_STATE, GetTimestamp ());
@@ -167,9 +223,11 @@ void SetupWmEwmh (void)
 	XA__NET_WM_VISIBLE_ICON_NAME,
 	XA__NET_WM_FULLSCREEN_MONITORS,
 	XA__NET_WM_STATE,
-	XA__NET_WM_STATE_FULLSCREEN,
 	XA__NET_WM_STATE_MAXIMIZED_VERT,
-	XA__NET_WM_STATE_MAXIMIZED_HORZ
+	XA__NET_WM_STATE_MAXIMIZED_HORZ,
+	XA__NET_WM_STATE_FULLSCREEN,
+	XA__NET_WM_STATE_ABOVE,
+	XA__NET_WM_STATE_BELOW
     };
 
     static char *atom_names[] = {
@@ -182,9 +240,11 @@ void SetupWmEwmh (void)
 	_XA__NET_WM_VISIBLE_ICON_NAME,
 	_XA__NET_WM_FULLSCREEN_MONITORS,
 	_XA__NET_WM_STATE,
-	_XA__NET_WM_STATE_FULLSCREEN,
 	_XA__NET_WM_STATE_MAXIMIZED_VERT,
-	_XA__NET_WM_STATE_MAXIMIZED_HORZ
+	_XA__NET_WM_STATE_MAXIMIZED_HORZ,
+	_XA__NET_WM_STATE_FULLSCREEN,
+	_XA__NET_WM_STATE_ABOVE,
+	_XA__NET_WM_STATE_BELOW
     };
 
     Atom atoms[XtNumber(atom_names) + 1];
@@ -198,11 +258,13 @@ void SetupWmEwmh (void)
     wmGD.xa__NET_WM_VISIBLE_ICON_NAME = atoms[XA__NET_WM_VISIBLE_ICON_NAME];
     wmGD.xa__NET_WM_FULLSCREEN_MONITORS = atoms[XA__NET_WM_FULLSCREEN_MONITORS];
     wmGD.xa__NET_WM_STATE = atoms[XA__NET_WM_STATE];
-    wmGD.xa__NET_WM_STATE_FULLSCREEN = atoms[XA__NET_WM_STATE_FULLSCREEN];
     wmGD.xa__NET_WM_STATE_MAXIMIZED_VERT =
 	atoms[XA__NET_WM_STATE_MAXIMIZED_VERT];
     wmGD.xa__NET_WM_STATE_MAXIMIZED_HORZ =
 	atoms[XA__NET_WM_STATE_MAXIMIZED_HORZ];
+    wmGD.xa__NET_WM_STATE_FULLSCREEN = atoms[XA__NET_WM_STATE_FULLSCREEN];
+    wmGD.xa__NET_WM_STATE_ABOVE = atoms[XA__NET_WM_STATE_ABOVE];
+    wmGD.xa__NET_WM_STATE_BELOW = atoms[XA__NET_WM_STATE_BELOW];
 
     for (scr = 0; scr < wmGD.numScreens; ++scr)
     {
@@ -230,6 +292,6 @@ void SetupWmEwmh (void)
 	XChangeProperty(DISPLAY, wmGD.Screens[scr].rootWindow,
 			atoms[XA__NET_SUPPORTED], XA_ATOM, 32, PropModeReplace,
 			(unsigned char *)&atoms[XA__NET_SUPPORTING_WM_CHECK],
-			10);
+			12);
     }
 }

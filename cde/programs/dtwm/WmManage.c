@@ -921,6 +921,8 @@ void WithdrawWindow (ClientData *pCD)
     int i;
     XWindowChanges xwc;
 
+    if (pCD->pSD->topClient == pCD) pCD->pSD->topClient = NULL;
+    if (pCD->pSD->bottomClient == pCD) pCD->pSD->bottomClient = NULL;
 
     /*
      * Put the client window into a withdrawn state:

@@ -250,7 +250,8 @@ GetClientInfo (WmScreenData *pSD, Window clientWindow, long manageFlags)
      * Listen for property change events on the window so that we keep 
      * in sync with the hints.
      */
-    sAttributes.event_mask = (PropertyChangeMask | ColormapChangeMask);    
+    sAttributes.event_mask = (PropertyChangeMask | ColormapChangeMask |
+			      VisibilityChangeMask);
     XChangeWindowAttributes (DISPLAY, pCD->client, CWEventMask,
         &sAttributes);
 

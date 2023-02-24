@@ -134,9 +134,11 @@ extern Pixel		FPselectcolor;
 #define _XA__NET_WM_VISIBLE_ICON_NAME "_NET_WM_VISIBLE_ICON_NAME"
 #define _XA__NET_WM_FULLSCREEN_MONITORS "_NET_WM_FULLSCREEN_MONITORS"
 #define _XA__NET_WM_STATE "_NET_WM_STATE"
-#define _XA__NET_WM_STATE_FULLSCREEN "_NET_WM_STATE_FULLSCREEN"
 #define _XA__NET_WM_STATE_MAXIMIZED_VERT "_NET_WM_STATE_MAXIMIZED_VERT"
 #define _XA__NET_WM_STATE_MAXIMIZED_HORZ "_NET_WM_STATE_MAXIMIZED_HORZ"
+#define _XA__NET_WM_STATE_FULLSCREEN "_NET_WM_STATE_FULLSCREEN"
+#define _XA__NET_WM_STATE_ABOVE "_NET_WM_STATE_ABOVE"
+#define _XA__NET_WM_STATE_BELOW "_NET_WM_STATE_BELOW"
 
 /* window manager exit value on fatal errors: */
 #define WM_ERROR_EXIT_VALUE	1
@@ -1325,6 +1327,9 @@ typedef struct _WmScreenData
     DtSvcHandle	hWsm;		/* WORKSPACEMGR message handle */
     Boolean	bMarqueeSelectionInitialized;
 
+    /* top and bottom clients */
+    struct _ClientData	*topClient;
+    struct _ClientData	*bottomClient;
 } WmScreenData;
 
 typedef struct _WmScreenData *PtrScreenData;
@@ -1984,9 +1989,11 @@ typedef struct _WmGlobalData
     Atom	xa__NET_WM_VISIBLE_ICON_NAME;
     Atom	xa__NET_WM_FULLSCREEN_MONITORS;
     Atom	xa__NET_WM_STATE;
-    Atom	xa__NET_WM_STATE_FULLSCREEN;
     Atom	xa__NET_WM_STATE_MAXIMIZED_VERT;
     Atom	xa__NET_WM_STATE_MAXIMIZED_HORZ;
+    Atom	xa__NET_WM_STATE_FULLSCREEN;
+    Atom	xa__NET_WM_STATE_ABOVE;
+    Atom	xa__NET_WM_STATE_BELOW;
 
     /* atoms used for workspace management: */
 

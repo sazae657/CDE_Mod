@@ -1272,6 +1272,9 @@ InitWmScreen (WmScreenData *pSD, int sNum)
     pSD->iconBoxControl = False;
     pSD->displayResolutionType = _DtGetDisplayResolution(DISPLAY, sNum);
 
+    pSD->topClient = NULL;
+    pSD->bottomClient = NULL;
+
     /*
      *  We've got display resolution type--now, let's get color
      *  characteristics.
