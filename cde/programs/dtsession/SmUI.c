@@ -1039,15 +1039,13 @@ CreateCoverDialog(
 {
     int i;
     Widget	tmpCover, table;
-    char	geomString[50];
-
-    sprintf(geomString, "%dx%d+0+0",
-	    DisplayWidth(smGD.display, screenNum),
-	    DisplayHeight(smGD.display, screenNum));
+    int displayHeight = DisplayHeight(smGD.display, smGD.screen);
+    int displayWidth = DisplayWidth(smGD.display, smGD.screen);
 
     i = 0;
     XtSetArg(uiArgs[i], XmNmwmDecorations, 0);i++;
-    XtSetArg(uiArgs[i], XmNgeometry, (String) geomString);i++;
+    XtSetArg(uiArgs[i], XmNmaxHeight, displayHeight);i++;
+    XtSetArg(uiArgs[i], XmNmaxWidth, displayWidth);i++;
     XtSetArg(uiArgs[i], XmNuseAsyncGeometry, True);i++;
     XtSetArg(uiArgs[i], XmNallowShellResize, True); i++;
     XtSetArg(uiArgs[i], XmNresizePolicy, XmRESIZE_NONE);i++;
@@ -1064,10 +1062,8 @@ CreateCoverDialog(
     XtSetArg(uiArgs[i], XmNmarginWidth, 0); i++;
     XtSetArg(uiArgs[i], XmNmarginHeight, 0); i++;
     XtSetArg(uiArgs[i], XmNshadowThickness, 0); i++;
-    XtSetArg(uiArgs[i], XmNheight,
-             (Dimension) DisplayHeight(smGD.display, smGD.screen)); i++;
-    XtSetArg(uiArgs[i], XmNwidth,
-             (Dimension) DisplayWidth(smGD.display, smGD.screen)); i++;
+    XtSetArg(uiArgs[i], XmNheight, (Dimension) displayHeight); i++;
+    XtSetArg(uiArgs[i], XmNwidth, (Dimension) displayWidth ); i++;
     XtSetArg(uiArgs[i], XmNresizePolicy, XmRESIZE_NONE);i++;
     table = XmCreateDrawingArea(tmpCover, "drawArea", uiArgs, i);
     XtManageChild(table);
