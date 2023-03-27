@@ -86,7 +86,8 @@
 #endif
 
 #ifdef HAS_PAM_LIBRARY
-#include <Dt/PamSvc.h>
+#include <security/pam_appl.h>
+#include <Dt/SvcPam.h>
 #endif
 
 #include "Sm.h"
@@ -1622,7 +1623,8 @@ localAuthenticate(
 
     if (!(service = strrchr(smGD.programName, '/'))) return False;
 
-    return !_DtAuthentication(service + 1, NULL, passwd, pwent->pw_name, NULL);
+    return _DtSvcPamAuthenticate(service + 1, pwent->pw_name, NULL, passwd) ==
+	   PAM_SUCCESS;
 }
 #elif defined(SIA)
 
