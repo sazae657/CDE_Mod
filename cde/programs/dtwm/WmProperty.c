@@ -38,6 +38,7 @@
 #include "WmICCC.h"
 #include <limits.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <Dt/WsmP.h>
 #include <X11/Xatom.h>
 #include <Xm/AtomMgr.h>
@@ -1954,18 +1955,20 @@ void UpdateNetWmState (Window window, Atom *states, unsigned long nstates,
 {
     int i, j, actualFormat;
     unsigned long nold, leftover;
-    Atom actualType, *oldStates, *newStates;
+    Atom actualType;
     unsigned long nnew = 0;
     Atom type = wmGD.xa__NET_WM_STATE;
+    Atom *oldStates = NULL;
+    Atom *newStates = NULL;
+
+    if (!states) nstates = 0;
 
     if (!(XGetWindowProperty (DISPLAY, window, type, 0L, 1000000L, False,
 			      XA_ATOM, &actualType, &actualFormat, &nold,
 			      &leftover, (unsigned char **) &oldStates)
 	== Success && actualType == XA_ATOM)) nold = 0;
 
-    if (!(states && nstates) && nold) goto done;
-
-    newStates = malloc ((nstates + nold) * sizeof (Atom));
+    newStates = malloc ((1 + nstates + nold) * sizeof (Atom));
 
     if (!newStates) goto done;
 
