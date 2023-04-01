@@ -52,7 +52,7 @@ programs/dtimsstart/dtimsstart
 programs/dtlogin/dtchooser
 programs/dtlogin/dtgreet
 programs/dtlogin/dtlogin
-programs/dtlogin/config/pam/dtlogin
+programs/dtlogin/config/dtlogin
 programs/dtmail/dtmail/dtmail
 programs/dtmail/dtmailpr/dtmailpr
 programs/dtpad/dtpad
@@ -69,7 +69,7 @@ programs/dtsession/Dtsession
 programs/dtsession/dtloadresources
 programs/dtsession/dtsession
 programs/dtsession/dtsession_res
-programs/dtsession/config/pam/dtsession
+programs/dtsession/config/dtsession
 programs/dtspcd/dtspcd
 programs/dtspcd/dtspcdenv
 programs/dtsr/dtsrclean
