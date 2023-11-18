@@ -7,6 +7,50 @@ https://sourceforge.net/p/cdesktopenv/code/commit_browser
 
 
 #######################################################################
+### 2.5.2 (stable) 11/18/2023
+
+This is mainly a bugfix release addressing various issues.
+
+Shortlog:
+
+Cy Schubert (1):
+      Fix build under LLVM15
+
+Jon Trulson (9):
+      Apply various patches from Giacomo Comes <comes@naic.edu>
+      Patch from Giacomo Comes: rename ksh manpage to ksh-cde
+      Add DesktopNames=CDE to cde.desktop
+      pgadmin.dt: set icon from pgadmin to pgadmin3
+      dtfile/dterror.ds: fix script defines typo
+      dtksh: enable SHOPT_ECHOPRINT
+      dticon, dtpad, dtterm: fix session save issues (sprintf bogosity)
+      lib/DtHelp: strmove(): return memmove() result
+      .gitignore: add new locations of dtsession/dtlogin PAM files
+
+Peter Howkins (3):
+      (Pascal Stumpf) Makefile.am change several places where ${prefix} should be $(CDE_INSTALLATION_TOP)
+      (Pascal Stumpf) CDE doesn't provide the ksh binary, don't install the manpage for it
+      (Pascal Stumpf) dtlogin: On OpenBSD start X as root (it drops privileges later)
+
+hyousatsu (15):
+      DtTerm: fix a segfault by allocating a string dynamically.
+      dtwm: fix a title bar resizing issue.
+      dtwm: fix compiler warnings.
+      dtwm: add support for _NET_WM_VISIBLE_NAME and _NET_WM_VISIBLE_ICON_NAME.
+      dtwm: optimize EWMH processing.
+      localized: fix the character encoding errors in zh_TW.UTF-8.
+      dtwm: add a new feature -- window rename.
+      dtwm: optimize EWMH processing.
+      dtwm: support _NET_WM_STATE_ABOVE and _NET_WM_STATE_BELOW.
+      dtsession: change the maximum size of cover dialog to fullscreen.
+      dtlogin: use sessreg to manage utmp/wtmp.
+      dtwm: fix a segfault.
+      dtstyle: make the style manager recognize wheel mouse correctly.
+      tt: make the ttserver process events properly.
+      dtsession: fix a crash.
+
+
+#######################################################################
 ### 2.5.1 (stable) 10/1/2022
 
 This release fixes up some issues with the 2.5.0 release and removes
