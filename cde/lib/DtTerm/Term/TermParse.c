@@ -2196,8 +2196,8 @@ _DtTermParseSunMisc  /*  Misc sun esc seqs  */
     case 21:
       XtVaGetValues(sw,XmNtitle, &title, NULL);
       fmt = "\033]l%s\033\\";
-      if (strlen(icon) + strlen(fmt) + 1 >= sizeof(buf))
-	s = XtMalloc(strlen(icon) + strlen(fmt) + 1);
+      if (strlen(title) + strlen(fmt) + 1 >= sizeof(buf))
+	s = XtMalloc(strlen(title) + strlen(fmt) + 1);
       else 
 	s = buf;
       sprintf(s, "%s", fmt);
