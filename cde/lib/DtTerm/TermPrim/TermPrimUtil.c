@@ -412,8 +412,9 @@ _DtTermPrimStartLog(Widget w)
 	cp = XtMalloc(strlen(tw->term.logFile) + 1);
 	(void) strcpy(cp, tw->term.logFile);
 
-        (void) mktemp(cp);
-	if (cp && *cp) {
+        int logStream = mkstemp(cp);
+	if (logStream != -1) {
+	    tpd->logStream = fdopen(logStream, "w+");
 	    tw->term.logFile = cp;
 	} else {
 	    (void) XtFree(cp);
@@ -421,7 +422,7 @@ _DtTermPrimStartLog(Widget w)
 	}
     }
 
-    if ('|' == *tw->term.logFile ) {
+    else if ('|' == *tw->term.logFile ) {
         /*
         ** pipe logfile into command
         */
