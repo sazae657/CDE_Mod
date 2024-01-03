@@ -3890,7 +3890,7 @@ PreeditHighlight(
     TermSelectInfo  selectInfo = tw->term.tpd->selectInfo;
 
     /* check for null feedback */
-    if (call_data->text->feedback) {
+    if (call_data && call_data->text && call_data->text->feedback) {
 	switch (*call_data->text->feedback) {
 	  case XIMReverse:
 	  case XIMUnderline:
