@@ -404,10 +404,10 @@ _DtTermPrimStartLog(Widget w)
     if ( tw->term.log_on || tw->term.logInhibit ) { return; }
 
     if (!tw->term.logFile || !*tw->term.logFile) {
-	tw->term.logFile = "DttermLogXXXXX";
+	tw->term.logFile = "DttermLogXXXXXX";
     }
 
-    if (!strcmp(tw->term.logFile + strlen(tw->term.logFile) - 5, "XXXXX")) {
+    if (!strcmp(tw->term.logFile + strlen(tw->term.logFile) - 6, "XXXXXX")) {
 	/* make a local copy in case we are going to change it... */
 	cp = XtMalloc(strlen(tw->term.logFile) + 1);
 	(void) strcpy(cp, tw->term.logFile);
