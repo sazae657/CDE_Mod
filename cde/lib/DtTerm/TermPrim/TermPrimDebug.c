@@ -68,13 +68,6 @@ static
 void
 catchExit(void)
 {
-    int a;
-    int b;
-
-    a = 1;
-    b = a;
-    a = b;
-    return;
 }
 
 typedef struct _argArray {

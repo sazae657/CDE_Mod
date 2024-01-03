@@ -389,7 +389,6 @@ void
 _DtTermPrimFuncRedrawDisplay(Widget w, int count, FunctionSource functionSource)
 {
     DtTermPrimitiveWidget tw = (DtTermPrimitiveWidget) w;
-    struct termData *tpd = tw->term.tpd;
 
     (void) XClearArea(XtDisplay(w), XtWindow(w), 0, 0, 0, 0, True);
     return;

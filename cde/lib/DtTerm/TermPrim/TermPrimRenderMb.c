@@ -880,7 +880,6 @@ _DtTermPrimInsertTextWc
 	newWidth  = DoInsertWc(w, &wcBuffer[insertStartX],
 		               insertCharCount, &wrapped);
         tpd->cursorColumn += insertCharWidth;
-	insertCharCount = 0;
 	if (tpd->insertCharMode == DtTERM_INSERT_CHAR_OFF) {
 	    renderEndX = MAX(renderEndX, tpd->cursorColumn);
 	} else {
@@ -899,8 +898,6 @@ _DtTermPrimInsertTextWc
 	    (void) _DtTermPrimRefreshTextWc(w, 0, tpd->cursorRow + 1,
 		    renderEndX + 1, tpd->cursorRow + 1);
 	}
-	wrapped = False;
-	needToRender = False;
     }
     return(i);
 }

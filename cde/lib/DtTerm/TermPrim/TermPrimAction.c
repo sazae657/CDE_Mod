@@ -157,7 +157,6 @@ _DtTermPrimActionTab(Widget w, XEvent *event,
 	String *params, Cardinal *num_params)
 {
     DtTermPrimitiveWidget tw = (DtTermPrimitiveWidget) w;
-    struct termData *tpd = tw->term.tpd;
     Boolean shiftedTab = False;
     Boolean numericTab = False;
     int i;

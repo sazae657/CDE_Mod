@@ -624,12 +624,7 @@ _DtTermDeleteEnhancement
     }
 
     /* 
-    ** get a copy of the current enhancement
-    */
-    fillEnh = enh[col];
-
-    /* 
-    ** move all of the enhancement blocks between col + width and and the
+    ** move all of the enhancement blocks between col + width and the
     ** end of the line to col
     */
     copyCount = WIDTH(line) - (col + width);
@@ -736,19 +731,19 @@ _DtTermSetEnhancement
     switch (id)
     {
       case enhVideo:
-        enhState->video   = (value &= VIDEO_MASK);
+        enhState->video   = value & VIDEO_MASK;
         break;
       case enhField:
-        enhState->field   = (value &= FIELD_MASK);
+        enhState->field   = value & FIELD_MASK;
         break;
       case enhFgColor:
-        enhState->fgColor = (value &= COLOR_MASK);
+        enhState->fgColor = value & COLOR_MASK;
         break;
       case enhBgColor:
-        enhState->bgColor = (value &= COLOR_MASK);
+        enhState->bgColor = value & COLOR_MASK;
         break;
       case enhFont:
-        enhState->font    = (value &= FONT_MASK);
+        enhState->font    = value & FONT_MASK;
         break;
       default:
         return(-1);

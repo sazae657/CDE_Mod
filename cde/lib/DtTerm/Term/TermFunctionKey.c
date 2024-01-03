@@ -54,7 +54,6 @@ _DtTermFunctionKeyExecute(
 )
 {
     DtTermWidget tw = (DtTermWidget) w;
-    DtTermData td = tw->vt.td;
 
     if (!shift || tw->vt.sunFunctionKeys == True ) {
       if ( tw->vt.sunFunctionKeys == True ) {  

@@ -324,7 +324,6 @@ UtmpEntryCreate(Widget w, pid_t pid, char *utmpLine)
 {
 #if !defined(CSRG_BASED) /* XXX */
     DtTermPrimitiveWidget tw = (DtTermPrimitiveWidget) w;
-    struct termData *tpd = tw->term.tpd;
     struct utmp ut;
     struct utmp *utPtr;
     char *c;

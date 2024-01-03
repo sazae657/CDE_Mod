@@ -105,7 +105,6 @@ _DtTermPrimScrollWait(Widget w)
     int i;
     int exposeY;
     int exposeHeight;
-    int scrolledLines;
 
     Debug('s', fprintf(stderr, ">>_DtTermPrimScrollWait() starting\n"));
     Debug('s', fprintf(stderr,
@@ -232,7 +231,6 @@ _DtTermPrimScrollWait(Widget w)
 		exposeHeight));
 
 	/* set scrollLines == 0, or renderText will not render them... */
-	scrolledLines = tpd->scroll.jump.scrollLines;
 	tpd->scroll.jump.scrollLines = 0;
 	/* clear the scrolled flag... */
 	tpd->scroll.jump.scrolled = False;

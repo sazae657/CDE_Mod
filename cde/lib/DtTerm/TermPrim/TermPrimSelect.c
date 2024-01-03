@@ -372,7 +372,6 @@ bufferRowColToPos
 )
 {
     DtTermPrimData   tpd        = tw->term.tpd;
-    TermSelectInfo   selectInfo = tpd->selectInfo;
     short lrow, lcol;
     XmTextPosition pos;
 
@@ -1369,7 +1368,7 @@ doExtendedSelection
             if (position == scan (tw, begin, selectInfo->scanType, scanRight, 1,
                                   FALSE))
             {
-                begin = cursorPos = position;
+                begin = position;
             }
         }
     }
@@ -1505,8 +1504,6 @@ doHandleTargets
 {
     _TermSelectPrimaryRec  *primSelect = (_TermSelectPrimaryRec *) closure;
     DtTermPrimitiveWidget   tw         = (DtTermPrimitiveWidget)w;
-    DtTermPrimData          tpd        = tw->term.tpd;
-    TermSelectInfo          selectInfo = tpd->selectInfo;
     XTextProperty           tmpProp;
     XmTextBlockRec          block;
     int                     i, status;
@@ -2240,9 +2237,8 @@ _DtTermPrimSelectDeleteLines
 	return;
     }
 
-    /* figure out what the begin and end lines are... */
+    /* figure out what the begin line is... */
     selectLineBegin = selectInfo->begin / (selectInfo->columns + 1);
-    selectLineEnd = (selectInfo->end - 1) / (selectInfo->columns + 1);
 
     /* if the beginning of the selection is after the source, we need to
      * move the selection up...
@@ -2274,9 +2270,8 @@ _DtTermPrimSelectInsertLines
 	return;
     }
 
-    /* figure out what the begin and end lines are... */
+    /* figure out what the begin line is... */
     selectLineBegin = selectInfo->begin / (selectInfo->columns + 1);
-    selectLineEnd = (selectInfo->end - 1) / (selectInfo->columns + 1);
 
     /* if the beginning of the selection is at or after the source, we need to
      * move the selection up...
@@ -2328,8 +2323,6 @@ _DtTermPrimSelectPage
 )
 {
     DtTermPrimitiveWidget   tw       = (DtTermPrimitiveWidget)w;
-    DtTermPrimData          tpd      = tw->term.tpd;
-    TermSelectInfo          selectInfo = tpd->selectInfo;
     XButtonEvent           *btnEvent = (XButtonEvent *) event;
     XmTextPosition begin, end;
     short lastRow, width;
@@ -2365,8 +2358,6 @@ DropTransferCallback(
 {
     _DtTermDropTransferRec *transfer_rec = (_DtTermDropTransferRec *) closure;
     DtTermPrimitiveWidget   tw   = (DtTermPrimitiveWidget)transfer_rec->widget;
-    DtTermPrimData          tpd         = tw->term.tpd;
-    TermSelectInfo          selectInfo  = tpd->selectInfo;
 
      /* When type = NULL, we are assuming a DELETE request has been requested */
     if (*type == 0) {
@@ -2384,7 +2375,6 @@ DropTransferCallback(
        transferEntries[0].client_data = (XtPointer) transfer_rec;
        transferEntries[0].target = XmInternAtom(XtDisplay(w),"DELETE",
                                                 False);
-       transferList = transferEntries;
        XmDropTransferAdd(w, transferEntries, 1);
     }
 }
@@ -2444,8 +2434,6 @@ HandleDrop( Widget w, XmDropProcCallbackStruct *cb )
     Widget drag_cont, initiator;
     /* XmTextWidget tw = (XmTextWidget) w;  */
     DtTermPrimitiveWidget   tw          = (DtTermPrimitiveWidget)w;
-    DtTermPrimData          tpd         = tw->term.tpd;
-    TermSelectInfo          selectInfo  = tpd->selectInfo;
     Cardinal numExportTargets, n;
     Atom *exportTargets;
     Arg args[10];

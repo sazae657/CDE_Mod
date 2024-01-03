@@ -572,7 +572,6 @@ _DtTermActionEditKeyExecute(Widget w, XEvent *event, String *params,
     long keyNumber;
     char *ret;
     int i;
-    DtTermData      td = tw->vt.td;
 
     if (*num_params < 1) {
         return;

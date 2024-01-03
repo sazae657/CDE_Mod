@@ -898,7 +898,7 @@ Initialize(Widget rw, Widget w, Arg *args, Cardinal *num_args)
 	    if (geometry && *geometry) {
 		hints.flags = 0;
 
-		flags = XWMGeometry(XtDisplay(w),
+		(void) XWMGeometry(XtDisplay(w),
 			XScreenNumberOfScreen(XtScreen(w)),
 			geometry,
 			"80x24",
@@ -1183,7 +1183,6 @@ Initialize(Widget rw, Widget w, Arg *args, Cardinal *num_args)
     /* create the function key form...
      */
 
-    i = 0;
     /* Add an event handler for enter and leave events to allow us to
      * modify the "CAPS LOCK" indicator...
      */

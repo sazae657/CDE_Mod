@@ -699,7 +699,6 @@ static void
 Resize(Widget w)
 {
     DtTermWidget tw = (DtTermWidget) w;
-    DtTermData td = tw->vt.td;
 
     /* let our superclass (the Term Widget) perform the resize... */
     tw->core.widget_class->core_class.superclass->core_class.resize(w);
@@ -880,7 +879,6 @@ static void
 Destroy(Widget w)
 {
     DtTermWidget tw = (DtTermWidget) w;
-    DtTermData td = tw->vt.td;
 
     /* remove the DtTermData structure contents, followed by the structure...
      */

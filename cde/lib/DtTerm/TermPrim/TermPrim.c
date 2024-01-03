@@ -2355,7 +2355,6 @@ static void
 Realize(Widget w, XtValueMask *p_valueMask, XSetWindowAttributes *attributes)
 {
     DtTermPrimitiveWidget tw = (DtTermPrimitiveWidget) w;
-    DtTermPrimData tpd = tw->term.tpd;
     Mask valueMask = *p_valueMask;
     sigset_t sigNew;
     char buffer[BUFSIZ];

@@ -263,6 +263,7 @@ ScaleCharacter(
 #endif	/* USE_PIXMAPS */
     }
 
+#ifdef	USE_PIXMAPS
     /* stipple in the rectangle...
      */
     for (j = 0; j < glyph->numStipples; j++) {
@@ -272,10 +273,8 @@ ScaleCharacter(
 	int y1;
 	int y2;
 	int stippleSize;
-#ifdef	USE_PIXMAPS
 	int xIndex;
 	int yIndex;
-#endif	/* USE_PIXMAPS */
 
 	/* scale x1 and x2 to our width... */
 	x1 = ((width - 1) * glyph->stipples[j].x1) / 100;
@@ -293,7 +292,6 @@ ScaleCharacter(
 	y1 += glyph->stipples[j].y1Offset;
 	y2 += glyph->stipples[j].y2Offset;
 
-#ifdef	USE_PIXMAPS
 	/* fill in the area... */
 	for (yIndex = y1; yIndex < y2; yIndex += stippleSize) {
 	    for (xIndex = x1; xIndex < x2; xIndex += stippleSize) {
@@ -321,8 +319,8 @@ ScaleCharacter(
 		}
 	    }
 	}
-#endif	/* USE_PIXMAPS */
     }
+#endif	/* USE_PIXMAPS */
 
     /* mark this character as completed... */
 #ifdef	USE_PIXMAPS
@@ -374,7 +372,6 @@ _DtTermPrimLineDrawCreateFont(Widget w, GlyphInfo glyphInfo, int numGlyphs,
 	int width, int ascent, int descent)
 {
     DtTermPrimitiveWidget tw = (DtTermPrimitiveWidget) w;
-    struct termData *tpd = tw->term.tpd;
     int fontNumber;
     LineDrawFont lineDrawFont;
     int i;

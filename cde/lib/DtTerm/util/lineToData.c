@@ -280,10 +280,6 @@ main(int argc, char **argv)
 	(void) DumpChar(stdout, charCount++, charList, charListMax,
 		 rectList, rectListMax, lineList, lineListMax,
 		 stippleList, stippleListMax);
-	lineListMax = 0;
-	rectListMax = 0;
-	stippleListMax = 0;
-	charListMax = 0;
     }
 
     /* build the final structure... */

@@ -795,7 +795,6 @@ _DtTermPrimFillScreenGap(Widget w)
 			/* the lines are now freed, adjust the used count... */
 			tpd->lastUsedHistoryRow -= historyLinesNeeded;
 			if (tpd->lastUsedHistoryRow < 0) {
-			    historyLinesNeeded += tpd->lastUsedHistoryRow;
 			    tpd->lastUsedHistoryRow = 0;
 			}
 		    }
@@ -824,9 +823,6 @@ _DtTermPrimFillScreenGap(Widget w)
 			    enhValue *eValues = (enhValue *)NULL;
 
 			    overflowChars = (termChar *) XtMalloc(BUFSIZ * sizeof (termChar));
-			    c1 = _DtTermPrimBufferGetCharacterPointer(
-				    tBuffer, i1, 0);
-
 			    /* Perpetuate the enhancements. */
 			    for (eCol = 0; eCol < length; eCol += eCount)
 			    {
@@ -1095,7 +1091,6 @@ _DtTermPrimInsertText(Widget w, unsigned char *buffer, int length)
 	 * character count...
 	 */
         pmb         = (char *)buffer;
-        pwc         = wcBuffer;
         wcBufferLen = i;
 	i           = 0;
         while (i < wcBufferLen)
@@ -1270,7 +1265,6 @@ _DtTermPrimInsertText(Widget w, unsigned char *buffer, int length)
 	newWidth = DoInsert(w, &buffer[insertStartX],
 		insertCharCount, &wrapped);
 	tpd->cursorColumn += insertCharCount;
-	insertCharCount = 0;
 	if (tpd->insertCharMode != DtTERM_INSERT_CHAR_OFF) {
 	    renderEndX = newWidth;
 	} else {
@@ -1289,8 +1283,6 @@ _DtTermPrimInsertText(Widget w, unsigned char *buffer, int length)
 	    (void) _DtTermPrimRefreshText(w, 0, tpd->cursorRow + 1,
 		    renderEndX, tpd->cursorRow + 1);
 	}
-	wrapped = False;
-	needToRender = False;
     }
 
     return(i);
@@ -1336,7 +1328,6 @@ _DtTermPrimParseInput
     struct termData *tpd = tw->term.tpd;
     DtTermPrimitiveClassPart	 *termClassPart = &(((DtTermPrimitiveClassRec *)
 	    (tw->core.widget_class))->term_primitive_class);
-    TermBuffer tBuffer = tpd->termBuffer;
     int i;
     short insertStart;
     short insertByteCount;

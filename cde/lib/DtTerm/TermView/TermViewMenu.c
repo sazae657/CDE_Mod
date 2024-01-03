@@ -545,7 +545,6 @@ createFontMenu
 
     /* clear out mnemonics string... */
     *mnemonics = '\0';
-    c1 = mnemonics;
 
     /* create the font buttons... */
     fontSizeToggles = (Widget *) XtMalloc((fontArrayCount + 1) * sizeof(Widget));
@@ -626,9 +625,9 @@ CreateMenu(Widget termView, Widget parent, Boolean menuBar,
 		    i);
 	}
 	menu = popupMenu;
-	button = _DtTermViewCreateLabel(menu,
+	(void) _DtTermViewCreateLabel(menu,
 	          (GETMESSAGE(NL_SETN_ViewMenu,83, "Terminal")));
-	button = _DtTermViewCreateSeparator(menu, "Separator");
+	(void) _DtTermViewCreateSeparator(menu, "Separator");
     }
     (void) XtFree((char *) newArglist);
 
@@ -659,7 +658,7 @@ CreateMenu(Widget termView, Widget parent, Boolean menuBar,
 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,19, "C"));
 	accelerator = mallocGETMESSAGE(NL_SETN_ViewMenu,62, "Alt F4");
 	acceleratorText = mallocGETMESSAGE(NL_SETN_ViewMenu,62, "Alt+F4");
-	button = _DtTermViewCreatePushButton(pulldown[pc], 
+	(void) _DtTermViewCreatePushButton(pulldown[pc], 
 	        (GETMESSAGE(NL_SETN_ViewMenu,18, "Close")),
 		ks,
 		accelerator,
@@ -671,12 +670,12 @@ CreateMenu(Widget termView, Widget parent, Boolean menuBar,
     if (menuBar || (!menuBar && firstPopup))
 #ifdef	PULLDOWN_ACCELERATORS
 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,21, "W"));
-	cascade = _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
+	(void) _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
 	          (GETMESSAGE(NL_SETN_ViewMenu,20, "Window")),
 		  ks,
 		  NULL, NULL, NULL, NULL);
 #else	/* PULLDOWN_ACCELERATORS */
-	cascade = _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
+	(void) _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
 	        (GETMESSAGE(NL_SETN_ViewMenu,20, "Window")),
 		NoSymbol, NULL, NULL, NULL, NULL);
 #endif	/* PULLDOWN_ACCELERATORS */
@@ -689,7 +688,7 @@ CreateMenu(Widget termView, Widget parent, Boolean menuBar,
 		"Ctrl <Key>osfInsert");
 	acceleratorText = mallocGETMESSAGE(NL_SETN_ViewMenu,25, "Ctrl+Insert");
 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,23, "C"));
-	button = _DtTermViewCreatePushButton(pulldown[pc],
+	(void) _DtTermViewCreatePushButton(pulldown[pc],
 		  (GETMESSAGE(NL_SETN_ViewMenu,22, "Copy")),
 		  ks,
 		  accelerator,
@@ -702,7 +701,7 @@ CreateMenu(Widget termView, Widget parent, Boolean menuBar,
         accelerator = mallocGETMESSAGE(NL_SETN_ViewMenu,28,
 		"Shift <Key>osfInsert");
         acceleratorText = mallocGETMESSAGE(NL_SETN_ViewMenu,29, "Shift+Insert");
-	button = _DtTermViewCreatePushButton(pulldown[pc], 
+	(void) _DtTermViewCreatePushButton(pulldown[pc], 
 	          (GETMESSAGE(NL_SETN_ViewMenu,26, "Paste")),
 		  ks,
 		  accelerator,
@@ -714,12 +713,12 @@ CreateMenu(Widget termView, Widget parent, Boolean menuBar,
     if (menuBar || (!menuBar && firstPopup))
 #ifdef	PULLDOWN_ACCELERATORS
 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,31, "E"));
-	cascade = _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
+	(void) _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
 	          (GETMESSAGE(NL_SETN_ViewMenu,30, "Edit")),
 		  ks,
 		  NULL, NULL, NULL, NULL);
 #else	/* PULLDOWN_ACCELERATORS */
-	cascade = _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
+	(void) _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
 	        (GETMESSAGE(NL_SETN_ViewMenu,30, "Edit")),
 		NoSymbol, NULL, NULL, NULL, NULL);
 #endif	/* PULLDOWN_ACCELERATORS */
@@ -742,13 +741,13 @@ CreateMenu(Widget termView, Widget parent, Boolean menuBar,
 			  NULL, NULL, scrollBarToggleCallback, NULL);
 
 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,37, "G"));
-	button = _DtTermViewCreatePushButton(pulldown[pc], 
+	(void) _DtTermViewCreatePushButton(pulldown[pc], 
 	         (GETMESSAGE(NL_SETN_ViewMenu,36, "Global...")),
 		  ks,
 		  NULL, NULL, globalOptionsCallback, NULL);
 
 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,39, "T"));
-	button = _DtTermViewCreatePushButton(pulldown[pc], 
+	(void) _DtTermViewCreatePushButton(pulldown[pc], 
 	          (GETMESSAGE(NL_SETN_ViewMenu,38, "Terminal...")),
 		  ks,
 		  NULL, NULL, terminalOptionsCallback, NULL);
@@ -761,13 +760,13 @@ CreateMenu(Widget termView, Widget parent, Boolean menuBar,
 	submenu = createPulldown(pulldown[pc], "Reset", arglist, i);
 
 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,41, "S"));
-	button = _DtTermViewCreatePushButton(submenu, 
+	(void)_DtTermViewCreatePushButton(submenu, 
 	         (GETMESSAGE(NL_SETN_ViewMenu,40, "Soft Reset")),
 		 ks,
 		NULL, NULL, softResetCallback, NULL);
 
 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,43, "H"));
-	button = _DtTermViewCreatePushButton(submenu, 
+	(void)_DtTermViewCreatePushButton(submenu, 
 	         (GETMESSAGE(NL_SETN_ViewMenu,42, "Hard Reset")),
 		  ks,
 		  NULL, NULL, hardResetCallback, NULL);
@@ -781,12 +780,12 @@ CreateMenu(Widget termView, Widget parent, Boolean menuBar,
     if (menuBar || (!menuBar && firstPopup))
 #ifdef	PULLDOWN_ACCELERATORS
         ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,47, "O"));
-	cascade = _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
+	(void) _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
 	          (GETMESSAGE(NL_SETN_ViewMenu,46, "Options")),
 		   ks,
 		   NULL, NULL, NULL, NULL);
 #else	/* PULLDOWN_ACCELERATORS */
-	cascade = _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
+	(void) _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
 	          (GETMESSAGE(NL_SETN_ViewMenu,46, "Options")),
 		NoSymbol, NULL, NULL, NULL, NULL);
 #endif	/* PULLDOWN_ACCELERATORS */
@@ -858,49 +857,49 @@ CreateMenu(Widget termView, Widget parent, Boolean menuBar,
 
 #else	/* HPVUE */
 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,65, "v"));
-	button = _DtTermViewCreatePushButton(pulldown[pc], 
+	(void)_DtTermViewCreatePushButton(pulldown[pc], 
 	         (GETMESSAGE(NL_SETN_ViewMenu,64, "Overview")),
 		 ks,
 		 NULL, NULL, helpOverviewCallback, NULL);
 
-	button = _DtTermViewCreateSeparator(pulldown[pc], "Separator");
+	(void)_DtTermViewCreateSeparator(pulldown[pc], "Separator");
 
 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,69,"C"));
-	button = _DtTermViewCreatePushButton(pulldown[pc], 
+	(void)_DtTermViewCreatePushButton(pulldown[pc], 
 	         (GETMESSAGE(NL_SETN_ViewMenu,68, "Table Of Contents")),
 		 ks,
 		 NULL, NULL, helpTableOfContentsCallback, NULL);
 
 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,71,"T"));
-	button = _DtTermViewCreatePushButton(pulldown[pc], 
+	(void)_DtTermViewCreatePushButton(pulldown[pc], 
 	         (GETMESSAGE(NL_SETN_ViewMenu,70, "Tasks")),
 		 ks,
 		 NULL, NULL, helpTasksCallback, NULL);
 
 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,73,"R"));
-	button = _DtTermViewCreatePushButton(pulldown[pc], 
+	(void)_DtTermViewCreatePushButton(pulldown[pc], 
 	         (GETMESSAGE(NL_SETN_ViewMenu,72, "Reference")),
 		 ks,
 		 NULL, NULL, helpReferenceCallback, NULL) ;
 
 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,75,"K"));
-	button = _DtTermViewCreatePushButton(pulldown[pc], 
+	(void)_DtTermViewCreatePushButton(pulldown[pc], 
 	         (GETMESSAGE(NL_SETN_ViewMenu,74, "Keyboard")),
 		 ks,
 		 NULL, NULL, helpKeyboardCallback, NULL) ;
 
-	button = _DtTermViewCreateSeparator(pulldown[pc], "Separator");
+	(void)_DtTermViewCreateSeparator(pulldown[pc], "Separator");
 
 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,77,"U"));
-	button = _DtTermViewCreatePushButton(pulldown[pc], 
+	(void)_DtTermViewCreatePushButton(pulldown[pc], 
 	         (GETMESSAGE(NL_SETN_ViewMenu,76, "Using Help")),
 		ks,
 		NULL, NULL, helpUsingHelpCallback, NULL);
 
-	button = _DtTermViewCreateSeparator(pulldown[pc], "Separator");
+	(void)_DtTermViewCreateSeparator(pulldown[pc], "Separator");
 
 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,79,"A"));
-	button = _DtTermViewCreatePushButton(pulldown[pc], 
+	(void)_DtTermViewCreatePushButton(pulldown[pc], 
 	        (GETMESSAGE(NL_SETN_ViewMenu,83, "About Terminal")),
 		ks,
 		NULL, NULL, helpAboutDttermCallback, NULL);

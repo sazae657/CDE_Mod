@@ -90,7 +90,6 @@ void
 _DtTermFuncScroll(Widget w, int count, FunctionSource functionSource)
 {
     DtTermPrimitiveWidget tw = (DtTermPrimitiveWidget) w;
-    struct termData *tpd = tw->term.tpd;
 
     /* make sure the cursor is off... */
     (void) _DtTermPrimCursorOff(w);
@@ -120,7 +119,6 @@ void
 _DtTermFuncEndOfBuffer(Widget w, int count, FunctionSource functionSource)
 {
     DtTermPrimitiveWidget tw = (DtTermPrimitiveWidget) w;
-    struct termData *tpd = tw->term.tpd;
 
     EXIT_IF_MARGINS_SET(tw)
     (void) _DtTermPrimCursorOff(w);
@@ -220,13 +218,9 @@ termFuncErase
 {
     DtTermPrimitiveWidget tw  = (DtTermPrimitiveWidget) w;
     DtTermPrimData        tpd = tw->term.tpd;
-    TermBuffer            tb  = tpd->termBuffer;
     short row;
     short col;
 
-    row = tpd->cursorRow + tpd->topRow;
-    col = tpd->cursorColumn;
-    
     switch(eraseSwitch)
     {
       case eraseToEOL:
@@ -339,8 +333,6 @@ void
 _DtTermFuncClearToEndOfBuffer(Widget w, int count, FunctionSource functionSource)
 {
     DtTermPrimitiveWidget      tw        = (DtTermPrimitiveWidget) w;
-    DtTermPrimData        tpd        = tw->term.tpd;
-    short trow ;
 
     /* turn the cursor off... */
     (void) _DtTermPrimCursorOff(w);
@@ -855,7 +847,6 @@ _DtTermFuncInsertLine(Widget w, int count, FunctionSource functionSource)
 	    }
 
 	    /* update screen info and counts... */
-	    count -= moveCount;
 	    insertedRows += moveCount;
 	}
     }
@@ -954,7 +945,6 @@ _DtTermVideoEnhancement(Widget w,int value)
     DtTermPrimData        tpd        = tw->term.tpd;
     DtTermWidget      vtw        = (DtTermWidget) w;
     DtTermData        td        = vtw->vt.td;
-    ParserContext   context   = GetParserContext(w);
 
       switch(value) {
         case 0:
@@ -1075,8 +1065,6 @@ _DtTermFontEnhancement(Widget w,int value)
     DtTermPrimitiveWidget      tw        = (DtTermPrimitiveWidget) w;
     DtTermPrimData        tpd        = tw->term.tpd;
     DtTermWidget      vtw        = (DtTermWidget) w;
-    DtTermData        td        = vtw->vt.td;
-    ParserContext   context   = GetParserContext(w);
 
     (void)_DtTermPrimBufferSetEnhancement(tpd->termBuffer,
               tpd->topRow + tpd->cursorRow, tpd->cursorColumn, enhFont, value);
