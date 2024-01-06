@@ -1,0 +1,13 @@
+[Unit]
+Description=CDE login manager
+Documentation=man:dtlogin(1)
+After=network.target
+
+[Service]
+ExecStart=/usr/dt/bin/dtlogin -daemon
+Restart=on-failure
+Type=forking
+PIDFile=/var/dt/Xpid
+
+[Install]
+WantedBy=multi-user.target
