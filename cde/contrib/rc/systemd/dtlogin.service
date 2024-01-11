@@ -1,13 +1,11 @@
 [Unit]
-Description=CDE login manager
+Description=CDE login service
 Documentation=man:dtlogin(1)
-After=network.target
+Requires=rpcbind.service
+After=systemd-user-sessions.service
 
 [Service]
-ExecStart=/usr/dt/bin/dtlogin -daemon
-Restart=on-failure
-Type=forking
-PIDFile=/var/dt/Xpid
+ExecStart=/usr/dt/bin/dtlogin -nodaemon
 
 [Install]
-WantedBy=multi-user.target
+Alias=display-manager.service
